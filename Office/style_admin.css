@@ -1,0 +1,261 @@
+body{
+	background:#fd5;
+	font-size: 0.8em;
+	margin:0;
+	padding:0;
+	font-family: Arial, Verdana,Helvetica, sans-serif;}
+	#leftCol {
+  width: 150px;
+  overflow: auto;
+  border: 1px solid #95a8b7;
+  background-color: #060;
+  padding: 5px;
+}
+#messagePanel {
+	width:400px;
+	margin:10px;
+	margin-top:180px;
+	padding:10px;
+	background-color:#a55;
+	border:2px solid #fff;
+	color:#fff;
+	position:absolute;
+	left:50%;
+	margin-left:-200px;
+}	
+#messagePanel ul {
+	padding-left:0;
+	list-style-type:none;
+}
+.messageFooter {
+	padding:10px;
+	border-top:1px dashed #fff;
+	text-align:right;
+}
+#leftCol a, #leftCol {
+  color: #999;
+}
+
+#rightCol {
+  padding-left: 2%;
+}
+
+input, textarea, select {
+  border: solid 1px black;
+}
+a {
+	color:#500;
+	text-decoration:none;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+input[type="submit"] {
+  cursor: pointer;
+  cursor: hand;
+}
+div.error {
+  padding: 10px;
+  border: 3px dashed #CF1A21;
+  background-color: #8C82CF;
+}
+.error {
+  color: #8F121A;
+}
+.warning {
+  color: #EBB000;
+}
+.error, .warning {
+  font-size: 120%;
+  font-weight: bold;
+}
+#chooseTable{}
+#chooseTable h3{
+   margin-top:0;
+   margin-left:1em;
+}
+#Controller{
+	margin-left:1em;
+  margin-right:1em;
+  clear:both;
+  min-height:350px;
+  _height:350px
+}
+#admincontainer{
+	background:#eef;
+  margin-left:2%;
+  width:96%;
+  padding:0;
+  border-right:1px black solid;
+  border-left:1px black solid
+}
+#admincontainercompact {
+  width:400px;
+}
+#loginContainer{
+	position:absolute;
+	left:50%;top:50%;
+	width:40%;
+	height:30%;
+	margin-left:-20%;
+	background:#eef;
+	margin-top:-10%
+}
+
+#related{
+  background:#afb;
+  border:1px solid #5ca;
+  padding:0;
+}
+#sideinfos h4 {
+  margin:0;
+  padding:1px;
+  border-bottom:1px solid #070;
+  border-top:1px solid #070;
+  color:#fff;
+  background:#555;
+  font-variant:small-caps;
+}
+#sideinfos ul {
+  margin:0;padding:2px;
+}
+#sideinfos li {
+  list-style-type:none;
+  margin-left:1em;
+  width:200px;
+  float:left;
+}
+      
+#relatedaction{
+  background:#ffa;
+  border:1px solid #cca;
+  padding:0;
+  margin:0;
+}	
+.actionMenu ul {
+  border-bottom:1px solid #778;
+  padding:0;
+  margin:0;
+  padding-bottom:1.2em;
+  background:#dde;
+}
+.actionMenu li {
+  float:left;
+  display:inline;
+  line-height:1.2em;
+  font-weight:bold;
+  border-right:1px dotted #778;
+  padding-left:1em;
+  padding-right:1em;
+}
+.actionMenu li a {
+  font-size:0.8em;
+  color:#669;
+}    
+.actionMenu li a:hover {
+  color:#002;
+}
+        
+ul.chooseTables {
+  font: bold 12px verdana, arial, sans-serif;
+  list-style-type: none;
+  line-height:12px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #002;
+  margin: 0
+}
+
+ul.chooseTables li {
+	list-style-type:none;
+  float: left;
+  font-variant:small-caps;	    
+  height: 21px;
+  background-color: #ccd;
+  margin: 2px 6px 0 2px;
+  border: 1px solid #88a;
+  border-bottom: 1px solid #002;
+}
+
+ul.chooseTables li.selected {
+  border: 1px solid #002;
+  border-bottom: 1px solid #dde;
+	background: #dde;     
+}
+
+ul.chooseTables li.selected a {
+  color: #002;
+}
+ul.chooseTables li.selected a:hover {
+  color: #002;
+  background:#dde;
+}
+
+.chooseTables a {
+  float: left;
+  display: block;
+  color: #556;
+  text-decoration: none;
+  padding: 4px;
+}
+
+.chooseTables a:hover {
+  background: #eee;
+  color:#700
+}
+.logout{
+	float:right;background:#000044;padding:2px;
+}
+.logout a{
+	color:#ffff00 
+}
+.datagrid {
+  border-collapse: collapse;
+}
+.datagrid th {
+  background-color: #006600;
+  border-top: 1px solid blac;
+  border-bottom: 1px solid black;
+}
+.datagrid th a, .datagrid th {
+  color: white;
+  text-decoration: none;
+}
+.datagrid th a:hover {
+  text-decoration: underline;
+}
+.datagrid td, .datagrid th {
+  padding: 5px;
+}
+.datagrid tr.oddRow td, .datagrid td {
+  background-color: #f0f0f0;
+}
+.datagrid tr.evenRow td {
+  background-color: #E3E3E3;
+}
+.datagrid td {
+  border: 1px solid #cccccc;
+}
+tr.delete td {
+  background-color: #F7BABA;
+}
+th.groupHeader0 {/*, table.datagrid tr td.groupHeader0 {*/
+  background-color: #080;
+}
+th.groupHeader1 {/*, table.datagrid tr td.groupHeader1 {*/
+  background-color: #0A0;
+}
+th.groupHeader2 {
+  background-color: #0C0;
+}
+th.groupHeader3 {
+  background-color: #0E0;
+}
+.hiddenRecordText {
+  font-size: 80%;
+  color: #BBB;
+}
+.private {
+  background:#FF9900;
+}
+.sublink{font-size:70%}
