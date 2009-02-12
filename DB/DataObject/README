@@ -1,0 +1,43 @@
+I've been using DB_dataObject in several sites now, most of them using a templating system.
+So I found it helpful to implement an Iterator to DBDO so that I can use a regular loop to fetch my DBDO results in the template.
+
+
+To use it you need MDB2 (does not work with DB), and PHP5 (for Iterator implementation).
+This is an example DB_DataObject configuration to use it :
+
+$options = array (  'database' => DB_URI,
+                    'schema_location' => 'your/schema/path',
+                    'class_location' => 'your/DOclasses/path',
+                    'require_prefix' => 'DataObjects/',
+                    'class_prefix' => 'DataObjects_',
+                    'extends' =>'DB_DataObject_Iterator',
+                    'extends_location'=>'path/to/DB/DataObject/Iterator.php',
+                    'db_driver'=>'MDB2',
+                );               
+
+And a short usage example :
+<?php
+$art = DB_DataObject::factory('articles');
+$art->find();
+// then you can for example assign it to a Smarty instance :
+$smarty->assign_by_ref('articles',$art);
+?>
+
+In a smarty template (or whatever templating engine), use it with foreach :
+
+{foreach from=$articles item=article}
+<div id="article_{$article->id}">
+<h3>{$article->title}</h3>
+<p>{$article->body}</p>
+<hr />
+<dl><dt>Comments :</dt>
+{foreach from=$articles->getComments() item=comment}
+<dd>
+	<span>From {$comment->author} on {$comment->date}</span>
+	{$comment->body}
+</dd>
+{/foreach}
+</dl>
+</div>
+{/foreach}
+

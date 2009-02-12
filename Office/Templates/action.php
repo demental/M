@@ -1,0 +1,1 @@
+<?php $this->i('form-discrete',array('form'=>$actionform,'cancel'=>true,'cancelurl'=>M_Office_Util::getQueryParams(array(),array('doSingleAction','glaction','doaction'))))?>

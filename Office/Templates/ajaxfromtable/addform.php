@@ -1,0 +1,1 @@
+<?php $this->i('form-oneline',array('form'=>$form,'do'=>$do))?>
