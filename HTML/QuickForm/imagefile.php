@@ -1,10 +1,39 @@
 <?php
+//
+// +--------------------------------------------------------------------+
+// | M PHP Framework                                                    |
+// +--------------------------------------------------------------------+
+// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
+// | Web           http://m4php5.googlecode.com/                        |
+// | License       GNU Lesser General Public License (LGPL)             |
+// +--------------------------------------------------------------------+
+// | This library is free software; you can redistribute it and/or      |
+// | modify it under the terms of the GNU Lesser General Public         |
+// | License as published by the Free Software Foundation; either       |
+// | version 2.1 of the License, or (at your option) any later version. |
+// +--------------------------------------------------------------------+
+//
+
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   HTML_QuickForm_imagefile
+*/
+/**
+* M PHP Framework
+*
+* HTML class creating a file input element for uploading an image
+*
+* @package      M
+* @subpackage   HTML_QuickForm_imagefile
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+*/
 
 require_once("HTML/QuickForm/file.php");
 
-/**
- * HTML class for a file type element for uploading an image
- */
 class HTML_QuickForm_imagefile extends HTML_QuickForm_file
 {
     // {{{ properties

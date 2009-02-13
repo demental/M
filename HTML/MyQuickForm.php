@@ -1,8 +1,37 @@
 <?php
-// ============================
-// = HTML_QuickForm extension =
-// = Main goal is to be able to init the form with an arbitrary request array for unit testing purposes.
-// ============================
+//
+// +--------------------------------------------------------------------+
+// | M PHP Framework                                                    |
+// +--------------------------------------------------------------------+
+// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
+// | Web           http://m4php5.googlecode.com/                        |
+// | License       GNU Lesser General Public License (LGPL)             |
+// +--------------------------------------------------------------------+
+// | This library is free software; you can redistribute it and/or      |
+// | modify it under the terms of the GNU Lesser General Public         |
+// | License as published by the Free Software Foundation; either       |
+// | version 2.1 of the License, or (at your option) any later version. |
+// +--------------------------------------------------------------------+
+//
+
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   MyQuickForm
+*/
+/**
+* M PHP Framework
+*
+* HTML_QuickForm extension
+* Main goal is to be able to init the form with an arbitrary request array for unit testing purposes.
+*
+* @package      M
+* @subpackage   MyQuickForm
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+*/
 
 require_once 'HTML/QuickForm.php';
 class MyQuickForm extends HTML_QuickForm {
