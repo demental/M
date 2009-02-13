@@ -1,4 +1,42 @@
 <?php
+//
+// +--------------------------------------------------------------------+
+// | M PHP Framework                                                    |
+// +--------------------------------------------------------------------+
+// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
+// | Web           http://m4php5.googlecode.com/                        |
+// | License       GNU Lesser General Public License (LGPL)             |
+// +--------------------------------------------------------------------+
+// | This library is free software; you can redistribute it and/or      |
+// | modify it under the terms of the GNU Lesser General Public         |
+// | License as published by the Free Software Foundation; either       |
+// | version 2.1 of the License, or (at your option) any later version. |
+// +--------------------------------------------------------------------+
+//
+
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   M_Office
+*/
+/**
+* M PHP Framework
+*
+* Actions handling.
+* An action is triggered by the user upon database records in "db" type office modules.
+* There are three ways to apply actions to records :
+* - global : this just launches a DB_DataObjects_* method as a static method
+* - batch : applies an action to user-selected records
+* - single : applies an action to one record
+* TODO : documentation about actions  
+*
+* @package      M
+* @subpackage   M_Office
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+*/
 
 class M_Office_Actions extends M_Office_Controller {
 	function M_Office_Actions($options, $do,$type='batch') {

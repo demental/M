@@ -1,5 +1,5 @@
 <?php
-
+// In use ????
 require_once('Structures/DataGrid/Column.php');
 
 $GLOBALS['STRUCTURES_DATAGRID_LIMITCOLUMN_FORMATTERS'] = array();
