@@ -26,6 +26,7 @@
 * The office application is one of the most powerful features of the M framework.
 * It's also the one that needs most refactoring
 * This was originally base upon Justin Patrin's PEAR_DB_DataObject_FormBuilder_Frontend 
+* 
 *
 * @package      M
 * @subpackage   M_Office
