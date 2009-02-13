@@ -1,7 +1,37 @@
 <?php
-// ======================================================================================
-// = PDF generation class using dompdf external library and Mtpl as the template engine =
-// ======================================================================================
+//
+// +--------------------------------------------------------------------+
+// | M PHP Framework                                                    |
+// +--------------------------------------------------------------------+
+// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
+// | Web           http://m4php5.googlecode.com/                        |
+// | License       GNU Lesser General Public License (LGPL)             |
+// +--------------------------------------------------------------------+
+// | This library is free software; you can redistribute it and/or      |
+// | modify it under the terms of the GNU Lesser General Public         |
+// | License as published by the Free Software Foundation; either       |
+// | version 2.1 of the License, or (at your option) any later version. |
+// +--------------------------------------------------------------------+
+//
+
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   MPdf
+*/
+/**
+* M PHP Framework
+*
+* PDF generation class using dompdf external library and Mtpl as the template engine
+*
+* @package      M
+* @subpackage   MPdf
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+*/
+
 require_once 'lib/dompdf/dompdf_config.inc.php';
 require_once 'lib/dompdf/lib/class.pdf.php';
 class MPdf extends Maman {

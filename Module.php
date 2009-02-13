@@ -1,11 +1,41 @@
 <?php
-// =========================================================================================================
-// = Module class. This is one of the most used class in the framework, in combination with Dispatcher, it
-// = represents the Controller layer.
-// = Modules are created using the factory() method. A module can be used as a result of a user request 
-// = or as a component (using the c() method in Mtpl) 
-// = this class also provides caching mechanism and user credentials  
-// =========================================================================================================
+//
+// +--------------------------------------------------------------------+
+// | M PHP Framework                                                    |
+// +--------------------------------------------------------------------+
+// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
+// | Web           http://m4php5.googlecode.com/                        |
+// | License       GNU Lesser General Public License (LGPL)             |
+// +--------------------------------------------------------------------+
+// | This library is free software; you can redistribute it and/or      |
+// | modify it under the terms of the GNU Lesser General Public         |
+// | License as published by the Free Software Foundation; either       |
+// | version 2.1 of the License, or (at your option) any later version. |
+// +--------------------------------------------------------------------+
+//
+
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   Module
+*/
+/**
+* M PHP Framework
+*
+* Module class. This is one of the most used class in the framework, in combination with Dispatcher, it
+* represents the Controller layer.
+* Modules are created using the factory() method. A module can be used as a result of a user request 
+* or as a component (using the c() method in Mtpl)
+* this class also provides caching mechanism and user credentials
+*
+* @package      M
+* @subpackage   Module
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+*/
+
 class Module extends Maman {
   	protected $view;
   	public $currentAction;

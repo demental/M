@@ -1,10 +1,41 @@
 <?php
-// ====================
-// = Dispatcher Class
-// = The main and only goal of the dispatcher is to route the request to the correct Module
-// = The constructor takes two parameters, 1 and 2 correspond to the module and action names. 
-// = The third one is optional parameters to pass to module. Mostly used when a module is used as a component
-// ====================
+//
+// +--------------------------------------------------------------------+
+// | M PHP Framework                                                    |
+// +--------------------------------------------------------------------+
+// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
+// | Web           http://m4php5.googlecode.com/                        |
+// | License       GNU Lesser General Public License (LGPL)             |
+// +--------------------------------------------------------------------+
+// | This library is free software; you can redistribute it and/or      |
+// | modify it under the terms of the GNU Lesser General Public         |
+// | License as published by the Free Software Foundation; either       |
+// | version 2.1 of the License, or (at your option) any later version. |
+// +--------------------------------------------------------------------+
+//
+
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   Dispatcher
+*/
+/**
+* M PHP Framework
+*
+* Dispatcher Class
+* The main and only goal of the dispatcher is to route the request to the correct Module
+* The constructor takes two parameters, 1 and 2 correspond to the module and action names. 
+* The third one is optional parameters to pass to module. Mostly used when a module is used as a component
+* 
+*
+* @package      M
+* @subpackage   Dispatcher
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+*/
+
 class Dispatcher extends Maman {
     protected $page;
     protected $module;

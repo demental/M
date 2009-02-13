@@ -1,4 +1,5 @@
 <?php
+// SHOULD BE REMOVED (already in HTML/MyQuickForm.php)
 require_once 'M/HTML/MyQuickForm.php';
 require_once 'DB/DataObject/FormBuilder/QuickForm.php';
 class db_dataobject_formbuilder_myquickform extends db_dataobject_formbuilder_quickform 
