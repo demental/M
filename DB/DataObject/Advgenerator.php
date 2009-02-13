@@ -1,4 +1,42 @@
 <?php
+//
+// +--------------------------------------------------------------------+
+// | M PHP Framework                                                    |
+// +--------------------------------------------------------------------+
+// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
+// | Web           http://m4php5.googlecode.com/                        |
+// | License       GNU Lesser General Public License (LGPL)             |
+// +--------------------------------------------------------------------+
+// | This library is free software; you can redistribute it and/or      |
+// | modify it under the terms of the GNU Lesser General Public         |
+// | License as published by the Free Software Foundation; either       |
+// | version 2.1 of the License, or (at your option) any later version. |
+// +--------------------------------------------------------------------+
+//
+
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   DB_DataObject_Advgenerator
+*/
+/**
+* M PHP Framework
+*
+* DB_DataObject_Generator extension, 
+* Main goal is to generate the links() method instead of using the parent one which parses the .links.ini file
+*  = better readability as you can see the links from the table you're working on
+*  = better performance as no ini parsing is necessary anymore
+* Also creates a reverseLinks() method for reverse links to increase performance in the "related records" block 
+* in M_Office_EditRecord()
+*
+* @package      M
+* @subpackage   DB_DataObject_Advgenerator
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+*/
+
 require_once 'DB/DataObject/Generator.php';
 
 class DB_DataObject_Advgenerator extends DB_DataObject_Generator {

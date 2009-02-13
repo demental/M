@@ -2,7 +2,7 @@
 
 // ===============================
 // = Wiki fields handling plugin =
-// = Might be deprecated or at least needs refactoring
+// = Might be deprecated or at least needs huge refactoring (not used since 2005)
 // ===============================
 
 require_once 'M/DB/DataObject/Plugin.php';

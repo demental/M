@@ -1,12 +1,41 @@
 <?php
-// ============================================================
-// = This so-called officepack plugin provides two features :
-// = * Generation of hashed primary keys
-// = * If the field "deleted" is present in the table, use it as a flag for deletion
-// = Handy for apps where it is necessary sometimes to retreive deleted records.
-// = Also handy for apps with many sources (like smartphones) as hashed PKs allows synchronization.
-// = This was inspired from sugarCRM
-// ============================================================
+//
+// +--------------------------------------------------------------------+
+// | M PHP Framework                                                    |
+// +--------------------------------------------------------------------+
+// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
+// | Web           http://m4php5.googlecode.com/                        |
+// | License       GNU Lesser General Public License (LGPL)             |
+// +--------------------------------------------------------------------+
+// | This library is free software; you can redistribute it and/or      |
+// | modify it under the terms of the GNU Lesser General Public         |
+// | License as published by the Free Software Foundation; either       |
+// | version 2.1 of the License, or (at your option) any later version. |
+// +--------------------------------------------------------------------+
+//
+
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   DB_DataObject_Plugin_OfficePack
+*/
+/**
+* M PHP Framework
+*
+* This so-called officepack plugin provides two features :
+* - Generation of hashed primary keys
+* - If the field "deleted" is present in the table, use it as a flag for deletion
+* Handy for apps where it is necessary sometimes to retreive deleted records.
+* Also handy e.g. smartphones synchronization as hashed PKs avoids index conflicts if database is grown from various sources.
+* This was inspired from sugarCRM
+*
+* @package      M
+* @subpackage   DB_DataObject_Plugin_OfficePack
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+*/
 
 require_once "M/DB/DataObject/Plugin.php";
 

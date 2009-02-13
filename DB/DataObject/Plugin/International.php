@@ -1,12 +1,42 @@
 <?php
-// ========================
-// = International plugin
-// = This should not be used in a production environment (big performance hit as it fetches each field in each record)
-// = Use i18n instead
-// = During development this plugin can be handy, as its main advantage is to be able to set international fields on-the-fly without
-// = changing the database structure.
-// = This plugin provides helper methods to migrate to i18n plugin (not reversible)
-// ========================
+//
+// +--------------------------------------------------------------------+
+// | M PHP Framework                                                    |
+// +--------------------------------------------------------------------+
+// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
+// | Web           http://m4php5.googlecode.com/                        |
+// | License       GNU Lesser General Public License (LGPL)             |
+// +--------------------------------------------------------------------+
+// | This library is free software; you can redistribute it and/or      |
+// | modify it under the terms of the GNU Lesser General Public         |
+// | License as published by the Free Software Foundation; either       |
+// | version 2.1 of the License, or (at your option) any later version. |
+// +--------------------------------------------------------------------+
+//
+
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   DB_DataObject_Plugin_International
+*/
+/**
+* M PHP Framework
+*
+* International plugin
+* This should not be used in a production environment (big performance hit as it fetches each field in each record)
+* Use i18n instead
+* During development this plugin can be handy, as its main advantage is to be able to set international fields on-the-fly without
+* changing the database structure.
+* This plugin provides helper methods to migrate to i18n plugin (not reversible)
+*
+* @package      M
+* @subpackage   DB_DataObject_Plugin_International
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+*/
+
 require_once 'M/DB/DataObject/Plugin.php';
 class DB_DataObject_Plugin_International extends DB_DataObject_Plugin {
     public $plugin_name='international';

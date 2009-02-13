@@ -1,12 +1,40 @@
 <?php
+//
+// +--------------------------------------------------------------------+
+// | M PHP Framework                                                    |
+// +--------------------------------------------------------------------+
+// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
+// | Web           http://m4php5.googlecode.com/                        |
+// | License       GNU Lesser General Public License (LGPL)             |
+// +--------------------------------------------------------------------+
+// | This library is free software; you can redistribute it and/or      |
+// | modify it under the terms of the GNU Lesser General Public         |
+// | License as published by the Free Software Foundation; either       |
+// | version 2.1 of the License, or (at your option) any later version. |
+// +--------------------------------------------------------------------+
+//
 
-// ===============================
-// = nested tree handling plugin =
-// = The table needs the following fields :
-// = parent_id, left, right, level (depth)
-// = allows fast fetching across multiple levels, while table manipulation (insert - update - delete) is much slower
-// = accurate for big trees, not for small ones (eg categories with 2/3 levels)
-// ===============================
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   DB_DataObject_Plugin_tree
+*/
+/**
+* M PHP Framework
+*
+* nested tree handling plugin
+* The table needs the following fields :
+* parent_id, left, right, level (depth)
+* allows fast fetching across multiple levels, while table manipulation (insert - update - delete) is much slower
+* accurate for big trees, not for small ones (eg categories with 2/3 levels)
+*
+* @package      M
+* @subpackage   DB_DataObject_Plugin_tree
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+*/
 
 require_once 'M/DB/DataObject/Plugin.php';
 class DB_DataObject_Plugin_tree extends DB_DataObject_Plugin
