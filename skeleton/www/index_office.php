@@ -21,7 +21,7 @@
 /**
 * M PHP Framework
 *
-* Controller main file for default app
+* Controller main file for office app
 *
 * @package      M
 * @author       Arnaud Sellenet <demental@sat2way.com>
@@ -31,23 +31,16 @@
 */
 
 define('APP_NAME','{$APP_NAME}');
-
+define('IN_ADMIN',1);
 require '{$APP_RELATIVE_FILE_TO_ROOT}/M_startup.php';
 
- /**
- *
- * Dispatching
- *
- **/
- 
-$module = empty($_REQUEST['module'])?'defaut':$_REQUEST['module'];
-$action = empty($_REQUEST['action'])?'index':$_REQUEST['action'];
+require 'M/Office.php';
+
+define('ROOT_ADMIN_URL',SITE_URL.'{$APP_RELATIVE_FILE_FROM_DOCROOT}');
 
 
-$d = new Dispatcher($module,$action);
-$d->setConfig(PEAR::getStaticProperty('Dispatcher','global'));
-$d->execute();
-
+Mreg::get('setup')->setUpEnv();
+$frontend = new M_Office();
 
 header('Content-type:text/html; charset=utf-8');
-echo $d->display();
+echo $frontend->display();

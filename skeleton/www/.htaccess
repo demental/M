@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^([^\.]*)$ /index.php?route=$1 [QSA,L]
+</IfModule>
+<IfModule mod_gzip.c>
+   mod_gzip_on Yes
+   mod_gzip_item_exclude         file       \.(jpg|php|gif)$
+   mod_gzip_item_exclude         file       \.gz$
+   mod_gzip_item_exclude         file       \.zip$
+</IfModule>

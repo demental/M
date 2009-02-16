@@ -1,0 +1,34 @@
+===Tests===
+	* add already written tests to the repository
+	* provide a mechanism to easily test modules/actions :
+		# add form & fb factory methods to Module (Module::createForm() =>QuickForm, Module::createManager()=>MyFB )
+		# write a decorator (ie Tester_Module) that overrides createForm && createManager (and fill form request with arbitrary data)
+		
+===Commands===
+	* finish skeleton content
+	* create shell executable(s) (mf ?)
+	* pecl-style installer with prompt
+	* commands :
+		# mfcreate -project project_name :
+		 # prompt for PEAR incl_path (if not detected)
+		 # prompt for www folder (relative to app_root)
+		 # prompt for main DB_URI
+		 # prompt for main HTTP(s) URL
+
+		# mfcreate -project project_name -app app_name  :
+		 # if project does not exists prompt : ask wether to create it
+			=> create project 
+		 # prompt for app type (office or default)
+		 # prompt for domain subfolder (/ by default)
+		# mfcreate -project project_name -app app_name -module module_name
+		 # same as above for project and app
+		 => module creation with index
+		
+		# mfutil -project project_name -regenerate
+		=> Regenerate DBDO
+		# mfutil -project project_name -cc app_name
+		=> Clear cache for app app_name
+		# mfutil -project project_name -release
+		=> css&js minification and copy to web folder
+		
+		# mfinstall (...)
