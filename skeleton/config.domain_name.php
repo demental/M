@@ -6,7 +6,7 @@ define('PROJECT_NAME','{$PROJECT_NAME}');
 define('SITE_URL','{$SITE_URL}');
 // Web folder - relative to project (eg : www)
 define('WEB_FOLDER','{$DOC_ROOT}');
-// Mode - production, developpement, test
+// Mode - production, development, test
 define('MODE','{$MODE}');
 
 

@@ -32,7 +32,7 @@
 
 define('APP_NAME','{$APP_NAME}');
 
-require '{$APP_RELATIVE_FILE_TO_ROOT}/M_startup.php';
+require '{$APP_RELATIVE_FILE_TO_ROOT}/M_Startup.php';
 
  /**
  *
