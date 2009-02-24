@@ -68,7 +68,7 @@ require 'M/M_autoload.php';
  * runtime mode 
  **/
 switch(MODE) {
-	case 'developpement' :
+	case 'development' :
 		ini_set('error_reporting',E_ALL ^ E_NOTICE);
 		ini_set('display_errors',1);
     $caching=false;
