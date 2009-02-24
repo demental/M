@@ -234,7 +234,7 @@ class M_Office extends M_Office_Controller {
 	{
 	  if(!is_array($params)) {
 	    $tmp = explode('/',$params);
-      $params = array();
+      $params = $remove;
 	    $params['module'] = $tmp[0];
 	    $params['action'] = $tmp[1];
 	    $remove = $entities;

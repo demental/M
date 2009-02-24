@@ -34,7 +34,10 @@
 */
 
 class M_Crypt {
-public static function encrypt($val,$ky) {
+public static function encrypt($val,$ky = null) {
+  if(is_null($ky)) {
+    $ky = ENCSALT;
+  }
   require_once 'Crypt/Blowfish.php';
   $bf =& Crypt_Blowfish::factory('cbc');
   if (PEAR::isError($bf)) {
@@ -48,8 +51,11 @@ public static function encrypt($val,$ky) {
   $encrypted = $bf->encrypt($val);
   return base64_encode($encrypted);
 }
-public static function decrypt( $val, $ky )
+public static function decrypt( $val, $ky = null )
    {
+     if(is_null($ky)) {
+       $ky = ENCSALT;
+     }
         $val = base64_decode($val);
         require_once 'Crypt/Blowfish.php';
         $bf =& Crypt_Blowfish::factory('cbc');
