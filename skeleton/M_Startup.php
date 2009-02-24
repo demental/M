@@ -55,7 +55,7 @@ if(!defined('TMP_PATH')) {
 $paths[]=APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR;
 if(is_array($paths)) {
 
-  ini_set('include_path', './:'.implode(':',$paths));
+  ini_set('include_path', ini_get('include_path').':'.implode(':',$paths));
 }
 
 
