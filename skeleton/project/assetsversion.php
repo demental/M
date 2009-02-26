@@ -1,0 +1,2 @@
+<?php
+$assetsversion = 1;

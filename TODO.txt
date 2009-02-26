@@ -1,10 +1,20 @@
-===Tests===
+=== Tests ===
 	* add already written tests to the repository
 	* provide a mechanism to easily test modules/actions :
-		# add form & fb factory methods to Module (Module::createForm() =>QuickForm, Module::createManager()=>MyFB )
-		# write a decorator (ie Tester_Module) that overrides createForm && createManager (and fill form request with arbitrary data)
+		# add form & fb factory proxy methods to Module ($this->createForm() =>QuickForm, $this->createManager()=>MyFB )
+		# A module can now be filled with an arbitrary request so simulating form submission is possible
+	* add automatic unittests generation for each DataObject including barebones CRUD testing (to be added to M/DB/DataObject/advgenerator.php) - see folder structure proposal below
+
+
+=== Structure refactoring ===
+provide mechanism in accordance to the defined project structure (@see README.txt in the skeleton/ folder for structure explanation.)
+M_Startup.php should be moved from the application root to the M folder
+	pros : commands could include it easier whichever working directory the command is fired from 
+	cons : this means setting up a server which has not its pear rep configured correctly will be trickier
+
 		
-===Commands===
+	
+=== Commands ===
 	* finish skeleton content
 	* create shell executable(s) (mf ?)
 	* pecl-style installer with prompt
@@ -30,5 +40,18 @@
 		=> Clear cache for app app_name
 		# mfutil -project project_name -release
 		=> css&js minification and copy to web folder
+		# mfutil -project project_name -app app_name -grablang lang
+		=> Scan all project/app files to create (or append) a lang XML file
+		
 		
 		# mfinstall (...)
+
+
+=== Caching ===
+	* Take advantage of the "section" feature of PEAR::Cache_Lite to organize caching by module and action.
+	* Provide methods to clear cache (in the Module class) :
+		* public function clearMyCache($action = null) => to clear cache at a module Level
+		* public static function clearCache($module = null, $action = null, $app = null) => to clear the cache at an application level
+		* public static function clearCacheByID($cacheID) => to clear a cacheID 
+		* public static clearConfigCache($module = null, $app = null) => to clear configuration cache
+		

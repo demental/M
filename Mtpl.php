@@ -218,6 +218,10 @@ class Mtpl {
       return Mtpl::$_captures[$name];
   }
 // partial inclusion
+  private function includetpl($file, $params = null,$autoglobal = false)
+  {
+    return $this->i($file, $params = null,$autoglobal = false);
+  }
   private function i($file, $params = null,$autoglobal = false)
   {
       $tpl = & new Mtpl($this->_config['tplfolders']);
@@ -264,12 +268,17 @@ class Mtpl {
   private function e($var) {
       echo $var;
   }
+    
   /**
    * Adds a component to the template
    * @param string module name
    * @param string module action
    * @return string rendered module
    **/
+  private function component($componentId,$action='index',$params=null) {
+    return $this->c($componentId,$action,$params);
+  }
+  
   private function c($componentId,$action='index',$params=null) {
 
       if(is_object($this->_module)) {
