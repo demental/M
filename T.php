@@ -45,6 +45,9 @@ class T {
         if(is_null($lang)) {
         $lang = T::getLang();
         }
+        if(empty($lang)) {
+          $lang = DEFAULT_LANG;
+        }
         if(key_exists($lang,T::$instances)) {
           return T::$instances[$lang];
         } else {
@@ -76,6 +79,7 @@ class T {
     {
         T::$config = $conf;
     }
+    // TODO rename to getConfigValue
     public static function getConfig ( $value )
     {
         return T::$config[$value];

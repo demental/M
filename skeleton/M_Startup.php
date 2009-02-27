@@ -87,10 +87,9 @@ switch(MODE) {
 /**
  * Translation initialization (TODO move this out of the startup file, maybe setup)
  */
-T::setConfig(array('path'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'lang/','encoding'=>Config::get('encoding'),'saveresult'=>false,'cacheDir'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache/'));
+T::setConfig(array('path'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'lang/','encoding'=>'utf-8','saveresult'=>false,'cacheDir'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache/'));
 // TODO define a default lang, not french hardcoded
-$lang=$_REQUEST['lang']?$_REQUEST['lang']:'fr';
-T::setLang($lang);
+
 
 
 $opt = &PEAR::getStaticProperty('Module', 'global');

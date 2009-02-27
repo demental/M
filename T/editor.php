@@ -43,6 +43,7 @@ class T_editor extends T {
     }
     self::$curStrings[]=$string;
       if(!key_exists($string,$this->strings)) {
+        $this->strings[$string] = $string;
         return vsprintf($string,$args);
       }
       $string = $this->strings[$string];
@@ -50,6 +51,15 @@ class T_editor extends T {
         return vsprintf($string,$args);
       }
       return $string;
+  }
+  private function getStringsFromXML ( $file )
+  {
+    if(!file_exists($file)) {
+      if(!touch($file)) {
+        throw new Exception('Unable to create file '.$file);
+      }
+    }
+    return parent::getStringsFromXML($file);
   }
   public static function getCurStrings()
   {

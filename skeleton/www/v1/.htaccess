@@ -1,7 +1,21 @@
+# This file originally from http://httpd.apache.org/docs/2.0/mod/mod_deflate.html
+# Therefore it's fitted for apache v2.0
+# TODO : if possible make this file also compatible with apache v1.3.x
+
+# far away expiration and cache control (10 years / 480 weeks)
 ExpiresDefault "access plus 10 years"
 
+# CACHED FOREVER (@see http://www.askapache.com/htaccess/apache-speed-cache-control.html)
+Header set Cache-Control "public"
+Header set Expires "Thu, 15 Apr 2020 20:00:00 GMT"
+Header unset Last-Modified
+
 # Insert filter
+<IfModule mod_deflate.c>
 SetOutputFilter DEFLATE
+</IfModule>
+
+
 
 # Netscape 4.x has some problems...
 BrowserMatch ^Mozilla/4 gzip-only-text/html
