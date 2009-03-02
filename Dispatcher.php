@@ -113,4 +113,3 @@ class Dispatcher extends Maman {
         return $this->page->output();
     }
 }
-?>

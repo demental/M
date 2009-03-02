@@ -211,21 +211,27 @@ class M_Office extends M_Office_Controller {
 		}
 	}
 	public function display() {
-        if($this->isAjaxRequest()) {
-          M_Office::$dsp='__defaut/ajaxindex';
-        }
+    echo $this->fetch();
+    return;
+	}
+	public function fetch()
+	{
+    if($this->isAjaxRequest()) {
+      M_Office::$dsp='__defaut/ajaxindex';
+    }
 
-        $tpl = Mreg::get('tpl');
-        $tpl->assign('jsdir',SITE_URL.'js/');
-        $tpl->assign('regenerate',$this->getOption('regenerate'));  
-        $tables = $this->getGlobalOption('searchInTables','frontendhome');
-        $tpl->assign('messages',$_SESSION['flashmessages']);
-        if(count($tables)==0) {
-          $tpl->assign('showlivesearch',false);
-        } else {
-          $tpl->assign('showlivesearch',true);
-        }      
-        $tpl->display(M_Office::$dsp);
+    $tpl = Mreg::get('tpl');
+    $tpl->assign('jsdir',SITE_URL.'js/');
+    $tpl->assign('regenerate',$this->getOption('regenerate'));  
+    $tables = $this->getGlobalOption('searchInTables','frontendhome');
+    $tpl->assign('messages',$_SESSION['flashmessages']);
+    if(count($tables)==0) {
+      $tpl->assign('showlivesearch',false);
+    } else {
+      $tpl->assign('showlivesearch',true);
+    }      
+    return $tpl->fetch(M_Office::$dsp);
+
 	}
 	// ==============================
 	// = Proxy (for faster writing) =

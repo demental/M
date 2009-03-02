@@ -36,7 +36,6 @@
 
 require_once 'DB/DataObject.php';
 require_once 'M/DB/DataObject/Iterator.php';
-require_once 'M/Config.php';
 
 
 

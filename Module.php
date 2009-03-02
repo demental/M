@@ -361,8 +361,25 @@ class Module extends Maman {
           header('location:'.$modulaction);
         exit;
       }
-      header('location:'.URL::get($modulaction,$vars,$lang,$secure));
+      $url = URL::get($modulaction,$vars,$lang,$secure);
+      if ((stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') && stristr($_SERVER['HTTP_USER_AGENT'], 'Mac')) || headers_sent()) {
+
+                    echo '<script language="JavaScript1.1">
+      <!--
+      location.replace("'.$url.'");
+      //-->
+      </script>
+      <noscript>
+      <meta http-equiv="Refresh" content="0; URL='.$url.'"/>
+      </noscript>
+      Redirection... merci de patienter ou cliquer <a href="'.$url.'">ici</a>.
+      ';
+      } else {
+      header('location:'.$url);
+      }
+      flush();
       exit;
+
   }
   public function createForm($formName='', $method='post', $action='', $target='', $attributes=null, $trackSubmit = false)
   {
