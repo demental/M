@@ -114,6 +114,8 @@ class T {
     {
         $cachefile = T::getConfig('cacheDir').'/'.$this->locale.'.cache.php';
         if(!@$fp=fopen($cachefile,'w+')) {
+            return;
+            // @see TODO in this getStringsFromXML()
             throw new Exception($cachefile.' is not writable. Please check permissions');
         }
         $data = '<?php $data = array('."\n";
@@ -138,6 +140,11 @@ class T {
     
       	$xml=new XML_Unserializer();
         if(!file_exists($file)) {
+          $this->setStrings(array());
+          return;
+          // TODO this causes problem in the application building process
+          // because whenever we launch a command that relies somewhat on __()
+          // it complains about lang.xml file not found 
           $this->loaded = false;
       	  throw new Exception ('Translate file '.$file.' not found !');      
           return;

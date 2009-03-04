@@ -128,7 +128,6 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
     } else {
       $iFields = $obj->i18nFields;
     }
-    
     foreach($langs as $lang) {
       $t = DB_DataObject::factory($tablename);
       $t->i18n_lang=$lang;
@@ -236,33 +235,165 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
 	public function generateTable($obj)
   {
     require_once 'M/DB/DataObject/Plugin/International.php';
-    $int = new DB_DataObject_Plugin_Intenational(); 
     $iname = $obj->tableName().'_i18n';
-    $res = $int->migration_createI18nTable($obj,$iname);
+    $res = $this->migration_createI18nTable($obj,$iname);
     if(PEAR::isError($res)) {
       trigger_error('failed creating '.$iname.' : '.$res->getMessage().' : '.$res->userinfo,E_USER_WARNING);
       $obj->rollback();
       return false;
     }
-    $res = $int->migration_createI18nIndexes($obj,$iname);
+    $res = $this->migration_createI18nIndexes($obj,$iname);
     if(PEAR::isError($res)) {
       trigger_error('failed creating indexes for '.$iname.' : '.$res->getMessage().' : '.$res->userinfo,E_USER_WARNING);
       $obj->rollback();
       return false;
     }
-    $res = $int->migration_removeNonI18nFields($obj,$iname);
+    $res = $this->migration_copyDataToI18n($obj,$iname);
+    $res = $this->migration_removeNonI18nFields($obj,$iname);
     if(PEAR::isError($res)) {
       trigger_error('failed removing non i18n fields for '.$iname.' : '.$res->getMessage().' : '.$res->userinfo,E_USER_WARNING);
       $obj->rollback();
       return false;
-    }
-    $res = $int->migration_removeI18FieldsFromOriginal($obj,$iname);
+    }   
+    $res = $this->migration_rebuildObjects($obj,$iname);
+    $res = $this->migration_removeI18FieldsFromOriginal($obj,$iname);
     if(PEAR::isError($res)) {
       trigger_error('failed removing i18n fields from '.$obj->tableName().' : '.$res->getMessage().' : '.$res->userinfo,E_USER_WARNING);
       $obj->rollback();
       return false;
     }
   }
+  public function migration_createI18nTable($obj,$iname)
+  {
+    $db = $obj->getDatabaseConnection();
+    $res = $db->query('create table '.$iname.' LIKE '.$obj->tableName());
+    if(PEAR::isError($res)) {
+      trigger_error($res->getMessage(),E_USER_WARNING);
+      return $res;
+    }
+    return true;
+  }
+  public function migration_createI18nIndexes($obj,$iname)
+  {
+    $db = $obj->getDatabaseConnection();
+    $res = $db->loadModule('manager',null,true);
+    if(PEAR::isError($res)) {
+      var_dump($res);
+    }
+
+    $res = $db->manager->alterTable($iname,array(
+      'remove'=>array('id'=>array()),'add'=>array('i18n_id'=>array('type'=>'integer','notnull'=>1,'default'=>0,'unsigned'=>1,'autoincrement'=>1,'primary'=>1))),false);
+    if(PEAR::isError($res)) {
+      return $res;
+    }
+    $res2 = $db->manager->alterTable($iname,array(    
+      'add'=>array( 'i18n_lang'=>array('type'=>'text','length'=>2,'notnull'=>1,'default'=>'fr'),
+                    'i18n_record_id'=>array('type'=>'integer','unsigned'=>1,'notnull'=>1,'default'=>0),
+                  )
+                ),false
+              );
+    if(PEAR::isError($res2)) {
+      return $res2;
+    }
+
+    $res3 = $db->createIndex($iname,'i18n',array('fields'=>array('i18n_lang'=>array(),'i18n_record_id'=>array())));
+    if(PEAR::isError($res3)) {
+      return $res3;
+    }
+    return true;
+  }
+  public function migration_getNonI18nFields($obj,$iname) 
+  {
+    $t = $obj->table();
+    $toremove = array();
+    $i18n = $obj->i18nFields;
+    $keys = $obj->keys();
+    foreach($t as $field=>$info) {
+      if(!in_array($field,$i18n) && $field!=$keys[0]) {
+        $toremove[$field] = array();
+      }
+    }
+    return $toremove;
+  }
+  public function migration_removeNonI18nFields($obj,$iname)
+  {
+    $db = $obj->getDatabaseConnection();
+    $db->loadModule('manager',null,true);
+    $res = $db->manager->alterTable($iname,array('remove'=>$this->migration_getNonI18nFields($obj,$iname)),false);
+    if(PEAR::isError($res)) {
+      return $res;
+    }
+    return true;
+  }
+  public function migration_copyDataToI18n($obj,$iname)
+  {
+    $db = $obj->getDatabaseConnection();
+    foreach(Config::getAllLangs() as $lang) {
+      T::setLang($lang);
+      
+      $original = DB_DataObject::factory($obj->tableName());
+      $original->unloadPlugin('international');
+      $ifields = $original->i18nFields;
+      unset($original->i18nFields);
+
+      $original->find();
+      $fieldsToInsert = array_merge(array('i18n_lang','i18n_record_id'),$ifields);
+      foreach($fieldsToInsert as $k=>$field) {
+        $fieldsToInsert[$k] = $db->quoteIdentifier($field);
+      }
+      while($original->fetch()) {
+        echo 'fetching record num '.$original->pk()."\n";
+        $valuesToInsert = array();
+        foreach($ifields as $field) {
+          if(is_numeric($original->{$field})) {
+            $valuesToInsert[]=$original->{$field};// This might never happen... we never know
+          } else {
+            $valuesToInsert[]=$db->quote($original->{$field});
+          }
+        }
+        $valuesToInsert = array_merge(array($db->quote($lang),$original->pk()),$valuesToInsert);
+        $res = $db->query('INSERT INTO '.$db->quoteIdentifier($iname).' ('.implode(',',$fieldsToInsert).') VALUES('.implode(',',$valuesToInsert).')');
+        if(PEAR::isError($res)) {
+          $nbfailed[$lang]++;
+        }
+      }
+    }
+    if(is_array($nbfailed)) {
+      echo 'Failures while trying to insert translated data :<br />';
+      foreach($nbfailed as $lang=>$nb) {
+        echo $lang.' : '.$nb.'<br />';
+      }
+      echo '<br /><br />';
+    }
+    return true;
+  }
+  public function migration_removeI18FieldsFromOriginal($obj,$iname)
+  {
+    $db = $obj->getDatabaseConnection();
+    $res = $db->loadModule('manager',null,true);
+    if(PEAR::isError($res)) {
+      die($res->getMessage());
+    }
+    $toremove = array_flip($obj->i18nFields);
+    foreach($toremove as $k=>$v) {
+      $toremove[$k] = array();
+    }
+    $res = $db->manager->alterTable($obj->tableName(),array('remove'=>$toremove),false);
+    if(PEAR::isError($res)) {
+      return $res;
+    }
+    return true;
+  }
+  public function migration_rebuildObjects($obj,$iname)
+  {
+    require_once('M/DB/DataObject/Advgenerator.php');
+    $options = &PEAR::getStaticProperty('DB_DataObject', 'options');
+    $options['generator_include_regex']= '`^('.$obj->tableName().'|'.$iname.')$`';
+	  $generator = new DB_DataObject_Advgenerator();
+	  $generator->start();
+    return true;
+  }
+  
   // =============================================================
   // = Cross-compatibility methods with old international plugin =
   // =============================================================

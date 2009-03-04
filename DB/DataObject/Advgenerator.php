@@ -167,6 +167,94 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
         return array();
         
     }
+    /**
+     * start()
+     * Override original DB/DataObject/Generator.php start() method moving database routing to another method.
+     * This allows to use the generator just for retreiving tables used in the project :
+     * 
+     */
+    function start()
+    {
+      
+        $generators = $this->getGenerators();
+        $class = get_class($this);
+        foreach($generators as $t) {
+            foreach(get_class_methods($class) as $method) {
+                if (substr($method,0,8 ) != 'generate') {
+                    continue;
+                }
+                $this->debug("calling $method");
+                $t->$method();
+            }
+        }
+        $this->debug("DONE\n\n");
+    }
+    /**
+     * generates an array of generators, one for each database in the project
+     * @return array of DB_DataObject_Advgenerators
+     */
+    public function getGenerators()
+    {
+      $options = &PEAR::getStaticProperty('DB_DataObject','options');
+      $db_driver = empty($options['db_driver']) ? 'DB' : $options['db_driver'];
+      $databases = array();
+      foreach($options as $k=>$v) {
+          if (substr($k,0,9) == 'database_') {
+              $databases[substr($k,9)] = $v;
+          }
+      }
+
+      if (isset($options['database'])) {
+          if ($db_driver == 'DB') {
+              require_once 'DB.php';
+              $dsn = DB::parseDSN($options['database']);
+          } else {
+              require_once 'MDB2.php';
+              $dsn = MDB2::parseDSN($options['database']);
+          }
+
+          if (!isset($database[$dsn['database']])) {
+              $databases[$dsn['database']] = $options['database'];
+          }
+      }
+
+      $output = array();
+      foreach($databases as $databasename => $database) {
+          if (!$database) {
+              continue;
+          }
+          $output[] = $this->factory($database,$databasename,$db_driver);
+      }
+      return $output;
+    }
+    /**
+    * factory()
+    * @access public
+    * @return DB_DataObject_Advgenerator instance including tables list for $databasename
+    **/
+    public function factory($database,$databasename,$db_driver)
+    {
+      $this->debug("CREATING FOR $databasename\n");
+      $class = get_class($this);
+      $t = new $class;
+      $t->_database_dsn = $database;
+
+
+      $t->_database = $databasename;
+      if ($db_driver == 'DB') {
+          require_once 'DB.php';
+          $dsn = DB::parseDSN($database);
+      } else {
+          require_once 'MDB2.php';
+          $dsn = MDB2::parseDSN($database);
+      }
+
+      if (($dsn['phptype'] == 'sqlite') && is_file($databasename)) {
+          $t->_database = basename($t->_database);
+      }
+      $t->_createTableList();
+      return $t;
+    }
 }
 
 ?>

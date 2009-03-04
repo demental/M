@@ -181,18 +181,11 @@ class M_Office_Util {
 				}
 			}
       $do->fb_linkNewValue = false;
-        if($o=$do->getPlugin('ownership')) {
-            if($o->userIsInAdminMode()) {
-                $do->fb_fieldsToRender[]=$do->ownerShipField;
-                $do->fb_fieldLabels[$do->ownerShipField]='géré par';
-
-            }
-        }
       $do->fb_userEditableFields=$do->fb_fieldsToRender;
       $do->fb_formHeaderText=__('Search');
       $do->fb_submitText='>>';
       $formBuilder =& MyFB::create($do);
-      $formBuilder->preGenerateFormCallback='fake';
+      $formBuilder->preGenerateFormCallback=$formBuilder->postGenerateFormCallback='fake';
       $form = new MyQuickForm('formSearch',
                                        'GET',
                                        self::getQueryParams(array(), array('page'), false));
