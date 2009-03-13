@@ -184,6 +184,10 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
 	public function find($autoFetch,$obj)
 	{
     $do = DB_DataObject::factory($obj->tableName().'_i18n');
+
+    foreach($do->table() as $field=>$type) {
+      $do->$field = $obj->$field;
+    }
     $do->i18n_lang = T::getLang();
     $obj->joinAdd($do);
 	}

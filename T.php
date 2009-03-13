@@ -158,10 +158,16 @@ class T {
       	$this->setStrings($lngtb);
     }
 
-    public function save() {
+    public function save($verbose = false) {
         require_once 'XML/Serializer.php';
 
         $file = T::getConfig('path').$this->locale.".xml";
+        if($verbose) {
+          echo '
+current language ('.$this->locale.') contains '.count($this->strings).' strings..
+saving to '.$file.'...
+          ';
+        }
         $serializer = new XML_Serializer();
         // perform serialization
         
@@ -175,6 +181,15 @@ class T {
         if($result === true){
           $res = $serializer->getSerializedData();
         	$nb = file_put_contents($file,$res);
+          if($verbose) {
+            echo '
+saving DONE
+            ';
+          }
+        } elseif($verbose) {
+          echo '
+Error while serializing data !
+          ';
         }
     }
     public function getString($key)

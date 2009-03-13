@@ -13,7 +13,6 @@
 // | version 2.1 of the License, or (at your option) any later version. |
 // +--------------------------------------------------------------------+
 //
-
 /**
 * M PHP Framework
 * @package      M
@@ -408,6 +407,7 @@ class DB_DataObject_Plugin_tree extends DB_DataObject_Plugin
          */
         function rebuild(&$obj)
         {
+
             if(!$this->_doRebuild) {return;}
             $n = 0; // need a variable to hold the running n tally
             $level = 0; // need a variable to hold the running level tally

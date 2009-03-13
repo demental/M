@@ -1,10 +1,11 @@
 <?php
+ini_set('memory_limit','512M');
 $vars = $_SERVER['argv'];
 //var_dump($vars);
 $host = $vars[1];
 $app_name = $vars[2];
-$lang = $vars[3];
-if(!$host || !$app_name || !$lang) {
+$commandlang = $vars[3];
+if(!$host || !$app_name || !$commandlang) {
 echo
 <<<HEREDOC
 Usage : 
@@ -30,14 +31,16 @@ if(!require $inc) {
 }
 // TODO use getConfig instead of T::$config
 T::setConfig(array_merge(T::$config,array('driver'=>'editor')));
-T::setLang($lang);
+T::setLang($commandlang);
 
 $pwd = $_ENV['PWD'];
 
 foreach(FileUtils::getAllFiles($pwd) as $file ) {
   $result = preg_match_all('`(?:__|_e)\(\'(.+)\'(?:,array\(.+\))?\)`sU',file_get_contents($file),$matches);
   foreach($matches[1] as $elem) {
+    $nbfound++;
     __(str_replace("\'","'",$elem));
   }
 }
-T::getInstance($lang)->save();
+$arr = T::getInstance($commandlang)->getStrings();
+T::getInstance($commandlang)->save(true);

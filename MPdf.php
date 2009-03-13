@@ -54,7 +54,7 @@ class MPdf extends Maman {
       $this->pdf->set_paper($settings['format'],$settings['orientation']);
       
     }
-    public static function merge($mpdfs,$filename,$outputmode)
+    public static function merge($mpdfs,$filename,$outputmode = 'I')
     {
       // TODO Add options
       require_once 'lib/fpdi/fpdi.php';
