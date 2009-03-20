@@ -40,6 +40,7 @@ class DB_DataObject_Plugin_Pager extends DB_DataObject_Plugin
     public $plugin_name='pager';	
     public $pager;
     public $hasPager=true;
+    public $pagerOpts = array();
     public $pointer = array(
       'sort'=>null,
       'direction'=>'ASC'
@@ -70,7 +71,6 @@ class DB_DataObject_Plugin_Pager extends DB_DataObject_Plugin
 
       if($this->hasPager) {
         require_once 'Pager.php';
-
         $this->pager = Pager::factory($this->pagerOpts);  
         $lim=$this->pager->getOffsetByPageId();
         $obj->limit(($lim[0]-1),($lim[1]+1-$lim[0]));
@@ -82,6 +82,7 @@ class DB_DataObject_Plugin_Pager extends DB_DataObject_Plugin
       }
     }
     function setOptions($opt) {
+
       $this->pagerOpts = array_merge($opt,$this->pagerOpts);
     }
     function setOption($var,$val) {

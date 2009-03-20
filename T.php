@@ -84,16 +84,25 @@ class T {
     {
         return T::$config[$value];
     }
-    public function init ( $lang )
+    public function init ( $lang ,$verbose = false)
     {
         $this->locale=$lang;
         
         $file = T::getConfig('path').$lang.".xml";
+        if($verbose) {
+          echo 'Source file : '.$file."\n";
+        }
         if($this->cacheIsUpToDate($lang,$file)) {
-            $this->getStringsFromCache($lang);
+            $this->getStringsFromCache($lang,$verbose);
+            if($verbose) {
+              echo 'Cache is up to date, retreiving from cache'."\n";
+            }
         } else {
-            $lngtb = $this->getStringsFromXML($file);
+            $lngtb = $this->getStringsFromXML($file,$verbose);
             $this->rebuildCache();
+            if($verbose) {
+              echo 'Cache was deprecated, retreiving from XML and rebuilding cache'."\n";
+            }
 
         }
     }
@@ -127,19 +136,24 @@ class T {
         fclose($fp);
         Log::info('lang cache file rebuilt as '.$cachefile);
     }
-    private function getStringsFromCache ($lang)
+    private function getStringsFromCache ($lang,$verbose = false)
     {
         $cachefile = T::getConfig('cacheDir').'/'.$lang.'.cache.php';
         require_once $cachefile;
-        Log::info('Retrieving lang strings from cache file '.$cachefile);
+        if($verbose) {
+           echo 'Retrieving lang strings from cache file '.$cachefile."\n";
+        }
         $this->setStrings($data);
     }
-    private function getStringsFromXML ( $file )
+    private function getStringsFromXML ( $file, $verbose = false )
     {
         require_once 'XML/Unserializer.php';
     
       	$xml=new XML_Unserializer();
         if(!file_exists($file)) {
+          if($verbose) {
+            echo 'file '.$file.' not found. Filling with an empty array'."\n";
+          }
           $this->setStrings(array());
           return;
           // TODO this causes problem in the application building process
@@ -153,7 +167,9 @@ class T {
     	$xml->setOption('encoding',T::getConfig('encoding'));
     	$xml->unserialize($xmlC);
     	$lngtb = $xml->getUnserializedData();
-        Log::info('Retrieving lang strings from XML file '.$file.' encoding '.T::getConfig('encoding'));
+      if($verbose) {
+         echo 'Retrieving lang strings from XML file '.$file.' encoding '.T::getConfig('encoding')."\n";
+      }
     	$lngtb=T::linearize($lngtb);
       	$this->setStrings($lngtb);
     }
@@ -182,14 +198,27 @@ saving to '.$file.'...
           $res = $serializer->getSerializedData();
         	$nb = file_put_contents($file,$res);
           if($verbose) {
+            if($nb) {
             echo '
 saving DONE
             ';
+            } else {
+                          echo '
+              Could not save '.$file.'
+                          ';
+              
+            }
           }
         } elseif($verbose) {
           echo '
 Error while serializing data !
           ';
+          return false;
+        }
+        if($nb) {
+          return true;
+        } else {
+          return false;
         }
     }
     public function getString($key)
