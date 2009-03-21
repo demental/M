@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classPayment__Driver__SIPS" kind="class" prot="public">
+    <compoundname>Payment_Driver_SIPS</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Payment</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPayment__Driver__SIPS_1e574a6c0eced949112b852ae648d55d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::__construct</definition>
+        <argsstring>($options)</argsstring>
+        <name>__construct</name>
+        <param>
+          <type>$</type>
+          <declname>options</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_13c0436ee75eb7e756737101e6ede0e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::fetch</definition>
+        <argsstring>()</argsstring>
+        <name>fetch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="26" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_1952712f8b3153aa37b34b48a46012904" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::setResponse</definition>
+        <argsstring>($response)</argsstring>
+        <name>setResponse</name>
+        <param>
+          <type>$</type>
+          <declname>response</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="172" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="172" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_1f131e8f28181ea2616aad0b1982d5103" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::getResponse</definition>
+        <argsstring>()</argsstring>
+        <name>getResponse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="176" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="176" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_1f0a692e2a21526470aad9b53fc52be66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::fillFromTranscript</definition>
+        <argsstring>()</argsstring>
+        <name>fillFromTranscript</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="239" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="239" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_1c6715ab9af644a58598d59bdb9b25f90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::isSuccess</definition>
+        <argsstring>()</argsstring>
+        <name>isSuccess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="245" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="244" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_1754c0ea7c930945fad14ca00d750fe60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::getOrderId</definition>
+        <argsstring>()</argsstring>
+        <name>getOrderId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="248" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="248" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_1a8be8c12d6df3913ec3932f42ed5caec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::setOrder</definition>
+        <argsstring>(iOrder $order)</argsstring>
+        <name>setOrder</name>
+        <param>
+          <type>iOrder $</type>
+          <declname>order</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="252" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="251" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_19f4c34673582b36cfdf57349f8baf8af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::setAdditionalInfo</definition>
+        <argsstring>($info)</argsstring>
+        <name>setAdditionalInfo</name>
+        <param>
+          <type>$</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="257" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="256" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_1f1cdb6973c01098178c4a184706f6499" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::getAdditionalInfo</definition>
+        <argsstring>()</argsstring>
+        <name>getAdditionalInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="261" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="260" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_15c37e361aee9e5eb3b318a4ea1f40e10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::getTransactionId</definition>
+        <argsstring>()</argsstring>
+        <name>getTransactionId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="264" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="264" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment__Driver__SIPS_1e6e537a8b5a0884bf037bae62fecb0ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment_Driver_SIPS::setTransactionId</definition>
+        <argsstring>($id)</argsstring>
+        <name>setTransactionId</name>
+        <param>
+          <type>$</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="268" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="267" bodyend="270"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="20" bodyend="271"/>
+    <listofallmembers>
+      <member refid="classPayment__Driver__SIPS_1e574a6c0eced949112b852ae648d55d9" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>__construct</name></member>
+      <member refid="classPayment_196badf20dc0ade274c1598da65efb328" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>factory</name></member>
+      <member refid="classPayment__Driver__SIPS_13c0436ee75eb7e756737101e6ede0e39" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>fetch</name></member>
+      <member refid="classPayment__Driver__SIPS_1f0a692e2a21526470aad9b53fc52be66" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>fillFromTranscript</name></member>
+      <member refid="classPayment__Driver__SIPS_1f1cdb6973c01098178c4a184706f6499" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>getAdditionalInfo</name></member>
+      <member refid="classPayment_13cc3f87dfe3377c879bc65c1a0295ba8" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>getOption</name></member>
+      <member refid="classPayment_1264116c90c038523310074bffb9b1a15" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>getOrder</name></member>
+      <member refid="classPayment__Driver__SIPS_1754c0ea7c930945fad14ca00d750fe60" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>getOrderId</name></member>
+      <member refid="classPayment__Driver__SIPS_1f131e8f28181ea2616aad0b1982d5103" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>getResponse</name></member>
+      <member refid="classPayment__Driver__SIPS_15c37e361aee9e5eb3b318a4ea1f40e10" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>getTransactionId</name></member>
+      <member refid="classPayment_1709aad7f27f2b4a2c9b3ed4fa15c91a9" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>getTranscript</name></member>
+      <member refid="classPayment__Driver__SIPS_1c6715ab9af644a58598d59bdb9b25f90" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>isSuccess</name></member>
+      <member refid="classPayment_18f3fd882e967b694cc207596af7b7312" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>logError</name></member>
+      <member refid="classPayment__Driver__SIPS_19f4c34673582b36cfdf57349f8baf8af" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>setAdditionalInfo</name></member>
+      <member refid="classPayment_1996b9f044efc6833daf58c90870057c2" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>setOption</name></member>
+      <member refid="classPayment__Driver__SIPS_1a8be8c12d6df3913ec3932f42ed5caec" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>setOrder</name></member>
+      <member refid="classPayment__Driver__SIPS_1952712f8b3153aa37b34b48a46012904" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>setResponse</name></member>
+      <member refid="classPayment__Driver__SIPS_1e6e537a8b5a0884bf037bae62fecb0ab" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>setTransactionId</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

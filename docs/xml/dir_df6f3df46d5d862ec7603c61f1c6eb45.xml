@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_df6f3df46d5d862ec7603c61f1c6eb45" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/Office/</compoundname>
+    <innerdir refid="dir_6c955c5db62e3770de4fb3cd734d0092">Documents/Taf/Eclipse/m4php5/Office/DataSource/</innerdir>
+    <innerdir refid="dir_b4cdb9e825570beb5e5bdda71ec3224e">Documents/Taf/Eclipse/m4php5/Office/DOclasses/</innerdir>
+    <innerdir refid="dir_2c00b90aba8162bbee53c98477bf7601">Documents/Taf/Eclipse/m4php5/Office/modules/</innerdir>
+    <innerdir refid="dir_8989609b4cb51f47cdb69749d0f80981">Documents/Taf/Eclipse/m4php5/Office/Templates/</innerdir>
+    <innerdir refid="dir_962e2f29353945c9310d793402057295">Documents/Taf/Eclipse/m4php5/Office/View/</innerdir>
+    <innerfile refid="Actions_8php">Actions.php</innerfile>
+    <innerfile refid="AddRecord_8php">AddRecord.php</innerfile>
+    <innerfile refid="AjaxDBFieldUpdater_8php">AjaxDBFieldUpdater.php</innerfile>
+    <innerfile refid="ajaxFromTable_8php">ajaxFromTable.php</innerfile>
+    <innerfile refid="AjaxServer_8php">AjaxServer.php</innerfile>
+    <innerfile refid="Auth_8php">Auth.php</innerfile>
+    <innerfile refid="AuthHelper_8php">AuthHelper.php</innerfile>
+    <innerfile refid="Automodule_8php">Automodule.php</innerfile>
+    <innerfile refid="ChooseTable_8php">ChooseTable.php</innerfile>
+    <innerfile refid="Controller_8php">Controller.php</innerfile>
+    <innerfile refid="DbModule_8php">DbModule.php</innerfile>
+    <innerfile refid="DefaultModule_8php">DefaultModule.php</innerfile>
+    <innerfile refid="DeleteRecords_8php">DeleteRecords.php</innerfile>
+    <innerfile refid="EditRecord_8php">EditRecord.php</innerfile>
+    <innerfile refid="FrontEndHome_8php">FrontEndHome.php</innerfile>
+    <innerfile refid="Generator_8php">Generator.php</innerfile>
+    <innerfile refid="Icons_8php">Icons.php</innerfile>
+    <innerfile refid="LimitColumn_8php">LimitColumn.php</innerfile>
+    <innerfile refid="liveedit_8php">liveedit.php</innerfile>
+    <innerfile refid="livesearch_8php">livesearch.php</innerfile>
+    <innerfile refid="Office_2Module_8php">Module.php</innerfile>
+    <innerfile refid="ShowTable_8php">ShowTable.php</innerfile>
+    <innerfile refid="treesort_8php">treesort.php</innerfile>
+    <innerfile refid="UserModule_8php">UserModule.php</innerfile>
+    <innerfile refid="Util_8php">Util.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/"/>
+  </compounddef>
+</doxygen>

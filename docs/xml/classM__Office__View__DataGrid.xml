@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classM__Office__View__DataGrid" kind="class" prot="public">
+    <compoundname>M_Office_View_DataGrid</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">M_Office_View_List</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classM__Office__View__DataGrid_195ca205757ad7b4d01988afc8cf91308" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_DataGrid::M_Office_View_DataGrid</definition>
+        <argsstring>(&amp;$controller)</argsstring>
+        <name>M_Office_View_DataGrid</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>controller</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" line="31" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__DataGrid_1df0bb877d18d36926188ab681be0d70d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_DataGrid::getControllerOption</definition>
+        <argsstring>($opt, $table=null)</argsstring>
+        <name>getControllerOption</name>
+        <param>
+          <type>$</type>
+          <declname>opt</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>table</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__DataGrid_1b2f2a0440d457a34104517b32d180390" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_DataGrid::getPaging</definition>
+        <argsstring>()</argsstring>
+        <name>getPaging</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__DataGrid_1d33a21c58e940c68942e3113c6b87ef2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_DataGrid::toHtml</definition>
+        <argsstring>()</argsstring>
+        <name>toHtml</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" line="42" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" bodystart="42" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__DataGrid_1f835317695cc157bca14f50edb4ea99e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_DataGrid::setOptions</definition>
+        <argsstring>($opts)</argsstring>
+        <name>setOptions</name>
+        <param>
+          <type>$</type>
+          <declname>opts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" bodystart="45" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__DataGrid_1f014d0d784e03cbe700ce2ce121d638d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; M_Office_View_DataGrid::prepare</definition>
+        <argsstring>(&amp;$do, $frontend=true, $pager=true)</argsstring>
+        <name>prepare</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>do</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>frontend</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>pager</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" line="48" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" bodystart="48" bodyend="167"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/DataGrid.php" bodystart="27" bodyend="170"/>
+    <listofallmembers>
+      <member refid="classM__Office__View__List_1882db5c8ad421319f34c08d931fe4a0c" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>$_controller</name></member>
+      <member refid="classM__Office__View__List_1755eb914654ffe8226a98f1af6b854c9" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>$_includeJS</name></member>
+      <member refid="classM__Office__View__List_16a9b983b49f9b731c55cc2504a46c233" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>$_JS</name></member>
+      <member refid="classM__Office__View__List_1b5c547ccbf9f3881f8607738394fb94d" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>$_view</name></member>
+      <member refid="classM__Office__View__DataGrid_1df0bb877d18d36926188ab681be0d70d" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>getControllerOption</name></member>
+      <member refid="classM__Office__View__List_15d5a98d3a07e10745a7ee436898957dd" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>getFields</name></member>
+      <member refid="classM__Office__View__DataGrid_1b2f2a0440d457a34104517b32d180390" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>getPaging</name></member>
+      <member refid="classM__Office__View__DataGrid_195ca205757ad7b4d01988afc8cf91308" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>M_Office_View_DataGrid</name></member>
+      <member refid="classM__Office__View__List_1c918778d8e9bedd720c048dbb10b25fc" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>M_Office_View_List</name></member>
+      <member refid="classM__Office__View__DataGrid_1f014d0d784e03cbe700ce2ce121d638d" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>prepare</name></member>
+      <member refid="classM__Office__View__DataGrid_1f835317695cc157bca14f50edb4ea99e" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>setOptions</name></member>
+      <member refid="classM__Office__View__DataGrid_1d33a21c58e940c68942e3113c6b87ef2" prot="public" virt="non-virtual"><scope>M_Office_View_DataGrid</scope><name>toHtml</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

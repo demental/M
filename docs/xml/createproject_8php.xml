@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="createproject_8php" kind="file">
+    <compoundname>createproject.php</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(!@include<sp/></highlight><highlight class="stringliteral">&apos;M/M_Startup.php&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"><sp/><sp/>fwrite(STDOUT,</highlight><highlight class="stringliteral">&apos;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">M<sp/>framework<sp/>does<sp/>not<sp/>seem<sp/>to<sp/>be<sp/>in<sp/>your<sp/>include_path.</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">Please<sp/>provide<sp/>M<sp/>parent<sp/>path<sp/>or<sp/>leave<sp/>empty<sp/>to<sp/>abort<sp/>:<sp/>&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/>$path<sp/>=<sp/>trim(fgets(STDIN));</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(empty($path))<sp/>die(</highlight><highlight class="stringliteral">&apos;Aborting<sp/>project<sp/>creation</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral"><sp/><sp/>&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/createproject.php"/>
+  </compounddef>
+</doxygen>

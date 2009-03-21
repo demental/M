@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="extractlng_8php" kind="file">
+    <compoundname>extractlng.php</compoundname>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="extractlng_8php_19cfa38f3a18bc8e8f64df837c96828fe" prot="public" static="no">
+        <name>APP_NAME</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="extractlng_8php_109f2c833c130b4443725fb576d9d5269" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$vars</definition>
+        <argsstring></argsstring>
+        <name>$vars</name>
+        <initializer> $_SERVER[&apos;argv&apos;]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" line="3" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" bodystart="3" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="extractlng_8php_1711797613cb863ca0756df789c396bf2" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$host</definition>
+        <argsstring></argsstring>
+        <name>$host</name>
+        <initializer> $vars[1]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" line="5" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="extractlng_8php_1a56e277dfa2038f98edb4456df7dbcf8" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$app_name</definition>
+        <argsstring></argsstring>
+        <name>$app_name</name>
+        <initializer> $vars[2]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" line="6" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="extractlng_8php_14a4a3aedad5d9ca61932b0f411efc646" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$commandlang</definition>
+        <argsstring></argsstring>
+        <name>$commandlang</name>
+        <initializer> $vars[3]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" line="7" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="extractlng_8php_112e4252e778952d356721bc655cff8c8" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$pwd</definition>
+        <argsstring></argsstring>
+        <name>$pwd</name>
+        <initializer> $_ENV[&apos;PWD&apos;]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="extractlng_8php_1e6564263ffa229e4d2a952cda2a90a3f" prot="public" static="no" mutable="no">
+        <type>foreach(FileUtils::getAllFiles($pwd) as $file)</type>
+        <definition>foreach (FileUtils::getAllFiles($pwd) as $file) $arr</definition>
+        <argsstring></argsstring>
+        <name>$arr</name>
+        <initializer> T::getInstance($commandlang)-&gt;getStrings()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">ini_set(</highlight><highlight class="stringliteral">&apos;memory_limit&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;512M&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="3"><highlight class="normal">$vars<sp/>=<sp/>$_SERVER[</highlight><highlight class="stringliteral">&apos;argv&apos;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//var_dump($vars);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal">$host<sp/>=<sp/>$vars[1];</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">$app_name<sp/>=<sp/>$vars[2];</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">$commandlang<sp/>=<sp/>$vars[3];</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!$host<sp/>||<sp/>!$app_name<sp/>||<sp/>!$commandlang)<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">echo</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">&lt;&lt;&lt;HEREDOC</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">Usage<sp/>:<sp/></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">php<sp/>extractlng.php<sp/>host_name<sp/>app_name<sp/>target_language</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">What<sp/>it<sp/>does<sp/>:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">Scan<sp/>app<sp/>files,<sp/>finds<sp/>all<sp/>strings<sp/>called<sp/>by<sp/>__<sp/>or<sp/>_e<sp/>functions<sp/>and<sp/>creates<sp/>or<sp/>append<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>strings<sp/>in<sp/>lang/target_language.xml<sp/>file</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">Limitations<sp/>:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">target<sp/>language<sp/>must<sp/>be<sp/>one<sp/>of<sp/>the<sp/>langs<sp/>in<sp/><ref refid="classConfig_15ee304b559ffded8d924349debf8708b" kindref="member">Config::getAllLangs</ref>()</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">HEREDOC;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>return;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">define<sp/>(&apos;APP_NAME&apos;,$app_name);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">if(!file_exists(&apos;M_Startup.php&apos;))<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>$inc<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;../M_Startup.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>$inc<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;M_Startup.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!require<sp/>$inc)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>die(</highlight><highlight class="stringliteral">&apos;Not<sp/>in<sp/>M<sp/>Project&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TODO<sp/>use<sp/>getConfig<sp/>instead<sp/>of<sp/>T::$config</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">T::setConfig(array_merge(T::$config,array(</highlight><highlight class="stringliteral">&apos;driver&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;editor&apos;</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">T::setLang($commandlang);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">$pwd<sp/>=<sp/>$_ENV[</highlight><highlight class="stringliteral">&apos;PWD&apos;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal">(FileUtils::getAllFiles($pwd)<sp/>as<sp/>$file<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>$result<sp/>=<sp/>preg_match_all(</highlight><highlight class="stringliteral">&apos;`(?:__|_e)\(\&apos;(.+)\&apos;(?:,array\(.+\))?\)`sU&apos;</highlight><highlight class="normal">,file_get_contents($file),$matches);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal">($matches[1]<sp/>as<sp/>$elem)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>$nbfound++;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>__(str_replace(</highlight><highlight class="stringliteral">&quot;\&apos;&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;&apos;&quot;</highlight><highlight class="normal">,$elem));</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">$arr<sp/>=<sp/>T::getInstance($commandlang)-&gt;getStrings();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">T::getInstance($commandlang)-&gt;save(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/commands/extractlng.php"/>
+  </compounddef>
+</doxygen>

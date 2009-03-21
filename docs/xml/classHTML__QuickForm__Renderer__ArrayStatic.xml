@@ -1,0 +1,417 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classHTML__QuickForm__Renderer__ArrayStatic" kind="class" prot="public">
+    <compoundname>HTML_QuickForm_Renderer_ArrayStatic</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">M_HTML_QuickForm_Renderer_Array</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classHTML__QuickForm__Renderer__ArrayStatic_1e70b95fc290cf9f256052db562a3d6ce" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::$_elementIdx</definition>
+        <argsstring></argsstring>
+        <name>$_elementIdx</name>
+        <initializer> 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHTML__QuickForm__Renderer__ArrayStatic_12da0e9b0a9d1fc871136d5ad979af6d2" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::$_groupElementIdx</definition>
+        <argsstring></argsstring>
+        <name>$_groupElementIdx</name>
+        <initializer> 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="35" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHTML__QuickForm__Renderer__ArrayStatic_1f4b781e911ebf16b60e5bc8c9a1d4de4" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::$_required</definition>
+        <argsstring></argsstring>
+        <name>$_required</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="42" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classHTML__QuickForm__Renderer__ArrayStatic_1624055c76ab30ea52ac84a83feb9f760" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::$_error</definition>
+        <argsstring></argsstring>
+        <name>$_error</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="49" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classHTML__QuickForm__Renderer__ArrayStatic_1d6a3117cb6bc8bd5b71eb5275b6c134b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::HTML_QuickForm_Renderer_ArraySmarty</definition>
+        <argsstring>($staticLabels=false)</argsstring>
+        <name>HTML_QuickForm_Renderer_ArraySmarty</name>
+        <param>
+          <type>$</type>
+          <declname>staticLabels</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="53" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classHTML__QuickForm__Renderer__ArrayStatic_1541588fc5e75cf72468bd018c0c4bce7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::renderHeader</definition>
+        <argsstring>(&amp;$header)</argsstring>
+        <name>renderHeader</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>header</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called when visiting a header element</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An HTML_QuickForm_header element being visited  public </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="65" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="64" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classHTML__QuickForm__Renderer__ArrayStatic_10cdb50fb31849e5f3cba020e05c74ab9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::startGroup</definition>
+        <argsstring>(&amp;$group, $required, $error)</argsstring>
+        <name>startGroup</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>group</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>required</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called when visiting a group, before processing any group elements</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An HTML_QuickForm_group object being visited </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bool</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether a group is required </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An error message associated with a group  public </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="84" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="83" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classHTML__QuickForm__Renderer__ArrayStatic_173ef1e5aa4ffe0c996c49683bcc2b027" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::_elementToArray</definition>
+        <argsstring>(&amp;$element, $required, $error)</argsstring>
+        <name>_elementToArray</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>element</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>required</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates an array representing an element containing the key for storing this</para><para>private <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An HTML_QuickForm_element object </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bool</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether an element is required </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error associated with the element </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="100" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="99" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classHTML__QuickForm__Renderer__ArrayStatic_108c2528065c6a6c2e0013e9f09d9861a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::_storeArray</definition>
+        <argsstring>($elAry)</argsstring>
+        <name>_storeArray</name>
+        <param>
+          <type>$</type>
+          <declname>elAry</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stores an array representation of an element in the form array</para><para>private <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array representation of an element </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="170" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="169" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classHTML__QuickForm__Renderer__ArrayStatic_1576b24e9298999e28fae3c9a1f0c240d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::_renderRequired</definition>
+        <argsstring>(&amp;$label, &amp;$html, &amp;$required, &amp;$error)</argsstring>
+        <name>_renderRequired</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>html</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>required</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called when an element is required</para><para>This method will add the required tag to the element label and/or the element html such as defined with the method setRequiredTemplate.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element label </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element html rendering </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>boolean</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element required </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element error </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para>setRequiredTemplate()  private </para></simplesect>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="200" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="199" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classHTML__QuickForm__Renderer__ArrayStatic_1415c676d8ca64bfe49c133fb6fbc84ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::_renderError</definition>
+        <argsstring>(&amp;$label, &amp;$html, &amp;$error)</argsstring>
+        <name>_renderError</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>html</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called when an element has a validation error</para><para>This method will add the error message to the element label or the element html such as defined with the method setErrorTemplate. If the error placeholder is not found in the template, the error will be displayed in the form error block.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element label </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element html rendering </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element error </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para>setErrorTemplate()  private </para></simplesect>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="218" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="217" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classHTML__QuickForm__Renderer__ArrayStatic_14579bec48fdd889dec79baf343208ded" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::setRequiredTemplate</definition>
+        <argsstring>($template)</argsstring>
+        <name>setRequiredTemplate</name>
+        <param>
+          <type>$</type>
+          <declname>template</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the way required elements are rendered</para><para>You can use {$label} or {$html} placeholders to let the renderer know where where the element label or the element html are positionned according to the required tag. They will be replaced accordingly with the right value. You can use the full smarty syntax here, especially a custom modifier for I18N. For example: {if $required}*{/if}{$label|translate} will put a red star in front of the label if the element is required and translate the label.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The required element template  public </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="240" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="239" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classHTML__QuickForm__Renderer__ArrayStatic_12ef51778a112221a5206d0f71726a4a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HTML_QuickForm_Renderer_ArrayStatic::setErrorTemplate</definition>
+        <argsstring>($template)</argsstring>
+        <name>setErrorTemplate</name>
+        <param>
+          <type>$</type>
+          <declname>template</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the way elements with validation errors are rendered</para><para>You can use {$label} or {$html} placeholders to let the renderer know where where the element label or the element html are positionned according to the error message. They will be replaced accordingly with the right value. The error message will replace the {$error} placeholder. For example: {if $error}{$error}{/if}<linebreak/>
+{$html} will put the error message in red on top of the element html.</para><para>If you want all error messages to be output in the main error block, use the {$form.errors} part of the rendered array that collects all raw error messages.</para><para>If you want to place all error messages manually, do not specify {$html} nor {$label}.</para><para>Groups can have special layouts. With this kind of groups, you have to place the formated error message manually. In this case, use {$form.group.error} where you want the formated error message to appear in the form.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The element error template  public </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="271" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="270" bodyend="273"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/ArrayStatic.php" bodystart="22" bodyend="274"/>
+    <listofallmembers>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_1e70b95fc290cf9f256052db562a3d6ce" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>$_elementIdx</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_1624055c76ab30ea52ac84a83feb9f760" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>$_error</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_12da0e9b0a9d1fc871136d5ad979af6d2" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>$_groupElementIdx</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_1f4b781e911ebf16b60e5bc8c9a1d4de4" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>$_required</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_173ef1e5aa4ffe0c996c49683bcc2b027" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>_elementToArray</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_1415c676d8ca64bfe49c133fb6fbc84ad" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>_renderError</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_1576b24e9298999e28fae3c9a1f0c240d" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>_renderRequired</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_108c2528065c6a6c2e0013e9f09d9861a" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>_storeArray</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_1d6a3117cb6bc8bd5b71eb5275b6c134b" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>HTML_QuickForm_Renderer_ArraySmarty</name></member>
+      <member refid="classM__HTML__QuickForm__Renderer__Array_1a1ca6f5aa2e0a4b799ae1a2236fa5932" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>M_HTML_QuickForm_Renderer_Array</name></member>
+      <member refid="classM__HTML__QuickForm__Renderer__Array_1c70ea76907413ff376b5ca3536727cd3" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>renderElement</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_1541588fc5e75cf72468bd018c0c4bce7" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>renderHeader</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_12ef51778a112221a5206d0f71726a4a5" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>setErrorTemplate</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_14579bec48fdd889dec79baf343208ded" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>setRequiredTemplate</name></member>
+      <member refid="classHTML__QuickForm__Renderer__ArrayStatic_10cdb50fb31849e5f3cba020e05c74ab9" prot="public" virt="non-virtual"><scope>HTML_QuickForm_Renderer_ArrayStatic</scope><name>startGroup</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

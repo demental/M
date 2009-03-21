@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classT__reader" kind="class" prot="public">
+    <compoundname>T_reader</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">T</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classT__reader_1c53a1f2dbb824d4c6b850d239d60ddec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>T_reader::translate</definition>
+        <argsstring>($string, $args=null)</argsstring>
+        <name>translate</name>
+        <param>
+          <type>$</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>args</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/T/reader.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/T/reader.php" bodystart="21" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/T/reader.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/T/reader.php" bodystart="20" bodyend="35"/>
+    <listofallmembers>
+      <member refid="classT_1d0400d44867d9bdae7f895d6f1f3899b" prot="public" virt="non-virtual"><scope>T_reader</scope><name>$config</name></member>
+      <member refid="classT_1d2c9062a00474842be3d9eb4d2ffe889" prot="public" virt="non-virtual"><scope>T_reader</scope><name>$instances</name></member>
+      <member refid="classT_11627cf1649178f3a0cdf102fc60a7e6c" prot="public" virt="non-virtual"><scope>T_reader</scope><name>$lang</name></member>
+      <member refid="classT_15b34072336964f0cd0c107a5e1d7e456" prot="protected" virt="non-virtual"><scope>T_reader</scope><name>$loaded</name></member>
+      <member refid="classT_16cab75513f05d740f3736f3a5ae2dcd2" prot="protected" virt="non-virtual"><scope>T_reader</scope><name>$locale</name></member>
+      <member refid="classT_10fcc81b4a01b9bdf99f8c991f8c52bba" prot="protected" virt="non-virtual"><scope>T_reader</scope><name>$strings</name></member>
+      <member refid="classT_1471dfc4581099e3177b22c6b93f7125f" prot="public" virt="non-virtual"><scope>T_reader</scope><name>__destruct</name></member>
+      <member refid="classT_11cf8a9b82663966f0de7a2e88faa9ea8" prot="public" virt="non-virtual"><scope>T_reader</scope><name>addInstance</name></member>
+      <member refid="classT_11d1dc386785b717191b3df38cab55c8d" prot="public" virt="non-virtual"><scope>T_reader</scope><name>getConfig</name></member>
+      <member refid="classT_1e0911cbcd9d6c617b2ca27049dc4e51b" prot="public" virt="non-virtual"><scope>T_reader</scope><name>getInstance</name></member>
+      <member refid="classT_1e3c5ce3dbe8615c49f8e16faee05a5d2" prot="public" virt="non-virtual"><scope>T_reader</scope><name>getLang</name></member>
+      <member refid="classT_1788861a46c87b15afa5d5e1f0ad4524e" prot="public" virt="non-virtual"><scope>T_reader</scope><name>getLocale</name></member>
+      <member refid="classT_12529d046f45c70628b3020b2aed6714c" prot="public" virt="non-virtual"><scope>T_reader</scope><name>getString</name></member>
+      <member refid="classT_1f4527718878e11f13c0ba1516fce1bd4" prot="public" virt="non-virtual"><scope>T_reader</scope><name>getStrings</name></member>
+      <member refid="classT_17fd5bacf642570bb8ea454cad43df6d0" prot="public" virt="non-virtual"><scope>T_reader</scope><name>init</name></member>
+      <member refid="classT_1b0c566e88ed215c249fe6cebb29ab3d5" prot="public" virt="non-virtual"><scope>T_reader</scope><name>linearize</name></member>
+      <member refid="classT_1d94d593a9a02514ff918bf401d4e0c09" prot="public" virt="non-virtual"><scope>T_reader</scope><name>save</name></member>
+      <member refid="classT_17fb568ebfc04533967f2552494584d8c" prot="public" virt="non-virtual"><scope>T_reader</scope><name>setConfig</name></member>
+      <member refid="classT_100833c0ec799f401bf332f83593fc6b2" prot="public" virt="non-virtual"><scope>T_reader</scope><name>setLang</name></member>
+      <member refid="classT_1cde88bda851e9d793df1b1ac36cf6cc8" prot="public" virt="non-virtual"><scope>T_reader</scope><name>setStrings</name></member>
+      <member refid="classT__reader_1c53a1f2dbb824d4c6b850d239d60ddec" prot="public" virt="non-virtual"><scope>T_reader</scope><name>translate</name></member>
+      <member refid="classT_11b6bd47ad6bf02e0949d0d93e97291ef" prot="public" virt="non-virtual"><scope>T_reader</scope><name>unlinearize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

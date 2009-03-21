@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classDB__DataObject__Plugin__OfficePack" kind="class" prot="public">
+    <compoundname>DB_DataObject_Plugin_OfficePack</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">DB_DataObject_Plugin</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classDB__DataObject__Plugin__OfficePack_10dcc06981829a5534216008a6dacd18f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DB_DataObject_Plugin_OfficePack::$plugin_name</definition>
+        <argsstring></argsstring>
+        <name>$plugin_name</name>
+        <initializer>&apos;officePack&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDB__DataObject__Plugin__OfficePack_1f0fe1698e6cf0056e9b7768823fd1a6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_OfficePack::delete</definition>
+        <argsstring>($obj)</argsstring>
+        <name>delete</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" line="31" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" bodystart="31" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__OfficePack_1b0bfdc9104be042eac5cc719990ad2f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_OfficePack::insert</definition>
+        <argsstring>($obj)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" line="38" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__OfficePack_17356d53e6651926f708378c15f232155" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_OfficePack::find</definition>
+        <argsstring>($autoFetch, $obj)</argsstring>
+        <name>find</name>
+        <param>
+          <type>$</type>
+          <declname>autoFetch</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" line="42" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" bodystart="42" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__OfficePack_1c2668855ac87db0cf85e910a273a5a72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_OfficePack::count</definition>
+        <argsstring>($obj)</argsstring>
+        <name>count</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" line="47" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" bodystart="47" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__OfficePack_1a21abeb91c770a9180fc45c358ae2528" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_OfficePack::update</definition>
+        <argsstring>($obj)</argsstring>
+        <name>update</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" line="52" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" bodystart="52" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__OfficePack_18fe0352c9e8ff8bddde21e9f7804ce81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_OfficePack::create_guid</definition>
+        <argsstring>($obj)</argsstring>
+        <name>create_guid</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" line="59" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" bodystart="58" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/OfficePack.php" bodystart="27" bodyend="66"/>
+    <listofallmembers>
+      <member refid="classDB__DataObject__Plugin_1b30028754e407f2caeff81d156b2f47b" prot="protected" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>$_autoActions</name></member>
+      <member refid="classDB__DataObject__Plugin_15aee0ead373272e0d9080e6d3366e58b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>$_dataObject</name></member>
+      <member refid="classDB__DataObject__Plugin__OfficePack_10dcc06981829a5534216008a6dacd18f" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>$plugin_name</name></member>
+      <member refid="classDB__DataObject__Plugin__OfficePack_1c2668855ac87db0cf85e910a273a5a72" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>count</name></member>
+      <member refid="classDB__DataObject__Plugin_1cc736a1e7bd097a815ca456aed3d78f6" prot="public" virt="non-virtual" ambiguityscope="DB_DataObject_Plugin::"><scope>DB_DataObject_Plugin_OfficePack</scope><name>count</name></member>
+      <member refid="classDB__DataObject__Plugin__OfficePack_18fe0352c9e8ff8bddde21e9f7804ce81" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>create_guid</name></member>
+      <member refid="classDB__DataObject__Plugin_19d42b6fe75c2fa64137f1d41d2458835" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>dateOptions</name></member>
+      <member refid="classDB__DataObject__Plugin__OfficePack_1f0fe1698e6cf0056e9b7768823fd1a6a" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>delete</name></member>
+      <member refid="classDB__DataObject__Plugin_1d15d096ebc68473d076c8b88186ea496" prot="public" virt="non-virtual" ambiguityscope="DB_DataObject_Plugin::"><scope>DB_DataObject_Plugin_OfficePack</scope><name>delete</name></member>
+      <member refid="classDB__DataObject__Plugin__OfficePack_17356d53e6651926f708378c15f232155" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>find</name></member>
+      <member refid="classDB__DataObject__Plugin_1d701abe5cbdc92d966b955c1d55eac21" prot="public" virt="non-virtual" ambiguityscope="DB_DataObject_Plugin::"><scope>DB_DataObject_Plugin_OfficePack</scope><name>find</name></member>
+      <member refid="classDB__DataObject__Plugin_1e0bca6c11f7028a1d394e01896e774dc" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>getBatchMethods</name></member>
+      <member refid="classDB__DataObject__Plugin_169a97ea47c95e7161407f7023a67d23b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>getGlobalMethods</name></member>
+      <member refid="classDB__DataObject__Plugin_166b0104606d75feb8f3e4037f75398e4" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>getSingleMethods</name></member>
+      <member refid="classDB__DataObject__Plugin__OfficePack_1b0bfdc9104be042eac5cc719990ad2f2" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>insert</name></member>
+      <member refid="classDB__DataObject__Plugin_17231c8dfa2987d86f815dd7fcab9bec9" prot="public" virt="non-virtual" ambiguityscope="DB_DataObject_Plugin::"><scope>DB_DataObject_Plugin_OfficePack</scope><name>insert</name></member>
+      <member refid="classDB__DataObject__Plugin_1610dada38d8945fe72515ea5e14c38c3" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>postdelete</name></member>
+      <member refid="classDB__DataObject__Plugin_1e4511ca36e6e4a193d382c49ee4acb73" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>postfetch</name></member>
+      <member refid="classDB__DataObject__Plugin_14b4d5d4b6a8add8441eabc09bc6a09b6" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>postGenerateForm</name></member>
+      <member refid="classDB__DataObject__Plugin_12a15f2cf3c3ecadf43483753d1eae9d7" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>postinsert</name></member>
+      <member refid="classDB__DataObject__Plugin_1a162d3bafaa1423190febaf5fc65f58d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>postProcessForm</name></member>
+      <member refid="classDB__DataObject__Plugin_1ec8d44e4b84173253a132c9275fdf79d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>postupdate</name></member>
+      <member refid="classDB__DataObject__Plugin_14b32504f3cbb587770650f2682f1c18b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>prefetch</name></member>
+      <member refid="classDB__DataObject__Plugin_1f0c5df3c3b1160cdb814b36190cff363" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>preGenerateForm</name></member>
+      <member refid="classDB__DataObject__Plugin_14236f2c4121c4b1952e7df90f6b13c5d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>prepareLinkedDataObject</name></member>
+      <member refid="classDB__DataObject__Plugin_17738571e986441640460bb2629ee7e2d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>preProcessForm</name></member>
+      <member refid="classDB__DataObject__Plugin_1d48b47ff4d710aad6c5d0e382e795068" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>register</name></member>
+      <member refid="classDB__DataObject__Plugin_1ac449449d30cd31f0eb9823d0e284d37" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>setAutoActions</name></member>
+      <member refid="classDB__DataObject__Plugin__OfficePack_1a21abeb91c770a9180fc45c358ae2528" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_OfficePack</scope><name>update</name></member>
+      <member refid="classDB__DataObject__Plugin_12aafc8d11e50944c5494556fe005cbf1" prot="public" virt="non-virtual" ambiguityscope="DB_DataObject_Plugin::"><scope>DB_DataObject_Plugin_OfficePack</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

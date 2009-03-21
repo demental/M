@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classDB__DataObject__Iterator" kind="class" prot="public">
+    <compoundname>DB_DataObject_Iterator</compoundname>
+    <derivedcompoundref refid="classDB__DataObject__Pluggable" prot="public" virt="non-virtual">DB_DataObject_Pluggable</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDB__DataObject__Iterator_1696aec6b2c3ee5548cd5c8f503645e22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Iterator::current</definition>
+        <argsstring>()</argsstring>
+        <name>current</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Iterator_116d67712b408eb4314735180b0ed930c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Iterator::key</definition>
+        <argsstring>()</argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" bodystart="26" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Iterator_1ef1a0bfd34300895962d6c1271096f87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Iterator::next</definition>
+        <argsstring>()</argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" line="31" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Iterator_1405473dba57a336ff21a0feb53e00ffc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Iterator::rewind</definition>
+        <argsstring>()</argsstring>
+        <name>rewind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" line="34" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" bodystart="34" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Iterator_1b77fde1e40e6cc9559e153b4eea6aecc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Iterator::valid</definition>
+        <argsstring>()</argsstring>
+        <name>valid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" line="41" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" bodystart="41" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Iterator.php" bodystart="22" bodyend="53"/>
+    <listofallmembers>
+      <member refid="classDB__DataObject__Iterator_1696aec6b2c3ee5548cd5c8f503645e22" prot="public" virt="non-virtual"><scope>DB_DataObject_Iterator</scope><name>current</name></member>
+      <member refid="classDB__DataObject__Iterator_116d67712b408eb4314735180b0ed930c" prot="public" virt="non-virtual"><scope>DB_DataObject_Iterator</scope><name>key</name></member>
+      <member refid="classDB__DataObject__Iterator_1ef1a0bfd34300895962d6c1271096f87" prot="public" virt="non-virtual"><scope>DB_DataObject_Iterator</scope><name>next</name></member>
+      <member refid="classDB__DataObject__Iterator_1405473dba57a336ff21a0feb53e00ffc" prot="public" virt="non-virtual"><scope>DB_DataObject_Iterator</scope><name>rewind</name></member>
+      <member refid="classDB__DataObject__Iterator_1b77fde1e40e6cc9559e153b4eea6aecc" prot="public" virt="non-virtual"><scope>DB_DataObject_Iterator</scope><name>valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

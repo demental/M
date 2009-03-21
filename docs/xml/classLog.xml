@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classLog" kind="class" prot="public">
+    <compoundname>Log</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classLog_1e2479157c1df16ea6f5d95851d9a94de" prot="public" static="no" mutable="no">
+        <type>const</type>
+        <definition>const Log::LOGLEVEL_INFO</definition>
+        <argsstring></argsstring>
+        <name>LOGLEVEL_INFO</name>
+        <initializer> &apos;Info&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_17676913a3b240f22cf13e8479509819b" prot="public" static="no" mutable="no">
+        <type>const</type>
+        <definition>const Log::LOGLEVEL_WARNING</definition>
+        <argsstring></argsstring>
+        <name>LOGLEVEL_WARNING</name>
+        <initializer> &apos;Warning&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1ee19d5a4497a7e6be929842cd04a2e80" prot="public" static="no" mutable="no">
+        <type>const</type>
+        <definition>const Log::LOGLEVEL_NOTICE</definition>
+        <argsstring></argsstring>
+        <name>LOGLEVEL_NOTICE</name>
+        <initializer> &apos;Notice&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classLog_1ff111228ff1ed870f74b7ff4720a35ab" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Log::info</definition>
+        <argsstring>($message)</argsstring>
+        <name>info</name>
+        <param>
+          <type>$</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1f03ad84515c043e7acd665e5b9563f17" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Log::message</definition>
+        <argsstring>($message, $level=Log::LOGLEVEL_INFO)</argsstring>
+        <name>message</name>
+        <param>
+          <type>$</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>level</declname>
+          <defval>Log::LOGLEVEL_INFO</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" line="31" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" bodystart="31" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_107af3a27afec258b5107778f7181e05b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Log::mail</definition>
+        <argsstring>($message)</argsstring>
+        <name>mail</name>
+        <param>
+          <type>$</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" line="38" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" bodystart="38" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Log.php" bodystart="20" bodyend="43"/>
+    <listofallmembers>
+      <member refid="classLog_1ff111228ff1ed870f74b7ff4720a35ab" prot="public" virt="non-virtual"><scope>Log</scope><name>info</name></member>
+      <member refid="classLog_1e2479157c1df16ea6f5d95851d9a94de" prot="public" virt="non-virtual"><scope>Log</scope><name>LOGLEVEL_INFO</name></member>
+      <member refid="classLog_1ee19d5a4497a7e6be929842cd04a2e80" prot="public" virt="non-virtual"><scope>Log</scope><name>LOGLEVEL_NOTICE</name></member>
+      <member refid="classLog_17676913a3b240f22cf13e8479509819b" prot="public" virt="non-virtual"><scope>Log</scope><name>LOGLEVEL_WARNING</name></member>
+      <member refid="classLog_107af3a27afec258b5107778f7181e05b" prot="public" virt="non-virtual"><scope>Log</scope><name>mail</name></member>
+      <member refid="classLog_1f03ad84515c043e7acd665e5b9563f17" prot="public" virt="non-virtual"><scope>Log</scope><name>message</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="liveedit_8php" kind="file">
+    <compoundname>liveedit.php</compoundname>
+    <innerclass refid="classM__Office__liveedit" prot="public">M_Office_liveedit</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===============================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>=<sp/>WTF<sp/>is<sp/>this....</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>=<sp/>anyway...<sp/>not<sp/>in<sp/>use<sp/>for<sp/>now...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===============================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">M_Office_liveedit<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/>M_Office_Controller</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>@param<sp/><sp/><sp/>string<sp/>the<sp/>string<sp/>to<sp/>search<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>@param<sp/><sp/><sp/>string<sp/>(table<sp/>for<sp/>which<sp/>to<sp/>expand<sp/>view)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Expand<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>function<sp/>M_Office_liveedit($url)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>M_Office_Controller::M_Office_Controller();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$this-&gt;url=$url;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$this-&gt;module=str_replace(SITE_URL,</highlight><highlight class="stringliteral">&apos;&apos;</highlight><highlight class="normal">,$url);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>function<sp/>processRequest()<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$ret=</highlight><highlight class="stringliteral">&apos;&lt;h3&gt;Modifier<sp/>&apos;</highlight><highlight class="normal">.$this-&gt;module.</highlight><highlight class="stringliteral">&apos;&lt;/h3&gt;&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>$ret.=</highlight><highlight class="stringliteral">&apos;&lt;ul&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;li&gt;&lt;a<sp/>href=&quot;&apos;</highlight><highlight class="normal">.M_Office_Util::getQueryParams(array(</highlight><highlight class="stringliteral">&apos;table&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;cms&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;liveedit&apos;</highlight><highlight class="normal">=&gt;$this-&gt;module)).</highlight><highlight class="stringliteral">&apos;&quot;<sp/>rel=&quot;modpage&quot;&gt;Modifier<sp/>page&lt;/a&gt;&lt;/li&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;li&gt;&lt;a<sp/>href=&quot;&apos;</highlight><highlight class="normal">.M_Office_Util::getQueryParams(array(</highlight><highlight class="stringliteral">&apos;table&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;cms&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;liveedit&apos;</highlight><highlight class="normal">=&gt;$this-&gt;module,</highlight><highlight class="stringliteral">&apos;field&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;title&apos;</highlight><highlight class="normal">)).</highlight><highlight class="stringliteral">&apos;&quot;<sp/>rel=&quot;modtitle&quot;&gt;Modifier<sp/>titre&lt;/a&gt;&lt;/li&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;li&gt;&lt;a<sp/>href=&quot;&apos;</highlight><highlight class="normal">.M_Office_Util::getQueryParams(array(</highlight><highlight class="stringliteral">&apos;table&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;cms&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;liveedit&apos;</highlight><highlight class="normal">=&gt;$this-&gt;module,</highlight><highlight class="stringliteral">&apos;field&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;head&apos;</highlight><highlight class="normal">)).</highlight><highlight class="stringliteral">&apos;&quot;<sp/>rel=&quot;modheader&quot;&gt;Modifier<sp/>entête&lt;/a&gt;&lt;/li&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;li&gt;&lt;a<sp/>href=&quot;&apos;</highlight><highlight class="normal">.M_Office_Util::getQueryParams(array(</highlight><highlight class="stringliteral">&apos;table&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;cms&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;liveedit&apos;</highlight><highlight class="normal">=&gt;$this-&gt;module,</highlight><highlight class="stringliteral">&apos;field&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;body&apos;</highlight><highlight class="normal">)).</highlight><highlight class="stringliteral">&apos;&quot;<sp/>rel=&quot;modbody&quot;&gt;Modifier<sp/>corps&lt;/a&gt;&lt;/li&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;/ul&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;h3&gt;Ajouter<sp/>une<sp/>page&lt;/h3&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;ul&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;li&gt;&lt;a<sp/>href=&quot;truc&quot;&gt;En<sp/>dessous&lt;/a&gt;&lt;/li&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;li&gt;&lt;a<sp/>href=&quot;truc&quot;&gt;Même<sp/>niveau&lt;/a&gt;&lt;/li&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;</highlight></codeline>
+<codeline lineno="32"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline lineno="33"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;h3&gt;Vider<sp/>le<sp/>cache&lt;/h3&gt;</highlight></codeline>
+<codeline lineno="34"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;ul&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;li&gt;&lt;a<sp/>href=&quot;truc&quot;&gt;tout<sp/>le<sp/>site&lt;/a&gt;&lt;/li&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;li&gt;&lt;a<sp/>href=&quot;truc&quot;&gt;cette<sp/>page&lt;/a&gt;&lt;/li&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;/ul&gt;&apos;</highlight><highlight class="normal">.</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&lt;input<sp/>type=&quot;checkbox&quot;<sp/>name=&quot;clearcacheandreload&quot;<sp/>checked=&quot;checked&quot;<sp/>/&gt;...<sp/>et<sp/>recharger<sp/>la<sp/>page&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$ret;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/>}</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/liveedit.php"/>
+  </compounddef>
+</doxygen>

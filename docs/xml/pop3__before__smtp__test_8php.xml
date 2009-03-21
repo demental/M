@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="pop3__before__smtp__test_8php" kind="file">
+    <compoundname>pop3_before_smtp_test.php</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="pop3__before__smtp__test_8php_17ea9fc9a2200e371338829cd01e0c33e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$pop</definition>
+        <argsstring></argsstring>
+        <name>$pop</name>
+        <initializer> new POP3()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" line="13" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="pop3__before__smtp__test_8php_1c409786c163a1974d1e24a6767a95166" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$mail</definition>
+        <argsstring></argsstring>
+        <name>$mail</name>
+        <initializer> new PHPMailer()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" line="16" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="pop3__before__smtp__test_8php_1abd88d233be1b3bb7a210defc3a543a8" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail SMTPDebug</definition>
+        <argsstring></argsstring>
+        <name>SMTPDebug</name>
+        <initializer> 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" line="19" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="pop3__before__smtp__test_8php_192f144f746f497fb1de5ac3d693c6608" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail Host</definition>
+        <argsstring></argsstring>
+        <name>Host</name>
+        <initializer> &apos;relay.example.com&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="pop3__before__smtp__test_8php_127e928a831946596e1b91e83d4abe6e7" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail From</definition>
+        <argsstring></argsstring>
+        <name>From</name>
+        <initializer> &apos;mailer@example.com&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="pop3__before__smtp__test_8php_1a8e9d97f10c520030a63e8c93ba09c66" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail FromName</definition>
+        <argsstring></argsstring>
+        <name>FromName</name>
+        <initializer> &apos;Example Mailer&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="pop3__before__smtp__test_8php_10e9638a8d3ac1704b1f52a0238ba4666" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail Subject</definition>
+        <argsstring></argsstring>
+        <name>Subject</name>
+        <initializer>  &apos;My subject&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="pop3__before__smtp__test_8php_1e8ffc366362affca3652a437ff4dbd04" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail Body</definition>
+        <argsstring></argsstring>
+        <name>Body</name>
+        <initializer>  &apos;Hello world&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;html&gt;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">&lt;head&gt;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal">&lt;title&gt;POP<sp/>before<sp/>SMTP<sp/>Test&lt;/title&gt;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">&lt;/head&gt;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">&lt;body&gt;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">&lt;pre&gt;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/>require<sp/></highlight><highlight class="stringliteral">&apos;class.phpmailer.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/>require<sp/></highlight><highlight class="stringliteral">&apos;class.pop3.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/>$pop<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>POP3();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>$pop-&gt;Authorise(</highlight><highlight class="stringliteral">&apos;pop3.example.com&apos;</highlight><highlight class="normal">,<sp/>110,<sp/>30,<sp/></highlight><highlight class="stringliteral">&apos;mailer&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;password&apos;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/>$mail<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>PHPMailer();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>$mail-&gt;IsSMTP();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/>$mail-&gt;SMTPDebug<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>$mail-&gt;IsHTML(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>$mail-&gt;Host<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;relay.example.com&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>$mail-&gt;From<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;mailer@example.com&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>$mail-&gt;FromName<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;Example<sp/>Mailer&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>$mail-&gt;Subject<sp/><sp/>=<sp/><sp/></highlight><highlight class="stringliteral">&apos;My<sp/>subject&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>$mail-&gt;Body<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/></highlight><highlight class="stringliteral">&apos;Hello<sp/>world&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>$mail-&gt;AddAddress(</highlight><highlight class="stringliteral">&apos;name@anydomain.com&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;First<sp/>Last&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!$mail-&gt;Send())</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>echo<sp/>$mail-&gt;ErrorInfo;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">?&gt;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">&lt;/pre&gt;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">&lt;/body&gt;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">&lt;/html&gt;</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/pop3_before_smtp_test.php"/>
+  </compounddef>
+</doxygen>

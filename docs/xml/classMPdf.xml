@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classMPdf" kind="class" prot="public">
+    <compoundname>MPdf</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Maman</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classMPdf_11d48f1c6d32a8be7a47d963b7a337351" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>MPdf::$template</definition>
+        <argsstring></argsstring>
+        <name>$template</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classMPdf_1fefcb0fb3132ad892bd1546435eee8bf" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>MPdf::$view</definition>
+        <argsstring></argsstring>
+        <name>$view</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMPdf_1145da85e4306cfb14ca8a081d7e7ffa4" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>MPdf::$pdf</definition>
+        <argsstring></argsstring>
+        <name>$pdf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMPdf_138e2dbce4f588b9ccc60145a23341d43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MPdf::__construct</definition>
+        <argsstring>($config, $settings=null)</argsstring>
+        <name>__construct</name>
+        <param>
+          <type>$</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>settings</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="26" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classMPdf_11440b15fa2611e06d7980876e955f5df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MPdf::setVars</definition>
+        <argsstring>($vars)</argsstring>
+        <name>setVars</name>
+        <param>
+          <type>$</type>
+          <declname>vars</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="69" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classMPdf_14be7d660c5051495eb76e40c8e41b5fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MPdf::setTemplate</definition>
+        <argsstring>($tpl)</argsstring>
+        <name>setTemplate</name>
+        <param>
+          <type>$</type>
+          <declname>tpl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="73" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classMPdf_1a894594114d663952c185d5bd91b7139" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MPdf::serve</definition>
+        <argsstring>($filename)</argsstring>
+        <name>serve</name>
+        <param>
+          <type>$</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="84" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="83" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classMPdf_155ad95b2d26fe9b5bec848c987f05af4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MPdf::write</definition>
+        <argsstring>($filename)</argsstring>
+        <name>write</name>
+        <param>
+          <type>$</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="89" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="88" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classMPdf_1315ee0fe77c419cc2b69003f9703c5e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MPdf::fetch</definition>
+        <argsstring>()</argsstring>
+        <name>fetch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="97" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="96" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classMPdf_1498604f5e9c7b6c87b42e873c25a3d5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; MPdf::getPdf</definition>
+        <argsstring>()</argsstring>
+        <name>getPdf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="107" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classMPdf_1396fd1472cf4ccc021191827b26f45a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MPdf::getContents</definition>
+        <argsstring>()</argsstring>
+        <name>getContents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="111" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="110" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classMPdf_1068efbb7ad1520888c455d7839d74c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MPdf::__toString</definition>
+        <argsstring>()</argsstring>
+        <name>__toString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="115" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="114" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classMPdf_195918a76341b8f750d84638027e6a7eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MPdf::__destruct</definition>
+        <argsstring>()</argsstring>
+        <name>__destruct</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="120" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="119" bodyend="123"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classMPdf_1f4e567b903c34a4151310eff01e89064" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static MPdf::merge</definition>
+        <argsstring>($mpdfs, $filename, $outputmode= &apos;I&apos;)</argsstring>
+        <name>merge</name>
+        <param>
+          <type>$</type>
+          <declname>mpdfs</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>outputmode</declname>
+          <defval>&apos;I&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="43" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="42" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classMPdf_16e36e8339a19a336e65589c3cb273c16" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>static&amp; MPdf::factory</definition>
+        <argsstring>($template, $settings=null)</argsstring>
+        <name>factory</name>
+        <param>
+          <type>$</type>
+          <declname>template</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>settings</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="77" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="76" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="22" bodyend="124"/>
+    <listofallmembers>
+      <member refid="classMaman_1e69647de8a274eae406840f35af22b70" prot="protected" virt="non-virtual"><scope>MPdf</scope><name>$config</name></member>
+      <member refid="classMPdf_1145da85e4306cfb14ca8a081d7e7ffa4" prot="protected" virt="non-virtual"><scope>MPdf</scope><name>$pdf</name></member>
+      <member refid="classMPdf_11d48f1c6d32a8be7a47d963b7a337351" prot="public" virt="non-virtual"><scope>MPdf</scope><name>$template</name></member>
+      <member refid="classMPdf_1fefcb0fb3132ad892bd1546435eee8bf" prot="protected" virt="non-virtual"><scope>MPdf</scope><name>$view</name></member>
+      <member refid="classMPdf_138e2dbce4f588b9ccc60145a23341d43" prot="public" virt="non-virtual"><scope>MPdf</scope><name>__construct</name></member>
+      <member refid="classMPdf_195918a76341b8f750d84638027e6a7eb" prot="public" virt="non-virtual"><scope>MPdf</scope><name>__destruct</name></member>
+      <member refid="classMPdf_1068efbb7ad1520888c455d7839d74c95" prot="public" virt="non-virtual"><scope>MPdf</scope><name>__toString</name></member>
+      <member refid="classMPdf_16e36e8339a19a336e65589c3cb273c16" prot="public" virt="non-virtual"><scope>MPdf</scope><name>factory</name></member>
+      <member refid="classMPdf_1315ee0fe77c419cc2b69003f9703c5e1" prot="public" virt="non-virtual"><scope>MPdf</scope><name>fetch</name></member>
+      <member refid="classMaman_1e3137d9634b06c493ad9626b558e851f" prot="public" virt="non-virtual"><scope>MPdf</scope><name>getAllConfig</name></member>
+      <member refid="classMaman_1ef4fcde3f5213d79a16b471788934436" prot="public" virt="non-virtual"><scope>MPdf</scope><name>getConfig</name></member>
+      <member refid="classMPdf_1396fd1472cf4ccc021191827b26f45a0" prot="public" virt="non-virtual"><scope>MPdf</scope><name>getContents</name></member>
+      <member refid="classMPdf_1498604f5e9c7b6c87b42e873c25a3d5e" prot="public" virt="non-virtual"><scope>MPdf</scope><name>getPdf</name></member>
+      <member refid="classMPdf_1f4e567b903c34a4151310eff01e89064" prot="public" virt="non-virtual"><scope>MPdf</scope><name>merge</name></member>
+      <member refid="classMPdf_1a894594114d663952c185d5bd91b7139" prot="public" virt="non-virtual"><scope>MPdf</scope><name>serve</name></member>
+      <member refid="classMaman_1fe5c4f994412b09a0f9c81f321f1fb0d" prot="public" virt="non-virtual"><scope>MPdf</scope><name>setConfig</name></member>
+      <member refid="classMaman_140fc78b70fd28c5dd4443c4980c0d537" prot="public" virt="non-virtual"><scope>MPdf</scope><name>setConfigValue</name></member>
+      <member refid="classMPdf_14be7d660c5051495eb76e40c8e41b5fc" prot="public" virt="non-virtual"><scope>MPdf</scope><name>setTemplate</name></member>
+      <member refid="classMPdf_11440b15fa2611e06d7980876e955f5df" prot="public" virt="non-virtual"><scope>MPdf</scope><name>setVars</name></member>
+      <member refid="classMPdf_155ad95b2d26fe9b5bec848c987f05af4" prot="public" virt="non-virtual"><scope>MPdf</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

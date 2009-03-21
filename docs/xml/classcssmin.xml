@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classcssmin" kind="class" prot="public">
+    <compoundname>cssmin</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classcssmin_1f90c41633a76046d58fe8c7947aefaed" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static cssmin::minify</definition>
+        <argsstring>($css, $options=&quot;remove-last-semicolon&quot;)</argsstring>
+        <name>minify</name>
+        <param>
+          <type>$</type>
+          <declname>css</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>options</declname>
+          <defval>&quot;remove-last-semicolon&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Minifies stylesheet definitions</para><para><computeroutput> $css_minified = cssmin::minify(file_get_contents(&quot;path/to/target/file.css&quot;)); </computeroutput></para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$css Stylesheet definitions as string </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>array|string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$options Array or comma speperated list of options:</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<itemizedlist>
+<listitem><para>remove-last-semicolon: Removes the last semicolon in the style definition of an element (activated by default).</para></listitem></itemizedlist>
+</para><para><itemizedlist>
+<listitem><para>preserve-urls: Preserves every url defined in an url()- expression. This option is only required if you have defined really uncommon urls with multiple spaces or combination of colon, semi-colon, braces with leading or following spaces. <simplesect kind="return"><para>string Minified stylesheet definitions </para></simplesect>
+</para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/cssmin/cssmin.php" line="48" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/cssmin/cssmin.php" bodystart="47" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classcssmin_1df039b9bbea0de6be6454611102f4b6b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static cssmin::toArray</definition>
+        <argsstring>($css, $options=&quot;&quot;)</argsstring>
+        <name>toArray</name>
+        <param>
+          <type>$</type>
+          <declname>css</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>options</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return a array structure of a stylesheet definitions.</para><para><computeroutput> $css_structure = cssmin::toArray(file_get_contents(&quot;path/to/target/file.css&quot;)); </computeroutput></para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$css Stylesheet definitions as string </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$options Options for <ref refid="" kindref="compound">cssmin::minify()</ref> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array Structure of the stylesheet definitions as array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/cssmin/cssmin.php" line="88" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/cssmin/cssmin.php" bodystart="87" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classcssmin_1b92ab61a1a9e6a6cfcb17e82366df4b4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static cssmin::toString</definition>
+        <argsstring>(array $array)</argsstring>
+        <name>toString</name>
+        <param>
+          <type>array $</type>
+          <declname>array</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return a array structure created by <ref refid="" kindref="compound">cssmin::toArray()</ref> to a string.</para><para><computeroutput> $css_string = cssmin::toString($css_structure); </computeroutput></para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$css </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/cssmin/cssmin.php" line="124" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/cssmin/cssmin.php" bodystart="123" bodyend="136"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/cssmin/cssmin.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/cssmin/cssmin.php" bodystart="25" bodyend="137"/>
+    <listofallmembers>
+      <member refid="classcssmin_1f90c41633a76046d58fe8c7947aefaed" prot="public" virt="non-virtual"><scope>cssmin</scope><name>minify</name></member>
+      <member refid="classcssmin_1df039b9bbea0de6be6454611102f4b6b" prot="public" virt="non-virtual"><scope>cssmin</scope><name>toArray</name></member>
+      <member refid="classcssmin_1b92ab61a1a9e6a6cfcb17e82366df4b4" prot="public" virt="non-virtual"><scope>cssmin</scope><name>toString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

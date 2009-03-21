@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_6c955c5db62e3770de4fb3cd734d0092" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/Office/DataSource/</compoundname>
+    <innerfile refid="MyDataObj_8php">MyDataObj.php</innerfile>
+    <innerfile refid="MyDataObj2_8php">MyDataObj2.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/"/>
+  </compounddef>
+</doxygen>

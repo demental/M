@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_684f4170622ea9732e02e59991350a2c" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/tests/DO_dist/</compoundname>
+    <innerfile refid="Album_8php">Album.php</innerfile>
+    <innerfile refid="Album__i18n_8php">Album_i18n.php</innerfile>
+    <innerfile refid="Artist_8php">Artist.php</innerfile>
+    <innerfile refid="Artist__i18n_8php">Artist_i18n.php</innerfile>
+    <innerfile refid="Formtest_8php">Formtest.php</innerfile>
+    <innerfile refid="Formtest__i18n_8php">Formtest_i18n.php</innerfile>
+    <innerfile refid="Notmigrated_8php">Notmigrated.php</innerfile>
+    <innerfile refid="Notmigrated__withspecialnames_8php">Notmigrated_withspecialnames.php</innerfile>
+    <innerfile refid="Testuser_8php">Testuser.php</innerfile>
+    <innerfile refid="Title_8php">Title.php</innerfile>
+    <innerfile refid="Translate_8php">Translate.php</innerfile>
+    <innerfile refid="tests_2DO__dist_2User_8php">User.php</innerfile>
+    <innerfile refid="Vanillainnodb_8php">Vanillainnodb.php</innerfile>
+    <innerfile refid="Vanillainnodb2_8php">Vanillainnodb2.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_8989609b4cb51f47cdb69749d0f80981" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/Office/Templates/</compoundname>
+    <innerdir refid="dir_06458ef93680033457d4174d8aa57b80">Documents/Taf/Eclipse/m4php5/Office/Templates/__defaut/</innerdir>
+    <innerdir refid="dir_62cbef823dd095a48c6ac76c03b46e62">Documents/Taf/Eclipse/m4php5/Office/Templates/ajaxfromtable/</innerdir>
+    <innerdir refid="dir_f718bdd505c7b8003687674e9bd62486">Documents/Taf/Eclipse/m4php5/Office/Templates/home/</innerdir>
+    <innerdir refid="dir_ee5ec7c6e164701ea2b64c7389f925c9">Documents/Taf/Eclipse/m4php5/Office/Templates/listview/</innerdir>
+    <innerdir refid="dir_397f1263ebe87cebfa5809d74ee5d10c">Documents/Taf/Eclipse/m4php5/Office/Templates/office_dbmodule/</innerdir>
+    <innerdir refid="dir_3641391b57115d96b88162f2790f22e4">Documents/Taf/Eclipse/m4php5/Office/Templates/tasks/</innerdir>
+    <innerdir refid="dir_dc8c960c6da7ac8c5987e72cc691972d">Documents/Taf/Eclipse/m4php5/Office/Templates/timeline/</innerdir>
+    <innerfile refid="action_8php">action.php</innerfile>
+    <innerfile refid="actionmenu_8php">actionmenu.php</innerfile>
+    <innerfile refid="actionstep_8php">actionstep.php</innerfile>
+    <innerfile refid="add_8php">add.php</innerfile>
+    <innerfile refid="ajaxfromtable_8php">ajaxfromtable.php</innerfile>
+    <innerfile refid="auth_8php">auth.php</innerfile>
+    <innerfile refid="choosetable_8php">choosetable.php</innerfile>
+    <innerfile refid="compact_8php">compact.php</innerfile>
+    <innerfile refid="dialogbox_8php">dialogbox.php</innerfile>
+    <innerfile refid="dyn_8php">dyn.php</innerfile>
+    <innerfile refid="edit_8php">edit.php</innerfile>
+    <innerfile refid="editform_8php">editform.php</innerfile>
+    <innerfile refid="error_8php">error.php</innerfile>
+    <innerfile refid="footer_8php">footer.php</innerfile>
+    <innerfile refid="form-bordered_8php">form-bordered.php</innerfile>
+    <innerfile refid="form-discrete_8php">form-discrete.php</innerfile>
+    <innerfile refid="form-oneline_8php">form-oneline.php</innerfile>
+    <innerfile refid="header_8php">header.php</innerfile>
+    <innerfile refid="Templates_2home_8php">home.php</innerfile>
+    <innerfile refid="linkfromtables_8php">linkfromtables.php</innerfile>
+    <innerfile refid="linktotables_8php">linktotables.php</innerfile>
+    <innerfile refid="Templates_2list_8php">list.php</innerfile>
+    <innerfile refid="Templates_2livesearch_8php">livesearch.php</innerfile>
+    <innerfile refid="login_8php">login.php</innerfile>
+    <innerfile refid="main_8php">main.php</innerfile>
+    <innerfile refid="messages_8php">messages.php</innerfile>
+    <innerfile refid="profile_8php">profile.php</innerfile>
+    <innerfile refid="recordhtmlsummary_8php">recordhtmlsummary.php</innerfile>
+    <innerfile refid="showtable_8php">showtable.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/"/>
+  </compounddef>
+</doxygen>

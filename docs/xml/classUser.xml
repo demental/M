@@ -1,0 +1,818 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classUser" kind="class" prot="public">
+    <compoundname>User</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classUser_1ade315628f71f517de0204df70b5b68a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>User::$level</definition>
+        <argsstring></argsstring>
+        <name>$level</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classUser_1f732fea05630ea34db37195f79fed27b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>User::$loggedIn</definition>
+        <argsstring></argsstring>
+        <name>$loggedIn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classUser_11ba85be756d80090aa5acccd8425eda0" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>User::$_error</definition>
+        <argsstring></argsstring>
+        <name>$_error</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classUser_17b956c948feddd87f391e24a47a63f04" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>User::$currentContainer</definition>
+        <argsstring></argsstring>
+        <name>$currentContainer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classUser_1440b33833fb19a5caeb85b2e8eae3656" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>User::$id</definition>
+        <argsstring></argsstring>
+        <name>$id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="31" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classUser_111f9a509d80a52a2de331f392abb8e17" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>User::$prefs</definition>
+        <argsstring></argsstring>
+        <name>$prefs</name>
+        <initializer>array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classUser_1f24ac8f798929057e5b674bc5b3770a6" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>User::$completeName</definition>
+        <argsstring></argsstring>
+        <name>$completeName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="35" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classUser_16233652bcdc2d68f81ee62693a00f749" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>User::$target</definition>
+        <argsstring></argsstring>
+        <name>$target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classUser_1931fb769c06ef4f641dc5112ec27573b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>User::$language</definition>
+        <argsstring></argsstring>
+        <name>$language</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="37" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classUser_13bef7b70689d1e56cafbf750ff6a4aed" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>User::$email</definition>
+        <argsstring></argsstring>
+        <name>$email</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="38" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classUser_1faeac5bcbfc10f8f4737b2a0aa7a9455" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>User::$context</definition>
+        <argsstring></argsstring>
+        <name>$context</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="32" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classUser_1a37549b28e6e4aa76d6cdf8cb0a60eb8" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>User::$properties</definition>
+        <argsstring></argsstring>
+        <name>$properties</name>
+        <initializer>array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="34" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classUser_1916d3ea039e6d059825afcddcbce7c16" prot="private" static="yes" mutable="no">
+        <type>static</type>
+        <definition>User::$_instance</definition>
+        <argsstring></argsstring>
+        <name>$_instance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classUser_1b85808b180763aae0ad612ddac38f630" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::__construct</definition>
+        <argsstring>()</argsstring>
+        <name>__construct</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="40" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="40" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classUser_1ccd20149a7414612c1505e022eb63ffc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::__destruct</definition>
+        <argsstring>()</argsstring>
+        <name>__destruct</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="42" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="42" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1c60238c06bd18a9d2fd8e00c3b927a25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::store</definition>
+        <argsstring>()</argsstring>
+        <name>store</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="45" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_11c6e211baf517cc4abb418f145b4df0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::hasProperty</definition>
+        <argsstring>($prop)</argsstring>
+        <name>hasProperty</name>
+        <param>
+          <type>$</type>
+          <declname>prop</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="54" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1d9d3b1db0c2ff7712109c6812ec2fc0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getproperties</definition>
+        <argsstring>()</argsstring>
+        <name>getproperties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="57" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="57" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_195bd023d21d90c4846a19406a334888a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::setProperties</definition>
+        <argsstring>($prop)</argsstring>
+        <name>setProperties</name>
+        <param>
+          <type>$</type>
+          <declname>prop</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="60" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="60" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_145fbde4f031632b8a05cd0150fcbfae2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::setProperty</definition>
+        <argsstring>($prop, $val)</argsstring>
+        <name>setProperty</name>
+        <param>
+          <type>$</type>
+          <declname>prop</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="63" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="63" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_150e7b6e98be668a4a1ed3b9a03391a7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getProperty</definition>
+        <argsstring>($prop)</argsstring>
+        <name>getProperty</name>
+        <param>
+          <type>$</type>
+          <declname>prop</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="66" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="66" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1a4b511a8005d3a0b264d873e6b8c80ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::setSettings</definition>
+        <argsstring>($settings)</argsstring>
+        <name>setSettings</name>
+        <param>
+          <type>$</type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="102" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="102" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1b6a94bf88d1e73e596ce2e208c1b7467" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::setContext</definition>
+        <argsstring>($context)</argsstring>
+        <name>setContext</name>
+        <param>
+          <type>$</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="109" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="109" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_15cc0a6da5a49ce9485069a007c25aac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getLanguage</definition>
+        <argsstring>()</argsstring>
+        <name>getLanguage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="112" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="112" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_10f6b84d01c92375ef72897d245b46652" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::setLanguage</definition>
+        <argsstring>($l)</argsstring>
+        <name>setLanguage</name>
+        <param>
+          <type>$</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="115" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="115" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1cf082b95b344df14b9e8a6c09868dbcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getEmail</definition>
+        <argsstring>()</argsstring>
+        <name>getEmail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="118" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="118" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1b2c8cc9a2d792e6f1361621fc59dadd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getPrefs</definition>
+        <argsstring>()</argsstring>
+        <name>getPrefs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="125" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="125" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_18c02b1561900fec36b0fc139ee301e3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getPref</definition>
+        <argsstring>($var)</argsstring>
+        <name>getPref</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="134" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="134" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1bd8832e83342a24aac83b6052fd00a4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::setPref</definition>
+        <argsstring>($var, $val=NULL)</argsstring>
+        <name>setPref</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="141" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="141" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_139ad6e655fcc40623b9af2203cd7afa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getId</definition>
+        <argsstring>()</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="149" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="149" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_15c5a688ef7eb0c1c695a00569250dee1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::setId</definition>
+        <argsstring>($id)</argsstring>
+        <name>setId</name>
+        <param>
+          <type>$</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="152" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="152" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_19ec820b2331179999088f8db9509be1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getCompleteName</definition>
+        <argsstring>()</argsstring>
+        <name>getCompleteName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="158" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="158" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1907376c4b9742f9c9195b76655e42e69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::populate</definition>
+        <argsstring>($id)</argsstring>
+        <name>populate</name>
+        <param>
+          <type>$</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="171" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="171" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_12b9a32695b5ee67e0c071f591ef28db1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getLastVisit</definition>
+        <argsstring>()</argsstring>
+        <name>getLastVisit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="191" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="191" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_11f1377f2dcea702fb218961f924ca2ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getError</definition>
+        <argsstring>()</argsstring>
+        <name>getError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="195" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="195" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1c1eeb3fabf0d0398ba60d537316c3bbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::isLoggedIn</definition>
+        <argsstring>()</argsstring>
+        <name>isLoggedIn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="198" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="198" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_106ed977c877b02b420233d4f18a6a668" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::logout</definition>
+        <argsstring>()</argsstring>
+        <name>logout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="202" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="202" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1a52ca7c1696e2e907aadd96831520add" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::login</definition>
+        <argsstring>($login, $pwd, $persistent=FALSE)</argsstring>
+        <name>login</name>
+        <param>
+          <type>$</type>
+          <declname>login</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>pwd</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>persistent</declname>
+          <defval>FALSE</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="213" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="213" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_147caa4b60228d14dd494c46d2cafedbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getTarget</definition>
+        <argsstring>()</argsstring>
+        <name>getTarget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Page vers laquelle on est redirig�e apr�s identification/inscription </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="261" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="261" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_146d721c13a080ab888e9e514517af07d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::setTarget</definition>
+        <argsstring>($url)</argsstring>
+        <name>setTarget</name>
+        <param>
+          <type>$</type>
+          <declname>url</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="264" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="264" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_13634a8f8730873985e7b2c775815f241" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::clearTarget</definition>
+        <argsstring>()</argsstring>
+        <name>clearTarget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="267" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="267" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1160e9a5f02630b44cbb4745c8c0839a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getLevel</definition>
+        <argsstring>()</argsstring>
+        <name>getLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="270" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="270" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1740475e7a5b1c476b9e05d7c3bdd99a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::setLevel</definition>
+        <argsstring>($level)</argsstring>
+        <name>setLevel</name>
+        <param>
+          <type>$</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="273" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="273" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1afa7044223e74fbac2234f7660e96b10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::setField</definition>
+        <argsstring>($field, $value)</argsstring>
+        <name>setField</name>
+        <param>
+          <type>$</type>
+          <declname>field</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="277" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="277" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_10cce7471aa858c080753c39bbaef8ced" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::reloadContainer</definition>
+        <argsstring>()</argsstring>
+        <name>reloadContainer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="285" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="285" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1b6b78a6dad31fd8d4ddc7728c5d2e921" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; User::getDBDO</definition>
+        <argsstring>()</argsstring>
+        <name>getDBDO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="298" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="298" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1349dd201ab3d06c1604b0cbae2f5069b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getNom</definition>
+        <argsstring>()</argsstring>
+        <name>getNom</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="302" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="302" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_152ed07d4d8b5561519ac76c42a3a75c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::getField</definition>
+        <argsstring>($field)</argsstring>
+        <name>getField</name>
+        <param>
+          <type>$</type>
+          <declname>field</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="305" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="305" bodyend="311"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classUser_15e677d53bb30d0e7e3f7d88a4ac0dc4d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>static&amp; User::getInstances</definition>
+        <argsstring>()</argsstring>
+        <name>getInstances</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="69" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="69" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_11e16ddb7d6a96d9b1cf54f277da23475" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static User::getInstance</definition>
+        <argsstring>($context=&apos;front&apos;)</argsstring>
+        <name>getInstance</name>
+        <param>
+          <type>$</type>
+          <declname>context</declname>
+          <defval>&apos;front&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="73" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="72" bodyend="101"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/User.php" bodystart="26" bodyend="312"/>
+    <listofallmembers>
+      <member refid="classUser_11ba85be756d80090aa5acccd8425eda0" prot="public" virt="non-virtual"><scope>User</scope><name>$_error</name></member>
+      <member refid="classUser_1916d3ea039e6d059825afcddcbce7c16" prot="private" virt="non-virtual"><scope>User</scope><name>$_instance</name></member>
+      <member refid="classUser_1f24ac8f798929057e5b674bc5b3770a6" prot="public" virt="non-virtual"><scope>User</scope><name>$completeName</name></member>
+      <member refid="classUser_1faeac5bcbfc10f8f4737b2a0aa7a9455" prot="protected" virt="non-virtual"><scope>User</scope><name>$context</name></member>
+      <member refid="classUser_17b956c948feddd87f391e24a47a63f04" prot="public" virt="non-virtual"><scope>User</scope><name>$currentContainer</name></member>
+      <member refid="classUser_13bef7b70689d1e56cafbf750ff6a4aed" prot="public" virt="non-virtual"><scope>User</scope><name>$email</name></member>
+      <member refid="classUser_1440b33833fb19a5caeb85b2e8eae3656" prot="public" virt="non-virtual"><scope>User</scope><name>$id</name></member>
+      <member refid="classUser_1931fb769c06ef4f641dc5112ec27573b" prot="public" virt="non-virtual"><scope>User</scope><name>$language</name></member>
+      <member refid="classUser_1ade315628f71f517de0204df70b5b68a" prot="public" virt="non-virtual"><scope>User</scope><name>$level</name></member>
+      <member refid="classUser_1f732fea05630ea34db37195f79fed27b" prot="public" virt="non-virtual"><scope>User</scope><name>$loggedIn</name></member>
+      <member refid="classUser_111f9a509d80a52a2de331f392abb8e17" prot="public" virt="non-virtual"><scope>User</scope><name>$prefs</name></member>
+      <member refid="classUser_1a37549b28e6e4aa76d6cdf8cb0a60eb8" prot="protected" virt="non-virtual"><scope>User</scope><name>$properties</name></member>
+      <member refid="classUser_16233652bcdc2d68f81ee62693a00f749" prot="public" virt="non-virtual"><scope>User</scope><name>$target</name></member>
+      <member refid="classUser_1b85808b180763aae0ad612ddac38f630" prot="private" virt="non-virtual"><scope>User</scope><name>__construct</name></member>
+      <member refid="classUser_1ccd20149a7414612c1505e022eb63ffc" prot="public" virt="non-virtual"><scope>User</scope><name>__destruct</name></member>
+      <member refid="classUser_13634a8f8730873985e7b2c775815f241" prot="public" virt="non-virtual"><scope>User</scope><name>clearTarget</name></member>
+      <member refid="classUser_19ec820b2331179999088f8db9509be1f" prot="public" virt="non-virtual"><scope>User</scope><name>getCompleteName</name></member>
+      <member refid="classUser_1b6b78a6dad31fd8d4ddc7728c5d2e921" prot="public" virt="non-virtual"><scope>User</scope><name>getDBDO</name></member>
+      <member refid="classUser_1cf082b95b344df14b9e8a6c09868dbcd" prot="public" virt="non-virtual"><scope>User</scope><name>getEmail</name></member>
+      <member refid="classUser_11f1377f2dcea702fb218961f924ca2ab" prot="public" virt="non-virtual"><scope>User</scope><name>getError</name></member>
+      <member refid="classUser_152ed07d4d8b5561519ac76c42a3a75c6" prot="public" virt="non-virtual"><scope>User</scope><name>getField</name></member>
+      <member refid="classUser_139ad6e655fcc40623b9af2203cd7afa5" prot="public" virt="non-virtual"><scope>User</scope><name>getId</name></member>
+      <member refid="classUser_11e16ddb7d6a96d9b1cf54f277da23475" prot="public" virt="non-virtual"><scope>User</scope><name>getInstance</name></member>
+      <member refid="classUser_15e677d53bb30d0e7e3f7d88a4ac0dc4d" prot="public" virt="non-virtual"><scope>User</scope><name>getInstances</name></member>
+      <member refid="classUser_15cc0a6da5a49ce9485069a007c25aac7" prot="public" virt="non-virtual"><scope>User</scope><name>getLanguage</name></member>
+      <member refid="classUser_12b9a32695b5ee67e0c071f591ef28db1" prot="public" virt="non-virtual"><scope>User</scope><name>getLastVisit</name></member>
+      <member refid="classUser_1160e9a5f02630b44cbb4745c8c0839a1" prot="public" virt="non-virtual"><scope>User</scope><name>getLevel</name></member>
+      <member refid="classUser_1349dd201ab3d06c1604b0cbae2f5069b" prot="public" virt="non-virtual"><scope>User</scope><name>getNom</name></member>
+      <member refid="classUser_18c02b1561900fec36b0fc139ee301e3e" prot="public" virt="non-virtual"><scope>User</scope><name>getPref</name></member>
+      <member refid="classUser_1b2c8cc9a2d792e6f1361621fc59dadd2" prot="public" virt="non-virtual"><scope>User</scope><name>getPrefs</name></member>
+      <member refid="classUser_1d9d3b1db0c2ff7712109c6812ec2fc0b" prot="public" virt="non-virtual"><scope>User</scope><name>getproperties</name></member>
+      <member refid="classUser_150e7b6e98be668a4a1ed3b9a03391a7d" prot="public" virt="non-virtual"><scope>User</scope><name>getProperty</name></member>
+      <member refid="classUser_147caa4b60228d14dd494c46d2cafedbb" prot="public" virt="non-virtual"><scope>User</scope><name>getTarget</name></member>
+      <member refid="classUser_11c6e211baf517cc4abb418f145b4df0c" prot="public" virt="non-virtual"><scope>User</scope><name>hasProperty</name></member>
+      <member refid="classUser_1c1eeb3fabf0d0398ba60d537316c3bbe" prot="public" virt="non-virtual"><scope>User</scope><name>isLoggedIn</name></member>
+      <member refid="classUser_1a52ca7c1696e2e907aadd96831520add" prot="public" virt="non-virtual"><scope>User</scope><name>login</name></member>
+      <member refid="classUser_106ed977c877b02b420233d4f18a6a668" prot="public" virt="non-virtual"><scope>User</scope><name>logout</name></member>
+      <member refid="classUser_1907376c4b9742f9c9195b76655e42e69" prot="public" virt="non-virtual"><scope>User</scope><name>populate</name></member>
+      <member refid="classUser_10cce7471aa858c080753c39bbaef8ced" prot="public" virt="non-virtual"><scope>User</scope><name>reloadContainer</name></member>
+      <member refid="classUser_1b6a94bf88d1e73e596ce2e208c1b7467" prot="public" virt="non-virtual"><scope>User</scope><name>setContext</name></member>
+      <member refid="classUser_1afa7044223e74fbac2234f7660e96b10" prot="public" virt="non-virtual"><scope>User</scope><name>setField</name></member>
+      <member refid="classUser_15c5a688ef7eb0c1c695a00569250dee1" prot="public" virt="non-virtual"><scope>User</scope><name>setId</name></member>
+      <member refid="classUser_10f6b84d01c92375ef72897d245b46652" prot="public" virt="non-virtual"><scope>User</scope><name>setLanguage</name></member>
+      <member refid="classUser_1740475e7a5b1c476b9e05d7c3bdd99a3" prot="public" virt="non-virtual"><scope>User</scope><name>setLevel</name></member>
+      <member refid="classUser_1bd8832e83342a24aac83b6052fd00a4e" prot="public" virt="non-virtual"><scope>User</scope><name>setPref</name></member>
+      <member refid="classUser_195bd023d21d90c4846a19406a334888a" prot="public" virt="non-virtual"><scope>User</scope><name>setProperties</name></member>
+      <member refid="classUser_145fbde4f031632b8a05cd0150fcbfae2" prot="public" virt="non-virtual"><scope>User</scope><name>setProperty</name></member>
+      <member refid="classUser_1a4b511a8005d3a0b264d873e6b8c80ae" prot="public" virt="non-virtual"><scope>User</scope><name>setSettings</name></member>
+      <member refid="classUser_146d721c13a080ab888e9e514517af07d" prot="public" virt="non-virtual"><scope>User</scope><name>setTarget</name></member>
+      <member refid="classUser_1c60238c06bd18a9d2fd8e00c3b927a25" prot="public" virt="non-virtual"><scope>User</scope><name>store</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="error_8php" kind="file">
+    <compoundname>error.php</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;h2&gt;Erreur<sp/>générale&lt;/h2&gt;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">&lt;ul&gt;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal">&lt;?php<sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal">($errors<sp/>as<sp/>$error):?&gt;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/>&lt;li&gt;&lt;?php<sp/>echo<sp/>$error?&gt;&lt;/li&gt;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">&lt;?php<sp/>endforeach?&gt;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">&lt;/ul&gt;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">&lt;p&gt;Cette<sp/>erreur<sp/>peut<sp/>être<sp/>momentanée.<sp/>Dans<sp/>ce<sp/>cas<sp/>&lt;a<sp/>href=</highlight><highlight class="stringliteral">&quot;javascript:history.go(-1)&quot;</highlight><highlight class="normal">&gt;cliquez<sp/>ici&lt;/a&gt;<sp/>pour<sp/>retourner<sp/>à<sp/>la<sp/>page<sp/>précédente.&lt;/p&gt;</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/error.php"/>
+  </compounddef>
+</doxygen>

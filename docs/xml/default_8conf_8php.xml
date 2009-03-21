@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="default_8conf_8php" kind="file">
+    <compoundname>default.conf.php</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="default_8conf_8php_1e4901046cc3e1deebf77ccc785384a78" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$conf</definition>
+        <argsstring></argsstring>
+        <name>$conf</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.conf.php" line="2" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.conf.php" bodystart="2" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">$conf<sp/>=<sp/>array();</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.conf.php"/>
+  </compounddef>
+</doxygen>

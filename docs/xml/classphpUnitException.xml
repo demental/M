@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classphpUnitException" kind="class" prot="public">
+    <compoundname>phpUnitException</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classphpUnitException_10db8b16c20633085d9d23ef330e3266c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>phpUnitException::$message</definition>
+        <argsstring></argsstring>
+        <name>$message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="51" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classphpUnitException_1b81b5c5bd06c2ee6c42e69b4bc28eb25" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>phpUnitException::$type</definition>
+        <argsstring></argsstring>
+        <name>$type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="52" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classphpUnitException_1967af1640655f9a733f3d22168924e0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>phpUnitException::phpUnitException</definition>
+        <argsstring>($message, $type= &apos;FAILURE&apos;)</argsstring>
+        <name>phpUnitException</name>
+        <param>
+          <type>$</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>type</declname>
+          <defval>&apos;FAILURE&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="53" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classphpUnitException_1e960377514078c38d7a1eebeb86cb038" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>phpUnitException::getMessage</definition>
+        <argsstring>()</argsstring>
+        <name>getMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="57" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="57" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="49" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="49" bodyend="60"/>
+    <listofallmembers>
+      <member refid="classphpUnitException_10db8b16c20633085d9d23ef330e3266c" prot="public" virt="non-virtual"><scope>phpUnitException</scope><name>$message</name></member>
+      <member refid="classphpUnitException_1b81b5c5bd06c2ee6c42e69b4bc28eb25" prot="public" virt="non-virtual"><scope>phpUnitException</scope><name>$type</name></member>
+      <member refid="classphpUnitException_1e960377514078c38d7a1eebeb86cb038" prot="public" virt="non-virtual"><scope>phpUnitException</scope><name>getMessage</name></member>
+      <member refid="classphpUnitException_1967af1640655f9a733f3d22168924e0d" prot="public" virt="non-virtual"><scope>phpUnitException</scope><name>phpUnitException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

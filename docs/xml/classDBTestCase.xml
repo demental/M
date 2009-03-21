@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classDBTestCase" kind="class" prot="public">
+    <compoundname>DBTestCase</compoundname>
+    <derivedcompoundref refid="classTestOfDB__DataObject__Pluggable" prot="public" virt="non-virtual">TestOfDB_DataObject_Pluggable</derivedcompoundref>
+    <derivedcompoundref refid="classTestOfDB__DataObject__Plugin__i18n" prot="public" virt="non-virtual">TestOfDB_DataObject_Plugin_i18n</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDBTestCase_184b3ea453a1f8af1f091df3fac881a13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DBTestCase::setUpDatabase</definition>
+        <argsstring>($filename, $fixturehash)</argsstring>
+        <name>setUpDatabase</name>
+        <param>
+          <type>$</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>fixturehash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/extensions/DBTestCase.php" line="5" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/extensions/DBTestCase.php" bodystart="4" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/extensions/DBTestCase.php" line="3" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/extensions/DBTestCase.php" bodystart="3" bodyend="29"/>
+    <listofallmembers>
+      <member refid="classDBTestCase_184b3ea453a1f8af1f091df3fac881a13" prot="public" virt="non-virtual"><scope>DBTestCase</scope><name>setUpDatabase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="phpmailer_8lang-nl_8php" kind="file">
+    <compoundname>phpmailer.lang-nl.php</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_181c62b13cd652d10bfe533a77d866df6" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG</definition>
+        <argsstring></argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>PHPMailer language file. Dutch Version </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="7" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_19243f91ab234ed5c52518bf22218a3e3" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;provide_address&quot;]</definition>
+        <argsstring>[&quot;provide_address&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;Er moet tenmiste &amp;eacute;&amp;eacute;n &apos; .
+                                          &apos;ontvanger emailadres opgegeven worden.&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="10" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_10b38e0177e4da2651e382a725e40639f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;mailer_not_supported&quot;]</definition>
+        <argsstring>[&quot;mailer_not_supported&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos; mailer wordt niet ondersteund.&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="11" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_1b892ac53988a7d456d6f6e00133f6d11" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;execute&quot;]</definition>
+        <argsstring>[&quot;execute&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;Kon niet uitvoeren: &apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="12" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_1310a22db92b525732a9e2a355173a06b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;instantiate&quot;]</definition>
+        <argsstring>[&quot;instantiate&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;Kon mail functie niet initialiseren.&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="13" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;authenticate&quot;]</definition>
+        <argsstring>[&quot;authenticate&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;SMTP Fout: authenticatie mislukt.&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="14" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_1480950072ca171725ffa0d71c4a04e4f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;from_failed&quot;]</definition>
+        <argsstring>[&quot;from_failed&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;De volgende afzender adressen zijn mislukt: &apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="15" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_1271b51d8dfb039b09770efa2335b8e23" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;recipients_failed&quot;]</definition>
+        <argsstring>[&quot;recipients_failed&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;SMTP Fout: De volgende &apos; .
+                                          &apos;ontvangers zijn mislukt: &apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="17" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_1a199dc31872e340fe92bb26376e912c3" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;data_not_accepted&quot;]</definition>
+        <argsstring>[&quot;data_not_accepted&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;SMTP Fout: Data niet geaccepteerd.&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="18" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_105cad42e8fccb6c2786f4c020a63237e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;connect_host&quot;]</definition>
+        <argsstring>[&quot;connect_host&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;SMTP Fout: Kon niet verbinden met SMTP host.&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="19" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_167f197eb6313126b7f92b0d55e41e75e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;file_access&quot;]</definition>
+        <argsstring>[&quot;file_access&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;Kreeg geen toegang tot bestand: &apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_1e2c48173fc854127b89a7d4b8222eb0a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;file_open&quot;]</definition>
+        <argsstring>[&quot;file_open&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;Bestandsfout: Kon bestand niet openen: &apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_191dcbbc49ce0c4ca35a4d547ca347c21" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;encoding&quot;]</definition>
+        <argsstring>[&quot;encoding&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;Onbekende codering: &apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="phpmailer_8lang-nl_8php_130009d02935bb1683b9610dab63b8f6b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$PHPMAILER_LANG[&quot;signing&quot;]</definition>
+        <argsstring>[&quot;signing&quot;]</argsstring>
+        <name>$PHPMAILER_LANG</name>
+        <initializer> &apos;Signing Error: &apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">$PHPMAILER_LANG<sp/>=<sp/>array();</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;provide_address&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;Er<sp/>moet<sp/>tenmiste<sp/>&amp;eacute;&amp;eacute;n<sp/>&apos;</highlight><highlight class="normal"><sp/>.</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;ontvanger<sp/>emailadres<sp/>opgegeven<sp/>worden.&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;mailer_not_supported&quot;</highlight><highlight class="normal">]<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;<sp/>mailer<sp/>wordt<sp/>niet<sp/>ondersteund.&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;execute&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;Kon<sp/>niet<sp/>uitvoeren:<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;instantiate&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;Kon<sp/>mail<sp/>functie<sp/>niet<sp/>initialiseren.&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;authenticate&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;SMTP<sp/>Fout:<sp/>authenticatie<sp/>mislukt.&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;from_failed&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;De<sp/>volgende<sp/>afzender<sp/>adressen<sp/>zijn<sp/>mislukt:<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;recipients_failed&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;SMTP<sp/>Fout:<sp/>De<sp/>volgende<sp/>&apos;</highlight><highlight class="normal"><sp/>.</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;ontvangers<sp/>zijn<sp/>mislukt:<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;data_not_accepted&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;SMTP<sp/>Fout:<sp/>Data<sp/>niet<sp/>geaccepteerd.&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;connect_host&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;SMTP<sp/>Fout:<sp/>Kon<sp/>niet<sp/>verbinden<sp/>met<sp/>SMTP<sp/>host.&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;file_access&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;Kreeg<sp/>geen<sp/>toegang<sp/>tot<sp/>bestand:<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;file_open&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;Bestandsfout:<sp/>Kon<sp/>bestand<sp/>niet<sp/>openen:<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;encoding&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;Onbekende<sp/>codering:<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">$PHPMAILER_LANG[</highlight><highlight class="stringliteral">&quot;signing&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&apos;Signing<sp/>Error:<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">?&gt;</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/phpmailer.lang-nl.php"/>
+  </compounddef>
+</doxygen>

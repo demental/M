@@ -1,0 +1,324 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classfileUtils" kind="class" prot="public">
+    <compoundname>fileUtils</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classfileUtils_1d011a8d8828c87c8f509e5e41e392256" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>fileUtils::$_pattern</definition>
+        <argsstring></argsstring>
+        <name>$_pattern</name>
+        <initializer>&apos;^\.$|^\.\.$&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classfileUtils_108e3f045c12ddf7cee8c58628e49439c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::__construct</definition>
+        <argsstring>($file)</argsstring>
+        <name>__construct</name>
+        <param>
+          <type>$</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="23" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_16c06a85fd126b8feee00d3d698e11867" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::addExcludeExtension</definition>
+        <argsstring>($ext)</argsstring>
+        <name>addExcludeExtension</name>
+        <param>
+          <type>$</type>
+          <declname>ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_15931bcfd408acd6df733b2b4fc86c42f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::addExcludePattern</definition>
+        <argsstring>($pattern)</argsstring>
+        <name>addExcludePattern</name>
+        <param>
+          <type>$</type>
+          <declname>pattern</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_1ba630d67291c6b07203727475fb71892" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::is_Image</definition>
+        <argsstring>($file)</argsstring>
+        <name>is_Image</name>
+        <param>
+          <type>$</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_11918c6f410a2efcb3785e48454f15eaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::getFileExtension</definition>
+        <argsstring>($file)</argsstring>
+        <name>getFileExtension</name>
+        <param>
+          <type>$</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="39" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_1d43043653535fb2f0ef0b95bddc46f5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::getFilesOlderThan</definition>
+        <argsstring>($time, $absolute=false)</argsstring>
+        <name>getFilesOlderThan</name>
+        <param>
+          <type>$</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>absolute</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="44" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="44" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_1f1e8a8b4cb39d0b9fa3244307d12601b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::deleteFilesOlderThan</definition>
+        <argsstring>($time)</argsstring>
+        <name>deleteFilesOlderThan</name>
+        <param>
+          <type>$</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="55" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="55" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_1eb910d3f6118e783640da6491846371a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::getContents</definition>
+        <argsstring>()</argsstring>
+        <name>getContents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="125" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="125" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_1ac8851b20fce480f539ce45dc47b5267" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::deleteContents</definition>
+        <argsstring>()</argsstring>
+        <name>deleteContents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="141" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="141" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_121bdf01e738dd00bac4f7ca4456b9db6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::output</definition>
+        <argsstring>($file)</argsstring>
+        <name>output</name>
+        <param>
+          <type>$</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="153" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="152" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_1273687343a0710d2ae8629308af0f4f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::toHtml</definition>
+        <argsstring>($file)</argsstring>
+        <name>toHtml</name>
+        <param>
+          <type>$</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="173" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="173" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_130432e38f6c0829d585c3d323899de52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::getFolderPath</definition>
+        <argsstring>($path)</argsstring>
+        <name>getFolderPath</name>
+        <param>
+          <type>$</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="202" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="202" bodyend="204"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classfileUtils_10c8875ede13b6dc57d60c62c2bbb16af" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static fileUtils::getFiles</definition>
+        <argsstring>($folder)</argsstring>
+        <name>getFiles</name>
+        <param>
+          <type>$</type>
+          <declname>folder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="61" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="60" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_1e093c5c265070d4ad5739bd1f649b4b8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static fileUtils::getAllFiles</definition>
+        <argsstring>($folder, $extensionfilter=&apos;&apos;)</argsstring>
+        <name>getAllFiles</name>
+        <param>
+          <type>$</type>
+          <declname>folder</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>extensionfilter</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="78" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="77" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_12af5b0dbf5f112f2a2600ea9d54307d7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static fileUtils::hasFiles</definition>
+        <argsstring>($folder)</argsstring>
+        <name>hasFiles</name>
+        <param>
+          <type>$</type>
+          <declname>folder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="110" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="109" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_1dabc7aa5506dd8bcad28d9971f03256b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static fileUtils::delete</definition>
+        <argsstring>($path)</argsstring>
+        <name>delete</name>
+        <param>
+          <type>$</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="206" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="205" bodyend="212"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="21" bodyend="213"/>
+    <listofallmembers>
+      <member refid="classfileUtils_1d011a8d8828c87c8f509e5e41e392256" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>$_pattern</name></member>
+      <member refid="classfileUtils_108e3f045c12ddf7cee8c58628e49439c" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>__construct</name></member>
+      <member refid="classfileUtils_16c06a85fd126b8feee00d3d698e11867" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>addExcludeExtension</name></member>
+      <member refid="classfileUtils_15931bcfd408acd6df733b2b4fc86c42f" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>addExcludePattern</name></member>
+      <member refid="classfileUtils_1dabc7aa5506dd8bcad28d9971f03256b" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>delete</name></member>
+      <member refid="classfileUtils_1ac8851b20fce480f539ce45dc47b5267" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>deleteContents</name></member>
+      <member refid="classfileUtils_1f1e8a8b4cb39d0b9fa3244307d12601b" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>deleteFilesOlderThan</name></member>
+      <member refid="classfileUtils_1e093c5c265070d4ad5739bd1f649b4b8" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>getAllFiles</name></member>
+      <member refid="classfileUtils_1eb910d3f6118e783640da6491846371a" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>getContents</name></member>
+      <member refid="classfileUtils_11918c6f410a2efcb3785e48454f15eaf" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>getFileExtension</name></member>
+      <member refid="classfileUtils_10c8875ede13b6dc57d60c62c2bbb16af" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>getFiles</name></member>
+      <member refid="classfileUtils_1d43043653535fb2f0ef0b95bddc46f5a" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>getFilesOlderThan</name></member>
+      <member refid="classfileUtils_130432e38f6c0829d585c3d323899de52" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>getFolderPath</name></member>
+      <member refid="classfileUtils_12af5b0dbf5f112f2a2600ea9d54307d7" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>hasFiles</name></member>
+      <member refid="classfileUtils_1ba630d67291c6b07203727475fb71892" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>is_Image</name></member>
+      <member refid="classfileUtils_121bdf01e738dd00bac4f7ca4456b9db6" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>output</name></member>
+      <member refid="classfileUtils_1273687343a0710d2ae8629308af0f4f6" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>toHtml</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

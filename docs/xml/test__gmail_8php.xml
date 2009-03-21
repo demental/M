@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="test__gmail_8php" kind="file">
+    <compoundname>test_gmail.php</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="test__gmail_8php_1c409786c163a1974d1e24a6767a95166" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$mail</definition>
+        <argsstring></argsstring>
+        <name>$mail</name>
+        <initializer> new PHPMailer()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="11" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_126b9f9373f7bb79dfcf8a86dff086b45" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$body</definition>
+        <argsstring></argsstring>
+        <name>$body</name>
+        <initializer> $mail-&gt;getFile(&apos;contents.html&apos;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="13" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_1de0e27026bbf88bca46c0868cc91fee7" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail SMTPAuth</definition>
+        <argsstring></argsstring>
+        <name>SMTPAuth</name>
+        <initializer> true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="17" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_12f8d1507d5bc89e70a62441d67603a3c" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail SMTPSecure</definition>
+        <argsstring></argsstring>
+        <name>SMTPSecure</name>
+        <initializer> &quot;ssl&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="18" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_192f144f746f497fb1de5ac3d693c6608" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail Host</definition>
+        <argsstring></argsstring>
+        <name>Host</name>
+        <initializer> &quot;smtp.gmail.com&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="19" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_1ad3e79adeed9c6a965ba49a35e922ba4" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail Port</definition>
+        <argsstring></argsstring>
+        <name>Port</name>
+        <initializer> 465</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_19a8679ff3c39b048e1c5fd32cd552d76" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail Username</definition>
+        <argsstring></argsstring>
+        <name>Username</name>
+        <initializer> &quot;yourusername@gmail.com&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_121f975d7845bab063b482a87cc2e59cd" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail Password</definition>
+        <argsstring></argsstring>
+        <name>Password</name>
+        <initializer> &quot;yourpassword&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_127e928a831946596e1b91e83d4abe6e7" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail From</definition>
+        <argsstring></argsstring>
+        <name>From</name>
+        <initializer> &quot;name@yourdomain.com&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_1a8e9d97f10c520030a63e8c93ba09c66" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail FromName</definition>
+        <argsstring></argsstring>
+        <name>FromName</name>
+        <initializer> &quot;First Last&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_10e9638a8d3ac1704b1f52a0238ba4666" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail Subject</definition>
+        <argsstring></argsstring>
+        <name>Subject</name>
+        <initializer> &quot;PHPMailer Test Subject via gmail&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_18ac3f05567502242fc7ea9b88eb39f03" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail AltBody</definition>
+        <argsstring></argsstring>
+        <name>AltBody</name>
+        <initializer> &quot;To view the message, please use an HTML compatible email viewer!&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="test__gmail_8php_12958cbc55fa3c47f6d3b4bae3d53d1da" prot="public" static="no" mutable="no">
+        <type>$mail</type>
+        <definition>$mail WordWrap</definition>
+        <argsstring></argsstring>
+        <name>WordWrap</name>
+        <initializer> 50</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" line="34" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//error_reporting(E_ALL);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">error_reporting(E_STRICT);</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">date_default_timezone_set(</highlight><highlight class="stringliteral">&apos;America/Toronto&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">include(</highlight><highlight class="stringliteral">&quot;class.phpmailer.php&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//include(&quot;class.smtp.php&quot;);<sp/>//<sp/>optional,<sp/>gets<sp/>called<sp/>from<sp/>within<sp/>class.phpmailer.php<sp/>if<sp/>not<sp/>already<sp/>loaded</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">$mail<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>PHPMailer();</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">$body<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>$mail-&gt;getFile(</highlight><highlight class="stringliteral">&apos;contents.html&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">$body<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>eregi_replace(</highlight><highlight class="stringliteral">&quot;[\]&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;&apos;</highlight><highlight class="normal">,$body);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">$mail-&gt;IsSMTP();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">$mail-&gt;SMTPAuth<sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>enable<sp/>SMTP<sp/>authentication</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">$mail-&gt;SMTPSecure<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ssl&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sets<sp/>the<sp/>prefix<sp/>to<sp/>the<sp/>servier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">$mail-&gt;Host<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;smtp.gmail.com&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sets<sp/>GMAIL<sp/>as<sp/>the<sp/>SMTP<sp/>server</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">$mail-&gt;Port<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>465;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>the<sp/>SMTP<sp/>port<sp/>for<sp/>the<sp/>GMAIL<sp/>server</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">$mail-&gt;Username<sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;yourusername@gmail.com&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>GMAIL<sp/>username</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">$mail-&gt;Password<sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;yourpassword&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GMAIL<sp/>password</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">$mail-&gt;AddReplyTo(</highlight><highlight class="stringliteral">&quot;yourusername@gmail.com&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;First<sp/>Last&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">$mail-&gt;From<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;name@yourdomain.com&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">$mail-&gt;FromName<sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;First<sp/>Last&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">$mail-&gt;Subject<sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PHPMailer<sp/>Test<sp/>Subject<sp/>via<sp/>gmail&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//$mail-&gt;Body<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&quot;Hi,&lt;br&gt;This<sp/>is<sp/>the<sp/>HTML<sp/>BODY&lt;br&gt;&quot;;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//HTML<sp/>Body</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">$mail-&gt;AltBody<sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;To<sp/>view<sp/>the<sp/>message,<sp/>please<sp/>use<sp/>an<sp/>HTML<sp/>compatible<sp/>email<sp/>viewer!&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>optional,<sp/>comment<sp/>out<sp/>and<sp/>test</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">$mail-&gt;WordWrap<sp/><sp/><sp/>=<sp/>50;<sp/></highlight><highlight class="comment">//<sp/>set<sp/>word<sp/>wrap</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">$mail-&gt;MsgHTML($body);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">$mail-&gt;AddAddress(</highlight><highlight class="stringliteral">&quot;whoto@otherdomain.com&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;John<sp/>Doe&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">$mail-&gt;AddAttachment(</highlight><highlight class="stringliteral">&quot;images/phpmailer.gif&quot;</highlight><highlight class="normal">);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>attachment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">$mail-&gt;IsHTML(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>send<sp/>as<sp/>HTML</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!$mail-&gt;Send())<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>echo<sp/></highlight><highlight class="stringliteral">&quot;Mailer<sp/>Error:<sp/>&quot;</highlight><highlight class="normal"><sp/>.<sp/>$mail-&gt;ErrorInfo;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>echo<sp/></highlight><highlight class="stringliteral">&quot;Message<sp/>sent!&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">?&gt;</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/test_gmail.php"/>
+  </compounddef>
+</doxygen>

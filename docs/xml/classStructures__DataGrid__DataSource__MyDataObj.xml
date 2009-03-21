@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classStructures__DataGrid__DataSource__MyDataObj" kind="class" prot="public">
+    <compoundname>Structures_DataGrid_DataSource_MyDataObj</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classStructures__DataGrid__DataSource__MyDataObj_13d1250eff5aa2d6cb13cd2fa6575580a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>Structures_DataGrid_DataSource_MyDataObj::$_dataobject</definition>
+        <argsstring></argsstring>
+        <name>$_dataobject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" line="17" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStructures__DataGrid__DataSource__MyDataObj_1de736e556e794d33e358cc02d79a59e8" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>Structures_DataGrid_DataSource_MyDataObj::$_rowNum</definition>
+        <argsstring></argsstring>
+        <name>$_rowNum</name>
+        <initializer> null</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStructures__DataGrid__DataSource__MyDataObj_1f4043afba1c7e1fa12c42199535b22c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Structures_DataGrid_DataSource_MyDataObj::Structures_DataGrid_DataSource_MyDataObj</definition>
+        <argsstring>()</argsstring>
+        <name>Structures_DataGrid_DataSource_MyDataObj</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DB_DataObject  public </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" line="37" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" bodystart="36" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classStructures__DataGrid__DataSource__MyDataObj_1c27365d47d113cbb3f6b44f45a81b9c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Structures_DataGrid_DataSource_MyDataObj::bind</definition>
+        <argsstring>(&amp;$dataobject, $options=array())</argsstring>
+        <name>bind</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>dataobject</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>options</declname>
+          <defval>array()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bind</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DB_DataObject $dataobject The DB_DataObject object to bind </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$options Associative array of options.  public </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mixed True on success, PEAR_Error on failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" line="61" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" bodystart="60" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classStructures__DataGrid__DataSource__MyDataObj_16f2289ace00569eb10eeaeb213940a01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; Structures_DataGrid_DataSource_MyDataObj::fetch</definition>
+        <argsstring>($offset=0, $len=null)</argsstring>
+        <name>fetch</name>
+        <param>
+          <type>$</type>
+          <declname>offset</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>len</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fetch</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>integer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$offset Limit offset (starting from 0) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>integer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$len Limit length  public </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array The 2D Array of the records </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" line="126" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" bodystart="125" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classStructures__DataGrid__DataSource__MyDataObj_192f9b814ae52204c7d80bad3ca9f2d9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Structures_DataGrid_DataSource_MyDataObj::count</definition>
+        <argsstring>()</argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Count</para><para>public <simplesect kind="return"><para>int The number of records or a PEAR_Error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" line="233" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" bodystart="232" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classStructures__DataGrid__DataSource__MyDataObj_1369a90bf9da9ea81cc7c9aa2dc4a61b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Structures_DataGrid_DataSource_MyDataObj::sort</definition>
+        <argsstring>($sortSpec, $sortDir=null)</argsstring>
+        <name>sort</name>
+        <param>
+          <type>$</type>
+          <declname>sortSpec</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>sortDir</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sorts the dataobject. This MUST be called before fetch.</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mixed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$sortSpec A single field (string) to sort by, or a sort specification array of the form: array(field =&gt; direction, ...) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$sortDir Sort direction: &apos;ASC&apos; or &apos;DESC&apos; This is ignored if $sortDesc is an array </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" line="260" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" bodystart="259" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="classStructures__DataGrid__DataSource__MyDataObj_1dd499d54c0a7fad708cb8f5980539ccf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Structures_DataGrid_DataSource_MyDataObj::_fieldsFilter</definition>
+        <argsstring>($value)</argsstring>
+        <name>_fieldsFilter</name>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" line="277" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" bodystart="276" bodyend="288"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" line="10" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DataSource/MyDataObj.php" bodystart="8" bodyend="290"/>
+    <listofallmembers>
+      <member refid="classStructures__DataGrid__DataSource__MyDataObj_13d1250eff5aa2d6cb13cd2fa6575580a" prot="public" virt="non-virtual"><scope>Structures_DataGrid_DataSource_MyDataObj</scope><name>$_dataobject</name></member>
+      <member refid="classStructures__DataGrid__DataSource__MyDataObj_1de736e556e794d33e358cc02d79a59e8" prot="public" virt="non-virtual"><scope>Structures_DataGrid_DataSource_MyDataObj</scope><name>$_rowNum</name></member>
+      <member refid="classStructures__DataGrid__DataSource__MyDataObj_1dd499d54c0a7fad708cb8f5980539ccf" prot="public" virt="non-virtual"><scope>Structures_DataGrid_DataSource_MyDataObj</scope><name>_fieldsFilter</name></member>
+      <member refid="classStructures__DataGrid__DataSource__MyDataObj_1c27365d47d113cbb3f6b44f45a81b9c0" prot="public" virt="non-virtual"><scope>Structures_DataGrid_DataSource_MyDataObj</scope><name>bind</name></member>
+      <member refid="classStructures__DataGrid__DataSource__MyDataObj_192f9b814ae52204c7d80bad3ca9f2d9a" prot="public" virt="non-virtual"><scope>Structures_DataGrid_DataSource_MyDataObj</scope><name>count</name></member>
+      <member refid="classStructures__DataGrid__DataSource__MyDataObj_16f2289ace00569eb10eeaeb213940a01" prot="public" virt="non-virtual"><scope>Structures_DataGrid_DataSource_MyDataObj</scope><name>fetch</name></member>
+      <member refid="classStructures__DataGrid__DataSource__MyDataObj_1369a90bf9da9ea81cc7c9aa2dc4a61b8" prot="public" virt="non-virtual"><scope>Structures_DataGrid_DataSource_MyDataObj</scope><name>sort</name></member>
+      <member refid="classStructures__DataGrid__DataSource__MyDataObj_1f4043afba1c7e1fa12c42199535b22c4" prot="public" virt="non-virtual"><scope>Structures_DataGrid_DataSource_MyDataObj</scope><name>Structures_DataGrid_DataSource_MyDataObj</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

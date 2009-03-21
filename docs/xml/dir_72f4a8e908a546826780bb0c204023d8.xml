@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_72f4a8e908a546826780bb0c204023d8" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/tests/extensions/</compoundname>
+    <innerfile refid="DBTestCase_8php">DBTestCase.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/extensions/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classConfig" kind="class" prot="public">
+    <compoundname>Config</compoundname>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="classConfig_1ccf1ec6872f1142cccf612ecc68007ab" prot="protected" static="yes" mutable="no">
+        <type>static</type>
+        <definition>Config::$preftab</definition>
+        <argsstring></argsstring>
+        <name>$preftab</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="35" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classConfig_1025adb2e4d15a25e082bcc2d2128dcd7" prot="protected" static="yes" mutable="no">
+        <type>static</type>
+        <definition>Config::$cfgArr</definition>
+        <argsstring></argsstring>
+        <name>$cfgArr</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classConfig_1df356f9d88c4d008065d55ed47a3fae3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Config::load</definition>
+        <argsstring>($array)</argsstring>
+        <name>load</name>
+        <param>
+          <type>$</type>
+          <declname>array</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Load configuration</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$array ?? </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="57" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="56" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classConfig_1a149b732a598127118181e5b5404f0b4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Config::getAlternateLangs</definition>
+        <argsstring>()</argsstring>
+        <name>getAlternateLangs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get Alternate Languages</para><para>public </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="70" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="70" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classConfig_15ee304b559ffded8d924349debf8708b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Config::getAllLangs</definition>
+        <argsstring>()</argsstring>
+        <name>getAllLangs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get all language</para><para>public <simplesect kind="return"><para>?? ?? </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="86" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classConfig_1c611a0172a86bc5f4305bee2a041dd85" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Config::get</definition>
+        <argsstring>($var)</argsstring>
+        <name>get</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get config value</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$var Variable to get </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string Value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="100" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="100" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classConfig_1efc9b653ba1b3353dd782cdf0ecb4983" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Config::set</definition>
+        <argsstring>($var, $val)</argsstring>
+        <name>set</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set config value</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$var Variable to set </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$val Value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="114" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="114" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classConfig_1232f5008f38ed5f98853244095b935af" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Config::getPref</definition>
+        <argsstring>($var)</argsstring>
+        <name>getPref</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get preferences value</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$var Variable to get </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string Value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="128" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="128" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classConfig_1c3a31a273309242bd21578c108ad550c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Config::arrayize</definition>
+        <argsstring>(&amp;$item, $key)</argsstring>
+        <name>arrayize</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>??</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>??</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$item ?? </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>??</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$key ?? </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>?? Value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="158" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="157" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classConfig_165cd0982a67c8f58c0fe788d65862ac7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static Config::setPref</definition>
+        <argsstring>($var, $val)</argsstring>
+        <name>setPref</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set preferences values</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$var Variable to set </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$val Value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string Value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="174" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="173" bodyend="184"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Global configuration helper Store and retrieve configuration options accross application </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="26" bodyend="185"/>
+    <listofallmembers>
+      <member refid="classConfig_1025adb2e4d15a25e082bcc2d2128dcd7" prot="protected" virt="non-virtual"><scope>Config</scope><name>$cfgArr</name></member>
+      <member refid="classConfig_1ccf1ec6872f1142cccf612ecc68007ab" prot="protected" virt="non-virtual"><scope>Config</scope><name>$preftab</name></member>
+      <member refid="classConfig_1c3a31a273309242bd21578c108ad550c" prot="public" virt="non-virtual"><scope>Config</scope><name>arrayize</name></member>
+      <member refid="classConfig_1c611a0172a86bc5f4305bee2a041dd85" prot="public" virt="non-virtual"><scope>Config</scope><name>get</name></member>
+      <member refid="classConfig_15ee304b559ffded8d924349debf8708b" prot="public" virt="non-virtual"><scope>Config</scope><name>getAllLangs</name></member>
+      <member refid="classConfig_1a149b732a598127118181e5b5404f0b4" prot="public" virt="non-virtual"><scope>Config</scope><name>getAlternateLangs</name></member>
+      <member refid="classConfig_1232f5008f38ed5f98853244095b935af" prot="public" virt="non-virtual"><scope>Config</scope><name>getPref</name></member>
+      <member refid="classConfig_1df356f9d88c4d008065d55ed47a3fae3" prot="public" virt="non-virtual"><scope>Config</scope><name>load</name></member>
+      <member refid="classConfig_1efc9b653ba1b3353dd782cdf0ecb4983" prot="public" virt="non-virtual"><scope>Config</scope><name>set</name></member>
+      <member refid="classConfig_165cd0982a67c8f58c0fe788d65862ac7" prot="public" virt="non-virtual"><scope>Config</scope><name>setPref</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

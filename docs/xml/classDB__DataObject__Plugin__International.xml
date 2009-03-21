@@ -1,0 +1,573 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classDB__DataObject__Plugin__International" kind="class" prot="public">
+    <compoundname>DB_DataObject_Plugin_International</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">DB_DataObject_Plugin</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classDB__DataObject__Plugin__International_12e302dd79bf37e1280a020d4aa339dcc" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::$plugin_name</definition>
+        <argsstring></argsstring>
+        <name>$plugin_name</name>
+        <initializer>&apos;international&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_189bcd969d58df196936601cc809ad9a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::postGenerateForm</definition>
+        <argsstring>(&amp;$form, &amp;$fb, &amp;$obj)</argsstring>
+        <name>postGenerateForm</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>form</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>fb</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="28" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_104160d3e19b9fa74af63102a50e4ef70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::preProcessForm</definition>
+        <argsstring>(&amp;$v, &amp;$fb, &amp;$obj)</argsstring>
+        <name>preProcessForm</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>fb</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="79" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="79" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1c6305c14f997aa76c8867fc41456e248" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::postProcessForm</definition>
+        <argsstring>(&amp;$v, &amp;$fb, &amp;$obj)</argsstring>
+        <name>postProcessForm</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>fb</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="91" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="91" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1d893816ee08b419ad8e6198f81d1dd5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::setTranslation</definition>
+        <argsstring>(&amp;$obj, $field, $value, $lang)</argsstring>
+        <name>setTranslation</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>field</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="107" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="107" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_106759ed01161ab4a8c7ea19738cb5cbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; DB_DataObject_Plugin_International::getAllTranslationRecords</definition>
+        <argsstring>(&amp;$obj, $lang=null)</argsstring>
+        <name>getAllTranslationRecords</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="129" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="129" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1637aa6486bbdac5331d62f0256e02650" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; DB_DataObject_Plugin_International::getTranslationRecords</definition>
+        <argsstring>(&amp;$obj, $lang=null)</argsstring>
+        <name>getTranslationRecords</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="143" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="143" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1209bd0c266af92b6b78a8626da691959" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::getTranslations</definition>
+        <argsstring>(&amp;$obj, $lang=null)</argsstring>
+        <name>getTranslations</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="166" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="166" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1d6baa20920f87cab077de2deb0d1a645" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::getPoly</definition>
+        <argsstring>(&amp;$obj, $field)</argsstring>
+        <name>getPoly</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>field</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>fetches and returns an associative array of all translated values for $obj&apos;s $field for every installed languages. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DB_DataObject </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$field</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string object&apos;s field name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>array translated values array(&apos;en&apos;=&gt;$string,&apos;es&apos;=&gt;$string, etc...) Only returns translated values (i.e. not translated field returns an empty array) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="183" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="183" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_193a852b23fbdd4592dbb25db3c583b66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::setPoly</definition>
+        <argsstring>(&amp;$obj, $field, $arr)</argsstring>
+        <name>setPoly</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>field</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>arr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>fetches and updates all translated values for $obj&apos;s $field for every installed languages using $arr. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DB_DataObject </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$field</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string object&apos;s field name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$arr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array translated values array(&apos;en&apos;=&gt;$string,&apos;es&apos;=&gt;$string, etc...) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="213" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="213" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_14b7afabc21e9ab3bc7e2054f93cf60d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::getTranslation</definition>
+        <argsstring>($obj, $field, $lang=null)</argsstring>
+        <name>getTranslation</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>field</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>fetches and returns translated value for field $field of object $obj using the current language if not specified. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DB_DataObject </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$field</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string object&apos;s field name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$lang</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string (optional) lang to be fetched </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string translated value OR original value if not translated </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="251" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="251" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_18d0b5865dc63cf27b94c954a050ab686" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::delete</definition>
+        <argsstring>(&amp;$obj)</argsstring>
+        <name>delete</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="277" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="277" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1e8d3f0b64f02ddeb9d31b9efa1e8bcc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::postfetch</definition>
+        <argsstring>(&amp;$obj)</argsstring>
+        <name>postfetch</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="286" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="286" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1669c48f37e1c7d832391967c6f24edd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::migration_createI18nTable</definition>
+        <argsstring>($obj, $iname)</argsstring>
+        <name>migration_createI18nTable</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>iname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="293" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="292" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1b2dd328845e75d557c6b539a0e0d0f4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::migration_createI18nIndexes</definition>
+        <argsstring>($obj, $iname)</argsstring>
+        <name>migration_createI18nIndexes</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>iname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="303" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="302" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1905587d9e476beeed21ce08a18ba2b20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::migration_getNonI18nFields</definition>
+        <argsstring>($obj, $iname)</argsstring>
+        <name>migration_getNonI18nFields</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>iname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="332" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="331" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1dc2a330cf1e893923cae7b1c678cfc35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::migration_removeNonI18nFields</definition>
+        <argsstring>($obj, $iname)</argsstring>
+        <name>migration_removeNonI18nFields</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>iname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="345" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="344" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_103a33dcd1c26d769dc79ab5c2e5378d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::migration_copyDataToI18n</definition>
+        <argsstring>($obj, $iname)</argsstring>
+        <name>migration_copyDataToI18n</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>iname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="355" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="354" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1284ac47ccb27156121f24c2cd235ed4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::migration_removeI18FieldsFromOriginal</definition>
+        <argsstring>($obj, $iname)</argsstring>
+        <name>migration_removeI18FieldsFromOriginal</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>iname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="391" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="390" bodyend="406"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_17f9bd2e75a4576714a6d11fd3bc9ea0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::migration_rebuildObjects</definition>
+        <argsstring>($obj, $iname)</argsstring>
+        <name>migration_rebuildObjects</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>iname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="408" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="407" bodyend="420"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__International_1f059851ddbf916709066d82a30041b72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_International::migrateToI18n</definition>
+        <argsstring>($obj)</argsstring>
+        <name>migrateToI18n</name>
+        <param>
+          <type>$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="422" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="421" bodyend="462"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/International.php" bodystart="26" bodyend="463"/>
+    <listofallmembers>
+      <member refid="classDB__DataObject__Plugin_1b30028754e407f2caeff81d156b2f47b" prot="protected" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>$_autoActions</name></member>
+      <member refid="classDB__DataObject__Plugin_15aee0ead373272e0d9080e6d3366e58b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>$_dataObject</name></member>
+      <member refid="classDB__DataObject__Plugin__International_12e302dd79bf37e1280a020d4aa339dcc" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>$plugin_name</name></member>
+      <member refid="classDB__DataObject__Plugin_1cc736a1e7bd097a815ca456aed3d78f6" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>count</name></member>
+      <member refid="classDB__DataObject__Plugin_19d42b6fe75c2fa64137f1d41d2458835" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>dateOptions</name></member>
+      <member refid="classDB__DataObject__Plugin__International_18d0b5865dc63cf27b94c954a050ab686" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>delete</name></member>
+      <member refid="classDB__DataObject__Plugin_1d701abe5cbdc92d966b955c1d55eac21" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>find</name></member>
+      <member refid="classDB__DataObject__Plugin__International_106759ed01161ab4a8c7ea19738cb5cbc" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>getAllTranslationRecords</name></member>
+      <member refid="classDB__DataObject__Plugin_1e0bca6c11f7028a1d394e01896e774dc" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>getBatchMethods</name></member>
+      <member refid="classDB__DataObject__Plugin_169a97ea47c95e7161407f7023a67d23b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>getGlobalMethods</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1d6baa20920f87cab077de2deb0d1a645" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>getPoly</name></member>
+      <member refid="classDB__DataObject__Plugin_166b0104606d75feb8f3e4037f75398e4" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>getSingleMethods</name></member>
+      <member refid="classDB__DataObject__Plugin__International_14b7afabc21e9ab3bc7e2054f93cf60d9" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>getTranslation</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1637aa6486bbdac5331d62f0256e02650" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>getTranslationRecords</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1209bd0c266af92b6b78a8626da691959" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>getTranslations</name></member>
+      <member refid="classDB__DataObject__Plugin_17231c8dfa2987d86f815dd7fcab9bec9" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>insert</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1f059851ddbf916709066d82a30041b72" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>migrateToI18n</name></member>
+      <member refid="classDB__DataObject__Plugin__International_103a33dcd1c26d769dc79ab5c2e5378d0" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>migration_copyDataToI18n</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1b2dd328845e75d557c6b539a0e0d0f4e" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>migration_createI18nIndexes</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1669c48f37e1c7d832391967c6f24edd0" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>migration_createI18nTable</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1905587d9e476beeed21ce08a18ba2b20" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>migration_getNonI18nFields</name></member>
+      <member refid="classDB__DataObject__Plugin__International_17f9bd2e75a4576714a6d11fd3bc9ea0c" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>migration_rebuildObjects</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1284ac47ccb27156121f24c2cd235ed4b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>migration_removeI18FieldsFromOriginal</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1dc2a330cf1e893923cae7b1c678cfc35" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>migration_removeNonI18nFields</name></member>
+      <member refid="classDB__DataObject__Plugin_1610dada38d8945fe72515ea5e14c38c3" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>postdelete</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1e8d3f0b64f02ddeb9d31b9efa1e8bcc6" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>postfetch</name></member>
+      <member refid="classDB__DataObject__Plugin__International_189bcd969d58df196936601cc809ad9a0" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>postGenerateForm</name></member>
+      <member refid="classDB__DataObject__Plugin_12a15f2cf3c3ecadf43483753d1eae9d7" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>postinsert</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1c6305c14f997aa76c8867fc41456e248" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>postProcessForm</name></member>
+      <member refid="classDB__DataObject__Plugin_1ec8d44e4b84173253a132c9275fdf79d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>postupdate</name></member>
+      <member refid="classDB__DataObject__Plugin_14b32504f3cbb587770650f2682f1c18b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>prefetch</name></member>
+      <member refid="classDB__DataObject__Plugin_1f0c5df3c3b1160cdb814b36190cff363" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>preGenerateForm</name></member>
+      <member refid="classDB__DataObject__Plugin_14236f2c4121c4b1952e7df90f6b13c5d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>prepareLinkedDataObject</name></member>
+      <member refid="classDB__DataObject__Plugin__International_104160d3e19b9fa74af63102a50e4ef70" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>preProcessForm</name></member>
+      <member refid="classDB__DataObject__Plugin_1d48b47ff4d710aad6c5d0e382e795068" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>register</name></member>
+      <member refid="classDB__DataObject__Plugin_1ac449449d30cd31f0eb9823d0e284d37" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>setAutoActions</name></member>
+      <member refid="classDB__DataObject__Plugin__International_193a852b23fbdd4592dbb25db3c583b66" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>setPoly</name></member>
+      <member refid="classDB__DataObject__Plugin__International_1d893816ee08b419ad8e6198f81d1dd5e" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>setTranslation</name></member>
+      <member refid="classDB__DataObject__Plugin_12aafc8d11e50944c5494556fe005cbf1" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_International</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

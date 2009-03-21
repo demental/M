@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dopaging_8php" kind="file">
+    <compoundname>dopaging.php</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="dopaging_8php_1be16098fd6e45b47317b033f418c3ec8" prot="public" static="no" mutable="no">
+        <type>$pager $this startCapture(&apos;pager&apos;)?&gt;&lt;?php echo $pager[&apos;first&apos;]?&gt;&lt;?php echo $pager[&apos;back&apos;]?&gt;&lt;?php echo $pager[&apos;pages&apos;]?&gt;&lt;?php echo $pager[&apos;next&apos;]?&gt;&lt;?php echo $pager[&apos;last&apos;]?&gt;&lt;?php $this-&gt;endCapture(&apos;pager&apos;)?&gt;&lt; div classif</type>
+        <definition>$pager $this startCapture (&apos;pager&apos;)?&gt; &lt;?php echo $pager[&apos;first&apos;]?&gt; &lt;?php echo $pager[&apos;back&apos;]?&gt; &lt;?php echo $pager[&apos;pages&apos;]?&gt; &lt;?php echo $pager[&apos;next&apos;]?&gt; &lt;?php echo $pager[&apos;last&apos;]?&gt; &lt;?php $this-&gt;endCapture(&apos;pager&apos;)?&gt; &lt;div classif ($selectable)(&apos;listview/dopaging/actionsheader&apos;, array(&apos;edit&apos;=&gt; $edit))?&gt;&lt;?php foreach($dg-&gt;fields as $field</definition>
+        <argsstring>(&apos;listview/dopaging/actionsheader&apos;, array(&apos;edit&apos;=&gt; $edit))?&gt;&lt;?php foreach($dg-&gt;fields as $field</argsstring>
+        <name>($selectable)</name>
+        <initializer> $dg-&gt;getPaging()&quot;prefcontainer&quot;&gt;&lt;img src=&quot;/images/icons/cog.png&quot; /&gt;&lt;/div&gt;
+&lt;div class=&quot;pager&quot;&gt;
+&lt;?php echo $this-&gt;getCapture(&apos;pager&apos;)&gt;$type):</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/listview/dopaging.php" line="64" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/listview/dopaging.php" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="dopaging_8php_1f677df146aab47c3bde522ce6690d13c" prot="public" static="no" mutable="no">
+        <type>clear</type>
+        <definition>clear __pad5__</definition>
+        <argsstring></argsstring>
+        <name>__pad5__</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/listview/dopaging.php" line="67" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/listview/dopaging.php" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;script<sp/>type=</highlight><highlight class="stringliteral">&quot;text/javascript&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">function<sp/>jsdoaction(form,select){</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(select.selectedIndex==0){</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">($(select).val()==</highlight><highlight class="stringliteral">&apos;delete&apos;</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(confirm(</highlight><highlight class="stringliteral">&quot;Etes-vous<sp/>sur<sp/>de<sp/>vouloir<sp/>supprimer<sp/>ces<sp/>enregistrements<sp/>?&quot;</highlight><highlight class="normal">)){</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>form.choice.value=</highlight><highlight class="stringliteral">&quot;Oui&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>form.submit();</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>form.submit();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">function<sp/>deleteCheckboxClicked(checkbox)<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>el<sp/>=<sp/>checkbox.parentNode;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(el<sp/>&amp;&amp;<sp/>el.nodeName<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;TR&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>el<sp/>=<sp/>el.parentNode;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(el<sp/>&amp;&amp;<sp/>el.nodeName<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;TR&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(checkbox.checked)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>el.oldClassName<sp/>=<sp/>el.className;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>el.className<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;delete&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>el.className<sp/>=<sp/>el.oldClassName;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>el.oldClassName<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">&lt;/script&gt;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">&lt;?php<sp/>$pager<sp/>=<sp/>$dg-&gt;getPaging()?&gt;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">&lt;?php<sp/>$this-&gt;startCapture(</highlight><highlight class="stringliteral">&apos;pager&apos;</highlight><highlight class="normal">)?&gt;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">&lt;?php<sp/>echo<sp/>$pager[</highlight><highlight class="stringliteral">&apos;first&apos;</highlight><highlight class="normal">]?&gt;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">&lt;?php<sp/>echo<sp/>$pager[</highlight><highlight class="stringliteral">&apos;back&apos;</highlight><highlight class="normal">]?&gt;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">&lt;?php<sp/>echo<sp/>$pager[</highlight><highlight class="stringliteral">&apos;pages&apos;</highlight><highlight class="normal">]?&gt;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">&lt;?php<sp/>echo<sp/>$pager[</highlight><highlight class="stringliteral">&apos;next&apos;</highlight><highlight class="normal">]?&gt;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">&lt;?php<sp/>echo<sp/>$pager[</highlight><highlight class="stringliteral">&apos;last&apos;</highlight><highlight class="normal">]?&gt;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">&lt;?php<sp/>$this-&gt;endCapture(</highlight><highlight class="stringliteral">&apos;pager&apos;</highlight><highlight class="normal">)?&gt;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">&lt;div<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;prefcontainer&quot;</highlight><highlight class="normal">&gt;&lt;img<sp/>src=</highlight><highlight class="stringliteral">&quot;/images/icons/cog.png&quot;</highlight><highlight class="normal"><sp/>/&gt;&lt;/div&gt;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">&lt;div<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;pager&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">&lt;?php<sp/>echo<sp/>$this-&gt;getCapture(</highlight><highlight class="stringliteral">&apos;pager&apos;</highlight><highlight class="normal">)?&gt;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">&lt;/div&gt;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">&lt;br<sp/>style=</highlight><highlight class="stringliteral">&quot;clear:both;height:0&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">&lt;table<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;datagrid&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>&lt;tr&gt;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;?php<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">($selectable):?&gt;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;th&gt;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/th&gt;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;?php<sp/>endif?&gt;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;?php<sp/>$this-&gt;i(</highlight><highlight class="stringliteral">&apos;listview/dopaging/actionsheader&apos;</highlight><highlight class="normal">,array(</highlight><highlight class="stringliteral">&apos;edit&apos;</highlight><highlight class="normal">=&gt;$edit))?&gt;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;?php<sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal">($dg-&gt;fields<sp/>as<sp/>$field=&gt;$type):?&gt;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;th&gt;&lt;a<sp/>href=</highlight><highlight class="stringliteral">&quot;&lt;?php<sp/>echo<sp/>$dg-&gt;do-&gt;getPlugin(&apos;pager&apos;)-&gt;getSortLink($field)?&gt;&quot;</highlight><highlight class="normal">&gt;&lt;?php<sp/>echo<sp/>$dg-&gt;fieldNames[$field]?&gt;&lt;/a&gt;&lt;/th&gt;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;?php<sp/>endforeach?&gt;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>&lt;/tr&gt;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>&lt;?php<sp/>$do<sp/>=<sp/>$dg-&gt;do?&gt;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>&lt;?php<sp/>$pk<sp/>=<sp/>MyFB::_getPrimaryKey($do)?&gt;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>&lt;?php<sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal">($do<sp/>as<sp/>$rec):?&gt;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>&lt;?php<sp/>$col=$col==</highlight><highlight class="stringliteral">&apos;odd&apos;</highlight><highlight class="normal">?</highlight><highlight class="stringliteral">&apos;even&apos;</highlight><highlight class="normal">:</highlight><highlight class="stringliteral">&apos;odd&apos;</highlight><highlight class="normal">?&gt;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>&lt;tr<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;&lt;?php<sp/>echo<sp/>$col?&gt;&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;?php<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">($selectable):?&gt;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;td&gt;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;input<sp/>type=</highlight><highlight class="stringliteral">&quot;checkbox&quot;</highlight><highlight class="normal"><sp/>name=</highlight><highlight class="stringliteral">&quot;selected[]&quot;</highlight><highlight class="normal"><sp/>value=</highlight><highlight class="stringliteral">&quot;&lt;?php<sp/>echo<sp/>$do-&gt;$pk?&gt;&quot;</highlight><highlight class="normal"><sp/>onclick=</highlight><highlight class="stringliteral">&quot;deleteCheckboxClicked(this)&quot;</highlight><highlight class="normal"><sp/>style=</highlight><highlight class="stringliteral">&quot;border:none;clear:left&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/td&gt;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;?php<sp/>endif?&gt;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;?php<sp/>$this-&gt;i(</highlight><highlight class="stringliteral">&apos;listview/dopaging/actions&apos;</highlight><highlight class="normal">,array(</highlight><highlight class="stringliteral">&apos;edit&apos;</highlight><highlight class="normal">=&gt;$edit,</highlight><highlight class="stringliteral">&apos;do&apos;</highlight><highlight class="normal">=&gt;$do,</highlight><highlight class="stringliteral">&apos;pk&apos;</highlight><highlight class="normal">=&gt;$pk))?&gt;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;?php<sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal">($dg-&gt;fields<sp/>as<sp/>$field=&gt;$type):?&gt;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;td&gt;&lt;?php<sp/>echo<sp/>call_user_func(array(</highlight><highlight class="stringliteral">&apos;M_Office_Util&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;field_format_&apos;</highlight><highlight class="normal">.$type),$rec,$field)?&gt;&lt;/td&gt;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;?php<sp/>endforeach?&gt;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>&lt;/tr&gt;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>&lt;?php<sp/>endforeach?&gt;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">&lt;/table&gt;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">&lt;div<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;pager&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">&lt;?php<sp/>echo<sp/>$this-&gt;getCapture(</highlight><highlight class="stringliteral">&apos;pager&apos;</highlight><highlight class="normal">)?&gt;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">&lt;/div&gt;</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/listview/dopaging.php"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_962e2f29353945c9310d793402057295" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/Office/View/</compoundname>
+    <innerfile refid="DataGrid_8php">DataGrid.php</innerfile>
+    <innerfile refid="DOPaging_8php">DOPaging.php</innerfile>
+    <innerfile refid="View_2list_8php">list.php</innerfile>
+    <innerfile refid="View_2tree_8php">tree.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/"/>
+  </compounddef>
+</doxygen>

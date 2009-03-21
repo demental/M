@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classM__Office__View__List" kind="class" prot="public">
+    <compoundname>M_Office_View_List</compoundname>
+    <derivedcompoundref refid="classM__Office__View__DataGrid" prot="public" virt="non-virtual">M_Office_View_DataGrid</derivedcompoundref>
+    <derivedcompoundref refid="classM__Office__View__DOPaging" prot="public" virt="non-virtual">M_Office_View_DOPaging</derivedcompoundref>
+    <derivedcompoundref refid="classM__Office__View__tree" prot="public" virt="non-virtual">M_Office_View_tree</derivedcompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classM__Office__View__List_1882db5c8ad421319f34c08d931fe4a0c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>M_Office_View_List::$_controller</definition>
+        <argsstring></argsstring>
+        <name>$_controller</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classM__Office__View__List_1b5c547ccbf9f3881f8607738394fb94d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>M_Office_View_List::$_view</definition>
+        <argsstring></argsstring>
+        <name>$_view</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classM__Office__View__List_16a9b983b49f9b731c55cc2504a46c233" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>M_Office_View_List::$_JS</definition>
+        <argsstring></argsstring>
+        <name>$_JS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classM__Office__View__List_1755eb914654ffe8226a98f1af6b854c9" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>M_Office_View_List::$_includeJS</definition>
+        <argsstring></argsstring>
+        <name>$_includeJS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classM__Office__View__List_1c918778d8e9bedd720c048dbb10b25fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_List::M_Office_View_List</definition>
+        <argsstring>(&amp;$controller)</argsstring>
+        <name>M_Office_View_List</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>controller</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__List_100d6cb279a24559fbc5c1cda3f596685" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_List::getControllerOption</definition>
+        <argsstring>($opt, $module=null)</argsstring>
+        <name>getControllerOption</name>
+        <param>
+          <type>$</type>
+          <declname>opt</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>module</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__List_16e6e2046b9f246e9649255202fc0091e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_List::getPaging</definition>
+        <argsstring>()</argsstring>
+        <name>getPaging</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__List_10b3df6a707a5530b133f2a01fd3b7a56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_List::toHtml</definition>
+        <argsstring>()</argsstring>
+        <name>toHtml</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__List_19b7b9dbcbe9f73708368b09f5c18c341" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_List::setOptions</definition>
+        <argsstring>($opts)</argsstring>
+        <name>setOptions</name>
+        <param>
+          <type>$</type>
+          <declname>opts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="42" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="42" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__List_1a012ad665f7d05e0b8eb44e82a8b0a9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; M_Office_View_List::prepare</definition>
+        <argsstring>(&amp;$do, $frontend=true, $pager=true)</argsstring>
+        <name>prepare</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>do</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>frontend</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>pager</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="45" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office__View__List_15d5a98d3a07e10745a7ee436898957dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_View_List::getFields</definition>
+        <argsstring>()</argsstring>
+        <name>getFields</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="48" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="48" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/View/list.php" bodystart="20" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classM__Office__View__List_1882db5c8ad421319f34c08d931fe4a0c" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>$_controller</name></member>
+      <member refid="classM__Office__View__List_1755eb914654ffe8226a98f1af6b854c9" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>$_includeJS</name></member>
+      <member refid="classM__Office__View__List_16a9b983b49f9b731c55cc2504a46c233" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>$_JS</name></member>
+      <member refid="classM__Office__View__List_1b5c547ccbf9f3881f8607738394fb94d" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>$_view</name></member>
+      <member refid="classM__Office__View__List_100d6cb279a24559fbc5c1cda3f596685" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>getControllerOption</name></member>
+      <member refid="classM__Office__View__List_15d5a98d3a07e10745a7ee436898957dd" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>getFields</name></member>
+      <member refid="classM__Office__View__List_16e6e2046b9f246e9649255202fc0091e" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>getPaging</name></member>
+      <member refid="classM__Office__View__List_1c918778d8e9bedd720c048dbb10b25fc" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>M_Office_View_List</name></member>
+      <member refid="classM__Office__View__List_1a012ad665f7d05e0b8eb44e82a8b0a9d" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>prepare</name></member>
+      <member refid="classM__Office__View__List_19b7b9dbcbe9f73708368b09f5c18c341" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>setOptions</name></member>
+      <member refid="classM__Office__View__List_10b3df6a707a5530b133f2a01fd3b7a56" prot="public" virt="non-virtual"><scope>M_Office_View_List</scope><name>toHtml</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

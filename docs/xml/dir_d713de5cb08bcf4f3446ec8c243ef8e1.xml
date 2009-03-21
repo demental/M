@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_d713de5cb08bcf4f3446ec8c243ef8e1" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/</compoundname>
+    <innerfile refid="phpmailer__test_8php">phpmailer_test.php</innerfile>
+    <innerfile refid="phpunit_8php">phpunit.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/"/>
+  </compounddef>
+</doxygen>

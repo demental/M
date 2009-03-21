@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classTestFailure" kind="class" prot="public">
+    <compoundname>TestFailure</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classTestFailure_102838e1d92e41c532c601b4c0d0373dc" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>TestFailure::$fFailedTestName</definition>
+        <argsstring></argsstring>
+        <name>$fFailedTestName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="253" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTestFailure_16d9947c38a0974495f3eecc43ec23ffd" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>TestFailure::$fExceptions</definition>
+        <argsstring></argsstring>
+        <name>$fExceptions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="254" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="254" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTestFailure_172b70db0af154cfd75390ea85bb08391" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TestFailure::TestFailure</definition>
+        <argsstring>(&amp;$test, &amp;$exceptions)</argsstring>
+        <name>TestFailure</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>test</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>exceptions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="256" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="256" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classTestFailure_123b4720daa49e7dcb997f126edc76a2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TestFailure::getExceptions</definition>
+        <argsstring>()</argsstring>
+        <name>getExceptions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="261" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="261" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="classTestFailure_146707248d4f72146764391be0a78f692" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TestFailure::getTestName</definition>
+        <argsstring>()</argsstring>
+        <name>getTestName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="264" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="264" bodyend="266"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="250" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="250" bodyend="267"/>
+    <listofallmembers>
+      <member refid="classTestFailure_16d9947c38a0974495f3eecc43ec23ffd" prot="public" virt="non-virtual"><scope>TestFailure</scope><name>$fExceptions</name></member>
+      <member refid="classTestFailure_102838e1d92e41c532c601b4c0d0373dc" prot="public" virt="non-virtual"><scope>TestFailure</scope><name>$fFailedTestName</name></member>
+      <member refid="classTestFailure_123b4720daa49e7dcb997f126edc76a2c" prot="public" virt="non-virtual"><scope>TestFailure</scope><name>getExceptions</name></member>
+      <member refid="classTestFailure_146707248d4f72146764391be0a78f692" prot="public" virt="non-virtual"><scope>TestFailure</scope><name>getTestName</name></member>
+      <member refid="classTestFailure_172b70db0af154cfd75390ea85bb08391" prot="public" virt="non-virtual"><scope>TestFailure</scope><name>TestFailure</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

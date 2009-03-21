@@ -1,19 +1,4 @@
 <?php
-//
-// +--------------------------------------------------------------------+
-// | M PHP Framework                                                    |
-// +--------------------------------------------------------------------+
-// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
-// | Web           http://m4php5.googlecode.com/                        |
-// | License       GNU Lesser General Public License (LGPL)             |
-// +--------------------------------------------------------------------+
-// | This library is free software; you can redistribute it and/or      |
-// | modify it under the terms of the GNU Lesser General Public         |
-// | License as published by the Free Software Foundation; either       |
-// | version 2.1 of the License, or (at your option) any later version. |
-// +--------------------------------------------------------------------+
-//
-
 /**
 * M PHP Framework
 * @package      M
@@ -271,7 +256,7 @@ class User{
 		}
 	}
 	/**
-	 * Page vers laquelle on est redirigée après identification/inscription
+	 * Page vers laquelle on est redirigï¿½e aprï¿½s identification/inscription
 	 */
 	 function getTarget(){
 	     return($_SESSION[$this->context]['target']);

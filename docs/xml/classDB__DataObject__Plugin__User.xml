@@ -1,0 +1,302 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classDB__DataObject__Plugin__User" kind="class" prot="public">
+    <compoundname>DB_DataObject_Plugin_User</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">DB_DataObject_Plugin</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classDB__DataObject__Plugin__User_19ac03584395a6bb97aa1180c889e2cb8" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::$plugin_name</definition>
+        <argsstring></argsstring>
+        <name>$plugin_name</name>
+        <initializer>&apos;user&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDB__DataObject__Plugin__User_17602ec93b8e4bac06325daf90c40e555" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::$reminderUrl</definition>
+        <argsstring></argsstring>
+        <name>$reminderUrl</name>
+        <initializer>&apos;user/login&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classDB__DataObject__Plugin__User_165571b0a5b10c8bdff5d2749f82e98d4" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::$_usercontext</definition>
+        <argsstring></argsstring>
+        <name>$_usercontext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="32" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDB__DataObject__Plugin__User_1b5aeab7a28aec31a0ec57884019d3d81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::preGenerateForm</definition>
+        <argsstring>(&amp;$fb, &amp;$obj)</argsstring>
+        <name>preGenerateForm</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>fb</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="34" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="33" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__User_1e5cf4ff391bbb560545f1ff19332f26a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::postGenerateForm</definition>
+        <argsstring>(&amp;$form, &amp;$fb, &amp;$obj)</argsstring>
+        <name>postGenerateForm</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>form</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>fb</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="39" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__User_19cb95124e9ec6e49d367eb06dc13cb0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::checkUniqueLogin</definition>
+        <argsstring>($values)</argsstring>
+        <name>checkUniqueLogin</name>
+        <param>
+          <type>$</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="58" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="58" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__User_1ed26ba5d1dc883b3b5c8d6f154ec4eec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::preProcessForm</definition>
+        <argsstring>(&amp;$values, &amp;$fb, &amp;$obj)</argsstring>
+        <name>preProcessForm</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>values</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>fb</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="67" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="67" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__User_1f5c27680790f7050f69db5ed26713896" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::prepareForLogin</definition>
+        <argsstring>(&amp;$obj, $reminder=true, $register=true)</argsstring>
+        <name>prepareForLogin</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>reminder</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>register</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="80" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="79" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__User_1628d17a9493fada64eedc74e15b8db24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::prepareForReminder</definition>
+        <argsstring>(&amp;$obj)</argsstring>
+        <name>prepareForReminder</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="96" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="95" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__User_176d1cb9240d1143aa779cfeb94bfc8e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::postGenerateLogin</definition>
+        <argsstring>(&amp;$form, &amp;$fb)</argsstring>
+        <name>postGenerateLogin</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>form</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>fb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="102" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="102" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__User_1eb76dbdd8cbb4e6fc75d0e2c5d9b541c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::validateLogin</definition>
+        <argsstring>($values)</argsstring>
+        <name>validateLogin</name>
+        <param>
+          <type>$</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="116" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="116" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__User_1132455ef0659d1df29359aea73a104bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::setContext</definition>
+        <argsstring>($c)</argsstring>
+        <name>setContext</name>
+        <param>
+          <type>$</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="148" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="148" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__User_171d884a4b7625fa478bc8c179c04686e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_User::postGenerateReminder</definition>
+        <argsstring>(&amp;$form, &amp;$fb)</argsstring>
+        <name>postGenerateReminder</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>form</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>fb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="151" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="151" bodyend="155"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/User.php" bodystart="27" bodyend="157"/>
+    <listofallmembers>
+      <member refid="classDB__DataObject__Plugin_1b30028754e407f2caeff81d156b2f47b" prot="protected" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>$_autoActions</name></member>
+      <member refid="classDB__DataObject__Plugin_15aee0ead373272e0d9080e6d3366e58b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>$_dataObject</name></member>
+      <member refid="classDB__DataObject__Plugin__User_165571b0a5b10c8bdff5d2749f82e98d4" prot="protected" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>$_usercontext</name></member>
+      <member refid="classDB__DataObject__Plugin__User_19ac03584395a6bb97aa1180c889e2cb8" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>$plugin_name</name></member>
+      <member refid="classDB__DataObject__Plugin__User_17602ec93b8e4bac06325daf90c40e555" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>$reminderUrl</name></member>
+      <member refid="classDB__DataObject__Plugin__User_19cb95124e9ec6e49d367eb06dc13cb0f" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>checkUniqueLogin</name></member>
+      <member refid="classDB__DataObject__Plugin_1cc736a1e7bd097a815ca456aed3d78f6" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>count</name></member>
+      <member refid="classDB__DataObject__Plugin_19d42b6fe75c2fa64137f1d41d2458835" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>dateOptions</name></member>
+      <member refid="classDB__DataObject__Plugin_1d15d096ebc68473d076c8b88186ea496" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>delete</name></member>
+      <member refid="classDB__DataObject__Plugin_1d701abe5cbdc92d966b955c1d55eac21" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>find</name></member>
+      <member refid="classDB__DataObject__Plugin_1e0bca6c11f7028a1d394e01896e774dc" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>getBatchMethods</name></member>
+      <member refid="classDB__DataObject__Plugin_169a97ea47c95e7161407f7023a67d23b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>getGlobalMethods</name></member>
+      <member refid="classDB__DataObject__Plugin_166b0104606d75feb8f3e4037f75398e4" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>getSingleMethods</name></member>
+      <member refid="classDB__DataObject__Plugin_17231c8dfa2987d86f815dd7fcab9bec9" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>insert</name></member>
+      <member refid="classDB__DataObject__Plugin_1610dada38d8945fe72515ea5e14c38c3" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>postdelete</name></member>
+      <member refid="classDB__DataObject__Plugin_1e4511ca36e6e4a193d382c49ee4acb73" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>postfetch</name></member>
+      <member refid="classDB__DataObject__Plugin__User_1e5cf4ff391bbb560545f1ff19332f26a" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>postGenerateForm</name></member>
+      <member refid="classDB__DataObject__Plugin__User_176d1cb9240d1143aa779cfeb94bfc8e5" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>postGenerateLogin</name></member>
+      <member refid="classDB__DataObject__Plugin__User_171d884a4b7625fa478bc8c179c04686e" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>postGenerateReminder</name></member>
+      <member refid="classDB__DataObject__Plugin_12a15f2cf3c3ecadf43483753d1eae9d7" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>postinsert</name></member>
+      <member refid="classDB__DataObject__Plugin_1a162d3bafaa1423190febaf5fc65f58d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>postProcessForm</name></member>
+      <member refid="classDB__DataObject__Plugin_1ec8d44e4b84173253a132c9275fdf79d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>postupdate</name></member>
+      <member refid="classDB__DataObject__Plugin_14b32504f3cbb587770650f2682f1c18b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>prefetch</name></member>
+      <member refid="classDB__DataObject__Plugin__User_1b5aeab7a28aec31a0ec57884019d3d81" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>preGenerateForm</name></member>
+      <member refid="classDB__DataObject__Plugin__User_1f5c27680790f7050f69db5ed26713896" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>prepareForLogin</name></member>
+      <member refid="classDB__DataObject__Plugin__User_1628d17a9493fada64eedc74e15b8db24" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>prepareForReminder</name></member>
+      <member refid="classDB__DataObject__Plugin_14236f2c4121c4b1952e7df90f6b13c5d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>prepareLinkedDataObject</name></member>
+      <member refid="classDB__DataObject__Plugin__User_1ed26ba5d1dc883b3b5c8d6f154ec4eec" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>preProcessForm</name></member>
+      <member refid="classDB__DataObject__Plugin_1d48b47ff4d710aad6c5d0e382e795068" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>register</name></member>
+      <member refid="classDB__DataObject__Plugin_1ac449449d30cd31f0eb9823d0e284d37" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>setAutoActions</name></member>
+      <member refid="classDB__DataObject__Plugin__User_1132455ef0659d1df29359aea73a104bb" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>setContext</name></member>
+      <member refid="classDB__DataObject__Plugin_12aafc8d11e50944c5494556fe005cbf1" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>update</name></member>
+      <member refid="classDB__DataObject__Plugin__User_1eb76dbdd8cbb4e6fc75d0e2c5d9b541c" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_User</scope><name>validateLogin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

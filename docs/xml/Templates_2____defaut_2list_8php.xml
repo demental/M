@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="Templates_2____defaut_2list_8php" kind="file">
+    <compoundname>list.php</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">($searchform):?&gt;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">&lt;?php<sp/>$this-&gt;i(</highlight><highlight class="stringliteral">&apos;form-bordered&apos;</highlight><highlight class="normal">,array(</highlight><highlight class="stringliteral">&apos;form&apos;</highlight><highlight class="normal">=&gt;$searchform))?&gt;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal">&lt;?php<sp/>endif?&gt;</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/__defaut/list.php"/>
+  </compounddef>
+</doxygen>

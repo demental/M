@@ -1,0 +1,673 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classModule" kind="class" prot="public">
+    <compoundname>Module</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Maman</basecompoundref>
+    <derivedcompoundref refid="classM__Office__Automodule" prot="public" virt="non-virtual">M_Office_Automodule</derivedcompoundref>
+    <derivedcompoundref refid="classModule__CMS" prot="public" virt="non-virtual">Module_CMS</derivedcompoundref>
+    <derivedcompoundref refid="classModule__Default" prot="public" virt="non-virtual">Module_Default</derivedcompoundref>
+    <derivedcompoundref refid="classModule__home" prot="public" virt="non-virtual">Module_home</derivedcompoundref>
+    <derivedcompoundref refid="classModule__Tasks" prot="public" virt="non-virtual">Module_Tasks</derivedcompoundref>
+    <derivedcompoundref refid="classModule__Timeline" prot="public" virt="non-virtual">Module_Timeline</derivedcompoundref>
+    <derivedcompoundref refid="classModule__Unittests" prot="public" virt="non-virtual">Module_Unittests</derivedcompoundref>
+    <derivedcompoundref refid="classOffice__DbModule" prot="public" virt="non-virtual">Office_DbModule</derivedcompoundref>
+    <derivedcompoundref refid="classOffice__DefaultModule" prot="public" virt="non-virtual">Office_DefaultModule</derivedcompoundref>
+    <derivedcompoundref refid="classOffice__Module" prot="public" virt="non-virtual">Office_Module</derivedcompoundref>
+    <derivedcompoundref refid="classOffice__UserModule" prot="public" virt="non-virtual">Office_UserModule</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classModule_18fcea0413f2ce2330ce1caee3b402793" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>Module::$view</definition>
+        <argsstring></argsstring>
+        <name>$view</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>Module::$_cachedData</definition>
+        <argsstring></argsstring>
+        <name>$_cachedData</name>
+        <initializer> null</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classModule_1fb5a30157dc39cc7e2815762dc35c637" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>Module::$currentAction</definition>
+        <argsstring></argsstring>
+        <name>$currentAction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classModule_11f340a9923a318b188ea067b7bf26212" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>Module::$_lastOutput</definition>
+        <argsstring></argsstring>
+        <name>$_lastOutput</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classModule_18310718a3c5f5ff47c21b48f50755007" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::__construct</definition>
+        <argsstring>($modulename)</argsstring>
+        <name>__construct</name>
+        <param>
+          <type>$</type>
+          <declname>modulename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="29" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1ff6e240b933eb0dcbb55f273aac7cc83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::getView</definition>
+        <argsstring>()</argsstring>
+        <name>getView</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="35" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_139f14fce23d978b5b07dfaf83bcbc81c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::setParams</definition>
+        <argsstring>($params)</argsstring>
+        <name>setParams</name>
+        <param>
+          <type>$</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="101" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="100" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_13e7bc964cf25db87bf1bc2ee6162c9dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::getParam</definition>
+        <argsstring>($value)</argsstring>
+        <name>getParam</name>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="108" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="107" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_187f45a5f261b2f8fccfc97b8520cc7f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::setParam</definition>
+        <argsstring>($var, $val)</argsstring>
+        <name>setParam</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="112" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="111" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1c8235aff050c4232294463308342a9dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::startView</definition>
+        <argsstring>()</argsstring>
+        <name>startView</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="116" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="115" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1f7aa0556e5f022f5b0d6114487c71dcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::getCurrentAction</definition>
+        <argsstring>()</argsstring>
+        <name>getCurrentAction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="124" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="123" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1636f68b35bc185c3c0820f0cb53af3dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::setCurrentAction</definition>
+        <argsstring>($action)</argsstring>
+        <name>setCurrentAction</name>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="129" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="128" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1bccd5b28d6faf039d5023cf4c46084ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::hasLayout</definition>
+        <argsstring>($val=null, $action= &apos;all&apos;)</argsstring>
+        <name>hasLayout</name>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+          <defval>&apos;all&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="133" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="132" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_108d00b116c73f8a92e1b67df52af249f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::executeAction</definition>
+        <argsstring>($action)</argsstring>
+        <name>executeAction</name>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="150" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="149" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_13375a0c3532bb803569c4f1e435b0451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::preExecuteAction</definition>
+        <argsstring>($action)</argsstring>
+        <name>preExecuteAction</name>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="198" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="197" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_12ac6dedff7d4abdad70006095af24e4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::postExecuteAction</definition>
+        <argsstring>($action)</argsstring>
+        <name>postExecuteAction</name>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="201" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="200" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_15d7cfcd8947ad3a681521889f1ae7630" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::getCacheId</definition>
+        <argsstring>($action)</argsstring>
+        <name>getCacheId</name>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="239" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="238" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1f2ede3f25557019c9afba79ed6fce913" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::setTemplate</definition>
+        <argsstring>($tpl)</argsstring>
+        <name>setTemplate</name>
+        <param>
+          <type>$</type>
+          <declname>tpl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="248" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="247" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_14f46e369445cbfc6c85d11418468f240" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::output</definition>
+        <argsstring>($template=null, $layout=null)</argsstring>
+        <name>output</name>
+        <param>
+          <type>$</type>
+          <declname>template</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>layout</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="252" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="251" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1b49e9e05ec35dcb3182fb9941f0af9f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::getRequest</definition>
+        <argsstring>()</argsstring>
+        <name>getRequest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TODO pouvoir r�cup�rer n&apos;importe quelle valeur de $_REQUEST </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="314" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="313" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1b1a8846c5d23fb071f406534bfbaf972" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::getRequestParam</definition>
+        <argsstring>($val)</argsstring>
+        <name>getRequestParam</name>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="318" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="317" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1be604b7ed3b29197186d3ae390774d75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::hasRequest</definition>
+        <argsstring>($val)</argsstring>
+        <name>hasRequest</name>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="323" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="322" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_189f3dd2fa37e8da929b595d22dadf05d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::assign</definition>
+        <argsstring>($var, $val)</argsstring>
+        <name>assign</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Proxy methods for the view </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="330" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="330" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1c2d4918600203743921591279cbc5c54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::append</definition>
+        <argsstring>($var, $val)</argsstring>
+        <name>append</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="333" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="333" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1ca667e6d9381302e8d202a1cdb5b75b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::assignRef</definition>
+        <argsstring>($var, &amp;$val)</argsstring>
+        <name>assignRef</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="336" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="336" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_173b1fdbbb8bb49890af5639176d7e95c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::forward</definition>
+        <argsstring>($module, $action)</argsstring>
+        <name>forward</name>
+        <param>
+          <type>$</type>
+          <declname>module</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="339" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="339" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_17ad501a557a7de4059fef01c69f32074" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::redirect</definition>
+        <argsstring>($modulaction, $vars=null, $lang=null, $secure=null)</argsstring>
+        <name>redirect</name>
+        <param>
+          <type>$</type>
+          <declname>modulaction</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>vars</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>secure</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="344" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="344" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1467577d7f70d3d08d8f3a5e9a7c6ae52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::createForm</definition>
+        <argsstring>($formName=&apos;&apos;, $method=&apos;post&apos;, $action=&apos;&apos;, $target=&apos;&apos;, $attributes=null, $trackSubmit=false)</argsstring>
+        <name>createForm</name>
+        <param>
+          <type>$</type>
+          <declname>formName</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>method</declname>
+          <defval>&apos;post&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>target</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>attributes</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>trackSubmit</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="370" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="369" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1d0205166181824bff103bce52afee990" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::isAjaxRequest</definition>
+        <argsstring>()</argsstring>
+        <name>isAjaxRequest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="376" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="376" bodyend="378"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classModule_122f0170f050d7918804113f9ff5e71c1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>static&amp; Module::factory</definition>
+        <argsstring>($modulename, $path=null, $params=null)</argsstring>
+        <name>factory</name>
+        <param>
+          <type>$</type>
+          <declname>modulename</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>path</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>params</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="38" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classModule_1fdadc52d1e8bf2ec2e5aa1eb679ddd9a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::generateOptions</definition>
+        <argsstring>()</argsstring>
+        <name>generateOptions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Getters / Setters </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="72" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="71" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule_1171631cc4b8f4d9c7920266e6743ece2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module::forceExecute</definition>
+        <argsstring>($action)</argsstring>
+        <name>forceExecute</name>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="209" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="208" bodyend="229"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="222">
+        <label>Module</label>
+      </node>
+      <node id="223">
+        <label>Module_Unittests</label>
+        <link refid="classModule__Unittests"/>
+        <childnode refid="222" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module.php" bodystart="24" bodyend="380"/>
+    <listofallmembers>
+      <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Module</scope><name>$_cachedData</name></member>
+      <member refid="classModule_11f340a9923a318b188ea067b7bf26212" prot="private" virt="non-virtual"><scope>Module</scope><name>$_lastOutput</name></member>
+      <member refid="classMaman_1e69647de8a274eae406840f35af22b70" prot="protected" virt="non-virtual"><scope>Module</scope><name>$config</name></member>
+      <member refid="classModule_1fb5a30157dc39cc7e2815762dc35c637" prot="public" virt="non-virtual"><scope>Module</scope><name>$currentAction</name></member>
+      <member refid="classModule_18fcea0413f2ce2330ce1caee3b402793" prot="protected" virt="non-virtual"><scope>Module</scope><name>$view</name></member>
+      <member refid="classModule_18310718a3c5f5ff47c21b48f50755007" prot="public" virt="non-virtual"><scope>Module</scope><name>__construct</name></member>
+      <member refid="classModule_1c2d4918600203743921591279cbc5c54" prot="public" virt="non-virtual"><scope>Module</scope><name>append</name></member>
+      <member refid="classModule_189f3dd2fa37e8da929b595d22dadf05d" prot="public" virt="non-virtual"><scope>Module</scope><name>assign</name></member>
+      <member refid="classModule_1ca667e6d9381302e8d202a1cdb5b75b5" prot="public" virt="non-virtual"><scope>Module</scope><name>assignRef</name></member>
+      <member refid="classModule_1467577d7f70d3d08d8f3a5e9a7c6ae52" prot="public" virt="non-virtual"><scope>Module</scope><name>createForm</name></member>
+      <member refid="classModule_108d00b116c73f8a92e1b67df52af249f" prot="public" virt="non-virtual"><scope>Module</scope><name>executeAction</name></member>
+      <member refid="classModule_122f0170f050d7918804113f9ff5e71c1" prot="public" virt="non-virtual"><scope>Module</scope><name>factory</name></member>
+      <member refid="classModule_1171631cc4b8f4d9c7920266e6743ece2" prot="protected" virt="non-virtual"><scope>Module</scope><name>forceExecute</name></member>
+      <member refid="classModule_173b1fdbbb8bb49890af5639176d7e95c" prot="public" virt="non-virtual"><scope>Module</scope><name>forward</name></member>
+      <member refid="classModule_1fdadc52d1e8bf2ec2e5aa1eb679ddd9a" prot="protected" virt="non-virtual"><scope>Module</scope><name>generateOptions</name></member>
+      <member refid="classMaman_1e3137d9634b06c493ad9626b558e851f" prot="public" virt="non-virtual"><scope>Module</scope><name>getAllConfig</name></member>
+      <member refid="classModule_15d7cfcd8947ad3a681521889f1ae7630" prot="public" virt="non-virtual"><scope>Module</scope><name>getCacheId</name></member>
+      <member refid="classMaman_1ef4fcde3f5213d79a16b471788934436" prot="public" virt="non-virtual"><scope>Module</scope><name>getConfig</name></member>
+      <member refid="classModule_1f7aa0556e5f022f5b0d6114487c71dcb" prot="public" virt="non-virtual"><scope>Module</scope><name>getCurrentAction</name></member>
+      <member refid="classModule_13e7bc964cf25db87bf1bc2ee6162c9dc" prot="public" virt="non-virtual"><scope>Module</scope><name>getParam</name></member>
+      <member refid="classModule_1b49e9e05ec35dcb3182fb9941f0af9f8" prot="public" virt="non-virtual"><scope>Module</scope><name>getRequest</name></member>
+      <member refid="classModule_1b1a8846c5d23fb071f406534bfbaf972" prot="public" virt="non-virtual"><scope>Module</scope><name>getRequestParam</name></member>
+      <member refid="classModule_1ff6e240b933eb0dcbb55f273aac7cc83" prot="public" virt="non-virtual"><scope>Module</scope><name>getView</name></member>
+      <member refid="classModule_1bccd5b28d6faf039d5023cf4c46084ab" prot="public" virt="non-virtual"><scope>Module</scope><name>hasLayout</name></member>
+      <member refid="classModule_1be604b7ed3b29197186d3ae390774d75" prot="public" virt="non-virtual"><scope>Module</scope><name>hasRequest</name></member>
+      <member refid="classModule_1d0205166181824bff103bce52afee990" prot="public" virt="non-virtual"><scope>Module</scope><name>isAjaxRequest</name></member>
+      <member refid="classModule_14f46e369445cbfc6c85d11418468f240" prot="public" virt="non-virtual"><scope>Module</scope><name>output</name></member>
+      <member refid="classModule_12ac6dedff7d4abdad70006095af24e4b" prot="public" virt="non-virtual"><scope>Module</scope><name>postExecuteAction</name></member>
+      <member refid="classModule_13375a0c3532bb803569c4f1e435b0451" prot="public" virt="non-virtual"><scope>Module</scope><name>preExecuteAction</name></member>
+      <member refid="classModule_17ad501a557a7de4059fef01c69f32074" prot="public" virt="non-virtual"><scope>Module</scope><name>redirect</name></member>
+      <member refid="classMaman_1fe5c4f994412b09a0f9c81f321f1fb0d" prot="public" virt="non-virtual"><scope>Module</scope><name>setConfig</name></member>
+      <member refid="classMaman_140fc78b70fd28c5dd4443c4980c0d537" prot="public" virt="non-virtual"><scope>Module</scope><name>setConfigValue</name></member>
+      <member refid="classModule_1636f68b35bc185c3c0820f0cb53af3dd" prot="public" virt="non-virtual"><scope>Module</scope><name>setCurrentAction</name></member>
+      <member refid="classModule_187f45a5f261b2f8fccfc97b8520cc7f1" prot="public" virt="non-virtual"><scope>Module</scope><name>setParam</name></member>
+      <member refid="classModule_139f14fce23d978b5b07dfaf83bcbc81c" prot="public" virt="non-virtual"><scope>Module</scope><name>setParams</name></member>
+      <member refid="classModule_1f2ede3f25557019c9afba79ed6fce913" prot="public" virt="non-virtual"><scope>Module</scope><name>setTemplate</name></member>
+      <member refid="classModule_1c8235aff050c4232294463308342a9dc" prot="public" virt="non-virtual"><scope>Module</scope><name>startView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

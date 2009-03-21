@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classAuthHelper" kind="class" prot="public">
+    <compoundname>AuthHelper</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classAuthHelper_1477e4c379e759e52ffabdc4e690a8fb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AuthHelper::getUserLevel</definition>
+        <argsstring>()</argsstring>
+        <name>getUserLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AuthHelper.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AuthHelper.php" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classAuthHelper_10390e5c42fe6f5cd583fa4898a95e011" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AuthHelper::initUserLevel</definition>
+        <argsstring>()</argsstring>
+        <name>initUserLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AuthHelper.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AuthHelper.php" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classAuthHelper_1ae21fea9d29cb6435cbd2e8f7321575c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AuthHelper::initUserPrivileges</definition>
+        <argsstring>()</argsstring>
+        <name>initUserPrivileges</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AuthHelper.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AuthHelper.php" bodystart="29" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AuthHelper.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AuthHelper.php" bodystart="22" bodyend="45"/>
+    <listofallmembers>
+      <member refid="classAuthHelper_1477e4c379e759e52ffabdc4e690a8fb1" prot="public" virt="non-virtual"><scope>AuthHelper</scope><name>getUserLevel</name></member>
+      <member refid="classAuthHelper_10390e5c42fe6f5cd583fa4898a95e011" prot="public" virt="non-virtual"><scope>AuthHelper</scope><name>initUserLevel</name></member>
+      <member refid="classAuthHelper_1ae21fea9d29cb6435cbd2e8f7321575c" prot="public" virt="non-virtual"><scope>AuthHelper</scope><name>initUserPrivileges</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

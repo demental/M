@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classModule__Default" kind="class" prot="public">
+    <compoundname>Module_Default</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classModule__Default_185f11c108f2499ae7ca525281b936f11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module_Default::getCacheId</definition>
+        <argsstring>($action)</argsstring>
+        <name>getCacheId</name>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.php" line="4" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.php" bodystart="3" bodyend="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule__Default_1513841256981503269c56621c30c630a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module_Default::preExecuteAction</definition>
+        <argsstring>($action)</argsstring>
+        <name>preExecuteAction</name>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.php" line="8" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.php" bodystart="7" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classModule__Default_157744fb9f336d56a3f33079f39996aae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Module_Default::doExecIndex</definition>
+        <argsstring>()</argsstring>
+        <name>doExecIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.php" line="12" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.php" bodystart="11" bodyend="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.php" line="2" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.php" bodystart="2" bodyend="15"/>
+    <listofallmembers>
+      <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Module_Default</scope><name>$_cachedData</name></member>
+      <member refid="classMaman_1e69647de8a274eae406840f35af22b70" prot="protected" virt="non-virtual"><scope>Module_Default</scope><name>$config</name></member>
+      <member refid="classModule_1fb5a30157dc39cc7e2815762dc35c637" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>$currentAction</name></member>
+      <member refid="classModule_18fcea0413f2ce2330ce1caee3b402793" prot="protected" virt="non-virtual"><scope>Module_Default</scope><name>$view</name></member>
+      <member refid="classModule_18310718a3c5f5ff47c21b48f50755007" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>__construct</name></member>
+      <member refid="classModule_1c2d4918600203743921591279cbc5c54" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>append</name></member>
+      <member refid="classModule_189f3dd2fa37e8da929b595d22dadf05d" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>assign</name></member>
+      <member refid="classModule_1ca667e6d9381302e8d202a1cdb5b75b5" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>assignRef</name></member>
+      <member refid="classModule_1467577d7f70d3d08d8f3a5e9a7c6ae52" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>createForm</name></member>
+      <member refid="classModule__Default_157744fb9f336d56a3f33079f39996aae" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>doExecIndex</name></member>
+      <member refid="classModule_108d00b116c73f8a92e1b67df52af249f" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>executeAction</name></member>
+      <member refid="classModule_122f0170f050d7918804113f9ff5e71c1" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>factory</name></member>
+      <member refid="classModule_1171631cc4b8f4d9c7920266e6743ece2" prot="protected" virt="non-virtual"><scope>Module_Default</scope><name>forceExecute</name></member>
+      <member refid="classModule_173b1fdbbb8bb49890af5639176d7e95c" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>forward</name></member>
+      <member refid="classModule_1fdadc52d1e8bf2ec2e5aa1eb679ddd9a" prot="protected" virt="non-virtual"><scope>Module_Default</scope><name>generateOptions</name></member>
+      <member refid="classMaman_1e3137d9634b06c493ad9626b558e851f" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>getAllConfig</name></member>
+      <member refid="classModule__Default_185f11c108f2499ae7ca525281b936f11" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>getCacheId</name></member>
+      <member refid="classMaman_1ef4fcde3f5213d79a16b471788934436" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>getConfig</name></member>
+      <member refid="classModule_1f7aa0556e5f022f5b0d6114487c71dcb" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>getCurrentAction</name></member>
+      <member refid="classModule_13e7bc964cf25db87bf1bc2ee6162c9dc" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>getParam</name></member>
+      <member refid="classModule_1b49e9e05ec35dcb3182fb9941f0af9f8" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>getRequest</name></member>
+      <member refid="classModule_1b1a8846c5d23fb071f406534bfbaf972" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>getRequestParam</name></member>
+      <member refid="classModule_1ff6e240b933eb0dcbb55f273aac7cc83" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>getView</name></member>
+      <member refid="classModule_1bccd5b28d6faf039d5023cf4c46084ab" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>hasLayout</name></member>
+      <member refid="classModule_1be604b7ed3b29197186d3ae390774d75" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>hasRequest</name></member>
+      <member refid="classModule_1d0205166181824bff103bce52afee990" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>isAjaxRequest</name></member>
+      <member refid="classModule_14f46e369445cbfc6c85d11418468f240" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>output</name></member>
+      <member refid="classModule_12ac6dedff7d4abdad70006095af24e4b" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>postExecuteAction</name></member>
+      <member refid="classModule__Default_1513841256981503269c56621c30c630a" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>preExecuteAction</name></member>
+      <member refid="classModule_17ad501a557a7de4059fef01c69f32074" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>redirect</name></member>
+      <member refid="classMaman_1fe5c4f994412b09a0f9c81f321f1fb0d" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>setConfig</name></member>
+      <member refid="classMaman_140fc78b70fd28c5dd4443c4980c0d537" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>setConfigValue</name></member>
+      <member refid="classModule_1636f68b35bc185c3c0820f0cb53af3dd" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>setCurrentAction</name></member>
+      <member refid="classModule_187f45a5f261b2f8fccfc97b8520cc7f1" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>setParam</name></member>
+      <member refid="classModule_139f14fce23d978b5b07dfaf83bcbc81c" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>setParams</name></member>
+      <member refid="classModule_1f2ede3f25557019c9afba79ed6fce913" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>setTemplate</name></member>
+      <member refid="classModule_1c8235aff050c4232294463308342a9dc" prot="public" virt="non-virtual"><scope>Module_Default</scope><name>startView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

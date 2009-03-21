@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_cc596ea6fa3de7fd8f6e0bf92455a9a1" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/skeleton/project/app/templates/</compoundname>
+    <innerdir refid="dir_5ef40ddcf0764eb2f2569b5db8d4e5f4">Documents/Taf/Eclipse/m4php5/skeleton/project/app/templates/default/</innerdir>
+    <innerfile refid="skeleton_2project_2app_2templates_2index_8php">index.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/templates/"/>
+  </compounddef>
+</doxygen>

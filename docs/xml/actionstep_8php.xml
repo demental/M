@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="actionstep_8php" kind="file">
+    <compoundname>actionstep.php</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="actionstep_8php_1d237f85c8754cecfcce31ecd5d0e4208" prot="public" static="no" mutable="no">
+        <type>&lt;/script &gt;</type>
+        <definition>&lt;/script&gt; $f</definition>
+        <argsstring></argsstring>
+        <name>$f</name>
+        <initializer> $this-&gt;rf($stepform,&apos;static&apos;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/actionstep.php" line="17" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/actionstep.php" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;script<sp/>type=</highlight><highlight class="stringliteral">&quot;text/javascript&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">$(function(){</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"><sp/><sp/>$(</highlight><highlight class="stringliteral">&apos;#next&apos;</highlight><highlight class="normal">).hide();</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/>resend<sp/>=<sp/>function(){</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>$(</highlight><highlight class="stringliteral">&apos;#actionparamsForm&apos;</highlight><highlight class="normal">).submit();</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>setTimeout(resend,&lt;?php<sp/>echo<sp/>$timeout?&gt;);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">});</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">&lt;/script&gt;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">&lt;?php<sp/>$f<sp/>=<sp/>$this-&gt;rf($stepform,</highlight><highlight class="stringliteral">&apos;static&apos;</highlight><highlight class="normal">)?&gt;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">&lt;h3&gt;&lt;?php<sp/>echo<sp/>$actionName?&gt;<sp/>-<sp/>traitement<sp/>par<sp/>lot&lt;/h3&gt;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">&lt;form<sp/>&lt;?php<sp/>echo<sp/>$f[&apos;attributes&apos;]?&gt;&gt;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/>&lt;?php<sp/>echo<sp/>$f[</highlight><highlight class="stringliteral">&apos;hidden&apos;</highlight><highlight class="normal">]?&gt;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>&lt;input<sp/>type=</highlight><highlight class="stringliteral">&quot;hidden&quot;</highlight><highlight class="normal"><sp/>name=</highlight><highlight class="stringliteral">&quot;__start&quot;</highlight><highlight class="normal"><sp/>value=</highlight><highlight class="stringliteral">&quot;&lt;?php<sp/>echo<sp/>$start?&gt;&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">&lt;div<sp/>style=</highlight><highlight class="stringliteral">&quot;width:100%;border:1px<sp/>solid<sp/>#000;padding:2px&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>&lt;div<sp/>style=</highlight><highlight class="stringliteral">&quot;width:&lt;?php<sp/>echo<sp/>$start*100/$total?&gt;%;background:#449&quot;</highlight><highlight class="normal">&gt;&amp;nbsp;&lt;/div&gt;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">&lt;/div&gt;<sp/><sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">&lt;?php<sp/>echo<sp/>$start?&gt;<sp/>/<sp/>&lt;?php<sp/>echo<sp/>$total?&gt;.</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">&lt;/p&gt;&lt;?php<sp/>$remaining=($timeout+2)*(($total-$start)/$step)?&gt;Temps<sp/>restant<sp/>estimé<sp/>:<sp/>&lt;?php<sp/>echo<sp/>round($remaining/60)?&gt;<sp/>m<sp/>&lt;?php<sp/>echo<sp/>$remaining%60?&gt;<sp/>s&lt;/p&gt;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">&lt;?php<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">($timeout):?&gt;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">&lt;p&gt;Cette<sp/>page<sp/>se<sp/>rafraîchit<sp/>automatiquement<sp/>toutes<sp/>les<sp/>&lt;?php<sp/>echo<sp/>$timeout/1000?&gt;<sp/>secondes...&lt;/p&gt;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">&lt;?php<sp/>endif?&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">&lt;?php<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">($remaining&gt;100):?&gt;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>&lt;p&gt;Vous<sp/>pouvez<sp/>continuer<sp/>à<sp/>travailler<sp/>en<sp/>&lt;a<sp/>href=</highlight><highlight class="stringliteral">&quot;&lt;?php<sp/>echo<sp/>M_Office_Util::getQueryParams(array(),array(&apos;glaction&apos;,&apos;step&apos;,&apos;__start&apos;,&apos;doaction&apos;,&apos;dosingleaction&apos;))?&gt;&quot;</highlight><highlight class="normal"><sp/>target=</highlight><highlight class="stringliteral">&quot;_blank&quot;</highlight><highlight class="normal">&gt;cliquant<sp/>ce<sp/>lien&lt;/a&gt;<sp/>(ouvre<sp/>l</highlight><highlight class="stringliteral">&apos;office<sp/>dans<sp/>une<sp/>nouvelle<sp/>fenêtre)&lt;/p&gt;</highlight></codeline>
+<codeline lineno="26"><highlight class="stringliteral">&lt;?php<sp/>endif?&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="28"><highlight class="stringliteral">&lt;input<sp/>type=&quot;submit&quot;<sp/>id=&quot;next&quot;<sp/>value=&quot;Suivants&quot;<sp/>/&gt;</highlight></codeline>
+<codeline lineno="29"><highlight class="stringliteral">&lt;/form&gt;</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/actionstep.php"/>
+  </compounddef>
+</doxygen>

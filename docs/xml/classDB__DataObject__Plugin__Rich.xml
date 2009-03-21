@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classDB__DataObject__Plugin__Rich" kind="class" prot="public">
+    <compoundname>DB_DataObject_Plugin_Rich</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">DB_DataObject_Plugin</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classDB__DataObject__Plugin__Rich_1bb54f675d8f166630875861098a6a387" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DB_DataObject_Plugin_Rich::$plugin_name</definition>
+        <argsstring></argsstring>
+        <name>$plugin_name</name>
+        <initializer>&apos;rich&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/Rich.php" line="10" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/Rich.php" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDB__DataObject__Plugin__Rich_1262c2d9c737bc6698c4fe3ae4f3f641f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DB_DataObject_Plugin_Rich::$_dataObject</definition>
+        <argsstring></argsstring>
+        <name>$_dataObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/Rich.php" line="11" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/Rich.php" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDB__DataObject__Plugin__Rich_16241a49c030c84f81a4a6d5b099e209a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_Rich::preGenerateForm</definition>
+        <argsstring>(&amp;$fb, &amp;$obj)</argsstring>
+        <name>preGenerateForm</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>fb</declname>
+        </param>
+        <param>
+          <type>&amp;$</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/Rich.php" line="14" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/Rich.php" bodystart="13" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Plugin__Rich_1242899f63ebe06ba1fed8ff726a34b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Plugin_Rich::parseJSOptions</definition>
+        <argsstring>($opt)</argsstring>
+        <name>parseJSOptions</name>
+        <param>
+          <type>$</type>
+          <declname>opt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/Rich.php" line="34" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/Rich.php" bodystart="34" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/Rich.php" line="9" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/Rich.php" bodystart="8" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classDB__DataObject__Plugin_1b30028754e407f2caeff81d156b2f47b" prot="protected" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>$_autoActions</name></member>
+      <member refid="classDB__DataObject__Plugin__Rich_1262c2d9c737bc6698c4fe3ae4f3f641f" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>$_dataObject</name></member>
+      <member refid="classDB__DataObject__Plugin__Rich_1bb54f675d8f166630875861098a6a387" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>$plugin_name</name></member>
+      <member refid="classDB__DataObject__Plugin_1cc736a1e7bd097a815ca456aed3d78f6" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>count</name></member>
+      <member refid="classDB__DataObject__Plugin_19d42b6fe75c2fa64137f1d41d2458835" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>dateOptions</name></member>
+      <member refid="classDB__DataObject__Plugin_1d15d096ebc68473d076c8b88186ea496" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>delete</name></member>
+      <member refid="classDB__DataObject__Plugin_1d701abe5cbdc92d966b955c1d55eac21" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>find</name></member>
+      <member refid="classDB__DataObject__Plugin_1e0bca6c11f7028a1d394e01896e774dc" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>getBatchMethods</name></member>
+      <member refid="classDB__DataObject__Plugin_169a97ea47c95e7161407f7023a67d23b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>getGlobalMethods</name></member>
+      <member refid="classDB__DataObject__Plugin_166b0104606d75feb8f3e4037f75398e4" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>getSingleMethods</name></member>
+      <member refid="classDB__DataObject__Plugin_17231c8dfa2987d86f815dd7fcab9bec9" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>insert</name></member>
+      <member refid="classDB__DataObject__Plugin__Rich_1242899f63ebe06ba1fed8ff726a34b9c" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>parseJSOptions</name></member>
+      <member refid="classDB__DataObject__Plugin_1610dada38d8945fe72515ea5e14c38c3" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>postdelete</name></member>
+      <member refid="classDB__DataObject__Plugin_1e4511ca36e6e4a193d382c49ee4acb73" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>postfetch</name></member>
+      <member refid="classDB__DataObject__Plugin_14b4d5d4b6a8add8441eabc09bc6a09b6" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>postGenerateForm</name></member>
+      <member refid="classDB__DataObject__Plugin_12a15f2cf3c3ecadf43483753d1eae9d7" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>postinsert</name></member>
+      <member refid="classDB__DataObject__Plugin_1a162d3bafaa1423190febaf5fc65f58d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>postProcessForm</name></member>
+      <member refid="classDB__DataObject__Plugin_1ec8d44e4b84173253a132c9275fdf79d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>postupdate</name></member>
+      <member refid="classDB__DataObject__Plugin_14b32504f3cbb587770650f2682f1c18b" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>prefetch</name></member>
+      <member refid="classDB__DataObject__Plugin__Rich_16241a49c030c84f81a4a6d5b099e209a" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>preGenerateForm</name></member>
+      <member refid="classDB__DataObject__Plugin_14236f2c4121c4b1952e7df90f6b13c5d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>prepareLinkedDataObject</name></member>
+      <member refid="classDB__DataObject__Plugin_17738571e986441640460bb2629ee7e2d" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>preProcessForm</name></member>
+      <member refid="classDB__DataObject__Plugin_1d48b47ff4d710aad6c5d0e382e795068" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>register</name></member>
+      <member refid="classDB__DataObject__Plugin_1ac449449d30cd31f0eb9823d0e284d37" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>setAutoActions</name></member>
+      <member refid="classDB__DataObject__Plugin_12aafc8d11e50944c5494556fe005cbf1" prot="public" virt="non-virtual"><scope>DB_DataObject_Plugin_Rich</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

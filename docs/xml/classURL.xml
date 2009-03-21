@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classURL" kind="class" prot="public">
+    <compoundname>URL</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classURL_1ff5b5fa4e1f0a934b4d3a4d2214c214f" prot="public" static="yes" mutable="no">
+        <type>static</type>
+        <definition>URL::$method</definition>
+        <argsstring></argsstring>
+        <name>$method</name>
+        <initializer>&apos;old&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classURL_1b4ffc857b4616bcf069e4dc820cdbcc5" prot="public" static="yes" mutable="no">
+        <type>static</type>
+        <definition>URL::$bases</definition>
+        <argsstring></argsstring>
+        <name>$bases</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classURL_1004e194815ce8faebf22b827d49fed24" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static URL::setBases</definition>
+        <argsstring>($bases)</argsstring>
+        <name>setBases</name>
+        <param>
+          <type>$</type>
+          <declname>bases</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classURL_1a28cd20187cf4360ad2fd69252c9dbe5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static URL::getBases</definition>
+        <argsstring>()</argsstring>
+        <name>getBases</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classURL_1bde4621767be10575d4783f8c3ca162e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static URL::e</definition>
+        <argsstring>($route, $params=null, $lang=null, $isSecure=null)</argsstring>
+        <name>e</name>
+        <param>
+          <type>$</type>
+          <declname>route</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>params</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>isSecure</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classURL_110a7e5b49ccc59a4250f733e98271473" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static URL::ea</definition>
+        <argsstring>($route, $params=null, $lang=null)</argsstring>
+        <name>ea</name>
+        <param>
+          <type>$</type>
+          <declname>route</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>params</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="37" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classURL_12a9481364ac126789d0280ade787800a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static URL::get</definition>
+        <argsstring>($route, $params=null, $lang=null, $isSecure=null)</argsstring>
+        <name>get</name>
+        <param>
+          <type>$</type>
+          <declname>route</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>params</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>isSecure</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="41" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="40" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classURL_1fb15407a9c8a8efc89d2883a02b38ea6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static URL::getAnchor</definition>
+        <argsstring>($route, $params=null, $lang=null)</argsstring>
+        <name>getAnchor</name>
+        <param>
+          <type>$</type>
+          <declname>route</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>params</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="53" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="52" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classURL_13457069227a2821d8b49bc3b224c1564" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static URL::getOldAnchor</definition>
+        <argsstring>($route, $params=null, $lang=null)</argsstring>
+        <name>getOldAnchor</name>
+        <param>
+          <type>$</type>
+          <declname>route</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>params</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="70" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="69" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classURL_116dc97182f91da18b1145def35c1d6ae" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static URL::getFor</definition>
+        <argsstring>($lang)</argsstring>
+        <name>getFor</name>
+        <param>
+          <type>$</type>
+          <declname>lang</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="85" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="84" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classURL_100d3b654ec6c3deb7a9edbc4efd1568b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static URL::getself</definition>
+        <argsstring>()</argsstring>
+        <name>getself</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="93" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="92" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classURL_189ed19a0f67c9002d7d0c2f886cf949f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static URL::eself</definition>
+        <argsstring>()</argsstring>
+        <name>eself</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="97" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="96" bodyend="99"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/URL.php" bodystart="22" bodyend="100"/>
+    <listofallmembers>
+      <member refid="classURL_1b4ffc857b4616bcf069e4dc820cdbcc5" prot="public" virt="non-virtual"><scope>URL</scope><name>$bases</name></member>
+      <member refid="classURL_1ff5b5fa4e1f0a934b4d3a4d2214c214f" prot="public" virt="non-virtual"><scope>URL</scope><name>$method</name></member>
+      <member refid="classURL_1bde4621767be10575d4783f8c3ca162e" prot="public" virt="non-virtual"><scope>URL</scope><name>e</name></member>
+      <member refid="classURL_110a7e5b49ccc59a4250f733e98271473" prot="public" virt="non-virtual"><scope>URL</scope><name>ea</name></member>
+      <member refid="classURL_189ed19a0f67c9002d7d0c2f886cf949f" prot="public" virt="non-virtual"><scope>URL</scope><name>eself</name></member>
+      <member refid="classURL_12a9481364ac126789d0280ade787800a" prot="public" virt="non-virtual"><scope>URL</scope><name>get</name></member>
+      <member refid="classURL_1fb15407a9c8a8efc89d2883a02b38ea6" prot="public" virt="non-virtual"><scope>URL</scope><name>getAnchor</name></member>
+      <member refid="classURL_1a28cd20187cf4360ad2fd69252c9dbe5" prot="public" virt="non-virtual"><scope>URL</scope><name>getBases</name></member>
+      <member refid="classURL_116dc97182f91da18b1145def35c1d6ae" prot="public" virt="non-virtual"><scope>URL</scope><name>getFor</name></member>
+      <member refid="classURL_13457069227a2821d8b49bc3b224c1564" prot="public" virt="non-virtual"><scope>URL</scope><name>getOldAnchor</name></member>
+      <member refid="classURL_100d3b654ec6c3deb7a9edbc4efd1568b" prot="public" virt="non-virtual"><scope>URL</scope><name>getself</name></member>
+      <member refid="classURL_1004e194815ce8faebf22b827d49fed24" prot="public" virt="non-virtual"><scope>URL</scope><name>setBases</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

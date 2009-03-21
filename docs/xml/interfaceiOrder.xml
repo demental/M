@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="interfaceiOrder" kind="interface" prot="public">
+    <compoundname>iOrder</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interfaceiOrder_11821c88967f3490273509999b896b495" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>iOrder::getId</definition>
+        <argsstring>()</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/iOrder.php" line="21"/>
+      </memberdef>
+      <memberdef kind="function" id="interfaceiOrder_181dba8cbde2f320dfd91d28a616590d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>iOrder::retrieveById</definition>
+        <argsstring>($value)</argsstring>
+        <name>retrieveById</name>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/iOrder.php" line="22"/>
+      </memberdef>
+      <memberdef kind="function" id="interfaceiOrder_1ef8b255cb2140422eabb6117efac3ac5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>iOrder::success</definition>
+        <argsstring>($transcript)</argsstring>
+        <name>success</name>
+        <param>
+          <type>$</type>
+          <declname>transcript</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/iOrder.php" line="23"/>
+      </memberdef>
+      <memberdef kind="function" id="interfaceiOrder_1b7c3ae5add684adcfa3879db72a0e9eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>iOrder::error</definition>
+        <argsstring>($err_code)</argsstring>
+        <name>error</name>
+        <param>
+          <type>$</type>
+          <declname>err_code</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/iOrder.php" line="24"/>
+      </memberdef>
+      <memberdef kind="function" id="interfaceiOrder_1ae06f6c51e716551c6e2f642c37e30bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>iOrder::getAmount</definition>
+        <argsstring>()</argsstring>
+        <name>getAmount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/iOrder.php" line="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/iOrder.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/iOrder.php" bodystart="20" bodyend="26"/>
+    <listofallmembers>
+      <member refid="interfaceiOrder_1b7c3ae5add684adcfa3879db72a0e9eb" prot="public" virt="non-virtual"><scope>iOrder</scope><name>error</name></member>
+      <member refid="interfaceiOrder_1ae06f6c51e716551c6e2f642c37e30bb" prot="public" virt="non-virtual"><scope>iOrder</scope><name>getAmount</name></member>
+      <member refid="interfaceiOrder_11821c88967f3490273509999b896b495" prot="public" virt="non-virtual"><scope>iOrder</scope><name>getId</name></member>
+      <member refid="interfaceiOrder_181dba8cbde2f320dfd91d28a616590d8" prot="public" virt="non-virtual"><scope>iOrder</scope><name>retrieveById</name></member>
+      <member refid="interfaceiOrder_1ef8b255cb2140422eabb6117efac3ac5" prot="public" virt="non-virtual"><scope>iOrder</scope><name>success</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

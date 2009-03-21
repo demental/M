@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="M__Startup_8php" kind="file">
+    <compoundname>M_Startup.php</compoundname>
+    <innernamespace refid="namespaceM">M</innernamespace>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="M__Startup_8php_116d19f7d0b92eff90a73a3d2bea2bea5" prot="public" static="no">
+        <name>APP_ROOT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>app root detection (this file MUST be in the app root) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="M__Startup_8php_120dd412769e0754189f5ce036e857a37" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$paths</definition>
+        <argsstring></argsstring>
+        <name>$paths</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="19" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_1a7eec01f90eff35e543b0620f2d89485" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>if(is_array($paths))</definition>
+        <argsstring>(!$host)</argsstring>
+        <name>if</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Include host specific config file </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="31" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_13c8d4ffe6f54e1b8a568a3516593d8e2" prot="public" static="no" mutable="no">
+        <type>if(!defined(&apos;TMP_PATH&apos;))</type>
+        <definition>if (!defined(&apos;TMP_PATH&apos;)) $paths[]</definition>
+        <argsstring>[]</argsstring>
+        <name>$paths</name>
+        <initializer>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>add include_paths if provided in host config file </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="40" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_17fef1cb364d4fb76ac905a9b9fa60c68" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$opt</definition>
+        <argsstring></argsstring>
+        <name>$opt</name>
+        <initializer> &amp;PEAR::getStaticProperty(&apos;Module&apos;, &apos;global&apos;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="80" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_175b06421eec5677bfba732e1687477fd" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$opt[&apos;template_dir&apos;]</definition>
+        <argsstring>[&apos;template_dir&apos;]</argsstring>
+        <name>$opt</name>
+        <initializer> array(APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.&apos;templates&apos;.DIRECTORY_SEPARATOR)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="81" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_19d2d1351bef3dd2efd7b98835b58c0d1" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$opt[&apos;caching&apos;]</definition>
+        <argsstring>[&apos;caching&apos;]</argsstring>
+        <name>$opt</name>
+        <initializer> $caching</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="82" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_12e80eced4ae56e43fbd9cadf89f6b555" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$opt[&apos;cacheDir&apos;]</definition>
+        <argsstring>[&apos;cacheDir&apos;]</argsstring>
+        <name>$opt</name>
+        <initializer> APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.&apos;cache&apos;.DIRECTORY_SEPARATOR</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="83" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_13fac031b9ec8010575e3195ecc18702a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$opt[&apos;cacheTime&apos;]</definition>
+        <argsstring>[&apos;cacheTime&apos;]</argsstring>
+        <name>$opt</name>
+        <initializer> 7200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="84" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_18427716f86cda11896524184352717c4" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$dispatchopt</definition>
+        <argsstring></argsstring>
+        <name>$dispatchopt</name>
+        <initializer> &amp;PEAR::getStaticProperty(&apos;Dispatcher&apos;, &apos;global&apos;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="85" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_14efea2ea58072e0a5960411507cffaba" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$dispatchopt[&apos;all&apos;][&apos;loginmodule&apos;]</definition>
+        <argsstring>[&apos;all&apos;][&apos;loginmodule&apos;]</argsstring>
+        <name>$dispatchopt</name>
+        <initializer>&apos;user&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="86" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_1eb61f326898c3c878a60ebae08dfe7f5" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$dispatchopt[&apos;all&apos;][&apos;loginaction&apos;]</definition>
+        <argsstring>[&apos;all&apos;][&apos;loginaction&apos;]</argsstring>
+        <name>$dispatchopt</name>
+        <initializer>&apos;login&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="87" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_150407321e5087783b8bd28603bb8ab4c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$dispatchopt[&apos;all&apos;][&apos;modulepath&apos;]</definition>
+        <argsstring>[&apos;all&apos;][&apos;modulepath&apos;]</argsstring>
+        <name>$dispatchopt</name>
+        <initializer>array(&apos;modules&apos;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="88" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="M__Startup_8php_1f50a8fd8e98752ae9a55e4ac9b1be96e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$setup</definition>
+        <argsstring></argsstring>
+        <name>$setup</name>
+        <initializer> new M_setup()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TODO config &amp; setup : maybe we should rename them to pre-cache &amp; post-cache config ? </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" line="97" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">$paths<sp/>=<sp/>array();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">define<sp/>(</highlight><highlight class="stringliteral">&apos;APP_ROOT&apos;</highlight><highlight class="normal">,realpath(dirname(__FILE__)).</highlight><highlight class="charliteral">&apos;/&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!$host)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">$host<sp/>=<sp/>$_SERVER[</highlight><highlight class="stringliteral">&apos;HTTP_HOST&apos;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">include<sp/>APP_ROOT.</highlight><highlight class="stringliteral">&apos;/config.&apos;</highlight><highlight class="normal">.$host.</highlight><highlight class="stringliteral">&apos;.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!defined(</highlight><highlight class="stringliteral">&apos;TMP_PATH&apos;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>define(</highlight><highlight class="stringliteral">&apos;TMP_PATH&apos;</highlight><highlight class="normal">,APP_ROOT.</highlight><highlight class="stringliteral">&apos;temp/&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">$paths[]=APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(is_array($paths))<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>ini_set(</highlight><highlight class="stringliteral">&apos;include_path&apos;</highlight><highlight class="normal">,<sp/>ini_get(</highlight><highlight class="stringliteral">&apos;include_path&apos;</highlight><highlight class="normal">).</highlight><highlight class="charliteral">&apos;:&apos;</highlight><highlight class="normal">.implode(</highlight><highlight class="charliteral">&apos;:&apos;</highlight><highlight class="normal">,$paths));</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">require<sp/></highlight><highlight class="stringliteral">&apos;PEAR.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">require<sp/></highlight><highlight class="stringliteral">&apos;M/M_autoload.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="keywordflow">switch</highlight><highlight class="normal">(MODE)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&apos;development&apos;</highlight><highlight class="normal"><sp/>:</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ini_set(</highlight><highlight class="stringliteral">&apos;error_reporting&apos;</highlight><highlight class="normal">,E_ALL<sp/>^<sp/>E_NOTICE);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ini_set(</highlight><highlight class="stringliteral">&apos;display_errors&apos;</highlight><highlight class="normal">,1);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>$caching=</highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&apos;test&apos;</highlight><highlight class="normal"><sp/>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ini_set(</highlight><highlight class="stringliteral">&apos;error_reporting&apos;</highlight><highlight class="normal">,E_ALL<sp/>^<sp/>E_NOTICE);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ini_set(</highlight><highlight class="stringliteral">&apos;display_errors&apos;</highlight><highlight class="normal">,1);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>$caching=</highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&apos;production&apos;</highlight><highlight class="normal"><sp/>:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ini_set(</highlight><highlight class="stringliteral">&apos;error_reporting&apos;</highlight><highlight class="normal">,E_ALL<sp/>^<sp/>E_NOTICE);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ini_set(</highlight><highlight class="stringliteral">&apos;display_errors&apos;</highlight><highlight class="normal">,0);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>$caching=</highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">T::setConfig(array(</highlight><highlight class="stringliteral">&apos;path&apos;</highlight><highlight class="normal">=&gt;APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.</highlight><highlight class="stringliteral">&apos;lang/&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;encoding&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;utf-8&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;saveresult&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;cacheDir&apos;</highlight><highlight class="normal">=&gt;APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.</highlight><highlight class="stringliteral">&apos;cache/&apos;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TODO<sp/>define<sp/>a<sp/>default<sp/>lang,<sp/>not<sp/>french<sp/>hardcoded</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">$opt<sp/>=<sp/>&amp;PEAR::getStaticProperty(</highlight><highlight class="stringliteral">&apos;Module&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;global&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">$opt[</highlight><highlight class="stringliteral">&apos;template_dir&apos;</highlight><highlight class="normal">]<sp/>=<sp/>array(APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.</highlight><highlight class="stringliteral">&apos;templates&apos;</highlight><highlight class="normal">.DIRECTORY_SEPARATOR);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">$opt[</highlight><highlight class="stringliteral">&apos;caching&apos;</highlight><highlight class="normal">]<sp/>=<sp/>$caching;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">$opt[</highlight><highlight class="stringliteral">&apos;cacheDir&apos;</highlight><highlight class="normal">]<sp/>=<sp/>APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.</highlight><highlight class="stringliteral">&apos;cache&apos;</highlight><highlight class="normal">.DIRECTORY_SEPARATOR;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">$opt[</highlight><highlight class="stringliteral">&apos;cacheTime&apos;</highlight><highlight class="normal">]<sp/>=<sp/>7200;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">$dispatchopt<sp/>=<sp/>&amp;PEAR::getStaticProperty(</highlight><highlight class="stringliteral">&apos;Dispatcher&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;global&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">$dispatchopt[</highlight><highlight class="stringliteral">&apos;all&apos;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&apos;loginmodule&apos;</highlight><highlight class="normal">]=</highlight><highlight class="stringliteral">&apos;user&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">$dispatchopt[</highlight><highlight class="stringliteral">&apos;all&apos;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&apos;loginaction&apos;</highlight><highlight class="normal">]=</highlight><highlight class="stringliteral">&apos;login&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">$dispatchopt[</highlight><highlight class="stringliteral">&apos;all&apos;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&apos;modulepath&apos;</highlight><highlight class="normal">]=array(</highlight><highlight class="stringliteral">&apos;modules&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">include<sp/>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.</highlight><highlight class="stringliteral">&apos;config.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">include<sp/>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.</highlight><highlight class="stringliteral">&apos;config.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">include<sp/>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.</highlight><highlight class="stringliteral">&apos;setup.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">$setup<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>M_setup();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">Mreg::set(</highlight><highlight class="stringliteral">&apos;setup&apos;</highlight><highlight class="normal">,$setup);</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/M_Startup.php"/>
+  </compounddef>
+</doxygen>

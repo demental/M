@@ -1,0 +1,433 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classMail" kind="class" prot="public">
+    <compoundname>Mail</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Maman</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classMail_1bc7253c1149e8d184d8d12f433c0ca30" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>Mail::$template</definition>
+        <argsstring></argsstring>
+        <name>$template</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMail_1bf77f4cc959a3eef9ea9f6e7fc3fc8c2" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>Mail::$_attachments</definition>
+        <argsstring></argsstring>
+        <name>$_attachments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMail_145ebd68beef47454795f84ecf70e3b7f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>Mail::$view</definition>
+        <argsstring></argsstring>
+        <name>$view</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMail_15ff6d9e1cce5cfb2a6791caf22e4ebea" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>Mail::$from</definition>
+        <argsstring></argsstring>
+        <name>$from</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMail_1229357e183ba349cba045f22fa053999" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>Mail::$to</definition>
+        <argsstring></argsstring>
+        <name>$to</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMail_1a5f231a848f2ccebb489d067a3df64d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::__construct</definition>
+        <argsstring>($config)</argsstring>
+        <name>__construct</name>
+        <param>
+          <type>$</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="28" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_1a549ce1e7def00b0879bcaf3b8855e4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::addFile</definition>
+        <argsstring>($filepath)</argsstring>
+        <name>addFile</name>
+        <param>
+          <type>$</type>
+          <declname>filepath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="34" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_1d6c0374d8c7e8652abe5ab62ba66e43c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::setVars</definition>
+        <argsstring>($vars)</argsstring>
+        <name>setVars</name>
+        <param>
+          <type>$</type>
+          <declname>vars</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="37" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="37" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_1a3b066baef0428c4647d53adcc4f7db1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::assign</definition>
+        <argsstring>($var, $val)</argsstring>
+        <name>assign</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_1ba85602bb95d1882d965bda635ef6ffe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::append</definition>
+        <argsstring>($var, $val)</argsstring>
+        <name>append</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="50" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="49" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_1b346333471800d919fcf8723a92cf2f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::setTemplate</definition>
+        <argsstring>($tpl)</argsstring>
+        <name>setTemplate</name>
+        <param>
+          <type>$</type>
+          <declname>tpl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="54" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="54" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_18b994926a2e68fcd287af87072b9206b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::sendToAdmin</definition>
+        <argsstring>()</argsstring>
+        <name>sendToAdmin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="66" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="65" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_1e589342450d2ef29194a98d78aa8aa21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::getSubject</definition>
+        <argsstring>()</argsstring>
+        <name>getSubject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="70" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="69" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_1369216eb8e8fdfbceb2f4d5285c715dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::getAltbody</definition>
+        <argsstring>()</argsstring>
+        <name>getAltbody</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="78" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="77" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_10b2b69dcc89ad08a475e7a53911b8dbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::getBody</definition>
+        <argsstring>()</argsstring>
+        <name>getBody</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="86" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="85" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_1a8546c9659939683d8fe174190a8e374" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::fetch</definition>
+        <argsstring>()</argsstring>
+        <name>fetch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="94" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="93" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_11a876548e9e9a29126959597a21e7c4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::sendTo</definition>
+        <argsstring>($mail)</argsstring>
+        <name>sendTo</name>
+        <param>
+          <type>$</type>
+          <declname>mail</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="105" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="104" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_17cc8cfd426c352b3f61d0c792551481f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::rawsend</definition>
+        <argsstring>($from, $to, $subject, $htmlbody, $altbody=null, $options=null, $attachments=null, $html=false)</argsstring>
+        <name>rawsend</name>
+        <param>
+          <type>$</type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>to</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>subject</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>htmlbody</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>altbody</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>options</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>attachments</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>html</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="132" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="131" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classMail_154871f85d58e55c51c7791b7770c9b53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::getContents</definition>
+        <argsstring>()</argsstring>
+        <name>getContents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="136" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="135" bodyend="144"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classMail_1add43d8b5b8631aa3822123ea4ab201f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>static&amp; Mail::factory</definition>
+        <argsstring>($template)</argsstring>
+        <name>factory</name>
+        <param>
+          <type>$</type>
+          <declname>template</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="58" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="57" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classMail_1928b3ea2fb81af1bba94f508af42501b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mail::_sendmail</definition>
+        <argsstring>($from, $to, $subject, $body, $altbody=null, $options=null, $attachments=null, $html=false)</argsstring>
+        <name>_sendmail</name>
+        <param>
+          <type>$</type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>to</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>subject</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>body</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>altbody</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>options</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>attachments</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>html</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>Enregistrement en logfile </para>        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="145" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="145" bodyend="215"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mail.php" bodystart="22" bodyend="216"/>
+    <listofallmembers>
+      <member refid="classMail_1bf77f4cc959a3eef9ea9f6e7fc3fc8c2" prot="public" virt="non-virtual"><scope>Mail</scope><name>$_attachments</name></member>
+      <member refid="classMaman_1e69647de8a274eae406840f35af22b70" prot="protected" virt="non-virtual"><scope>Mail</scope><name>$config</name></member>
+      <member refid="classMail_15ff6d9e1cce5cfb2a6791caf22e4ebea" prot="public" virt="non-virtual"><scope>Mail</scope><name>$from</name></member>
+      <member refid="classMail_1bc7253c1149e8d184d8d12f433c0ca30" prot="public" virt="non-virtual"><scope>Mail</scope><name>$template</name></member>
+      <member refid="classMail_1229357e183ba349cba045f22fa053999" prot="public" virt="non-virtual"><scope>Mail</scope><name>$to</name></member>
+      <member refid="classMail_145ebd68beef47454795f84ecf70e3b7f" prot="public" virt="non-virtual"><scope>Mail</scope><name>$view</name></member>
+      <member refid="classMail_1a5f231a848f2ccebb489d067a3df64d4" prot="public" virt="non-virtual"><scope>Mail</scope><name>__construct</name></member>
+      <member refid="classMail_1928b3ea2fb81af1bba94f508af42501b" prot="private" virt="non-virtual"><scope>Mail</scope><name>_sendmail</name></member>
+      <member refid="classMail_1a549ce1e7def00b0879bcaf3b8855e4a" prot="public" virt="non-virtual"><scope>Mail</scope><name>addFile</name></member>
+      <member refid="classMail_1ba85602bb95d1882d965bda635ef6ffe" prot="public" virt="non-virtual"><scope>Mail</scope><name>append</name></member>
+      <member refid="classMail_1a3b066baef0428c4647d53adcc4f7db1" prot="public" virt="non-virtual"><scope>Mail</scope><name>assign</name></member>
+      <member refid="classMail_1add43d8b5b8631aa3822123ea4ab201f" prot="public" virt="non-virtual"><scope>Mail</scope><name>factory</name></member>
+      <member refid="classMail_1a8546c9659939683d8fe174190a8e374" prot="public" virt="non-virtual"><scope>Mail</scope><name>fetch</name></member>
+      <member refid="classMaman_1e3137d9634b06c493ad9626b558e851f" prot="public" virt="non-virtual"><scope>Mail</scope><name>getAllConfig</name></member>
+      <member refid="classMail_1369216eb8e8fdfbceb2f4d5285c715dc" prot="public" virt="non-virtual"><scope>Mail</scope><name>getAltbody</name></member>
+      <member refid="classMail_10b2b69dcc89ad08a475e7a53911b8dbf" prot="public" virt="non-virtual"><scope>Mail</scope><name>getBody</name></member>
+      <member refid="classMaman_1ef4fcde3f5213d79a16b471788934436" prot="public" virt="non-virtual"><scope>Mail</scope><name>getConfig</name></member>
+      <member refid="classMail_154871f85d58e55c51c7791b7770c9b53" prot="public" virt="non-virtual"><scope>Mail</scope><name>getContents</name></member>
+      <member refid="classMail_1e589342450d2ef29194a98d78aa8aa21" prot="public" virt="non-virtual"><scope>Mail</scope><name>getSubject</name></member>
+      <member refid="classMail_17cc8cfd426c352b3f61d0c792551481f" prot="public" virt="non-virtual"><scope>Mail</scope><name>rawsend</name></member>
+      <member refid="classMail_11a876548e9e9a29126959597a21e7c4a" prot="public" virt="non-virtual"><scope>Mail</scope><name>sendTo</name></member>
+      <member refid="classMail_18b994926a2e68fcd287af87072b9206b" prot="public" virt="non-virtual"><scope>Mail</scope><name>sendToAdmin</name></member>
+      <member refid="classMaman_1fe5c4f994412b09a0f9c81f321f1fb0d" prot="public" virt="non-virtual"><scope>Mail</scope><name>setConfig</name></member>
+      <member refid="classMaman_140fc78b70fd28c5dd4443c4980c0d537" prot="public" virt="non-virtual"><scope>Mail</scope><name>setConfigValue</name></member>
+      <member refid="classMail_1b346333471800d919fcf8723a92cf2f3" prot="public" virt="non-virtual"><scope>Mail</scope><name>setTemplate</name></member>
+      <member refid="classMail_1d6c0374d8c7e8652abe5ab62ba66e43c" prot="public" virt="non-virtual"><scope>Mail</scope><name>setVars</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

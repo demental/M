@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="actions_8php" kind="file">
+    <compoundname>actions.php</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal">&lt;?php<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">($edit):?&gt;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"><sp/><sp/>&lt;td&gt;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;a<sp/>href=</highlight><highlight class="stringliteral">&quot;&lt;?php<sp/>echo<sp/>M_Office_Util::getQueryParams(array(&apos;record&apos;<sp/>=&gt;<sp/>$do-&gt;$pk))?&gt;&quot;</highlight><highlight class="normal">&gt;Modifier&lt;/a&gt;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/>&lt;/td&gt;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">&lt;?php<sp/>endif?&gt;</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/listview/dopaging/actions.php"/>
+  </compounddef>
+</doxygen>

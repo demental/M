@@ -1,19 +1,4 @@
 <?php
-//
-// +--------------------------------------------------------------------+
-// | M PHP Framework                                                    |
-// +--------------------------------------------------------------------+
-// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
-// | Web           http://m4php5.googlecode.com/                        |
-// | License       GNU Lesser General Public License (LGPL)             |
-// +--------------------------------------------------------------------+
-// | This library is free software; you can redistribute it and/or      |
-// | modify it under the terms of the GNU Lesser General Public         |
-// | License as published by the Free Software Foundation; either       |
-// | version 2.1 of the License, or (at your option) any later version. |
-// +--------------------------------------------------------------------+
-//
-
 /**
 * M PHP Framework
 * @package      M
@@ -89,7 +74,7 @@ class Module extends Maman {
     $options = array(
         'caching' =>(MODE=='developpement'?false:true),
         'cacheDir' => $opt['all']['cacheDir'].'/config/',
-        'lifeTime' => 72000,//TODO affiner ça...
+        'lifeTime' => 72000,//TODO affiner ï¿½a...
         'fileNameProtection'=>false,
         'automaticSerialization'=>true
     );
@@ -273,7 +258,7 @@ class Module extends Maman {
 
 		$a=$this->_lastOutput->getCurrentAction();
 
-		// Le fichier de template de l'action est-il celui par défaut (nom_de_l_action.tpl) ou a-t-il été spécifié
+		// Le fichier de template de l'action est-il celui par dï¿½faut (nom_de_l_action.tpl) ou a-t-il ï¿½tï¿½ spï¿½cifiï¿½
 		// dans la configuration du module ?
     if(is_null($template)) {
   		$template = $this->_lastOutput->getConfig('template',$a)?
@@ -287,7 +272,7 @@ class Module extends Maman {
     if(!is_array($template)) {
       $template = array($template);
     }
-		// Le fichier de template englobant est-il celui par défaut (index.tpl) ou a-t-il été spécifié
+		// Le fichier de template englobant est-il celui par dï¿½faut (index.tpl) ou a-t-il ï¿½tï¿½ spï¿½cifiï¿½
 		// dans la configuration du module ?
     if(is_null($layout)) {
 		$layout = $this->_lastOutput->getConfig('layout',$a)?
@@ -296,7 +281,7 @@ class Module extends Maman {
     }						
         Log::info('Setting layout '.$layout.' for module '.get_class($this->_lastOutput));
 
-		// Si on veut afficher uniquement le template de l'action, sans aucun layout on utilise le mot clé __self dans le 
+		// Si on veut afficher uniquement le template de l'action, sans aucun layout on utilise le mot clï¿½ __self dans le 
 		// fichier de configuration du module
     if($this->isAjaxRequest()) {
       $layout='__self';
@@ -310,7 +295,7 @@ class Module extends Maman {
             $ret = $this->_lastOutput->view->fetch($template);
 
 		} else {
-		// Sinon c'est que le layout possède une variable $__action qui est utilisé pour inclure le template de l'action 	
+		// Sinon c'est que le layout possï¿½de une variable $__action qui est utilisï¿½ pour inclure le template de l'action 	
             Log::info('Decorate module '.get_class($this->_lastOutput).' with '.$layout);
 
 			$this->_lastOutput->view->assign("__action", $template);
@@ -323,7 +308,7 @@ class Module extends Maman {
     return $ret;
   }
   /**
-   * TODO pouvoir récupérer n'importe quelle valeur de $_REQUEST
+   * TODO pouvoir rï¿½cupï¿½rer n'importe quelle valeur de $_REQUEST
    **/
   public function getRequest()
   {

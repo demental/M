@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_34d916cc175ef5ae8e3665075341f3e9" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/</compoundname>
+    <innerfile refid="phpmailer_8lang-ar_8php">phpmailer.lang-ar.php</innerfile>
+    <innerfile refid="phpmailer_8lang-br_8php">phpmailer.lang-br.php</innerfile>
+    <innerfile refid="phpmailer_8lang-ca_8php">phpmailer.lang-ca.php</innerfile>
+    <innerfile refid="phpmailer_8lang-ch_8php">phpmailer.lang-ch.php</innerfile>
+    <innerfile refid="phpmailer_8lang-cz_8php">phpmailer.lang-cz.php</innerfile>
+    <innerfile refid="phpmailer_8lang-de_8php">phpmailer.lang-de.php</innerfile>
+    <innerfile refid="phpmailer_8lang-dk_8php">phpmailer.lang-dk.php</innerfile>
+    <innerfile refid="phpmailer_8lang-en_8php">phpmailer.lang-en.php</innerfile>
+    <innerfile refid="phpmailer_8lang-es_8php">phpmailer.lang-es.php</innerfile>
+    <innerfile refid="phpmailer_8lang-et_8php">phpmailer.lang-et.php</innerfile>
+    <innerfile refid="phpmailer_8lang-fi_8php">phpmailer.lang-fi.php</innerfile>
+    <innerfile refid="phpmailer_8lang-fo_8php">phpmailer.lang-fo.php</innerfile>
+    <innerfile refid="phpmailer_8lang-fr_8php">phpmailer.lang-fr.php</innerfile>
+    <innerfile refid="phpmailer_8lang-hu_8php">phpmailer.lang-hu.php</innerfile>
+    <innerfile refid="phpmailer_8lang-it_8php">phpmailer.lang-it.php</innerfile>
+    <innerfile refid="phpmailer_8lang-ja_8php">phpmailer.lang-ja.php</innerfile>
+    <innerfile refid="phpmailer_8lang-nl_8php">phpmailer.lang-nl.php</innerfile>
+    <innerfile refid="phpmailer_8lang-no_8php">phpmailer.lang-no.php</innerfile>
+    <innerfile refid="phpmailer_8lang-pl_8php">phpmailer.lang-pl.php</innerfile>
+    <innerfile refid="phpmailer_8lang-ro_8php">phpmailer.lang-ro.php</innerfile>
+    <innerfile refid="phpmailer_8lang-ru_8php">phpmailer.lang-ru.php</innerfile>
+    <innerfile refid="phpmailer_8lang-se_8php">phpmailer.lang-se.php</innerfile>
+    <innerfile refid="phpmailer_8lang-tr_8php">phpmailer.lang-tr.php</innerfile>
+    <innerfile refid="phpmailer_8lang-zh_8php">phpmailer.lang-zh.php</innerfile>
+    <innerfile refid="phpmailer_8lang-zh__cn_8php">phpmailer.lang-zh_cn.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/"/>
+  </compounddef>
+</doxygen>

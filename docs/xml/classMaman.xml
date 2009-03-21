@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classMaman" kind="class" prot="public">
+    <compoundname>Maman</compoundname>
+    <derivedcompoundref refid="classDispatcher" prot="public" virt="non-virtual">Dispatcher</derivedcompoundref>
+    <derivedcompoundref refid="classMail" prot="public" virt="non-virtual">Mail</derivedcompoundref>
+    <derivedcompoundref refid="classModule" prot="public" virt="non-virtual">Module</derivedcompoundref>
+    <derivedcompoundref refid="classMPdf" prot="public" virt="non-virtual">MPdf</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classMaman_1e69647de8a274eae406840f35af22b70" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>Maman::$config</definition>
+        <argsstring></argsstring>
+        <name>$config</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMaman_1fe5c4f994412b09a0f9c81f321f1fb0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Maman::setConfig</definition>
+        <argsstring>($conf)</argsstring>
+        <name>setConfig</name>
+        <param>
+          <type>$</type>
+          <declname>conf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaman_140fc78b70fd28c5dd4443c4980c0d537" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Maman::setConfigValue</definition>
+        <argsstring>($key, $value, $action= &apos;all&apos;)</argsstring>
+        <name>setConfigValue</name>
+        <param>
+          <type>$</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+          <defval>&apos;all&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" line="31" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaman_1e3137d9634b06c493ad9626b558e851f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Maman::getAllConfig</definition>
+        <argsstring>()</argsstring>
+        <name>getAllConfig</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" line="34" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classMaman_1ef4fcde3f5213d79a16b471788934436" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Maman::getConfig</definition>
+        <argsstring>($value, $action= &apos;all&apos;, $default=false)</argsstring>
+        <name>getConfig</name>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>action</declname>
+          <defval>&apos;all&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>default</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" line="38" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" bodystart="37" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Maman.php" bodystart="22" bodyend="48"/>
+    <listofallmembers>
+      <member refid="classMaman_1e69647de8a274eae406840f35af22b70" prot="protected" virt="non-virtual"><scope>Maman</scope><name>$config</name></member>
+      <member refid="classMaman_1e3137d9634b06c493ad9626b558e851f" prot="public" virt="non-virtual"><scope>Maman</scope><name>getAllConfig</name></member>
+      <member refid="classMaman_1ef4fcde3f5213d79a16b471788934436" prot="public" virt="non-virtual"><scope>Maman</scope><name>getConfig</name></member>
+      <member refid="classMaman_1fe5c4f994412b09a0f9c81f321f1fb0d" prot="public" virt="non-virtual"><scope>Maman</scope><name>setConfig</name></member>
+      <member refid="classMaman_140fc78b70fd28c5dd4443c4980c0d537" prot="public" virt="non-virtual"><scope>Maman</scope><name>setConfigValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

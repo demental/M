@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classDataObjects__Vanillainnodb2" kind="class" prot="public">
+    <compoundname>DataObjects_Vanillainnodb2</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">DB_DataObject_Pluggable</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classDataObjects__Vanillainnodb2_1c01eebf38f7e85ed0e8db42da87f6c1d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DataObjects_Vanillainnodb2::$__table</definition>
+        <argsstring></argsstring>
+        <name>$__table</name>
+        <initializer> &apos;vanillainnodb2&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDataObjects__Vanillainnodb2_19c05c8befa864b322b21a1deb5bd9af7" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DataObjects_Vanillainnodb2::$id</definition>
+        <argsstring></argsstring>
+        <name>$id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="31" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDataObjects__Vanillainnodb2_1f7164a8490e6ea24ef59e3a49eb87e12" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DataObjects_Vanillainnodb2::$name</definition>
+        <argsstring></argsstring>
+        <name>$name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="32" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDataObjects__Vanillainnodb2_1458cf72c29e5f535f2ae554cad1b4469" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Vanillainnodb2::staticGet</definition>
+        <argsstring>($k, $v=NULL)</argsstring>
+        <name>staticGet</name>
+        <param>
+          <type>$</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>v</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="35" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Vanillainnodb2_1233d4af301246aadd66c5cca2312b517" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Vanillainnodb2::table</definition>
+        <argsstring>()</argsstring>
+        <name>table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="38" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="37" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Vanillainnodb2_146123904aeba41bc230d3e6f632b665c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Vanillainnodb2::keys</definition>
+        <argsstring>()</argsstring>
+        <name>keys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="46" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Vanillainnodb2_1c482e34e21641dc39528fc21a0c482ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Vanillainnodb2::sequenceKey</definition>
+        <argsstring>()</argsstring>
+        <name>sequenceKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="51" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Vanillainnodb2_1445d70ff411d8a5fa67cae0044f491d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Vanillainnodb2::defaults</definition>
+        <argsstring>()</argsstring>
+        <name>defaults</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="56" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="55" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Vanillainnodb2_132d627b9191e945cce97df81f314a254" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Vanillainnodb2::links</definition>
+        <argsstring>()</argsstring>
+        <name>links</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="62" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="62" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Vanillainnodb2_195f3c1a91edae3e9c204b2668e8c4894" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Vanillainnodb2::reverseLinks</definition>
+        <argsstring>()</argsstring>
+        <name>reverseLinks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="68" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="68" bodyend="73"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Table Definition for vanillainnodb2 </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Vanillainnodb2.php" bodystart="25" bodyend="76"/>
+    <listofallmembers>
+      <member refid="classDataObjects__Vanillainnodb2_1c01eebf38f7e85ed0e8db42da87f6c1d" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>$__table</name></member>
+      <member refid="classDB__DataObject__Pluggable_13e16752c01b1d43e2766b9dbb5338641" prot="protected" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>$_pluginInfos</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ff3aaf327756628fae1075f2d42fefcb" prot="protected" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>$_plugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_17aee5fcb3ddfb08fc3c2315f9ccc6859" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>$crossLinks_advmultiselect</name></member>
+      <member refid="classDB__DataObject__Pluggable_19cc270528d3d261a2fa3842c668745d8" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>$fb_dateFromDatabaseCallback</name></member>
+      <member refid="classDB__DataObject__Pluggable_11c5f374dea57dec323a426da50e2a1c9" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>$fb_linkNewValueText</name></member>
+      <member refid="classDB__DataObject__Pluggable_12a54a41217ee5d4ed023f0ac3f702a18" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>$fb_requiredRuleMessage</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ea65b104335f3fbd9cdcae5cb6706082" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>$fb_ruleViolationMessage</name></member>
+      <member refid="classDataObjects__Vanillainnodb2_19c05c8befa864b322b21a1deb5bd9af7" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>$id</name></member>
+      <member refid="classDataObjects__Vanillainnodb2_1f7164a8490e6ea24ef59e3a49eb87e12" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>$name</name></member>
+      <member refid="classDB__DataObject__Pluggable_15543fa82b2d5fe9756758c1136366c66" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>_executePlugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_15257fa8c7ea3112c90a54440b2419781" prot="protected" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>_getArrayFromPlugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_1c7592260b3c1bc04b9f2f726e892e1bd" prot="protected" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>_loadPlugin</name></member>
+      <member refid="classDB__DataObject__Pluggable_194d3e17ea0eb689c21254dbab863337f" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>_loadPlugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ef0747461b08d79d5af1ce9e9dff399a" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>begin</name></member>
+      <member refid="classDB__DataObject__Pluggable_146e8686d70be23f92a6769a331b5d5f4" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>commit</name></member>
+      <member refid="classDB__DataObject__Pluggable_173ec1cd514822938748aa939b6e41a47" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>count</name></member>
+      <member refid="classDB__DataObject__Iterator_1696aec6b2c3ee5548cd5c8f503645e22" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>current</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ed7906191ecc5834203a672f1cfa2ff6" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>dateOptions</name></member>
+      <member refid="classDataObjects__Vanillainnodb2_1445d70ff411d8a5fa67cae0044f491d6" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>defaults</name></member>
+      <member refid="classDB__DataObject__Pluggable_1418e017a803275ef4bab598f0f418657" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>delete</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ebf5de9c2874c703f305cca91c7278a7" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>deleteLinks</name></member>
+      <member refid="classDB__DataObject__Pluggable_17542b5f975a2fa1f3277220b88bb8ea7" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>fetch</name></member>
+      <member refid="classDB__DataObject__Pluggable_102ef3172eacf85b2259775f5218be313" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>find</name></member>
+      <member refid="classDB__DataObject__Pluggable_14ae6bca025c15944616797c590531931" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>get</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ccf7ff300a41f15c2e36062ab171e8de" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>getBatchMethods</name></member>
+      <member refid="classDB__DataObject__Pluggable_18f3082c12f0bdb4b953a99ef188e3464" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>getGlobalMethods</name></member>
+      <member refid="classDB__DataObject__Pluggable_1d7ebd6040145aea339c1bbc4d4118da0" prot="protected" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>getInstalledPlugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_1432ae13efa04df96c1a89f9105f18b21" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>getPlugin</name></member>
+      <member refid="classDB__DataObject__Pluggable_17e77a5a86c7f9dd19d3c46b8206a812a" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>getSingleMethods</name></member>
+      <member refid="classDB__DataObject__Pluggable_13c4e4caa5a081cd34084f01f976188e3" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>insert</name></member>
+      <member refid="classDB__DataObject__Pluggable_1b9f111e7ebd60fd1c47153c18c6989c2" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>isNew</name></member>
+      <member refid="classDB__DataObject__Pluggable_1352b0a90ef1e50ab3b8c5a3f89148e02" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>joinAdd</name></member>
+      <member refid="classDB__DataObject__Iterator_116d67712b408eb4314735180b0ed930c" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>key</name></member>
+      <member refid="classDataObjects__Vanillainnodb2_146123904aeba41bc230d3e6f632b665c" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>keys</name></member>
+      <member refid="classDataObjects__Vanillainnodb2_132d627b9191e945cce97df81f314a254" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>links</name></member>
+      <member refid="classDB__DataObject__Pluggable_1dc0b4033fa3aa48ac9b6654853f1fe11" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>loadPlugin</name></member>
+      <member refid="classDB__DataObject__Iterator_1ef1a0bfd34300895962d6c1271096f87" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>next</name></member>
+      <member refid="classDB__DataObject__Pluggable_1c98337a221447fc6b82fa70334e6dffc" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>pk</name></member>
+      <member refid="classDB__DataObject__Pluggable_1a4d1d475c484027de620fc7fd6c77a5f" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>postGenerateForm</name></member>
+      <member refid="classDB__DataObject__Pluggable_1c93c3515a20007621a8e54b49f8f5b28" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>postProcessForm</name></member>
+      <member refid="classDB__DataObject__Pluggable_1532ac226971e5d698f38e1e1674327ac" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>preGenerateForm</name></member>
+      <member refid="classDB__DataObject__Pluggable_1abe95804af6f33e04d1483c1a8696247" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>prepareLinkedDataObject</name></member>
+      <member refid="classDB__DataObject__Pluggable_1c3f5ba5a05743c5299cb9de5b607def5" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>preProcessForm</name></member>
+      <member refid="classDB__DataObject__Pluggable_1afcebc92a1400e2c7b0b81ea118ec4e7" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>query</name></member>
+      <member refid="classDataObjects__Vanillainnodb2_195f3c1a91edae3e9c204b2668e8c4894" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>reverseLinks</name></member>
+      <member refid="classDB__DataObject__Iterator_1405473dba57a336ff21a0feb53e00ffc" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>rewind</name></member>
+      <member refid="classDB__DataObject__Pluggable_135ede1e7b6f59101e388dcef8de31ff3" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>rollback</name></member>
+      <member refid="classDB__DataObject__Pluggable_16a5aa9c4d200fcc70b22e8f7500986ff" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>say</name></member>
+      <member refid="classDataObjects__Vanillainnodb2_1c482e34e21641dc39528fc21a0c482ed" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>sequenceKey</name></member>
+      <member refid="classDataObjects__Vanillainnodb2_1458cf72c29e5f535f2ae554cad1b4469" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>staticGet</name></member>
+      <member refid="classDataObjects__Vanillainnodb2_1233d4af301246aadd66c5cca2312b517" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>table</name></member>
+      <member refid="classDB__DataObject__Pluggable_13df1e6da22b063fe81fb2631f1514e82" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>unloadPlugin</name></member>
+      <member refid="classDB__DataObject__Pluggable_18687aeee278d158b705485b035395208" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>unloadPlugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_19b263a3f223430047b6a29b8e9dc0bc0" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>update</name></member>
+      <member refid="classDB__DataObject__Pluggable_1dc2fed7f1cd8f9ef51ff781f13e569c6" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>utf8_convert</name></member>
+      <member refid="classDB__DataObject__Iterator_1b77fde1e40e6cc9559e153b4eea6aecc" prot="public" virt="non-virtual"><scope>DataObjects_Vanillainnodb2</scope><name>valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

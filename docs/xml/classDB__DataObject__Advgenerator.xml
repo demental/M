@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classDB__DataObject__Advgenerator" kind="class" prot="public">
+    <compoundname>DB_DataObject_Advgenerator</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDB__DataObject__Advgenerator_1fe96b6a51f5a485b855f744177fd1adc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Advgenerator::derivedHookFunctions</definition>
+        <argsstring>($input=&quot;&quot;)</argsstring>
+        <name>derivedHookFunctions</name>
+        <param>
+          <type>$</type>
+          <declname>input</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" line="37" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" bodystart="36" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Advgenerator_1f474f761b6a1dfde13138d1ccbaa033f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Advgenerator::_getReverseIniLinks</definition>
+        <argsstring>($table)</argsstring>
+        <name>_getReverseIniLinks</name>
+        <param>
+          <type>$</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" line="82" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" bodystart="82" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Advgenerator_1682136d744a73cbfc4b750536a3edbea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Advgenerator::_getIniLinks</definition>
+        <argsstring>($table)</argsstring>
+        <name>_getIniLinks</name>
+        <param>
+          <type>$</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" line="105" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" bodystart="105" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Advgenerator_1b8f2ad277ccda9580a36d0e45cdcfbfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Advgenerator::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>start() Override original DB/DataObject/Generator.php start() method moving database routing to another method. This allows to use the generator just for retreiving tables used in the project : </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" line="162" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" bodystart="161" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Advgenerator_19b5e0216b00e5d45cfec3c34609869c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Advgenerator::getGenerators</definition>
+        <argsstring>()</argsstring>
+        <name>getGenerators</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generates an array of generators, one for each database in the project <simplesect kind="return"><para>array of DB_DataObject_Advgenerators </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" line="182" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" bodystart="181" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="classDB__DataObject__Advgenerator_18e7bb32d3a2793e9644a40e0fa1affab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DB_DataObject_Advgenerator::factory</definition>
+        <argsstring>($database, $databasename, $db_driver)</argsstring>
+        <name>factory</name>
+        <param>
+          <type>$</type>
+          <declname>database</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>databasename</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>db_driver</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>factory()  public <simplesect kind="return"><para>DB_DataObject_Advgenerator instance including tables list for $databasename </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" line="221" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" bodystart="220" bodyend="242"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/Advgenerator.php" bodystart="27" bodyend="243"/>
+    <listofallmembers>
+      <member refid="classDB__DataObject__Advgenerator_1682136d744a73cbfc4b750536a3edbea" prot="public" virt="non-virtual"><scope>DB_DataObject_Advgenerator</scope><name>_getIniLinks</name></member>
+      <member refid="classDB__DataObject__Advgenerator_1f474f761b6a1dfde13138d1ccbaa033f" prot="public" virt="non-virtual"><scope>DB_DataObject_Advgenerator</scope><name>_getReverseIniLinks</name></member>
+      <member refid="classDB__DataObject__Advgenerator_1fe96b6a51f5a485b855f744177fd1adc" prot="public" virt="non-virtual"><scope>DB_DataObject_Advgenerator</scope><name>derivedHookFunctions</name></member>
+      <member refid="classDB__DataObject__Advgenerator_18e7bb32d3a2793e9644a40e0fa1affab" prot="public" virt="non-virtual"><scope>DB_DataObject_Advgenerator</scope><name>factory</name></member>
+      <member refid="classDB__DataObject__Advgenerator_19b5e0216b00e5d45cfec3c34609869c1" prot="public" virt="non-virtual"><scope>DB_DataObject_Advgenerator</scope><name>getGenerators</name></member>
+      <member refid="classDB__DataObject__Advgenerator_1b8f2ad277ccda9580a36d0e45cdcfbfc" prot="public" virt="non-virtual"><scope>DB_DataObject_Advgenerator</scope><name>start</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_0a7759a6a165db9520cadcd456fbfc2f" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/DB/</compoundname>
+    <innerdir refid="dir_148ba79458ed9d0a5ffdbe59414da00f">Documents/Taf/Eclipse/m4php5/DB/DataObject/</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/"/>
+  </compounddef>
+</doxygen>

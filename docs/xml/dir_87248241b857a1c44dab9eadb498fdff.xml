@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_87248241b857a1c44dab9eadb498fdff" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/lib/cssmin/</compoundname>
+    <innerfile refid="cssmin_8php">cssmin.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/cssmin/"/>
+  </compounddef>
+</doxygen>

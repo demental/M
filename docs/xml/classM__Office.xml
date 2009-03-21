@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classM__Office" kind="class" prot="public">
+    <compoundname>M_Office</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">M_Office_Controller</basecompoundref>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classM__Office_1360479e3f702ec67df66634b09704136" prot="public" static="yes" mutable="no">
+        <type>static</type>
+        <definition>M_Office::$dsp</definition>
+        <argsstring></argsstring>
+        <name>$dsp</name>
+        <initializer>&apos;__defaut/index&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="48" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classM__Office_13ee403216b467b16b9ad85cc3a3a3cbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office::receiveMessage</definition>
+        <argsstring>($message, $type)</argsstring>
+        <name>receiveMessage</name>
+        <param>
+          <type>$</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="50" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="50" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office_1bbd98589449d7538cd4cbe22243e9632" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office::isAjaxRequest</definition>
+        <argsstring>()</argsstring>
+        <name>isAjaxRequest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="53" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office_1ff234549a8d30ba16a3903af4a32d9f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office::M_Office</definition>
+        <argsstring>($layout= &apos;main&apos;)</argsstring>
+        <name>M_Office</name>
+        <param>
+          <type>$</type>
+          <declname>layout</declname>
+          <defval>&apos;main&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="57" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="57" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office_1fbbef2484aadede4877662dc47984066" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office::display</definition>
+        <argsstring>()</argsstring>
+        <name>display</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="198" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="198" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classM__Office_1560d737dfc8a8ee8ff550c6ef979b81e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office::fetch</definition>
+        <argsstring>()</argsstring>
+        <name>fetch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="203" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="202" bodyend="220"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classM__Office_166fd01752efad071c40417853d664ecc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static M_Office::URL</definition>
+        <argsstring>($params=array(), $remove=array(), $entities=false)</argsstring>
+        <name>URL</name>
+        <param>
+          <type>$</type>
+          <declname>params</declname>
+          <defval>array()</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>remove</declname>
+          <defval>array()</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>entities</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="225" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="224" bodyend="235"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="47" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="47" bodyend="236"/>
+    <listofallmembers>
+      <member refid="classM__Office_1360479e3f702ec67df66634b09704136" prot="public" virt="non-virtual"><scope>M_Office</scope><name>$dsp</name></member>
+      <member refid="classM__Office__Controller_1a4a90f07fb33381fca03cca7b412db55" prot="public" virt="non-virtual"><scope>M_Office</scope><name>append</name></member>
+      <member refid="classM__Office__Controller_1f11d933d9f4d67d93d9b8326a2b85db6" prot="public" virt="non-virtual"><scope>M_Office</scope><name>assign</name></member>
+      <member refid="classM__Office__Controller_127c79cb134a42ac9c2ec915e5b91359f" prot="public" virt="non-virtual"><scope>M_Office</scope><name>assignRef</name></member>
+      <member refid="classM__Office_1fbbef2484aadede4877662dc47984066" prot="public" virt="non-virtual"><scope>M_Office</scope><name>display</name></member>
+      <member refid="classM__Office_1560d737dfc8a8ee8ff550c6ef979b81e" prot="public" virt="non-virtual"><scope>M_Office</scope><name>fetch</name></member>
+      <member refid="classM__Office__Controller_1a52303627d8f415934b4db6ab7723fe3" prot="public" virt="non-virtual"><scope>M_Office</scope><name>getGlobalOption</name></member>
+      <member refid="classM__Office__Controller_1a7ac5810b8015712aac1b8b66e680fad" prot="public" virt="non-virtual"><scope>M_Office</scope><name>getOption</name></member>
+      <member refid="classM__Office__Controller_1cbbaed7c9a2c47ce979bd52e4b019dc7" prot="public" virt="non-virtual"><scope>M_Office</scope><name>getOptions</name></member>
+      <member refid="classM__Office__Controller_10803407224fc2153a12768c0cb79edd5" prot="public" virt="non-virtual"><scope>M_Office</scope><name>grabOption</name></member>
+      <member refid="classM__Office__Controller_12bef2759f9e78d4adf0e6a0617d4187f" prot="public" virt="non-virtual"><scope>M_Office</scope><name>hasOutput</name></member>
+      <member refid="classM__Office_1bbd98589449d7538cd4cbe22243e9632" prot="public" virt="non-virtual"><scope>M_Office</scope><name>isAjaxRequest</name></member>
+      <member refid="classM__Office_1ff234549a8d30ba16a3903af4a32d9f1" prot="public" virt="non-virtual"><scope>M_Office</scope><name>M_Office</name></member>
+      <member refid="classM__Office__Controller_113e065b883d6faaa09f65ea4af2e3cfd" prot="public" virt="non-virtual"><scope>M_Office</scope><name>M_Office_Controller</name></member>
+      <member refid="classM__Office_13ee403216b467b16b9ad85cc3a3a3cbc" prot="public" virt="non-virtual"><scope>M_Office</scope><name>receiveMessage</name></member>
+      <member refid="classM__Office__Controller_1a1a2f2b3632977ce654283c0882119bc" prot="public" virt="non-virtual"><scope>M_Office</scope><name>say</name></member>
+      <member refid="classM__Office__Controller_1625d7ee1493381537bd397f33913e0d4" prot="public" virt="non-virtual"><scope>M_Office</scope><name>tplInstance</name></member>
+      <member refid="classM__Office_166fd01752efad071c40417853d664ecc" prot="public" virt="non-virtual"><scope>M_Office</scope><name>URL</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

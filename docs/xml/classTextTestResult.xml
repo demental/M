@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classTextTestResult" kind="class" prot="public">
+    <compoundname>TextTestResult</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">TestResult</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTextTestResult_17496d86526a7d21286aeecdcf6cf2458" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TextTestResult::TextTestResult</definition>
+        <argsstring>()</argsstring>
+        <name>TextTestResult</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="326" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="326" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="classTextTestResult_167960fe8ee4d64c8a420389e63ddcbee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TextTestResult::report</definition>
+        <argsstring>()</argsstring>
+        <name>report</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="330" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="330" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classTextTestResult_14cfd7a4d75be7f677a0d9dc7700ec5f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TextTestResult::_startTest</definition>
+        <argsstring>($test)</argsstring>
+        <name>_startTest</name>
+        <param>
+          <type>$</type>
+          <declname>test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="354" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="354" bodyend="357"/>
+      </memberdef>
+      <memberdef kind="function" id="classTextTestResult_15ed7376543c7e4fea7748050cd4ab425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TextTestResult::_endTest</definition>
+        <argsstring>($test)</argsstring>
+        <name>_endTest</name>
+        <param>
+          <type>$</type>
+          <declname>test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="359" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="359" bodyend="365"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="324" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="324" bodyend="366"/>
+    <listofallmembers>
+      <member refid="classTestResult_1ccd5600735a8ecdf30a3d5af6b02de61" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>$fFailures</name></member>
+      <member refid="classTestResult_122620d669b77c275b8bdc99a01f30542" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>$fRunTests</name></member>
+      <member refid="classTestResult_1251e0575749e3d6ff55ecba83755592d" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>$fStop</name></member>
+      <member refid="classTextTestResult_15ed7376543c7e4fea7748050cd4ab425" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>_endTest</name></member>
+      <member refid="classTextTestResult_14cfd7a4d75be7f677a0d9dc7700ec5f9" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>_startTest</name></member>
+      <member refid="classTestResult_101cd16af79d8ce4bb407796754cc1724" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>countFailures</name></member>
+      <member refid="classTestResult_12635b7b7000c948fa915e27375c62d6e" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>countTests</name></member>
+      <member refid="classTestResult_19d2db6fd7ce626b1b2593d6e2e935c03" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>getFailures</name></member>
+      <member refid="classTextTestResult_167960fe8ee4d64c8a420389e63ddcbee" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>report</name></member>
+      <member refid="classTestResult_16ff0bb9641e00523cac8155b41a8762e" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>run</name></member>
+      <member refid="classTestResult_17929290fbf3ffcdfd912c545bb3ac36d" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>shouldStop</name></member>
+      <member refid="classTestResult_1af12ffd960880e398165105fd03f324f" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>stop</name></member>
+      <member refid="classTestResult_1f77fa5c098e06de9a1dd456169a6b329" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>TestResult</name></member>
+      <member refid="classTextTestResult_17496d86526a7d21286aeecdcf6cf2458" prot="public" virt="non-virtual"><scope>TextTestResult</scope><name>TextTestResult</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

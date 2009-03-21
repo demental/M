@@ -1,0 +1,107 @@
+.TH "Calc" 3 "21 Mar 2009" "Version 0.1" "m4php5" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Calc \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBHT2TTC\fP ($price, $vat)"
+.br
+.ti -1c
+.RI "static \fBTTC2HT\fP ($price, $vat)"
+.br
+.ti -1c
+.RI "static \fBmoney\fP ($value, $currency='EUR')"
+.br
+.ti -1c
+.RI "static \fBprorata\fP ($date)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Calculation related static methods (Mostly money) 
+.SH "Member Function Documentation"
+.PP 
+.SS "static Calc::HT2TTC ($ price, $ vat)\fC [static]\fP"
+.PP
+Convert Tax free to VAT amount.
+.PP
+public 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfloat\fP $price Input price 
+.br
+\fIfloat\fP $vat VAT Value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Amount Amount included VAT 
+.RE
+.PP
+
+.SS "static Calc::TTC2HT ($ price, $ vat)\fC [static]\fP"
+.PP
+Convert VAT amount to Tax free amount.
+.PP
+public 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfloat\fP $price Input price 
+.br
+\fIfloat\fP $vat VAT Value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Amount Amount excluded VAT 
+.RE
+.PP
+
+.SS "static Calc::money ($ value, $ currency = \fC'EUR'\fP)\fC [static]\fP"
+.PP
+Return formatted amount with currency.
+.PP
+public 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfloat\fP $value Input price 
+.br
+\fIstring\fP $currency Currency 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+string Formatted string 
+.RE
+.PP
+
+.SS "static Calc::prorata ($ date)\fC [static]\fP"
+.PP
+Return ratio to calculate prorata amount from start date until month end date.
+.PP
+public 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdate\fP $date Start date (eg: 20090301) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+float $ratio Ratio 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for m4php5 from the source code.

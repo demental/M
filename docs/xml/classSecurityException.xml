@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classSecurityException" kind="class" prot="public">
+    <compoundname>SecurityException</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSecurityException_11ad97c0c3e30ecde5e131b201f421c2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SecurityException::getError</definition>
+        <argsstring>()</argsstring>
+        <name>getError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Exception/SecurityException.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Exception/SecurityException.php" bodystart="21" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Exception/SecurityException.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Exception/SecurityException.php" bodystart="20" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classSecurityException_11ad97c0c3e30ecde5e131b201f421c2f" prot="public" virt="non-virtual"><scope>SecurityException</scope><name>getError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classError404Exception" kind="class" prot="public">
+    <compoundname>Error404Exception</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classError404Exception_1b1f554544302a979d90e08f068d15662" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Error404Exception::getError</definition>
+        <argsstring>()</argsstring>
+        <name>getError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Exception/Error404Exception.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Exception/Error404Exception.php" bodystart="21" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Exception/Error404Exception.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Exception/Error404Exception.php" bodystart="20" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classError404Exception_1b1f554544302a979d90e08f068d15662" prot="public" virt="non-virtual"><scope>Error404Exception</scope><name>getError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

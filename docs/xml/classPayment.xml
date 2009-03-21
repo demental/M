@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classPayment" kind="class" prot="public">
+    <compoundname>Payment</compoundname>
+    <derivedcompoundref refid="classPayment__Driver__SIPS" prot="public" virt="non-virtual">Payment_Driver_SIPS</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPayment_196badf20dc0ade274c1598da65efb328" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; Payment::factory</definition>
+        <argsstring>($type=&apos;request&apos;, $driver=&apos;SIPS&apos;)</argsstring>
+        <name>factory</name>
+        <param>
+          <type>$</type>
+          <declname>type</declname>
+          <defval>&apos;request&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>driver</declname>
+          <defval>&apos;SIPS&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="21" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment_13cc3f87dfe3377c879bc65c1a0295ba8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment::getOption</definition>
+        <argsstring>($value)</argsstring>
+        <name>getOption</name>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment_1996b9f044efc6833daf58c90870057c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment::setOption</definition>
+        <argsstring>($var, $val)</argsstring>
+        <name>setOption</name>
+        <param>
+          <type>$</type>
+          <declname>var</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment_15e6f0c6cb2f7209dd5c3a5320028da3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment::fetch</definition>
+        <argsstring>()</argsstring>
+        <name>fetch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment_115885c293947fc05175053f62363bd9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment::getResponse</definition>
+        <argsstring>()</argsstring>
+        <name>getResponse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment_1351ef0a20c5baa0f6213c1ef07514f81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment::getTransactionId</definition>
+        <argsstring>()</argsstring>
+        <name>getTransactionId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="43" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment_1bac27ae63bdbc842a1ced8ddfe5c3317" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment::setTransactionId</definition>
+        <argsstring>($id)</argsstring>
+        <name>setTransactionId</name>
+        <param>
+          <type>$</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="46" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="46" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment_1264116c90c038523310074bffb9b1a15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; Payment::getOrder</definition>
+        <argsstring>()</argsstring>
+        <name>getOrder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="49" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="49" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment_1709aad7f27f2b4a2c9b3ed4fa15c91a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment::getTranscript</definition>
+        <argsstring>()</argsstring>
+        <name>getTranscript</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="57" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classPayment_18f3fd882e967b694cc207596af7b7312" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Payment::logError</definition>
+        <argsstring>()</argsstring>
+        <name>logError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="60" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="60" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="20" bodyend="66"/>
+    <listofallmembers>
+      <member refid="classPayment_196badf20dc0ade274c1598da65efb328" prot="public" virt="non-virtual"><scope>Payment</scope><name>factory</name></member>
+      <member refid="classPayment_15e6f0c6cb2f7209dd5c3a5320028da3e" prot="public" virt="non-virtual"><scope>Payment</scope><name>fetch</name></member>
+      <member refid="classPayment_13cc3f87dfe3377c879bc65c1a0295ba8" prot="public" virt="non-virtual"><scope>Payment</scope><name>getOption</name></member>
+      <member refid="classPayment_1264116c90c038523310074bffb9b1a15" prot="public" virt="non-virtual"><scope>Payment</scope><name>getOrder</name></member>
+      <member refid="classPayment_115885c293947fc05175053f62363bd9c" prot="public" virt="non-virtual"><scope>Payment</scope><name>getResponse</name></member>
+      <member refid="classPayment_1351ef0a20c5baa0f6213c1ef07514f81" prot="public" virt="non-virtual"><scope>Payment</scope><name>getTransactionId</name></member>
+      <member refid="classPayment_1709aad7f27f2b4a2c9b3ed4fa15c91a9" prot="public" virt="non-virtual"><scope>Payment</scope><name>getTranscript</name></member>
+      <member refid="classPayment_18f3fd882e967b694cc207596af7b7312" prot="public" virt="non-virtual"><scope>Payment</scope><name>logError</name></member>
+      <member refid="classPayment_1996b9f044efc6833daf58c90870057c2" prot="public" virt="non-virtual"><scope>Payment</scope><name>setOption</name></member>
+      <member refid="classPayment_1bac27ae63bdbc842a1ced8ddfe5c3317" prot="public" virt="non-virtual"><scope>Payment</scope><name>setTransactionId</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

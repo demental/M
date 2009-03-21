@@ -1,0 +1,2193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classPHPMailer" kind="class" prot="public">
+    <compoundname>PHPMailer</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPHPMailer_14b25b31326864ecfd89865021595d14c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Priority</definition>
+        <argsstring></argsstring>
+        <name>$Priority</name>
+        <initializer> 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_189bc16ad4e86bf04d0a38779f239d08d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$CharSet</definition>
+        <argsstring></argsstring>
+        <name>$CharSet</name>
+        <initializer> &apos;iso-8859-1&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="51" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1886fb2b5374dfdbdce9efdaff842c2a2" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$ContentType</definition>
+        <argsstring></argsstring>
+        <name>$ContentType</name>
+        <initializer> &apos;text/plain&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="57" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1dbefcf8fbeb0bad68e2f87f889a6937f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Encoding</definition>
+        <argsstring></argsstring>
+        <name>$Encoding</name>
+        <initializer> &apos;8bit&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="64" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_19e523ba9e3cfcaf1f54569a9e4a29c73" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$ErrorInfo</definition>
+        <argsstring></argsstring>
+        <name>$ErrorInfo</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="70" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1487a2ed6abdc3474c5e6526d4bd37dd9" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$From</definition>
+        <argsstring></argsstring>
+        <name>$From</name>
+        <initializer> &apos;root@localhost&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="76" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1331a07d4f29ee939024b69c07f83188d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$FromName</definition>
+        <argsstring></argsstring>
+        <name>$FromName</name>
+        <initializer> &apos;Root User&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="82" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1feb96ec21062655663877de7bdcfe4b5" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Sender</definition>
+        <argsstring></argsstring>
+        <name>$Sender</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="89" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1720bc605963a617253bf0773b6ffafbf" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Subject</definition>
+        <argsstring></argsstring>
+        <name>$Subject</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="95" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_155ee46413a3783fceaa4cc301dc362a4" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Body</definition>
+        <argsstring></argsstring>
+        <name>$Body</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="102" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1f38d9cfaa22f3a246c3168184c3858aa" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$AltBody</definition>
+        <argsstring></argsstring>
+        <name>$AltBody</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="111" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_19ea7fd1e74ce459204bd25ab10aa4800" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$WordWrap</definition>
+        <argsstring></argsstring>
+        <name>$WordWrap</name>
+        <initializer> 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="118" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1b7b493935220dbd0643bfccbe9fa898f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Mailer</definition>
+        <argsstring></argsstring>
+        <name>$Mailer</name>
+        <initializer> &apos;mail&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="124" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1389a13126ef669fbc0fa29e9182b2b88" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Sendmail</definition>
+        <argsstring></argsstring>
+        <name>$Sendmail</name>
+        <initializer> &apos;/usr/sbin/sendmail&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="130" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_125dc51236eaeba43c2661197b2fdecca" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$PluginDir</definition>
+        <argsstring></argsstring>
+        <name>$PluginDir</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="137" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_150e20d60ee564b2e0e09774b0f0c4ee4" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Version</definition>
+        <argsstring></argsstring>
+        <name>$Version</name>
+        <initializer> &quot;2.3&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="143" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1ef7e191f4c673b49c378fe9005333277" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$ConfirmReadingTo</definition>
+        <argsstring></argsstring>
+        <name>$ConfirmReadingTo</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="149" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_152a56734c1c555e576f3fcdd3f3214fa" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Hostname</definition>
+        <argsstring></argsstring>
+        <name>$Hostname</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="157" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1e8903e0c049d9c21fe218a5610f8e66e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$MessageID</definition>
+        <argsstring></argsstring>
+        <name>$MessageID</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="164" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1201d861b4e284bd9bc580e90922f1a2b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Host</definition>
+        <argsstring></argsstring>
+        <name>$Host</name>
+        <initializer> &apos;localhost&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="178" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1ecad460b067a209821f1b0fc3492aa0c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Port</definition>
+        <argsstring></argsstring>
+        <name>$Port</name>
+        <initializer> 25</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="184" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1efc737f24d6dc6bdd13019297762c8e3" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Helo</definition>
+        <argsstring></argsstring>
+        <name>$Helo</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="190" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_157744693d505d8c945c667fec9e65555" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$SMTPSecure</definition>
+        <argsstring></argsstring>
+        <name>$SMTPSecure</name>
+        <initializer> &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="197" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_11e41f01702afcf903f409c2a8c1eb1c0" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$SMTPAuth</definition>
+        <argsstring></argsstring>
+        <name>$SMTPAuth</name>
+        <initializer> false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="203" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1111a9831009cde61ec90b2f702d91f8c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Username</definition>
+        <argsstring></argsstring>
+        <name>$Username</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="209" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_142bef0c65cf4248312aebc7d6cf05dc7" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Password</definition>
+        <argsstring></argsstring>
+        <name>$Password</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="215" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1ffe70c58cb6adb734a41f8eb2a2e58b9" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$Timeout</definition>
+        <argsstring></argsstring>
+        <name>$Timeout</name>
+        <initializer> 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="222" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1edc42401affee6e0e8b205f3c50d5f17" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$SMTPDebug</definition>
+        <argsstring></argsstring>
+        <name>$SMTPDebug</name>
+        <initializer> false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="228" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1bcf46a6c16b46fc88f401a7e9acfbb43" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$SMTPKeepAlive</definition>
+        <argsstring></argsstring>
+        <name>$SMTPKeepAlive</name>
+        <initializer> false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="236" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1e467a7f9d8bbb478bd0ea7a8b9bb512b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$SingleTo</definition>
+        <argsstring></argsstring>
+        <name>$SingleTo</name>
+        <initializer> false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="243" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1b0c4941bda43ab5a330a712d036c7ae5" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$LE</definition>
+        <argsstring></argsstring>
+        <name>$LE</name>
+        <initializer> &quot;\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="249" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPHPMailer_1785ebe388dfcd1a76d445df09b6be3d6" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$smtp</definition>
+        <argsstring></argsstring>
+        <name>$smtp</name>
+        <initializer> NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="255" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1fa095cad0712f480475cea3a1b9a498e" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$to</definition>
+        <argsstring></argsstring>
+        <name>$to</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="256" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1ab84d69e0d9f30d16c7c895f40c02383" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$cc</definition>
+        <argsstring></argsstring>
+        <name>$cc</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="257" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_147faeb7fa77389aeec99d8dbeb1be106" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$bcc</definition>
+        <argsstring></argsstring>
+        <name>$bcc</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="258" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1ff7bfc1ad6c3e1e95d0caa6ecf7bfc25" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$ReplyTo</definition>
+        <argsstring></argsstring>
+        <name>$ReplyTo</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="259" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_11091c5222df6cf187eb290afc409b283" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$attachment</definition>
+        <argsstring></argsstring>
+        <name>$attachment</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="260" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_13aa8045c1da6dfea6b846fa02d0a35c8" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$CustomHeader</definition>
+        <argsstring></argsstring>
+        <name>$CustomHeader</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="261" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_119a75d8b3e63eb58f9a4a2b31c81ab6b" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$message_type</definition>
+        <argsstring></argsstring>
+        <name>$message_type</name>
+        <initializer> &apos;&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="262" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_16e9b4fea689f43dc24f94bd1cd643de3" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$boundary</definition>
+        <argsstring></argsstring>
+        <name>$boundary</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="263" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1a6a0ec99ebdf7280f6565369d4d291b7" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$language</definition>
+        <argsstring></argsstring>
+        <name>$language</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="264" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1581edb1dbc5a192fb34ef01957932e9a" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$error_count</definition>
+        <argsstring></argsstring>
+        <name>$error_count</name>
+        <initializer> 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="265" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1a4f22631c7d466a80d08378f5674d95a" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$sign_cert_file</definition>
+        <argsstring></argsstring>
+        <name>$sign_cert_file</name>
+        <initializer> &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="266" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_1c11e24b257bd1cc7f6833cab0df1def6" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$sign_key_file</definition>
+        <argsstring></argsstring>
+        <name>$sign_key_file</name>
+        <initializer> &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="267" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPHPMailer_15af85c6201ec258cfe5ff15d13699fcf" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>PHPMailer::$sign_key_pass</definition>
+        <argsstring></argsstring>
+        <name>$sign_key_pass</name>
+        <initializer> &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="268" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPHPMailer_1b95a726f1d9782d560ec16d2f4307586" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::IsHTML</definition>
+        <argsstring>($bool)</argsstring>
+        <name>IsHTML</name>
+        <param>
+          <type>$</type>
+          <declname>bool</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets message type to HTML. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bool</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$bool </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="279" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="279" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1cba6e87e0af0baa5bda1026a4e99e236" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::IsSMTP</definition>
+        <argsstring>()</argsstring>
+        <name>IsSMTP</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets Mailer to send message using SMTP. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="291" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="291" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_16c4e6445c6f12b87462cf9ab63239c1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::IsMail</definition>
+        <argsstring>()</argsstring>
+        <name>IsMail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets Mailer to send message using PHP mail() function. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="299" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="299" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_17cdd2b399559d7b36f0259c8f7924b07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::IsSendmail</definition>
+        <argsstring>()</argsstring>
+        <name>IsSendmail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets Mailer to send message using the $Sendmail program. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="307" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="307" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_17c2d3d01329eaa84d9da0b9490351030" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::IsQmail</definition>
+        <argsstring>()</argsstring>
+        <name>IsQmail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets Mailer to send message using the qmail MTA. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="315" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="315" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1278520a47bb3d7387ff259464d94be21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AddAddress</definition>
+        <argsstring>($address, $name= &apos;&apos;)</argsstring>
+        <name>AddAddress</name>
+        <param>
+          <type>$</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>name</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a &quot;To&quot; address. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="330" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="330" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_13a68f4df5277a7332fc498b205045616" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AddCC</definition>
+        <argsstring>($address, $name= &apos;&apos;)</argsstring>
+        <name>AddCC</name>
+        <param>
+          <type>$</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>name</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a &quot;Cc&quot; address. Note: this function works with the SMTP mailer on win32, not with the &quot;mail&quot; mailer. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="344" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="344" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_15d2d5f530005db5329912a5ffc9bffdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AddBCC</definition>
+        <argsstring>($address, $name= &apos;&apos;)</argsstring>
+        <name>AddBCC</name>
+        <param>
+          <type>$</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>name</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a &quot;Bcc&quot; address. Note: this function works with the SMTP mailer on win32, not with the &quot;mail&quot; mailer. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="358" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="358" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1a19b774f8f3eacf0af5aca25f5509b24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AddReplyTo</definition>
+        <argsstring>($address, $name= &apos;&apos;)</argsstring>
+        <name>AddReplyTo</name>
+        <param>
+          <type>$</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>name</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a &quot;Reply-to&quot; address. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="370" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="370" bodyend="374"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1675cc2f9ff744a7819e62ebbd76a2ce1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::Send</definition>
+        <argsstring>()</argsstring>
+        <name>Send</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates message and assigns Mailer. If the message is not sent successfully then it returns false. Use the ErrorInfo variable to view description of the error. <simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="386" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="386" bodyend="430"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_134248b37be1ca31e3d0440dcea1d40c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::SendmailSend</definition>
+        <argsstring>($header, $body)</argsstring>
+        <name>SendmailSend</name>
+        <param>
+          <type>$</type>
+          <declname>header</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>body</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends mail using the $Sendmail program.  public <simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="437" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="437" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_10420328dd91b081096acd4a12a6d130f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::MailSend</definition>
+        <argsstring>($header, $body)</argsstring>
+        <name>MailSend</name>
+        <param>
+          <type>$</type>
+          <declname>header</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>body</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends mail using the PHP mail() function.  public <simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="469" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="469" bodyend="510"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1a8e219822a2048621d1130f4bf883122" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::SmtpSend</definition>
+        <argsstring>($header, $body)</argsstring>
+        <name>SmtpSend</name>
+        <param>
+          <type>$</type>
+          <declname>header</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>body</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends mail via SMTP using PhpSMTP (Author: Chris Ryan). Returns bool. Returns false if there is a bad MAIL FROM, RCPT, or DATA input.  public <simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="519" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="519" bodyend="578"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_14d5a553ee27415465c48143a2b3fdcde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::SmtpConnect</definition>
+        <argsstring>()</argsstring>
+        <name>SmtpConnect</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initiates a connection to an SMTP server. Returns false if the operation failed.  public <simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="586" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="586" bodyend="642"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_120b4519c300896aff5c22e3710aa19cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::SmtpClose</definition>
+        <argsstring>()</argsstring>
+        <name>SmtpClose</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Closes the active SMTP session if one exists. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="648" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="648" bodyend="655"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1aff9e25949fae5aa665fad083b0b2893" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::SetLanguage</definition>
+        <argsstring>($lang_type= &apos;en&apos;, $lang_path= &apos;language/&apos;)</argsstring>
+        <name>SetLanguage</name>
+        <param>
+          <type>$</type>
+          <declname>lang_type</declname>
+          <defval>&apos;en&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>lang_path</declname>
+          <defval>&apos;language/&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the language for all class error messages. Returns false if it cannot load the language file. The default language type is English. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$lang_type Type of language (e.g. Portuguese: &quot;br&quot;) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$lang_path Path to the language file directory  public </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="666" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="666" bodyend="685"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1c15a3cde96d7928f4a43cd81d0911afb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AddrAppend</definition>
+        <argsstring>($type, $addr)</argsstring>
+        <name>AddrAppend</name>
+        <param>
+          <type>$</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates recipient headers.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="696" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="696" bodyend="707"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1626beaf7b877bd8d1f0f8c6869962bd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AddrFormat</definition>
+        <argsstring>($addr)</argsstring>
+        <name>AddrFormat</name>
+        <param>
+          <type>$</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Formats an address correctly.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="714" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="714" bodyend="722"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1cc83d51c756e780535b39680bfa0e368" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::WrapText</definition>
+        <argsstring>($message, $length, $qp_mode=false)</argsstring>
+        <name>WrapText</name>
+        <param>
+          <type>$</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>qp_mode</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps message for use with mailers that do not automatically perform wrapping and for quoted-printable. Original written by philippe.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="731" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="731" bodyend="802"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_15771594e3b02d05c624aec0d3d2930b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::UTF8CharBoundary</definition>
+        <argsstring>($encodedText, $maxLength)</argsstring>
+        <name>UTF8CharBoundary</name>
+        <param>
+          <type>$</type>
+          <declname>encodedText</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>maxLength</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Finds last character boundary prior to maxLength in a utf-8 quoted (printable) encoded string. Original written by Colin Brown.  public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$encodedText utf-8 QP text </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>int</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$maxLength find last character boundary prior to this length </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="813" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="813" bodyend="843"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1dbf94155c6a72aae101c0f5e0cf42823" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::SetWordWrap</definition>
+        <argsstring>()</argsstring>
+        <name>SetWordWrap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the body wrapping.  public <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="851" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="851" bodyend="866"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1027a59d7e2b70753f182247934bf90bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::CreateHeader</definition>
+        <argsstring>()</argsstring>
+        <name>CreateHeader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assembles message header.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="873" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="873" bodyend="943"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1f696b69cbfc7f6cd3c2ac7701bc0bff4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::GetMailMIME</definition>
+        <argsstring>()</argsstring>
+        <name>GetMailMIME</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the message MIME.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="950" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="950" bodyend="978"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1878a0dc40ac9bc7f9a33aabd34728d1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::CreateBody</definition>
+        <argsstring>()</argsstring>
+        <name>CreateBody</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assembles the message body. Returns an empty string on failure.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="985" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="985" bodyend="1053"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1c4b5adce91cf7c3ba12b4702d637df03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::GetBoundary</definition>
+        <argsstring>($boundary, $charSet, $contentType, $encoding)</argsstring>
+        <name>GetBoundary</name>
+        <param>
+          <type>$</type>
+          <declname>boundary</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>charSet</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>contentType</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>encoding</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the start of a message boundary.  public </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1059" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1059" bodyend="1077"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1f10b141b72a659c79746b0e11fe36d92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::EndBoundary</definition>
+        <argsstring>($boundary)</argsstring>
+        <name>EndBoundary</name>
+        <param>
+          <type>$</type>
+          <declname>boundary</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the end of a message boundary.  public </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1083" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1083" bodyend="1085"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_13bcc49176b7dabe03f18503d7ed5c320" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::SetMessageType</definition>
+        <argsstring>()</argsstring>
+        <name>SetMessageType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the message type.  public <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1092" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1092" bodyend="1106"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_18256a4880e4fb0ce1498abfcc1231674" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::HeaderLine</definition>
+        <argsstring>($name, $value)</argsstring>
+        <name>HeaderLine</name>
+        <param>
+          <type>$</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1112" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1112" bodyend="1114"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1626aa19ef9fda9132ee4c60a91f4869d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::TextLine</definition>
+        <argsstring>($value)</argsstring>
+        <name>TextLine</name>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a formatted mail line.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1121" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1121" bodyend="1123"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1b10ab08da06063473d6408def22819fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AddAttachment</definition>
+        <argsstring>($path, $name= &apos;&apos;, $encoding= &apos;base64&apos;, $type= &apos;application/octet-stream&apos;)</argsstring>
+        <name>AddAttachment</name>
+        <param>
+          <type>$</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>name</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>encoding</declname>
+          <defval>&apos;base64&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>type</declname>
+          <defval>&apos;application/octet-stream&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds an attachment from a path on the filesystem. Returns false if the file could not be found or accessed. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$path Path to the attachment. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$name Overrides the attachment name. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$encoding File encoding (see $Encoding). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$type File extension (MIME) type. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1139" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1139" bodyend="1161"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_18fbc046550d166dcc83375ba26b6c477" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AttachAll</definition>
+        <argsstring>()</argsstring>
+        <name>AttachAll</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Attaches all fs, string, and binary attachments to the message. Returns an empty string on failure.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1169" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1169" bodyend="1221"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_12a57508f33549ba2aa4b7d3c7b0538a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::EncodeFile</definition>
+        <argsstring>($path, $encoding= &apos;base64&apos;)</argsstring>
+        <name>EncodeFile</name>
+        <param>
+          <type>$</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>encoding</declname>
+          <defval>&apos;base64&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encodes attachment in requested format. Returns an empty string on failure.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1229" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1229" bodyend="1248"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1e864ca54059804bf909a03f25b01887a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::EncodeString</definition>
+        <argsstring>($str, $encoding= &apos;base64&apos;)</argsstring>
+        <name>EncodeString</name>
+        <param>
+          <type>$</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>encoding</declname>
+          <defval>&apos;base64&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encodes string to requested format. Returns an empty string on failure.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1256" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1256" bodyend="1279"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_15c6862be627a60363fd470711c5ae0cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::EncodeHeader</definition>
+        <argsstring>($str, $position= &apos;text&apos;)</argsstring>
+        <name>EncodeHeader</name>
+        <param>
+          <type>$</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>position</declname>
+          <defval>&apos;text&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encode a header string to best of Q, B, quoted or none.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1286" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1286" bodyend="1339"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1b470a97d2cad671a3c8e05c673b1e0d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::HasMultiBytes</definition>
+        <argsstring>($str)</argsstring>
+        <name>HasMultiBytes</name>
+        <param>
+          <type>$</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks if a string contains multibyte characters.  public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$str multi-byte text to wrap encode </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1347" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1347" bodyend="1353"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1898ae09e6b08a3db116744b6d44923c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::Base64EncodeWrapMB</definition>
+        <argsstring>($str)</argsstring>
+        <name>Base64EncodeWrapMB</name>
+        <param>
+          <type>$</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Correctly encodes and wraps long multibyte strings for mail headers without breaking lines within a character. Adapted from a function by paravoid at <ulink url="http://uk.php.net/manual/en/function.mb-encode-mimeheader.php">http://uk.php.net/manual/en/function.mb-encode-mimeheader.php</ulink>  public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$str multi-byte text to wrap encode </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1363" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1363" bodyend="1393"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_185c073d4c0a61af75f5abaf167b4c460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::EncodeQP</definition>
+        <argsstring>($input= &apos;&apos;, $line_max=76, $space_conv=false)</argsstring>
+        <name>EncodeQP</name>
+        <param>
+          <type>$</type>
+          <declname>input</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>line_max</declname>
+          <defval>76</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>space_conv</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encode string to quoted-printable.  public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$string the text to encode </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>integer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$line_max Number of chars allowed on a line before wrapping </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1402" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1402" bodyend="1441"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1ad0e420b74b8d2909f1292332bf1bbb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::EncodeQ</definition>
+        <argsstring>($str, $position= &apos;text&apos;)</argsstring>
+        <name>EncodeQ</name>
+        <param>
+          <type>$</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>position</declname>
+          <defval>&apos;text&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encode string to q encoding.  public <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1448" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1448" bodyend="1470"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_192ef5134fdce5bd5fd24a723c508bf2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AddStringAttachment</definition>
+        <argsstring>($string, $filename, $encoding= &apos;base64&apos;, $type= &apos;application/octet-stream&apos;)</argsstring>
+        <name>AddStringAttachment</name>
+        <param>
+          <type>$</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>encoding</declname>
+          <defval>&apos;base64&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>type</declname>
+          <defval>&apos;application/octet-stream&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a string or binary attachment (non-filesystem) to the list. This method can be used to attach ascii or binary data, such as a BLOB record from a database. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$string String attachment data. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$filename Name of the attachment. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$encoding File encoding (see $Encoding). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$type File extension (MIME) type. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1482" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1482" bodyend="1493"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1d65e08211e123fa3537e7af91d1e5fba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AddEmbeddedImage</definition>
+        <argsstring>($path, $cid, $name= &apos;&apos;, $encoding= &apos;base64&apos;, $type= &apos;application/octet-stream&apos;)</argsstring>
+        <name>AddEmbeddedImage</name>
+        <param>
+          <type>$</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>cid</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>name</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>encoding</declname>
+          <defval>&apos;base64&apos;</defval>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>type</declname>
+          <defval>&apos;application/octet-stream&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds an embedded attachment. This can include images, sounds, and just about any other document. Make sure to set the $type to an image type. For JPEG images use &quot;image/jpeg&quot; and for GIF images use &quot;image/gif&quot;. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$path Path to the attachment. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$cid Content ID of the attachment. Use this to identify the Id for accessing the image in an HTML form. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$name Overrides the attachment name. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$encoding File encoding (see $Encoding). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$type File extension (MIME) type. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1508" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1508" bodyend="1532"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_10167ed0843240553feb3cd4d5204f299" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::InlineImageExists</definition>
+        <argsstring>()</argsstring>
+        <name>InlineImageExists</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if an inline attachment is present.  public <simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1539" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1539" bodyend="1549"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_10dddfa22e54f935641ed9a1ce9635f07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::ClearAddresses</definition>
+        <argsstring>()</argsstring>
+        <name>ClearAddresses</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears all recipients assigned in the TO array. Returns void. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1559" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1559" bodyend="1561"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_19304081ed2524139748d20c08076b2f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::ClearCCs</definition>
+        <argsstring>()</argsstring>
+        <name>ClearCCs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears all recipients assigned in the CC array. Returns void. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1567" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1567" bodyend="1569"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_194c5461b6fa875543fa1abbe41ac687b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::ClearBCCs</definition>
+        <argsstring>()</argsstring>
+        <name>ClearBCCs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears all recipients assigned in the BCC array. Returns void. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1575" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1575" bodyend="1577"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1a2bbeddb9d5b19eb2202e715912b562f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::ClearReplyTos</definition>
+        <argsstring>()</argsstring>
+        <name>ClearReplyTos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears all recipients assigned in the ReplyTo array. Returns void. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1583" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1583" bodyend="1585"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_15734ae30e8e523bdae2d8d92200ba34f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::ClearAllRecipients</definition>
+        <argsstring>()</argsstring>
+        <name>ClearAllRecipients</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears all recipients assigned in the TO, CC and BCC array. Returns void. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1592" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1592" bodyend="1596"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1d8f2cb3e17912028a5e39b4f23b2268c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::ClearAttachments</definition>
+        <argsstring>()</argsstring>
+        <name>ClearAttachments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears all previously set filesystem, string, and binary attachments. Returns void. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1603" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1603" bodyend="1605"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1c97c4987eefae07373a8becf2fdb4c6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::ClearCustomHeaders</definition>
+        <argsstring>()</argsstring>
+        <name>ClearCustomHeaders</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears all custom headers. Returns void. <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1611" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1611" bodyend="1613"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_13ad69f21d5b0f390bd06e0696974b39c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::IsError</definition>
+        <argsstring>()</argsstring>
+        <name>IsError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if an error occurred.  public <simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1684" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1684" bodyend="1686"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_109a3f40782f26399efdec4f53f7f08f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::AddCustomHeader</definition>
+        <argsstring>($custom_header)</argsstring>
+        <name>AddCustomHeader</name>
+        <param>
+          <type>$</type>
+          <declname>custom_header</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a custom header.  public <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1705" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1705" bodyend="1707"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1fbdbc2eef3978654fe7821484e4a1fc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::MsgHTML</definition>
+        <argsstring>($message, $basedir=&apos;&apos;)</argsstring>
+        <name>MsgHTML</name>
+        <param>
+          <type>$</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>basedir</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Evaluates the message and returns modifications for inline images and backgrounds  public <simplesect kind="return"><para>$message </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1714" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1714" bodyend="1744"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_18f489353e61cccc942d7b4e98c8e3caf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::_mime_types</definition>
+        <argsstring>($ext= &apos;&apos;)</argsstring>
+        <name>_mime_types</name>
+        <param>
+          <type>$</type>
+          <declname>ext</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the mime type of the embedded or inline image  public <simplesect kind="return"><para>mime type of ext </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1751" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1751" bodyend="1842"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1d7dfabb6c5e91e298be2de2e78749a75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::set</definition>
+        <argsstring>($name, $value= &apos;&apos;)</argsstring>
+        <name>set</name>
+        <param>
+          <type>$</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>value</declname>
+          <defval>&apos;&apos;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set (or reset) Class Objects (variables)</para><para>Usage Example: $page-&gt;set(&apos;X-Priority&apos;, &apos;3&apos;);</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$name Parameter Name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mixed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$value Parameter Value NOTE: will not work with arrays, there are no arrays to set/reset </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1855" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1855" bodyend="1862"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1490a8772d03563b76870bffe3ee9fb5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::getFile</definition>
+        <argsstring>($filename)</argsstring>
+        <name>getFile</name>
+        <param>
+          <type>$</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read a file from a supplied filename and return it.</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$filename Parameter File Name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1870" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1870" bodyend="1881"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1c0c6f469479274f00a3715444b1a849a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::SecureHeader</definition>
+        <argsstring>($str)</argsstring>
+        <name>SecureHeader</name>
+        <param>
+          <type>$</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Strips newlines to prevent header injection.  public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$str String </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1889" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1889" bodyend="1894"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_18ba196caee2ec44d60a34efbd2769719" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::Sign</definition>
+        <argsstring>($cert_filename, $key_filename, $key_pass)</argsstring>
+        <name>Sign</name>
+        <param>
+          <type>$</type>
+          <declname>cert_filename</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>key_filename</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>key_pass</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the private key file and password to sign the message.</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$key_filename Parameter File Name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$key_pass Password for private key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1903" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1903" bodyend="1907"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classPHPMailer_18b55431cdaf8b5fd59869a07a8058b0e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::SetError</definition>
+        <argsstring>($msg)</argsstring>
+        <name>SetError</name>
+        <param>
+          <type>$</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds the error message to the error container. Returns void.  private <simplesect kind="return"><para>void </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1625" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1625" bodyend="1628"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1c2b74fe64f51720dd192578f4e6bdb49" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::ServerHostname</definition>
+        <argsstring>()</argsstring>
+        <name>ServerHostname</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the server hostname or &apos;localhost.localdomain&apos; if unknown.  private <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1650" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1650" bodyend="1660"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_1c0c6b62555ae976a35238681c399bb08" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::Lang</definition>
+        <argsstring>($key)</argsstring>
+        <name>Lang</name>
+        <param>
+          <type>$</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a message in the appropriate language.  private <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1667" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1667" bodyend="1677"/>
+      </memberdef>
+      <memberdef kind="function" id="classPHPMailer_172116ce1584d0e5ec974ed9a96127622" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PHPMailer::FixEOL</definition>
+        <argsstring>($str)</argsstring>
+        <name>FixEOL</name>
+        <param>
+          <type>$</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Changes every end of line from CR or LF to CRLF.  private <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1693" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1693" bodyend="1698"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classPHPMailer_1e3943e2e54c83720c42c5f0414466836" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>static</type>
+        <definition>static PHPMailer::RFCDate</definition>
+        <argsstring>()</argsstring>
+        <name>RFCDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the proper RFC 822 formatted date.  private <simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="1635" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="1635" bodyend="1643"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" line="35" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/class.phpmailer.php" bodystart="35" bodyend="1908"/>
+    <listofallmembers>
+      <member refid="classPHPMailer_1f38d9cfaa22f3a246c3168184c3858aa" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$AltBody</name></member>
+      <member refid="classPHPMailer_11091c5222df6cf187eb290afc409b283" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$attachment</name></member>
+      <member refid="classPHPMailer_147faeb7fa77389aeec99d8dbeb1be106" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$bcc</name></member>
+      <member refid="classPHPMailer_155ee46413a3783fceaa4cc301dc362a4" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Body</name></member>
+      <member refid="classPHPMailer_16e9b4fea689f43dc24f94bd1cd643de3" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$boundary</name></member>
+      <member refid="classPHPMailer_1ab84d69e0d9f30d16c7c895f40c02383" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$cc</name></member>
+      <member refid="classPHPMailer_189bc16ad4e86bf04d0a38779f239d08d" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$CharSet</name></member>
+      <member refid="classPHPMailer_1ef7e191f4c673b49c378fe9005333277" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$ConfirmReadingTo</name></member>
+      <member refid="classPHPMailer_1886fb2b5374dfdbdce9efdaff842c2a2" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$ContentType</name></member>
+      <member refid="classPHPMailer_13aa8045c1da6dfea6b846fa02d0a35c8" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$CustomHeader</name></member>
+      <member refid="classPHPMailer_1dbefcf8fbeb0bad68e2f87f889a6937f" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Encoding</name></member>
+      <member refid="classPHPMailer_1581edb1dbc5a192fb34ef01957932e9a" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$error_count</name></member>
+      <member refid="classPHPMailer_19e523ba9e3cfcaf1f54569a9e4a29c73" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$ErrorInfo</name></member>
+      <member refid="classPHPMailer_1487a2ed6abdc3474c5e6526d4bd37dd9" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$From</name></member>
+      <member refid="classPHPMailer_1331a07d4f29ee939024b69c07f83188d" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$FromName</name></member>
+      <member refid="classPHPMailer_1efc737f24d6dc6bdd13019297762c8e3" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Helo</name></member>
+      <member refid="classPHPMailer_1201d861b4e284bd9bc580e90922f1a2b" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Host</name></member>
+      <member refid="classPHPMailer_152a56734c1c555e576f3fcdd3f3214fa" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Hostname</name></member>
+      <member refid="classPHPMailer_1a6a0ec99ebdf7280f6565369d4d291b7" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$language</name></member>
+      <member refid="classPHPMailer_1b0c4941bda43ab5a330a712d036c7ae5" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$LE</name></member>
+      <member refid="classPHPMailer_1b7b493935220dbd0643bfccbe9fa898f" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Mailer</name></member>
+      <member refid="classPHPMailer_119a75d8b3e63eb58f9a4a2b31c81ab6b" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$message_type</name></member>
+      <member refid="classPHPMailer_1e8903e0c049d9c21fe218a5610f8e66e" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$MessageID</name></member>
+      <member refid="classPHPMailer_142bef0c65cf4248312aebc7d6cf05dc7" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Password</name></member>
+      <member refid="classPHPMailer_125dc51236eaeba43c2661197b2fdecca" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$PluginDir</name></member>
+      <member refid="classPHPMailer_1ecad460b067a209821f1b0fc3492aa0c" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Port</name></member>
+      <member refid="classPHPMailer_14b25b31326864ecfd89865021595d14c" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Priority</name></member>
+      <member refid="classPHPMailer_1ff7bfc1ad6c3e1e95d0caa6ecf7bfc25" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$ReplyTo</name></member>
+      <member refid="classPHPMailer_1feb96ec21062655663877de7bdcfe4b5" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Sender</name></member>
+      <member refid="classPHPMailer_1389a13126ef669fbc0fa29e9182b2b88" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Sendmail</name></member>
+      <member refid="classPHPMailer_1a4f22631c7d466a80d08378f5674d95a" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$sign_cert_file</name></member>
+      <member refid="classPHPMailer_1c11e24b257bd1cc7f6833cab0df1def6" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$sign_key_file</name></member>
+      <member refid="classPHPMailer_15af85c6201ec258cfe5ff15d13699fcf" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$sign_key_pass</name></member>
+      <member refid="classPHPMailer_1e467a7f9d8bbb478bd0ea7a8b9bb512b" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$SingleTo</name></member>
+      <member refid="classPHPMailer_1785ebe388dfcd1a76d445df09b6be3d6" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$smtp</name></member>
+      <member refid="classPHPMailer_11e41f01702afcf903f409c2a8c1eb1c0" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$SMTPAuth</name></member>
+      <member refid="classPHPMailer_1edc42401affee6e0e8b205f3c50d5f17" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$SMTPDebug</name></member>
+      <member refid="classPHPMailer_1bcf46a6c16b46fc88f401a7e9acfbb43" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$SMTPKeepAlive</name></member>
+      <member refid="classPHPMailer_157744693d505d8c945c667fec9e65555" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$SMTPSecure</name></member>
+      <member refid="classPHPMailer_1720bc605963a617253bf0773b6ffafbf" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Subject</name></member>
+      <member refid="classPHPMailer_1ffe70c58cb6adb734a41f8eb2a2e58b9" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Timeout</name></member>
+      <member refid="classPHPMailer_1fa095cad0712f480475cea3a1b9a498e" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>$to</name></member>
+      <member refid="classPHPMailer_1111a9831009cde61ec90b2f702d91f8c" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Username</name></member>
+      <member refid="classPHPMailer_150e20d60ee564b2e0e09774b0f0c4ee4" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$Version</name></member>
+      <member refid="classPHPMailer_19ea7fd1e74ce459204bd25ab10aa4800" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>$WordWrap</name></member>
+      <member refid="classPHPMailer_18f489353e61cccc942d7b4e98c8e3caf" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>_mime_types</name></member>
+      <member refid="classPHPMailer_1278520a47bb3d7387ff259464d94be21" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AddAddress</name></member>
+      <member refid="classPHPMailer_1b10ab08da06063473d6408def22819fa" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AddAttachment</name></member>
+      <member refid="classPHPMailer_15d2d5f530005db5329912a5ffc9bffdd" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AddBCC</name></member>
+      <member refid="classPHPMailer_13a68f4df5277a7332fc498b205045616" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AddCC</name></member>
+      <member refid="classPHPMailer_109a3f40782f26399efdec4f53f7f08f0" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AddCustomHeader</name></member>
+      <member refid="classPHPMailer_1d65e08211e123fa3537e7af91d1e5fba" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AddEmbeddedImage</name></member>
+      <member refid="classPHPMailer_1c15a3cde96d7928f4a43cd81d0911afb" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AddrAppend</name></member>
+      <member refid="classPHPMailer_1a19b774f8f3eacf0af5aca25f5509b24" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AddReplyTo</name></member>
+      <member refid="classPHPMailer_1626beaf7b877bd8d1f0f8c6869962bd2" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AddrFormat</name></member>
+      <member refid="classPHPMailer_192ef5134fdce5bd5fd24a723c508bf2b" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AddStringAttachment</name></member>
+      <member refid="classPHPMailer_18fbc046550d166dcc83375ba26b6c477" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>AttachAll</name></member>
+      <member refid="classPHPMailer_1898ae09e6b08a3db116744b6d44923c5" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>Base64EncodeWrapMB</name></member>
+      <member refid="classPHPMailer_10dddfa22e54f935641ed9a1ce9635f07" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>ClearAddresses</name></member>
+      <member refid="classPHPMailer_15734ae30e8e523bdae2d8d92200ba34f" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>ClearAllRecipients</name></member>
+      <member refid="classPHPMailer_1d8f2cb3e17912028a5e39b4f23b2268c" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>ClearAttachments</name></member>
+      <member refid="classPHPMailer_194c5461b6fa875543fa1abbe41ac687b" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>ClearBCCs</name></member>
+      <member refid="classPHPMailer_19304081ed2524139748d20c08076b2f5" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>ClearCCs</name></member>
+      <member refid="classPHPMailer_1c97c4987eefae07373a8becf2fdb4c6e" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>ClearCustomHeaders</name></member>
+      <member refid="classPHPMailer_1a2bbeddb9d5b19eb2202e715912b562f" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>ClearReplyTos</name></member>
+      <member refid="classPHPMailer_1878a0dc40ac9bc7f9a33aabd34728d1c" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>CreateBody</name></member>
+      <member refid="classPHPMailer_1027a59d7e2b70753f182247934bf90bb" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>CreateHeader</name></member>
+      <member refid="classPHPMailer_12a57508f33549ba2aa4b7d3c7b0538a8" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>EncodeFile</name></member>
+      <member refid="classPHPMailer_15c6862be627a60363fd470711c5ae0cc" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>EncodeHeader</name></member>
+      <member refid="classPHPMailer_1ad0e420b74b8d2909f1292332bf1bbb8" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>EncodeQ</name></member>
+      <member refid="classPHPMailer_185c073d4c0a61af75f5abaf167b4c460" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>EncodeQP</name></member>
+      <member refid="classPHPMailer_1e864ca54059804bf909a03f25b01887a" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>EncodeString</name></member>
+      <member refid="classPHPMailer_1f10b141b72a659c79746b0e11fe36d92" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>EndBoundary</name></member>
+      <member refid="classPHPMailer_172116ce1584d0e5ec974ed9a96127622" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>FixEOL</name></member>
+      <member refid="classPHPMailer_1c4b5adce91cf7c3ba12b4702d637df03" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>GetBoundary</name></member>
+      <member refid="classPHPMailer_1490a8772d03563b76870bffe3ee9fb5b" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>getFile</name></member>
+      <member refid="classPHPMailer_1f696b69cbfc7f6cd3c2ac7701bc0bff4" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>GetMailMIME</name></member>
+      <member refid="classPHPMailer_1b470a97d2cad671a3c8e05c673b1e0d8" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>HasMultiBytes</name></member>
+      <member refid="classPHPMailer_18256a4880e4fb0ce1498abfcc1231674" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>HeaderLine</name></member>
+      <member refid="classPHPMailer_10167ed0843240553feb3cd4d5204f299" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>InlineImageExists</name></member>
+      <member refid="classPHPMailer_13ad69f21d5b0f390bd06e0696974b39c" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>IsError</name></member>
+      <member refid="classPHPMailer_1b95a726f1d9782d560ec16d2f4307586" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>IsHTML</name></member>
+      <member refid="classPHPMailer_16c4e6445c6f12b87462cf9ab63239c1b" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>IsMail</name></member>
+      <member refid="classPHPMailer_17c2d3d01329eaa84d9da0b9490351030" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>IsQmail</name></member>
+      <member refid="classPHPMailer_17cdd2b399559d7b36f0259c8f7924b07" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>IsSendmail</name></member>
+      <member refid="classPHPMailer_1cba6e87e0af0baa5bda1026a4e99e236" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>IsSMTP</name></member>
+      <member refid="classPHPMailer_1c0c6b62555ae976a35238681c399bb08" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>Lang</name></member>
+      <member refid="classPHPMailer_10420328dd91b081096acd4a12a6d130f" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>MailSend</name></member>
+      <member refid="classPHPMailer_1fbdbc2eef3978654fe7821484e4a1fc5" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>MsgHTML</name></member>
+      <member refid="classPHPMailer_1e3943e2e54c83720c42c5f0414466836" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>RFCDate</name></member>
+      <member refid="classPHPMailer_1c0c6f469479274f00a3715444b1a849a" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>SecureHeader</name></member>
+      <member refid="classPHPMailer_1675cc2f9ff744a7819e62ebbd76a2ce1" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>Send</name></member>
+      <member refid="classPHPMailer_134248b37be1ca31e3d0440dcea1d40c5" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>SendmailSend</name></member>
+      <member refid="classPHPMailer_1c2b74fe64f51720dd192578f4e6bdb49" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>ServerHostname</name></member>
+      <member refid="classPHPMailer_1d7dfabb6c5e91e298be2de2e78749a75" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>set</name></member>
+      <member refid="classPHPMailer_18b55431cdaf8b5fd59869a07a8058b0e" prot="private" virt="non-virtual"><scope>PHPMailer</scope><name>SetError</name></member>
+      <member refid="classPHPMailer_1aff9e25949fae5aa665fad083b0b2893" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>SetLanguage</name></member>
+      <member refid="classPHPMailer_13bcc49176b7dabe03f18503d7ed5c320" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>SetMessageType</name></member>
+      <member refid="classPHPMailer_1dbf94155c6a72aae101c0f5e0cf42823" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>SetWordWrap</name></member>
+      <member refid="classPHPMailer_18ba196caee2ec44d60a34efbd2769719" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>Sign</name></member>
+      <member refid="classPHPMailer_120b4519c300896aff5c22e3710aa19cb" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>SmtpClose</name></member>
+      <member refid="classPHPMailer_14d5a553ee27415465c48143a2b3fdcde" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>SmtpConnect</name></member>
+      <member refid="classPHPMailer_1a8e219822a2048621d1130f4bf883122" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>SmtpSend</name></member>
+      <member refid="classPHPMailer_1626aa19ef9fda9132ee4c60a91f4869d" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>TextLine</name></member>
+      <member refid="classPHPMailer_15771594e3b02d05c624aec0d3d2930b3" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>UTF8CharBoundary</name></member>
+      <member refid="classPHPMailer_1cc83d51c756e780535b39680bfa0e368" prot="public" virt="non-virtual"><scope>PHPMailer</scope><name>WrapText</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

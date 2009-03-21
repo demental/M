@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classTestSuite" kind="class" prot="public">
+    <compoundname>TestSuite</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classTestSuite_133d0f80731c2a7dca530e8e62990e110" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>TestSuite::$fTests</definition>
+        <argsstring></argsstring>
+        <name>$fTests</name>
+        <initializer> array()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="185" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTestSuite_1e801e1f25a93fb87074187d7d8dd5b56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TestSuite::TestSuite</definition>
+        <argsstring>($classname=false)</argsstring>
+        <name>TestSuite</name>
+        <param>
+          <type>$</type>
+          <declname>classname</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="187" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="187" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classTestSuite_1702aba0a3f7dc8774d03117a88dd2dd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TestSuite::addTest</definition>
+        <argsstring>($test)</argsstring>
+        <name>addTest</name>
+        <param>
+          <type>$</type>
+          <declname>test</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="221" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="221" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classTestSuite_1ecb412adfca2a8e84db95a9f19415666" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TestSuite::run</definition>
+        <argsstring>(&amp;$testResult)</argsstring>
+        <name>run</name>
+        <param>
+          <type>&amp;$</type>
+          <declname>testResult</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="226" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="226" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="classTestSuite_155e0e88ab8a97a6803d8a16d71d1c5fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TestSuite::countTestCases</definition>
+        <argsstring>()</argsstring>
+        <name>countTestCases</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="237" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="237" bodyend="246"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" line="182" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/phpunit.php" bodystart="182" bodyend="247"/>
+    <listofallmembers>
+      <member refid="classTestSuite_133d0f80731c2a7dca530e8e62990e110" prot="public" virt="non-virtual"><scope>TestSuite</scope><name>$fTests</name></member>
+      <member refid="classTestSuite_1702aba0a3f7dc8774d03117a88dd2dd9" prot="public" virt="non-virtual"><scope>TestSuite</scope><name>addTest</name></member>
+      <member refid="classTestSuite_155e0e88ab8a97a6803d8a16d71d1c5fb" prot="public" virt="non-virtual"><scope>TestSuite</scope><name>countTestCases</name></member>
+      <member refid="classTestSuite_1ecb412adfca2a8e84db95a9f19415666" prot="public" virt="non-virtual"><scope>TestSuite</scope><name>run</name></member>
+      <member refid="classTestSuite_1e801e1f25a93fb87074187d7d8dd5b56" prot="public" virt="non-virtual"><scope>TestSuite</scope><name>TestSuite</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

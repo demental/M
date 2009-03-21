@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classOffice__DbModule" kind="class" prot="public">
+    <compoundname>Office_DbModule</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classOffice__DbModule_1e26ebdf3e360b00ae47ab3c9e7f8eb10" prot="protected" static="no" mutable="no">
+        <type></type>
+        <definition>Office_DbModule::$_searchform</definition>
+        <argsstring></argsstring>
+        <name>$_searchform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classOffice__DbModule_1d58fcc6ef05342eddff4a8cc574c94c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::__construct</definition>
+        <argsstring>($name)</argsstring>
+        <name>__construct</name>
+        <param>
+          <type>$</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_1a9fb5383dbb468587cf65c2c37052816" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::doExecIndex</definition>
+        <argsstring>()</argsstring>
+        <name>doExecIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="97" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="96" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_134f86bbed686606dcdf4a893db366258" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::doExecList</definition>
+        <argsstring>()</argsstring>
+        <name>doExecList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="101" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="100" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_1efe3280044a479baeb99b9d2e4fcf73e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::doExecAddrecord</definition>
+        <argsstring>()</argsstring>
+        <name>doExecAddrecord</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="147" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="146" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_1a2a8d7c3c5fedc9f93794be29fc94943" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::doExecEditrecord</definition>
+        <argsstring>()</argsstring>
+        <name>doExecEditrecord</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="157" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="156" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_1108273f72c76cf5992a78cc9ddcdb8aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::doExecDeleterecord</definition>
+        <argsstring>()</argsstring>
+        <name>doExecDeleterecord</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="170" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="169" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_1ab4399afeeb894814ae76e588fa4e288" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::doExecGlobalaction</definition>
+        <argsstring>()</argsstring>
+        <name>doExecGlobalaction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="174" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="173" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_19ba436ac551c7864f5f69d31c99ebf9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::doExecBatchaction</definition>
+        <argsstring>()</argsstring>
+        <name>doExecBatchaction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="178" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="177" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_11473373248495ab1cfbca052470e6680" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::doExecSingleaction</definition>
+        <argsstring>()</argsstring>
+        <name>doExecSingleaction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="182" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="181" bodyend="184"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classOffice__DbModule_175043aecbe042d5f56db7225cdfa154c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::getDO</definition>
+        <argsstring>()</argsstring>
+        <name>getDO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_1bdf85108b22640e3093efcfd205fef98" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::doForTable</definition>
+        <argsstring>($table)</argsstring>
+        <name>doForTable</name>
+        <param>
+          <type>$</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="44" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_1ef13c5901f22c220383b91ce320933ec" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Office_DbModule::generateOptions</definition>
+        <argsstring>()</argsstring>
+        <name>generateOptions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="69" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="68" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classOffice__DbModule_1d47a85a51f6606baefd7c071e7ab31d4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; Office_DbModule::getSearchForm</definition>
+        <argsstring>()</argsstring>
+        <name>getSearchForm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="186" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="185" bodyend="235"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classOffice__DbModule_1dfecb17e840ca85a1108b16163f2b307" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>static&amp; Office_DbModule::factory</definition>
+        <argsstring>($module, $path)</argsstring>
+        <name>factory</name>
+        <param>
+          <type>$</type>
+          <declname>module</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="29" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="20" bodyend="236"/>
+    <listofallmembers>
+      <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Office_DbModule</scope><name>$_cachedData</name></member>
+      <member refid="classOffice__DbModule_1e26ebdf3e360b00ae47ab3c9e7f8eb10" prot="protected" virt="non-virtual"><scope>Office_DbModule</scope><name>$_searchform</name></member>
+      <member refid="classMaman_1e69647de8a274eae406840f35af22b70" prot="protected" virt="non-virtual"><scope>Office_DbModule</scope><name>$config</name></member>
+      <member refid="classModule_1fb5a30157dc39cc7e2815762dc35c637" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>$currentAction</name></member>
+      <member refid="classModule_18fcea0413f2ce2330ce1caee3b402793" prot="protected" virt="non-virtual"><scope>Office_DbModule</scope><name>$view</name></member>
+      <member refid="classOffice__DbModule_1d58fcc6ef05342eddff4a8cc574c94c0" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>__construct</name></member>
+      <member refid="classModule_1c2d4918600203743921591279cbc5c54" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>append</name></member>
+      <member refid="classModule_189f3dd2fa37e8da929b595d22dadf05d" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>assign</name></member>
+      <member refid="classModule_1ca667e6d9381302e8d202a1cdb5b75b5" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>assignRef</name></member>
+      <member refid="classModule_1467577d7f70d3d08d8f3a5e9a7c6ae52" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>createForm</name></member>
+      <member refid="classOffice__DbModule_1efe3280044a479baeb99b9d2e4fcf73e" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>doExecAddrecord</name></member>
+      <member refid="classOffice__DbModule_19ba436ac551c7864f5f69d31c99ebf9a" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>doExecBatchaction</name></member>
+      <member refid="classOffice__DbModule_1108273f72c76cf5992a78cc9ddcdb8aa" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>doExecDeleterecord</name></member>
+      <member refid="classOffice__DbModule_1a2a8d7c3c5fedc9f93794be29fc94943" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>doExecEditrecord</name></member>
+      <member refid="classOffice__DbModule_1ab4399afeeb894814ae76e588fa4e288" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>doExecGlobalaction</name></member>
+      <member refid="classOffice__DbModule_1a9fb5383dbb468587cf65c2c37052816" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>doExecIndex</name></member>
+      <member refid="classOffice__DbModule_134f86bbed686606dcdf4a893db366258" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>doExecList</name></member>
+      <member refid="classOffice__DbModule_11473373248495ab1cfbca052470e6680" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>doExecSingleaction</name></member>
+      <member refid="classOffice__DbModule_1bdf85108b22640e3093efcfd205fef98" prot="protected" virt="non-virtual"><scope>Office_DbModule</scope><name>doForTable</name></member>
+      <member refid="classModule_108d00b116c73f8a92e1b67df52af249f" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>executeAction</name></member>
+      <member refid="classOffice__DbModule_1dfecb17e840ca85a1108b16163f2b307" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>factory</name></member>
+      <member refid="classModule_122f0170f050d7918804113f9ff5e71c1" prot="public" virt="non-virtual" ambiguityscope="Module::"><scope>Office_DbModule</scope><name>factory</name></member>
+      <member refid="classModule_1171631cc4b8f4d9c7920266e6743ece2" prot="protected" virt="non-virtual"><scope>Office_DbModule</scope><name>forceExecute</name></member>
+      <member refid="classModule_173b1fdbbb8bb49890af5639176d7e95c" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>forward</name></member>
+      <member refid="classOffice__DbModule_1ef13c5901f22c220383b91ce320933ec" prot="protected" virt="non-virtual"><scope>Office_DbModule</scope><name>generateOptions</name></member>
+      <member refid="classMaman_1e3137d9634b06c493ad9626b558e851f" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>getAllConfig</name></member>
+      <member refid="classModule_15d7cfcd8947ad3a681521889f1ae7630" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>getCacheId</name></member>
+      <member refid="classMaman_1ef4fcde3f5213d79a16b471788934436" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>getConfig</name></member>
+      <member refid="classModule_1f7aa0556e5f022f5b0d6114487c71dcb" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>getCurrentAction</name></member>
+      <member refid="classOffice__DbModule_175043aecbe042d5f56db7225cdfa154c" prot="protected" virt="non-virtual"><scope>Office_DbModule</scope><name>getDO</name></member>
+      <member refid="classModule_13e7bc964cf25db87bf1bc2ee6162c9dc" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>getParam</name></member>
+      <member refid="classModule_1b49e9e05ec35dcb3182fb9941f0af9f8" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>getRequest</name></member>
+      <member refid="classModule_1b1a8846c5d23fb071f406534bfbaf972" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>getRequestParam</name></member>
+      <member refid="classOffice__DbModule_1d47a85a51f6606baefd7c071e7ab31d4" prot="protected" virt="non-virtual"><scope>Office_DbModule</scope><name>getSearchForm</name></member>
+      <member refid="classModule_1ff6e240b933eb0dcbb55f273aac7cc83" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>getView</name></member>
+      <member refid="classModule_1bccd5b28d6faf039d5023cf4c46084ab" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>hasLayout</name></member>
+      <member refid="classModule_1be604b7ed3b29197186d3ae390774d75" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>hasRequest</name></member>
+      <member refid="classModule_1d0205166181824bff103bce52afee990" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>isAjaxRequest</name></member>
+      <member refid="classModule_14f46e369445cbfc6c85d11418468f240" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>output</name></member>
+      <member refid="classModule_12ac6dedff7d4abdad70006095af24e4b" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>postExecuteAction</name></member>
+      <member refid="classModule_13375a0c3532bb803569c4f1e435b0451" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>preExecuteAction</name></member>
+      <member refid="classModule_17ad501a557a7de4059fef01c69f32074" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>redirect</name></member>
+      <member refid="classMaman_1fe5c4f994412b09a0f9c81f321f1fb0d" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>setConfig</name></member>
+      <member refid="classMaman_140fc78b70fd28c5dd4443c4980c0d537" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>setConfigValue</name></member>
+      <member refid="classModule_1636f68b35bc185c3c0820f0cb53af3dd" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>setCurrentAction</name></member>
+      <member refid="classModule_187f45a5f261b2f8fccfc97b8520cc7f1" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>setParam</name></member>
+      <member refid="classModule_139f14fce23d978b5b07dfaf83bcbc81c" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>setParams</name></member>
+      <member refid="classModule_1f2ede3f25557019c9afba79ed6fce913" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>setTemplate</name></member>
+      <member refid="classModule_1c8235aff050c4232294463308342a9dc" prot="public" virt="non-virtual"><scope>Office_DbModule</scope><name>startView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

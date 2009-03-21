@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classDataObjects__Testuser" kind="class" prot="public">
+    <compoundname>DataObjects_Testuser</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">DB_DataObject_Pluggable</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classDataObjects__Testuser_1703acd49d0f60b3ff94b3db7bb2214f6" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DataObjects_Testuser::$__table</definition>
+        <argsstring></argsstring>
+        <name>$__table</name>
+        <initializer> &apos;testuser&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDataObjects__Testuser_1a2f4fe0d2fe42fcd47fea9ccf2c4c974" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DataObjects_Testuser::$id</definition>
+        <argsstring></argsstring>
+        <name>$id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="31" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDataObjects__Testuser_16ed5094640f6b0b9cf9e3caf2cc65421" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DataObjects_Testuser::$login</definition>
+        <argsstring></argsstring>
+        <name>$login</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="32" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDataObjects__Testuser_18ce4dd8bf0785f8d94b2c8f1f92f86be" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>DataObjects_Testuser::$password</definition>
+        <argsstring></argsstring>
+        <name>$password</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDataObjects__Testuser_15b28b92b99a3bb17eebe8860e06a2d77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Testuser::staticGet</definition>
+        <argsstring>($k, $v=NULL)</argsstring>
+        <name>staticGet</name>
+        <param>
+          <type>$</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>v</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Testuser_1f13606aecc0c6a99bf7da29198980535" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Testuser::table</definition>
+        <argsstring>()</argsstring>
+        <name>table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="38" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Testuser_1f9478d684208683debda5039e64785fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Testuser::keys</definition>
+        <argsstring>()</argsstring>
+        <name>keys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="48" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="47" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Testuser_1e5a1f52612780ba6044df436bd4382fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Testuser::sequenceKey</definition>
+        <argsstring>()</argsstring>
+        <name>sequenceKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="53" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Testuser_1c66906e6d033cb01f5cc393d0fef10f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Testuser::defaults</definition>
+        <argsstring>()</argsstring>
+        <name>defaults</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="58" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="57" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Testuser_1363a5d5670030cc0f52578afedfadc8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Testuser::links</definition>
+        <argsstring>()</argsstring>
+        <name>links</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="64" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="64" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classDataObjects__Testuser_181c409bc50d6a1bc1f8118bbf3ef5934" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DataObjects_Testuser::reverseLinks</definition>
+        <argsstring>()</argsstring>
+        <name>reverseLinks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="70" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="70" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Table Definition for testuser </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/DO_dist/Testuser.php" bodystart="25" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classDataObjects__Testuser_1703acd49d0f60b3ff94b3db7bb2214f6" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$__table</name></member>
+      <member refid="classDB__DataObject__Pluggable_13e16752c01b1d43e2766b9dbb5338641" prot="protected" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$_pluginInfos</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ff3aaf327756628fae1075f2d42fefcb" prot="protected" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$_plugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_17aee5fcb3ddfb08fc3c2315f9ccc6859" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$crossLinks_advmultiselect</name></member>
+      <member refid="classDB__DataObject__Pluggable_19cc270528d3d261a2fa3842c668745d8" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$fb_dateFromDatabaseCallback</name></member>
+      <member refid="classDB__DataObject__Pluggable_11c5f374dea57dec323a426da50e2a1c9" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$fb_linkNewValueText</name></member>
+      <member refid="classDB__DataObject__Pluggable_12a54a41217ee5d4ed023f0ac3f702a18" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$fb_requiredRuleMessage</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ea65b104335f3fbd9cdcae5cb6706082" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$fb_ruleViolationMessage</name></member>
+      <member refid="classDataObjects__Testuser_1a2f4fe0d2fe42fcd47fea9ccf2c4c974" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$id</name></member>
+      <member refid="classDataObjects__Testuser_16ed5094640f6b0b9cf9e3caf2cc65421" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$login</name></member>
+      <member refid="classDataObjects__Testuser_18ce4dd8bf0785f8d94b2c8f1f92f86be" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>$password</name></member>
+      <member refid="classDB__DataObject__Pluggable_15543fa82b2d5fe9756758c1136366c66" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>_executePlugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_15257fa8c7ea3112c90a54440b2419781" prot="protected" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>_getArrayFromPlugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_1c7592260b3c1bc04b9f2f726e892e1bd" prot="protected" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>_loadPlugin</name></member>
+      <member refid="classDB__DataObject__Pluggable_194d3e17ea0eb689c21254dbab863337f" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>_loadPlugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ef0747461b08d79d5af1ce9e9dff399a" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>begin</name></member>
+      <member refid="classDB__DataObject__Pluggable_146e8686d70be23f92a6769a331b5d5f4" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>commit</name></member>
+      <member refid="classDB__DataObject__Pluggable_173ec1cd514822938748aa939b6e41a47" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>count</name></member>
+      <member refid="classDB__DataObject__Iterator_1696aec6b2c3ee5548cd5c8f503645e22" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>current</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ed7906191ecc5834203a672f1cfa2ff6" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>dateOptions</name></member>
+      <member refid="classDataObjects__Testuser_1c66906e6d033cb01f5cc393d0fef10f5" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>defaults</name></member>
+      <member refid="classDB__DataObject__Pluggable_1418e017a803275ef4bab598f0f418657" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>delete</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ebf5de9c2874c703f305cca91c7278a7" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>deleteLinks</name></member>
+      <member refid="classDB__DataObject__Pluggable_17542b5f975a2fa1f3277220b88bb8ea7" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>fetch</name></member>
+      <member refid="classDB__DataObject__Pluggable_102ef3172eacf85b2259775f5218be313" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>find</name></member>
+      <member refid="classDB__DataObject__Pluggable_14ae6bca025c15944616797c590531931" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>get</name></member>
+      <member refid="classDB__DataObject__Pluggable_1ccf7ff300a41f15c2e36062ab171e8de" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>getBatchMethods</name></member>
+      <member refid="classDB__DataObject__Pluggable_18f3082c12f0bdb4b953a99ef188e3464" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>getGlobalMethods</name></member>
+      <member refid="classDB__DataObject__Pluggable_1d7ebd6040145aea339c1bbc4d4118da0" prot="protected" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>getInstalledPlugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_1432ae13efa04df96c1a89f9105f18b21" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>getPlugin</name></member>
+      <member refid="classDB__DataObject__Pluggable_17e77a5a86c7f9dd19d3c46b8206a812a" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>getSingleMethods</name></member>
+      <member refid="classDB__DataObject__Pluggable_13c4e4caa5a081cd34084f01f976188e3" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>insert</name></member>
+      <member refid="classDB__DataObject__Pluggable_1b9f111e7ebd60fd1c47153c18c6989c2" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>isNew</name></member>
+      <member refid="classDB__DataObject__Pluggable_1352b0a90ef1e50ab3b8c5a3f89148e02" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>joinAdd</name></member>
+      <member refid="classDB__DataObject__Iterator_116d67712b408eb4314735180b0ed930c" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>key</name></member>
+      <member refid="classDataObjects__Testuser_1f9478d684208683debda5039e64785fa" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>keys</name></member>
+      <member refid="classDataObjects__Testuser_1363a5d5670030cc0f52578afedfadc8f" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>links</name></member>
+      <member refid="classDB__DataObject__Pluggable_1dc0b4033fa3aa48ac9b6654853f1fe11" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>loadPlugin</name></member>
+      <member refid="classDB__DataObject__Iterator_1ef1a0bfd34300895962d6c1271096f87" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>next</name></member>
+      <member refid="classDB__DataObject__Pluggable_1c98337a221447fc6b82fa70334e6dffc" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>pk</name></member>
+      <member refid="classDB__DataObject__Pluggable_1a4d1d475c484027de620fc7fd6c77a5f" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>postGenerateForm</name></member>
+      <member refid="classDB__DataObject__Pluggable_1c93c3515a20007621a8e54b49f8f5b28" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>postProcessForm</name></member>
+      <member refid="classDB__DataObject__Pluggable_1532ac226971e5d698f38e1e1674327ac" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>preGenerateForm</name></member>
+      <member refid="classDB__DataObject__Pluggable_1abe95804af6f33e04d1483c1a8696247" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>prepareLinkedDataObject</name></member>
+      <member refid="classDB__DataObject__Pluggable_1c3f5ba5a05743c5299cb9de5b607def5" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>preProcessForm</name></member>
+      <member refid="classDB__DataObject__Pluggable_1afcebc92a1400e2c7b0b81ea118ec4e7" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>query</name></member>
+      <member refid="classDataObjects__Testuser_181c409bc50d6a1bc1f8118bbf3ef5934" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>reverseLinks</name></member>
+      <member refid="classDB__DataObject__Iterator_1405473dba57a336ff21a0feb53e00ffc" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>rewind</name></member>
+      <member refid="classDB__DataObject__Pluggable_135ede1e7b6f59101e388dcef8de31ff3" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>rollback</name></member>
+      <member refid="classDB__DataObject__Pluggable_16a5aa9c4d200fcc70b22e8f7500986ff" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>say</name></member>
+      <member refid="classDataObjects__Testuser_1e5a1f52612780ba6044df436bd4382fe" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>sequenceKey</name></member>
+      <member refid="classDataObjects__Testuser_15b28b92b99a3bb17eebe8860e06a2d77" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>staticGet</name></member>
+      <member refid="classDataObjects__Testuser_1f13606aecc0c6a99bf7da29198980535" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>table</name></member>
+      <member refid="classDB__DataObject__Pluggable_13df1e6da22b063fe81fb2631f1514e82" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>unloadPlugin</name></member>
+      <member refid="classDB__DataObject__Pluggable_18687aeee278d158b705485b035395208" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>unloadPlugins</name></member>
+      <member refid="classDB__DataObject__Pluggable_19b263a3f223430047b6a29b8e9dc0bc0" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>update</name></member>
+      <member refid="classDB__DataObject__Pluggable_1dc2fed7f1cd8f9ef51ff781f13e569c6" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>utf8_convert</name></member>
+      <member refid="classDB__DataObject__Iterator_1b77fde1e40e6cc9559e153b4eea6aecc" prot="public" virt="non-virtual"><scope>DataObjects_Testuser</scope><name>valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

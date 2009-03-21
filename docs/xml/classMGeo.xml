@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classMGeo" kind="class" prot="public">
+    <compoundname>MGeo</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classMGeo_13e06501e9ec0c0e2dc48456e9f8d6d90" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>MGeo::$address</definition>
+        <argsstring></argsstring>
+        <name>$address</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMGeo_168b161504c8db72991818aee088b72da" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>MGeo::$key</definition>
+        <argsstring></argsstring>
+        <name>$key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMGeo_1d04b42ce3298628d6a45bb327582e94a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MGeo::__construct</definition>
+        <argsstring>($key=null)</argsstring>
+        <name>__construct</name>
+        <param>
+          <type>$</type>
+          <declname>key</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="25" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classMGeo_1c8cba485901026e46302c3891f841421" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MGeo::setAddress</definition>
+        <argsstring>($address)</argsstring>
+        <name>setAddress</name>
+        <param>
+          <type>$</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="32" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classMGeo_1711ba1e2cf01dccc06d9f7eed7353dc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MGeo::setDebug</definition>
+        <argsstring>($bool)</argsstring>
+        <name>setDebug</name>
+        <param>
+          <type>$</type>
+          <declname>bool</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="42" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classMGeo_103faebfffc746ead05de68df2b1ed7b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MGeo::debug</definition>
+        <argsstring>($str)</argsstring>
+        <name>debug</name>
+        <param>
+          <type>$</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="46" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classMGeo_108077a48724c572e6d9eac79bbef7ad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MGeo::setString</definition>
+        <argsstring>($str)</argsstring>
+        <name>setString</name>
+        <param>
+          <type>$</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="50" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="49" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classMGeo_12ffb5c3ce475a1678dbe3daf2b2eb4dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MGeo::setLatLong</definition>
+        <argsstring>($lat, $long)</argsstring>
+        <name>setLatLong</name>
+        <param>
+          <type>$</type>
+          <declname>lat</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>long</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="54" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="53" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classMGeo_15b941e64cff1e595ffbf0f8f3425d2bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MGeo::getLatLong</definition>
+        <argsstring>()</argsstring>
+        <name>getLatLong</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="59" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="58" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classMGeo_181821930ae4fa5edaa32228c55ba5fdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MGeo::getAEP</definition>
+        <argsstring>($satlong=13)</argsstring>
+        <name>getAEP</name>
+        <param>
+          <type>$</type>
+          <declname>satlong</declname>
+          <defval>13</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="88" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="87" bodyend="102"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classMGeo_10cd30f9c07603012b3f63229b068b096" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MGeo::calculAzimut</definition>
+        <argsstring>($satlong, $eslat, $eslong)</argsstring>
+        <name>calculAzimut</name>
+        <param>
+          <type>$</type>
+          <declname>satlong</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>eslat</declname>
+        </param>
+        <param>
+          <type>$</type>
+          <declname>eslong</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="104" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="103" bodyend="155"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="22" bodyend="156"/>
+    <listofallmembers>
+      <member refid="classMGeo_13e06501e9ec0c0e2dc48456e9f8d6d90" prot="public" virt="non-virtual"><scope>MGeo</scope><name>$address</name></member>
+      <member refid="classMGeo_168b161504c8db72991818aee088b72da" prot="public" virt="non-virtual"><scope>MGeo</scope><name>$key</name></member>
+      <member refid="classMGeo_1d04b42ce3298628d6a45bb327582e94a" prot="public" virt="non-virtual"><scope>MGeo</scope><name>__construct</name></member>
+      <member refid="classMGeo_10cd30f9c07603012b3f63229b068b096" prot="private" virt="non-virtual"><scope>MGeo</scope><name>calculAzimut</name></member>
+      <member refid="classMGeo_103faebfffc746ead05de68df2b1ed7b2" prot="public" virt="non-virtual"><scope>MGeo</scope><name>debug</name></member>
+      <member refid="classMGeo_181821930ae4fa5edaa32228c55ba5fdc" prot="public" virt="non-virtual"><scope>MGeo</scope><name>getAEP</name></member>
+      <member refid="classMGeo_15b941e64cff1e595ffbf0f8f3425d2bc" prot="public" virt="non-virtual"><scope>MGeo</scope><name>getLatLong</name></member>
+      <member refid="classMGeo_1c8cba485901026e46302c3891f841421" prot="public" virt="non-virtual"><scope>MGeo</scope><name>setAddress</name></member>
+      <member refid="classMGeo_1711ba1e2cf01dccc06d9f7eed7353dc6" prot="public" virt="non-virtual"><scope>MGeo</scope><name>setDebug</name></member>
+      <member refid="classMGeo_12ffb5c3ce475a1678dbe3daf2b2eb4dc" prot="public" virt="non-virtual"><scope>MGeo</scope><name>setLatLong</name></member>
+      <member refid="classMGeo_108077a48724c572e6d9eac79bbef7ad0" prot="public" virt="non-virtual"><scope>MGeo</scope><name>setString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_a0fe14d5bb0c895411f90398af817bd3" kind="dir">
+    <compoundname>Documents/Taf/</compoundname>
+    <innerdir refid="dir_5656bd0943ec0431377230d53a271dc8">Documents/Taf/Eclipse/</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="dir_148ba79458ed9d0a5ffdbe59414da00f" kind="dir">
+    <compoundname>Documents/Taf/Eclipse/m4php5/DB/DataObject/</compoundname>
+    <innerdir refid="dir_2370728fa4fdc590aeaee4edc2eea81e">Documents/Taf/Eclipse/m4php5/DB/DataObject/FormBuilder/</innerdir>
+    <innerdir refid="dir_1531ef9be10faaf1e50e774d6a962c2f">Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/</innerdir>
+    <innerfile refid="Advgenerator_8php">Advgenerator.php</innerfile>
+    <innerfile refid="Iterator_8php">Iterator.php</innerfile>
+    <innerfile refid="Pluggable_8php">Pluggable.php</innerfile>
+    <innerfile refid="Plugin_8php">Plugin.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/"/>
+  </compounddef>
+</doxygen>

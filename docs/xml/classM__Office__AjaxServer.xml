@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="classM__Office__AjaxServer" kind="class" prot="public">
+    <compoundname>M_Office_AjaxServer</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classM__Office__AjaxServer_1cf7a400f2c728a473b3209c1e6f07f1d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>M_Office_AjaxServer::$initMethods</definition>
+        <argsstring></argsstring>
+        <name>$initMethods</name>
+        <initializer> true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AjaxServer.php" line="8" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AjaxServer.php" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classM__Office__AjaxServer_1d4561bff0916920ea51bff629f828c03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>M_Office_AjaxServer::initAjaxDBFieldUpdater</definition>
+        <argsstring>()</argsstring>
+        <name>initAjaxDBFieldUpdater</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AjaxServer.php" line="11" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AjaxServer.php" bodystart="11" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AjaxServer.php" line="6" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/AjaxServer.php" bodystart="6" bodyend="16"/>
+    <listofallmembers>
+      <member refid="classM__Office__AjaxServer_1cf7a400f2c728a473b3209c1e6f07f1d" prot="public" virt="non-virtual"><scope>M_Office_AjaxServer</scope><name>$initMethods</name></member>
+      <member refid="classM__Office__AjaxServer_1d4561bff0916920ea51bff629f828c03" prot="public" virt="non-virtual"><scope>M_Office_AjaxServer</scope><name>initAjaxDBFieldUpdater</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
