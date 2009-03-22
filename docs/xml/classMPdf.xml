@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classMPdf" kind="class" prot="public">
     <compoundname>MPdf</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Maman</basecompoundref>
+    <basecompoundref refid="classMaman" prot="public" virt="non-virtual">Maman</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classMPdf_11d48f1c6d32a8be7a47d963b7a337351" prot="public" static="no" mutable="no">
         <type></type>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="23" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="22" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="24" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classMPdf_1145da85e4306cfb14ca8a081d7e7ffa4" prot="protected" static="no" mutable="no">
         <type></type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="25" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="24" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="26" bodyend="41"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="25" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classMPdf_11440b15fa2611e06d7980876e955f5df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="69" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="69" bodyend="72"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="68" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="68" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classMPdf_14be7d660c5051495eb76e40c8e41b5fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="73" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="73" bodyend="75"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="72" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classMPdf_1a894594114d663952c185d5bd91b7139" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="84" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="83" bodyend="87"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="83" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="82" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classMPdf_155ad95b2d26fe9b5bec848c987f05af4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="89" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="88" bodyend="95"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="88" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="87" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classMPdf_1315ee0fe77c419cc2b69003f9703c5e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="97" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="96" bodyend="105"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="96" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="95" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classMPdf_1498604f5e9c7b6c87b42e873c25a3d5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>&amp;</type>
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="107" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="106" bodyend="109"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="106" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="105" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classMPdf_1396fd1472cf4ccc021191827b26f45a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="111" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="110" bodyend="113"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="110" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="109" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="classMPdf_1068efbb7ad1520888c455d7839d74c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="115" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="114" bodyend="118"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="114" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="113" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="classMPdf_195918a76341b8f750d84638027e6a7eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -200,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="120" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="119" bodyend="123"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="119" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="118" bodyend="122"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="43" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="42" bodyend="68"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="42" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="41" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classMPdf_16e36e8339a19a336e65589c3cb273c16" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>&amp;</type>
@@ -250,14 +250,38 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="77" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="76" bodyend="82"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="76" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="75" bodyend="81"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="22" bodyend="124"/>
+<para>PDF generation class using dompdf external library and <ref refid="classMtpl" kindref="compound">Mtpl</ref> as the template engine </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="245">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="244">
+        <label>MPdf</label>
+        <link refid="classMPdf"/>
+        <childnode refid="245" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="247">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="246">
+        <label>MPdf</label>
+        <link refid="classMPdf"/>
+        <childnode refid="247" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MPdf.php" bodystart="21" bodyend="123"/>
     <listofallmembers>
       <member refid="classMaman_1e69647de8a274eae406840f35af22b70" prot="protected" virt="non-virtual"><scope>MPdf</scope><name>$config</name></member>
       <member refid="classMPdf_1145da85e4306cfb14ca8a081d7e7ffa4" prot="protected" virt="non-virtual"><scope>MPdf</scope><name>$pdf</name></member>

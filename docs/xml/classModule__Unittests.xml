@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classModule__Unittests" kind="class" prot="public">
     <compoundname>Module_Unittests</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+    <basecompoundref refid="classModule" prot="public" virt="non-virtual">Module</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classModule__Unittests_148ac08a33b5371a4c8258e4d0ac6244a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -134,6 +134,42 @@
     </briefdescription>
     <detaileddescription>
 <para>Module_Unisttests </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="347">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="348">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="346">
+        <label>Module_Unittests</label>
+        <link refid="classModule__Unittests"/>
+        <childnode refid="347" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="350">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="351" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="351">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="349">
+        <label>Module_Unittests</label>
+        <link refid="classModule__Unittests"/>
+        <childnode refid="350" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/interfaces/module.php" line="7" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/tests/interfaces/module.php" bodystart="6" bodyend="125"/>
     <listofallmembers>
       <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Module_Unittests</scope><name>$_cachedData</name></member>

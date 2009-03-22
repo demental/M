@@ -10,7 +10,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
-<codeline lineno="22"><highlight class="keyword">class<sp/></highlight><highlight class="normal">T_editor<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/>T<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="keyword">class<sp/></highlight><highlight class="normal">T_editor<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="classT" kindref="compound">T</ref><sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>$curStrings;</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/>translate(<sp/>$string,<sp/>$args<sp/>=<sp/>null<sp/>)</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/>{</highlight></codeline>

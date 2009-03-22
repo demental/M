@@ -1,24 +1,21 @@
 <?php
 /**
-* M PHP Framework
-* @package      M
-* @subpackage   M_autoload
-*/
+ * M PHP Framework
+ *
+ * @package      M
+ * @subpackage   M_autoload
+ * @author       Arnaud Sellenet <demental@sat2way.com>
+ * @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+ * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+ * @version      0.1
+ */
+
 /**
-* M PHP Framework
-*
-* Static autoload including paths for most of the framework classes. 
-* Declaration of the __autoload() function
-* The paths array is stored in the registry object (Mreg).
-* You can then add more project-specific classes in the registry at runtime 
-*
-* @package      M
-* @subpackage   M_autoload
-* @author       Arnaud Sellenet <demental@sat2way.com>
-* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
-* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
-* @version      0.1
-*/
+ * Static autoload including paths for most of the framework classes.
+ * Declaration of the __autoload() function
+ * The paths array is stored in the registry object (Mreg).
+ * You can then add more project-specific classes in the registry at runtime
+ */
 
 require_once 'M/Mreg.php';
 Mreg::append('autoload',
@@ -71,26 +68,33 @@ array(
   'MGeo'                  =>'M/MGeo.php',
   'Net_URL_Mapper'        =>'Net/URL/Mapper.php'
   )
-);
+  );
 
-function __autoload($class) {
-  $classes = Mreg::get('autoload');
-  if(key_exists($class,$classes)) {
+  /**
+   *
+   * Autoload
+   *
+   * @param	$class	string	Class to load
+   * @return	boolean
+   */
+  function __autoload($class) {
+  	$classes = Mreg::get('autoload');
+  	if(key_exists($class,$classes)) {
     require $classes[$class];
     return true;
-  }
-  try {
+  	}
+  	try {
     $callbacks = Mreg::get('autoloadcallback');
     if(is_array($callbacks)) {
-      foreach($callbacks as $callback) {
-        if(function_exists($callback)) {
-          call_user_func($callback,$class);
-        }
-      }
+    	foreach($callbacks as $callback) {
+    		if(function_exists($callback)) {
+    			call_user_func($callback,$class);
+    		}
+    	}
     }
-  } catch (Exception $e) {
-    
+  	} catch (Exception $e) {
+
+  	}
+  	return false;
   }
-  return false;
-}
 

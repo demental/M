@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="24" bodyend="27"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="23" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classmyFB_12e6748f5f0c6128ca871343960898bd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>&amp;</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="29" bodyend="73"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="28" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classmyFB_1c9b058c50af6a63a8385b6d33dd730cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="80" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="74" bodyend="152"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="79" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="73" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classmyFB_17d10be35762e4afeeaa188667f057952" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="153" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="153" bodyend="160"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="152" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="152" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classmyFB_171f97f901e4a95026f5c67ba1f8039f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>&amp;</type>
@@ -172,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="163" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="162" bodyend="837"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="162" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="161" bodyend="836"/>
       </memberdef>
       <memberdef kind="function" id="classmyFB_14f7a675cbcad87604545d28077be9982" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="839" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="839" bodyend="1059"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="838" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="838" bodyend="1058"/>
       </memberdef>
       <memberdef kind="function" id="classmyFB_190285750e6a9f198d31fb08692cc6d37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="1060" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="1060" bodyend="1082"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="1059" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="1059" bodyend="1081"/>
       </memberdef>
       <memberdef kind="function" id="classmyFB_113e3f49c4dbb6df620d624f4e6b03b58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -215,14 +215,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="1084" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="1083" bodyend="1505"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="1083" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="1082" bodyend="1504"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="21" bodyend="1506"/>
+<para>PEAR_DB_DataObject_FormBuilder tweaks </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyFB.php" bodystart="20" bodyend="1505"/>
     <listofallmembers>
       <member refid="classmyFB_171f97f901e4a95026f5c67ba1f8039f8" prot="public" virt="non-virtual"><scope>myFB</scope><name>_generateForm</name></member>
       <member refid="classmyFB_1c9b058c50af6a63a8385b6d33dd730cf" prot="public" virt="non-virtual"><scope>myFB</scope><name>_getSelectOptions</name></member>

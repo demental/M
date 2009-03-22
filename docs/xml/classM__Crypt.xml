@@ -20,10 +20,26 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Encrypt data</para><para>public</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$val Data to encrypt </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$ky Key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string Encrypted data </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" bodystart="25" bodyend="41"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" line="35" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" bodystart="35" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classM__Crypt_144eaf793613f9c8a5ba0626a3746f968" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -42,17 +58,33 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Encrypt data</para><para>public</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$val Data to encrypt </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>$ky Key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string Encrypted data </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" line="43" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" bodystart="42" bodyend="63"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" line="63" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" bodystart="62" bodyend="83"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
 <para>Strong encryption/decryption static methods Dependency : PEAR_Crypt_Blowfish </para>    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" bodystart="24" bodyend="64"/>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Crypt.php" bodystart="24" bodyend="84"/>
     <listofallmembers>
       <member refid="classM__Crypt_144eaf793613f9c8a5ba0626a3746f968" prot="public" virt="non-virtual"><scope>M_Crypt</scope><name>decrypt</name></member>
       <member refid="classM__Crypt_1a5ade8a13de82594652939826b451f7d" prot="public" virt="non-virtual"><scope>M_Crypt</scope><name>encrypt</name></member>

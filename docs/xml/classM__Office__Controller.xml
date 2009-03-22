@@ -259,6 +259,17 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="173">
+        <label>M_Office</label>
+        <link refid="classM__Office"/>
+        <childnode refid="172" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="172">
+        <label>M_Office_Controller</label>
+      </node>
+    </inheritancegraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Controller.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Controller.php" bodystart="20" bodyend="121"/>
     <listofallmembers>
       <member refid="classM__Office__Controller_1a4a90f07fb33381fca03cca7b412db55" prot="public" virt="non-virtual"><scope>M_Office_Controller</scope><name>append</name></member>

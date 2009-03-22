@@ -3,21 +3,7 @@
   <compounddef id="classDB__DataObject__Pluggable" kind="class" prot="public">
     <compoundname>DB_DataObject_Pluggable</compoundname>
     <basecompoundref prot="public" virt="non-virtual">DB_DataObject_Iterator</basecompoundref>
-    <derivedcompoundref refid="classDataObjects__Album" prot="public" virt="non-virtual">DataObjects_Album</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Album__i18n" prot="public" virt="non-virtual">DataObjects_Album_i18n</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Artist" prot="public" virt="non-virtual">DataObjects_Artist</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Artist__i18n" prot="public" virt="non-virtual">DataObjects_Artist_i18n</derivedcompoundref>
     <derivedcompoundref refid="classDataObjects__Blackboard" prot="public" virt="non-virtual">DataObjects_Blackboard</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Formtest" prot="public" virt="non-virtual">DataObjects_Formtest</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Formtest__i18n" prot="public" virt="non-virtual">DataObjects_Formtest_i18n</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Notmigrated" prot="public" virt="non-virtual">DataObjects_Notmigrated</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Notmigrated__withspecialnames" prot="public" virt="non-virtual">DataObjects_Notmigrated_withspecialnames</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Testuser" prot="public" virt="non-virtual">DataObjects_Testuser</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Title" prot="public" virt="non-virtual">DataObjects_Title</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Translate" prot="public" virt="non-virtual">DataObjects_Translate</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__User" prot="public" virt="non-virtual">DataObjects_User</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Vanillainnodb" prot="public" virt="non-virtual">DataObjects_Vanillainnodb</derivedcompoundref>
-    <derivedcompoundref refid="classDataObjects__Vanillainnodb2" prot="public" virt="non-virtual">DataObjects_Vanillainnodb2</derivedcompoundref>
       <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classDB__DataObject__Pluggable_1ff3aaf327756628fae1075f2d42fefcb" prot="protected" static="no" mutable="no">
         <type></type>
@@ -604,7 +590,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Notifications Sends messages to Notifier instance <parameterlist kind="param"><parameteritem>
+<para>Notifications Sends messages to <ref refid="classNotifier" kindref="compound">Notifier</ref> instance <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>string</parametername>
 </parameternamelist>
@@ -763,97 +749,13 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="101">
-        <label>DataObjects_Title</label>
-        <link refid="classDataObjects__Title"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="103">
-        <label>DataObjects_User</label>
-        <link refid="classDataObjects__User"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="97">
-        <label>DataObjects_Formtest_i18n</label>
-        <link refid="classDataObjects__Formtest__i18n"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="90">
+      <node id="92">
         <label>DB_DataObject_Pluggable</label>
       </node>
-      <node id="96">
-        <label>DataObjects_Formtest</label>
-        <link refid="classDataObjects__Formtest"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="104">
-        <label>DataObjects_Vanillainnodb</label>
-        <link refid="classDataObjects__Vanillainnodb"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="99">
-        <label>DataObjects_Notmigrated_withspecialnames</label>
-        <link refid="classDataObjects__Notmigrated__withspecialnames"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="98">
-        <label>DataObjects_Notmigrated</label>
-        <link refid="classDataObjects__Notmigrated"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="95">
+      <node id="93">
         <label>DataObjects_Blackboard</label>
         <link refid="classDataObjects__Blackboard"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="100">
-        <label>DataObjects_Testuser</label>
-        <link refid="classDataObjects__Testuser"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="91">
-        <label>DataObjects_Album</label>
-        <link refid="classDataObjects__Album"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="92">
-        <label>DataObjects_Album_i18n</label>
-        <link refid="classDataObjects__Album__i18n"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="105">
-        <label>DataObjects_Vanillainnodb2</label>
-        <link refid="classDataObjects__Vanillainnodb2"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="102">
-        <label>DataObjects_Translate</label>
-        <link refid="classDataObjects__Translate"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="93">
-        <label>DataObjects_Artist</label>
-        <link refid="classDataObjects__Artist"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="94">
-        <label>DataObjects_Artist_i18n</label>
-        <link refid="classDataObjects__Artist__i18n"/>
-        <childnode refid="90" relation="public-inheritance">
+        <childnode refid="92" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

@@ -1,0 +1,47 @@
+.TH "Module" 3 "22 Mar 2009" "Version 0.1" "m4php5" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Module \- 
+.SH SYNOPSIS
+.br
+.PP
+Inherits \fBMaman\fP.
+.PP
+Inherited by M_Office_Automodule, Module_CMS, Module_home, Module_Tasks, Module_Timeline, Office_DbModule, Office_DefaultModule, Office_Module, and Office_UserModule.
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBgetRequest\fP ()"
+.br
+.ti -1c
+.RI "\fBassign\fP ($var, $val)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBgenerateOptions\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBModule\fP class. This is one of the most used class in the framework, in combination with \fBDispatcher\fP, it represents the Controller layer. Modules are created using the factory() method. A module can be used as a result of a user request or as a component (using the c() method in \fBMtpl\fP) this class also provides caching mechanism and user credentials 
+.SH "Member Function Documentation"
+.PP 
+.SS "Module::generateOptions ()\fC [protected]\fP"
+.PP
+Getters / Setters 
+.SS "Module::getRequest ()"
+.PP
+TODO pouvoir r�cup�rer n'importe quelle valeur de $_REQUEST 
+.SS "Module::assign ($ var, $ val)"
+.PP
+Proxy methods for the view 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for m4php5 from the source code.

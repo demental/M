@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="interfaceiSetup" kind="interface" prot="public">
     <compoundname>iSetup</compoundname>
-    <derivedcompoundref refid="classM__Setup" prot="public" virt="non-virtual">M_Setup</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="interfaceiSetup_1bca8cfdb3e1650df4014e1781d1ab74b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -15,14 +14,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/iSetup.php" line="23"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/iSetup.php" line="21"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/iSetup.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/iSetup.php" bodystart="22" bodyend="24"/>
+<para>Simple application setup interface Used to &quot;boot&quot; the current application e.g. fill the configuration values (Database and other stuff needed at startup) </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/iSetup.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/iSetup.php" bodystart="20" bodyend="22"/>
     <listofallmembers>
       <member refid="interfaceiSetup_1bca8cfdb3e1650df4014e1781d1ab74b" prot="public" virt="non-virtual"><scope>iSetup</scope><name>setUpEnv</name></member>
     </listofallmembers>

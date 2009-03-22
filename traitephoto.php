@@ -1,24 +1,4 @@
 <?
-//
-// +--------------------------------------------------------------------+
-// | M PHP Framework                                                    |
-// +--------------------------------------------------------------------+
-// | Copyright (c) 2003-2009 Arnaud Sellenet demental.info              |
-// | Web           http://m4php5.googlecode.com/                        |
-// | License       GNU Lesser General Public License (LGPL)             |
-// +--------------------------------------------------------------------+
-// | This library is free software; you can redistribute it and/or      |
-// | modify it under the terms of the GNU Lesser General Public         |
-// | License as published by the Free Software Foundation; either       |
-// | version 2.1 of the License, or (at your option) any later version. |
-// +--------------------------------------------------------------------+
-//
-
-/**
-* M PHP Framework
-* @package      M
-* @subpackage   traitephoto
-*/
 /**
 * M PHP Framework
 *
@@ -38,12 +18,12 @@
 require_once("Image/Transform.php");
 //// Classe de traitement photo.
 //// Historique :
-//// 10/2002 début du developpement
+//// 10/2002 dï¿½but du developpement
 //// 11/2002 Ajout des fonctions maxx et maxy
 //// 16/01/2003 Ajout de redimensionnement par surface ou perimetre seuil
 //// 23/01/2003 Ajout de nomsouhaite pour avoir le nom exact
 //// 29/01/2003 Ajout du support d'imagemagick pour le redim
-//// 05/04/2004 Commentaire + ajout de la vérification du "/" à la fin de $path
+//// 05/04/2004 Commentaire + ajout de la vï¿½rification du "/" ï¿½ la fin de $path
 ////////////////////////////
 ////
 //// Exemple d'utilisation :
@@ -58,47 +38,47 @@ require_once("Image/Transform.php");
 ////
 //////////////////////////////
 //// Limitations avec imagemagick :
-//// l'exécutable "convert" doit être placé dans le dossier /bin et pas /sbin pour pouvoir être exécuté par php
-//// Il doit certainement être en 755 (à vérifier)
+//// l'exï¿½cutable "convert" doit ï¿½tre placï¿½ dans le dossier /bin et pas /sbin pour pouvoir ï¿½tre exï¿½cutï¿½ par php
+//// Il doit certainement ï¿½tre en 755 (ï¿½ vï¿½rifier)
 //// Pas de rotation
-//// Pas de redimensionnement en même temps que recadrage
-//// le support d'imagemagick n'est pas implémenté dans la méthode "sortie()"
+//// Pas de redimensionnement en mï¿½me temps que recadrage
+//// le support d'imagemagick n'est pas implï¿½mentï¿½ dans la mï¿½thode "sortie()"
 //////////////////////////////
 
 
 
 class traitephoto
 {
-	var $photo;//// Chemin du fichier photo à traiter
-	var $nomimg;//// début du nom du fichier, si $nomsouhaite n'est pas renseigné
-	var $path;//// Chemin où enregistrer le fichier traité
+	var $photo;//// Chemin du fichier photo ï¿½ traiter
+	var $nomimg;//// dï¿½but du nom du fichier, si $nomsouhaite n'est pas renseignï¿½
+	var $path;//// Chemin oï¿½ enregistrer le fichier traitï¿½
 	var $qualite; //// qualite JPEG
-	var $nomsouhaite; //// si ce champ est renseigné le nom de l'export sera exactement celui-ci 
+	var $nomsouhaite; //// si ce champ est renseignï¿½ le nom de l'export sera exactement celui-ci 
 
 /// ---- Redimensionnement ---- //
-//// si tous les champs sont renseignés, seuls les plus "prioritaires" sont pris en compte
+//// si tous les champs sont renseignï¿½s, seuls les plus "prioritaires" sont pris en compte
 //// $pourcent prend le pas sur $width et $height
-//// mais peut ensuite être traité par les paramètres suivants
+//// mais peut ensuite ï¿½tre traitï¿½ par les paramï¿½tres suivants
 //// $maxx et $maxy prennent le pas sur $perimetre qui prend le pas sur $surface
 
-	var $width;//// Largeur souhaitée. Si la hauteur n'est pas spécifiée, le redimensionnement sera proportionnel
-	var $height;//// Hauteur souhaitée. Si la largeur n'est pas spécifiée, le redimensionnement sera proportionnel
+	var $width;//// Largeur souhaitï¿½e. Si la hauteur n'est pas spï¿½cifiï¿½e, le redimensionnement sera proportionnel
+	var $height;//// Hauteur souhaitï¿½e. Si la largeur n'est pas spï¿½cifiï¿½e, le redimensionnement sera proportionnel
 	var $pourcent;//// redimensionnement en pourcentage
 	var $maxx;//// redimensionnement seuil en largeur - toujours proportionnel
 	var $maxy;//// redimensionnement seuil en hauteur - toujours proportionnel
-	var $perimetre;//// redimensionnement en périmètre - toujours proportionnel
+	var $perimetre;//// redimensionnement en pï¿½rimï¿½tre - toujours proportionnel
 	var $surface;//// redimensionnement en surface - toujours proportionnel
-	var $imgsize=Array();//// variable 'privée', où sont stockées les informations de la photo originale (0=>x,1=>y,2=>format) - avec GD
-						//// on peut éventuellement la récupérer en dehors de l'objet
-	var $newimgsize=Array();///// tableau ou sont stockés les informations de la nouvelle photo
+	var $imgsize=Array();//// variable 'privï¿½e', oï¿½ sont stockï¿½es les informations de la photo originale (0=>x,1=>y,2=>format) - avec GD
+						//// on peut ï¿½ventuellement la rï¿½cupï¿½rer en dehors de l'objet
+	var $newimgsize=Array();///// tableau ou sont stockï¿½s les informations de la nouvelle photo
 /// ----- Recadrage ----- ///
 	var $gauche;
 	var $droit;
 	var $haut;
 	var $bas;
-	var $docsize=Array();/// Var privée, utilisée pour le recadrage
+	var $docsize=Array();/// Var privï¿½e, utilisï¿½e pour le recadrage
 /// ----- Rotation ----- ///
-/// Uniquement par pas de 90° //
+/// Uniquement par pas de 90ï¿½ //
 	var $angle;///
 	var $imgT;// objet PEAR_Image_Transform
 	var $server; /////// chemin pour arriver au dossier depuis la racine serveur (si on utilise imagemagick)
@@ -198,7 +178,7 @@ class traitephoto
 	function sauvegarde($type=null){	
 		/////////////////////// sauvegarde l'image finale et retourne son nom de fichier ////////////
 		
-		///// Petite vérification : y-a-t'il un "/" à la fin de $this->path ?
+		///// Petite vï¿½rification : y-a-t'il un "/" ï¿½ la fin de $this->path ?
 		if(!ereg("/$",$this->path)){$this->path.="/";}
 		if($type) {
 			$this->nomsouhaite = eregi_replace('[[:alnum:]]+$',$type,$this->nomsouhaite);
@@ -206,7 +186,7 @@ class traitephoto
 		$this->imgT->save($this->path.$this->nomsouhaite,$type?$type:$this->imgT->getImageType());
 		return $this->nomsouhaite;
 /*
-		///// Création du nom du fichier destination //////
+		///// Crï¿½ation du nom du fichier destination //////
 		$randnum = md5(time());
 		if($this -> imgsize[2]=="1") {
 			$ext=".gif";
@@ -215,7 +195,7 @@ class traitephoto
 		} else {
 			$badformat1 = "ok";
 		}
-		if($badformat1 == "ok") {return false;}	////// On arrête le traitement si le type d'image est non géré. 
+		if($badformat1 == "ok") {return false;}	////// On arrï¿½te le traitement si le type d'image est non gï¿½rï¿½. 
 		if(empty($this->nomsouhaite)){
 			$this -> nomimg=$randnum.$ext;
 		} else {
@@ -249,7 +229,7 @@ class traitephoto
 }
 //////////// Fin de classe /////////////
 
-//////////////////////////////////////// Nécessaire pour la classe ci-dessus ////////////////////////////////////////////
+//////////////////////////////////////// Nï¿½cessaire pour la classe ci-dessus ////////////////////////////////////////////
 function ImageCopyResampleBicubic (&$dst_img, &$src_img, $dst_x,$dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h){
 /*
 port to PHP by John Jensen July 10 2001 (updated 4/21/02) -- original code

@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="23" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -53,7 +53,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="32" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="31" bodyend="34"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="29" bodyend="32"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="35" bodyend="49"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="34" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="33" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classMreg_13ad29ff7870610b5e96b35941fe34e91" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>&amp;</type>
@@ -102,7 +102,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="58" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="57" bodyend="64"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="56" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="55" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classMreg_1cd25a0431031663dd28f207c7ec39f56" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -123,14 +123,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="66" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="65" bodyend="84"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="64" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="63" bodyend="82"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="21" bodyend="85"/>
+<para>This is a registry class <simplesect kind="see"><para>registry design pattern </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Mreg.php" bodystart="19" bodyend="83"/>
     <listofallmembers>
       <member refid="classMreg_1cf51347168de3f879bf60f6f7cadf5a2" prot="private" virt="non-virtual"><scope>Mreg</scope><name>$_registry</name></member>
       <member refid="classMreg_1cd25a0431031663dd28f207c7ec39f56" prot="public" virt="non-virtual"><scope>Mreg</scope><name>append</name></member>

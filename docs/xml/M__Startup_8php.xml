@@ -62,7 +62,7 @@
         <definition>$opt</definition>
         <argsstring></argsstring>
         <name>$opt</name>
-        <initializer> &amp;PEAR::getStaticProperty(&apos;Module&apos;, &apos;global&apos;)</initializer>
+        <initializer> &amp;PEAR::getStaticProperty(&apos;<ref refid="classModule" kindref="compound">Module</ref>&apos;, &apos;global&apos;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -132,7 +132,7 @@
         <definition>$dispatchopt</definition>
         <argsstring></argsstring>
         <name>$dispatchopt</name>
-        <initializer> &amp;PEAR::getStaticProperty(&apos;Dispatcher&apos;, &apos;global&apos;)</initializer>
+        <initializer> &amp;PEAR::getStaticProperty(&apos;<ref refid="classDispatcher" kindref="compound">Dispatcher</ref>&apos;, &apos;global&apos;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

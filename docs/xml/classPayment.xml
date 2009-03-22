@@ -25,7 +25,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="21" bodyend="27"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="19" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classPayment_13cc3f87dfe3377c879bc65c1a0295ba8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="28" bodyend="31"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="26" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classPayment_1996b9f044efc6833daf58c90870057c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="32" bodyend="35"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="31" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="30" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classPayment_15e6f0c6cb2f7209dd5c3a5320028da3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="36" bodyend="38"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="34" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="34" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classPayment_115885c293947fc05175053f62363bd9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="39" bodyend="41"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="37" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="37" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classPayment_1351ef0a20c5baa0f6213c1ef07514f81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -102,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="43" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="43" bodyend="45"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="41" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="41" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classPayment_1bac27ae63bdbc842a1ced8ddfe5c3317" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="46" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="46" bodyend="48"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="44" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="44" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classPayment_1264116c90c038523310074bffb9b1a15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>&amp;</type>
@@ -132,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="49" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="49" bodyend="55"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="47" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="47" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classPayment_1709aad7f27f2b4a2c9b3ed4fa15c91a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="57" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="56" bodyend="59"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="55" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="54" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classPayment_18f3fd882e967b694cc207596af7b7312" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -158,14 +158,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="60" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="60" bodyend="65"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="58" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="58" bodyend="63"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="20" bodyend="66"/>
+<para>Credit card payment process abstraction - draft (currently includes a driver for ATOS SIPS) </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" line="18" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment.php" bodystart="18" bodyend="64"/>
     <listofallmembers>
       <member refid="classPayment_196badf20dc0ade274c1598da65efb328" prot="public" virt="non-virtual"><scope>Payment</scope><name>factory</name></member>
       <member refid="classPayment_15e6f0c6cb2f7209dd5c3a5320028da3e" prot="public" virt="non-virtual"><scope>Payment</scope><name>fetch</name></member>

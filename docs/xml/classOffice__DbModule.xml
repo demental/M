@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classOffice__DbModule" kind="class" prot="public">
     <compoundname>Office_DbModule</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+    <basecompoundref refid="classModule" prot="public" virt="non-virtual">Module</basecompoundref>
       <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classOffice__DbModule_1e26ebdf3e360b00ae47ab3c9e7f8eb10" prot="protected" static="no" mutable="no">
         <type></type>
@@ -226,6 +226,40 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="259">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="260" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="260">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="258">
+        <label>Office_DbModule</label>
+        <childnode refid="259" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="262">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="263" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="263">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="261">
+        <label>Office_DbModule</label>
+        <childnode refid="262" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DbModule.php" bodystart="20" bodyend="236"/>
     <listofallmembers>
       <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Office_DbModule</scope><name>$_cachedData</name></member>

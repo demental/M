@@ -10,7 +10,7 @@
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="classes.html"><span>Classes</span></a></li>
     <li>
       <form action="search.php" method="get">
         <table cellspacing="0" cellpadding="0" border="0">
@@ -25,20 +25,36 @@
   </div>
   <div class="tabs">
     <ul>
+      <li><a href="classes.html"><span>Alphabetical&nbsp;List</span></a></li>
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
     </ul>
   </div>
 </div>
 <div class="contents">
-<h1>Component Class Reference</h1><!-- doxytag: class="Component" --><!-- doxytag: inherits="Dispatcher" -->Inherits Dispatcher.
-<p>
+<h1>Component Class Reference</h1><!-- doxytag: class="Component" --><!-- doxytag: inherits="Dispatcher" --><div class="dynheader">
+Inheritance diagram for Component:</div>
+<div class="dynsection">
+<p><center><img src="classComponent__inherit__graph.png" border="0" usemap="#Component__inherit__map" alt="Inheritance graph"></center>
+<map name="Component__inherit__map">
+<area shape="rect" href="classDispatcher.html" title="Dispatcher" alt="" coords="8,80,91,107"><area shape="rect" href="classMaman.html" title="Maman" alt="" coords="17,6,81,32"></map>
+<center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
+<div class="dynheader">
+Collaboration diagram for Component:</div>
+<div class="dynsection">
+<p><center><img src="classComponent__coll__graph.png" border="0" usemap="#Component__coll__map" alt="Collaboration graph"></center>
+<map name="Component__coll__map">
+<area shape="rect" href="classDispatcher.html" title="Dispatcher" alt="" coords="8,80,91,107"><area shape="rect" href="classMaman.html" title="Maman" alt="" coords="17,6,81,32"></map>
+<center><font size="2">[<a href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
 <a href="classComponent-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classComponent.html#941aa95779d197b421b80d79a689da80">__construct</a> ($module, $action='index', $params=null)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classComponent.html#0a0409f0dc2092c2aa383123f98ca09c">display</a> ()</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
@@ -78,19 +94,45 @@
 Constructor<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>$module</em>&nbsp;</td><td>Module to display </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>$module</em>&nbsp;</td><td><a class="el" href="classModule.html">Module</a> to display </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>$action</em>&nbsp;</td><td>Content to display </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>$params</em>&nbsp;</td><td>Modules parameters </td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>Display </dd></dl>
 
+<p>Reimplemented from <a class="el" href="classDispatcher.html#d9596c149149dc310c56d6b8dea95474">Dispatcher</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="0a0409f0dc2092c2aa383123f98ca09c"></a><!-- doxytag: member="Component::display" ref="0a0409f0dc2092c2aa383123f98ca09c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Component::display           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Display the module<p>
+public <dl class="return" compact><dt><b>Returns:</b></dt><dd>string <a class="el" href="classModule.html">Module</a> output </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classDispatcher.html#92a054ab35b0d91267d80da16d53ef9e">Dispatcher</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>Documents/Taf/Eclipse/m4php5/Component.php</ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 21 02:33:48 2009 for m4php5 by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Mar 22 01:52:17 2009 for m4php5 by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

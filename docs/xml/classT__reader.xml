@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classT__reader" kind="class" prot="public">
     <compoundname>T_reader</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">T</basecompoundref>
+    <basecompoundref refid="classT" prot="public" virt="non-virtual">T</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classT__reader_1c53a1f2dbb824d4c6b850d239d60ddec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -31,6 +31,28 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="305">
+        <label>T</label>
+        <link refid="classT"/>
+      </node>
+      <node id="304">
+        <label>T_reader</label>
+        <childnode refid="305" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="307">
+        <label>T</label>
+        <link refid="classT"/>
+      </node>
+      <node id="306">
+        <label>T_reader</label>
+        <childnode refid="307" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/T/reader.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/T/reader.php" bodystart="20" bodyend="35"/>
     <listofallmembers>
       <member refid="classT_1d0400d44867d9bdae7f895d6f1f3899b" prot="public" virt="non-virtual"><scope>T_reader</scope><name>$config</name></member>

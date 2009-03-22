@@ -500,7 +500,7 @@
 <codeline lineno="632"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>$rply;</highlight></codeline>
 <codeline lineno="633"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="634"><highlight class="normal"></highlight></codeline>
-<codeline lineno="649"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/>Mail($from)<sp/>{</highlight></codeline>
+<codeline lineno="649"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/><ref refid="classMail" kindref="compound">Mail</ref>($from)<sp/>{</highlight></codeline>
 <codeline lineno="650"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;error<sp/>=<sp/>null;<sp/></highlight><highlight class="comment">//<sp/>so<sp/>no<sp/>confusion<sp/>is<sp/>caused</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="651"><highlight class="normal"></highlight></codeline>
 <codeline lineno="652"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!$this-&gt;connected())<sp/>{</highlight></codeline>

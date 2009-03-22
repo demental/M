@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classModule__CMS" kind="class" prot="public">
     <compoundname>Module_CMS</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+    <basecompoundref refid="classModule" prot="public" virt="non-virtual">Module</basecompoundref>
       <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classModule__CMS_153c926bf42ca8eea69296817158ee773" prot="protected" static="no" mutable="no">
         <type></type>
@@ -139,6 +139,40 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="221">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="222" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="222">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="220">
+        <label>Module_CMS</label>
+        <childnode refid="221" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="224">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="225" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="225">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="223">
+        <label>Module_CMS</label>
+        <childnode refid="224" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Module/CMS.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Module/CMS.php" bodystart="21" bodyend="70"/>
     <listofallmembers>
       <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Module_CMS</scope><name>$_cachedData</name></member>

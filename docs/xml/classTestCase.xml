@@ -240,13 +240,13 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="288">
+      <node id="329">
         <label>phpmailerTest</label>
         <link refid="classphpmailerTest"/>
-        <childnode refid="287" relation="public-inheritance">
+        <childnode refid="328" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="287">
+      <node id="328">
         <label>TestCase</label>
       </node>
     </inheritancegraph>

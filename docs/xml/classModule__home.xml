@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classModule__home" kind="class" prot="public">
     <compoundname>Module_home</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+    <basecompoundref refid="classModule" prot="public" virt="non-virtual">Module</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classModule__home_13e384b34da39f4ad6b754ab95793ddb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -65,6 +65,40 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="227">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="228" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="228">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="226">
+        <label>Module_home</label>
+        <childnode refid="227" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="230">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="231" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="231">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="229">
+        <label>Module_home</label>
+        <childnode refid="230" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/modules/home.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/modules/home.php" bodystart="20" bodyend="86"/>
     <listofallmembers>
       <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Module_home</scope><name>$_cachedData</name></member>

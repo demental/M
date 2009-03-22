@@ -1,11 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.5.6">
-  <compound refid="classAssert" kind="class"><name>Assert</name>
-    <member refid="classAssert_108f640ba531b5857b34cc99865fd71b7" kind="function"><name>assert</name></member>
-    <member refid="classAssert_16a41a342504cf6dbb2768d6fdd179cf6" kind="function"><name>assertEquals</name></member>
-    <member refid="classAssert_14eb7eb49306fe07e4939c1824f316c9c" kind="function"><name>assertRegexp</name></member>
-    <member refid="classAssert_19f1aa286233884cde7956207cb6c6955" kind="function"><name>failNotEquals</name></member>
-  </compound>
   <compound refid="classAuthHelper" kind="class"><name>AuthHelper</name>
     <member refid="classAuthHelper_1477e4c379e759e52ffabdc4e690a8fb1" kind="function"><name>getUserLevel</name></member>
     <member refid="classAuthHelper_10390e5c42fe6f5cd583fa4898a95e011" kind="function"><name>initUserLevel</name></member>
@@ -33,65 +27,6 @@
     <member refid="classConfig_1c3a31a273309242bd21578c108ad550c" kind="function"><name>arrayize</name></member>
     <member refid="classConfig_165cd0982a67c8f58c0fe788d65862ac7" kind="function"><name>setPref</name></member>
   </compound>
-  <compound refid="classcssmin" kind="class"><name>cssmin</name>
-    <member refid="classcssmin_1f90c41633a76046d58fe8c7947aefaed" kind="function"><name>minify</name></member>
-    <member refid="classcssmin_1df039b9bbea0de6be6454611102f4b6b" kind="function"><name>toArray</name></member>
-    <member refid="classcssmin_1b92ab61a1a9e6a6cfcb17e82366df4b4" kind="function"><name>toString</name></member>
-  </compound>
-  <compound refid="classDataObjects__Album" kind="class"><name>DataObjects_Album</name>
-    <member refid="classDataObjects__Album_10c21d2f2114b8f3d9ad91aa9304ef5bd" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Album_1f7653786c445d3c3c2a9f9378fad3dc0" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__Album_1f75207ac7e0b6172738a7f71a457b921" kind="variable"><name>$title</name></member>
-    <member refid="classDataObjects__Album_12db0b758f53695969a0b1809f1889c6f" kind="variable"><name>$i18nFields</name></member>
-    <member refid="classDataObjects__Album_12572934e56da8f8c95b694a0ab053195" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Album_14ddb921f43f450b0806c5c33ff87dd58" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Album_17d67bad99a5cc2eb0ef66c78561ae929" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Album_10c20d64d20f010906a51c933202ad3ae" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Album_1d5fd792418acf4bd36e0c0bfc6f64e52" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Album_1928d4dabe29e5ade9f2649f551f544a1" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Album_127af38cb877d2a134af94284a210e13e" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Album__i18n" kind="class"><name>DataObjects_Album_i18n</name>
-    <member refid="classDataObjects__Album__i18n_1a3ebf6c61822905010f75f6a391a7763" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Album__i18n_1e8a3c3166947762c8fbd1f544b2f70ae" kind="variable"><name>$i18n_id</name></member>
-    <member refid="classDataObjects__Album__i18n_11f3caa500c6073b45ef2592b0495f6f7" kind="variable"><name>$i18n_record_id</name></member>
-    <member refid="classDataObjects__Album__i18n_10fdbecb1344c8cd6035571da8f017e8a" kind="variable"><name>$i18n_lang</name></member>
-    <member refid="classDataObjects__Album__i18n_127d38ac508bdff386f29727349c022b5" kind="variable"><name>$description</name></member>
-    <member refid="classDataObjects__Album__i18n_1f7bbc002751ffc3ffa9ac015240240fd" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Album__i18n_1aac4efcdef03dcba04c53b7299f8a2f5" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Album__i18n_1b095bde6c1c65cae0aaf27f67fe82372" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Album__i18n_14687ba0106c09ed226d92a3f57033bf1" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Album__i18n_1c6c21850bc0d8a56a9aa4bcdd3fc1c97" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Album__i18n_1e9c333808a6d0cba31961be369a5f9a0" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Album__i18n_167d0b0fcda77932b23a2a1e723763970" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Artist" kind="class"><name>DataObjects_Artist</name>
-    <member refid="classDataObjects__Artist_143ddad94ff82eb0777b13f3515f327fc" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Artist_11a5e2e59cdbfb99a9488dc29041e0218" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__Artist_19e0e29fb662c24f147dca600a966b209" kind="variable"><name>$name</name></member>
-    <member refid="classDataObjects__Artist_1e17ca14a9c67dfa8b9e62033a43f3831" kind="variable"><name>$i18nFields</name></member>
-    <member refid="classDataObjects__Artist_1b48029f91cc08584b71820ec09287e37" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Artist_17d492a0dd410c73143abbb1ba50cec7c" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Artist_11fb19423a10c5aff1e5f43a1a8f7f33e" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Artist_12c9058d38a6be8db2e8bf4ed3afbbdc9" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Artist_188d78a45c6b3b2d41af543702d4f3cfb" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Artist_11004ea9c4476de67eff79e6b1d1c90dd" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Artist_1c8626623aa6e9011047ebd68faa77709" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Artist__i18n" kind="class"><name>DataObjects_Artist_i18n</name>
-    <member refid="classDataObjects__Artist__i18n_189ed89b32a102d2ff83ea55f3dbf5b53" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Artist__i18n_1bd4be59ec701e0c1eccfee91c61473f9" kind="variable"><name>$i18n_id</name></member>
-    <member refid="classDataObjects__Artist__i18n_1ac84a61dd79bff793cbe157eff7ec572" kind="variable"><name>$i18n_record_id</name></member>
-    <member refid="classDataObjects__Artist__i18n_1fc944aa1c5882dc7cc9c768656ecd2f6" kind="variable"><name>$i18n_lang</name></member>
-    <member refid="classDataObjects__Artist__i18n_11551ab71a0ab3de639813760f29cb8f3" kind="variable"><name>$description</name></member>
-    <member refid="classDataObjects__Artist__i18n_168710f68a94d248e7b4b56f6f87e773d" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Artist__i18n_195a31d3bc435f1b3cba31e4a7e738d31" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Artist__i18n_15c4cc2ae0aa720e8513356a14158ac3f" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Artist__i18n_1e7e868a5084f07066505e4948ee6ef0f" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Artist__i18n_12716ac0bca1cb4812d126a0c8e992814" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Artist__i18n_1560f68b73b30b850ae8e45688cb5e5fc" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Artist__i18n_1d49812b962812c4c0bad94b1d73e8101" kind="function"><name>reverseLinks</name></member>
-  </compound>
   <compound refid="classDataObjects__Blackboard" kind="class"><name>DataObjects_Blackboard</name>
     <member refid="classDataObjects__Blackboard_13b41eefc4bbae0dfc9f983b36da1602a" kind="variable"><name>$__table</name></member>
     <member refid="classDataObjects__Blackboard_1559ab925bbcf5cf5c7b2f10cc131c234" kind="variable"><name>$id</name></member>
@@ -107,148 +42,6 @@
     <member refid="classDataObjects__Blackboard_10fcca15bfd45ff32036a896d3a6403b9" kind="function"><name>links</name></member>
     <member refid="classDataObjects__Blackboard_171a0cb2a32bb1616b1c4c0c696ddffd4" kind="function"><name>reverseLinks</name></member>
     <member refid="classDataObjects__Blackboard_1225281de4a0e769f9ad6d0434862b6bd" kind="function"><name>insert</name></member>
-  </compound>
-  <compound refid="classDataObjects__Formtest" kind="class"><name>DataObjects_Formtest</name>
-    <member refid="classDataObjects__Formtest_1f84a10cd964d6116c6b4ddb99ef2b1ec" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Formtest_1ef9e54f5c2bb7c77701ff959bff40784" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__Formtest_146448d3658f64966aa49244c4f7e0357" kind="variable"><name>$pays</name></member>
-    <member refid="classDataObjects__Formtest_183f9a823b1c026662c0d082733af0143" kind="variable"><name>$testuser_id</name></member>
-    <member refid="classDataObjects__Formtest_1a17898e2fe83119b72bf1bee94262997" kind="variable"><name>$i18nFields</name></member>
-    <member refid="classDataObjects__Formtest_1fb45b98c4297e16bfc6d6ba055fb8252" kind="variable"><name>$fb_fieldAttributes</name></member>
-    <member refid="classDataObjects__Formtest_1df12ebc63872b78da617ece9a3021fda" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Formtest_1f8593027e1984374b244397564c066ec" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Formtest_1a8b12ff7bbdebcc9ac92e68e30318114" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Formtest_1564d5c18f1dbb552c24a292e30379154" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Formtest_11c390301fb9da413e72acafa74ad1295" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Formtest_1d43420d0a1627ade9b67d8d60728be17" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Formtest_1cf3a9c5b99e947788bb1fafd8a6fad32" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Formtest__i18n" kind="class"><name>DataObjects_Formtest_i18n</name>
-    <member refid="classDataObjects__Formtest__i18n_15ef53c7fbceabdcb425594e1a8a084d0" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Formtest__i18n_1f31f11434005a8042f8413aa2fb044b6" kind="variable"><name>$titre</name></member>
-    <member refid="classDataObjects__Formtest__i18n_1d00d4a824ed680b16a7e1468a14822c7" kind="variable"><name>$description</name></member>
-    <member refid="classDataObjects__Formtest__i18n_14477489f1fecd4a03d9a4720cc35a4a9" kind="variable"><name>$i18n_id</name></member>
-    <member refid="classDataObjects__Formtest__i18n_1976c5062d6a44a53bc88c2e530dca0da" kind="variable"><name>$i18n_lang</name></member>
-    <member refid="classDataObjects__Formtest__i18n_1bf6df57ace2ffcd1cbf78eb76cd1868c" kind="variable"><name>$i18n_record_id</name></member>
-    <member refid="classDataObjects__Formtest__i18n_1f0acefc2f5b98fddbe760b2f92207c47" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Formtest__i18n_14600abef8d3b85a9a56b48e2446e2860" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Formtest__i18n_1f0ede7aa86e0667f8ffa4d80f58c398c" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Formtest__i18n_1ca4df95329518ec7a1f2033dc8229656" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Formtest__i18n_13287f90611f5a920b0807224a217748a" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Formtest__i18n_10f35a713b07bb8ddd857c189cbf3279a" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Formtest__i18n_13e125bd4aa672d53d321103b3fb99186" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Notmigrated" kind="class"><name>DataObjects_Notmigrated</name>
-    <member refid="classDataObjects__Notmigrated_1f627b21d19fff246c021e4b614cefde9" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Notmigrated_1f3361f308718e0b38a03d1bf051584a0" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__Notmigrated_1a01590c870891d8e2ba47c84dbc9c782" kind="variable"><name>$titre</name></member>
-    <member refid="classDataObjects__Notmigrated_1d998d15a3e3cbfd59550f45f8c2a95dd" kind="variable"><name>$description</name></member>
-    <member refid="classDataObjects__Notmigrated_1edbced2d51c67183603784a8dabe12c4" kind="variable"><name>$pays</name></member>
-    <member refid="classDataObjects__Notmigrated_113940e87bbfc9a1a23bb3aabcb1b3423" kind="variable"><name>$testuser_id</name></member>
-    <member refid="classDataObjects__Notmigrated_1576c8ea5ba5d16137c8c9ec8c1003ef3" kind="variable"><name>$internationalFields</name></member>
-    <member refid="classDataObjects__Notmigrated_1b2bd946234641d83b8aef6956bc5b643" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Notmigrated_1b1c9cbcc058b39b32204bf145c33122d" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Notmigrated_1edf8a78ea82cecc911677973e5e74801" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Notmigrated_178a0204066feb35b9834951af01d74d4" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Notmigrated_151630847950f1bd87e0a1c83252297ed" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Notmigrated_179b85e86801795adbf53479e4eebb636" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Notmigrated_1706bc635684bd05fe980fda373f79207" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Notmigrated__withspecialnames" kind="class"><name>DataObjects_Notmigrated_withspecialnames</name>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_1ba9fe9e9d08fd20d3f290d8ed1e46463" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_1aa09e3354c5151ecb8e03e392b578318" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_1f8296c1f28469eb46fc3ae639824792d" kind="variable"><name>$long</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_156b93e24cf215ef997088e4ba85f9d2d" kind="variable"><name>$int</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_18e6fe37558946c240d6a26b697599a7d" kind="variable"><name>$pays</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_1fe421d186085ea35a0f18747af6f9a31" kind="variable"><name>$testuser_id</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_18cfae33318bf6be154524d49ec08e3fd" kind="variable"><name>$internationalFields</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_185c98b73ecbe21783e71cbf23700c561" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_16440f2c2bfc2ce518848a4e01d09f6a3" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_123cba4c95a644b802e80844a41d26d6c" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_10a31a9ee7be90438c301a682d1d3f4b2" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_13e7b11bf17faa186a362edad01644c22" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_1e4c9d77c42ddaeaeec73dafaaea21a9f" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Notmigrated__withspecialnames_17e3ea137ee362b8d8a7e937302b29ae4" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Testuser" kind="class"><name>DataObjects_Testuser</name>
-    <member refid="classDataObjects__Testuser_1703acd49d0f60b3ff94b3db7bb2214f6" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Testuser_1a2f4fe0d2fe42fcd47fea9ccf2c4c974" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__Testuser_16ed5094640f6b0b9cf9e3caf2cc65421" kind="variable"><name>$login</name></member>
-    <member refid="classDataObjects__Testuser_18ce4dd8bf0785f8d94b2c8f1f92f86be" kind="variable"><name>$password</name></member>
-    <member refid="classDataObjects__Testuser_15b28b92b99a3bb17eebe8860e06a2d77" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Testuser_1f13606aecc0c6a99bf7da29198980535" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Testuser_1f9478d684208683debda5039e64785fa" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Testuser_1e5a1f52612780ba6044df436bd4382fe" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Testuser_1c66906e6d033cb01f5cc393d0fef10f5" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Testuser_1363a5d5670030cc0f52578afedfadc8f" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Testuser_181c409bc50d6a1bc1f8118bbf3ef5934" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Title" kind="class"><name>DataObjects_Title</name>
-    <member refid="classDataObjects__Title_1b8bcf16772e9a1988cc36b89f0f89310" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Title_1ef0785a6f9787e7701dfd466d6b6711d" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__Title_11317539c1addbf38ae5565b4d9ece4f0" kind="variable"><name>$album_id</name></member>
-    <member refid="classDataObjects__Title_18872cc70197c77d3e79b1ce73f107830" kind="variable"><name>$ordre</name></member>
-    <member refid="classDataObjects__Title_1411a37dbb3aa7f9ef353c4856e890a55" kind="variable"><name>$title</name></member>
-    <member refid="classDataObjects__Title_178cc3ded635dab93cbf3ff1e33947f51" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Title_13a874a6d5a7bc99ed215cdada93b5fdb" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Title_11171f9c420defc018bd50f677906993c" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Title_1964ed01bac9452112fecc0ae08de4c96" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Title_1beaf73b753fcdd0b044ebc84463d605d" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Title_10f2fa23f03cb252a800475161481eea4" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Title_12944ba252a983635a3d165bc3bad9453" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Translate" kind="class"><name>DataObjects_Translate</name>
-    <member refid="classDataObjects__Translate_13f412f79d045ce82221d30b378136d5c" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Translate_1140796bfa5e64ee5d8f7333f8f48cd57" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__Translate_17d324bf87640ea3459bab6bd1edb5362" kind="variable"><name>$language</name></member>
-    <member refid="classDataObjects__Translate_1d4719f908cc0bb29862c4809252c7522" kind="variable"><name>$targettable</name></member>
-    <member refid="classDataObjects__Translate_18496a22da6953f33e1b3678aa5005fba" kind="variable"><name>$targetfield</name></member>
-    <member refid="classDataObjects__Translate_16e40e96c7007d9033093b584e58364ca" kind="variable"><name>$record_id</name></member>
-    <member refid="classDataObjects__Translate_18c867e3a682eedfa4fb385382a891f1a" kind="variable"><name>$translatedvalue</name></member>
-    <member refid="classDataObjects__Translate_1aba33f7be36e69a534af0d3f0bba0638" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Translate_19772b8620bca7f76ca25692725c98e96" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Translate_16194dac66390b7cec9609b414eff1da7" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Translate_1341e02283bb4c7f636e95f944a70609d" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Translate_1d36b45d08356a81baa399640c30f41ef" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Translate_1e55677f22b51199b3d2cc054625b6564" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Translate_1feeb92b98abd41e93b137befba17a154" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__User" kind="class"><name>DataObjects_User</name>
-    <member refid="classDataObjects__User_1558d5056bf6660379a80be6b978989b1" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__User_1325eae5f56b6b4d999669c851a9f4fec" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__User_1f19d91ebe444072988638fbb47cf5d6c" kind="variable"><name>$login</name></member>
-    <member refid="classDataObjects__User_18f783e7638d2cf2b763d5e458fc4f7f4" kind="variable"><name>$password</name></member>
-    <member refid="classDataObjects__User_1d9487074fe23d5eea8ef0bd08a50a8d1" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__User_10b65c8fc70ad8670cfe502bd2fb013fb" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__User_167a7e441788e2be1673599b9b70cd7d2" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__User_1022aa07a37b88f7a46ba644d9f3b4749" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__User_1d874f70138d6a10282865492ce7568e6" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__User_141f4d8f9e4a4c305081f4b7d32f0c681" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__User_1f78bbfdbcae0f97ce9f463f4ef9e524e" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Vanillainnodb" kind="class"><name>DataObjects_Vanillainnodb</name>
-    <member refid="classDataObjects__Vanillainnodb_1d42363eecce48ef1b01e25f357af41df" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Vanillainnodb_119668c388726d2024dc2c17e79ef9de7" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__Vanillainnodb_1348e32511f16e945d68dc7a94a108207" kind="variable"><name>$name</name></member>
-    <member refid="classDataObjects__Vanillainnodb_16303327ca136ed1f62d215e494908952" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Vanillainnodb_11e1350ce6423f934f76af45cc252775e" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Vanillainnodb_14fbba1c25b27e60ce5432d8a56767e12" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Vanillainnodb_19461be240fc8fc02f49fccaa76188239" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Vanillainnodb_1e5105408a792213546a115906b5fe525" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Vanillainnodb_11c0810df6f5dd4125cb66b21caf4802b" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Vanillainnodb_18c6b5f7f4fae652c4dc43afa25e3196b" kind="function"><name>reverseLinks</name></member>
-  </compound>
-  <compound refid="classDataObjects__Vanillainnodb2" kind="class"><name>DataObjects_Vanillainnodb2</name>
-    <member refid="classDataObjects__Vanillainnodb2_1c01eebf38f7e85ed0e8db42da87f6c1d" kind="variable"><name>$__table</name></member>
-    <member refid="classDataObjects__Vanillainnodb2_19c05c8befa864b322b21a1deb5bd9af7" kind="variable"><name>$id</name></member>
-    <member refid="classDataObjects__Vanillainnodb2_1f7164a8490e6ea24ef59e3a49eb87e12" kind="variable"><name>$name</name></member>
-    <member refid="classDataObjects__Vanillainnodb2_1458cf72c29e5f535f2ae554cad1b4469" kind="function"><name>staticGet</name></member>
-    <member refid="classDataObjects__Vanillainnodb2_1233d4af301246aadd66c5cca2312b517" kind="function"><name>table</name></member>
-    <member refid="classDataObjects__Vanillainnodb2_146123904aeba41bc230d3e6f632b665c" kind="function"><name>keys</name></member>
-    <member refid="classDataObjects__Vanillainnodb2_1c482e34e21641dc39528fc21a0c482ed" kind="function"><name>sequenceKey</name></member>
-    <member refid="classDataObjects__Vanillainnodb2_1445d70ff411d8a5fa67cae0044f491d6" kind="function"><name>defaults</name></member>
-    <member refid="classDataObjects__Vanillainnodb2_132d627b9191e945cce97df81f314a254" kind="function"><name>links</name></member>
-    <member refid="classDataObjects__Vanillainnodb2_195f3c1a91edae3e9c204b2668e8c4894" kind="function"><name>reverseLinks</name></member>
   </compound>
   <compound refid="classDB__DataObject__Advgenerator" kind="class"><name>DB_DataObject_Advgenerator</name>
     <member refid="classDB__DataObject__Advgenerator_1fe96b6a51f5a485b855f744177fd1adc" kind="function"><name>derivedHookFunctions</name></member>
@@ -542,9 +335,6 @@
     <member refid="classDB__DataObject__Plugin__Wiki_10c4d97dfc19a490659f3869f53764cdf" kind="function"><name>delete</name></member>
     <member refid="classDB__DataObject__Plugin__Wiki_1c717ce2b15e8cb6b3648eb84456deae2" kind="function"><name>dateOptions</name></member>
   </compound>
-  <compound refid="classDBTestCase" kind="class"><name>DBTestCase</name>
-    <member refid="classDBTestCase_184b3ea453a1f8af1f091df3fac881a13" kind="function"><name>setUpDatabase</name></member>
-  </compound>
   <compound refid="classDispatcher" kind="class"><name>Dispatcher</name>
     <member refid="classDispatcher_11ae7bc0c5054e3e80fb497eaaee3c9fb" kind="variable"><name>$page</name></member>
     <member refid="classDispatcher_1f33b9629ca261cf728181b8933f8b74e" kind="variable"><name>$module</name></member>
@@ -552,10 +342,10 @@
     <member refid="classDispatcher_1d224491b3746a45bccd76a1fc02fa9cf" kind="variable"><name>$params</name></member>
     <member refid="classDispatcher_1d9596c149149dc310c56d6b8dea95474" kind="function"><name>__construct</name></member>
     <member refid="classDispatcher_1197c4fd2505bb88796f0dd9a2240c787" kind="function"><name>execute</name></member>
+    <member refid="classDispatcher_15d612307577d66d1949ec415491cd07e" kind="function"><name>returnModuleNotFound</name></member>
     <member refid="classDispatcher_1b24e375f54413076199f58d15bfc16f3" kind="function"><name>getPage</name></member>
     <member refid="classDispatcher_146f96056b66e4b5c9536d19148cf9774" kind="function"><name>getPath</name></member>
     <member refid="classDispatcher_192a054ab35b0d91267d80da16d53ef9e" kind="function"><name>display</name></member>
-    <member refid="classDispatcher_15d612307577d66d1949ec415491cd07e" kind="function"><name>returnModuleNotFound</name></member>
   </compound>
   <compound refid="classError404Exception" kind="class"><name>Error404Exception</name>
     <member refid="classError404Exception_1b1f554544302a979d90e08f068d15662" kind="function"><name>getError</name></member>
@@ -569,6 +359,7 @@
     <member refid="classfileUtils_11918c6f410a2efcb3785e48454f15eaf" kind="function"><name>getFileExtension</name></member>
     <member refid="classfileUtils_1d43043653535fb2f0ef0b95bddc46f5a" kind="function"><name>getFilesOlderThan</name></member>
     <member refid="classfileUtils_1f1e8a8b4cb39d0b9fa3244307d12601b" kind="function"><name>deleteFilesOlderThan</name></member>
+    <member refid="classfileUtils_16d22de4c9ff642da646509c79232208e" kind="function"><name>hasFiles</name></member>
     <member refid="classfileUtils_1eb910d3f6118e783640da6491846371a" kind="function"><name>getContents</name></member>
     <member refid="classfileUtils_1ac8851b20fce480f539ce45dc47b5267" kind="function"><name>deleteContents</name></member>
     <member refid="classfileUtils_121bdf01e738dd00bac4f7ca4456b9db6" kind="function"><name>output</name></member>
@@ -576,7 +367,6 @@
     <member refid="classfileUtils_130432e38f6c0829d585c3d323899de52" kind="function"><name>getFolderPath</name></member>
     <member refid="classfileUtils_10c8875ede13b6dc57d60c62c2bbb16af" kind="function"><name>getFiles</name></member>
     <member refid="classfileUtils_1e093c5c265070d4ad5739bd1f649b4b8" kind="function"><name>getAllFiles</name></member>
-    <member refid="classfileUtils_12af5b0dbf5f112f2a2600ea9d54307d7" kind="function"><name>hasFiles</name></member>
     <member refid="classfileUtils_1dabc7aa5506dd8bcad28d9971f03256b" kind="function"><name>delete</name></member>
   </compound>
   <compound refid="classHTML__QuickForm__advandate" kind="class"><name>HTML_QuickForm_advandate</name>
@@ -652,27 +442,6 @@
   </compound>
   <compound refid="interfaceiSetup" kind="interface"><name>iSetup</name>
     <member refid="interfaceiSetup_1bca8cfdb3e1650df4014e1781d1ab74b" kind="function"><name>setUpEnv</name></member>
-  </compound>
-  <compound refid="classJSMin" kind="class"><name>JSMin</name>
-    <member refid="classJSMin_1c2104a1ac3a1d438c01c88b7bfafd519" kind="variable"><name>ORD_LF</name></member>
-    <member refid="classJSMin_1cae1641c88dbf4928c4a3c5b2428065c" kind="variable"><name>ORD_SPACE</name></member>
-    <member refid="classJSMin_12386c0978ac70ac8e9bd592fca835e82" kind="variable"><name>$a</name></member>
-    <member refid="classJSMin_1afa0d83dd06ede16a81de0441c5eb1ad" kind="variable"><name>$b</name></member>
-    <member refid="classJSMin_1fc2d10997a7e61c31cc9ed70e414829b" kind="variable"><name>$input</name></member>
-    <member refid="classJSMin_14f772e961c1cd23e3baa6486a2952236" kind="variable"><name>$inputIndex</name></member>
-    <member refid="classJSMin_1dc61bf642369b9d96e4844b2e694cf76" kind="variable"><name>$inputLength</name></member>
-    <member refid="classJSMin_1d78bd58d8c2f93286068d85abc0afb57" kind="variable"><name>$lookAhead</name></member>
-    <member refid="classJSMin_1b1b9cc7015da8bc3e3cc5edbc60f0ac2" kind="variable"><name>$output</name></member>
-    <member refid="classJSMin_1524912007600454e4396aea890384ab6" kind="function"><name>minify</name></member>
-    <member refid="classJSMin_112cc311ec2ba5946fb8b3b7eaf455481" kind="function"><name>__construct</name></member>
-    <member refid="classJSMin_13d8699337cd51b6878186841b24fb938" kind="function"><name>action</name></member>
-    <member refid="classJSMin_1dcd5b6e8efc1792816812168118f49ef" kind="function"><name>get</name></member>
-    <member refid="classJSMin_1f54ff87064c2b9f19e4905e511fc83e5" kind="function"><name>isAlphaNum</name></member>
-    <member refid="classJSMin_11b73b6860c523a036772bcdf8c99a6ff" kind="function"><name>min</name></member>
-    <member refid="classJSMin_13c4b356d81d5e5ede03f43cf2aec9037" kind="function"><name>next</name></member>
-    <member refid="classJSMin_1c786ee1b9552762de8fbc7a3a1c22070" kind="function"><name>peek</name></member>
-  </compound>
-  <compound refid="classJSMinException" kind="class"><name>JSMinException</name>
   </compound>
   <compound refid="classLog" kind="class"><name>Log</name>
     <member refid="classLog_1e2479157c1df16ea6f5d95851d9a94de" kind="variable"><name>LOGLEVEL_INFO</name></member>
@@ -864,10 +633,6 @@
     <member refid="classM__Office__View__tree_1200b31c3be4a8f3466ba1a63116ffeea" kind="function"><name>getSelectedEntry</name></member>
     <member refid="classM__Office__View__tree_1beba1dbcadbfa1c335d1a05579bf13bb" kind="function"><name>prepare</name></member>
   </compound>
-  <compound refid="classM__Setup" kind="class"><name>M_Setup</name>
-    <member refid="classM__Setup_13d529e57ff6cb99b930712a3b08d91d1" kind="function"><name>setUpEnv</name></member>
-    <member refid="classM__Setup_1908f6d70cbf1b47dd7ab1a2b2efd6741" kind="function"><name>setUpDatabase</name></member>
-  </compound>
   <compound refid="classMail" kind="class"><name>Mail</name>
     <member refid="classMail_1bc7253c1149e8d184d8d12f433c0ca30" kind="variable"><name>$template</name></member>
     <member refid="classMail_1bf77f4cc959a3eef9ea9f6e7fc3fc8c2" kind="variable"><name>$_attachments</name></member>
@@ -958,11 +723,6 @@
     <member refid="classModule__CMS_12da41d8f023c253f2dd8255b1829dcf9" kind="function"><name>executeAction</name></member>
     <member refid="classModule__CMS_18659d98dc40ced16566c6572ef3be42e" kind="function"><name>output</name></member>
   </compound>
-  <compound refid="classModule__Default" kind="class"><name>Module_Default</name>
-    <member refid="classModule__Default_185f11c108f2499ae7ca525281b936f11" kind="function"><name>getCacheId</name></member>
-    <member refid="classModule__Default_1513841256981503269c56621c30c630a" kind="function"><name>preExecuteAction</name></member>
-    <member refid="classModule__Default_157744fb9f336d56a3f33079f39996aae" kind="function"><name>doExecIndex</name></member>
-  </compound>
   <compound refid="classModule__home" kind="class"><name>Module_home</name>
     <member refid="classModule__home_13e384b34da39f4ad6b754ab95793ddb9" kind="function"><name>getCacheId</name></member>
     <member refid="classModule__home_15b7bb37212337496a01f36ee54c19fe0" kind="function"><name>doExecIndex</name></member>
@@ -974,17 +734,6 @@
   </compound>
   <compound refid="classModule__Timeline" kind="class"><name>Module_Timeline</name>
     <member refid="classModule__Timeline_18797a219e538351b26a3c463fcb2ee54" kind="function"><name>doExecWidget</name></member>
-  </compound>
-  <compound refid="classModule__Unittests" kind="class"><name>Module_Unittests</name>
-    <member refid="classModule__Unittests_148ac08a33b5371a4c8258e4d0ac6244a" kind="function"><name>getCacheId</name></member>
-    <member refid="classModule__Unittests_12e4e1b421f09972b330b20b9220384a3" kind="function"><name>doExecIndex</name></member>
-    <member refid="classModule__Unittests_1f455f450421da27ea3058682f52ba323" kind="function"><name>doExecLaunchnodb</name></member>
-    <member refid="classModule__Unittests_1d52693ed7860e5b25fb02977902be3ed" kind="function"><name>doExecLaunchdb</name></member>
-    <member refid="classModule__Unittests_1ffea22f987f8e032552d3d941d551cb9" kind="function"><name>doExecLaunchframework</name></member>
-    <member refid="classModule__Unittests_18c6586e2a93be53675fc0c65048bfd29" kind="function"><name>doExecLaunchall</name></member>
-    <member refid="classModule__Unittests_1c8ee7776986ed94123c69bd6377a52a6" kind="function"><name>doExecLaunchstructure</name></member>
-    <member refid="classModule__Unittests_1c6c9fee5a9048ef4838b87b4f9c27e07" kind="function"><name>launchtests</name></member>
-    <member refid="classModule__Unittests_1d5b0623b842be1ab385acbd44627dce1" kind="function"><name>doExecInitFrameworkDOs</name></member>
   </compound>
   <compound refid="classMPdf" kind="class"><name>MPdf</name>
     <member refid="classMPdf_11d48f1c6d32a8be7a47d963b7a337351" kind="variable"><name>$template</name></member>
@@ -1137,206 +886,8 @@
     <member refid="classPayment__Driver__SIPS_15c37e361aee9e5eb3b318a4ea1f40e10" kind="function"><name>getTransactionId</name></member>
     <member refid="classPayment__Driver__SIPS_1e6e537a8b5a0884bf037bae62fecb0ab" kind="function"><name>setTransactionId</name></member>
   </compound>
-  <compound refid="classPHPMailer" kind="class"><name>PHPMailer</name>
-    <member refid="classPHPMailer_14b25b31326864ecfd89865021595d14c" kind="variable"><name>$Priority</name></member>
-    <member refid="classPHPMailer_189bc16ad4e86bf04d0a38779f239d08d" kind="variable"><name>$CharSet</name></member>
-    <member refid="classPHPMailer_1886fb2b5374dfdbdce9efdaff842c2a2" kind="variable"><name>$ContentType</name></member>
-    <member refid="classPHPMailer_1dbefcf8fbeb0bad68e2f87f889a6937f" kind="variable"><name>$Encoding</name></member>
-    <member refid="classPHPMailer_19e523ba9e3cfcaf1f54569a9e4a29c73" kind="variable"><name>$ErrorInfo</name></member>
-    <member refid="classPHPMailer_1487a2ed6abdc3474c5e6526d4bd37dd9" kind="variable"><name>$From</name></member>
-    <member refid="classPHPMailer_1331a07d4f29ee939024b69c07f83188d" kind="variable"><name>$FromName</name></member>
-    <member refid="classPHPMailer_1feb96ec21062655663877de7bdcfe4b5" kind="variable"><name>$Sender</name></member>
-    <member refid="classPHPMailer_1720bc605963a617253bf0773b6ffafbf" kind="variable"><name>$Subject</name></member>
-    <member refid="classPHPMailer_155ee46413a3783fceaa4cc301dc362a4" kind="variable"><name>$Body</name></member>
-    <member refid="classPHPMailer_1f38d9cfaa22f3a246c3168184c3858aa" kind="variable"><name>$AltBody</name></member>
-    <member refid="classPHPMailer_19ea7fd1e74ce459204bd25ab10aa4800" kind="variable"><name>$WordWrap</name></member>
-    <member refid="classPHPMailer_1b7b493935220dbd0643bfccbe9fa898f" kind="variable"><name>$Mailer</name></member>
-    <member refid="classPHPMailer_1389a13126ef669fbc0fa29e9182b2b88" kind="variable"><name>$Sendmail</name></member>
-    <member refid="classPHPMailer_125dc51236eaeba43c2661197b2fdecca" kind="variable"><name>$PluginDir</name></member>
-    <member refid="classPHPMailer_150e20d60ee564b2e0e09774b0f0c4ee4" kind="variable"><name>$Version</name></member>
-    <member refid="classPHPMailer_1ef7e191f4c673b49c378fe9005333277" kind="variable"><name>$ConfirmReadingTo</name></member>
-    <member refid="classPHPMailer_152a56734c1c555e576f3fcdd3f3214fa" kind="variable"><name>$Hostname</name></member>
-    <member refid="classPHPMailer_1e8903e0c049d9c21fe218a5610f8e66e" kind="variable"><name>$MessageID</name></member>
-    <member refid="classPHPMailer_1201d861b4e284bd9bc580e90922f1a2b" kind="variable"><name>$Host</name></member>
-    <member refid="classPHPMailer_1ecad460b067a209821f1b0fc3492aa0c" kind="variable"><name>$Port</name></member>
-    <member refid="classPHPMailer_1efc737f24d6dc6bdd13019297762c8e3" kind="variable"><name>$Helo</name></member>
-    <member refid="classPHPMailer_157744693d505d8c945c667fec9e65555" kind="variable"><name>$SMTPSecure</name></member>
-    <member refid="classPHPMailer_11e41f01702afcf903f409c2a8c1eb1c0" kind="variable"><name>$SMTPAuth</name></member>
-    <member refid="classPHPMailer_1111a9831009cde61ec90b2f702d91f8c" kind="variable"><name>$Username</name></member>
-    <member refid="classPHPMailer_142bef0c65cf4248312aebc7d6cf05dc7" kind="variable"><name>$Password</name></member>
-    <member refid="classPHPMailer_1ffe70c58cb6adb734a41f8eb2a2e58b9" kind="variable"><name>$Timeout</name></member>
-    <member refid="classPHPMailer_1edc42401affee6e0e8b205f3c50d5f17" kind="variable"><name>$SMTPDebug</name></member>
-    <member refid="classPHPMailer_1bcf46a6c16b46fc88f401a7e9acfbb43" kind="variable"><name>$SMTPKeepAlive</name></member>
-    <member refid="classPHPMailer_1e467a7f9d8bbb478bd0ea7a8b9bb512b" kind="variable"><name>$SingleTo</name></member>
-    <member refid="classPHPMailer_1b0c4941bda43ab5a330a712d036c7ae5" kind="variable"><name>$LE</name></member>
-    <member refid="classPHPMailer_1785ebe388dfcd1a76d445df09b6be3d6" kind="variable"><name>$smtp</name></member>
-    <member refid="classPHPMailer_1fa095cad0712f480475cea3a1b9a498e" kind="variable"><name>$to</name></member>
-    <member refid="classPHPMailer_1ab84d69e0d9f30d16c7c895f40c02383" kind="variable"><name>$cc</name></member>
-    <member refid="classPHPMailer_147faeb7fa77389aeec99d8dbeb1be106" kind="variable"><name>$bcc</name></member>
-    <member refid="classPHPMailer_1ff7bfc1ad6c3e1e95d0caa6ecf7bfc25" kind="variable"><name>$ReplyTo</name></member>
-    <member refid="classPHPMailer_11091c5222df6cf187eb290afc409b283" kind="variable"><name>$attachment</name></member>
-    <member refid="classPHPMailer_13aa8045c1da6dfea6b846fa02d0a35c8" kind="variable"><name>$CustomHeader</name></member>
-    <member refid="classPHPMailer_119a75d8b3e63eb58f9a4a2b31c81ab6b" kind="variable"><name>$message_type</name></member>
-    <member refid="classPHPMailer_16e9b4fea689f43dc24f94bd1cd643de3" kind="variable"><name>$boundary</name></member>
-    <member refid="classPHPMailer_1a6a0ec99ebdf7280f6565369d4d291b7" kind="variable"><name>$language</name></member>
-    <member refid="classPHPMailer_1581edb1dbc5a192fb34ef01957932e9a" kind="variable"><name>$error_count</name></member>
-    <member refid="classPHPMailer_1a4f22631c7d466a80d08378f5674d95a" kind="variable"><name>$sign_cert_file</name></member>
-    <member refid="classPHPMailer_1c11e24b257bd1cc7f6833cab0df1def6" kind="variable"><name>$sign_key_file</name></member>
-    <member refid="classPHPMailer_15af85c6201ec258cfe5ff15d13699fcf" kind="variable"><name>$sign_key_pass</name></member>
-    <member refid="classPHPMailer_1b95a726f1d9782d560ec16d2f4307586" kind="function"><name>IsHTML</name></member>
-    <member refid="classPHPMailer_1cba6e87e0af0baa5bda1026a4e99e236" kind="function"><name>IsSMTP</name></member>
-    <member refid="classPHPMailer_16c4e6445c6f12b87462cf9ab63239c1b" kind="function"><name>IsMail</name></member>
-    <member refid="classPHPMailer_17cdd2b399559d7b36f0259c8f7924b07" kind="function"><name>IsSendmail</name></member>
-    <member refid="classPHPMailer_17c2d3d01329eaa84d9da0b9490351030" kind="function"><name>IsQmail</name></member>
-    <member refid="classPHPMailer_1278520a47bb3d7387ff259464d94be21" kind="function"><name>AddAddress</name></member>
-    <member refid="classPHPMailer_13a68f4df5277a7332fc498b205045616" kind="function"><name>AddCC</name></member>
-    <member refid="classPHPMailer_15d2d5f530005db5329912a5ffc9bffdd" kind="function"><name>AddBCC</name></member>
-    <member refid="classPHPMailer_1a19b774f8f3eacf0af5aca25f5509b24" kind="function"><name>AddReplyTo</name></member>
-    <member refid="classPHPMailer_1675cc2f9ff744a7819e62ebbd76a2ce1" kind="function"><name>Send</name></member>
-    <member refid="classPHPMailer_134248b37be1ca31e3d0440dcea1d40c5" kind="function"><name>SendmailSend</name></member>
-    <member refid="classPHPMailer_10420328dd91b081096acd4a12a6d130f" kind="function"><name>MailSend</name></member>
-    <member refid="classPHPMailer_1a8e219822a2048621d1130f4bf883122" kind="function"><name>SmtpSend</name></member>
-    <member refid="classPHPMailer_14d5a553ee27415465c48143a2b3fdcde" kind="function"><name>SmtpConnect</name></member>
-    <member refid="classPHPMailer_120b4519c300896aff5c22e3710aa19cb" kind="function"><name>SmtpClose</name></member>
-    <member refid="classPHPMailer_1aff9e25949fae5aa665fad083b0b2893" kind="function"><name>SetLanguage</name></member>
-    <member refid="classPHPMailer_1c15a3cde96d7928f4a43cd81d0911afb" kind="function"><name>AddrAppend</name></member>
-    <member refid="classPHPMailer_1626beaf7b877bd8d1f0f8c6869962bd2" kind="function"><name>AddrFormat</name></member>
-    <member refid="classPHPMailer_1cc83d51c756e780535b39680bfa0e368" kind="function"><name>WrapText</name></member>
-    <member refid="classPHPMailer_15771594e3b02d05c624aec0d3d2930b3" kind="function"><name>UTF8CharBoundary</name></member>
-    <member refid="classPHPMailer_1dbf94155c6a72aae101c0f5e0cf42823" kind="function"><name>SetWordWrap</name></member>
-    <member refid="classPHPMailer_1027a59d7e2b70753f182247934bf90bb" kind="function"><name>CreateHeader</name></member>
-    <member refid="classPHPMailer_1f696b69cbfc7f6cd3c2ac7701bc0bff4" kind="function"><name>GetMailMIME</name></member>
-    <member refid="classPHPMailer_1878a0dc40ac9bc7f9a33aabd34728d1c" kind="function"><name>CreateBody</name></member>
-    <member refid="classPHPMailer_1c4b5adce91cf7c3ba12b4702d637df03" kind="function"><name>GetBoundary</name></member>
-    <member refid="classPHPMailer_1f10b141b72a659c79746b0e11fe36d92" kind="function"><name>EndBoundary</name></member>
-    <member refid="classPHPMailer_13bcc49176b7dabe03f18503d7ed5c320" kind="function"><name>SetMessageType</name></member>
-    <member refid="classPHPMailer_18256a4880e4fb0ce1498abfcc1231674" kind="function"><name>HeaderLine</name></member>
-    <member refid="classPHPMailer_1626aa19ef9fda9132ee4c60a91f4869d" kind="function"><name>TextLine</name></member>
-    <member refid="classPHPMailer_1b10ab08da06063473d6408def22819fa" kind="function"><name>AddAttachment</name></member>
-    <member refid="classPHPMailer_18fbc046550d166dcc83375ba26b6c477" kind="function"><name>AttachAll</name></member>
-    <member refid="classPHPMailer_12a57508f33549ba2aa4b7d3c7b0538a8" kind="function"><name>EncodeFile</name></member>
-    <member refid="classPHPMailer_1e864ca54059804bf909a03f25b01887a" kind="function"><name>EncodeString</name></member>
-    <member refid="classPHPMailer_15c6862be627a60363fd470711c5ae0cc" kind="function"><name>EncodeHeader</name></member>
-    <member refid="classPHPMailer_1b470a97d2cad671a3c8e05c673b1e0d8" kind="function"><name>HasMultiBytes</name></member>
-    <member refid="classPHPMailer_1898ae09e6b08a3db116744b6d44923c5" kind="function"><name>Base64EncodeWrapMB</name></member>
-    <member refid="classPHPMailer_185c073d4c0a61af75f5abaf167b4c460" kind="function"><name>EncodeQP</name></member>
-    <member refid="classPHPMailer_1ad0e420b74b8d2909f1292332bf1bbb8" kind="function"><name>EncodeQ</name></member>
-    <member refid="classPHPMailer_192ef5134fdce5bd5fd24a723c508bf2b" kind="function"><name>AddStringAttachment</name></member>
-    <member refid="classPHPMailer_1d65e08211e123fa3537e7af91d1e5fba" kind="function"><name>AddEmbeddedImage</name></member>
-    <member refid="classPHPMailer_10167ed0843240553feb3cd4d5204f299" kind="function"><name>InlineImageExists</name></member>
-    <member refid="classPHPMailer_10dddfa22e54f935641ed9a1ce9635f07" kind="function"><name>ClearAddresses</name></member>
-    <member refid="classPHPMailer_19304081ed2524139748d20c08076b2f5" kind="function"><name>ClearCCs</name></member>
-    <member refid="classPHPMailer_194c5461b6fa875543fa1abbe41ac687b" kind="function"><name>ClearBCCs</name></member>
-    <member refid="classPHPMailer_1a2bbeddb9d5b19eb2202e715912b562f" kind="function"><name>ClearReplyTos</name></member>
-    <member refid="classPHPMailer_15734ae30e8e523bdae2d8d92200ba34f" kind="function"><name>ClearAllRecipients</name></member>
-    <member refid="classPHPMailer_1d8f2cb3e17912028a5e39b4f23b2268c" kind="function"><name>ClearAttachments</name></member>
-    <member refid="classPHPMailer_1c97c4987eefae07373a8becf2fdb4c6e" kind="function"><name>ClearCustomHeaders</name></member>
-    <member refid="classPHPMailer_13ad69f21d5b0f390bd06e0696974b39c" kind="function"><name>IsError</name></member>
-    <member refid="classPHPMailer_109a3f40782f26399efdec4f53f7f08f0" kind="function"><name>AddCustomHeader</name></member>
-    <member refid="classPHPMailer_1fbdbc2eef3978654fe7821484e4a1fc5" kind="function"><name>MsgHTML</name></member>
-    <member refid="classPHPMailer_18f489353e61cccc942d7b4e98c8e3caf" kind="function"><name>_mime_types</name></member>
-    <member refid="classPHPMailer_1d7dfabb6c5e91e298be2de2e78749a75" kind="function"><name>set</name></member>
-    <member refid="classPHPMailer_1490a8772d03563b76870bffe3ee9fb5b" kind="function"><name>getFile</name></member>
-    <member refid="classPHPMailer_1c0c6f469479274f00a3715444b1a849a" kind="function"><name>SecureHeader</name></member>
-    <member refid="classPHPMailer_18ba196caee2ec44d60a34efbd2769719" kind="function"><name>Sign</name></member>
-    <member refid="classPHPMailer_18b55431cdaf8b5fd59869a07a8058b0e" kind="function"><name>SetError</name></member>
-    <member refid="classPHPMailer_1c2b74fe64f51720dd192578f4e6bdb49" kind="function"><name>ServerHostname</name></member>
-    <member refid="classPHPMailer_1c0c6b62555ae976a35238681c399bb08" kind="function"><name>Lang</name></member>
-    <member refid="classPHPMailer_172116ce1584d0e5ec974ed9a96127622" kind="function"><name>FixEOL</name></member>
-    <member refid="classPHPMailer_1e3943e2e54c83720c42c5f0414466836" kind="function"><name>RFCDate</name></member>
-  </compound>
-  <compound refid="classphpmailerTest" kind="class"><name>phpmailerTest</name>
-    <member refid="classphpmailerTest_1527831753c2b04023eaac0a9aebed58f" kind="variable"><name>$Mail</name></member>
-    <member refid="classphpmailerTest_1f0339d4405c9232a7e0fc97e4aae0359" kind="variable"><name>$ChangeLog</name></member>
-    <member refid="classphpmailerTest_14ead5c60e77e67852e108fd500c6c892" kind="variable"><name>$NoteLog</name></member>
-    <member refid="classphpmailerTest_1efe5f111278483561370865caa8a0048" kind="variable"><name>$Host</name></member>
-    <member refid="classphpmailerTest_12c284d8272ed4f05ae06c2fe65c8240f" kind="function"><name>phpmailerTest</name></member>
-    <member refid="classphpmailerTest_15b3345868cb74b86eaa3cf986248e73a" kind="function"><name>setUp</name></member>
-    <member refid="classphpmailerTest_13a302ac3c1b988c9cff8d9d505684f4b" kind="function"><name>tearDown</name></member>
-    <member refid="classphpmailerTest_146261f975013e4c661063c79ba60b538" kind="function"><name>AddNote</name></member>
-    <member refid="classphpmailerTest_1494e608fad377334ecbdd5f0b49eb094" kind="function"><name>SetAddress</name></member>
-    <member refid="classphpmailerTest_13d736d9ad00be8d68d18c02a23ab6be2" kind="function"><name>test_WordWrap</name></member>
-    <member refid="classphpmailerTest_1a2e3da7cf253b35a14e8ae83b88c13fd" kind="function"><name>test_Low_Priority</name></member>
-    <member refid="classphpmailerTest_170b18cfe7255efd4c49aba3069f1930a" kind="function"><name>test_Multiple_Plain_FileAttachment</name></member>
-    <member refid="classphpmailerTest_195091807289adb9addf8194efccb3f5d" kind="function"><name>test_Plain_StringAttachment</name></member>
-    <member refid="classphpmailerTest_12d776453f3ada9b55b077a499e6f2d91" kind="function"><name>test_Quoted_Printable</name></member>
-    <member refid="classphpmailerTest_16cfde03f508f28f9cf68b127800ae799" kind="function"><name>test_Html</name></member>
-    <member refid="classphpmailerTest_13e39c323b9a15751108f6eeff848199c" kind="function"><name>test_HTML_Attachment</name></member>
-    <member refid="classphpmailerTest_1f9e53f9c6563e8435fcb1089ca3ef950" kind="function"><name>test_Embedded_Image</name></member>
-    <member refid="classphpmailerTest_163912e1771f7eb477a8d539393d954d3" kind="function"><name>test_Multi_Embedded_Image</name></member>
-    <member refid="classphpmailerTest_13176773f378632c17dc95f4d6df2d42c" kind="function"><name>test_AltBody</name></member>
-    <member refid="classphpmailerTest_176332327e357d6a5c534cd21397e51e3" kind="function"><name>test_AltBody_Attachment</name></member>
-    <member refid="classphpmailerTest_1688dc61475f8fa8db8956409fbc60f79" kind="function"><name>test_MultipleSend</name></member>
-    <member refid="classphpmailerTest_1e1aa61fd3b15447d72743b3b90ba0fc0" kind="function"><name>test_SmtpKeepAlive</name></member>
-    <member refid="classphpmailerTest_1cb35f31f4260304f6f0771c61ab59992" kind="function"><name>test_DenialOfServiceAttack</name></member>
-    <member refid="classphpmailerTest_143d95cc73ee4c804cf01deead4b97a6f" kind="function"><name>test_Error</name></member>
-    <member refid="classphpmailerTest_1cccd36c8afe95234320d95f8fb448a61" kind="function"><name>BuildBody</name></member>
-    <member refid="classphpmailerTest_1de7c71326bf28e36f1834800c52fdc9c" kind="function"><name>CheckChanges</name></member>
-    <member refid="classphpmailerTest_1d7bb946062f796e7cc5ef890bf254835" kind="function"><name>AddChange</name></member>
-  </compound>
-  <compound refid="classphpUnitException" kind="class"><name>phpUnitException</name>
-    <member refid="classphpUnitException_10db8b16c20633085d9d23ef330e3266c" kind="variable"><name>$message</name></member>
-    <member refid="classphpUnitException_1b81b5c5bd06c2ee6c42e69b4bc28eb25" kind="variable"><name>$type</name></member>
-    <member refid="classphpUnitException_1967af1640655f9a733f3d22168924e0d" kind="function"><name>phpUnitException</name></member>
-    <member refid="classphpUnitException_1e960377514078c38d7a1eebeb86cb038" kind="function"><name>getMessage</name></member>
-  </compound>
-  <compound refid="classPOP3" kind="class"><name>POP3</name>
-    <member refid="classPOP3_1f023545d9cb0b63ca85bfd7efc667ff1" kind="variable"><name>$POP3_PORT</name></member>
-    <member refid="classPOP3_10b32b0438167c805b2af958b2499c21c" kind="variable"><name>$POP3_TIMEOUT</name></member>
-    <member refid="classPOP3_11eacceb41d7076a02d699fbc76912ad6" kind="variable"><name>$CRLF</name></member>
-    <member refid="classPOP3_14d933c1f22c2d1b909072b677a796911" kind="variable"><name>$do_debug</name></member>
-    <member refid="classPOP3_1683d947d1cc315a29250652e2f3ce6f9" kind="variable"><name>$host</name></member>
-    <member refid="classPOP3_116746e61a0be526a36521f939fb4764d" kind="variable"><name>$port</name></member>
-    <member refid="classPOP3_161925db699ff6ff820394bfded5e8561" kind="variable"><name>$tval</name></member>
-    <member refid="classPOP3_1cbfb9ff11ef82c94fc9dcede0a7da15d" kind="variable"><name>$username</name></member>
-    <member refid="classPOP3_1c749ff7e2312c1511dd94e9f7f88df5d" kind="variable"><name>$password</name></member>
-    <member refid="classPOP3_129ed46d6bff50732f5f38f9e3038ff52" kind="variable"><name>$pop_conn</name></member>
-    <member refid="classPOP3_18095822fda20d2f1019a3e2c093c7b4e" kind="variable"><name>$connected</name></member>
-    <member refid="classPOP3_1aac239b2037bbe1a3306e517e1a9ccac" kind="variable"><name>$error</name></member>
-    <member refid="classPOP3_14a1e9d0dcc0e89a1fc750712376e0cd3" kind="function"><name>__construct</name></member>
-    <member refid="classPOP3_1791d7e4620cf0658a67a44ed0442bfe6" kind="function"><name>Authorise</name></member>
-    <member refid="classPOP3_12b3d8da6ef30ad3878eb1875fbdc37cc" kind="function"><name>Connect</name></member>
-    <member refid="classPOP3_1a412f110ae14cd0c8c4987cb0b210ee7" kind="function"><name>Login</name></member>
-    <member refid="classPOP3_1fc0a37e8d3d4cce507e43e02247f7b2f" kind="function"><name>Disconnect</name></member>
-    <member refid="classPOP3_17d7291e693037a6a8cbb322adf1ff7dd" kind="function"><name>getResponse</name></member>
-    <member refid="classPOP3_132a26f6d83f635a66622e95fca32a5de" kind="function"><name>sendString</name></member>
-    <member refid="classPOP3_1c68234fa176dda26c23733af44ef1c55" kind="function"><name>checkResponse</name></member>
-    <member refid="classPOP3_120fbe57944ae9c1246c95b81b38be698" kind="function"><name>displayErrors</name></member>
-    <member refid="classPOP3_1211eb6b89572512b35a7c3984288627f" kind="function"><name>catchWarning</name></member>
-  </compound>
   <compound refid="classSecurityException" kind="class"><name>SecurityException</name>
     <member refid="classSecurityException_11ad97c0c3e30ecde5e131b201f421c2f" kind="function"><name>getError</name></member>
-  </compound>
-  <compound refid="classSMTP" kind="class"><name>SMTP</name>
-    <member refid="classSMTP_1b18d9e6b53ece65286ba6a83af7f9576" kind="variable"><name>$SMTP_PORT</name></member>
-    <member refid="classSMTP_1b92088467c740f1c76ef8a54c30bd955" kind="variable"><name>$CRLF</name></member>
-    <member refid="classSMTP_1ecf5a15107efffb004210746eb3e58bf" kind="variable"><name>$do_debug</name></member>
-    <member refid="classSMTP_1c682fd7712ecbd5f11917c99d173de43" kind="variable"><name>$do_verp</name></member>
-    <member refid="classSMTP_1489b5e4392d1fe7cc9e380c9f59fb40e" kind="variable"><name>$smtp_conn</name></member>
-    <member refid="classSMTP_1a6229ff080afe81bfddd45951952ad99" kind="variable"><name>$error</name></member>
-    <member refid="classSMTP_113804c297a331da2de5543fd1da0443e" kind="variable"><name>$helo_rply</name></member>
-    <member refid="classSMTP_1943dd07e8b4b4f928b9aa71073939e0f" kind="function"><name>__construct</name></member>
-    <member refid="classSMTP_18fba663a06f03ca0ffb142d5e4141235" kind="function"><name>Connect</name></member>
-    <member refid="classSMTP_198589ff1441c3c227f6ed12baee8d0cd" kind="function"><name>StartTLS</name></member>
-    <member refid="classSMTP_109bed676e22ceb5b30f4b90b0cb8a321" kind="function"><name>Authenticate</name></member>
-    <member refid="classSMTP_11b04ed74ebc02d0e04ab61933ec7089e" kind="function"><name>Connected</name></member>
-    <member refid="classSMTP_16a46029fbb02a0bdf9f4680d95589f26" kind="function"><name>Close</name></member>
-    <member refid="classSMTP_119b1e3858b6474cace472f85e5dd75e4" kind="function"><name>Data</name></member>
-    <member refid="classSMTP_1a081fc645b2409c177c587a7b3f188c1" kind="function"><name>Expand</name></member>
-    <member refid="classSMTP_107bef6bc0cfc12823850724e827e2c59" kind="function"><name>Hello</name></member>
-    <member refid="classSMTP_1d4824c7e9006e42df7794e5b1dd8053a" kind="function"><name>Help</name></member>
-    <member refid="classSMTP_1b1377e8100ab85ecd152992dbcff1990" kind="function"><name>Mail</name></member>
-    <member refid="classSMTP_1f3966900b36a9a47b4445cc22bacaa0d" kind="function"><name>Noop</name></member>
-    <member refid="classSMTP_18d7a8c08be60eee2fdb11ace4577eae4" kind="function"><name>Quit</name></member>
-    <member refid="classSMTP_1bad67dffc11da60d8be10bc1282d8107" kind="function"><name>Recipient</name></member>
-    <member refid="classSMTP_132288c4664c4da18c2bde09c558527c3" kind="function"><name>Reset</name></member>
-    <member refid="classSMTP_1edbf3e23574bf4131c5020d888ba24bc" kind="function"><name>Send</name></member>
-    <member refid="classSMTP_1df346869f30d1f09f5437cd0e039f2ca" kind="function"><name>SendAndMail</name></member>
-    <member refid="classSMTP_13577c3cf217b813379bdb6ab298280c6" kind="function"><name>SendOrMail</name></member>
-    <member refid="classSMTP_100e2009833692aa235de5c26b835adc5" kind="function"><name>Turn</name></member>
-    <member refid="classSMTP_1d077e72ba4c447d337eaefb72cb69e44" kind="function"><name>Verify</name></member>
-    <member refid="classSMTP_159dffee3579a4f5329997464e9039086" kind="function"><name>SendHello</name></member>
-    <member refid="classSMTP_1ac2979bf3894af90e6b228c418358f54" kind="function"><name>get_lines</name></member>
   </compound>
   <compound refid="classStrings" kind="class"><name>Strings</name>
     <member refid="classStrings_1fdf0076c52ccee5cd443bde551ac7cc6" kind="function"><name>stripify</name></member>
@@ -1412,86 +963,6 @@
   </compound>
   <compound refid="classT__reader" kind="class"><name>T_reader</name>
     <member refid="classT__reader_1c53a1f2dbb824d4c6b850d239d60ddec" kind="function"><name>translate</name></member>
-  </compound>
-  <compound refid="classTestCase" kind="class"><name>TestCase</name>
-    <member refid="classTestCase_18a23ae829c181d01c6993627d640ced3" kind="variable"><name>$fName</name></member>
-    <member refid="classTestCase_19a49d89dc32f7e06ddfd6fc93be1dcce" kind="variable"><name>$fResult</name></member>
-    <member refid="classTestCase_13f23d301eb612ee896b4a63dca0c4c86" kind="variable"><name>$fExceptions</name></member>
-    <member refid="classTestCase_1d0bc509d24af24c297fb09bfe589ab90" kind="function"><name>TestCase</name></member>
-    <member refid="classTestCase_183228725a238939ddb14282ffbf87d8f" kind="function"><name>run</name></member>
-    <member refid="classTestCase_1b4d4e0512015b7712045dea19c4d268a" kind="function"><name>countTestCases</name></member>
-    <member refid="classTestCase_1ab19fc1f490292d892a4173162743cfa" kind="function"><name>runTest</name></member>
-    <member refid="classTestCase_14a41f1e2a84c8391c3155ff0d2c70245" kind="function"><name>setUp</name></member>
-    <member refid="classTestCase_16ad1f3d15147cb652f633107e00579c7" kind="function"><name>tearDown</name></member>
-    <member refid="classTestCase_17df8d445510f04565615ac6b4adf188c" kind="function"><name>_createResult</name></member>
-    <member refid="classTestCase_193f686024ab8a75f0855df00563973dc" kind="function"><name>fail</name></member>
-    <member refid="classTestCase_1c90136f48031a65db56fce777773129c" kind="function"><name>error</name></member>
-    <member refid="classTestCase_1bf22f9dd5c1e6dcef9311f65dc3b21a1" kind="function"><name>failed</name></member>
-    <member refid="classTestCase_11be626e5099e261dd155d619aa7150c9" kind="function"><name>getExceptions</name></member>
-    <member refid="classTestCase_10e29a22bb0eb113598d328e2acf64c62" kind="function"><name>name</name></member>
-    <member refid="classTestCase_13bc55bbb71262b5a7dfc660fa21caf9d" kind="function"><name>runBare</name></member>
-  </compound>
-  <compound refid="classTestFailure" kind="class"><name>TestFailure</name>
-    <member refid="classTestFailure_102838e1d92e41c532c601b4c0d0373dc" kind="variable"><name>$fFailedTestName</name></member>
-    <member refid="classTestFailure_16d9947c38a0974495f3eecc43ec23ffd" kind="variable"><name>$fExceptions</name></member>
-    <member refid="classTestFailure_172b70db0af154cfd75390ea85bb08391" kind="function"><name>TestFailure</name></member>
-    <member refid="classTestFailure_123b4720daa49e7dcb997f126edc76a2c" kind="function"><name>getExceptions</name></member>
-    <member refid="classTestFailure_146707248d4f72146764391be0a78f692" kind="function"><name>getTestName</name></member>
-  </compound>
-  <compound refid="classTestOfDB__DataObject__Pluggable" kind="class"><name>TestOfDB_DataObject_Pluggable</name>
-    <member refid="classTestOfDB__DataObject__Pluggable_1bebcd1daf30cf16fd4a68ebdcb411026" kind="function"><name>setup</name></member>
-    <member refid="classTestOfDB__DataObject__Pluggable_1b1614248fbc90b6a96118d8a63d9380e" kind="function"><name>testSingleConnection</name></member>
-    <member refid="classTestOfDB__DataObject__Pluggable_139a2fda0e06eb42bc757f07e12d2b12a" kind="function"><name>testTransactionWithCustomMethods</name></member>
-    <member refid="classTestOfDB__DataObject__Pluggable_18e5e5d79de42f98ba0a8cc772a213a64" kind="function"><name>testTransactionRollbackWithCustomMethodsAcrossMultipleTables</name></member>
-    <member refid="classTestOfDB__DataObject__Pluggable_1d0f54b3b478a1b3a6068d6796d2c80ac" kind="function"><name>testTransactionCommitWithCustomMethodsAcrossMultipleTables</name></member>
-  </compound>
-  <compound refid="classTestOfDB__DataObject__Plugin__i18n" kind="class"><name>TestOfDB_DataObject_Plugin_i18n</name>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_197157abd7c14b191cd213c29a20579db" kind="function"><name>setup</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_17684ddd16a0bd3154eed48846655057b" kind="function"><name>testInsert</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_1b868f42dae5e719789ce56eec1560dab" kind="function"><name>testUpdate</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_1d2389d7dd074fbd0ec62d1ae09249596" kind="function"><name>testUpdateNoni18nValues</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_1e492d3f8cb1846f3690f9c96950ffcd2" kind="function"><name>testFetch</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_120a0af97343198787facce95f48919e9" kind="function"><name>testmigrateToI18n_UNITS</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_15f0f3e1d3070858e942c191163177841" kind="function"><name>testmigrateToI18n_GLOBAL</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_1647218901f36b6258bb251d2482764d2" kind="function"><name>testmigrateToI18n_withSpecialFieldNames</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_1514df38a67d5e775d2aff1da763c041b" kind="function"><name>testprepareTranslationRecords</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_106ffaa6538d2a909fb7f0663a71150da" kind="function"><name>testCreateForm</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_1ede876d31aa3ec587df8c473fa273823" kind="function"><name>testProcessFormUpdate</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_122086fe990bea65efec3da40009c9c16" kind="function"><name>testProcessFormUpdateNoni18nFields</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_17b9d06811cc6472be85cefbc3a737a72" kind="function"><name>testProcessFormInsert</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_132b2d967c5e6f1348887fbe5006f2f4b" kind="function"><name>testValidate</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_1acc96257d4718b2533e4721f74b7a885" kind="function"><name>testSetTranslation</name></member>
-    <member refid="classTestOfDB__DataObject__Plugin__i18n_1629a00a4ed7c19f20ba5f0c8864fdf9b" kind="function"><name>testSetPoly</name></member>
-  </compound>
-  <compound refid="classTestResult" kind="class"><name>TestResult</name>
-    <member refid="classTestResult_1ccd5600735a8ecdf30a3d5af6b02de61" kind="variable"><name>$fFailures</name></member>
-    <member refid="classTestResult_122620d669b77c275b8bdc99a01f30542" kind="variable"><name>$fRunTests</name></member>
-    <member refid="classTestResult_1251e0575749e3d6ff55ecba83755592d" kind="variable"><name>$fStop</name></member>
-    <member refid="classTestResult_1f77fa5c098e06de9a1dd456169a6b329" kind="function"><name>TestResult</name></member>
-    <member refid="classTestResult_1943a20aff3eb1fbfe315be23ae517dc9" kind="function"><name>_endTest</name></member>
-    <member refid="classTestResult_19d2db6fd7ce626b1b2593d6e2e935c03" kind="function"><name>getFailures</name></member>
-    <member refid="classTestResult_16ff0bb9641e00523cac8155b41a8762e" kind="function"><name>run</name></member>
-    <member refid="classTestResult_12635b7b7000c948fa915e27375c62d6e" kind="function"><name>countTests</name></member>
-    <member refid="classTestResult_17929290fbf3ffcdfd912c545bb3ac36d" kind="function"><name>shouldStop</name></member>
-    <member refid="classTestResult_1ae8130476d3e8ad3966c41b6e32fa1f6" kind="function"><name>_startTest</name></member>
-    <member refid="classTestResult_1af12ffd960880e398165105fd03f324f" kind="function"><name>stop</name></member>
-    <member refid="classTestResult_101cd16af79d8ce4bb407796754cc1724" kind="function"><name>countFailures</name></member>
-  </compound>
-  <compound refid="classTestRunner" kind="class"><name>TestRunner</name>
-    <member refid="classTestRunner_169a441a78ca10663feb811fc22a964c8" kind="function"><name>run</name></member>
-  </compound>
-  <compound refid="classTestSuite" kind="class"><name>TestSuite</name>
-    <member refid="classTestSuite_133d0f80731c2a7dca530e8e62990e110" kind="variable"><name>$fTests</name></member>
-    <member refid="classTestSuite_1e801e1f25a93fb87074187d7d8dd5b56" kind="function"><name>TestSuite</name></member>
-    <member refid="classTestSuite_1702aba0a3f7dc8774d03117a88dd2dd9" kind="function"><name>addTest</name></member>
-    <member refid="classTestSuite_1ecb412adfca2a8e84db95a9f19415666" kind="function"><name>run</name></member>
-    <member refid="classTestSuite_155e0e88ab8a97a6803d8a16d71d1c5fb" kind="function"><name>countTestCases</name></member>
-  </compound>
-  <compound refid="classTextTestResult" kind="class"><name>TextTestResult</name>
-    <member refid="classTextTestResult_17496d86526a7d21286aeecdcf6cf2458" kind="function"><name>TextTestResult</name></member>
-    <member refid="classTextTestResult_167960fe8ee4d64c8a420389e63ddcbee" kind="function"><name>report</name></member>
-    <member refid="classTextTestResult_14cfd7a4d75be7f677a0d9dc7700ec5f9" kind="function"><name>_startTest</name></member>
-    <member refid="classTextTestResult_15ed7376543c7e4fea7748050cd4ab425" kind="function"><name>_endTest</name></member>
   </compound>
   <compound refid="classtraitephoto" kind="class"><name>traitephoto</name>
     <member refid="classtraitephoto_1270a313d43afa76bc760b8d27e9b0abd" kind="variable"><name>$photo</name></member>
@@ -1591,13 +1062,7 @@
     <member refid="classUser_15e677d53bb30d0e7e3f7d88a4ac0dc4d" kind="function"><name>getInstances</name></member>
     <member refid="classUser_11e16ddb7d6a96d9b1cf54f277da23475" kind="function"><name>getInstance</name></member>
   </compound>
-  <compound refid="namespacecssmin" kind="namespace"><name>cssmin</name>
-  </compound>
-  <compound refid="namespaceJSMin" kind="namespace"><name>JSMin</name>
-  </compound>
   <compound refid="namespaceM" kind="namespace"><name>M</name>
-  </compound>
-  <compound refid="namespacePHPMailer" kind="namespace"><name>PHPMailer</name>
   </compound>
   <compound refid="Calc_8php" kind="file"><name>Calc.php</name>
   </compound>
@@ -1664,8 +1129,6 @@
   <compound refid="DB_2DataObject_2Plugin_2User_8php" kind="file"><name>User.php</name>
     <member refid="DB_2DataObject_2Plugin_2User_8php_1b02aabc9e1cd258b092eefe698632867" kind="variable"><name>if</name></member>
   </compound>
-  <compound refid="tests_2DO__dist_2User_8php" kind="file"><name>User.php</name>
-  </compound>
   <compound refid="User_8php" kind="file"><name>User.php</name>
     <member refid="User_8php_1f39d150162e699a67a1a50bb1e5c8438" kind="enum"><name>ERROR_WRONG_PASSWORD</name></member>
     <member refid="User_8php_127924aeed4aef1249eb3de64cde14aa7" kind="enum"><name>ERROR_NO_USER</name></member>
@@ -1698,471 +1161,6 @@
   <compound refid="iListener_8php" kind="file"><name>iListener.php</name>
   </compound>
   <compound refid="iSetup_8php" kind="file"><name>iSetup.php</name>
-  </compound>
-  <compound refid="cssmin_8php" kind="file"><name>cssmin.php</name>
-    <member refid="cssmin_8php_170edf48ce3df638e08bae9b6769873d1" kind="function"><name>cssmin_array_clean</name></member>
-    <member refid="cssmin_8php_15429b3a77a82422bc0badd53cdf29bfc" kind="function"><name>cssmin_array_is_assoc</name></member>
-    <member refid="cssmin_8php_13f1b47e4b2aea8d0503bfe42f47c20f9" kind="function"><name>cssmin_encode_url</name></member>
-    <member refid="cssmin_8php_1b1a2111619a8fc5a20c91fbabb15077a" kind="function"><name>cssmin_decode_url</name></member>
-  </compound>
-  <compound refid="jsmin_8php" kind="file"><name>jsmin.php</name>
-  </compound>
-  <compound refid="test_8php" kind="file"><name>test.php</name>
-  </compound>
-  <compound refid="class_8phpmailer_8php" kind="file"><name>class.phpmailer.php</name>
-  </compound>
-  <compound refid="class_8pop3_8php" kind="file"><name>class.pop3.php</name>
-  </compound>
-  <compound refid="class_8smtp_8php" kind="file"><name>class.smtp.php</name>
-  </compound>
-  <compound refid="pop3__before__smtp__test_8php" kind="file"><name>pop3_before_smtp_test.php</name>
-    <member refid="pop3__before__smtp__test_8php_17ea9fc9a2200e371338829cd01e0c33e" kind="variable"><name>$pop</name></member>
-    <member refid="pop3__before__smtp__test_8php_1c409786c163a1974d1e24a6767a95166" kind="variable"><name>$mail</name></member>
-    <member refid="pop3__before__smtp__test_8php_1abd88d233be1b3bb7a210defc3a543a8" kind="variable"><name>SMTPDebug</name></member>
-    <member refid="pop3__before__smtp__test_8php_192f144f746f497fb1de5ac3d693c6608" kind="variable"><name>Host</name></member>
-    <member refid="pop3__before__smtp__test_8php_127e928a831946596e1b91e83d4abe6e7" kind="variable"><name>From</name></member>
-    <member refid="pop3__before__smtp__test_8php_1a8e9d97f10c520030a63e8c93ba09c66" kind="variable"><name>FromName</name></member>
-    <member refid="pop3__before__smtp__test_8php_10e9638a8d3ac1704b1f52a0238ba4666" kind="variable"><name>Subject</name></member>
-    <member refid="pop3__before__smtp__test_8php_1e8ffc366362affca3652a437ff4dbd04" kind="variable"><name>Body</name></member>
-  </compound>
-  <compound refid="test1_8php" kind="file"><name>test1.php</name>
-    <member refid="test1_8php_1c409786c163a1974d1e24a6767a95166" kind="variable"><name>$mail</name></member>
-    <member refid="test1_8php_126b9f9373f7bb79dfcf8a86dff086b45" kind="variable"><name>$body</name></member>
-    <member refid="test1_8php_1fea90503726cd5ad2eb80baf0b6d217d" kind="variable"><name>$subject</name></member>
-    <member refid="test1_8php_127e928a831946596e1b91e83d4abe6e7" kind="variable"><name>From</name></member>
-    <member refid="test1_8php_1a8e9d97f10c520030a63e8c93ba09c66" kind="variable"><name>FromName</name></member>
-    <member refid="test1_8php_10e9638a8d3ac1704b1f52a0238ba4666" kind="variable"><name>Subject</name></member>
-    <member refid="test1_8php_18ac3f05567502242fc7ea9b88eb39f03" kind="variable"><name>AltBody</name></member>
-  </compound>
-  <compound refid="test__gmail_8php" kind="file"><name>test_gmail.php</name>
-    <member refid="test__gmail_8php_1c409786c163a1974d1e24a6767a95166" kind="variable"><name>$mail</name></member>
-    <member refid="test__gmail_8php_126b9f9373f7bb79dfcf8a86dff086b45" kind="variable"><name>$body</name></member>
-    <member refid="test__gmail_8php_1de0e27026bbf88bca46c0868cc91fee7" kind="variable"><name>SMTPAuth</name></member>
-    <member refid="test__gmail_8php_12f8d1507d5bc89e70a62441d67603a3c" kind="variable"><name>SMTPSecure</name></member>
-    <member refid="test__gmail_8php_192f144f746f497fb1de5ac3d693c6608" kind="variable"><name>Host</name></member>
-    <member refid="test__gmail_8php_1ad3e79adeed9c6a965ba49a35e922ba4" kind="variable"><name>Port</name></member>
-    <member refid="test__gmail_8php_19a8679ff3c39b048e1c5fd32cd552d76" kind="variable"><name>Username</name></member>
-    <member refid="test__gmail_8php_121f975d7845bab063b482a87cc2e59cd" kind="variable"><name>Password</name></member>
-    <member refid="test__gmail_8php_127e928a831946596e1b91e83d4abe6e7" kind="variable"><name>From</name></member>
-    <member refid="test__gmail_8php_1a8e9d97f10c520030a63e8c93ba09c66" kind="variable"><name>FromName</name></member>
-    <member refid="test__gmail_8php_10e9638a8d3ac1704b1f52a0238ba4666" kind="variable"><name>Subject</name></member>
-    <member refid="test__gmail_8php_18ac3f05567502242fc7ea9b88eb39f03" kind="variable"><name>AltBody</name></member>
-    <member refid="test__gmail_8php_12958cbc55fa3c47f6d3b4bae3d53d1da" kind="variable"><name>WordWrap</name></member>
-  </compound>
-  <compound refid="test__mail_8php" kind="file"><name>test_mail.php</name>
-    <member refid="test__mail_8php_1c409786c163a1974d1e24a6767a95166" kind="variable"><name>$mail</name></member>
-    <member refid="test__mail_8php_126b9f9373f7bb79dfcf8a86dff086b45" kind="variable"><name>$body</name></member>
-    <member refid="test__mail_8php_127e928a831946596e1b91e83d4abe6e7" kind="variable"><name>From</name></member>
-    <member refid="test__mail_8php_1a8e9d97f10c520030a63e8c93ba09c66" kind="variable"><name>FromName</name></member>
-    <member refid="test__mail_8php_10e9638a8d3ac1704b1f52a0238ba4666" kind="variable"><name>Subject</name></member>
-    <member refid="test__mail_8php_18ac3f05567502242fc7ea9b88eb39f03" kind="variable"><name>AltBody</name></member>
-  </compound>
-  <compound refid="test__sendmail_8php" kind="file"><name>test_sendmail.php</name>
-    <member refid="test__sendmail_8php_1c409786c163a1974d1e24a6767a95166" kind="variable"><name>$mail</name></member>
-    <member refid="test__sendmail_8php_126b9f9373f7bb79dfcf8a86dff086b45" kind="variable"><name>$body</name></member>
-    <member refid="test__sendmail_8php_127e928a831946596e1b91e83d4abe6e7" kind="variable"><name>From</name></member>
-    <member refid="test__sendmail_8php_1a8e9d97f10c520030a63e8c93ba09c66" kind="variable"><name>FromName</name></member>
-    <member refid="test__sendmail_8php_10e9638a8d3ac1704b1f52a0238ba4666" kind="variable"><name>Subject</name></member>
-    <member refid="test__sendmail_8php_18ac3f05567502242fc7ea9b88eb39f03" kind="variable"><name>AltBody</name></member>
-  </compound>
-  <compound refid="test__smtp_8php" kind="file"><name>test_smtp.php</name>
-    <member refid="test__smtp_8php_1c409786c163a1974d1e24a6767a95166" kind="variable"><name>$mail</name></member>
-    <member refid="test__smtp_8php_126b9f9373f7bb79dfcf8a86dff086b45" kind="variable"><name>$body</name></member>
-    <member refid="test__smtp_8php_192f144f746f497fb1de5ac3d693c6608" kind="variable"><name>Host</name></member>
-    <member refid="test__smtp_8php_127e928a831946596e1b91e83d4abe6e7" kind="variable"><name>From</name></member>
-    <member refid="test__smtp_8php_1a8e9d97f10c520030a63e8c93ba09c66" kind="variable"><name>FromName</name></member>
-    <member refid="test__smtp_8php_10e9638a8d3ac1704b1f52a0238ba4666" kind="variable"><name>Subject</name></member>
-    <member refid="test__smtp_8php_18ac3f05567502242fc7ea9b88eb39f03" kind="variable"><name>AltBody</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-ar_8php" kind="file"><name>phpmailer.lang-ar.php</name>
-    <member refid="phpmailer_8lang-ar_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ar_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-br_8php" kind="file"><name>phpmailer.lang-br.php</name>
-    <member refid="phpmailer_8lang-br_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-br_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-ca_8php" kind="file"><name>phpmailer.lang-ca.php</name>
-    <member refid="phpmailer_8lang-ca_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ca_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-ch_8php" kind="file"><name>phpmailer.lang-ch.php</name>
-    <member refid="phpmailer_8lang-ch_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ch_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-cz_8php" kind="file"><name>phpmailer.lang-cz.php</name>
-    <member refid="phpmailer_8lang-cz_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-cz_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-de_8php" kind="file"><name>phpmailer.lang-de.php</name>
-    <member refid="phpmailer_8lang-de_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-de_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-dk_8php" kind="file"><name>phpmailer.lang-dk.php</name>
-    <member refid="phpmailer_8lang-dk_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-dk_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-en_8php" kind="file"><name>phpmailer.lang-en.php</name>
-    <member refid="phpmailer_8lang-en_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-en_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-es_8php" kind="file"><name>phpmailer.lang-es.php</name>
-    <member refid="phpmailer_8lang-es_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-es_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-et_8php" kind="file"><name>phpmailer.lang-et.php</name>
-    <member refid="phpmailer_8lang-et_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-et_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-fi_8php" kind="file"><name>phpmailer.lang-fi.php</name>
-    <member refid="phpmailer_8lang-fi_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fi_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-fo_8php" kind="file"><name>phpmailer.lang-fo.php</name>
-    <member refid="phpmailer_8lang-fo_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fo_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-fr_8php" kind="file"><name>phpmailer.lang-fr.php</name>
-    <member refid="phpmailer_8lang-fr_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-fr_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-hu_8php" kind="file"><name>phpmailer.lang-hu.php</name>
-    <member refid="phpmailer_8lang-hu_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-hu_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-it_8php" kind="file"><name>phpmailer.lang-it.php</name>
-    <member refid="phpmailer_8lang-it_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-it_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-ja_8php" kind="file"><name>phpmailer.lang-ja.php</name>
-  </compound>
-  <compound refid="phpmailer_8lang-nl_8php" kind="file"><name>phpmailer.lang-nl.php</name>
-    <member refid="phpmailer_8lang-nl_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-nl_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-no_8php" kind="file"><name>phpmailer.lang-no.php</name>
-    <member refid="phpmailer_8lang-no_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-no_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-pl_8php" kind="file"><name>phpmailer.lang-pl.php</name>
-    <member refid="phpmailer_8lang-pl_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-pl_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-ro_8php" kind="file"><name>phpmailer.lang-ro.php</name>
-    <member refid="phpmailer_8lang-ro_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ro_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-ru_8php" kind="file"><name>phpmailer.lang-ru.php</name>
-    <member refid="phpmailer_8lang-ru_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-ru_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-se_8php" kind="file"><name>phpmailer.lang-se.php</name>
-    <member refid="phpmailer_8lang-se_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-se_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-tr_8php" kind="file"><name>phpmailer.lang-tr.php</name>
-    <member refid="phpmailer_8lang-tr_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-tr_8php_130009d02935bb1683b9610dab63b8f6b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-zh_8php" kind="file"><name>phpmailer.lang-zh.php</name>
-    <member refid="phpmailer_8lang-zh_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer_8lang-zh__cn_8php" kind="file"><name>phpmailer.lang-zh_cn.php</name>
-    <member refid="phpmailer_8lang-zh__cn_8php_181c62b13cd652d10bfe533a77d866df6" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_19243f91ab234ed5c52518bf22218a3e3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_10b38e0177e4da2651e382a725e40639f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_1b892ac53988a7d456d6f6e00133f6d11" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_1310a22db92b525732a9e2a355173a06b" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_1a2d2c4bd8e7bd9e44e07b9f6dda79142" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_1480950072ca171725ffa0d71c4a04e4f" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_1271b51d8dfb039b09770efa2335b8e23" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_1a199dc31872e340fe92bb26376e912c3" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_105cad42e8fccb6c2786f4c020a63237e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_167f197eb6313126b7f92b0d55e41e75e" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_1e2c48173fc854127b89a7d4b8222eb0a" kind="variable"><name>$PHPMAILER_LANG</name></member>
-    <member refid="phpmailer_8lang-zh__cn_8php_191dcbbc49ce0c4ca35a4d547ca347c21" kind="variable"><name>$PHPMAILER_LANG</name></member>
-  </compound>
-  <compound refid="phpmailer__test_8php" kind="file"><name>phpmailer_test.php</name>
-    <member refid="phpmailer__test_8php_17b054ead7cbc79d9641543a8c040fe3d" kind="variable"><name>$INCLUDE_DIR</name></member>
-    <member refid="phpmailer__test_8php_1d571ebc6a022976d3de3193ae6ec78ae" kind="variable"><name>$global_vars</name></member>
-    <member refid="phpmailer__test_8php_111d17a6fb9ee8568f5696db33a27f995" kind="function"><name>get</name></member>
-  </compound>
-  <compound refid="phpunit_8php" kind="file"><name>phpunit.php</name>
-    <member refid="phpunit_8php_11ca64a88c855bfa9115ffbfccf4ef0e6" kind="function"><name>trace</name></member>
   </compound>
   <compound refid="Log_8php" kind="file"><name>Log.php</name>
   </compound>
@@ -2271,23 +1269,13 @@
   </compound>
   <compound refid="globalaction_8php" kind="file"><name>globalaction.php</name>
   </compound>
-  <compound refid="Office_2Templates_2____defaut_2index_8php" kind="file"><name>index.php</name>
+  <compound refid="____defaut_2index_8php" kind="file"><name>index.php</name>
   </compound>
-  <compound refid="Office_2Templates_2home_2index_8php" kind="file"><name>index.php</name>
+  <compound refid="home_2index_8php" kind="file"><name>index.php</name>
   </compound>
-  <compound refid="Office_2Templates_2office__dbmodule_2index_8php" kind="file"><name>index.php</name>
-    <member refid="Office_2Templates_2office__dbmodule_2index_8php_1508fc2e92986acc44a58b66426e8675b" kind="variable"><name>($search)</name></member>
-    <member refid="Office_2Templates_2office__dbmodule_2index_8php_14498aa981c74a39e528325dd26431679" kind="variable"><name>__pad7__</name></member>
-  </compound>
-  <compound refid="skeleton_2project_2app_2templates_2default_2index_8php" kind="file"><name>index.php</name>
-  </compound>
-  <compound refid="skeleton_2project_2app_2templates_2index_8php" kind="file"><name>index.php</name>
-  </compound>
-  <compound refid="skeleton_2www_2index_8php" kind="file"><name>index.php</name>
-    <member refid="skeleton_2www_2index_8php_19cfa38f3a18bc8e8f64df837c96828fe" kind="enum"><name>APP_NAME</name></member>
-    <member refid="skeleton_2www_2index_8php_1c531301c55a8d8b6c7613597218ff482" kind="variable"><name>$module</name></member>
-    <member refid="skeleton_2www_2index_8php_1a698a3e72116e8e778be0e95d908ee30" kind="variable"><name>$action</name></member>
-    <member refid="skeleton_2www_2index_8php_10cf5dd496d9f5ff1edf00d234771dcfe" kind="variable"><name>$d</name></member>
+  <compound refid="office__dbmodule_2index_8php" kind="file"><name>index.php</name>
+    <member refid="office__dbmodule_2index_8php_1508fc2e92986acc44a58b66426e8675b" kind="variable"><name>($search)</name></member>
+    <member refid="office__dbmodule_2index_8php_14498aa981c74a39e528325dd26431679" kind="variable"><name>__pad7__</name></member>
   </compound>
   <compound refid="Templates_2____defaut_2list_8php" kind="file"><name>list.php</name>
   </compound>
@@ -2410,51 +1398,6 @@
   </compound>
   <compound refid="iOrder_8php" kind="file"><name>iOrder.php</name>
   </compound>
-  <compound refid="config_8domain__name_8php" kind="file"><name>config.domain_name.php</name>
-    <member refid="config_8domain__name_8php_169b9ff612d55ea8069ff979fee425743" kind="enum"><name>PROJECT_NAME</name></member>
-    <member refid="config_8domain__name_8php_14f872fec433f55c029dd254d804556c1" kind="enum"><name>SITE_URL</name></member>
-    <member refid="config_8domain__name_8php_13e692803792ed747eae6607130131e97" kind="enum"><name>WEB_FOLDER</name></member>
-    <member refid="config_8domain__name_8php_17eabd788dcab19ca586663bf73deddf5" kind="enum"><name>MODE</name></member>
-    <member refid="config_8domain__name_8php_12b84af689e70e9c04d159376016d72e0" kind="enum"><name>DB_URI</name></member>
-  </compound>
-  <compound refid="M__Startup_8php" kind="file"><name>M_Startup.php</name>
-    <member refid="M__Startup_8php_116d19f7d0b92eff90a73a3d2bea2bea5" kind="enum"><name>APP_ROOT</name></member>
-    <member refid="M__Startup_8php_120dd412769e0754189f5ce036e857a37" kind="variable"><name>$paths</name></member>
-    <member refid="M__Startup_8php_1a7eec01f90eff35e543b0620f2d89485" kind="variable"><name>if</name></member>
-    <member refid="M__Startup_8php_13c8d4ffe6f54e1b8a568a3516593d8e2" kind="variable"><name>$paths</name></member>
-    <member refid="M__Startup_8php_17fef1cb364d4fb76ac905a9b9fa60c68" kind="variable"><name>$opt</name></member>
-    <member refid="M__Startup_8php_175b06421eec5677bfba732e1687477fd" kind="variable"><name>$opt</name></member>
-    <member refid="M__Startup_8php_19d2d1351bef3dd2efd7b98835b58c0d1" kind="variable"><name>$opt</name></member>
-    <member refid="M__Startup_8php_12e80eced4ae56e43fbd9cadf89f6b555" kind="variable"><name>$opt</name></member>
-    <member refid="M__Startup_8php_13fac031b9ec8010575e3195ecc18702a" kind="variable"><name>$opt</name></member>
-    <member refid="M__Startup_8php_18427716f86cda11896524184352717c4" kind="variable"><name>$dispatchopt</name></member>
-    <member refid="M__Startup_8php_14efea2ea58072e0a5960411507cffaba" kind="variable"><name>$dispatchopt</name></member>
-    <member refid="M__Startup_8php_1eb61f326898c3c878a60ebae08dfe7f5" kind="variable"><name>$dispatchopt</name></member>
-    <member refid="M__Startup_8php_150407321e5087783b8bd28603bb8ab4c" kind="variable"><name>$dispatchopt</name></member>
-    <member refid="M__Startup_8php_1f50a8fd8e98752ae9a55e4ac9b1be96e" kind="variable"><name>$setup</name></member>
-  </compound>
-  <compound refid="app_2config_8php" kind="file"><name>config.php</name>
-  </compound>
-  <compound refid="config_8php" kind="file"><name>config.php</name>
-  </compound>
-  <compound refid="default_8conf_8php" kind="file"><name>default.conf.php</name>
-    <member refid="default_8conf_8php_1e4901046cc3e1deebf77ccc785384a78" kind="variable"><name>$conf</name></member>
-  </compound>
-  <compound refid="default_8php" kind="file"><name>default.php</name>
-  </compound>
-  <compound refid="app_2setup_8php" kind="file"><name>setup.php</name>
-  </compound>
-  <compound refid="setup_8php" kind="file"><name>setup.php</name>
-  </compound>
-  <compound refid="assetsversion_8php" kind="file"><name>assetsversion.php</name>
-    <member refid="assetsversion_8php_16afcccdf3d7aa57d7203c6377726364b" kind="variable"><name>$assetsversion</name></member>
-  </compound>
-  <compound refid="index__office_8php" kind="file"><name>index_office.php</name>
-    <member refid="index__office_8php_19cfa38f3a18bc8e8f64df837c96828fe" kind="enum"><name>APP_NAME</name></member>
-    <member refid="index__office_8php_1da06c1e4eef62b7a6bb112c33ad784a7" kind="enum"><name>IN_ADMIN</name></member>
-    <member refid="index__office_8php_143217e2b500ac24e1f75692574005eb9" kind="enum"><name>ROOT_ADMIN_URL</name></member>
-    <member refid="index__office_8php_13118161cec43fefa211a9127672787bd" kind="variable"><name>$frontend</name></member>
-  </compound>
   <compound refid="Strings_8php" kind="file"><name>Strings.php</name>
     <member refid="Strings_8php_170e2c4ddf6bb37795df233cd27b3feec" kind="function"><name>create_guid_section</name></member>
     <member refid="Strings_8php_1ff778f5049296d2b597c354d4fad3c12" kind="function"><name>ensure_length</name></member>
@@ -2468,39 +1411,22 @@
   </compound>
   <compound refid="reader_8php" kind="file"><name>reader.php</name>
   </compound>
-  <compound refid="Album_8php" kind="file"><name>Album.php</name>
-  </compound>
-  <compound refid="Album__i18n_8php" kind="file"><name>Album_i18n.php</name>
-  </compound>
-  <compound refid="Artist_8php" kind="file"><name>Artist.php</name>
-  </compound>
-  <compound refid="Artist__i18n_8php" kind="file"><name>Artist_i18n.php</name>
-  </compound>
-  <compound refid="Formtest_8php" kind="file"><name>Formtest.php</name>
-  </compound>
-  <compound refid="Formtest__i18n_8php" kind="file"><name>Formtest_i18n.php</name>
-  </compound>
-  <compound refid="Notmigrated_8php" kind="file"><name>Notmigrated.php</name>
-  </compound>
-  <compound refid="Notmigrated__withspecialnames_8php" kind="file"><name>Notmigrated_withspecialnames.php</name>
-  </compound>
-  <compound refid="Testuser_8php" kind="file"><name>Testuser.php</name>
-  </compound>
-  <compound refid="Title_8php" kind="file"><name>Title.php</name>
-  </compound>
-  <compound refid="Translate_8php" kind="file"><name>Translate.php</name>
-  </compound>
-  <compound refid="Vanillainnodb_8php" kind="file"><name>Vanillainnodb.php</name>
-  </compound>
-  <compound refid="Vanillainnodb2_8php" kind="file"><name>Vanillainnodb2.php</name>
-  </compound>
-  <compound refid="DBTestCase_8php" kind="file"><name>DBTestCase.php</name>
-  </compound>
-  <compound refid="module_8php" kind="file"><name>module.php</name>
-  </compound>
-  <compound refid="DB__DataObject__Pluggable__test_8php" kind="file"><name>DB_DataObject_Pluggable_test.php</name>
-  </compound>
-  <compound refid="DB__DataObject__Plugin__i18n__test_8php" kind="file"><name>DB_DataObject_Plugin_i18n_test.php</name>
+  <compound refid="test_8php" kind="file"><name>test.php</name>
+    <member refid="test_8php_1fd95f1b61057c6dd6ea3ec1f0bbe16bc" kind="function"><name>addExcludeExtension</name></member>
+    <member refid="test_8php_18e3bd75afb3ccda324e4ba833066c214" kind="function"><name>addExcludePattern</name></member>
+    <member refid="test_8php_15239495b88c9367e88cb6ba68b8a521b" kind="function"><name>is_Image</name></member>
+    <member refid="test_8php_142b916003160b0cd2fc57f7a590dbe4d" kind="function"><name>getFileExtension</name></member>
+    <member refid="test_8php_1e430ddaf2df6d9ec0da91197ceb73109" kind="function"><name>getFilesOlderThan</name></member>
+    <member refid="test_8php_1e8b893ab79fb438e8b101c79c3f3c6fc" kind="function"><name>deleteFilesOlderThan</name></member>
+    <member refid="test_8php_12efbbfe4b4b85e2cd8f804b43090a8ea" kind="function"><name>getFiles</name></member>
+    <member refid="test_8php_108f448e989739f2617d5d839f63fe857" kind="function"><name>getAllFiles</name></member>
+    <member refid="test_8php_162693ec310f2cad7c3e43e01bf2a38ff" kind="function"><name>hasFiles</name></member>
+    <member refid="test_8php_114814e04b348120748912692645f3a75" kind="function"><name>getContents</name></member>
+    <member refid="test_8php_1d679206f3dfec7d8701e62f1eaeceb98" kind="function"><name>deleteContents</name></member>
+    <member refid="test_8php_1e0eb7ee064fade81dd32fa6235215693" kind="function"><name>output</name></member>
+    <member refid="test_8php_149639102f397c276ee2c308488286adc" kind="function"><name>toHtml</name></member>
+    <member refid="test_8php_1d8c0f6b6e9f0723818e6908a568df2cf" kind="function"><name>getFolderPath</name></member>
+    <member refid="test_8php_1bc34b9dffe2f9cdd7d30671d02a12122" kind="function"><name>delete</name></member>
   </compound>
   <compound refid="traitephoto_8php" kind="file"><name>traitephoto.php</name>
     <member refid="traitephoto_8php_161ffd19326fab8e13872e8dde5d67b60" kind="function"><name>ImageCopyResampleBicubic</name></member>
@@ -2512,23 +1438,13 @@
   </compound>
   <compound refid="dir_62cbef823dd095a48c6ac76c03b46e62" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Office/Templates/ajaxfromtable/</name>
   </compound>
-  <compound refid="dir_1ca681e55fadcfdbf2c1b949dcd01ccc" kind="dir"><name>Documents/Taf/Eclipse/m4php5/skeleton/project/app/</name>
-  </compound>
   <compound refid="dir_c3e6ba898338471c8208da9fb593274d" kind="dir"><name>Documents/Taf/Eclipse/m4php5/commands/</name>
-  </compound>
-  <compound refid="dir_87248241b857a1c44dab9eadb498fdff" kind="dir"><name>Documents/Taf/Eclipse/m4php5/lib/cssmin/</name>
   </compound>
   <compound refid="dir_148ba79458ed9d0a5ffdbe59414da00f" kind="dir"><name>Documents/Taf/Eclipse/m4php5/DB/DataObject/</name>
   </compound>
   <compound refid="dir_6c955c5db62e3770de4fb3cd734d0092" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Office/DataSource/</name>
   </compound>
-  <compound refid="dir_10f2e72af984be977b0c1ae8aa7a4921" kind="dir"><name>Documents/Taf/Eclipse/m4php5/tests/tests/DB/</name>
-  </compound>
   <compound refid="dir_0a7759a6a165db9520cadcd456fbfc2f" kind="dir"><name>Documents/Taf/Eclipse/m4php5/DB/</name>
-  </compound>
-  <compound refid="dir_5ef40ddcf0764eb2f2569b5db8d4e5f4" kind="dir"><name>Documents/Taf/Eclipse/m4php5/skeleton/project/app/templates/default/</name>
-  </compound>
-  <compound refid="dir_684f4170622ea9732e02e59991350a2c" kind="dir"><name>Documents/Taf/Eclipse/m4php5/tests/DO_dist/</name>
   </compound>
   <compound refid="dir_b4cdb9e825570beb5e5bdda71ec3224e" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Office/DOclasses/</name>
   </compound>
@@ -2540,11 +1456,7 @@
   </compound>
   <compound refid="dir_5656bd0943ec0431377230d53a271dc8" kind="dir"><name>Documents/Taf/Eclipse/</name>
   </compound>
-  <compound refid="dir_e5c9fb06c964175a6116d7eb4b244b09" kind="dir"><name>Documents/Taf/Eclipse/m4php5/lib/phpmailer/examples/</name>
-  </compound>
   <compound refid="dir_3431e4d955c0bbc840c3c1f1ca01339a" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Exception/</name>
-  </compound>
-  <compound refid="dir_72f4a8e908a546826780bb0c204023d8" kind="dir"><name>Documents/Taf/Eclipse/m4php5/tests/extensions/</name>
   </compound>
   <compound refid="dir_2370728fa4fdc590aeaee4edc2eea81e" kind="dir"><name>Documents/Taf/Eclipse/m4php5/DB/DataObject/FormBuilder/</name>
   </compound>
@@ -2552,21 +1464,11 @@
   </compound>
   <compound refid="dir_f1ba806d12238f620c1a771e45ba84a7" kind="dir"><name>Documents/Taf/Eclipse/m4php5/HTML/</name>
   </compound>
-  <compound refid="dir_cb9df029aa32af548ea8d1b6b2494361" kind="dir"><name>Documents/Taf/Eclipse/m4php5/tests/interfaces/</name>
-  </compound>
-  <compound refid="dir_522a429e7948bb8ebb82837582aad9fd" kind="dir"><name>Documents/Taf/Eclipse/m4php5/lib/jsmin/</name>
-  </compound>
-  <compound refid="dir_34d916cc175ef5ae8e3665075341f3e9" kind="dir"><name>Documents/Taf/Eclipse/m4php5/lib/phpmailer/language/</name>
-  </compound>
-  <compound refid="dir_8d7f2e97611371d41fa28aad779ac69c" kind="dir"><name>Documents/Taf/Eclipse/m4php5/lib/</name>
-  </compound>
   <compound refid="dir_ee5ec7c6e164701ea2b64c7389f925c9" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Office/Templates/listview/</name>
   </compound>
   <compound refid="dir_893aa8dc48985a5fc75eb69718aaa414" kind="dir"><name>Documents/Taf/Eclipse/m4php5/</name>
   </compound>
   <compound refid="dir_76064c5129e4713da6ef84771b29ebaf" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Module/</name>
-  </compound>
-  <compound refid="dir_c300083501ca5e74b17fa31314d034d5" kind="dir"><name>Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/</name>
   </compound>
   <compound refid="dir_2c00b90aba8162bbee53c98477bf7601" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Office/modules/</name>
   </compound>
@@ -2576,17 +1478,11 @@
   </compound>
   <compound refid="dir_704673453361e52db02c9515d9b24645" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Payment/</name>
   </compound>
-  <compound refid="dir_2784d4227eeb32bb8433d68d2d638261" kind="dir"><name>Documents/Taf/Eclipse/m4php5/lib/phpmailer/</name>
-  </compound>
   <compound refid="dir_1531ef9be10faaf1e50e774d6a962c2f" kind="dir"><name>Documents/Taf/Eclipse/m4php5/DB/DataObject/Plugin/</name>
-  </compound>
-  <compound refid="dir_b00862ba4e769a1107384180dae78803" kind="dir"><name>Documents/Taf/Eclipse/m4php5/skeleton/project/</name>
   </compound>
   <compound refid="dir_5b1839585fbd060f586dfe26c438553e" kind="dir"><name>Documents/Taf/Eclipse/m4php5/HTML/QuickForm/</name>
   </compound>
   <compound refid="dir_c7d0f8e8a388d0f3c073d337309aaa67" kind="dir"><name>Documents/Taf/Eclipse/m4php5/HTML/QuickForm/Renderer/</name>
-  </compound>
-  <compound refid="dir_92b0ba4edfbe094c696b6821edad6461" kind="dir"><name>Documents/Taf/Eclipse/m4php5/skeleton/</name>
   </compound>
   <compound refid="dir_b50ecceedc74e67137a7442096dfd134" kind="dir"><name>Documents/Taf/Eclipse/m4php5/T/</name>
   </compound>
@@ -2594,22 +1490,10 @@
   </compound>
   <compound refid="dir_3641391b57115d96b88162f2790f22e4" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Office/Templates/tasks/</name>
   </compound>
-  <compound refid="dir_cc596ea6fa3de7fd8f6e0bf92455a9a1" kind="dir"><name>Documents/Taf/Eclipse/m4php5/skeleton/project/app/templates/</name>
-  </compound>
   <compound refid="dir_8989609b4cb51f47cdb69749d0f80981" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Office/Templates/</name>
-  </compound>
-  <compound refid="dir_d713de5cb08bcf4f3446ec8c243ef8e1" kind="dir"><name>Documents/Taf/Eclipse/m4php5/lib/phpmailer/test/</name>
-  </compound>
-  <compound refid="dir_37819735c691e8538915a60e3542d34b" kind="dir"><name>Documents/Taf/Eclipse/m4php5/lib/jsmin/test/</name>
-  </compound>
-  <compound refid="dir_b40416e19dbbb9d14811d59653be5e35" kind="dir"><name>Documents/Taf/Eclipse/m4php5/tests/tests/</name>
-  </compound>
-  <compound refid="dir_2f0e9628ea9027c88348ef21e3574f29" kind="dir"><name>Documents/Taf/Eclipse/m4php5/tests/</name>
   </compound>
   <compound refid="dir_dc8c960c6da7ac8c5987e72cc691972d" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Office/Templates/timeline/</name>
   </compound>
   <compound refid="dir_962e2f29353945c9310d793402057295" kind="dir"><name>Documents/Taf/Eclipse/m4php5/Office/View/</name>
-  </compound>
-  <compound refid="dir_1ecb6cb364640574afb79fb71d2ec105" kind="dir"><name>Documents/Taf/Eclipse/m4php5/skeleton/www/</name>
   </compound>
 </doxygenindex>

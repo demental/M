@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="22" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,10 +31,19 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Constructor</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string File <ref refid="classURL" kindref="compound">URL</ref> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>string </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="23" bodyend="29"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="38" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="38" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_16c06a85fd126b8feee00d3d698e11867" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -48,10 +57,18 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Add extension to exclude pattern</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$ext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string Extension to add </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="30" bodyend="32"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="52" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="52" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_15931bcfd408acd6df733b2b4fc86c42f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -65,10 +82,18 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Add exclude pattern</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$pattern</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string Pattern to exclude </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="33" bodyend="35"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="62" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="62" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_1ba630d67291c6b07203727475fb71892" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -82,10 +107,19 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Check if file is an image</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string File <ref refid="classURL" kindref="compound">URL</ref> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>boolean </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="36" bodyend="38"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="73" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="73" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_11918c6f410a2efcb3785e48454f15eaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -99,10 +133,19 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Get the file extension</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string File <ref refid="classURL" kindref="compound">URL</ref> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>extension string </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="39" bodyend="43"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="84" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="84" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_1d43043653535fb2f0ef0b95bddc46f5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -121,10 +164,26 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Get files older than a given date</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>date Limit date </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$absolute</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>boolean </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Files array </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="44" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="44" bodyend="54"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="98" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="98" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_1f1e8a8b4cb39d0b9fa3244307d12601b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -138,10 +197,44 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Delete files older than a given date</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>date Limit date </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="55" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="55" bodyend="59"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="116" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="116" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classfileUtils_16d22de4c9ff642da646509c79232208e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>fileUtils::hasFiles</definition>
+        <argsstring>($folder)</argsstring>
+        <name>hasFiles</name>
+        <param>
+          <type>$</type>
+          <declname>folder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if directory contains files</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$folder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string Source folder </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>boolean </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="200" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="199" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_1eb910d3f6118e783640da6491846371a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -151,10 +244,11 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Get directory content</para><para><simplesect kind="return"><para>Files list </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="125" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="125" bodyend="140"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="221" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="221" bodyend="236"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_1ac8851b20fce480f539ce45dc47b5267" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -164,10 +258,11 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Delete directory content</para><para><simplesect kind="return"><para>Total of directory </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="141" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="141" bodyend="151"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="244" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="244" bodyend="254"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_121bdf01e738dd00bac4f7ca4456b9db6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -181,10 +276,18 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Output specified file</para><para>public <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string File <ref refid="classURL" kindref="compound">URL</ref> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="153" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="152" bodyend="172"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="264" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="263" bodyend="283"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_1273687343a0710d2ae8629308af0f4f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -198,10 +301,19 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Generate HTML Tag for specified file</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string File <ref refid="classURL" kindref="compound">URL</ref> </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HTML Output string </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="173" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="173" bodyend="201"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="291" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="291" bodyend="319"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_130432e38f6c0829d585c3d323899de52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -215,10 +327,19 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>description</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>unknown_type </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="202" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="202" bodyend="204"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="328" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="328" bodyend="330"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -234,10 +355,19 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Get Files list of a given folder</para><para>public</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$folder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string Source folder </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Files list array </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="61" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="60" bodyend="76"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="132" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="131" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_1e093c5c265070d4ad5739bd1f649b4b8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -256,27 +386,26 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Get Files list of a given folder with extension filtering capabilities</para><para>public</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$folder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string Source folder </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$extensionfilter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string Extension to filter </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Files list array </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="78" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="77" bodyend="108"/>
-      </memberdef>
-      <memberdef kind="function" id="classfileUtils_12af5b0dbf5f112f2a2600ea9d54307d7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>static</type>
-        <definition>static fileUtils::hasFiles</definition>
-        <argsstring>($folder)</argsstring>
-        <name>hasFiles</name>
-        <param>
-          <type>$</type>
-          <declname>folder</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="110" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="109" bodyend="123"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="160" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="159" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="classfileUtils_1dabc7aa5506dd8bcad28d9971f03256b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -290,17 +419,26 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>description</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>unknown_type </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="206" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="205" bodyend="212"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="340" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="339" bodyend="346"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="21" bodyend="213"/>
+<para>Misc utilities related to files/folders manipulations </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/FileUtils.php" bodystart="20" bodyend="347"/>
     <listofallmembers>
       <member refid="classfileUtils_1d011a8d8828c87c8f509e5e41e392256" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>$_pattern</name></member>
       <member refid="classfileUtils_108e3f045c12ddf7cee8c58628e49439c" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>__construct</name></member>
@@ -315,7 +453,7 @@
       <member refid="classfileUtils_10c8875ede13b6dc57d60c62c2bbb16af" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>getFiles</name></member>
       <member refid="classfileUtils_1d43043653535fb2f0ef0b95bddc46f5a" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>getFilesOlderThan</name></member>
       <member refid="classfileUtils_130432e38f6c0829d585c3d323899de52" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>getFolderPath</name></member>
-      <member refid="classfileUtils_12af5b0dbf5f112f2a2600ea9d54307d7" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>hasFiles</name></member>
+      <member refid="classfileUtils_16d22de4c9ff642da646509c79232208e" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>hasFiles</name></member>
       <member refid="classfileUtils_1ba630d67291c6b07203727475fb71892" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>is_Image</name></member>
       <member refid="classfileUtils_121bdf01e738dd00bac4f7ca4456b9db6" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>output</name></member>
       <member refid="classfileUtils_1273687343a0710d2ae8629308af0f4f6" prot="public" virt="non-virtual"><scope>fileUtils</scope><name>toHtml</name></member>

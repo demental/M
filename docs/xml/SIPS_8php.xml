@@ -10,7 +10,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
-<codeline lineno="20"><highlight class="keyword">class<sp/></highlight><highlight class="normal">Payment_Driver_SIPS<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/>Payment</highlight></codeline>
+<codeline lineno="20"><highlight class="keyword">class<sp/></highlight><highlight class="normal">Payment_Driver_SIPS<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="classPayment" kindref="compound">Payment</ref></highlight></codeline>
 <codeline lineno="21"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/>function<sp/>__construct($options)</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/>{</highlight></codeline>

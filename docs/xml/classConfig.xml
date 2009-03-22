@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="35" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="35" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classConfig_1025adb2e4d15a25e082bcc2d2128dcd7" prot="protected" static="yes" mutable="no">
         <type>static</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="45" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="37" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -56,7 +56,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="57" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="56" bodyend="60"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="49" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="48" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classConfig_1a149b732a598127118181e5b5404f0b4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -69,7 +69,7 @@
 <para>Get Alternate Languages</para><para>public </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="70" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="70" bodyend="75"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="62" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="62" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classConfig_15ee304b559ffded8d924349debf8708b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -83,7 +83,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="86" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="86" bodyend="88"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="78" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classConfig_1c611a0172a86bc5f4305bee2a041dd85" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -109,7 +109,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="100" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="100" bodyend="102"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="92" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="92" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classConfig_1efc9b653ba1b3353dd782cdf0ecb4983" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -145,7 +145,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="114" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="114" bodyend="116"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="106" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="106" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classConfig_1232f5008f38ed5f98853244095b935af" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -171,7 +171,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="128" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="128" bodyend="144"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="120" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="120" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classConfig_1c3a31a273309242bd21578c108ad550c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -208,7 +208,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="158" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="157" bodyend="160"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="150" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="149" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classConfig_165cd0982a67c8f58c0fe788d65862ac7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -245,14 +245,14 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="174" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="173" bodyend="184"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="166" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="165" bodyend="176"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
 <para>Global configuration helper Store and retrieve configuration options accross application </para>    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="26" bodyend="185"/>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" line="18" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Config.php" bodystart="18" bodyend="177"/>
     <listofallmembers>
       <member refid="classConfig_1025adb2e4d15a25e082bcc2d2128dcd7" prot="protected" virt="non-virtual"><scope>Config</scope><name>$cfgArr</name></member>
       <member refid="classConfig_1ccf1ec6872f1142cccf612ecc68007ab" prot="protected" virt="non-virtual"><scope>Config</scope><name>$preftab</name></member>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classModule__Timeline" kind="class" prot="public">
     <compoundname>Module_Timeline</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+    <basecompoundref refid="classModule" prot="public" virt="non-virtual">Module</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classModule__Timeline_18797a219e538351b26a3c463fcb2ee54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -22,6 +22,40 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="238">
+        <label>Module_Timeline</label>
+        <childnode refid="239" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="239">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="240" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="240">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="241">
+        <label>Module_Timeline</label>
+        <childnode refid="242" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="242">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="243" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="243">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/modules/timeline.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/modules/timeline.php" bodystart="20" bodyend="26"/>
     <listofallmembers>
       <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Module_Timeline</scope><name>$_cachedData</name></member>

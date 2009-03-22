@@ -10,11 +10,11 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
-<codeline lineno="20"><highlight class="keyword">class<sp/></highlight><highlight class="normal">Module_Timeline<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/>Module<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="keyword">class<sp/></highlight><highlight class="normal">Module_Timeline<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="classModule" kindref="compound">Module</ref><sp/>{</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/>doExecWidget()</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>$cat<sp/>=<sp/>$this-&gt;getParam(</highlight><highlight class="stringliteral">&apos;cat&apos;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;assign(</highlight><highlight class="stringliteral">&apos;cat&apos;</highlight><highlight class="normal">,$cat);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="classModule_189f3dd2fa37e8da929b595d22dadf05d" kindref="member">assign</ref>(</highlight><highlight class="stringliteral">&apos;cat&apos;</highlight><highlight class="normal">,$cat);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="26"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="27"><highlight class="normal">?&gt;</highlight></codeline>

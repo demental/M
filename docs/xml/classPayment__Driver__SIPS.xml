@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classPayment__Driver__SIPS" kind="class" prot="public">
     <compoundname>Payment_Driver_SIPS</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Payment</basecompoundref>
+    <basecompoundref refid="classPayment" prot="public" virt="non-virtual">Payment</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classPayment__Driver__SIPS_1e574a6c0eced949112b852ae648d55d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -185,6 +185,28 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="284">
+        <label>Payment_Driver_SIPS</label>
+        <childnode refid="285" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="285">
+        <label>Payment</label>
+        <link refid="classPayment"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="286">
+        <label>Payment_Driver_SIPS</label>
+        <childnode refid="287" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="287">
+        <label>Payment</label>
+        <link refid="classPayment"/>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Payment/Driver/SIPS.php" bodystart="20" bodyend="271"/>
     <listofallmembers>
       <member refid="classPayment__Driver__SIPS_1e574a6c0eced949112b852ae648d55d9" prot="public" virt="non-virtual"><scope>Payment_Driver_SIPS</scope><name>__construct</name></member>

@@ -12,7 +12,7 @@
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">require_once<sp/></highlight><highlight class="stringliteral">&apos;M/HTML/MyQuickForm.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="22"><highlight class="normal">require_once<sp/></highlight><highlight class="stringliteral">&apos;DB/DataObject/FormBuilder/QuickForm.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">db_dataobject_formbuilder_myquickform<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/>db_dataobject_formbuilder_quickform<sp/></highlight></codeline>
+<codeline lineno="23" refid="classdb__dataobject__formbuilder__myquickform" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classdb__dataobject__formbuilder__myquickform" kindref="compound">db_dataobject_formbuilder_myquickform</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/>db_dataobject_formbuilder_quickform<sp/></highlight></codeline>
 <codeline lineno="24"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/>function<sp/>_createFormObject($formName,<sp/>$method,<sp/>$action,<sp/>$target)</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/>{</highlight></codeline>

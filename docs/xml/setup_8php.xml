@@ -10,7 +10,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
-<codeline lineno="21"><highlight class="keyword">class<sp/></highlight><highlight class="normal">M_Setup<sp/></highlight><highlight class="keyword">implements</highlight><highlight class="normal"><sp/>iSetup<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="keyword">class<sp/></highlight><highlight class="normal">M_Setup<sp/></highlight><highlight class="keyword">implements</highlight><highlight class="normal"><sp/><ref refid="interfaceiSetup" kindref="compound">iSetup</ref><sp/>{</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/>setUpEnv()</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;setUpDatabase();</highlight></codeline>

@@ -1,0 +1,260 @@
+\hypertarget{classMail}{
+\section{Mail Class Reference}
+\label{classMail}\index{Mail@{Mail}}
+}
+Inheritance diagram for Mail:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=46pt]{classMail__inherit__graph}
+\end{center}
+\end{figure}
+Collaboration diagram for Mail:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=46pt]{classMail__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classMail_a5f231a848f2ccebb489d067a3df64d4}{\_\-\_\-construct} (\$config)
+\item 
+\hyperlink{classMail_a549ce1e7def00b0879bcaf3b8855e4a}{addFile} (\$filepath)
+\item 
+\hyperlink{classMail_d6c0374d8c7e8652abe5ab62ba66e43c}{setVars} (\$vars)
+\item 
+\hyperlink{classMail_a3b066baef0428c4647d53adcc4f7db1}{assign} (\$var, \$val)
+\item 
+\hyperlink{classMail_ba85602bb95d1882d965bda635ef6ffe}{append} (\$var, \$val)
+\item 
+\hyperlink{classMail_b346333471800d919fcf8723a92cf2f3}{setTemplate} (\$tpl)
+\item 
+\hyperlink{classMail_8b994926a2e68fcd287af87072b9206b}{sendToAdmin} ()
+\item 
+\hyperlink{classMail_e589342450d2ef29194a98d78aa8aa21}{getSubject} ()
+\item 
+\hyperlink{classMail_369216eb8e8fdfbceb2f4d5285c715dc}{getAltbody} ()
+\item 
+\hyperlink{classMail_0b2b69dcc89ad08a475e7a53911b8dbf}{getBody} ()
+\item 
+\hyperlink{classMail_a8546c9659939683d8fe174190a8e374}{fetch} ()
+\item 
+\hyperlink{classMail_1a876548e9e9a29126959597a21e7c4a}{sendTo} (\$mail)
+\item 
+\hyperlink{classMail_7cc8cfd426c352b3f61d0c792551481f}{rawsend} (\$from, \$to, \$subject, \$htmlbody, \$altbody=null, \$options=null, \$attachments=null, \$html=false)
+\item 
+\hyperlink{classMail_54871f85d58e55c51c7791b7770c9b53}{getContents} ()
+\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static \& \hyperlink{classMail_add43d8b5b8631aa3822123ea4ab201f}{factory} (\$template)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classMail}{Mail} class. Holds an \hyperlink{classMtpl}{Mtpl} object so mails can be handled just like \hyperlink{classModule}{Module} templates Sent mails can be stored as log files (or not), mailed (or not), and also mailed to only one static recipient (for testing purpose) depending on the configuration options setup in the PEAR::getStaticProperty('Mail','global') 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classMail_a5f231a848f2ccebb489d067a3df64d4}{
+\index{Mail@{Mail}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!Mail@{Mail}}
+\subsubsection[\_\-\_\-construct]{\setlength{\rightskip}{0pt plus 5cm}Mail::\_\-\_\-construct (\$ {\em config})}}
+\label{classMail_a5f231a848f2ccebb489d067a3df64d4}
+
+
+Constructor
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$config}]string Template config \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classMail_a549ce1e7def00b0879bcaf3b8855e4a}{
+\index{Mail@{Mail}!addFile@{addFile}}
+\index{addFile@{addFile}!Mail@{Mail}}
+\subsubsection[addFile]{\setlength{\rightskip}{0pt plus 5cm}Mail::addFile (\$ {\em filepath})}}
+\label{classMail_a549ce1e7def00b0879bcaf3b8855e4a}
+
+
+Attach files
+
+public \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$filepath}]string Path to file \end{description}
+\end{Desc}
+\hypertarget{classMail_d6c0374d8c7e8652abe5ab62ba66e43c}{
+\index{Mail@{Mail}!setVars@{setVars}}
+\index{setVars@{setVars}!Mail@{Mail}}
+\subsubsection[setVars]{\setlength{\rightskip}{0pt plus 5cm}Mail::setVars (\$ {\em vars})}}
+\label{classMail_d6c0374d8c7e8652abe5ab62ba66e43c}
+
+
+Set mail vars
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$vars}]\end{description}
+\end{Desc}
+\hypertarget{classMail_a3b066baef0428c4647d53adcc4f7db1}{
+\index{Mail@{Mail}!assign@{assign}}
+\index{assign@{assign}!Mail@{Mail}}
+\subsubsection[assign]{\setlength{\rightskip}{0pt plus 5cm}Mail::assign (\$ {\em var}, \/  \$ {\em val})}}
+\label{classMail_a3b066baef0428c4647d53adcc4f7db1}
+
+
+Assign mail vars
+
+public \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$var}]string Var \item[{\em \$val}]string Value \end{description}
+\end{Desc}
+\hypertarget{classMail_ba85602bb95d1882d965bda635ef6ffe}{
+\index{Mail@{Mail}!append@{append}}
+\index{append@{append}!Mail@{Mail}}
+\subsubsection[append]{\setlength{\rightskip}{0pt plus 5cm}Mail::append (\$ {\em var}, \/  \$ {\em val})}}
+\label{classMail_ba85602bb95d1882d965bda635ef6ffe}
+
+
+Append mail vars
+
+public \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$var}]string Var \item[{\em \$val}]string Value \end{description}
+\end{Desc}
+\hypertarget{classMail_b346333471800d919fcf8723a92cf2f3}{
+\index{Mail@{Mail}!setTemplate@{setTemplate}}
+\index{setTemplate@{setTemplate}!Mail@{Mail}}
+\subsubsection[setTemplate]{\setlength{\rightskip}{0pt plus 5cm}Mail::setTemplate (\$ {\em tpl})}}
+\label{classMail_b346333471800d919fcf8723a92cf2f3}
+
+
+Set mail template
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$tpl}]string Template \end{description}
+\end{Desc}
+\hypertarget{classMail_add43d8b5b8631aa3822123ea4ab201f}{
+\index{Mail@{Mail}!factory@{factory}}
+\index{factory@{factory}!Mail@{Mail}}
+\subsubsection[factory]{\setlength{\rightskip}{0pt plus 5cm}static\& Mail::factory (\$ {\em template})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classMail_add43d8b5b8631aa3822123ea4ab201f}
+
+
+Email creation
+
+public
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$template}]string Template \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Email class \end{Desc}
+\hypertarget{classMail_8b994926a2e68fcd287af87072b9206b}{
+\index{Mail@{Mail}!sendToAdmin@{sendToAdmin}}
+\index{sendToAdmin@{sendToAdmin}!Mail@{Mail}}
+\subsubsection[sendToAdmin]{\setlength{\rightskip}{0pt plus 5cm}Mail::sendToAdmin ()}}
+\label{classMail_8b994926a2e68fcd287af87072b9206b}
+
+
+\hyperlink{classMail}{Mail} send to admin
+
+public \hypertarget{classMail_e589342450d2ef29194a98d78aa8aa21}{
+\index{Mail@{Mail}!getSubject@{getSubject}}
+\index{getSubject@{getSubject}!Mail@{Mail}}
+\subsubsection[getSubject]{\setlength{\rightskip}{0pt plus 5cm}Mail::getSubject ()}}
+\label{classMail_e589342450d2ef29194a98d78aa8aa21}
+
+
+Get mail subject
+
+public \begin{Desc}
+\item[Returns:]Subject string \end{Desc}
+\hypertarget{classMail_369216eb8e8fdfbceb2f4d5285c715dc}{
+\index{Mail@{Mail}!getAltbody@{getAltbody}}
+\index{getAltbody@{getAltbody}!Mail@{Mail}}
+\subsubsection[getAltbody]{\setlength{\rightskip}{0pt plus 5cm}Mail::getAltbody ()}}
+\label{classMail_369216eb8e8fdfbceb2f4d5285c715dc}
+
+
+Get Alternate body
+
+public \begin{Desc}
+\item[Returns:]Body string \end{Desc}
+\hypertarget{classMail_0b2b69dcc89ad08a475e7a53911b8dbf}{
+\index{Mail@{Mail}!getBody@{getBody}}
+\index{getBody@{getBody}!Mail@{Mail}}
+\subsubsection[getBody]{\setlength{\rightskip}{0pt plus 5cm}Mail::getBody ()}}
+\label{classMail_0b2b69dcc89ad08a475e7a53911b8dbf}
+
+
+Get body
+
+public \begin{Desc}
+\item[Returns:]Body string \end{Desc}
+\hypertarget{classMail_a8546c9659939683d8fe174190a8e374}{
+\index{Mail@{Mail}!fetch@{fetch}}
+\index{fetch@{fetch}!Mail@{Mail}}
+\subsubsection[fetch]{\setlength{\rightskip}{0pt plus 5cm}Mail::fetch ()}}
+\label{classMail_a8546c9659939683d8fe174190a8e374}
+
+
+Fetch template
+
+public \hypertarget{classMail_1a876548e9e9a29126959597a21e7c4a}{
+\index{Mail@{Mail}!sendTo@{sendTo}}
+\index{sendTo@{sendTo}!Mail@{Mail}}
+\subsubsection[sendTo]{\setlength{\rightskip}{0pt plus 5cm}Mail::sendTo (\$ {\em mail})}}
+\label{classMail_1a876548e9e9a29126959597a21e7c4a}
+
+
+Send to vars
+
+public \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$mail}]\end{description}
+\end{Desc}
+\hypertarget{classMail_7cc8cfd426c352b3f61d0c792551481f}{
+\index{Mail@{Mail}!rawsend@{rawsend}}
+\index{rawsend@{rawsend}!Mail@{Mail}}
+\subsubsection[rawsend]{\setlength{\rightskip}{0pt plus 5cm}Mail::rawsend (\$ {\em from}, \/  \$ {\em to}, \/  \$ {\em subject}, \/  \$ {\em htmlbody}, \/  \$ {\em altbody} = {\tt null}, \/  \$ {\em options} = {\tt null}, \/  \$ {\em attachments} = {\tt null}, \/  \$ {\em html} = {\tt false})}}
+\label{classMail_7cc8cfd426c352b3f61d0c792551481f}
+
+
+Raw Send \hyperlink{classMail}{Mail}
+
+public \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$from}]string From \item[{\em \$to}]string To \item[{\em \$subject}]string Subject \item[{\em \$htmlbody}]string HTML Body \item[{\em \$altbody}]string Alternate body \item[{\em \$options}]array Options \item[{\em \$attachments}]array Attachments \item[{\em \$html}]boolean Is HTML \end{description}
+\end{Desc}
+\hypertarget{classMail_54871f85d58e55c51c7791b7770c9b53}{
+\index{Mail@{Mail}!getContents@{getContents}}
+\index{getContents@{getContents}!Mail@{Mail}}
+\subsubsection[getContents]{\setlength{\rightskip}{0pt plus 5cm}Mail::getContents ()}}
+\label{classMail_54871f85d58e55c51c7791b7770c9b53}
+
+
+Get mail contents
+
+public \begin{Desc}
+\item[Returns:]Content \end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+Documents/Taf/Eclipse/m4php5/Mail.php\end{CompactItemize}

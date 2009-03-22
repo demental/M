@@ -22,6 +22,16 @@
  */
 
 class M_Crypt {
+	
+	/**
+	 * Encrypt data
+	 *
+	 * @access	public
+	 * @static
+	 * @param	string	$val	Data to encrypt
+	 * @param	string 	$ky		Key
+	 * @return	string	Encrypted data
+	 */
 	public static function encrypt($val,$ky = null) {
 		if(is_null($ky)) {
 			$ky = ENCSALT;
@@ -39,6 +49,16 @@ class M_Crypt {
 		$encrypted = $bf->encrypt($val);
 		return base64_encode($encrypted);
 	}
+
+	/**
+	 * Encrypt data
+	 *
+	 * @access	public
+	 * @static
+	 * @param	string	$val	Data to encrypt
+	 * @param	string 	$ky		Key
+	 * @return	string	Encrypted data
+	 */
 	public static function decrypt( $val, $ky = null )
 	{
 		if(is_null($ky)) {

@@ -2,13 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classComponent" kind="class" prot="public">
     <compoundname>Component</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Dispatcher</basecompoundref>
+    <basecompoundref refid="classDispatcher" prot="public" virt="non-virtual">Dispatcher</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classComponent_1941aa95779d197b421b80d79a689da80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Component::__construct</definition>
         <argsstring>($module, $action=&apos;index&apos;, $params=null)</argsstring>
         <name>__construct</name>
+        <reimplements refid="classDispatcher_1d9596c149149dc310c56d6b8dea95474">__construct</reimplements>
         <param>
           <type>$</type>
           <declname>module</declname>
@@ -31,7 +32,7 @@
 <parametername>$module</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Module to display </para></parameterdescription>
+<para><ref refid="classModule" kindref="compound">Module</ref> to display </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -59,10 +60,12 @@
         <definition>Component::display</definition>
         <argsstring>()</argsstring>
         <name>display</name>
+        <reimplements refid="classDispatcher_192a054ab35b0d91267d80da16d53ef9e">display</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Display the module</para><para>public <simplesect kind="return"><para>string <ref refid="classModule" kindref="compound">Module</ref> output </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Component.php" line="32" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Component.php" bodystart="31" bodyend="36"/>
@@ -72,6 +75,42 @@
     </briefdescription>
     <detaileddescription>
 <para><ref refid="classComponent" kindref="compound">Component</ref> class, allows a component to be inserted into a template, including controller logic. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="76">
+        <label>Component</label>
+        <link refid="classComponent"/>
+        <childnode refid="77" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>Dispatcher</label>
+        <link refid="classDispatcher"/>
+        <childnode refid="78" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="79">
+        <label>Component</label>
+        <link refid="classComponent"/>
+        <childnode refid="80" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>Dispatcher</label>
+        <link refid="classDispatcher"/>
+        <childnode refid="81" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Component.php" line="17" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Component.php" bodystart="17" bodyend="37"/>
     <listofallmembers>
       <member refid="classDispatcher_136062512fed76aa7ce03772c04f9b88f" prot="protected" virt="non-virtual"><scope>Component</scope><name>$action</name></member>

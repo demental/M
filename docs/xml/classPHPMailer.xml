@@ -92,7 +92,7 @@
         <definition>PHPMailer::$FromName</definition>
         <argsstring></argsstring>
         <name>$FromName</name>
-        <initializer> &apos;Root User&apos;</initializer>
+        <initializer> &apos;Root <ref refid="classUser" kindref="compound">User</ref>&apos;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

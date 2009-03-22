@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classOffice__DefaultModule" kind="class" prot="public">
     <compoundname>Office_DefaultModule</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+    <basecompoundref refid="classModule" prot="public" virt="non-virtual">Module</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classOffice__DefaultModule_1a01a609a8a30d7652e85ad8930696ff3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -22,6 +22,40 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="264">
+        <label>Office_DefaultModule</label>
+        <childnode refid="265" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="265">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="266" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="266">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="267">
+        <label>Office_DefaultModule</label>
+        <childnode refid="268" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="268">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="269" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="269">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DefaultModule.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/DefaultModule.php" bodystart="20" bodyend="25"/>
     <listofallmembers>
       <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Office_DefaultModule</scope><name>$_cachedData</name></member>

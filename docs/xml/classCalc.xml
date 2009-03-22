@@ -19,7 +19,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Convert Tax free to VAT amount.</para><para>public <parameterlist kind="param"><parameteritem>
+<para>Convert Tax free to VAT amount.</para><para>public</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>float</parametername>
 </parameternamelist>
@@ -38,7 +38,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" line="35" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" bodystart="34" bodyend="38"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" bodystart="35" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classCalc_15fd87cac52c2cc34fb22fcb732f5ee21" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -56,7 +56,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Convert VAT amount to Tax free amount.</para><para>public <parameterlist kind="param"><parameteritem>
+<para>Convert VAT amount to Tax free amount.</para><para>public</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>float</parametername>
 </parameternamelist>
@@ -75,7 +75,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" line="49" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" bodystart="48" bodyend="52"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" line="51" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" bodystart="50" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classCalc_16e330532dcf40889cc96f09dcdcba7b4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -94,7 +94,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Return formatted amount with currency.</para><para>public <parameterlist kind="param"><parameteritem>
+<para>Return formatted amount with currency.</para><para>public</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>float</parametername>
 </parameternamelist>
@@ -113,7 +113,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" line="63" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" bodystart="62" bodyend="65"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" line="66" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" bodystart="65" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classCalc_19d9aafb8e61efce896ca20bc0d2a32e3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -127,7 +127,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Return ratio to calculate prorata amount from start date until month end date.</para><para>public <parameterlist kind="param"><parameteritem>
+<para>Return ratio to calculate prorata amount from start date until month end date.</para><para>public</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>date</parametername>
 </parameternamelist>
@@ -139,14 +139,14 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" line="74" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" bodystart="74" bodyend="80"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" line="78" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" bodystart="78" bodyend="84"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
 <para>Calculation related static methods (Mostly money) </para>    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" bodystart="24" bodyend="81"/>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Calc.php" bodystart="24" bodyend="85"/>
     <listofallmembers>
       <member refid="classCalc_15654689f9bf3c43030b6ee27806c718a" prot="public" virt="non-virtual"><scope>Calc</scope><name>HT2TTC</name></member>
       <member refid="classCalc_16e330532dcf40889cc96f09dcdcba7b4" prot="public" virt="non-virtual"><scope>Calc</scope><name>money</name></member>

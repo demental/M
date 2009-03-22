@@ -6,13 +6,10 @@
     <innerdir refid="dir_0a7759a6a165db9520cadcd456fbfc2f">Documents/Taf/Eclipse/m4php5/DB/</innerdir>
     <innerdir refid="dir_3431e4d955c0bbc840c3c1f1ca01339a">Documents/Taf/Eclipse/m4php5/Exception/</innerdir>
     <innerdir refid="dir_f1ba806d12238f620c1a771e45ba84a7">Documents/Taf/Eclipse/m4php5/HTML/</innerdir>
-    <innerdir refid="dir_8d7f2e97611371d41fa28aad779ac69c">Documents/Taf/Eclipse/m4php5/lib/</innerdir>
     <innerdir refid="dir_76064c5129e4713da6ef84771b29ebaf">Documents/Taf/Eclipse/m4php5/Module/</innerdir>
     <innerdir refid="dir_df6f3df46d5d862ec7603c61f1c6eb45">Documents/Taf/Eclipse/m4php5/Office/</innerdir>
     <innerdir refid="dir_704673453361e52db02c9515d9b24645">Documents/Taf/Eclipse/m4php5/Payment/</innerdir>
-    <innerdir refid="dir_92b0ba4edfbe094c696b6821edad6461">Documents/Taf/Eclipse/m4php5/skeleton/</innerdir>
     <innerdir refid="dir_b50ecceedc74e67137a7442096dfd134">Documents/Taf/Eclipse/m4php5/T/</innerdir>
-    <innerdir refid="dir_2f0e9628ea9027c88348ef21e3574f29">Documents/Taf/Eclipse/m4php5/tests/</innerdir>
     <innerfile refid="Calc_8php">Calc.php</innerfile>
     <innerfile refid="Component_8php">Component.php</innerfile>
     <innerfile refid="Config_8php">Config.php</innerfile>
@@ -38,6 +35,7 @@
     <innerfile refid="Payment_8php">Payment.php</innerfile>
     <innerfile refid="Strings_8php">Strings.php</innerfile>
     <innerfile refid="T_8php">T.php</innerfile>
+    <innerfile refid="test_8php">test.php</innerfile>
     <innerfile refid="traitephoto_8php">traitephoto.php</innerfile>
     <innerfile refid="URL_8php">URL.php</innerfile>
     <innerfile refid="User_8php">User.php</innerfile>

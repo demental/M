@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="home_2index_8php" kind="file">
+    <compoundname>index.php</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;style<sp/>type=</highlight><highlight class="stringliteral">&quot;text/css&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#blackboard<sp/>{</highlight></codeline>
+<codeline lineno="3"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>background:#000;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/>height:400px;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/>overflow:</highlight><highlight class="keyword">auto</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/>color:#afa;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#blackboard<sp/>h2<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>background:#444;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/>font-weight:bold;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/>font-size:150%;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/>color:#fff;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>font-variant:small-caps;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/>margin:0;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/>padding:0<sp/>1em;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#blackboardcontainer<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>border:1px<sp/>solid<sp/>#888;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>padding:1em;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#blackboardcontainer<sp/>a<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>color:#ccf;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>border-bottom:1px<sp/>dotted<sp/>#fff;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#blackboardcontainer<sp/>textarea<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>width:100%;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#blackboardcontainer<sp/>strong<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>color:#0a0;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>font-weight:bold;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#blackboardcontainer<sp/>em<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/>font-style:italic;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>color:#efe;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">.homeblock<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>width:80%;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>height:90px;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>background:#ccc;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>margin:0<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>1em<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>border:1px<sp/>solid<sp/>#888;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">.homeblock<sp/>h3<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>background:#ddd;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>color:#000;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>border-bottom:2px<sp/>solid<sp/>#000;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>padding:0<sp/>1em;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>font-weight:bold;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">.homeblockcontainer<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>padding:0.5em;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">.timeline<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>background:#dfd;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">.tasks<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>background:#fdd;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">&lt;/style&gt;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">&lt;div<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;yui-gc&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>&lt;div<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;yui-u<sp/>first&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;blackboard&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;h2&gt;Tableau<sp/>noir&lt;/h2&gt;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;div<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;blackboardcontainer&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;?php<sp/>echo<sp/>$this-&gt;c(</highlight><highlight class="stringliteral">&apos;home&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;addmessage&apos;</highlight><highlight class="normal">)?&gt;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;ul&gt;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;?php<sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal">($messages<sp/>as<sp/>$mess):?&gt;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;?php<sp/>$this-&gt;i(</highlight><highlight class="stringliteral">&apos;home/messageline&apos;</highlight><highlight class="normal">,array(</highlight><highlight class="stringliteral">&apos;mess&apos;</highlight><highlight class="normal">=&gt;$mess))?&gt;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;?php<sp/>endforeach?&gt;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/div&gt;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>&lt;/div&gt;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>&lt;div<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;yui-u&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;?php<sp/>echo<sp/>$this-&gt;c(</highlight><highlight class="stringliteral">&apos;tasks&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;widget&apos;</highlight><highlight class="normal">)?&gt;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;?php<sp/>echo<sp/>$this-&gt;c(</highlight><highlight class="stringliteral">&apos;timeline&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;widget&apos;</highlight><highlight class="normal">,array(</highlight><highlight class="stringliteral">&apos;cat&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;technique&apos;</highlight><highlight class="normal">))?&gt;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;?php<sp/>echo<sp/>$this-&gt;c(</highlight><highlight class="stringliteral">&apos;timeline&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;widget&apos;</highlight><highlight class="normal">,array(</highlight><highlight class="stringliteral">&apos;cat&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;commerciale&apos;</highlight><highlight class="normal">))?&gt;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;?php<sp/>echo<sp/>$this-&gt;c(</highlight><highlight class="stringliteral">&apos;timeline&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;widget&apos;</highlight><highlight class="normal">,array(</highlight><highlight class="stringliteral">&apos;cat&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;contenu&apos;</highlight><highlight class="normal">))?&gt;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>&lt;/div&gt;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">&lt;/div&gt;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">&lt;script<sp/>type=</highlight><highlight class="stringliteral">&quot;text/javascript&quot;</highlight><highlight class="normal"><sp/>src=</highlight><highlight class="stringliteral">&quot;/js/jquery.form.js&quot;</highlight><highlight class="normal">&gt;&lt;/script&gt;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">&lt;script<sp/>type=</highlight><highlight class="stringliteral">&quot;text/javascript&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">$(function(){</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>$(</highlight><highlight class="stringliteral">&apos;#addmessageform&apos;</highlight><highlight class="normal">).ajaxForm({clearForm:</highlight><highlight class="keyword">true</highlight><highlight class="normal">,success:function(response){</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>$(</highlight><highlight class="stringliteral">&apos;#blackboardcontainer<sp/>ul&apos;</highlight><highlight class="normal">).prepend(response);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>}})</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">})<sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">&lt;/script&gt;</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Templates/home/index.php"/>
+  </compounddef>
+</doxygen>

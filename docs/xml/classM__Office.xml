@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="48" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="48" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="46" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="50" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="50" bodyend="52"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="48" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="48" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classM__Office_1bbd98589449d7538cd4cbe22243e9632" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="53" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="53" bodyend="55"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="51" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="51" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classM__Office_1ff234549a8d30ba16a3903af4a32d9f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="57" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="57" bodyend="197"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="55" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="55" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="classM__Office_1fbbef2484aadede4877662dc47984066" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="198" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="198" bodyend="201"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="196" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="196" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classM__Office_1560d737dfc8a8ee8ff550c6ef979b81e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="203" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="202" bodyend="220"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="201" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="200" bodyend="218"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -126,14 +126,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="225" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="224" bodyend="235"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="223" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="222" bodyend="233"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="47" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="47" bodyend="236"/>
+<para>&quot;Office&quot; application dispatcher The office application is one of the most powerful features of the <ref refid="namespaceM" kindref="compound">M</ref> framework. It&apos;s also the one that needs most refactoring This was originally base upon Justin Patrin&apos;s PEAR_DB_DataObject_FormBuilder_Frontend </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office.php" bodystart="45" bodyend="234"/>
     <listofallmembers>
       <member refid="classM__Office_1360479e3f702ec67df66634b09704136" prot="public" virt="non-virtual"><scope>M_Office</scope><name>$dsp</name></member>
       <member refid="classM__Office__Controller_1a4a90f07fb33381fca03cca7b412db55" prot="public" virt="non-virtual"><scope>M_Office</scope><name>append</name></member>

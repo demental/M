@@ -22,14 +22,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/iListener.php" line="21"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/iListener.php" line="19"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/iListener.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/iListener.php" bodystart="20" bodyend="22"/>
+<para>Simple listener interface </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/iListener.php" line="18" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/iListener.php" bodystart="18" bodyend="20"/>
     <listofallmembers>
       <member refid="interfaceiListener_1e5cadd0516ba0db8fd40c194cce21f59" prot="public" virt="non-virtual"><scope>iListener</scope><name>receiveMessage</name></member>
     </listofallmembers>

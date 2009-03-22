@@ -65,7 +65,7 @@
         <definition>$PHPMAILER_LANG[&quot;instantiate&quot;]</definition>
         <argsstring>[&quot;instantiate&quot;]</argsstring>
         <name>$PHPMAILER_LANG</name>
-        <initializer> &apos;Mail Funktion konnte nicht initialisiert werden.&apos;</initializer>
+        <initializer> &apos;<ref refid="classMail" kindref="compound">Mail</ref> Funktion konnte nicht initialisiert werden.&apos;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

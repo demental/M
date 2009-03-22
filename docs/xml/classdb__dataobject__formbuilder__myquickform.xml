@@ -59,13 +59,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyQuickForm.php" line="8" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyQuickForm.php" bodystart="7" bodyend="12"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MyQuickForm.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MyQuickForm.php" bodystart="25" bodyend="30"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>DB Dataobject Form builder </para>    </detaileddescription>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/FormBuilder/MyQuickForm.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/DB/DataObject/FormBuilder/MyQuickForm.php" bodystart="23" bodyend="31"/>
     <listofallmembers>
       <member refid="classdb__dataobject__formbuilder__myquickform_1f0e35724aeb71ed1d8644234efcdf392" prot="public" virt="non-virtual"><scope>db_dataobject_formbuilder_myquickform</scope><name>_createFormObject</name></member>

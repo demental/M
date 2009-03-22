@@ -9,7 +9,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
-<codeline lineno="6" refid="classModule__Unittests" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classModule__Unittests" kindref="compound">Module_Unittests</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/>Module</highlight></codeline>
+<codeline lineno="6" refid="classModule__Unittests" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classModule__Unittests" kindref="compound">Module_Unittests</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="classModule" kindref="compound">Module</ref></highlight></codeline>
 <codeline lineno="7"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/>getCacheId()</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
@@ -38,7 +38,7 @@
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>$u-&gt;find();</highlight><highlight class="comment">//<sp/>To<sp/>init<sp/>database</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>$db<sp/>=<sp/>$u-&gt;getDatabaseConnection();</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>$dbn<sp/>=<sp/>$db-&gt;database_name;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;assign(</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">,$dbn);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="classModule_189f3dd2fa37e8da929b595d22dadf05d" kindref="member">assign</ref>(</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">,$dbn);</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/>doExecLaunchframework()</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
@@ -68,7 +68,7 @@
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>$u-&gt;find();</highlight><highlight class="comment">//<sp/>To<sp/>init<sp/>database</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>$db<sp/>=<sp/>$u-&gt;getDatabaseConnection();</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>$dbn<sp/>=<sp/>$db-&gt;database_name;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;assign(</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">,$dbn);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>$this-&gt;<ref refid="classModule_189f3dd2fa37e8da929b595d22dadf05d" kindref="member">assign</ref>(</highlight><highlight class="stringliteral">&apos;db&apos;</highlight><highlight class="normal">,$dbn);</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/>doExecLaunchstructure()</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/>{</highlight></codeline>

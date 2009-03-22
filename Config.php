@@ -1,14 +1,6 @@
 <?php
 /**
-* M PHP Framework
- * @package      M
- * @subpackage   Config
- */
-/**
  * M PHP Framework
- *
- * Global configuration helper
- * Store and retreive configuration options accross application
  *
  * @package      M
  * @subpackage   Config
@@ -30,7 +22,7 @@ class Config {
 	/**
 	 * ???
 	 *
-	 * @var array
+	 * @var $preftab array
 	 */
 	protected static $preftab = array();
 
@@ -51,7 +43,7 @@ class Config {
 	 * @access	public
 	 * @param	array	$array	??
 	 * @static
-	 * 
+	 *
 	 */
 	public static function load($array)
 	{
@@ -65,7 +57,7 @@ class Config {
 	 *
 	 * @access	public
 	 * @static
-	 * 
+	 *
 	 */
 	public static function getAlternateLangs() {
 		$l=Config::getAllLangs();
@@ -81,7 +73,7 @@ class Config {
 	 * @access	public
 	 * @return	??		??
 	 * @static
-	 * 
+	 *
 	 */
 	public static function getAllLangs() {
 		return Config::get('installedLangs');
@@ -95,7 +87,7 @@ class Config {
 	 * @param	string	$var	Variable to get
 	 * @return	string	Value
 	 * @static
-	 * 
+	 *
 	 */
 	public static function get($var) {
 		return self::$cfgArr[$var];
@@ -109,7 +101,7 @@ class Config {
 	 * @param	string	$var	Variable to set
 	 * @param	string	$val	Value
 	 * @static
-	 * 
+	 *
 	 */
 	public static function set($var,$val) {
 		self::$cfgArr[$var]=$val;
@@ -123,7 +115,7 @@ class Config {
 	 * @param	string	$var	Variable to get
 	 * @return	string	Value
 	 * @static
-	 * 
+	 *
 	 */
 	public static function getPref($var) {
 		if(!key_exists($var,self::$preftab)){
@@ -152,7 +144,7 @@ class Config {
 	 * @param	??		$key	??
 	 * @return	??		Value
 	 * @static
-	 * 
+	 *
 	 */
 	public static function arrayize(&$item,$key)
 	{
@@ -168,7 +160,7 @@ class Config {
 	 * @param	string	$val	Value
 	 * @return	string	Value
 	 * @static
-	 * 
+	 *
 	 */
 	public static function setPref($var,$val)
 	{

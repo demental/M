@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classModule__Tasks" kind="class" prot="public">
     <compoundname>Module_Tasks</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+    <basecompoundref refid="classModule" prot="public" virt="non-virtual">Module</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classModule__Tasks_14e90cb9cd4990b729a767fdfb8003be5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -22,6 +22,40 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="233">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="234" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="234">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="232">
+        <label>Module_Tasks</label>
+        <childnode refid="233" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="236">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="237" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="237">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="235">
+        <label>Module_Tasks</label>
+        <childnode refid="236" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/modules/tasks.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/modules/tasks.php" bodystart="20" bodyend="26"/>
     <listofallmembers>
       <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Module_Tasks</scope><name>$_cachedData</name></member>

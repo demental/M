@@ -22,7 +22,7 @@
         <definition>$PHPMAILER_LANG[&quot;provide_address&quot;]</definition>
         <argsstring>[&quot;provide_address&quot;]</argsstring>
         <name>$PHPMAILER_LANG</name>
-        <initializer> &apos;Tú skal uppgeva minst &apos; .
+        <initializer> &apos;<ref refid="classT" kindref="compound">T</ref>ú skal uppgeva minst &apos; .
                                           &apos;móttakara-emailadressu(r).&apos;</initializer>
         <briefdescription>
         </briefdescription>

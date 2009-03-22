@@ -1,0 +1,298 @@
+\hypertarget{classfileUtils}{
+\section{fileUtils Class Reference}
+\label{classfileUtils}\index{fileUtils@{fileUtils}}
+}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{classfileUtils_08e3f045c12ddf7cee8c58628e49439c}{\_\-\_\-construct} (\$file)
+\item 
+\hyperlink{classfileUtils_6c06a85fd126b8feee00d3d698e11867}{addExcludeExtension} (\$ext)
+\item 
+\hyperlink{classfileUtils_5931bcfd408acd6df733b2b4fc86c42f}{addExcludePattern} (\$pattern)
+\item 
+\hyperlink{classfileUtils_ba630d67291c6b07203727475fb71892}{is\_\-Image} (\$file)
+\item 
+\hyperlink{classfileUtils_1918c6f410a2efcb3785e48454f15eaf}{getFileExtension} (\$file)
+\item 
+\hyperlink{classfileUtils_d43043653535fb2f0ef0b95bddc46f5a}{getFilesOlderThan} (\$time, \$absolute=false)
+\item 
+\hyperlink{classfileUtils_f1e8a8b4cb39d0b9fa3244307d12601b}{deleteFilesOlderThan} (\$time)
+\item 
+\hyperlink{classfileUtils_6d22de4c9ff642da646509c79232208e}{hasFiles} (\$folder)
+\item 
+\hyperlink{classfileUtils_eb910d3f6118e783640da6491846371a}{getContents} ()
+\item 
+\hyperlink{classfileUtils_ac8851b20fce480f539ce45dc47b5267}{deleteContents} ()
+\item 
+\hyperlink{classfileUtils_21bdf01e738dd00bac4f7ca4456b9db6}{output} (\$file)
+\item 
+\hyperlink{classfileUtils_273687343a0710d2ae8629308af0f4f6}{toHtml} (\$file)
+\item 
+\hyperlink{classfileUtils_30432e38f6c0829d585c3d323899de52}{getFolderPath} (\$path)
+\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static \hyperlink{classfileUtils_0c8875ede13b6dc57d60c62c2bbb16af}{getFiles} (\$folder)
+\item 
+static \hyperlink{classfileUtils_e093c5c265070d4ad5739bd1f649b4b8}{getAllFiles} (\$folder, \$extensionfilter='')
+\item 
+static \hyperlink{classfileUtils_dabc7aa5506dd8bcad28d9971f03256b}{delete} (\$path)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Misc utilities related to files/folders manipulations 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfileUtils_08e3f045c12ddf7cee8c58628e49439c}{
+\index{fileUtils@{fileUtils}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!fileUtils@{fileUtils}}
+\subsubsection[\_\-\_\-construct]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::\_\-\_\-construct (\$ {\em file})}}
+\label{classfileUtils_08e3f045c12ddf7cee8c58628e49439c}
+
+
+Constructor
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$file}]string File \hyperlink{classURL}{URL} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]string \end{Desc}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfileUtils_6c06a85fd126b8feee00d3d698e11867}{
+\index{fileUtils@{fileUtils}!addExcludeExtension@{addExcludeExtension}}
+\index{addExcludeExtension@{addExcludeExtension}!fileUtils@{fileUtils}}
+\subsubsection[addExcludeExtension]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::addExcludeExtension (\$ {\em ext})}}
+\label{classfileUtils_6c06a85fd126b8feee00d3d698e11867}
+
+
+Add extension to exclude pattern
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$ext}]string Extension to add \end{description}
+\end{Desc}
+\hypertarget{classfileUtils_5931bcfd408acd6df733b2b4fc86c42f}{
+\index{fileUtils@{fileUtils}!addExcludePattern@{addExcludePattern}}
+\index{addExcludePattern@{addExcludePattern}!fileUtils@{fileUtils}}
+\subsubsection[addExcludePattern]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::addExcludePattern (\$ {\em pattern})}}
+\label{classfileUtils_5931bcfd408acd6df733b2b4fc86c42f}
+
+
+Add exclude pattern
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$pattern}]string Pattern to exclude \end{description}
+\end{Desc}
+\hypertarget{classfileUtils_ba630d67291c6b07203727475fb71892}{
+\index{fileUtils@{fileUtils}!is\_\-Image@{is\_\-Image}}
+\index{is\_\-Image@{is\_\-Image}!fileUtils@{fileUtils}}
+\subsubsection[is\_\-Image]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::is\_\-Image (\$ {\em file})}}
+\label{classfileUtils_ba630d67291c6b07203727475fb71892}
+
+
+Check if file is an image
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$file}]string File \hyperlink{classURL}{URL} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]boolean \end{Desc}
+\hypertarget{classfileUtils_1918c6f410a2efcb3785e48454f15eaf}{
+\index{fileUtils@{fileUtils}!getFileExtension@{getFileExtension}}
+\index{getFileExtension@{getFileExtension}!fileUtils@{fileUtils}}
+\subsubsection[getFileExtension]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::getFileExtension (\$ {\em file})}}
+\label{classfileUtils_1918c6f410a2efcb3785e48454f15eaf}
+
+
+Get the file extension
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$file}]string File \hyperlink{classURL}{URL} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]extension string \end{Desc}
+\hypertarget{classfileUtils_d43043653535fb2f0ef0b95bddc46f5a}{
+\index{fileUtils@{fileUtils}!getFilesOlderThan@{getFilesOlderThan}}
+\index{getFilesOlderThan@{getFilesOlderThan}!fileUtils@{fileUtils}}
+\subsubsection[getFilesOlderThan]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::getFilesOlderThan (\$ {\em time}, \/  \$ {\em absolute} = {\tt false})}}
+\label{classfileUtils_d43043653535fb2f0ef0b95bddc46f5a}
+
+
+Get files older than a given date
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$time}]date Limit date \item[{\em \$absolute}]boolean \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Files array \end{Desc}
+\hypertarget{classfileUtils_f1e8a8b4cb39d0b9fa3244307d12601b}{
+\index{fileUtils@{fileUtils}!deleteFilesOlderThan@{deleteFilesOlderThan}}
+\index{deleteFilesOlderThan@{deleteFilesOlderThan}!fileUtils@{fileUtils}}
+\subsubsection[deleteFilesOlderThan]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::deleteFilesOlderThan (\$ {\em time})}}
+\label{classfileUtils_f1e8a8b4cb39d0b9fa3244307d12601b}
+
+
+Delete files older than a given date
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$time}]date Limit date \end{description}
+\end{Desc}
+\hypertarget{classfileUtils_0c8875ede13b6dc57d60c62c2bbb16af}{
+\index{fileUtils@{fileUtils}!getFiles@{getFiles}}
+\index{getFiles@{getFiles}!fileUtils@{fileUtils}}
+\subsubsection[getFiles]{\setlength{\rightskip}{0pt plus 5cm}static fileUtils::getFiles (\$ {\em folder})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classfileUtils_0c8875ede13b6dc57d60c62c2bbb16af}
+
+
+Get Files list of a given folder
+
+public
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$folder}]string Source folder \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Files list array \end{Desc}
+\hypertarget{classfileUtils_e093c5c265070d4ad5739bd1f649b4b8}{
+\index{fileUtils@{fileUtils}!getAllFiles@{getAllFiles}}
+\index{getAllFiles@{getAllFiles}!fileUtils@{fileUtils}}
+\subsubsection[getAllFiles]{\setlength{\rightskip}{0pt plus 5cm}static fileUtils::getAllFiles (\$ {\em folder}, \/  \$ {\em extensionfilter} = {\tt ''})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classfileUtils_e093c5c265070d4ad5739bd1f649b4b8}
+
+
+Get Files list of a given folder with extension filtering capabilities
+
+public
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$folder}]string Source folder \item[{\em \$extensionfilter}]string Extension to filter \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Files list array \end{Desc}
+\hypertarget{classfileUtils_6d22de4c9ff642da646509c79232208e}{
+\index{fileUtils@{fileUtils}!hasFiles@{hasFiles}}
+\index{hasFiles@{hasFiles}!fileUtils@{fileUtils}}
+\subsubsection[hasFiles]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::hasFiles (\$ {\em folder})}}
+\label{classfileUtils_6d22de4c9ff642da646509c79232208e}
+
+
+Check if directory contains files
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$folder}]string Source folder \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]boolean \end{Desc}
+\hypertarget{classfileUtils_eb910d3f6118e783640da6491846371a}{
+\index{fileUtils@{fileUtils}!getContents@{getContents}}
+\index{getContents@{getContents}!fileUtils@{fileUtils}}
+\subsubsection[getContents]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::getContents ()}}
+\label{classfileUtils_eb910d3f6118e783640da6491846371a}
+
+
+Get directory content
+
+\begin{Desc}
+\item[Returns:]Files list \end{Desc}
+\hypertarget{classfileUtils_ac8851b20fce480f539ce45dc47b5267}{
+\index{fileUtils@{fileUtils}!deleteContents@{deleteContents}}
+\index{deleteContents@{deleteContents}!fileUtils@{fileUtils}}
+\subsubsection[deleteContents]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::deleteContents ()}}
+\label{classfileUtils_ac8851b20fce480f539ce45dc47b5267}
+
+
+Delete directory content
+
+\begin{Desc}
+\item[Returns:]Total of directory \end{Desc}
+\hypertarget{classfileUtils_21bdf01e738dd00bac4f7ca4456b9db6}{
+\index{fileUtils@{fileUtils}!output@{output}}
+\index{output@{output}!fileUtils@{fileUtils}}
+\subsubsection[output]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::output (\$ {\em file})}}
+\label{classfileUtils_21bdf01e738dd00bac4f7ca4456b9db6}
+
+
+Output specified file
+
+public \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$file}]string File \hyperlink{classURL}{URL} \end{description}
+\end{Desc}
+\hypertarget{classfileUtils_273687343a0710d2ae8629308af0f4f6}{
+\index{fileUtils@{fileUtils}!toHtml@{toHtml}}
+\index{toHtml@{toHtml}!fileUtils@{fileUtils}}
+\subsubsection[toHtml]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::toHtml (\$ {\em file})}}
+\label{classfileUtils_273687343a0710d2ae8629308af0f4f6}
+
+
+Generate HTML Tag for specified file
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$file}]string File \hyperlink{classURL}{URL} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]HTML Output string \end{Desc}
+\hypertarget{classfileUtils_30432e38f6c0829d585c3d323899de52}{
+\index{fileUtils@{fileUtils}!getFolderPath@{getFolderPath}}
+\index{getFolderPath@{getFolderPath}!fileUtils@{fileUtils}}
+\subsubsection[getFolderPath]{\setlength{\rightskip}{0pt plus 5cm}fileUtils::getFolderPath (\$ {\em path})}}
+\label{classfileUtils_30432e38f6c0829d585c3d323899de52}
+
+
+description
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$path}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]unknown\_\-type \end{Desc}
+\hypertarget{classfileUtils_dabc7aa5506dd8bcad28d9971f03256b}{
+\index{fileUtils@{fileUtils}!delete@{delete}}
+\index{delete@{delete}!fileUtils@{fileUtils}}
+\subsubsection[delete]{\setlength{\rightskip}{0pt plus 5cm}static fileUtils::delete (\$ {\em path})\hspace{0.3cm}{\tt  \mbox{[}static\mbox{]}}}}
+\label{classfileUtils_dabc7aa5506dd8bcad28d9971f03256b}
+
+
+description
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \$path}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]unknown\_\-type \end{Desc}
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+Documents/Taf/Eclipse/m4php5/FileUtils.php\end{CompactItemize}

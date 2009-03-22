@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="21" bodyend="43"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="19" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="19" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_1d14cd44c45b6df592749ba9d4be881d5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="56" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="55" bodyend="61"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="54" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="53" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_1146d73dd7f93ba51ec4f19aa50421004" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="63" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="62" bodyend="66"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="61" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="60" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_176789cb42cd8fb8ae706cf17065ce714" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="68" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="67" bodyend="73"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="66" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="65" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_1f29aef5080efb9c8d93c395a5e1d5d79" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="75" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="74" bodyend="78"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="73" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="72" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_1613649c26d5a9a7ba1624bbf7ea4c864" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="80" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="79" bodyend="83"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="78" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="77" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_101b146e1667a22d05bbe9f54a64c854c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="85" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="84" bodyend="88"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="83" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="82" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_1407b78eb93472d6c438f47e37e3afcf8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="89" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="89" bodyend="103"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="87" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="87" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_1f9a649346a795a6434514ca4eff7fa09" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="105" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="104" bodyend="130"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="103" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="102" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_125c3c2076b8aa512b55af358568f0668" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="137" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="136" bodyend="147"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="135" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="134" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_127f6fd5db8c2ba9fae7734a94a7b87ca" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -208,7 +208,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="150" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="149" bodyend="154"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="148" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="147" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classStrings_1c53d9f228b673c956d92d6bb230543ba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>static</type>
@@ -229,7 +229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="156" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="155" bodyend="158"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="154" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="153" bodyend="156"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -248,14 +248,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="44" bodyend="54"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="43" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="42" bodyend="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="20" bodyend="160"/>
+<para>Various string manipulation methods </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" line="18" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Strings.php" bodystart="18" bodyend="158"/>
     <listofallmembers>
       <member refid="classStrings_1c53d9f228b673c956d92d6bb230543ba" prot="public" virt="non-virtual"><scope>Strings</scope><name>aucfirst</name></member>
       <member refid="classStrings_127f6fd5db8c2ba9fae7734a94a7b87ca" prot="public" virt="non-virtual"><scope>Strings</scope><name>autocap</name></member>

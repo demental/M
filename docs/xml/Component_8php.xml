@@ -10,13 +10,13 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
-<codeline lineno="17" refid="classComponent" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classComponent" kindref="compound">Component</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/>Dispatcher<sp/>{</highlight></codeline>
+<codeline lineno="17" refid="classComponent" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classComponent" kindref="compound">Component</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="classDispatcher" kindref="compound">Dispatcher</ref><sp/>{</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>function<sp/><ref refid="classComponent_1941aa95779d197b421b80d79a689da80" kindref="member">__construct</ref>($module,<sp/>$action=</highlight><highlight class="stringliteral">&apos;index&apos;</highlight><highlight class="normal">,$params<sp/>=<sp/>null)<sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>parent::__construct($module,$action,$params);</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/>display<sp/>()</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/><ref refid="classComponent_10a0409f0dc2092c2aa383123f98ca09c" kindref="member">display</ref><sp/>()</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$this-&gt;page-&gt;hasLayout(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>

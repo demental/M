@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
+  <compounddef id="lib_2jsmin_2test_2test_8php" kind="file">
+    <compoundname>test.php</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">error_reporting(E_STRICT);</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">fwrite(STDERR,<sp/>memory_get_peak_usage(</highlight><highlight class="keyword">true</highlight><highlight class="normal">).</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">require<sp/></highlight><highlight class="stringliteral">&apos;../jsmin.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">echo<sp/>JSMin::minify(file_get_contents(</highlight><highlight class="stringliteral">&apos;ext-all-debug.js&apos;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">fwrite(STDERR,<sp/>memory_get_peak_usage(</highlight><highlight class="keyword">true</highlight><highlight class="normal">).</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">?&gt;</highlight></codeline>
+    </programlisting>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/lib/jsmin/test/test.php"/>
+  </compounddef>
+</doxygen>

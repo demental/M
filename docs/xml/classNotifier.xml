@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" bodystart="23" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" bodystart="25" bodyend="31"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" bodystart="23" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classNotifier_1bf9f0ed9aa3315b442404ef5a06ce24b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" line="32" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" bodystart="32" bodyend="38"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" bodystart="30" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classNotifier_17fa94a59a546729bea8617d2ca84ed41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -69,14 +69,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" line="40" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" bodystart="40" bodyend="44"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" line="38" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" bodystart="38" bodyend="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" bodystart="21" bodyend="45"/>
+<para><ref refid="classNotifier" kindref="compound">Notifier</ref> class which goal is to send and receive messages from other objects <simplesect kind="see"><para>observable pattern </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Notifier.php" bodystart="19" bodyend="43"/>
     <listofallmembers>
       <member refid="classNotifier_10394217a046c8c99e549532c7d376745" prot="public" virt="non-virtual"><scope>Notifier</scope><name>$listeners</name></member>
       <member refid="classNotifier_1bf9f0ed9aa3315b442404ef5a06ce24b" prot="public" virt="non-virtual"><scope>Notifier</scope><name>addListener</name></member>

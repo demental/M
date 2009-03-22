@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classT__editor" kind="class" prot="public">
     <compoundname>T_editor</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">T</basecompoundref>
+    <basecompoundref refid="classT" prot="public" virt="non-virtual">T</basecompoundref>
       <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classT__editor_12edb422f759fb9b6e28cb3f2271996c4" prot="public" static="yes" mutable="no">
         <type>static</type>
@@ -80,6 +80,28 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="300">
+        <label>T_editor</label>
+        <childnode refid="301" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="301">
+        <label>T</label>
+        <link refid="classT"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="302">
+        <label>T_editor</label>
+        <childnode refid="303" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="303">
+        <label>T</label>
+        <link refid="classT"/>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/T/editor.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/T/editor.php" bodystart="22" bodyend="53"/>
     <listofallmembers>
       <member refid="classT_1d0400d44867d9bdae7f895d6f1f3899b" prot="public" virt="non-virtual"><scope>T_editor</scope><name>$config</name></member>

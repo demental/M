@@ -41,7 +41,7 @@
         <definition>$frontend</definition>
         <argsstring></argsstring>
         <name>$frontend</name>
-        <initializer> new M_Office()</initializer>
+        <initializer> new <ref refid="classM__Office" kindref="compound">M_Office</ref>()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -66,8 +66,8 @@
 <codeline lineno="24"><highlight class="normal">define(</highlight><highlight class="stringliteral">&apos;ROOT_ADMIN_URL&apos;</highlight><highlight class="normal">,SITE_URL.</highlight><highlight class="stringliteral">&apos;{$APP_RELATIVE_FILE_FROM_DOCROOT}&apos;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal">Mreg::get(</highlight><highlight class="stringliteral">&apos;setup&apos;</highlight><highlight class="normal">)-&gt;setUpEnv();</highlight></codeline>
-<codeline lineno="28"><highlight class="normal">$frontend<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>M_Office();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><ref refid="classMreg_13ad29ff7870610b5e96b35941fe34e91" kindref="member">Mreg::get</ref>(</highlight><highlight class="stringliteral">&apos;setup&apos;</highlight><highlight class="normal">)-&gt;setUpEnv();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">$frontend<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classM__Office" kindref="compound">M_Office</ref>();</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal">header(</highlight><highlight class="stringliteral">&apos;Content-type:text/html;<sp/>charset=utf-8&apos;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="31"><highlight class="normal">echo<sp/>$frontend-&gt;display();</highlight></codeline>

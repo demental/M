@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classDispatcher" kind="class" prot="public">
     <compoundname>Dispatcher</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Maman</basecompoundref>
+    <basecompoundref refid="classMaman" prot="public" virt="non-virtual">Maman</basecompoundref>
     <derivedcompoundref refid="classComponent" prot="public" virt="non-virtual">Component</derivedcompoundref>
       <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classDispatcher_11ae7bc0c5054e3e80fb497eaaee3c9fb" prot="protected" static="no" mutable="no">
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="25" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="30" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classDispatcher_1f33b9629ca261cf728181b8933f8b74e" prot="protected" static="no" mutable="no">
         <type></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="26" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="26" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="39" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classDispatcher_136062512fed76aa7ce03772c04f9b88f" prot="protected" static="no" mutable="no">
         <type></type>
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="27" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="27" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="48" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classDispatcher_1d224491b3746a45bccd76a1fc02fa9cf" prot="protected" static="no" mutable="no">
         <type></type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="28" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="28" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="57" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -64,6 +64,7 @@
         <definition>Dispatcher::__construct</definition>
         <argsstring>($module= &apos;defaut&apos;, $action= &apos;index&apos;, $params=null)</argsstring>
         <name>__construct</name>
+        <reimplementedby refid="classComponent_1941aa95779d197b421b80d79a689da80">__construct</reimplementedby>
         <param>
           <type>$</type>
           <declname>module</declname>
@@ -82,10 +83,32 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Constructor</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>$module</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classModule" kindref="compound">Module</ref> to dispatch </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Action to dispatch </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>$params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameters </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="29" bodyend="34"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="67" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="67" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classDispatcher_1197c4fd2505bb88796f0dd9a2240c787" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -95,53 +118,14 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Execute the dispatch</para><para>public </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="36" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="35" bodyend="81"/>
-      </memberdef>
-      <memberdef kind="function" id="classDispatcher_1b24e375f54413076199f58d15bfc16f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>&amp;</type>
-        <definition>&amp; Dispatcher::getPage</definition>
-        <argsstring>()</argsstring>
-        <name>getPage</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="88" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="87" bodyend="90"/>
-      </memberdef>
-      <memberdef kind="function" id="classDispatcher_146f96056b66e4b5c9536d19148cf9774" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>Dispatcher::getPath</definition>
-        <argsstring>()</argsstring>
-        <name>getPath</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="92" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="91" bodyend="94"/>
-      </memberdef>
-      <memberdef kind="function" id="classDispatcher_192a054ab35b0d91267d80da16d53ef9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>Dispatcher::display</definition>
-        <argsstring>()</argsstring>
-        <name>display</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="97" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="96" bodyend="99"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="82" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="81" bodyend="127"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="classDispatcher_15d612307577d66d1949ec415491cd07e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classDispatcher_15d612307577d66d1949ec415491cd07e" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Dispatcher::returnModuleNotFound</definition>
         <argsstring>()</argsstring>
@@ -149,28 +133,93 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Handle &quot;Not found error&quot;</para><para>private <simplesect kind="return"><para>string Value </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="82" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="82" bodyend="86"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="138" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="138" bodyend="142"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classDispatcher_1b24e375f54413076199f58d15bfc16f3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>&amp;</type>
+        <definition>&amp; Dispatcher::getPage</definition>
+        <argsstring>()</argsstring>
+        <name>getPage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the module page</para><para>public <simplesect kind="return"><para>string <ref refid="classModule" kindref="compound">Module</ref> page </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="154" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="153" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_146f96056b66e4b5c9536d19148cf9774" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Dispatcher::getPath</definition>
+        <argsstring>()</argsstring>
+        <name>getPath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the module path</para><para>public <simplesect kind="return"><para>string <ref refid="classModule" kindref="compound">Module</ref> path </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="169" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="168" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classDispatcher_192a054ab35b0d91267d80da16d53ef9e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Dispatcher::display</definition>
+        <argsstring>()</argsstring>
+        <name>display</name>
+        <reimplementedby refid="classComponent_10a0409f0dc2092c2aa383123f98ca09c">display</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Display the module</para><para>public <simplesect kind="return"><para>string <ref refid="classModule" kindref="compound">Module</ref> output </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="183" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="182" bodyend="185"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para><ref refid="classDispatcher" kindref="compound">Dispatcher</ref> Class The main and only goal of the dispatcher is to route the request to the correct <ref refid="classModule" kindref="compound">Module</ref> The constructor takes two parameters, 1 and 2 correspond to the module and action names. The third one is optional parameters to pass to module. Mostly used when a module is used as a component </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="134">
+      <node id="121">
         <label>Component</label>
         <link refid="classComponent"/>
-        <childnode refid="133" relation="public-inheritance">
+        <childnode refid="119" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="133">
+      <node id="119">
         <label>Dispatcher</label>
+        <link refid="classDispatcher"/>
+        <childnode refid="120" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="120">
+        <label>Maman</label>
+        <link refid="classMaman"/>
       </node>
     </inheritancegraph>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="24" bodyend="100"/>
+    <collaborationgraph>
+      <node id="122">
+        <label>Dispatcher</label>
+        <link refid="classDispatcher"/>
+        <childnode refid="123" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="123">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Dispatcher.php" bodystart="21" bodyend="186"/>
     <listofallmembers>
       <member refid="classDispatcher_136062512fed76aa7ce03772c04f9b88f" prot="protected" virt="non-virtual"><scope>Dispatcher</scope><name>$action</name></member>
       <member refid="classMaman_1e69647de8a274eae406840f35af22b70" prot="protected" virt="non-virtual"><scope>Dispatcher</scope><name>$config</name></member>

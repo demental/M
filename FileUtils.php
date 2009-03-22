@@ -1,175 +1,293 @@
 <?php
 /**
-* M PHP Framework
-* @package      M
-* @subpackage   FileUtils
-*/
+ * M PHP Framework
+ *
+ * Misc utilities related to files/folders manipulations
+ *
+ * @package      M
+ * @subpackage   FileUtils
+ * @author       Arnaud Sellenet <demental@sat2way.com>
+ * @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+ * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+ * @version      0.1
+ */
+
 /**
-* M PHP Framework
-*
-* Misc utilities related to files/folders manipulations
-*
-* @package      M
-* @subpackage   FileUtils
-* @author       Arnaud Sellenet <demental@sat2way.com>
-* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
-* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
-* @version      0.1
-*/
-
-
+ *
+ * Misc utilities related to files/folders manipulations
+ *
+ */
 class fileUtils{
-    public $_pattern='^\.$|^\.\.$';
-    function __construct($file) {
-        if(is_file($file)) {
-            $this->file = $file;
-        } else {
-            $this->file = $this->getFolderPath($file);
-        }
-    }
-    function addExcludeExtension($ext) {
-        $this->addExcludePattern('.+\.'.$ext.'$');
-    }
-    function addExcludePattern($pattern) {
-        $this->_pattern .= '|'.$pattern;
-    }
+
+	/**
+	 *
+	 * Pattern regular expression
+	 *
+	 * @var		string
+	 * @access	public
+	 */
+	public $_pattern='^\.$|^\.\.$';
+
+	/**
+	 *
+	 * Constructor
+	 *
+	 * @param	$file	string	File URL
+	 * @return	string
+	 */
+	function __construct($file) {
+		if(is_file($file)) {
+			$this->file = $file;
+		} else {
+			$this->file = $this->getFolderPath($file);
+		}
+	}
+
+	/**
+	 *
+	 * Add extension to exclude pattern
+	 *
+	 * @param $ext	string	Extension to add
+	 */
+	function addExcludeExtension($ext) {
+		$this->addExcludePattern('.+\.'.$ext.'$');
+	}
+
+	/**
+	 *
+	 * Add exclude pattern
+	 *
+	 * @param	$pattern	string	Pattern to exclude
+	 */
+	function addExcludePattern($pattern) {
+		$this->_pattern .= '|'.$pattern;
+	}
+
+	/**
+	 *
+	 * Check if file is an image
+	 *
+	 * @param $file	string	File URL
+	 * @return boolean
+	 */
 	function is_Image($file){
 		return in_array(fileUtils::getFileExtension($file),array('jpg','jpeg','gif','png'));
 	}
+
+	/**
+	 *
+	 * Get the file extension
+	 *
+	 * @param $file	string	File URL
+	 * @return extension	string
+	 */
 	function getFileExtension($file){
 		$nom=explode(".",$file);
 		$ext=$nom[count($nom)-1];
 		return strtolower($ext);
 	}
-	function getFilesOlderThan($time,$absolute=false) {
-        $t = time()-$time;
-	    
-        foreach($this->getContents() as $file) {
-            if(filemtime($this->file.$file)<$t) {
-                $out[]=$absolute?$this->file.$file:$file;
-            }
 
-        }
-        return $out;
+	/**
+	 *
+	 * Get files older than a given date
+	 *
+	 * @param	$time		date	Limit date
+	 * @param	$absolute	boolean
+	 * @return	Files		array
+	 */
+	function getFilesOlderThan($time,$absolute=false) {
+		$t = time()-$time;
+			
+		foreach($this->getContents() as $file) {
+			if(filemtime($this->file.$file)<$t) {
+				$out[]=$absolute?$this->file.$file:$file;
+			}
+
+		}
+		return $out;
 	}
+
+	/**
+	 *
+	 * Delete files older than a given date
+	 *
+	 * @param $time		date	Limit date
+	 */
 	function deleteFilesOlderThan($time) {
-        foreach($this->getFilesOlderThan($time) as $file) {
-            unlink($this->file.$file);
-        }
+		foreach($this->getFilesOlderThan($time) as $file) {
+			unlink($this->file.$file);
+		}
 	}
+
+	/**
+	 *
+	 * Get Files list of a given folder
+	 *
+	 * @access public
+	 * @static
+	 * @param	$folder		string	Source folder
+	 * @return	Files list	array
+	 */
 	public static function getFiles($folder)
 	{
-    if(!is_dir($folder)) {
-        return array();
-    }
-    $out = array();
-    if ($dh = @opendir($folder)) {
+		if(!is_dir($folder)) {
+			return array();
+		}
+		$out = array();
+		if ($dh = @opendir($folder)) {
 			while (($file = readdir($dh)) !== false)
 			{
-          if(!is_file($folder.$file)) continue;
-          
-          $out[]=$file;
+				if(!is_file($folder.$file)) continue;
 
-      }
-    }
-	    return $out;
+				$out[]=$file;
+
+			}
+		}
+		return $out;
 	}
-  public static function getAllFiles($folder,$extensionfilter='')
-  {
-    if(!is_array($extensionfilter)) {
-      $extensionfilter = array($extensionfilter);
-    }
-    if(!ereg('\/$',$folder)) {
-      $folder.='/';
-    }
-    if(!is_dir($folder)) {
-        return array();
-    }
-    $out = array();
-    if ($dh = @opendir($folder)) {
+
+	/**
+	 *
+	 * Get Files list of a given folder with extension filtering capabilities
+	 *
+	 * @access	public
+	 * @static
+	 * @param	$folder				string	Source folder
+	 * @param	$extensionfilter	string	Extension to filter
+	 * @return	Files list			array
+	 */
+	public static function getAllFiles($folder,$extensionfilter='')
+	{
+		if(!is_array($extensionfilter)) {
+			$extensionfilter = array($extensionfilter);
+		}
+		if(!ereg('\/$',$folder)) {
+			$folder.='/';
+		}
+		if(!is_dir($folder)) {
+			return array();
+		}
+		$out = array();
+		if ($dh = @opendir($folder)) {
 			while (($file = readdir($dh)) !== false)
 			{
-			  if(ereg('^\.',$file)) continue;
-        if(is_dir($folder.$file)) {
-          $out = array_merge($out,self::getAllFiles($folder.$file,$extensionfilter));
-        } elseif(!is_file($folder.$file)) {
-          continue;
-        } else {
-          if(empty($extensionfilter) || eregi('\.'.implode('|',$extensionfilter),$file)) {
-            $out[]=$folder.$file;          
-          }
-        }
+				if(ereg('^\.',$file)) continue;
+				if(is_dir($folder.$file)) {
+					$out = array_merge($out,self::getAllFiles($folder.$file,$extensionfilter));
+				} elseif(!is_file($folder.$file)) {
+					continue;
+				} else {
+					if(empty($extensionfilter) || eregi('\.'.implode('|',$extensionfilter),$file)) {
+						$out[]=$folder.$file;
+					}
+				}
 
-      }
-      sort($out);
-	    return $out;
+			}
+			sort($out);
+			return $out;
 
-    }
-  }
-  public static function hasFiles($folder)
-  {
-    if(!is_dir($folder)) {
-        return false;
-    }
-    if ($dh = @opendir($folder)) {
+		}
+	}
+
+	/**
+	 *
+	 * Check if directory contains files
+	 *
+	 * @param $folder	string	Source folder
+	 * @return boolean
+	 */
+	function hasFiles($folder)
+	{
+		if(!is_dir($folder)) {
+			return false;
+		}
+		if ($dh = @opendir($folder)) {
 			while (($file = readdir($dh)) !== false)
 			{
-          if(!is_file($folder.$file)) continue;
-          return true;
+				if(!is_file($folder.$file)) continue;
+				return true;
 
-      }
-    }
-	    return false;
-  }
+			}
+		}
+		return false;
+	}
 
-  function getContents() {
-        $out=array();
-        if(!is_dir($this->file)) {
-            return false;
-        }
-        if ($dh = @opendir($this->file))
+	/**
+	 *
+	 * Get directory content
+	 *
+	 * @return Files list
+	 */
+	function getContents() {
+		$out=array();
+		if(!is_dir($this->file)) {
+			return false;
+		}
+		if ($dh = @opendir($this->file))
 		{
 			while (($file = readdir($dh)) !== false)
 			{
-                if(!preg_match('`'.$this->_pattern.'`',$file)) {
-                    $out[]=$file;
-                }
-            }
-        }
-	    return $out;
-    }
+				if(!preg_match('`'.$this->_pattern.'`',$file)) {
+					$out[]=$file;
+				}
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 *
+	 * Delete directory content
+	 *
+	 * @return Total of directory
+	 */
 	function deleteContents() {
-        
-	    if ($dh = @opendir($this->file))
+
+		if ($dh = @opendir($this->file))
 		{
-            foreach($this->getContents() as $file) {
-                    unlink($this->file.$file);
-                    $nbd++;
-            }
-        }
-        return $nbd;
+			foreach($this->getContents() as $file) {
+				unlink($this->file.$file);
+				$nbd++;
+			}
+		}
+		return $nbd;
 	}
+
+	/**
+	 *
+	 * Output specified file
+	 *
+	 * @access	public
+	 * @param	$file	string	File URL
+	 */
 	public function output($file)
 	{
 		switch(fileUtils::getFileExtension($file)){
 			case 'jpeg':
 			case 'jpg':
-        $ctype='image/jpeg';
-        break;
+				$ctype='image/jpeg';
+				break;
 			case 'gif':
-        $ctype='image/gif';
-        break;
-			
-			case 'png':      
-        $ctype='image/gif';
-        break;
+				$ctype='image/gif';
+				break;
+					
+			case 'png':
+				$ctype='image/gif';
+				break;
 			default:
-			return;
+				return;
 		}
-    header('Content-Type:'.$ctype);
-    readfile($file);
-    exit;
+		header('Content-Type:'.$ctype);
+		readfile($file);
+		exit;
 	}
+	/**
+	 *
+	 * Generate HTML Tag for specified file
+	 *
+	 * @param	$file	string	File URL
+	 * @return	HTML Output		string
+	 */
 	function toHtml($file){
 		switch(fileUtils::getFileExtension(IMAGES_UPLOAD_FOLDER.$file)){
 			case 'jpeg':
@@ -177,7 +295,7 @@ class fileUtils{
 			case 'gif':
 			case 'png':
 				return '<img src="'.WWW_IMAGES_FOLDER.$file.'" />';
-			break;
+				break;
 			case 'swf':
 				require_once 'misc/lib-swf.inc.php';
 				$buff=file_get_contents(IMAGES_UPLOAD_FOLDER.$file);
@@ -193,21 +311,37 @@ class fileUtils{
 					</dl> </object>
 				<!--> <![endif]-->';
 				return $output;
-			break;
+				break;
 			default:
 				return '<a href="'.$file.'">Voir le fichier</a>';
-			break;
+				break;
 		}
 	}
+
+	/**
+	 *
+	 * description
+	 *
+	 * @param $path
+	 * @return unknown_type
+	 */
 	function getFolderPath($path){
-	    return ereg('/$',$path)?$path:$path.'/';
-	}	
+		return ereg('/$',$path)?$path:$path.'/';
+	}
+
+	/**
+	 *
+	 * description
+	 *
+	 * @param $path
+	 * @return unknown_type
+	 */
 	public static function delete($path)
 	{
-    if(is_file($path)) {
-      unlink($path);
-    } else {
-      exec('rm -Rf '.$path);
-    }
+		if(is_file($path)) {
+			unlink($path);
+		} else {
+			exec('rm -Rf '.$path);
+		}
 	}
 }

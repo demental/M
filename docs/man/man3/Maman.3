@@ -1,0 +1,88 @@
+.TH "Maman" 3 "22 Mar 2009" "Version 0.1" "m4php5" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Maman \- 
+.SH SYNOPSIS
+.br
+.PP
+Inherited by \fBDispatcher\fP, \fBMail\fP, \fBModule\fP, and \fBMPdf\fP.
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBsetConfig\fP ($conf)"
+.br
+.ti -1c
+.RI "\fBsetConfigValue\fP ($key, $value, $action= 'all')"
+.br
+.ti -1c
+.RI "\fBgetAllConfig\fP ()"
+.br
+.ti -1c
+.RI "\fBgetConfig\fP ($value, $action= 'all', $default=false)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract class from which several other classes (like \fBModule\fP or \fBMail\fP) extend Provides internal configuration methods 
+.SH "Member Function Documentation"
+.PP 
+.SS "Maman::setConfig ($ conf)"
+.PP
+Set config
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$conf\fP array \fBConfig\fP data 
+.RE
+.PP
+
+.SS "Maman::setConfigValue ($ key, $ value, $ action = \fC'all'\fP)"
+.PP
+Set config value
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$key\fP string \fBConfig\fP key 
+.br
+\fI$value\fP string \fBConfig\fP value 
+.br
+\fI$action\fP string Action 
+.RE
+.PP
+
+.SS "Maman::getAllConfig ()"
+.PP
+Get entire config
+.PP
+\fBReturns:\fP
+.RS 4
+\fBConfig\fP data array 
+.RE
+.PP
+
+.SS "Maman::getConfig ($ value, $ action = \fC'all'\fP, $ default = \fCfalse\fP)"
+.PP
+Get specific config value
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$value\fP string Value to get 
+.br
+\fI$action\fP string Action 
+.br
+\fI$default\fP string Default value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value string 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for m4php5 from the source code.

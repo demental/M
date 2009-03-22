@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classM__Office__Automodule" kind="class" prot="public">
     <compoundname>M_Office_Automodule</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+    <basecompoundref refid="classModule" prot="public" virt="non-virtual">Module</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classM__Office__Automodule_12ff1999a8c1b07f9dbf41f37d583b699" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -61,6 +61,40 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="165">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="166" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="166">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="164">
+        <label>M_Office_Automodule</label>
+        <childnode refid="165" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="168">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="169" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="169">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+      <node id="167">
+        <label>M_Office_Automodule</label>
+        <childnode refid="168" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Automodule.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/Office/Automodule.php" bodystart="20" bodyend="37"/>
     <listofallmembers>
       <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>M_Office_Automodule</scope><name>$_cachedData</name></member>

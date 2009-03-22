@@ -24,17 +24,18 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Merge array</para><para>public <simplesect kind="return"><para>Merged array array </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MArray.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MArray.php" bodystart="21" bodyend="45"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MArray.php" line="29" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MArray.php" bodystart="29" bodyend="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MArray.php" line="20" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MArray.php" bodystart="20" bodyend="47"/>
+<para>Static class providing array related helper methods </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MArray.php" line="18" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MArray.php" bodystart="18" bodyend="55"/>
     <listofallmembers>
       <member refid="classMArray_1aa67c30608eea293c932cb35edfdaa4a" prot="public" virt="non-virtual"><scope>MArray</scope><name>array_merge_recursive_unique</name></member>
     </listofallmembers>

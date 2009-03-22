@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.5.6">
   <compounddef id="classModule__Default" kind="class" prot="public">
     <compoundname>Module_Default</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Module</basecompoundref>
+    <basecompoundref refid="classModule" prot="public" virt="non-virtual">Module</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classModule__Default_185f11c108f2499ae7ca525281b936f11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -56,6 +56,40 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="323">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="324" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="322">
+        <label>Module_Default</label>
+        <childnode refid="323" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="324">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="326">
+        <label>Module</label>
+        <link refid="classModule"/>
+        <childnode refid="327" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="325">
+        <label>Module_Default</label>
+        <childnode refid="326" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="327">
+        <label>Maman</label>
+        <link refid="classMaman"/>
+      </node>
+    </collaborationgraph>
     <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.php" line="2" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/skeleton/project/app/modules/default.php" bodystart="2" bodyend="15"/>
     <listofallmembers>
       <member refid="classModule_1039884f0d8b6f0dee8ac38ad6c8985e9" prot="protected" virt="non-virtual"><scope>Module_Default</scope><name>$_cachedData</name></member>

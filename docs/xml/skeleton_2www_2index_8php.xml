@@ -49,7 +49,7 @@
         <definition>$d</definition>
         <argsstring></argsstring>
         <name>$d</name>
-        <initializer> new Dispatcher($module,$action)</initializer>
+        <initializer> new <ref refid="classDispatcher" kindref="compound">Dispatcher</ref>($module,$action)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -73,7 +73,7 @@
 <codeline lineno="29"><highlight class="normal">$action<sp/>=<sp/>empty($_REQUEST[</highlight><highlight class="stringliteral">&apos;action&apos;</highlight><highlight class="normal">])?</highlight><highlight class="stringliteral">&apos;index&apos;</highlight><highlight class="normal">:$_REQUEST[</highlight><highlight class="stringliteral">&apos;action&apos;</highlight><highlight class="normal">];</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal">$d<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Dispatcher($module,$action);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">$d<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classDispatcher" kindref="compound">Dispatcher</ref>($module,$action);</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">$d-&gt;setConfig(PEAR::getStaticProperty(</highlight><highlight class="stringliteral">&apos;Dispatcher&apos;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&apos;global&apos;</highlight><highlight class="normal">));</highlight></codeline>
 <codeline lineno="34"><highlight class="normal">$d-&gt;execute();</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>

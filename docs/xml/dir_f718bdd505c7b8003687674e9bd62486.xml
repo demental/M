@@ -3,7 +3,7 @@
   <compounddef id="dir_f718bdd505c7b8003687674e9bd62486" kind="dir">
     <compoundname>Documents/Taf/Eclipse/m4php5/Office/Templates/home/</compoundname>
     <innerfile refid="addmessage_8php">addmessage.php</innerfile>
-    <innerfile refid="Office_2Templates_2home_2index_8php">index.php</innerfile>
+    <innerfile refid="home_2index_8php">index.php</innerfile>
     <innerfile refid="messageline_8php">messageline.php</innerfile>
     <briefdescription>
     </briefdescription>

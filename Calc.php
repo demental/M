@@ -27,6 +27,7 @@ class Calc
 	 * Convert Tax free to VAT amount.
 	 *
 	 * @access	public
+	 * @static
 	 * @param	float	$price 		Input price
 	 * @param	float 	$vat 		VAT Value
 	 * @return	Amount				Amount included VAT
@@ -41,6 +42,7 @@ class Calc
 	 * Convert VAT amount to Tax free amount.
 	 *
 	 * @access	public
+	 * @static
 	 * @param	float	$price 		Input price
 	 * @param	float 	$vat 		VAT Value
 	 * @return	Amount				Amount excluded VAT
@@ -55,6 +57,7 @@ class Calc
 	 * Return formatted amount with currency.
 	 *
 	 * @access	public
+	 * @static
 	 * @param	float	$value 		Input price
 	 * @param	string 	$currency	Currency
 	 * @return	string	Formatted string
@@ -68,6 +71,7 @@ class Calc
 	 * Return ratio to calculate prorata amount from start date until month end date.
 	 *
 	 * @access	public
+	 * @static
 	 * @param	date	$date 	Start date (eg: 20090301)
 	 * @return	float	$ratio	Ratio
 	 */

@@ -10,7 +10,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
-<codeline lineno="20"><highlight class="keyword">class<sp/></highlight><highlight class="normal">M_Office_Automodule<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/>Module<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="keyword">class<sp/></highlight><highlight class="normal">M_Office_Automodule<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="classModule" kindref="compound">Module</ref><sp/>{</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>function<sp/>doExecList()</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>code...</highlight><highlight class="normal"></highlight></codeline>

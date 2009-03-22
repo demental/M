@@ -1,4 +1,4 @@
-.TH "Component" 3 "21 Mar 2009" "Version 0.1" "m4php5" \" -*- nroff -*-
+.TH "Component" 3 "22 Mar 2009" "Version 0.1" "m4php5" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,13 +6,16 @@ Component \-
 .SH SYNOPSIS
 .br
 .PP
-Inherits Dispatcher.
+Inherits \fBDispatcher\fP.
 .PP
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
 .RI "\fB__construct\fP ($module, $action='index', $params=null)"
+.br
+.ti -1c
+.RI "\fBdisplay\fP ()"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -26,7 +29,7 @@ Constructor
 .PP
 \fBParameters:\fP
 .RS 4
-\fI$module\fP Module to display 
+\fI$module\fP \fBModule\fP to display 
 .br
 \fI$action\fP Content to display 
 .br
@@ -39,6 +42,24 @@ Display
 .RE
 .PP
 
+.PP
+Reimplemented from \fBDispatcher\fP.
+.SH "Member Function Documentation"
+.PP 
+.SS "Component::display ()"
+.PP
+Display the module
+.PP
+public 
+.PP
+\fBReturns:\fP
+.RS 4
+string \fBModule\fP output 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBDispatcher\fP.
 
 .SH "Author"
 .PP 

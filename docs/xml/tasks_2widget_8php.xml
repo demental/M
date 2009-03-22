@@ -8,7 +8,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal">&lt;div<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;tasks&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;homeblock<sp/>tasks&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
-<codeline lineno="2"><highlight class="normal"><sp/><sp/>&lt;h3&gt;Tâches&lt;/h3&gt;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"><sp/><sp/>&lt;h3&gt;<ref refid="classT" kindref="compound">T</ref>âches&lt;/h3&gt;</highlight></codeline>
 <codeline lineno="3"><highlight class="normal"><sp/><sp/>&lt;div<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;homeblockcontainer&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
 <codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;em&gt;Faites<sp/>glisser<sp/>un<sp/>texte<sp/>du<sp/>tableau<sp/>noir<sp/>pour<sp/>assigner<sp/>une<sp/>tâche<sp/>à<sp/>un<sp/>utilisateur&lt;/em&gt;</highlight></codeline>
 <codeline lineno="5"><highlight class="normal"><sp/><sp/>&lt;/div&gt;<sp/><sp/></highlight></codeline>

@@ -1,0 +1,295 @@
+.TH "fileUtils" 3 "22 Mar 2009" "Version 0.1" "m4php5" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+fileUtils \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP ($file)"
+.br
+.ti -1c
+.RI "\fBaddExcludeExtension\fP ($ext)"
+.br
+.ti -1c
+.RI "\fBaddExcludePattern\fP ($pattern)"
+.br
+.ti -1c
+.RI "\fBis_Image\fP ($file)"
+.br
+.ti -1c
+.RI "\fBgetFileExtension\fP ($file)"
+.br
+.ti -1c
+.RI "\fBgetFilesOlderThan\fP ($time, $absolute=false)"
+.br
+.ti -1c
+.RI "\fBdeleteFilesOlderThan\fP ($time)"
+.br
+.ti -1c
+.RI "\fBhasFiles\fP ($folder)"
+.br
+.ti -1c
+.RI "\fBgetContents\fP ()"
+.br
+.ti -1c
+.RI "\fBdeleteContents\fP ()"
+.br
+.ti -1c
+.RI "\fBoutput\fP ($file)"
+.br
+.ti -1c
+.RI "\fBtoHtml\fP ($file)"
+.br
+.ti -1c
+.RI "\fBgetFolderPath\fP ($path)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBgetFiles\fP ($folder)"
+.br
+.ti -1c
+.RI "static \fBgetAllFiles\fP ($folder, $extensionfilter='')"
+.br
+.ti -1c
+.RI "static \fBdelete\fP ($path)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Misc utilities related to files/folders manipulations 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "fileUtils::__construct ($ file)"
+.PP
+Constructor
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$file\fP string File \fBURL\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+string 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "fileUtils::addExcludeExtension ($ ext)"
+.PP
+Add extension to exclude pattern
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$ext\fP string Extension to add 
+.RE
+.PP
+
+.SS "fileUtils::addExcludePattern ($ pattern)"
+.PP
+Add exclude pattern
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$pattern\fP string Pattern to exclude 
+.RE
+.PP
+
+.SS "fileUtils::is_Image ($ file)"
+.PP
+Check if file is an image
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$file\fP string File \fBURL\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.SS "fileUtils::getFileExtension ($ file)"
+.PP
+Get the file extension
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$file\fP string File \fBURL\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+extension string 
+.RE
+.PP
+
+.SS "fileUtils::getFilesOlderThan ($ time, $ absolute = \fCfalse\fP)"
+.PP
+Get files older than a given date
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$time\fP date Limit date 
+.br
+\fI$absolute\fP boolean 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Files array 
+.RE
+.PP
+
+.SS "fileUtils::deleteFilesOlderThan ($ time)"
+.PP
+Delete files older than a given date
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$time\fP date Limit date 
+.RE
+.PP
+
+.SS "static fileUtils::getFiles ($ folder)\fC [static]\fP"
+.PP
+Get Files list of a given folder
+.PP
+public
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$folder\fP string Source folder 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Files list array 
+.RE
+.PP
+
+.SS "static fileUtils::getAllFiles ($ folder, $ extensionfilter = \fC''\fP)\fC [static]\fP"
+.PP
+Get Files list of a given folder with extension filtering capabilities
+.PP
+public
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$folder\fP string Source folder 
+.br
+\fI$extensionfilter\fP string Extension to filter 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Files list array 
+.RE
+.PP
+
+.SS "fileUtils::hasFiles ($ folder)"
+.PP
+Check if directory contains files
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$folder\fP string Source folder 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.SS "fileUtils::getContents ()"
+.PP
+Get directory content
+.PP
+\fBReturns:\fP
+.RS 4
+Files list 
+.RE
+.PP
+
+.SS "fileUtils::deleteContents ()"
+.PP
+Delete directory content
+.PP
+\fBReturns:\fP
+.RS 4
+Total of directory 
+.RE
+.PP
+
+.SS "fileUtils::output ($ file)"
+.PP
+Output specified file
+.PP
+public 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$file\fP string File \fBURL\fP 
+.RE
+.PP
+
+.SS "fileUtils::toHtml ($ file)"
+.PP
+Generate HTML Tag for specified file
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$file\fP string File \fBURL\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+HTML Output string 
+.RE
+.PP
+
+.SS "fileUtils::getFolderPath ($ path)"
+.PP
+description
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$path\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+unknown_type 
+.RE
+.PP
+
+.SS "static fileUtils::delete ($ path)\fC [static]\fP"
+.PP
+description
+.PP
+\fBParameters:\fP
+.RS 4
+\fI$path\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+unknown_type 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for m4php5 from the source code.

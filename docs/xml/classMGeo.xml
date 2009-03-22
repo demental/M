@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="23" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classMGeo_168b161504c8db72991818aee088b72da" prot="public" static="no" mutable="no">
         <type></type>
@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="24" bodyend="-1"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="23" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="23" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="25" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="25" bodyend="31"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="24" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="24" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classMGeo_1c8cba485901026e46302c3891f841421" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="33" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="32" bodyend="40"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="32" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="31" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classMGeo_1711ba1e2cf01dccc06d9f7eed7353dc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="42" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="41" bodyend="44"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="41" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="40" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classMGeo_103faebfffc746ead05de68df2b1ed7b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="46" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="45" bodyend="48"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="45" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classMGeo_108077a48724c572e6d9eac79bbef7ad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="50" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="49" bodyend="52"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="49" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="48" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classMGeo_12ffb5c3ce475a1678dbe3daf2b2eb4dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -136,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="54" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="53" bodyend="57"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="53" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="52" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classMGeo_15b941e64cff1e595ffbf0f8f3425d2bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -149,7 +149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="59" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="58" bodyend="84"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="58" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="57" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classMGeo_181821930ae4fa5edaa32228c55ba5fdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -167,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="88" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="87" bodyend="102"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="87" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="86" bodyend="101"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -194,14 +194,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="104" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="103" bodyend="155"/>
+        <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="103" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="102" bodyend="154"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="22" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="22" bodyend="156"/>
+<para>Helper class to work with google maps geocoding API Also provides helper methods for satellite settings (azimut - elevation - polarity) </para>    </detaileddescription>
+    <location file="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" line="21" bodyfile="/home/raynald/Documents/Taf/Eclipse/m4php5/MGeo.php" bodystart="21" bodyend="155"/>
     <listofallmembers>
       <member refid="classMGeo_13e06501e9ec0c0e2dc48456e9f8d6d90" prot="public" virt="non-virtual"><scope>MGeo</scope><name>$address</name></member>
       <member refid="classMGeo_168b161504c8db72991818aee088b72da" prot="public" virt="non-virtual"><scope>MGeo</scope><name>$key</name></member>

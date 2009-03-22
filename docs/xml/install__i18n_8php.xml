@@ -72,7 +72,7 @@
 <codeline lineno="33"><highlight class="normal">T::setConfig(array_merge(T::$config,array(</highlight><highlight class="stringliteral">&apos;driver&apos;</highlight><highlight class="normal">=&gt;</highlight><highlight class="stringliteral">&apos;editor&apos;</highlight><highlight class="normal">)));</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Setting<sp/>up<sp/>options<sp/>including<sp/>Databases<sp/>DSN</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal">Mreg::get(</highlight><highlight class="stringliteral">&apos;setup&apos;</highlight><highlight class="normal">)-&gt;setUpEnv();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><ref refid="classMreg_13ad29ff7870610b5e96b35941fe34e91" kindref="member">Mreg::get</ref>(</highlight><highlight class="stringliteral">&apos;setup&apos;</highlight><highlight class="normal">)-&gt;setUpEnv();</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal">require<sp/></highlight><highlight class="stringliteral">&apos;M/DB/DataObject/Advgenerator.php&apos;</highlight><highlight class="normal">;</highlight></codeline>
