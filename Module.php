@@ -20,19 +20,75 @@
  *
  */
 class Module extends Maman {
+	/**
+	 * 
+	 * description
+	 *
+	 * @var		unknown_type
+	 * @access	protected
+	 */
 	protected $view;
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @var		unknown_type
+	 * @access	protected
+	 */
 	public $currentAction;
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @var		unknown_type
+	 * @access	protected
+	 */
 	private $_lastOutput;
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @var		unknown_type
+	 * @access	protected
+	 */
 	protected $_cachedData = null;
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $modulename
+	 * @return unknown_type
+	 */
 	function __construct($modulename)
 	{
 		$this->_modulename=$modulename;
 		$this->_lastOutput = $this;
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @return unknown_type
+	 */
 	public function getView()
 	{
 		return $this->view;
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $modulename
+	 * @param $path
+	 * @param $params
+	 * @return unknown_type
+	 */
 	public static function &factory($modulename,$path=null,$params = null)
 	{
 		if(empty($path)) {
@@ -66,13 +122,19 @@ class Module extends Maman {
 	 * Getters / Setters
 	 *
 	 **/
+	/**
+	 * 
+	 * description
+	 *
+	 * @return unknown_type
+	 */
 	protected function generateOptions()
 	{
 		$opt = array('all'=>PEAR::getStaticProperty('Module', 'global'));
 		$options = array(
         'caching' =>(MODE=='developpement'?false:true),
         'cacheDir' => $opt['all']['cacheDir'].'/config/',
-        'lifeTime' => 72000,//TODO affiner �a...
+        'lifeTime' => 72000,//TODO affiner éa...
         'fileNameProtection'=>false,
         'automaticSerialization'=>true
 		);
@@ -95,6 +157,14 @@ class Module extends Maman {
 
 		return $moduleopt;
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $params
+	 * @return unknown_type
+	 */
 	public function setParams($params)
 	{
 		if(!is_array($params)) {
@@ -102,14 +172,38 @@ class Module extends Maman {
 		}
 		$this->_params = $params;
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $value
+	 * @return unknown_type
+	 */
 	public function getParam($value)
 	{
 		return $this->_params[$value];
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $var
+	 * @param $val
+	 * @return unknown_type
+	 */
 	public function setParam($var,$val)
 	{
 		$this->_params[$var] = $val;
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @return unknown_type
+	 */
 	public function startView()
 	{
 		$this->view = new Mtpl($this->getConfig('template_dir'),$this);
@@ -118,15 +212,38 @@ class Module extends Maman {
 		}
 
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @return unknown_type
+	 */
 	public function getCurrentAction()
 	{
 		return $this->currentAction;
 	}
-
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $action
+	 * @return unknown_type
+	 */
 	public function setCurrentAction($action)
 	{
 		$this->currentAction=$action;
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $val
+	 * @param $action
+	 * @return unknown_type
+	 */
 	public function hasLayout ($val = null,$action = 'all')
 	{
 		if($val === NULL) {
@@ -143,7 +260,13 @@ class Module extends Maman {
 
 	// Determines if an action can be executed
 	// If so, (forces) executes the action or throws an exception
-
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $action
+	 * @return unknown_type
+	 */
 	public function executeAction($action)
 	{
 		$meth = 'doExec'.$action;
@@ -191,18 +314,39 @@ class Module extends Maman {
 	}
 
 	// These two abstract methods are called right before and after the action is executed
-
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $action
+	 * @return unknown_type
+	 */
 	public function preExecuteAction($action)
 	{
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $action
+	 * @return unknown_type
+	 */
 	public function postExecuteAction($action)
 	{
 	}
+	
 	// Dumbly executes an action and checks for caching
 	// Sets up environment if not cached
 	// @param string action name
 	// @return void
-	//
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $action
+	 * @return unknown_type
+	 */
 	protected function forceExecute($action)
 	{
 		$meth = 'doExec'.$action;
@@ -232,7 +376,13 @@ class Module extends Maman {
 	// @params string the name of the action.
 	// @returns string or false if no caching
 	// ==============================================================
-
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $action
+	 * @return unknown_type
+	 */
 	public function getCacheId($action)
 	{
 		if(count($_POST)==0) {
@@ -242,10 +392,27 @@ class Module extends Maman {
 		}
 		return false;
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $tpl
+	 * @return unknown_type
+	 */
 	public function setTemplate($tpl)
 	{
 		$this->_lastOutput->setConfigValue('template',$tpl);
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $template
+	 * @param $layout
+	 * @return unknown_type
+	 */
 	public function output($template=null,$layout=null)
 	{
 
@@ -256,7 +423,7 @@ class Module extends Maman {
 
 		$a=$this->_lastOutput->getCurrentAction();
 
-		// Le fichier de template de l'action est-il celui par d�faut (nom_de_l_action.tpl) ou a-t-il �t� sp�cifi�
+		// Le fichier de template de l'action est-il celui par défaut (nom_de_l_action.tpl) ou a-t-il été spécifié
 		// dans la configuration du module ?
 		if(is_null($template)) {
 			$template = $this->_lastOutput->getConfig('template',$a)?
@@ -270,7 +437,7 @@ class Module extends Maman {
 		if(!is_array($template)) {
 			$template = array($template);
 		}
-		// Le fichier de template englobant est-il celui par d�faut (index.tpl) ou a-t-il �t� sp�cifi�
+		// Le fichier de template englobant est-il celui par défaut (index.tpl) ou a-t-il été spécifié
 		// dans la configuration du module ?
 		if(is_null($layout)) {
 			$layout = $this->_lastOutput->getConfig('layout',$a)?
@@ -279,7 +446,7 @@ class Module extends Maman {
 		}
 		Log::info('Setting layout '.$layout.' for module '.get_class($this->_lastOutput));
 
-		// Si on veut afficher uniquement le template de l'action, sans aucun layout on utilise le mot cl� __self dans le 
+		// Si on veut afficher uniquement le template de l'action, sans aucun layout on utilise le mot clé __self dans le 
 		// fichier de configuration du module
 		if($this->isAjaxRequest()) {
 			$layout='__self';
@@ -293,7 +460,7 @@ class Module extends Maman {
 			$ret = $this->_lastOutput->view->fetch($template);
 
 		} else {
-			// Sinon c'est que le layout poss�de une variable $__action qui est utilis� pour inclure le template de l'action 	
+			// Sinon c'est que le layout posséde une variable $__action qui est utilisé pour inclure le template de l'action 	
 			Log::info('Decorate module '.get_class($this->_lastOutput).' with '.$layout);
 
 			$this->_lastOutput->view->assign("__action", $template);
@@ -306,17 +473,38 @@ class Module extends Maman {
 		return $ret;
 	}
 	/**
-	 * TODO pouvoir r�cup�rer n'importe quelle valeur de $_REQUEST
+	 * TODO pouvoir récupérer n'importe quelle valeur de $_REQUEST
 	 **/
+	/**
+	 * 
+	 * description
+	 *
+	 * @return unknown_type
+	 */
 	public function getRequest()
 	{
 		return ($_REQUEST['action']);
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $val
+	 * @return unknown_type
+	 */
 	public function getRequestParam($val)
 	{
 		return ($_REQUEST[$val]);
 	}
-
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $val
+	 * @return unknown_type
+	 */
 	public function hasRequest($val)
 	{
 		return key_exists($val,$_REQUEST);
@@ -325,20 +513,66 @@ class Module extends Maman {
 	/**
 	 * Proxy methods for the view
 	 **/
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $var
+	 * @param $val
+	 * @return unknown_type
+	 */
 	public function assign($var, $val) {
 		$this->view->assign($var,$val);
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $var
+	 * @param $val
+	 * @return unknown_type
+	 */
 	public function append($var, $val) {
 		$this->view->append($var,$val);
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $var
+	 * @param $val
+	 * @return unknown_type
+	 */
 	public function assignRef($var, &$val) {
 		$this->view->assignRef($var,$val);
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $module
+	 * @param $action
+	 * @return unknown_type
+	 */
 	public function forward($module,$action) {
 		$d = new Dispatcher($module,$action,$this->_params);
 		$d->execute();
 		$this->_lastOutput = $d->getPage();
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $modulaction
+	 * @param $vars
+	 * @param $lang
+	 * @param $secure
+	 * @return unknown_type
+	 */
 	public function redirect($modulaction,$vars = null,$lang=null,$secure=null) {
 		if(eregi('^(http|https)://',$modulaction)) {
 			header('location:'.$modulaction);
@@ -364,6 +598,19 @@ class Module extends Maman {
 		exit;
 
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @param $formName
+	 * @param $method
+	 * @param $action
+	 * @param $target
+	 * @param $attributes
+	 * @param $trackSubmit
+	 * @return unknown_type
+	 */
 	public function createForm($formName='', $method='post', $action='', $target='', $attributes=null, $trackSubmit = false)
 	{
 		if(empty($action)) {
@@ -371,6 +618,13 @@ class Module extends Maman {
 		}
 		return new MyQuickForm($formName,$method,$action,$target,$attributes,$trackSubmit);
 	}
+	
+	/**
+	 * 
+	 * description
+	 *
+	 * @return unknown_type
+	 */
 	public function isAjaxRequest() {
 		return $_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest';
 	}

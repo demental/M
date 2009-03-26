@@ -19,8 +19,30 @@ define('PI',3.1415926536);
  *
  */
 class MGeo {
+	/**
+	 * 
+	 * Address
+	 *
+	 * @var		string
+	 * @access	public
+	 */
 	public $address;
+	
+	/**
+	 * 
+	 * Google maps key
+	 *
+	 * @var		string
+	 * @access	public
+	 */
 	public $key;
+	
+	/**
+	 * 
+	 * Constructor
+	 *
+	 * @param $key	string	Google maps key
+	 */
 	public function __construct($key = null) {
 		if(is_null($key)) {
 			$this->key = Config::getPref('gmap_key');
@@ -28,6 +50,13 @@ class MGeo {
 			$this->key = $key;
 		}
 	}
+	
+	/**
+	 * 
+	 * Address validation
+	 *
+	 * @param $address	string	Input address
+	 */
 	public function setAddress($address)
 	{
 		foreach(array('street','city','zipcode','country') as $k) {
@@ -37,23 +66,57 @@ class MGeo {
 		}
 		$this->address = $address;
 	}
+	
+	/**
+	 * 
+	 * Set debug var
+	 *
+	 * @param $bool	boolean	Debug state
+	 */
 	public function setDebug($bool)
 	{
 		$this->_debug=$bool;
 	}
+	
+	/**
+	 * 
+	 * Display debug
+	 *
+	 * @param $str	string	Debug string
+	 */
 	public function debug($str)
 	{
 		echo $str.'<br />';
 	}
+	
+	/**
+	 * 
+	 * Set string to var
+	 *
+	 * @param $str	string	String to set
+	 */
 	public function setString($str)
 	{
 		$this->q = $str;
 	}
+	/**
+	 * 
+	 * Set Latitude & Longitude
+	 *
+	 * @param $lat	string	Latitude
+	 * @param $long	string	Longitude
+	 */
 	public function setLatLong($lat,$long)
 	{
 		$this->lat = $lat;
 		$this->long = $long;
 	}
+	/**
+	 * 
+	 * Get  Latitude & Longitude
+	 *
+	 * @return  array	Latitude & Longitude
+	 */
 	public function getLatLong()
 	{
 		if(empty($this->q)) {
@@ -81,8 +144,14 @@ class MGeo {
 		$this->long = $long;
 		return array($lat,$long);
 	}
-	// Azimut Elevation Polarite
-	// @param $satlong float ° du sat
+	
+	/**
+	 * 
+	 * Azimut Elevation Polarite
+	 *
+	 * @param $satlong	float	Sat degree
+	 * @return array	Azimut Elevation Polarite
+	 */
 	public function getAEP($satlong = 13)
 	{
 		$rayon=6378000;
@@ -99,6 +168,16 @@ class MGeo {
 		return array($this->azimut,$this->elevation,$this->polarite);
 
 	}
+	
+	/**
+	 * 
+	 * Azimut calculation
+	 *
+	 * @param 	$satlong	string	Longitude Satellite
+	 * @param 	$eslat		string	Latitude
+	 * @param 	$eslong		string	Longitude
+	 * @return 	string		Azimut
+	 */
 	private function calculAzimut($satlong,$eslat,$eslong)
 	{
 		$longdiffr=($eslong-$satlong)/57.29578;
