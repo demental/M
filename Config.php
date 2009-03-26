@@ -20,15 +20,20 @@ class Config {
 	// @todo explain vars
 
 	/**
-	 * ???
-	 *
+	 * associative array that stores application preferences 
+	 * Application preferences are configurable in the application's database
+	 * This array is used as a basic caching system by Config::getPref()
+	 * 
 	 * @var $preftab array
+	 * @access protected
 	 */
 	protected static $preftab = array();
 
 	/**
 	 *
-	 * ???
+	 * associative array that stores application configuration values
+	 * all the configuration values are stored in this array at runtime, 
+	 * using Config::load($arr) in M_Setup::setUpEnv()
 	 *
 	 * @var		array
 	 * @access	protected
@@ -38,10 +43,11 @@ class Config {
 
 	/**
 	 *
-	 * Load configuration
+	 * Loads a configuration array
+	 * if called several times, consecutive arrays are merged.
 	 *
 	 * @access	public
-	 * @param	array	$array	??
+	 * @param	array	$array Associative array containing app's configuration values
 	 * @static
 	 *
 	 */
@@ -53,7 +59,7 @@ class Config {
 
 	/**
 	 *
-	 * Get Alternate Languages
+	 * Get Alternate Languages (i.e. all languages that are handled by the application except the default language)
 	 *
 	 * @access	public
 	 * @static
@@ -71,7 +77,7 @@ class Config {
 	 * Get all language
 	 *
 	 * @access	public
-	 * @return	??		??
+	 * @return	array indexed array of all the languages iso2 codes handled by the application
 	 * @static
 	 *
 	 */
@@ -109,7 +115,10 @@ class Config {
 
 	/**
 	 *
-	 * Get preferences value
+	 * Get preferences value.
+	 * Preferences are values stored in the application's database,
+	 * in a table called 'preferences' 
+	 * allowing administrators to modify them through a web interface
 	 *
 	 * @access	public
 	 * @param	string	$var	Variable to get
@@ -137,7 +146,7 @@ class Config {
 
 	/**
 	 *
-	 * ??
+	 * @todo what's this ?? (might be scheduled for deletion)
 	 *
 	 * @access	public
 	 * @param	??		$item	??
@@ -153,12 +162,12 @@ class Config {
 
 	/**
 	 *
-	 * Set preferences values
+	 * Set preferences values - affects database
 	 *
 	 * @access	public
 	 * @param	string	$var	Variable to set
 	 * @param	string	$val	Value
-	 * @return	string	Value
+	 * @return	string Value or false if the target preference is not found in the SQL table
 	 * @static
 	 *
 	 */

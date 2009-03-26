@@ -24,6 +24,11 @@
 */
 
 class M_Office_Actions extends M_Office_Controller {
+  /**
+   * @param $options array of options
+   * @param $do the DataObject recordset upon which the action will be applied
+   * @param $type string default 'batch'(default) 'global' or 'single' : action type
+   */
 	function M_Office_Actions($options, $do,$type='batch') {
 		M_Office_Controller::M_Office_Controller($options);
 
@@ -75,7 +80,6 @@ class M_Office_Actions extends M_Office_Controller {
           $tpl->concat('adminTitle',' :: '.$actions[$action]['title']);
 
 					if(method_exists($obj,$preparemethod)){
-
 				    $qfAction=& new HTML_QuickForm('actionparamsForm','POST',M_Office_Util::getQueryParams(array(),array('selected','doaction','glaction','doSingleAction'), false), '_self', null, true);
             Mreg::get('tpl')->addJSinline('$("input[@type=text],textarea","form[@name=actionparamsForm]").eq(0).focus()','ready');
             Mreg::get('tpl')->assignRef('do',$do);
@@ -87,16 +91,16 @@ class M_Office_Actions extends M_Office_Controller {
   						$qfAction->addelement('hidden','__actionscope',$scope);
               $clause='';
               if($scope=='checked') {
-                $db = $obj->getDatabaseConnection();
+                $db = $do->getDatabaseConnection();
   						  foreach($selected as $id=>$v){
     							$qfAction->addElement('hidden','selected['.$v.']',$id);
   							  $clause.=$aj.$pk.' = '.$db->quote($id);
   							  $aj=" OR ";
   						  }
-                $obj->whereAdd($clause);
+                $do->whereAdd($clause);
               }
-              $obj2 = clone($obj);
-						  if((empty($clause) && $scope=='checked') || !$obj->find()) {
+              $obj2 = clone($do);
+						  if((empty($clause) && $scope=='checked') || !$do->find()) {
 						    $this->say('Aucun élément sélectionné. Aucune action n\'a été effectuée');
                 M_Office_Util::clearRequest($values);
                 if(!$_REQUEST['debug']) {
@@ -131,7 +135,9 @@ class M_Office_Actions extends M_Office_Controller {
 						} else {
 						  $obj2 = $obj;
 						}
-            call_user_func(array($obj,$preparemethod),$qfAction);
+            // Calling the 'prepareActionName()' method to populaite the form
+            // If $do and $obj are not identical, it's a plugin call, so we pass the $do as well
+            call_user_func(array($obj,$preparemethod),$qfAction,$do === $obj?null:$do);
 
 						$qfAction->addElement('submit','__submit__','Valider');
 						if($qfAction->isSubmitted() && $qfAction->validate()){

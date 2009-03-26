@@ -188,10 +188,15 @@ class DB_DataObject_Pluggable extends DB_DataObject_Iterator {
     								'include_file'=>'OfficePack.php',
     								'class_name'=>'DB_DataObject_Plugin_OfficePack',
     								'var'=>'officePack'),
+    								
     								array(  'name'=>'pager',
     								'include_file'=>'Pager.php',
     								'class_name'=>'DB_DataObject_Plugin_Pager',
-    								'var'=>'pagerplugin')
+    								'var'=>'pagerplugin'),
+    								array(  'name'=>'exporter',
+    								'include_file'=>'Exporter.php',
+    								'class_name'=>'DB_DataObject_Plugin_Exporter',
+    								'var'=>'exporterProperties')
 
 									);
 			// TODO Parse a plugins definition file instead of hardcoding the information array here
