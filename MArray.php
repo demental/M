@@ -19,7 +19,8 @@ class MArray {
 	
 	/**
 	 *
-	 * Merge array
+	 * Merge array two arrays recursively
+	 * @see testing : M/tests/MArray_test.php
 	 *
 	 * @access	public
 	 * @return	Merged array	array

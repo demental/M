@@ -16,7 +16,7 @@
  * @todo add ability to group by more than one field
  */
 
-
+require_once 'M/DB/DataObject/Plugin.php';
 class DB_DataObject_Plugin_Exporter extends DB_DataObject_Plugin {
   public $plugin_name='exporter';
   
@@ -48,12 +48,14 @@ class DB_DataObject_Plugin_Exporter extends DB_DataObject_Plugin {
     $result = array();
     // If query is already done, we group them the PHP way
     // @todo find the assertion to check if query already done
+    // @todo if the groupField is an enumField, export enumOtions values instead of keys 
+
     if(1!=1) {
       // Double loop, first one populating data 
       while($obj->fetch()) {
-        $temp[$obj->{$field}]++;
+        $temp[$this->fieldAsString($obj,$data['groupby'])]++;
       }
-      // second one, setting array to a Structures_DataGrid_Rendere_CSV compliant format
+      // second one, setting array to a Structures_DataGrid_Render_xxx compliant format
       foreach($temp as $key=>$val) {
         $result[] = array($data['groupby']=>$key,'Q'=>$val);
       }
@@ -65,7 +67,7 @@ class DB_DataObject_Plugin_Exporter extends DB_DataObject_Plugin {
       $obj->groupBy($data['groupby']);
       $obj->find();
       while($obj->fetch()) {
-        $result[] = array($data['groupby']=>$obj->{$data['groupby']},'Q'=>$obj->cnt);
+        $result[] = array($data['groupby']=>$this->fieldAsString($obj,$data['groupby']),'Q'=>$obj->cnt);
       }
     }
     require_once 'Structures/DataGrid.php';
@@ -74,5 +76,26 @@ class DB_DataObject_Plugin_Exporter extends DB_DataObject_Plugin {
     // @todo finetune options depending on choosen export format
     $s->setRenderer($data['format'],array('filename'=>'export'.ucfirst($obj->tableName()).'_'.$data['groupby'].'.csv'));
     $s->render();exit;
+  }
+  /**
+   * returns the human-readable string value for a field
+   * (ie. transforms enumfields or foreign-keys to their human-readable value)
+   * @param $obj DB_DataObject the objet to get the string from
+   * @param $field the field to transform
+   * @returns string the human-readable value
+   */
+  public function fieldAsString($obj,$field)
+  {
+    if(key_exists($field,$obj->links())) {
+      $link = $obj->getLink($field);
+      if(is_a($link,'DB_DataObject')) {
+        return $link->__toString();
+      } else {
+        return 'n/a';
+      }
+    } elseif(key_exists($field,$obj->fb_enumOptions)) {
+      return $obj->fb_enumOptions[$field][$obj->{$field}];
+    }
+    return $field;
   }
 }
