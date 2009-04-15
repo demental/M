@@ -49,8 +49,11 @@ class M_Office_View_DOPaging extends M_Office_View_List
     }
     function &prepare(&$do, $module, $pager = true) {
         $do->loadPlugin('pager');
-        $this->fieldNames=array_combine(array_keys($do->table()),array_keys($do->table()));
-
+        $f = array_keys($do->table());
+        if($do->i18nFields) {
+          $f = array_merge($f,$do->i18nFields);
+        }
+        $this->fieldNames=array_combine($f,$f);
         if(is_array($do->fb_fieldLabels)){
             foreach($do->fb_fieldLabels as $k=>&$v){
                 if(is_array($v)){
@@ -95,12 +98,19 @@ class M_Office_View_DOPaging extends M_Office_View_List
             }
             $do->fb_fieldsToRender=$fields;
             $fb =& MyFB::create($do);
-
             $do->selectAdd();
-            if(!in_array($pk,$usedFields)) {
-                $do->selectAdd($pk.','.implode(','.$do->tablename().'.',$usedFields));
+            if(is_array($do->i18nFields)) {
+              $i18nfields = implode(','.$do->tablename().'_i18n'.'.',array_intersect($fields,$do->i18nFields));
             } else {
-                    $do->selectAdd(implode(','.$do->tablename().'.',$usedFields));
+              $i18nfields = null;
+            }
+            if($i18nfields) {
+              $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;
+            }
+            if(!in_array($pk,$usedFields)) {
+                $do->selectAdd($pk.','.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:''));
+            } else {
+                $do->selectAdd(implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:''));
             }
             $fb->populateOptions();
             $specialElements = $fb->_getSpecialElementNames();

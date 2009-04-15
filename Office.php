@@ -175,7 +175,7 @@ class M_Office extends M_Office_Controller {
 					$modinfo = &PEAR::getStaticProperty('Module','global');
 					array_unshift($modinfo['template_dir'],APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
 					array_push($modinfo['template_dir'],OFFICE_TEMPLATES_FOLDER);
-					$subController = Module::factory($_REQUEST['module'],array(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'modules/','M/Office/modules/'));
+					$subController = Module::factory($_REQUEST['module'],array(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR,APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'modules/','M/Office/modules/'));
 					$subController->executeAction($_REQUEST['action']?$_REQUEST['action']:'index');
 					$this->assign('__action','dyn');
 					$layout = $subController->getConfig('layout',$_REQUEST['action']?$_REQUEST['action']:'index');

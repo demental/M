@@ -60,8 +60,8 @@ class Dispatcher extends Maman {
      * 
      * Constructor
      *
-     * @param $module	Module to dispatch
-     * @param $action	Action to dispatch
+     * @param $module	name of the requested module
+     * @param $action	name of the requested action
      * @param $params	Optional parameters
      */
     function __construct($module = 'defaut', $action = 'index',$params = null) {
@@ -73,10 +73,13 @@ class Dispatcher extends Maman {
     
 	/**
 	 *
-	 * Execute the dispatch
+	 * Execute the dispatching
+	 * Tries to include the requested module. If not found executes the 404 page.
+	 * Tries to execute the requested action. If not found executes the module index.
+	 * If the user does not have privileges for accessing the requested module/action, redirects to login page.
 	 *
 	 * @access	public
-	 *
+	 * @return null
 	 */
     public function execute ()
     {
