@@ -182,13 +182,14 @@ class M_Office_ShowTable extends M_Office_Controller {
                  $res = $db->quote($_REQUEST[$field]);
                }
              $searchWhere .= $db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($field).' = '.$res;
-             }
-             if(method_exists('quoteSmart',$db)) {
-               $res = $db->quoteSmart('%'.$_REQUEST[$field].'%');
              } else {
-               $res = $db->quote('%'.$_REQUEST[$field].'%');
-             }
-             $searchWhere .= $db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($field).' LIKE '.$res;
+              if(method_exists('quoteSmart',$db)) {
+                $res = $db->quoteSmart('%'.$_REQUEST[$field].'%');
+              } else {
+                $res = $db->quote('%'.$_REQUEST[$field].'%');
+              }
+              $searchWhere .= $db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($field).' LIKE '.$res;
+            }
            }
            //unset($_REQUEST[$field]);
            //unset($_POST[$field]);
