@@ -108,10 +108,11 @@ class M_Office_View_DOPaging extends M_Office_View_List
               $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;
             }
             if(!in_array($pk,$usedFields)) {
-                $do->selectAdd($pk.','.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:''));
+              $selectAdd = $do->tablename().'.'.$pk.','.$do->tablename().'.'.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:'');
             } else {
-                $do->selectAdd(implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:''));
+              $selectAdd = $do->tablename().'.'.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:'');
             }
+            $do->selectAdd($selectAdd);
             $fb->populateOptions();
             $specialElements = $fb->_getSpecialElementNames();
             $eltTypes=$do->table();

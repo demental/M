@@ -109,14 +109,48 @@ class M_Office_ShowTable extends M_Office_Controller {
         }
         $this->append('subActions',$filterString);
       }
-      if($o = $do->getPlugin('ownership')) {
-        if($o->userIsInAdminMode() && !empty($s[$do->ownerShipField])) {
-          $do->whereAdd($do->tableName().'.'.$do->ownerShipField.' = '.$s[$do->ownerShipField]);
+      /** Adding join objects if specified in the module configuration.
+      * To add a join object you can :
+      * - specify the foreign key against which the join will be added
+      * - specify a foreign_table:foreign_field in cas of reverselink.
+      * If only one table to join with, the parameter can be a string. 
+      * If more than one table, write it as an array (see example below)
+      * Example :
+      * 'order'=>array(
+      *  'type'=>'db',
+      *  'title'=>'Orders',
+      *  'table'=>'order',
+      *  'join'=>array('customer_id','invoice:order_id')
+      * )
+      * Will create the following query :
+      * SELECT order.* from order 
+      * LEFT JOIN customer ON customer.id = order.customer_id
+      * LEFT JOIN invoice ON invoice.order_id = order.id
+      **/ 
+
+      if($this->moduloptions['join']) {
+        if(!is_array($this->moduloptions['join'])) {
+          $j = array($this->moduloptions['join']);
+        } else {
+          $j = $this->moduloptions['join'];
+        }
+        $links = $do->links();
+        $rlinks = $do->reverseLinks();
+        $joindos = array();
+        foreach($j as $ajoin) {
+          if(strstr($this->moduloptions['join'],':')) {
+            // Reverselink
+            
+          } else {
+            // link
+            if(!key_exists($ajoin,$links)) continue;
+            $tfield = explode(':',$links[$ajoin]);
+            $joindos[$ajoin] = DB_DataObject::factory($tfield[0]);
+            $do->joinAdd($joindos[$ajoin]);
+//            $do->selectAs($joindos[$ajoin],$ajoin.'_%s');
+          }
         }
       }
-/*      if(is_array($do->fb_linkOrderFields)) {
-        $do->orderBy(implode(',',$do->fb_linkOrderFields));
-      }*/
     return $do;
    }
    function &getSearchDO($searchForm) {
@@ -134,11 +168,20 @@ class M_Office_ShowTable extends M_Office_Controller {
      } else {
        $searchWhere = '';
        $db = $do->getDatabaseConnection();
+       $fields = $do->table();
        foreach ($do->table() as $field => $type) {
          if (isset($_REQUEST[$field])) {
            if (is_string($_REQUEST[$field]) && $_REQUEST[$field] !== '') {
              if ($searchWhere) {
                $searchWhere .= ' AND ';
+             }
+             if(key_exists($field,$do->links()) || $fields[$field]&DB_DATAOBJECT_INT || $fields[$field]&DB_DATAOBJECT_BOOL) {
+               if(method_exists('quoteSmart',$db)) {
+                 $res = $db->quoteSmart($_REQUEST[$field]);
+               } else {
+                 $res = $db->quote($_REQUEST[$field]);
+               }
+             $searchWhere .= $db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($field).' = '.$res;
              }
              if(method_exists('quoteSmart',$db)) {
                $res = $db->quoteSmart('%'.$_REQUEST[$field].'%');
