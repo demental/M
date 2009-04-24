@@ -35,6 +35,9 @@ class DB_DataObject_Plugin_Exporter extends DB_DataObject_Plugin {
 
     foreach($obj->exporterProperties['groupableFields'] as $field) {
       $label = $obj->fb_fieldLabels[$field]?$obj->fb_fieldLabels[$field]:$field;
+      if(is_array($label)) {
+        $label = $label[0];
+      }
       $groupfields[$field] = $label;
     }
     $form->addElement('select','groupby',__('Group By'),$groupfields);
@@ -96,6 +99,6 @@ class DB_DataObject_Plugin_Exporter extends DB_DataObject_Plugin {
     } elseif(key_exists($field,$obj->fb_enumOptions)) {
       return $obj->fb_enumOptions[$field][$obj->{$field}];
     }
-    return $field;
+    return $obj->$field;
   }
 }
