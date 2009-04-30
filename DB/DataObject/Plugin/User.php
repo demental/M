@@ -94,8 +94,8 @@ class DB_DataObject_Plugin_User extends DB_DataObject_Plugin
     }
     function prepareForReminder(&$obj)
     {
-        $obj->fb_formHeaderText = 'Mot de passe perdu ?';
-        $obj->fb_submitText = '>> Envoyer';
+        $obj->fb_formHeaderText = __('Mot de passe perdu ?');
+        $obj->fb_submitText = '>> '.__('Envoyer');
         $obj->fb_fieldsToRender = array($obj->userFields['email']);
         $obj->fb_postGenerateFormCallback=array($this,'postGenerateReminder');
     }

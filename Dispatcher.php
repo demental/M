@@ -116,8 +116,8 @@ class Dispatcher extends Maman {
             unset($data['module']);
             unset($data['action']);
             User::getInstance()->setTarget($this->module.'/'.$this->action,$data);
-            $this->page = Module::factory($this->getConfig('loginmodule'),$path);
-            $this->page->executeAction($this->getConfig('loginaction'));
+            $this->page = Module::factory($this->getConfig('loginmodule',$this->module),$path);
+            $this->page->executeAction($this->getConfig('loginaction',$this->module));
         }
         catch (Exception $e)
         {

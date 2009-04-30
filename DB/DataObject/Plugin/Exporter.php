@@ -42,6 +42,20 @@ class DB_DataObject_Plugin_Exporter extends DB_DataObject_Plugin {
     }
     $form->addElement('select','groupby',__('Group By'),$groupfields);
     $form->addElement('select','format',__('Format'),array('CSV'=>'CSV','HTML'=>'HTML'));
+    $form->addElement('text','fields',__('Fields'));
+    $form->addElement('text','join',__('Join'));
+    $form->addElement('text','clause',__('Clause'));
+    if($obj->exporterProperties['storeTable']) {
+      $stored = DB_DataObject::factory($obj->exportProperties['storeTable']);
+      if(!is_a($stored,'iQueryStorable')) {
+        die(__('Query storage does not implement iQueryStorable, please check configuration'));
+      }
+      $form->addElement('select','stored',__('Stored queries'),$stored->getKeyValuePairs($obj->tableName()));
+      $form->addElement('checkbox','store',__('Store/update this query'));
+      $form->addElement('text','storeas',__('Store as...'));
+    }
+    $form->setDefaults(array('join'=>$obj->tableName(),'clause'=>'1=1'));
+    
   }
   /**
    * exporting action
@@ -49,28 +63,58 @@ class DB_DataObject_Plugin_Exporter extends DB_DataObject_Plugin {
   public function batchExport($obj,$data)
   {
     $result = array();
-    // If query is already done, we group them the PHP way
-    // @todo find the assertion to check if query already done
-    // @todo if the groupField is an enumField, export enumOtions values instead of keys 
-
-    if(1!=1) {
-      // Double loop, first one populating data 
-      while($obj->fetch()) {
-        $temp[$this->fieldAsString($obj,$data['groupby'])]++;
+    // Custom query
+    if($data['fields'] || $data['stored']) {
+      if($data['fields']) {
+        $fields = explode(',',$data['fields']);
+        $query = 'SELECT '.$data['fields'].' FROM '.$data['join'].' WHERE '.$data['clause'];
+      } else {
+        $stored = DB_DataObject::factory($obj->exportProperties['storeTable']);
+        $query = $stored->getQueryByID($data['stored']);
+        
       }
-      // second one, setting array to a Structures_DataGrid_Render_xxx compliant format
-      foreach($temp as $key=>$val) {
-        $result[] = array($data['groupby']=>$key,'Q'=>$val);
+      $db = $obj->getDatabaseConnection();
+      $res = $db->query($query);
+      while($row = $res->fetchRow()) {
+        $tuple = array();
+        foreach($fields as $id=>$field) {
+          if(eregi('\(',$field)) {
+            $tuple[$field] = $row[$id];
+          } else {
+            $obj->{$field} = $row[$id];
+            $tuple[$field] = $this->fieldAsString($obj,$field);
+          }
+        }
+        $result[]=$tuple;
+      }
+      if($data['store']) {
+        $stored = DB_DataObject::factory($obj->exportProperties['storeTable']);
+        $stored->store($query,$obj->tableName(),$data['storeas']);
       }
     } else {
-      // Otherwise, we add a 'group by' clause (much more performant)
-      // And only select the groupby field and a count field
-      $obj->selectAdd();
-      $obj->selectAdd($data['groupby'].', count(1) as cnt');
-      $obj->groupBy($data['groupby']);
-      $obj->find();
-      while($obj->fetch()) {
-        $result[] = array($data['groupby']=>$this->fieldAsString($obj,$data['groupby']),'Q'=>$obj->cnt);
+      // Non-custom query
+      // If query is already done, we group them the PHP way
+      // @todo find the assertion to check if query already done
+      // @todo if the groupField is an enumField, export enumOptions values instead of keys 
+      if(1!=1) {// TODO write condition for query done already
+        // Double loop, first one populating data 
+        while($obj->fetch()) {
+          $temp[$this->fieldAsString($obj,$data['groupby'])]++;
+        }
+        // second one, setting array to a Structures_DataGrid_Render_xxx compliant format
+        foreach($temp as $key=>$val) {
+          $result[] = array($data['groupby']=>$key,'Q'=>$val);
+        }
+      } else {
+        // Otherwise, we add a 'group by' clause (much more performant)
+        // And only select the groupby field and a count field
+        $obj->selectAdd();
+        $obj->selectAdd($data['groupby'].', count(1) as cnt');
+        $obj->groupBy($data['groupby']);
+        $obj->find();
+        while($obj->fetch()) {
+          $result[] = array($data['groupby']=>$this->fieldAsString($obj,$data['groupby']),'Q'=>$obj->cnt);
+        }
       }
     }
     require_once 'Structures/DataGrid.php';

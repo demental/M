@@ -26,7 +26,7 @@ class myFB extends DB_DataObject_FormBuilder
 	}
 
 	function &create(&$do, $options = false, $driver = 'MyQuickForm', $mainClass = 'MyFB',$driverPath='M/MyQuickForm.php')
-	{
+	{	  
 		if (!is_a($do, 'db_dataobject')) {
 			$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): Object does not extend DB_DataObject.',
 			DB_DATAOBJECT_FORMBUILDER_ERROR_NODATAOBJECT);
@@ -68,6 +68,9 @@ class myFB extends DB_DataObject_FormBuilder
 		}
 
 		$fb->_form =& new $className($fb);
+	  $fb->ruleViolationMessage = __('%s: The value you have entered is not valid.');
+    $fb->requiredRuleMessage = __('The field %s is required.');
+
 		return $fb;
 	}
 	function _getSelectOptions($table,

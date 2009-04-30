@@ -22,7 +22,17 @@ abstract class DB_DataObject_Plugin
 {
 	var $_dataObject;
 	protected $_autoActions = true;
-    
+	/**
+	 * Returns folder name into which can be stored resources used by the plugin (e.g. actions templates)
+	 * The folder must have the same name as the plugin's class file (Like PEAR packages).
+	 * This method DOES NOT return a path, it just returns the folder name !
+	 * @return string folder name
+	 */
+  public function getFolderName()
+  {
+    $info = DB_DataObject_Pluggable::getPluginInfo($this);
+    return basename($info['include_file'],'.php');
+  }
 	function setAutoActions($bool) {
 	    $this->_autoActions = $bool;
 	}

@@ -69,9 +69,16 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
           }
           $elem->setAttribute('class',$elem->getAttribute('class').($elem->getAttribute('class')?' ':'').$class);
           $elem->setAttribute('id',$id);
+          $label = $elem->getLabel();
+          if(is_array($label)) {
+            $sublabel = $label[0];
+          } else {
+            $sublabel = $label;
+          }
+          $elem->setLabel($sublabel.'('.$lang.')');
           $fields[] =$elem;
           $form->removeElement($obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix.'_'.$lang);
-          $label = $elem->getLabel();
+          
         }
         if(!$form->elementExists('__submit__')) {
           $form->addElement('group', $field.'_group',$label,$fields,'');
@@ -275,9 +282,16 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
     if(PEAR::isError($res)) {
       return $res;
     }
+    // Changing foreign key format if officepack used (CHAR(36))
+    if($obj->officePack) {
+      $foreignkeyspecs = array('type'=>'text','length'=>36);
+    } else {
+      $foreignkeyspecs = array('type'=>'integer','unsigned'=>1);      
+    }
+
     $res2 = $db->manager->alterTable($iname,array(    
       'add'=>array( 'i18n_lang'=>array('type'=>'text','length'=>2,'notnull'=>1,'default'=>'fr'),
-                    'i18n_record_id'=>array('type'=>'integer','unsigned'=>1,'notnull'=>1,'default'=>0),
+                    'i18n_record_id'=>array_merge($foreignkeyspecs,array('notnull'=>1,'default'=>0)),
                   )
                 ),false
               );
@@ -340,7 +354,7 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
             $valuesToInsert[]=$db->quote($original->{$field});
           }
         }
-        $valuesToInsert = array_merge(array($db->quote($lang),$original->pk()),$valuesToInsert);
+        $valuesToInsert = array_merge(array($db->quote($lang),$db->quote($original->pk())),$valuesToInsert);
         $res = $db->query('INSERT INTO '.$db->quoteIdentifier($iname).' ('.implode(',',$fieldsToInsert).') VALUES('.implode(',',$valuesToInsert).')');
         if(PEAR::isError($res)) {
           $nbfailed[$lang]++;

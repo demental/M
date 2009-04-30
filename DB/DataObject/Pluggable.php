@@ -134,76 +134,106 @@ class DB_DataObject_Pluggable extends DB_DataObject_Iterator {
 		if(count($this->_pluginInfos)>0) {
 			return $this->_pluginInfos;
 		} else {
-			return array(
-            			  array(  'name'=>'wiki',
-            			  'include_file'=>'Wiki.php',
-            				'class_name'=>'DB_DataObject_Plugin_Wiki',
-            				'var'=>'wikiFields'
-            				),
-
-  									array(  'name'=>'images',
-  									'include_file'=>'Images.php',
-  									'class_name'=>'DB_DataObject_Plugin_Images',
-  									'var'=>'photoFields'
-  									),
-									
-									
-  									array(  'name'=>'upload',
-  									'include_file'=>'Upload.php',
-  									'class_name'=>'DB_DataObject_Plugin_Upload',
-  									'var'=>'uploadFields'
-  									),
-									
-									  array(  'name'=>'ownership',
-									  'include_file'=>'Ownership.php',
-									  'class_name'=>'DB_DataObject_Plugin_Ownership',
-									  'var'=>'ownerShipField'
-									  ),
-									  array(    'name'=>'user',
-									  'include_file'=>'User.php',
-									  'class_name'=>'DB_DataObject_Plugin_User',
-									  'var'=>'userFields'
-									  ),
-              			array(	'name'=>'international',
-              			'include_file'=>'i18n.php',
-    								'class_name'=>'DB_DataObject_Plugin_I18n',
-    								'var'=>'i18nFields'
-    								),
-              			array(	'name'=>'international',
-              			'include_file'=>'International.php',
-    								'class_name'=>'DB_DataObject_Plugin_International',
-    								'var'=>'internationalFields'
-    								),
-									  array(  'name'=>'tree',
-									  'include_file'=>'Tree.php',
-									  'class_name'=>'DB_DataObject_Plugin_Tree',
-									  'var'=>'treeFields'
-									  ),
-                    array(  'name'=>'rich',
-                    'include_file'=>'Rich.php',
-                    'class_name'=>'DB_DataObject_Plugin_Rich',
-                    'var'=>'richFields'
-                    ),
-    								array(  'name'=>'officePack',
-    								'include_file'=>'OfficePack.php',
-    								'class_name'=>'DB_DataObject_Plugin_OfficePack',
-    								'var'=>'officePack'),
-    								
-    								array(  'name'=>'pager',
-    								'include_file'=>'Pager.php',
-    								'class_name'=>'DB_DataObject_Plugin_Pager',
-    								'var'=>'pagerplugin'),
-    								array(  'name'=>'exporter',
-    								'include_file'=>'Exporter.php',
-    								'class_name'=>'DB_DataObject_Plugin_Exporter',
-    								'var'=>'exporterProperties')
-
-									);
-			// TODO Parse a plugins definition file instead of hardcoding the information array here
+      return self::getAvailablePlugins();
 		}
 		return array();
 	}
+	public static function getAvailablePlugins()
+	{
+		return array(
+          			  array(  'name'=>'wiki',
+          			  'include_file'=>'Wiki.php',
+          				'class_name'=>'DB_DataObject_Plugin_Wiki',
+          				'var'=>'wikiFields'
+          				),
 
+									array(  'name'=>'images',
+									'include_file'=>'Images.php',
+									'class_name'=>'DB_DataObject_Plugin_Images',
+									'var'=>'photoFields'
+									),
+								
+								
+									array(  'name'=>'upload',
+									'include_file'=>'Upload.php',
+									'class_name'=>'DB_DataObject_Plugin_Upload',
+									'var'=>'uploadFields'
+									),
+								
+								  array(  'name'=>'ownership',
+								  'include_file'=>'Ownership.php',
+								  'class_name'=>'DB_DataObject_Plugin_Ownership',
+								  'var'=>'ownerShipField'
+								  ),
+								  array(    'name'=>'user',
+								  'include_file'=>'User.php',
+								  'class_name'=>'DB_DataObject_Plugin_User',
+								  'var'=>'userFields'
+								  ),
+            			array(	'name'=>'international',
+            			'include_file'=>'i18n.php',
+  								'class_name'=>'DB_DataObject_Plugin_I18n',
+  								'var'=>'i18nFields'
+  								),
+            			array(	'name'=>'international',
+            			'include_file'=>'International.php',
+  								'class_name'=>'DB_DataObject_Plugin_International',
+  								'var'=>'internationalFields'
+  								),
+								  array(  'name'=>'tree',
+								  'include_file'=>'Tree.php',
+								  'class_name'=>'DB_DataObject_Plugin_Tree',
+								  'var'=>'treeFields'
+								  ),
+                  array(  'name'=>'rich',
+                  'include_file'=>'Rich.php',
+                  'class_name'=>'DB_DataObject_Plugin_Rich',
+                  'var'=>'richFields'
+                  ),
+  								array(  'name'=>'officePack',
+  								'include_file'=>'OfficePack.php',
+  								'class_name'=>'DB_DataObject_Plugin_OfficePack',
+  								'var'=>'officePack'),
+  								
+  								array(  'name'=>'pager',
+  								'include_file'=>'Pager.php',
+  								'class_name'=>'DB_DataObject_Plugin_Pager',
+  								'var'=>'pagerplugin'),
+  								array(  'name'=>'exporter',
+  								'include_file'=>'Exporter.php',
+  								'class_name'=>'DB_DataObject_Plugin_Exporter',
+  								'var'=>'exporterProperties')
+
+								);
+		// TODO Parse a plugins definition file instead of hardcoding the information array here
+
+	}
+	/**
+	 * Returns information for one plugin fetched from the available plugins
+	 * @static
+	 * @access public
+	 * @param mixed plugin name (string) or plugin instance
+	 * @return array plugin information
+	 * @return false is no info found for this plugin
+	 * 
+	 */
+  public static function getPluginInfo($plugin)
+  {
+    $infos = self::getAvailablePlugins();
+    if(is_object($plugin)) {
+      $field = 'class_name';
+      $value = get_class($plugin);
+    } else {
+      $field = 'name';
+      $value = $plugin;
+    }
+    foreach($infos as $info) {
+      if($info[$field]==$value) {
+        return $info;
+      }
+    }
+    return false;
+  }
     /**
      * @access protected
      **/

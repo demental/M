@@ -37,8 +37,10 @@ class Mtpl {
 		$this->_config['tplfolders'] = $tpldir;
 		$this->_module=$module;
 	}
-	/*
-	 * Creates a new instance of Mtpl
+	/**
+	 * Adds a string path to the current instance's paths array
+	 * @param $path string new path (relative to PHP's include_paths)
+	 * @param $pos string 'after' or 'before' : paths added before take precedence to other paths, after does not.
 	 **/
 	public function addPath($path,$pos='before')
 	{
@@ -50,6 +52,18 @@ class Mtpl {
 				array_push($this->_config['tplfolders'],$path);
 				break;
 		}
+	}
+  /**
+  * Set the instance's paths
+  * @param $paths array of paths (relative to PHP's include_paths)
+  **/
+	public function setPaths($paths)
+	{
+		$this->_config['tplfolders'] = $paths;
+	}	
+	public function getPaths()
+	{
+	 return $this->_config['tplfolders'];
 	}
 	public function getCSS()
 	{
@@ -134,15 +148,11 @@ class Mtpl {
 	{
 		echo $this->fetch($tplfile);
 	}
-	public function setPaths($paths)
-	{
-		$this->_config['tplfolders'] = $paths;
-	}
 	public function getTemplatePath()
 	{
 		$folders = array_reverse($this->_config['tplfolders']);
 		foreach($folders as $folder) {
-			if(file_exists($folder.$this->_tplfile.'.php')) {
+			if(FileUtils::file_exists_incpath($folder.$this->_tplfile.'.php')) {
 				return $folder.$this->_tplfile.'.php';
 			}
 		}

@@ -147,7 +147,8 @@ class M_Office_ShowTable extends M_Office_Controller {
             $tfield = explode(':',$links[$ajoin]);
             $joindos[$ajoin] = DB_DataObject::factory($tfield[0]);
             $do->joinAdd($joindos[$ajoin]);
-//            $do->selectAs($joindos[$ajoin],$ajoin.'_%s');
+            $do->selectAs(null);
+            $do->selectAs($joindos[$ajoin],$ajoin.'_%s');
           }
         }
       }

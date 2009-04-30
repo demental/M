@@ -31,7 +31,7 @@ class M_Office_Actions extends M_Office_Controller {
    */
 	function M_Office_Actions($options, $do,$type='batch') {
 		M_Office_Controller::M_Office_Controller($options);
-
+    
         switch($type) {
             case 'batch':
                 $action = $_REQUEST['doaction'];
@@ -78,7 +78,9 @@ class M_Office_Actions extends M_Office_Controller {
 					$obj = empty($actions[$action]['plugin'])?$do:$do->getPlugin($actions[$action]['plugin']);
           $tpl = Mreg::get('tpl');
           $tpl->concat('adminTitle',' :: '.$actions[$action]['title']);
-
+          if(!empty($actions[$action]['plugin'])) {
+            $tpl->addPath('M/DB/DataObject/Plugin/'.$do->getPlugin($actions[$action]['plugin'])->getFolderName().'/templates/','beforeUser');
+          }
 					if(method_exists($obj,$preparemethod)){
 				    $qfAction=& new HTML_QuickForm('actionparamsForm','POST',M_Office_Util::getQueryParams(array(),array('selected','doaction','glaction','doSingleAction'), false), '_self', null, true);
             Mreg::get('tpl')->addJSinline('$("input[@type=text],textarea","form[@name=actionparamsForm]").eq(0).focus()','ready');
@@ -94,7 +96,7 @@ class M_Office_Actions extends M_Office_Controller {
                 $db = $do->getDatabaseConnection();
   						  foreach($selected as $id=>$v){
     							$qfAction->addElement('hidden','selected['.$v.']',$id);
-  							  $clause.=$aj.$pk.' = '.$db->quote($id);
+  							  $clause.=$aj.$db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($pk).' = '.$db->quote($id);
   							  $aj=" OR ";
   						  }
                 $do->whereAdd($clause);
