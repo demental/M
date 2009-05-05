@@ -154,59 +154,51 @@ class M_Office_ShowTable extends M_Office_Controller {
       }
     return $do;
    }
+   /**
+    * Returns a DAO filtered with the search criterias specified by the searchForm
+    * Uses $do->frontEndSearch to process form values if this method exists in the DAO
+    * @param $searchForm HTML_QuickForm search form after submission
+    * @return DB_DataObject filtered dataObject  
+    */
    function &getSearchDO($searchForm) {
      $do = $this->doForTable($this->module);
-     $s=$searchForm->exportvalues();
+     $s=$searchForm->exportValues();
      $this->paginate = !$s['__dontpaginate'];
+     // Cleaning unused form fields
+     unset($s['__submit__']);
+     unset($s['__dontpaginate']);
 
+     // Use of $do->frontendsearch() if the method exists
      if(method_exists($do,'frontEndsearch')) {                
-       foreach($s as $k=>$v){
-         if(!key_exists($k,$do->table())){
-           unset($s[$k]);
-         }
-       }
-       $searchWhere=$do->frontEndsearch($s);
+       $do->frontEndsearch($s);
      } else {
+       // Guess query from field types if $do->frontendsearch() is not implemented
        $searchWhere = '';
        $db = $do->getDatabaseConnection();
        $fields = $do->table();
        foreach ($do->table() as $field => $type) {
          if (isset($_REQUEST[$field])) {
            if (is_string($_REQUEST[$field]) && $_REQUEST[$field] !== '') {
-             if ($searchWhere) {
-               $searchWhere .= ' AND ';
-             }
-             if(key_exists($field,$do->links()) || $fields[$field]&DB_DATAOBJECT_INT || $fields[$field]&DB_DATAOBJECT_BOOL) {
-               if(method_exists('quoteSmart',$db)) {
-                 $res = $db->quoteSmart($_REQUEST[$field]);
-               } else {
-                 $res = $db->quote($_REQUEST[$field]);
-               }
-             $searchWhere .= $db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($field).' = '.$res;
+             if(key_exists($field,$do->links()) 
+               // Foreign key, int or bool => search with field = value 
+                || $fields[$field]&DB_DATAOBJECT_INT 
+                || $fields[$field]&DB_DATAOBJECT_BOOL) {
+                $do->$field = $_REQUEST[$field];
+                
+             } elseif($fields[$field]&DB_DATAOBJECT_DATE) {
+               // Date => search by day
+               $do->whereAdd('date('.$db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($field).') = '.$db->quote($fields[$field]));
+
              } else {
-              if(method_exists('quoteSmart',$db)) {
-                $res = $db->quoteSmart('%'.$_REQUEST[$field].'%');
-              } else {
-                $res = $db->quote('%'.$_REQUEST[$field].'%');
-              }
-              $searchWhere .= $db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($field).' LIKE '.$res;
-            }
-           }
-           //unset($_REQUEST[$field]);
-           //unset($_POST[$field]);
-           //unset($_GET[$field]);
-         }
-       }
-     }  
-     if ($searchWhere) {
-       if(is_array($searchWhere)){
-         foreach($searchWhere as $s){
-           $do->whereAdd($s);	
-         }
-       } else {
-         $do->whereAdd($searchWhere);
-       }
-     }
+               // Other (char, varchar)
+               $res = $db->quote('%'.$_REQUEST[$field].'%');
+               $do->whereAdd($db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($field).' LIKE '.$res);
+
+             }
+          }
+        }
+      }
+    }
      $this->append('subActions','<a href="'.M_Office_Util::getQueryParams(array(), array_merge(array('searchSubmit', '__submit__'), array_keys($do->table()))).'">'.__('Reset search filter').'</a>');
      return $do;
    } 

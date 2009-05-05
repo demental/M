@@ -17,215 +17,242 @@
 * @version      0.1
 */
 
+/**
+* Helper methods library (mostly static) used by office application.
+**/
 class M_Office_Util {
   public static $mainOptions;
-    public static function refresh($url = false) {
-            if (empty($url) || substr($url, 0, 4) !== 'http') {
-                $url = 'http'.(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 's' : '').'://'.$_SERVER['HTTP_HOST'].
-                    (!empty($url) && $url[0] == '/'
-                     ? ''                                      //if the URL is already from the root
-                     : (empty($url) || $url[0] == '?'
-                        ? $_SERVER['PHP_SELF']                 //if the url is empty or starts with ? prefix with current dir & script
-                        : dirname($_SERVER['PHP_SELF']).'/')). //if the url is not empty and does not start with ? add current dir
-                    $url;
-            }
-            if ((stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') && stristr($_SERVER['HTTP_USER_AGENT'], 'Mac')) || headers_sent()) {
-                  echo '<script language="JavaScript1.1">
-    <!--
-    location.replace("'.$url.'");
-    //-->
-    </script>
-    <noscript>
-    <meta http-equiv="Refresh" content="0; URL='.$url.'"/>
-    </noscript>
-    Please <a href="'.$url.'">click here</a> to continue.
-    ';
-            } else {
-                header('Location: '.$url);
-            }
-            exit;
-        }
+  /**
+   * Redirects to another url (uses javascript is some headers were already sent)
+   * @param url string url to redirect to
+   */
+  public static function refresh($url = false) {
+          if (empty($url) || substr($url, 0, 4) !== 'http') {
+              $url = 'http'.(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 's' : '').'://'.$_SERVER['HTTP_HOST'].
+                  (!empty($url) && $url[0] == '/'
+                   ? ''                                      //if the URL is already from the root
+                   : (empty($url) || $url[0] == '?'
+                      ? $_SERVER['PHP_SELF']                 //if the url is empty or starts with ? prefix with current dir & script
+                      : dirname($_SERVER['PHP_SELF']).'/')). //if the url is not empty and does not start with ? add current dir
+                  $url;
+          }
+          if ((stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') && stristr($_SERVER['HTTP_USER_AGENT'], 'Mac')) || headers_sent()) {
+                echo '<script language="JavaScript1.1">
+  <!--
+  location.replace("'.$url.'");
+  //-->
+  </script>
+  <noscript>
+  <meta http-equiv="Refresh" content="0; URL='.$url.'"/>
+  </noscript>
+  Please <a href="'.$url.'">click here</a> to continue.
+  ';
+          } else {
+              header('Location: '.$url);
+          }
+          exit;
+      }
 
+  /**
+   * Returns the name displayed in the interface for a module
+   * @param  $module  string module name
+   * @return string   name of the module
+   */
+  public static function getFrontTableName($module) {
+      $op = PEAR::getStaticProperty('m_office', 'options');
+      $modlist = $op['modules'];
+      if(key_exists($module,$modlist)) {
+          return $modlist[$module]['title'];
+      }
+      return $module;
+  }
+  public static function getAjaxQueryParams($params = array(), $remove = array(), $entities = false) {
+      return self::getQueryParams(array_merge($params,array('ajax'=>1)),$remove,$entities);
+  }
+  /**
+   * Builds and URI, starting from the current GET request,
+   * merging passed params as first parameter and excluding variable names passed as second (optional) parameter
+   * @param $params     array  associative array to be passed as the GET request (multidimensional arrays are handled too)
+   * @param $remove     array  indexed array of variable names to be excluded from the uri
+   * @param $entities   bool   should the query be HTML-escaped ?
+   */
+  public static function getQueryParams($params = array(), $remove = array(), $entities = false) {
+      $ret = '';
+      $arr = array();
+      if (!isset($params['regenerate'])) {
+          $remove[] = 'regenerate';
+      }
+      $get=$_GET;
+      $get=array_diff_key($get,array_flip($remove));
 
-    public static function getFrontTableName($module) {
-        $op = PEAR::getStaticProperty('m_office', 'options');
-        $modlist = $op['modules'];
-        if(key_exists($module,$modlist)) {
-            return $modlist[$module]['title'];
-        }
-        return $module;
-    }
-    public static function getAjaxQueryParams($params = array(), $remove = array(), $entities = false) {
-        return self::getQueryParams(array_merge($params,array('ajax'=>1)),$remove,$entities);
-    }
-    public static function getQueryParams($params = array(), $remove = array(), $entities = false) {
-        $ret = '';
-        $arr = array();
-        if (!isset($params['regenerate'])) {
-            $remove[] = 'regenerate';
-        }
-        $get=$_GET;
-        $get=array_diff_key($get,array_flip($remove));
-  
-        foreach (array_merge($get, $params) as $key => $val) {
+      foreach (array_merge($get, $params) as $key => $val) {
 //            if (substr($key, 0, 5) != '_qf__' && $key!=) {
-                $arr[$key] = $val;
+              $arr[$key] = $val;
 //            }
-        }
-        $ret = self::queryString($arr);
-        if ($entities) {
-            $ret = htmlentities($ret, ENT_QUOTES);
-        }
-        $ret = $ret ? '?'.$ret : '';
-        return ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT.$ret;
+      }
+      $ret = self::queryString($arr);
+      if ($entities) {
+          $ret = htmlentities($ret, ENT_QUOTES);
+      }
+      $ret = $ret ? '?'.$ret : '';
+      return ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT.$ret;
 
+  }
+  /**
+   * recursively builds a query string from passed parameters
+   * @param  $params  array  associative array of query params
+   * @param  $prefix  string variable names prefix 
+   * @param  $postfix string variable names postfix
+   * @return string built query
+   */
+  public static function queryString($params, $prefix = '', $postfix = '') {
+      $ret = '';
+      foreach ($params as $key => $val) {
+          if ($ret) {
+              $ret .= '&';
+          }
+          if (is_array($val)) {
+              $ret .= self::queryString($val, $prefix.$key.$postfix.'[', ']');
+          } else {
+              $ret .= urlencode($prefix.$key.$postfix).'='.urlencode((string)$val);
+          }
+      }
+      return $ret;
+  }
+  /**
+   * returns HTML hidden fields (even arrays) of current variables declared in POST (and optionally GET)
+   * @param $remove array indexed array of var names to exclude from the fields
+   * @param $get bool should vars declared in GET be rendered too ?
+   * @return string rendered HTML of hidden fields
+   */
+  public static function hiddenFields($remove = array(), $get = false)
+  {
+    $out='';
+    foreach ($_POST as $key => $val) {
+        if (!in_array($key, $remove)) {
+            $out.=self::hiddenField($key, $val);
+        }
     }
-
-    public static function queryString($params, $prefix = '', $postfix = '') {
-        $ret = '';
-        foreach ($params as $key => $val) {
-            if ($ret) {
-                $ret .= '&';
-            }
-            if (is_array($val)) {
-                $ret .= self::queryString($val, $prefix.$key.$postfix.'[', ']');
-            } else {
-                $ret .= urlencode($prefix.$key.$postfix).'='.urlencode((string)$val);
+    if ($get) {
+        foreach ($_GET as $key => $val) {
+            if (!in_array($key, $remove)) {
+                $out.=self::hiddenField($key, $val);
             }
         }
-        return $ret;
     }
-    public static function hiddenFields($remove = array(), $get = false)
-    {
-      $out='';
+    return $out;    
+  }
+  /**
+   * returns HTML hidden fields (even arrays) of one name/value pair
+   * @param $key string key name
+   * @param $val mixed  value (string or associative array)
+   **/
+  public static function hiddenField($key,$val)
+  {
+    $out='';
+    if (is_array($val)) {
+        foreach ($val as $name => $aval) {
+            $out.=self::hiddenField($key.'['.$name.']', $aval);
+        }
+    } else {
+      $h = HTML_QuickForm::createElement('hidden',$key,$val);
+      return $h->toHtml();
+    }
+    return $out;
+  }
+
+  public static function addHiddenFields(&$form, $remove = array(), $get = false) {
       foreach ($_POST as $key => $val) {
-          if (!in_array($key, $remove)) {
-              $out.=self::hiddenField($key, $val);
+          if (!in_array($key, $remove) && !$form->elementExists($key)) {
+              self::addHiddenField($form, $key, $val);
           }
       }
       if ($get) {
           foreach ($_GET as $key => $val) {
-              if (!in_array($key, $remove)) {
-                  $out.=self::hiddenField($key, $val);
+              if (!in_array($key, $remove) && !$form->elementExists($key)) {
+                  self::addHiddenField($form, $key, $val);
               }
           }
       }
-      return $out;    
-    }
-    public static function hiddenField($key,$val)
-    {
-      $out='';
-      if (is_array($val)) {
-          foreach ($val as $name => $aval) {
-              $out.=self::hiddenField($key.'['.$name.']', $aval);
+  }
+
+  public static function addHiddenField(&$form, $name, &$value) {
+      if (is_array($value)) {
+          foreach ($value as $key => $val) {
+              self::addHiddenField($form, $name.'['.$key.']', $val);
           }
       } else {
-        $h = HTML_QuickForm::createElement('hidden',$key,$val);
-        return $h->toHtml();
+          $form->addElement('hidden', $name, $value);
       }
-      return $out;
-    }
-    public static function addHiddenFields(&$form, $remove = array(), $get = false) {
-        foreach ($_POST as $key => $val) {
-            if (!in_array($key, $remove) && !$form->elementExists($key)) {
-                self::addHiddenField($form, $key, $val);
-            }
-        }
-        if ($get) {
-            foreach ($_GET as $key => $val) {
-                if (!in_array($key, $remove) && !$form->elementExists($key)) {
-                    self::addHiddenField($form, $key, $val);
-                }
-            }
-        }
-    }
+  }
 
-    public static function addHiddenField(&$form, $name, &$value) {
-        if (is_array($value)) {
-            foreach ($value as $key => $val) {
-                self::addHiddenField($form, $name.'['.$key.']', $val);
-            }
-        } else {
-            $form->addElement('hidden', $name, $value);
-        }
-    }
  	public static function &getSearchForm(&$do){
- 		  if(method_exists($do,'prepareSearchForm')){
-        $do->prepareSearchForm();
-      }
 
-      $do->fb_selectAddEmpty = array();
-	if(is_array($do->links())){
+    $do->fb_selectAddEmpty = array();
+  	if(is_array($do->links())){
       foreach ($do->links() as $field => $link) {
         $do->fb_selectAddEmpty[] = $field;
       }
-	}
-			if(is_array($do->fb_enumFields)){
-				foreach ($do->fb_enumFields as $field){
-	         $do->fb_selectAddEmpty[] = $field;
-				}
+  	}
+		if(is_array($do->fb_enumFields)){
+			foreach ($do->fb_enumFields as $field){
+	       $do->fb_selectAddEmpty[] = $field;
 			}
-      $do->fb_linkNewValue = false;
-      $do->fb_userEditableFields=$do->fb_fieldsToRender;
-      $do->fb_formHeaderText=__('Search');
-      $do->fb_submitText='>>';
-      $formBuilder =& MyFB::create($do);
-      $formBuilder->preGenerateFormCallback=$formBuilder->postGenerateFormCallback='fake';
-      $form = new MyQuickForm('formSearch',
-                                       'GET',
-                                       self::getQueryParams(array(), array('page'), false));
-     	$formBuilder->useForm($form);
-      $specialElements = array_keys($formBuilder->_getSpecialElementNames());
-      foreach ($specialElements as $specialField) {
-        unset($fieldsToRender[$specialField]);
-      }
+		}
+    $do->fb_formHeaderText=__('Search');
+    $do->fb_submitText='>>';
+    $formBuilder =& MyFB::create($do);
+    $formBuilder->preGenerateFormCallback=$formBuilder->postGenerateFormCallback='fake';
+    $form = new MyQuickForm(  'formSearch',
+                              'GET',
+                              self::getQueryParams(array(), array('page'), false));
+   	$formBuilder->useForm($form);
 
-    $form = $formBuilder->getForm();
+	  if(method_exists($do,'prepareSearchForm')){
+      $do->prepareSearchForm($form,$formBuilder);
+    }
+    $do->fb_linkNewValue = false;
+    $do->fb_userEditableFields=$do->fb_fieldsToRender;
+      
+    $formBuilder->getForm();
     $form->addElement('hidden', 'searchSubmit', 1);
     $form->_rules = array();
     $form->_formRules = array();
     $form->_required = array();
     self::addHiddenFields($form, array('search', 'page','__dontpaginate'), true);
     $form->addElement('checkbox','__dontpaginate','Afficher les résultats sur une seule page');
-	return $form;
+	  return $form;
 	}
-	public static function outputform(&$form,$template='bordered',$addwait = true) {        
-        if($addwait) {
-            $formId=$form->getAttribute('id');
-            Mtpl::addJSinline('
-            $("#'.$formId.' input:submit").click(function() {
-                $(\'<span><img src="images/indicator.gif" />Chargement en cours... Veuillez patienter</span>\').prependTo($(this).parent());
-            });
-            ','ready');
-        }
+	public static function outputform(&$form,$template='bordered',$addwait = true) {
+    if($addwait) {
+        $formId=$form->getAttribute('id');
+        Mtpl::addJSinline('
+        $("#'.$formId.' input:submit").click(function() {
+            $(\'<span><img src="images/indicator.gif" />'.__('Loading... Please wait').'</span>\').prependTo($(this).parent());
+        });
+        ','ready');
+    }
 		$options = PEAR::getStaticProperty('M_Office', 'options');
 		$tpl = Mreg::get('tpl')->instance();
 		$tpl->assignRef('form',$form);
 		return $tpl->fetch('form-'.$template);
 	}
   public static function &doFortable($table) {      
-        $do = DB_DataObject::factory($table);
-      	$AuthOptions = PEAR::getStaticProperty('m_office_auth', 'options');
-      	$viewOptions = PEAR::getStaticProperty('m_office_showtable', 'options');	
-      	if($AuthOptions['ownership']){
-      		$do->filterowner=User::getInstance('office')->getProperty('level')!=NORMALUSER?false:User::getInstance('office')->getProperty('groupId');
-          if($p = &$do->getPlugin('ownership')) {
-      			$p->userIsInAdminMode(User::getInstance('office')->getProperty('level'));
-      		}
-      	}
-      	if($viewOptions['tableOptions'][$table]['filters']){
-          foreach($viewOptions['tableOptions'][$table]['filters'] as $filter) {
-            if(is_array($filter)) {
-              foreach($filter as $k=>$e) {
-                $do->{$k} = $e;
-              }
-            } else {
-        	    $do->whereAdd(preg_replace('`U::([a-zA-Z0-9_]+)`e',"User::getInstance('office')->getDBDO()->$1",$filter));
-            }
+    $do = DB_DataObject::factory($table);
+  	$viewOptions = PEAR::getStaticProperty('m_office_showtable', 'options');
+  	if($viewOptions['tableOptions'][$table]['filters']){
+      foreach($viewOptions['tableOptions'][$table]['filters'] as $filter) {
+        if(is_array($filter)) {
+          foreach($filter as $k=>$e) {
+            $do->{$k} = $e;
           }
-      	}
-        return $do;
-    }
+        } else {
+    	    $do->whereAdd(preg_replace('`U::([a-zA-Z0-9_]+)`e',"User::getInstance('office')->getDBDO()->$1",$filter));
+        }
+      }
+  	}
+    return $do;
+  }
   public static function getModuleInfo($module)
   {
   	$op = PEAR::getStaticProperty('m_office', 'options');
@@ -376,6 +403,5 @@ class M_Office_Util {
           return $merged;
       }
       return true;
-  }
-  		
+  }  		
 }

@@ -249,7 +249,7 @@ class Mail extends Maman {
 			$from = $this->from = array($this->getConfig('from'),$this->getConfig('fromname'));
 		}
 		$from = $this->from;
-		$to=$mail;
+		$to=$this->getConfig('sendonlyto')?$this->getConfig('sendonlyto'):$mail;
 		$this->fetch();
 		if($this->altbody) {
 			$html = true;
