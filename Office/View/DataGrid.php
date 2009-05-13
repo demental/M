@@ -1,6 +1,4 @@
 <?php
-
-
 /**
 * M PHP Framework
 * @package      M
@@ -10,7 +8,7 @@
 * M PHP Framework
 *
 * Listview handler using Structures_DataGrid.
-* I don't use ite anymore (DOPaging is prefered, more lightweight)
+* I don't use it anymore (DOPaging is prefered, more lightweight)
 *
 * @package      M
 * @subpackage   M_Office

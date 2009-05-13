@@ -1,15 +1,29 @@
 <?php
-// ===============================================
-// = WTF is this....
-// = anyway... not in use for now...
-// ===============================================
+/**
+* M PHP Framework
+* @package      M
+* @subpackage   M_Office
+*/
+/**
+* M PHP Framework
+*
+* This controller is called by the tree view when drag-and-drop sorting
+* done by the user
+* 
+* 
+*
+* @package      M
+* @subpackage   M_Office
+* @author       Arnaud Sellenet <demental@sat2way.com>
+* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+* @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+* @version      0.1
+* @todo         This solution is not really clean, should be refactored.
+*/
+*/
 
 class M_Office_treesort extends M_Office_Controller
-{
-    // @param   string the string to search for
-    // @param   string (table for which to expand view)
-    // Expand 
-    
+{    
     function M_Office_treesort() {
         M_Office_Controller::M_Office_Controller();
     }

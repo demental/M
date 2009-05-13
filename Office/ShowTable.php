@@ -20,8 +20,8 @@
 class M_Office_ShowTable extends M_Office_Controller {
   var $linkFields=array();
   var $hasActions=false;
-  function M_Office_ShowTable($module) {
-    M_Office_Controller::M_Office_Controller();
+  function __construct($module) {
+    parent::__construct();
     if (isset($_REQUEST['record']) 
     && ($this->getOption('edit', $module) || $this->getOption('view', $module) || $this->getOption('directEdit', $module))) {
       require 'M/Office/EditRecord.php';

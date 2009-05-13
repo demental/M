@@ -4,8 +4,8 @@ function jsdoaction(form,select){
     return false;
   }
   if($(select).val()=='delete'){
-    if(confirm("Etes-vous sur de vouloir supprimer ces enregistrements ?")){
-      form.choice.value="Oui";
+    if(confirm("<?php _e('Are you sure you want to delete these records ?')?>")){
+      form.choice.value="Yes";
       form.submit();
     } else {
       return false;

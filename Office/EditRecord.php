@@ -18,13 +18,13 @@
 */
 
 class M_Office_EditRecord extends M_Office_Controller {
-    function M_Office_EditRecord($module, $record) {
+    public function __construct($module, $record) {
       $opts = PEAR::getStaticProperty('m_office','options');
       $this->module = $module;
       $this->moduloptions = $opts['modules'][$module];
       $table = $this->table=$this->moduloptions['table'];
       
-        M_Office_Controller::M_Office_Controller();
+        parent::__construct();
         $this->assign('__action','edit');
         $do = M_Office_Util::doForModule($module,false);
         $keys = $do->keys();

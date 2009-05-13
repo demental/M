@@ -15,18 +15,21 @@
  */
 
 interface iQueryStorable {
+
   /**
    * returns an associative array to populate a <SELECT> html element. The keys should be the database ID and the value the name of the stored query
    * @param string table name upon which queries are associated
    * @return array key/value pairs
    **/
   public function getKeyValuePairs($table);
+
   /**
    * retrieves a stored query by its ID
    * @param string ID of the stored query record
    * @return string SQL query
    **/ 
   public function getQueryByID($id);
+
   /**
    * stores a query against a table and gives it a label
    * @param $query string SQK query to store

@@ -45,16 +45,9 @@ $dispatchopt['all']['modulepath'][]='M/Office/modules/';
 class M_Office extends M_Office_Controller {
 	public static $dsp='__defaut/index';
 
-	function receiveMessage($message,$type) {
-		$_SESSION['flashmessages'][]=array($message,$type);
-	}
-	function isAjaxRequest() {
-		return strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])=='xmlhttprequest';
-	}
+	public function __construct($layout = 'main') {
 
-	function M_Office($layout = 'main') {
-
-		M_Office_Controller::M_Office_Controller();
+		parent::__construct();
 		M_Office_Util::$mainOptions = PEAR::getStaticProperty('m_office', 'options');
 
 		// TODO Check if requested module is valid
@@ -199,7 +192,7 @@ class M_Office extends M_Office_Controller {
 	}
 	public function fetch()
 	{
-		if($this->isAjaxRequest()) {
+		if(self::isAjaxRequest()) {
 			M_Office::$dsp='__defaut/ajaxindex';
 		}
 
@@ -215,6 +208,12 @@ class M_Office extends M_Office_Controller {
 		}
 		return $tpl->fetch(M_Office::$dsp);
 
+	}
+	function receiveMessage($message,$type) {
+		$_SESSION['flashmessages'][]=array($message,$type);
+	}
+	public static function isAjaxRequest() {
+		return strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])=='xmlhttprequest';
 	}
 	// ==============================
 	// = Proxy (for faster writing) =

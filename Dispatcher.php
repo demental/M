@@ -24,14 +24,14 @@ class Dispatcher extends Maman {
 	 * 
 	 * Page
 	 *
-	 * @var		string
+	 * @var		Module
 	 * @access	protected
 	 */
 	protected $page;
     
 	/**
 	 * 
-	 * Module
+	 * Module name
 	 *
 	 * @var		string
 	 * @access	protected
@@ -40,7 +40,7 @@ class Dispatcher extends Maman {
     
     /**
      * 
-     * Action
+     * Action name
      *
      * @var		string
      * @access	protected
@@ -56,20 +56,21 @@ class Dispatcher extends Maman {
 	 */
 	protected $params;
     
-    /**
-     * 
-     * Constructor
-     *
-     * @param $module	name of the requested module
-     * @param $action	name of the requested action
-     * @param $params	Optional parameters
-     */
-    function __construct($module = 'defaut', $action = 'index',$params = null) {
-        $this->module = $module?$module:'defaut';
-        $this->action = $action?$action:'index';
-        $this->params = $params;
-        $this->setConfig(PEAR::getStaticProperty('Dispatcher','global'));
-    }
+  /**
+   * 
+   * Constructor
+   *
+   * @param $module	name of the requested module
+   * @param $action	name of the requested action
+   * @param $params	Optional parameters
+   */
+  function __construct($module = 'defaut', $action = 'index',$params = null) 
+  {
+    $this->module = $module?$module:'defaut';
+    $this->action = $action?$action:'index';
+    $this->params = $params;
+    $this->setConfig(PEAR::getStaticProperty('Dispatcher','global'));
+  }
     
 	/**
 	 *
@@ -81,55 +82,54 @@ class Dispatcher extends Maman {
 	 * @access	public
 	 * @return null
 	 */
-    public function execute ()
-    {
-      
+    public function execute()
+    {      
       $path=$this->getPath();
 
-        try
-        {
-          Log::info('Trying module '.$this->module);
-        	$this->page = Module::factory($this->module,$path,$this->params);
-        	try
-        	{
-              Log::info('Trying action '.$this->action);
-        		  $this->page->executeAction($this->action);
-              
-        	}
-        	catch (Exception $e)
-        	{
-              Log::info('Action '.$this->action.' rejected for module '.$this->module.', trying index instead ');
-              Log::info('Reason : '.$e->getMessage());
-        		  $this->action = 'index';
-        		  $this->page->executeAction($this->action);
-        	}
+      try
+      {
+        Log::info('Trying module '.$this->module);
+      	$this->page = Module::factory($this->module,$path,$this->params);
+      	try
+      	{
+            Log::info('Trying action '.$this->action);
+      		  $this->page->executeAction($this->action);
+            
+      	}
+      	catch (Exception $e)
+      	{
+            Log::info('Action '.$this->action.' rejected for module '.$this->module.', trying index instead ');
+            Log::info('Reason : '.$e->getMessage());
+      		  $this->action = 'index';
+      		  $this->page->executeAction($this->action);
+      	}
 
-        }
-        catch (Error404Exception $e) {
-          $this->returnModuleNotFound();
-        }
-        catch (SecurityException $e) {        
+      }
+      catch (Error404Exception $e) {
+        $this->returnModuleNotFound();
+      }
+      catch (SecurityException $e) {        
 
-            Log::info('User not allowed for '.$this->module);
-            Log::info('Setting target after login to '.$this->module.'/'.$this->action);
-            $data = $_REQUEST;
-            unset($data['module']);
-            unset($data['action']);
-            User::getInstance()->setTarget($this->module.'/'.$this->action,$data);
-            $this->page = Module::factory($this->getConfig('loginmodule',$this->module),$path);
-            $this->page->executeAction($this->getConfig('loginaction',$this->module));
-        }
-        catch (Exception $e)
-        {
-          
-            Log::info('Error module '.$this->module.'. Revealing as 404');
-        	  $this->page = Module::factory('error',$path);
-            $this->page->executeAction('404');
-        }        
-        Log::info($this->module.'/'.$this->action.' executed successfully');
+          Log::info('User not allowed for '.$this->module);
+          Log::info('Setting target after login to '.$this->module.'/'.$this->action);
+          $data = $_REQUEST;
+          unset($data['module']);
+          unset($data['action']);
+          User::getInstance()->setTarget($this->module.'/'.$this->action,$data);
+          $this->page = Module::factory($this->getConfig('loginmodule',$this->module),$path);
+          $this->page->executeAction($this->getConfig('loginaction',$this->module));
+      }
+      catch (Exception $e)
+      {
+        
+          Log::info('Error module '.$this->module.'. Revealing as 404');
+      	  $this->page = Module::factory('error',$path);
+          $this->page->executeAction('404');
+      }        
+      Log::info($this->module.'/'.$this->action.' executed successfully');
     }
 
-    /**
+  /**
 	 *
 	 * Handle "Not found error"
 	 *
@@ -144,22 +144,21 @@ class Dispatcher extends Maman {
       $this->page->executeAction('404');
     }
     
-    /**
+  /**
 	 *
 	 * Get the module page
 	 *
 	 * @access	public
-	 * @return	string	Module page
+	 * @return	Module current executed Module
 	 * @static
 	 *
 	 */
-    public function &getPage ()
+    public function getPage()
     {
         return $this->page;
-    }
+    }    
     
-    
-    /**
+  /**
 	 *
 	 * Get the module path
 	 *
@@ -173,12 +172,12 @@ class Dispatcher extends Maman {
       return $this->getConfig('modulepath','all',null);
     }
 
-    /**
+  /**
 	 *
-	 * Display the module
+	 * returns the dispatching result
 	 *
 	 * @access	public
-	 * @return	string	Module output
+	 * @return	string rendered output
 	 * @static
 	 *
 	 */

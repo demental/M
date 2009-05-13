@@ -21,7 +21,8 @@
  * Dependency : PEAR_Crypt_Blowfish
  */
 
-class M_Crypt {
+class M_Crypt
+{
 	
 	/**
 	 * Encrypt data
@@ -32,16 +33,15 @@ class M_Crypt {
 	 * @param	string 	$ky		Key
 	 * @return	string	Encrypted data
 	 */
-	public static function encrypt($val,$ky = null) {
+	public static function encrypt($val,$ky = null)
+	{
 		if(is_null($ky)) {
 			$ky = ENCSALT;
 		}
 		require_once 'Crypt/Blowfish.php';
 		$bf =& Crypt_Blowfish::factory('cbc');
 		if (PEAR::isError($bf)) {
-
-			echo $bf->getMessage();
-			exit;
+			die($bf->getMessage());
 		}
 		$iv = 'abc123+=';
 
@@ -68,16 +68,13 @@ class M_Crypt {
 		require_once 'Crypt/Blowfish.php';
 		$bf =& Crypt_Blowfish::factory('cbc');
 		if (PEAR::isError($bf)) {
-			echo $bf->getMessage();
-			exit;
+			die($bf->getMessage());
 		}
 		$iv = 'abc123+=';
 		$bf->setKey($ky, $iv);
 		$plaintext = $bf->decrypt($val);
 		if (PEAR::isError($plaintext)) {
-			echo 'decoding error : ';
-			echo $plaintext->getMessage();
-			exit;
+			die('decoding error : '.$plaintext->getMessage());
 		}
 		return trim($plaintext);
 	}

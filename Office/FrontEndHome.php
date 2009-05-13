@@ -18,8 +18,8 @@
 */
 
 class M_Office_FrontEndHome extends M_Office_Controller {
-    function M_Office_FrontEndHome() {
-        M_Office_Controller::M_Office_Controller();
+    public function __construct() {
+        parent::__construct();
         $modinfo = &PEAR::getStaticProperty('Module','global');
 
         array_unshift($modinfo['template_dir'],APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);

@@ -19,8 +19,8 @@
 
 
 class M_Office_ChooseTable extends M_Office_Controller {
-	function M_Office_ChooseTable() {
-		M_Office_Controller::M_Office_Controller();
+	function __construct() {
+		parent::__construct();
         $o = '<ul class="chooseTables">';
         $modules = $this->getOption('modulesToList');
         $officeConfig = PEAR::getStaticProperty('m_office','options');

@@ -18,7 +18,8 @@ define('PI',3.1415926536);
  * Also provides helper methods for satellite settings (azimut - elevation - polarity)
  *
  */
-class MGeo {
+class MGeo 
+{
 	/**
 	 * 
 	 * Address
@@ -43,7 +44,8 @@ class MGeo {
 	 *
 	 * @param $key	string	Google maps key
 	 */
-	public function __construct($key = null) {
+	public function __construct($key = null) 
+	{
 		if(is_null($key)) {
 			$this->key = Config::getPref('gmap_key');
 		} else {

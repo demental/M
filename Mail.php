@@ -313,7 +313,7 @@ class Mail extends Maman {
 	 * Send Mail
 	 *
 	 * @access private
-	 * @param $from			string	From
+	 * @param $from			string or array	From (if array, format is Array('from','fromname'))
 	 * @param $to			string	To
 	 * @param $subject		string	Subject
 	 * @param $body			string	HTML Body
@@ -328,7 +328,7 @@ class Mail extends Maman {
 			$from=array($from,$from);
 		}
 		if($only = $this->getConfig('sendonlyto')){
-			$note="-------Note : Mode test activé, ce message était normalement destiné à ".$to."---------\r\n";
+			$note="-------Note : Test mode enabled, this message should have been sent to ".$to."---------\r\n";
 			$to=$only;
 		}
 		if($this->getConfig('sendmail')){
@@ -339,14 +339,14 @@ class Mail extends Maman {
 				$mail->Host=$this->getConfig('smtphost');
 			}
 			$mail->CharSet=$this->getConfig('encoding');
-			$mail->AddAddress($to);                // Adresse email de reception
-			$mail->Subject = $subject;                    // Sujet
-			$mail->Body = $note.$body;          // Corps du message
+			$mail->AddAddress($to);
+			$mail->Subject = $subject;
+			$mail->Body = $note.$body;
 			$mail->AltBody=$altbody;
 			if(!is_array($from)){
 				$from=array($from,$from);
 			}
-			$mail->From = $from[0];              // Adresse email de l'expediteur (optionnel)
+			$mail->From = $from[0];
 			$mail->FromName = $from[1];
 
 			if(key_exists('reply-to',$options)){
@@ -359,11 +359,11 @@ class Mail extends Maman {
 
 			if(null!=$attachments){
 				if(!is_array($attachments)){
-					$attachments=array($attachments);
+					$attachments = array($attachments);
 				}
 				foreach($attachments as $k=>$v){
 					if(!$mail->AddAttachment($v, basename($v))){
-						echo "Erreur impossible d'ajouter pièce jointe $v";
+						trigger_error("Attachment $v could not be added");
 					}
 				}
 			}
@@ -371,24 +371,24 @@ class Mail extends Maman {
 			$result = 	$mail->send();
 		}
 		/**
-		 * Enregistrement en logfile
+		 * Record to logfile
 		 */
 		if($this->getConfig('logmail')){
 			$newmailFile=date("Y-m-d-H-i-s").".mlog";
 			$fp=fopen($this->getConfig('log_folder').$newmailFile,"a+");
-			fwrite($fp,"Message de : ".$from[1]."<".$from[0].">\r\n");
-			fwrite($fp,"à : ".$to."\r\n");
-			fwrite($fp,"Sujet : ".stripslashes($subject)."\r\n");
+			fwrite($fp,"Message from : ".$from[1]."<".$from[0].">\r\n");
+			fwrite($fp,"to : ".$to."\r\n");
+			fwrite($fp,"Subject : ".stripslashes($subject)."\r\n");
 			fwrite($fp,"Message : ".stripslashes($note.$body)."\r\n");
 			fwrite($fp,"\r\n");
 			if(!is_array($attachments)){
 				$attachments=array($attachments);
 			}
 			foreach($attachments as $k=>$v){
-				fwrite($fp,"Pièce jointe : ".basename($v)."\r\n");
+				fwrite($fp,"Attachment : ".basename($v)."\r\n");
 			}
 			if($this->getConfig('sendmail')){
-				fwrite($fp,"Ce message a été envoyé par mail.\r\n----------------------------------------\r\n\r\n");
+				fwrite($fp,"This message was sent by mail.\r\n----------------------------------------\r\n\r\n");
 			}
 			fclose($fp);
 		}

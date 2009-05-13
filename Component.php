@@ -14,24 +14,25 @@
 * Component class, allows a component to be inserted into a template, including controller logic.
 */
 
-class Component extends Dispatcher {
-    /**
-     * Constructor
-     * 
-     * @param $module	Module to display
-     * @param $action	Content to display
-     * @param $params	Modules parameters
-     * @return Display
-     */
-    function __construct($module, $action='index',$params = null) {
-        parent::__construct($module,$action,$params);
+class Component extends Dispatcher 
+{
+  /**
+   * Constructor
+   * 
+   * @param $module	Module to display
+   * @param $action	action to execute
+   * @param $params	Modules parameters
+   * @return string
+   */
+  function __construct($module, $action='index',$params = null) 
+  {
+      parent::__construct($module,$action,$params);
+  }
 
-    }
+  public function display ()
+  {
+      $this->page->hasLayout(false);
 
-    public function display ()
-    {
-        $this->page->hasLayout(false);
-
-        return parent::display();
-    }
-}?>
+      return parent::display();
+  }
+}

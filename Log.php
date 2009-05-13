@@ -15,7 +15,8 @@
  * Very basic log class
  *
  */
-class Log {
+class Log 
+{
 
 	/**
 	 *
@@ -49,7 +50,7 @@ class Log {
 	 * @access	public
 	 * @static
 	 */
-	public static function info ($message)
+	public static function info($message)
 	{
 		self::message($message);
 	}
@@ -61,7 +62,8 @@ class Log {
 	 * @access	public
 	 * @static
 	 */
-	public static function message($message,$level = Log::LOGLEVEL_INFO) {
+	public static function message($message,$level = Log::LOGLEVEL_INFO)
+	{
 
 		return;
 		$file = Config::get('logfile');
@@ -76,9 +78,10 @@ class Log {
 	 * @access	public
 	 * @static
 	 */
-	public static function mail($message) {
+	public static function mail($message) 
+	{
 		$m = Mail::factory('vide');
-		$m->setVars(array('subject'=>'Rapport log sur '.SITE_URL,'body'=>$message.'<h3>Requête :</h3><pre>'.print_r($_REQUEST,true).'</pre><h3>Session</h3><pre>'.print_r($_SESSION,true)));
+		$m->setVars(array('subject'=>'Log report from '.SITE_URL,'body'=>$message.'<h3>Request :</h3><pre>'.print_r($_REQUEST,true).'</pre><h3>Session</h3><pre>'.print_r($_SESSION,true)));
 		$m->sendTo(TECH_EMAIL);
 	}
 }

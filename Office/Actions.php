@@ -29,8 +29,8 @@ class M_Office_Actions extends M_Office_Controller {
    * @param $do the DataObject recordset upon which the action will be applied
    * @param $type string default 'batch'(default) 'global' or 'single' : action type
    */
-	function M_Office_Actions($options, $do,$type='batch') {
-		M_Office_Controller::M_Office_Controller($options);
+	public function __construct($options, $do,$type='batch') {
+		parent::__construct($options);
     
         switch($type) {
             case 'batch':
@@ -119,7 +119,7 @@ class M_Office_Actions extends M_Office_Controller {
                     $obj2->limit($start,$step);
                     $start+=$step;
                     if(!$obj2->find()) {
-      						    $this->say('Action par lot terminée<script type="text/javascript">alert("terminé")</script>');
+      						    $this->say('Action par lot terminée');
                       M_Office_Util::clearRequest($values);
                       if(!$_REQUEST['debug']) {
                         M_Office_Util::refresh(M_Office_Util::getQueryParams());
@@ -193,9 +193,9 @@ class M_Office_Actions extends M_Office_Controller {
       							$this->has_output=true;
                     return;
                   }
-		              $this->say("L'action a été effectuée avec succès.");
+		              $this->say(__('Action was executed successfully.'));
               } else {
-                  $this->say("ERREUR. Action non effectuée");
+                  $this->say(__('ERROR. No action executed.'));
               }
               M_Office_Util::clearRequest(array_merge($qfAction->getSubmitValues(), array('doaction'=>'','glaction'=>'','doSingleAction'=>'','selected'=>'','choice'=>'')));
               if(!$_REQUEST['debug']) {
@@ -218,7 +218,7 @@ class M_Office_Actions extends M_Office_Controller {
 						    }
 						    unset($_REQUEST['selected']);
                             if(empty($clause)) {
-							    $this->say('Aucun élément sélectionné. Aucune action n\'a été effectuée');
+							    $this->say(__('No record selected. Aucune action was executed'));
                                 M_Office_Util::clearRequest($values);
                                 if(!$_REQUEST['debug']) {
                                   M_Office_Util::refresh(M_Office_Util::getQueryParams());
@@ -236,9 +236,9 @@ class M_Office_Actions extends M_Office_Controller {
             $res = call_user_func_array(array($obj,$action),$values);
 
 							if(false !== $res) {
-						        $this->say("L'action a été effectuée avec succès.");
+						        $this->say('Action was executed successfully.');
                             } else {
-                                $this->say("ERREUR. Action non effectuée");
+                                $this->say(__('ERROR. No action executed.'));
                             }
                         }
                         M_Office_Util::clearRequest(array('doaction'=>'','glaction'=>'','doSingleAction'=>'','selected'=>'','choice'=>''));

@@ -24,28 +24,28 @@ class M_Office_View_List
     var $_JS;
     var $_includeJS;
     #   Constructor
-    function M_Office_View_List ( &$controller )
+    public function __construct ( &$controller )
     {
         $this->_controller = $controller;
     }
     ### 
-    function getControllerOption($opt,$module = null) 
+    protected function getControllerOption($opt,$module = null) 
     {
         return $this->_controller->getOption($opt,$module);
     }
-    function getPaging() {
+    public function getPaging() {
         return;
     }
-    function toHtml() {
+    public function toHtml() {
         return;
     }
-    function setOptions($opts) {
+    public function setOptions($opts) {
         return;
     }
-    function &prepare(&$do, $frontend = true,$pager = true) {
+    public function &prepare(&$do, $frontend = true,$pager = true) {
         return;
     }
-    function getFields() {
+    public function getFields() {
       return $this->fields;
     }
 

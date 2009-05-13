@@ -15,9 +15,12 @@
 /**
  *
  * Misc utilities related to files/folders manipulations
+ * This class can be instanciated for some operations, useful if you want to work
+ * on a specific set of files.
  *
  */
-class fileUtils{
+class fileUtils
+{
 
 	/**
 	 *
@@ -35,7 +38,8 @@ class fileUtils{
 	 * @param	$file	string	File URL
 	 * @return	string
 	 */
-	function __construct($file) {
+	function __construct($file)
+	{
 		if(is_file($file)) {
 			$this->file = $file;
 		} else {
@@ -49,7 +53,8 @@ class fileUtils{
 	 *
 	 * @param $ext	string	Extension to add
 	 */
-	function addExcludeExtension($ext) {
+	public function addExcludeExtension($ext)
+	{
 		$this->addExcludePattern('.+\.'.$ext.'$');
 	}
 
@@ -59,7 +64,8 @@ class fileUtils{
 	 *
 	 * @param	$pattern	string	Pattern to exclude
 	 */
-	function addExcludePattern($pattern) {
+	public function addExcludePattern($pattern) 
+	{
 		$this->_pattern .= '|'.$pattern;
 	}
 
@@ -70,7 +76,8 @@ class fileUtils{
 	 * @param $file	string	File URL
 	 * @return boolean
 	 */
-	function is_Image($file){
+	public static function is_Image($file)
+	{
 		return in_array(fileUtils::getFileExtension($file),array('jpg','jpeg','gif','png'));
 	}
 
@@ -78,10 +85,11 @@ class fileUtils{
 	 *
 	 * Get the file extension
 	 *
-	 * @param $file	string	File URL
+	 * @param $file	string	File name/URL
 	 * @return extension	string
 	 */
-	function getFileExtension($file){
+	function getFileExtension($file)
+	{
 		$nom=explode(".",$file);
 		$ext=$nom[count($nom)-1];
 		return strtolower($ext);
@@ -91,11 +99,12 @@ class fileUtils{
 	 *
 	 * Get files older than a given date
 	 *
-	 * @param	$time		date	Limit date
+	 * @param	$time		unix timestamp
 	 * @param	$absolute	boolean
 	 * @return	Files		array
 	 */
-	function getFilesOlderThan($time,$absolute=false) {
+	public function getFilesOlderThan($time,$absolute=false)
+	{
 		$t = time()-$time;
 			
 		foreach($this->getContents() as $file) {
@@ -111,9 +120,10 @@ class fileUtils{
 	 *
 	 * Delete files older than a given date
 	 *
-	 * @param $time		date	Limit date
+	 * @param $time		unix timestamp
 	 */
-	function deleteFilesOlderThan($time) {
+	public function deleteFilesOlderThan($time)
+	{
 		foreach($this->getFilesOlderThan($time) as $file) {
 			unlink($this->file.$file);
 		}
@@ -127,7 +137,7 @@ class fileUtils{
    * @param       string     $file       Name of the file to look for
    * @return      mixed      The full path if file exists, FALSE if it does not
    */
-  function file_exists_incpath ($file)
+  public static function file_exists_incpath ($file)
   {
     if(ereg('^'.DIRECTORY_SEPARATOR,$file)) {
       return file_exists($file);
@@ -245,7 +255,8 @@ class fileUtils{
 	 *
 	 * @return Files list
 	 */
-	function getContents() {
+	function getContents() 
+	{
 		$out=array();
 		if(!is_dir($this->file)) {
 			return false;
@@ -268,7 +279,8 @@ class fileUtils{
 	 *
 	 * @return Total of directory
 	 */
-	function deleteContents() {
+	function deleteContents() 
+	{
 
 		if ($dh = @opendir($this->file))
 		{
@@ -315,7 +327,8 @@ class fileUtils{
 	 * @param	$file	string	File URL
 	 * @return	HTML Output		string
 	 */
-	function toHtml($file){
+	function toHtml($file)
+	{
 		switch(fileUtils::getFileExtension(IMAGES_UPLOAD_FOLDER.$file)){
 			case 'jpeg':
 			case 'jpg':
@@ -340,7 +353,7 @@ class fileUtils{
 				return $output;
 				break;
 			default:
-				return '<a href="'.$file.'">Voir le fichier</a>';
+				return '<a href="'.$file.'">'.__('View file').'</a>';
 				break;
 		}
 	}
@@ -352,7 +365,8 @@ class fileUtils{
 	 * @param $path
 	 * @return unknown_type
 	 */
-	function getFolderPath($path){
+	function getFolderPath($path)
+	{
 		return ereg('/$',$path)?$path:$path.'/';
 	}
 

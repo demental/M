@@ -23,8 +23,8 @@ class M_Office_livesearch extends M_Office_Controller
     // @param   string (table for which to expand view)
     // Expand 
     
-    function M_Office_livesearch($searchtext,$expandTable=null) {
-        M_Office_Controller::M_Office_Controller();
+    function __construct($searchtext,$expandTable=null) {
+        parent::__construct();
         $this->searchtext=$searchtext;
         $this->expand=$expandTable!==null;
         $this->expandTable=$expandTable;
@@ -38,7 +38,7 @@ class M_Office_livesearch extends M_Office_Controller
             :
             $this->getGlobalOption('searchInTables','frontendhome');  
         if(!is_array($searchin) || count($searchin)==0) {
-            return '<p>Aucun domaine de recherche</p>';
+            return '<p>'.__('No search domain').'</p>';
         }
         $out=array();
         foreach($searchin as $table) {
@@ -58,7 +58,7 @@ class M_Office_livesearch extends M_Office_Controller
                 if($cnt>10){break;}
             }
             if($cnt==0) {
-              $ret.='<dd><em>Aucun résultat</em></dd>';
+              $ret.='<dd><em>'.__('No result').'</em></dd>';
             }
             $ret.='</dl>';
         }

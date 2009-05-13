@@ -37,7 +37,11 @@ class Calc
 		$vat=$vat>1?$vat/100:$vat;
 		return number_format($price*(1+$vat),2, '.', '');
 	}
-
+	// Alias
+  public static function addVAT($price,$vat)
+  {
+    return self::HT2TTC($price,$vat);
+  }
 	/**
 	 * Convert VAT amount to Tax free amount.
 	 *
@@ -52,7 +56,11 @@ class Calc
 		$vat=$vat>1?$vat/100:$vat;
 		return number_format($price/(1+$vat),2, '.', '');
 	}
-
+	// Alias
+  public static function removeVAT($price,$vat)
+  {
+    return self::TTC2HT($price,$vat);
+  }
 	/**
 	 * Return formatted amount with currency.
 	 *

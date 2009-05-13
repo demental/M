@@ -15,9 +15,8 @@
  * Store and retrieve configuration options accross application
  */
 
-class Config {
-
-	// @todo explain vars
+class Config 
+{
 
 	/**
 	 * associative array that stores application preferences 
@@ -27,7 +26,8 @@ class Config {
 	 * @var $preftab array
 	 * @access protected
 	 */
-	protected static $preftab = array();
+	protected static $prefArr = array();
+
 
 	/**
 	 *
@@ -41,6 +41,7 @@ class Config {
 	 */
 	protected static $cfgArr = array();
 
+
 	/**
 	 *
 	 * Loads a configuration array
@@ -53,7 +54,6 @@ class Config {
 	 */
 	public static function load($array)
 	{
-
 		self::$cfgArr = array_merge(self::$cfgArr,$array);
 	}
 
@@ -65,7 +65,8 @@ class Config {
 	 * @static
 	 *
 	 */
-	public static function getAlternateLangs() {
+	public static function getAlternateLangs() 
+	{
 		$l=Config::getAllLangs();
 		$cur=array_search(DEFAULT_LANG,$l);
 		unset($l[$cur]);
@@ -81,7 +82,8 @@ class Config {
 	 * @static
 	 *
 	 */
-	public static function getAllLangs() {
+	public static function getAllLangs() 
+	{
 		return Config::get('installedLangs');
 	}
 
@@ -95,7 +97,8 @@ class Config {
 	 * @static
 	 *
 	 */
-	public static function get($var) {
+	public static function get($var) 
+	{
 		return self::$cfgArr[$var];
 	}
 
@@ -109,7 +112,8 @@ class Config {
 	 * @static
 	 *
 	 */
-	public static function set($var,$val) {
+	public static function set($var,$val) 
+	{
 		self::$cfgArr[$var]=$val;
 	}
 
@@ -126,8 +130,9 @@ class Config {
 	 * @static
 	 *
 	 */
-	public static function getPref($var) {
-		if(!key_exists($var,self::$preftab)){
+	public static function getPref($var) 
+	{
+		if(!key_exists($var,self::$prefArr)) {
 			$res = & DB_DataObject::factory('preferences');
 			$res->var=$var;
 			$res->find(true);
@@ -139,25 +144,9 @@ class Config {
 				}
 				$res->val = $temp3;
 			}
-			self::$preftab[$var]=$res->val;
+			self::$prefArr[$var]=$res->val;
 		}
-		return self::$preftab[$var];
-	}
-
-	/**
-	 *
-	 * @todo what's this ?? (might be scheduled for deletion)
-	 *
-	 * @access	public
-	 * @param	??		$item	??
-	 * @param	??		$key	??
-	 * @return	??		Value
-	 * @static
-	 *
-	 */
-	public static function arrayize(&$item,$key)
-	{
-	 # code...
+		return self::$prefArr[$var];
 	}
 
 	/**
@@ -180,7 +169,7 @@ class Config {
 		}
 		$res->val = $val;
 		$res->update();
-		self::$preftab[$var]=$val;
-		return self::$preftab[$var];
+		self::$prefArr[$var]=$val;
+		return self::$prefArr[$var];
 	}
 }

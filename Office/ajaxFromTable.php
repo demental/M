@@ -22,9 +22,9 @@ class M_Office_ajaxFromTable extends M_Office_Controller
     public $table;
     public $field;
     public $value;
-    function M_Office_ajaxFromTable($linkTable,$linkField,$value) {
+    public function __construct($linkTable,$linkField,$value) {
 
-        M_Office_Controller::M_Office_Controller();
+        parent::__construct();
         $this->table = $linkTable;
         $this->module = $linkTable;
         $this->field = $linkField;

@@ -61,7 +61,7 @@ array(
   'office_dbmodule'       =>'M/Office/DbModule.php',
   'payment'               =>'M/Payment.php',
   'iorder'                =>'M/Payment/iOrder.php',
-  'phpmailer'             =>'M/lib/phpmailer/class.phpmailer.php',
+  'phpmailer'             =>'M/lib/phpmailer.php',
   'm_crypt'               =>'M/Crypt.php',
   'mpdf'                  =>'M/MPdf.php',
   'tcpdf'                 =>APP_ROOT.WEB_FOLDER.'tcpdf/tcpdf.php',

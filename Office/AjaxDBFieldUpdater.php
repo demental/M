@@ -9,7 +9,7 @@ class M_Office_AjaxDBFieldUpdater extends M_Office_Controller
 	var $field; // String
 	var $value; // String
 	
-	function M_Office_AjaxDBFieldUpdater(){
+	public function __construct(){
 		switch($_REQUEST['ajaction']){
 			case 'updateField':
 				$this->updateField($_REQUEST);
