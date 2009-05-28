@@ -22,16 +22,18 @@
 * @version      0.1
 */
 
-require_once "M/DB/DataObject/Plugin.php";
 
-class DB_DataObject_Plugin_OfficePack extends DB_DataObject_Plugin
+class DB_DataObject_Plugin_OfficePack extends M_Plugin
 {
     public $plugin_name='officePack';
-
+    public function getEvents()
+    {
+      return array('delete','insert','find','update','count');
+    }
     function delete($obj) {
       if(key_exists('deleted',$obj->table())) {
-        $obj->deleted=1;
-        $obj->update();
+        $db = $obj->getDatabaseConnection();
+        $db->exec('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET '.$db->quoteIdentifier('deleted').' = 1');
         return false;
       }
     }

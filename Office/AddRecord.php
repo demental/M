@@ -29,9 +29,6 @@ class M_Office_AddRecord extends M_Office_Controller {
         $mopt = $mopts['modules'][$module];
     		$table = $mopt['table'];
         $do = M_Office_Util::doForModule($module);
-        if($do->getPlugin('ownership')) {
-            $do->filterowner = $_SESSION['adminGroup'];
-        }
 
         $this->append('subActions','<a href="'.M_Office_Util::getQueryParams(array(), array('record','doSingleAction')).'">'.__('Go to the %s list',array($mopt['title'])).'</a>');
         $formBuilder =& MyFB::create($do);

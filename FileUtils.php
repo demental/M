@@ -385,4 +385,15 @@ class fileUtils
 			exec('rm -Rf '.$path);
 		}
 	}
+ /**
+  * sanitizes a file name to prevent from evil behaviour
+  * and removes any path to keep only the file name
+  * @param $filename string file name to sanitize
+  * @return string sanitized file name
+  */
+  public static function sanitize($filename)
+  {
+    $result = basename($filename);
+    return escapeshellcmd($result);
+  }
 }

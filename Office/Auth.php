@@ -21,7 +21,7 @@ require_once 'M/Office/Controller.php';
 require_once 'M/MyFB.php';
 
 class M_Office_Auth extends M_Office_Controller {
-    function __construct() {
+    public function __construct() {
       parent::__construct();        
   		if(key_exists('logout',$_REQUEST)){
   		    User::getInstance('office')->logout();
@@ -46,20 +46,20 @@ class M_Office_Auth extends M_Office_Controller {
             $this->loginForm(User::getInstance('office')->containers['office']['table']);
       }
     }
-    function loginForm($table) {
-		    $form = new HTML_QuickForm('loginForm', 'POST', M_Office_Util::getQueryParams(array(), array(), false), '_self', null, true);
-		    $authDO=& DB_DataObject::factory($table);
-        $authDO->getPlugin('user')->prepareForLogin($authDO,false,false);
-		    $authFB=& MyFB::create($authDO);
-		    $authFB->useForm($form);
-		    $authFB->getForm();
-    		if($form->validate()){
-    			M_Office_Util::refresh($_SERVER['REQUEST_URI']);
-    		}
-		    M_Office::$dsp='login';
-        $this->assignRef('loginForm',$form);
+    public function loginForm($table) {
+	    $form = new HTML_QuickForm('loginForm', 'POST', M_Office_Util::getQueryParams(array(), array(), false), '_self', null, true);
+	    $authDO=& DB_DataObject::factory($table);
+      $authDO->getPlugin('user')->prepareForLogin($authDO,false,false);
+	    $authFB=& MyFB::create($authDO);
+	    $authFB->useForm($form);
+	    $authFB->getForm();
+  		if($form->validate()){
+  			M_Office_Util::refresh($_SERVER['REQUEST_URI']);
+  		}
+	    M_Office::$dsp='login';
+      $this->assign('loginForm',$form);
     }
-  	function initOptions() {
+  	public function initOptions() {
   		$chooseTableOptions =& PEAR::getStaticProperty('M_Office_choosetable', 'options');
   		$chooseTableOptions=$_SESSION['adminPrivileges']['choosetable'];
   		$showTableOptions =& PEAR::getStaticProperty('M_Office_showtable', 'options');
@@ -67,7 +67,7 @@ class M_Office_Auth extends M_Office_Controller {
   		$editRecordOptions =& PEAR::getStaticProperty('M_Office_editrecord', 'options');
   		$editRecordOptions=$_SESSION['adminPrivileges']['editrecord'];
   	}
-  	function regenerateModList() {
+  	public function regenerateModList() {
   	  Mreg::get('authHelper')->regenerateModList();
   	}
 }

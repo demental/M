@@ -21,10 +21,14 @@
  	define('TMP_PATH',ini_get('upload_tmp_dir'));
  }
 
-require_once 'M/DB/DataObject/Plugin.php';
-class DB_DataObject_Plugin_Upload extends DB_DataObject_Plugin
+class DB_DataObject_Plugin_Upload extends M_Plugin
 {
     public $plugin_name='upload';
+  public function getEvents()
+  {
+    return array('pregenerateform','postgenerateform','preprocessform','postprocessform','preparelinkeddataobject',
+                  'insert','update','find','count','delete');
+  }
 
 	function preGenerateForm(&$fb,&$obj)
 	{
@@ -53,6 +57,8 @@ class DB_DataObject_Plugin_Upload extends DB_DataObject_Plugin
 	}
 	function preProcessForm(&$values,&$fb,&$obj)
 	{
+	  $obj->fb_elementNamePrefix=$fb->elementNamePrefix;
+    $obj->fb_elementNamePostfix=$fb->elementNamePostfix;
 		return;
 	}
 	function prepareLinkedDataObject(&$linkedDataObject, $field,&$obj)

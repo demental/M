@@ -17,40 +17,45 @@
 * @version      0.1
 */
 
-require_once 'M/DB/DataObject/Plugin.php';
-class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
+class DB_DataObject_Plugin_I18n extends M_Plugin {
   public $plugin_name='international';
   public $_autoActions = true;
+  public function getEvents()
+  {
+    return array('pregenerateform','postgenerateform','preprocessform','postprocessform','find','update','postupdate','delete','postinsert');
+  }
   public function preGenerateForm($fb,$obj)
   {
     if(!$this->_autoActions) {
       $langs = array(T::getLang());
     } else {
-      $langs = $this->getLangs();
+      $langs = $this->getLangs($obj);
     }
     
-    $this->_dos = $this->prepareTranslationRecords($obj,$langs);
+    $obj->_i18ndos = $this->prepareTranslationRecords($obj,$langs);
   }
   public function getDefaultLang($obj)
   {
     return T::getLang();
   }
   public function postGenerateForm($form,$fb,$obj){
+    $info = $obj->_getPluginsDef();
+    $info = $info['i18n'];
     if(!$this->_autoActions) {
       $langs = array(T::getLang());
     } else {
-      $langs = $this->getLangs();
+      $langs = $this->getLangs($obj);
     }    
-    foreach($this->_dos as $lang=>$arec) {
-      $this->_fbs[$lang] = MyFB::create($this->_dos[$lang]);
-      $this->_fbs[$lang]->useForm($form);
-      $this->_fbs[$lang]->getForm();
+    foreach($obj->_i18ndos as $lang=>$arec) {
+      $obj->_i18nfbs[$lang] = MyFB::create($obj->_i18ndos[$lang]);
+      $obj->_i18nfbs[$lang]->useForm($form);
+      $obj->_i18nfbs[$lang]->getForm();
     }
 
       if(is_array($obj->fb_fieldsToRender)) {
-        $iFields = array_intersect($obj->i18nFields,$obj->fb_fieldsToRender);
+        $iFields = array_intersect($info,$obj->fb_fieldsToRender);
       } else {
-        $iFields = $obj->i18nFields;
+        $iFields = $info;
       }
       $allLangs = array_diff($langs,array($this->getDefaultLang($obj)));
       array_unshift($allLangs,$this->getDefaultLang($obj));
@@ -91,8 +96,10 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
   
   public function preProcessForm(&$values,$fb,$obj)
   {
-    foreach($obj->i18nFields as $field) {
-      foreach($this->getLangs() as $lang) {
+    $info = $obj->_getPluginsDef();
+    $info = $info['i18n'];
+    foreach($info as $field) {
+      foreach($this->getLangs($obj) as $lang) {
         $values[$field.'_'.$lang] = $values[$field.'_group'][$field.'_'.$lang];
       }
       unset($values[$field.'_group']);
@@ -106,19 +113,21 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
   
   public function postProcessForm(&$values,$fb,$obj)
   {
-    foreach($this->getLangs() as $lang) {      
-      $this->_dos[$lang]->i18n_record_id = $obj->pk();
-      $this->_fbs[$lang]->processForm($values);
+    foreach($this->getLangs($obj) as $lang) {      
+      $obj->_i18ndos[$lang]->i18n_record_id = $obj->pk();
+      $obj->_i18nfbs[$lang]->processForm($values);
     }
   }
 	public function prepareTranslationRecords($obj,$langs)
 	{
+    $info = $obj->_getPluginsDef();
+    $info = $info['i18n'];	  
 	  $out = array();
     $tablename = $obj->tableName().'_i18n';
     if(is_array($obj->fb_fieldsToRender)) {
-      $iFields = array_intersect($obj->i18nFields,$obj->fb_fieldsToRender);
+      $iFields = array_intersect($info,$obj->fb_fieldsToRender);
     } else {
-      $iFields = $obj->i18nFields;
+      $iFields = $info;
     }
     foreach($langs as $lang) {
       $t = DB_DataObject::factory($tablename);
@@ -133,7 +142,7 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
         }
       }
       $t->fb_elementNamePostfix.='_'.$lang;
-      foreach($obj->i18nFields as $field) {
+      foreach($info as $field) {
         if(!is_array($t->fb_fieldAttributes[$field])) {
           $t->fb_fieldAttributes[$field].=($t->fb_fieldAttributes[$field]?' ':'').'lang="'.$lang.'"';        
         } else {
@@ -162,15 +171,15 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
     }
     return $out;
 	}
-  public function getLangs()
+  public function getLangs($obj)
   {
-    if(is_array($this->_langs)) return $this->_langs;
+    if(is_array($obj->_i18nlangs)) return $obj->_i18nlangs;
     return Config::getAllLangs();
   }
-  public function setLangs($langs)
+  public function setLangs($obj,$langs)
   {
     if(!is_array($langs)) return false;
-    $this->_langs = $langs;
+    $obj->_i18nlangs = $langs;
     return true;
   }
 	public function find($autoFetch,$obj)
@@ -212,6 +221,8 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
 	}
 	public function saveTranslation($obj,$lang)
 	{
+	  $info = $obj->_getPluginsDef();
+    $info = $info['i18n'];
     $do = DB_DataObject::factory($obj->tableName().'_i18n');
     $do->i18n_lang = $lang;
     $do->i18n_record_id = $obj->pk();
@@ -220,7 +231,7 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
     } else {
       $action='insert';
     }
-    foreach($obj->i18nFields as $field) {
+    foreach($info as $field) {
       $do->$field = $obj->$field;
     }
     $do->$action();
@@ -283,7 +294,7 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
       return $res;
     }
     // Changing foreign key format if officepack used (CHAR(36))
-    if($obj->officePack) {
+    if($obj->hasplugin('officepack')) {
       $foreignkeyspecs = array('type'=>'text','length'=>36);
     } else {
       $foreignkeyspecs = array('type'=>'integer','unsigned'=>1);      
@@ -307,9 +318,11 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
   }
   public function migration_getNonI18nFields($obj,$iname) 
   {
+    $info = $obj->_getPluginsDef();
+    $info = $info['i18n'];
     $t = $obj->table();
     $toremove = array();
-    $i18n = $obj->i18nFields;
+    $i18n = $info;
     $keys = $obj->keys();
     foreach($t as $field=>$info) {
       if(!in_array($field,$i18n) && $field!=$keys[0]) {
@@ -330,13 +343,15 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
   }
   public function migration_copyDataToI18n($obj,$iname)
   {
+    $info = $obj->_getPluginsDef();
+    $info = $info['i18n'];
     $db = $obj->getDatabaseConnection();
     foreach(Config::getAllLangs() as $lang) {
       T::setLang($lang);
       
       $original = DB_DataObject::factory($obj->tableName());
       $original->unloadPlugin('international');
-      $ifields = $original->i18nFields;
+      $ifields = $info;
       unset($original->i18nFields);
 
       $original->find();
@@ -401,6 +416,8 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
   // = Cross-compatibility methods with old international plugin =
   // =============================================================
   function setTranslation(&$obj,$field,$value,$lang){
+    $info = $obj->_getPluginsDef();
+    $info = $info['i18n'];
     if(!$obj->pk()) {
       return false;
     }
@@ -409,7 +426,7 @@ class DB_DataObject_Plugin_I18n extends DB_DataObject_Plugin {
     $t->i18n_record_id = $obj->pk();
     $t->i18n_lang = $lang;
     if(!$t->find(true)) {
-      foreach($obj->i18nFields as $afield) {
+      foreach($info as $afield) {
         $t->{$afield} = $obj->{$afield};
       }
       $action='insert';

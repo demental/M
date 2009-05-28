@@ -42,7 +42,7 @@ $dispatchopt['all']['modulepath'][]='M/Office/modules/';
  *
  *
  */
-class M_Office extends M_Office_Controller {
+class M_Office extends M_Office_Controller implements iListener {
 	public static $dsp='__defaut/index';
 
 	public function __construct($layout = 'main') {
@@ -209,8 +209,11 @@ class M_Office extends M_Office_Controller {
 		return $tpl->fetch(M_Office::$dsp);
 
 	}
-	function receiveMessage($message,$type) {
-		$_SESSION['flashmessages'][]=array($message,$type);
+  public function getEvents() {
+    return array('notification');
+  }
+	public function handleEvent($sender,$event,$params = null) {
+		$_SESSION['flashmessages'][]=array($params,$event);
 	}
 	public static function isAjaxRequest() {
 		return strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])=='xmlhttprequest';

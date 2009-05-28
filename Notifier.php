@@ -3,7 +3,6 @@
  * M PHP Framework
  *
  * @package      M
- * @subpackage   Notifier
  * @author       Arnaud Sellenet <demental@sat2way.com>
  * @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
  * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
@@ -18,7 +17,7 @@
  */
 class Notifier
 {
-	var $listeners=array();
+	private $_listeners=array();
 
 	function & getInstance() {
 		static $instance;
@@ -27,18 +26,13 @@ class Notifier
 		}
 		return $instance;
 	}
-	function addListener(& $object) {
-		if(!method_exists($object,'receiveMessage')){
-			$this->broadCastMessage("L'objet de classe <b>".get_class($object)."</b> ne peut pas recevoir de messages.",NOTIFICATION_DEV_WARNING);
-			return;
-		}
-		$this->listeners[]=&$object;
+	function addListener(iListener $object) {
+		$this->_listeners[] = $object;
 	}
 
-	function broadCastMessage($message, $type = NOTIFICATION_NOTICE) {
-		foreach($this->listeners as &$listener) {
-			$listener->receiveMessage($message, $type);
+	function broadCastMessage($sender,$message) {
+		foreach($this->_listeners as $listener) {
+			$listener->handleEvent($sender,'notification',$message);
 		}
 	}
 }
-?>

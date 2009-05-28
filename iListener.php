@@ -3,7 +3,6 @@
  * M PHP Framework
  *
  * @package      M
- * @subpackage   iListener
  * @author       Arnaud Sellenet <demental@sat2way.com>
  * @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
  * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
@@ -14,8 +13,18 @@
  *
  * Simple listener interface
  *
- */
+ **/
 interface iListener {
-	public function receiveMessage($message,$type);
+  /**
+   * @return array indexed array of events that can be handled by this listener
+   */
+  public function getEvents();
+  /**
+   * handles an event
+   * @param $sender object that fired the event
+   * @param $event string name of the event
+   * @param $params additional params (optional)
+   * @return string "fail", "bypass" or any other value
+   */
+	public function handleEvent($sender,$event,$params = null);
 }
-?>

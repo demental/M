@@ -67,7 +67,9 @@ array(
   'tcpdf'                 =>APP_ROOT.WEB_FOLDER.'tcpdf/tcpdf.php',
   'mgeo'                  =>'M/MGeo.php',
   'net_url_mapper'        =>'Net/URL/Mapper.php',
-  'iquerystorable'        =>'M/Plugin/Exporter/iQueryStorable.php'
+  'iquerystorable'        =>'M/Plugin/Exporter/iQueryStorable.php',
+  'pluginregistry'        =>'M/PluginRegistry.php',
+  'm_plugin'              =>'M/Plugin.php'
   )
   );
 

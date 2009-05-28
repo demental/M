@@ -19,8 +19,7 @@
 * @version      0.1
 */
 
-require_once 'M/DB/DataObject/Plugin.php';
-class DB_DataObject_Plugin_Pager extends DB_DataObject_Plugin
+class DB_DataObject_Plugin_Pager extends M_Plugin
 {
     public $plugin_name='pager';	
     public $pager;
@@ -34,12 +33,15 @@ class DB_DataObject_Plugin_Pager extends DB_DataObject_Plugin
       'sort'=>'_ps',
       'direction'=>'_pd'
       );
-    function setVars($sort,$direction) {
+    public function getEvents() {
+      return array('find','query');
+    }
+    public function setVars($sort,$direction) {
       $this->vars['sort']=$sort;
       $this->vars['direction']=$direction;           
     }
     
-    function setValues($sort,$direction) {
+    public function setValues($sort,$direction) {
       $this->pointer['sort']=$sort;
       $this->pointer['direction']=$direction;      
     }

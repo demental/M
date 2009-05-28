@@ -16,10 +16,12 @@
  * @todo add ability to group by more than one field
  */
 
-require_once 'M/DB/DataObject/Plugin.php';
-class DB_DataObject_Plugin_Exporter extends DB_DataObject_Plugin {
+class DB_DataObject_Plugin_Exporter extends M_Plugin {
   public $plugin_name='exporter';
-  
+  public function getEvents()
+  {
+    return array('getbatchmethods');
+  }
   /**
    * Adds the "batchExport" batch method to the batch actions dropdown
    */

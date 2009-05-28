@@ -213,24 +213,26 @@ class User{
 		$pass=FALSE;
 		$belong="";
 		$dbdo=&DB_DataObject::factory($this->containers[$this->context]['table']);
-		$lg=$dbdo->userFields['login'];
+    $defs = $dbdo->_getPluginsDef();
+    $defs = $defs['user'];
+		$lg=$defs['login'];
 		if(empty($lg)) {
 			if(empty($this->context)) {
-				if(empty($dbdo->userFields['context'])) {
-					throw new Exception('User context was not set in the user ORM ($userFields[\'context\'] property)');
+				if(empty($defs['context'])) {
+					throw new Exception('User context was not set in the user ORM context property');
 				}
 			} else {
-				throw new Exception('User login field was not set in the user ORM ($userFields[\'login\'] property)');
+				throw new Exception('User login field was not set in the user ORM context property');
 			}
 		}
 		$dbdo->$lg=$login;
 		if(!$dbdo->find(TRUE)){
 			$error=ERROR_NO_USER;
 		} else {
-			if($callback = $dbdo->userFields['passEncryption']) {
+			if($callback = $defs['passEncryption']) {
 				$pwd = call_user_func($callback,$pwd);
 			}
-			if($dbdo->{$dbdo->userFields['pwd']}!=$pwd){
+			if($dbdo->{$defs['pwd']}!=$pwd){
 				$error=ERROR_WRONG_PASSWORD;
 			} else {
 				$error="";
@@ -241,9 +243,9 @@ class User{
 			$this->setId($dbdo->id);
 			$this->currentContainer = $dbdo;
 			$this->getPrefs();
-			if($dbdo->userFields['last_cnx']) {
-				$this->setProperty('last_cnx',$this->currentContainer->{$dbdo->userFields['last_cnx']});
-				$this->currentContainer->{$dbdo->userFields['last_cnx']}=date('Y-m-d H:i:s');
+			if($defs['last_cnx']) {
+				$this->setProperty('last_cnx',$this->currentContainer->{$defs['last_cnx']});
+				$this->currentContainer->{$defs['last_cnx']}=date('Y-m-d H:i:s');
 				$this->currentContainer->update();
 			}
 			$this->store();

@@ -21,11 +21,14 @@
 * @version      0.1
 */
 
-require_once 'M/DB/DataObject/Plugin.php';
-class DB_DataObject_Plugin_tree extends DB_DataObject_Plugin
+class DB_DataObject_Plugin_tree extends M_Plugin
 {
         public $plugin_name='tree';
         private $_doRebuild = true;
+  public function getEvents()
+  {
+    return array('postinsert','insert','update','postupdate','postdelete');
+  }
         /**
          * DB_DataObject overloads
          **/

@@ -331,6 +331,9 @@ class M_Office_Util {
     return $obj->fb_enumOptions[$field][$obj->$field];
   }
 	public static function field_format_link($obj,$field) {
+    if(is_object($obj->{'_'.$field})) {
+      return $obj->{'_'.$field}->__toString();
+    }
 	  $link = $obj->getLink($field);
 	  if(is_object($link)) {
       foreach(array(array($link,'toHtmlCell'),array($link,'toHtml'),array($link,'__toString'),array('DB_DataObject_FormBuilder','getDataObjectString')) as $m) {

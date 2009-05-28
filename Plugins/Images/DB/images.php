@@ -20,17 +20,22 @@
  if(!defined('TMP_PATH')){
  	define('TMP_PATH',ini_get('upload_tmp_dir'));
  }
-require_once 'M/DB/DataObject/Plugin.php';
-class DB_DataObject_Plugin_Images extends DB_DataObject_Plugin
+
+class DB_DataObject_Plugin_Images extends M_Plugin
 {
   
   public $plugin_name='images';
-
+  public function getEvents()
+  {
+    return array('pregenerateform','postgenerateform','preprocessform','postprocessform','insert','update','delete');
+  }
 	function preGenerateForm(&$fb,&$obj)
 	{
+	  $info = $obj->_getPluginsDef();
+    $info = $info['images'];
 	  require_once 'HTML/QuickForm.php';
     HTML_QuickForm::registerElementType('imagefile','M/HTML/QuickForm/imagefile.php','HTML_QuickForm_imagefile');
-		foreach($obj->photoFields as $k=>$v){
+		foreach($info as $k=>$v){
 			$v=key_exists(0,$v)?$v[0]:$v;
       switch(true) {
         case $v['x']&&$v['y']:
@@ -51,7 +56,7 @@ class DB_DataObject_Plugin_Images extends DB_DataObject_Plugin
         //TODO move this to postGenerateForm (like in upload plugin)
         $obj->fb_fieldLabels[$k]['unit']='<input type="checkbox" name="__image_delete_'.$k.'" value="1" />'.__('Delete current');
       }
-			$obj->fb_preDefElements[$k]=& HTML_QuickForm::createElement('imagefile',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldLabels[$k],array('showimage'=>$v['showimage']),SITE_URL.WWW_IMAGES_FOLDER.$obj->photoFields[$k][0]['path'].'/');
+			$obj->fb_preDefElements[$k]=& HTML_QuickForm::createElement('imagefile',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldLabels[$k],array('showimage'=>$v['showimage']),SITE_URL.WWW_IMAGES_FOLDER.$info[$k][0]['path'].'/');
 		}
 	}
 	function postGenerateForm(&$form,&$fb,&$obj)
@@ -59,17 +64,23 @@ class DB_DataObject_Plugin_Images extends DB_DataObject_Plugin
     return;
 	}
 	function getUrl(&$obj,$field) {
-    $path = $obj->photoFields[$field][0]['path'];
+    $info = $obj->_getPluginsDef();
+    $info = $info['images'];
+    $path = $info[$field][0]['path'];
     return SITE_URL.WWW_IMAGES_FOLDER.$path.'/'.$obj->$field;
 	}
 	function preProcessForm(&$values,&$fb,&$obj)
 	{
+	  $obj->fb_elementNamePrefix=$fb->elementNamePrefix;
+    $obj->fb_elementNamePostfix=$fb->elementNamePostfix;
 		return;
 	}
 	function postProcessForm(&$v,&$fb,&$obj)
 	{
+	  $info = $obj->_getPluginsDef();
+    $info = $info['images'];
 	  $upd=false;
-		foreach($obj->photoFields as $k=>$val){
+		foreach($info as $k=>$val){
       $field = $obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix;
       if(key_exists('__image_delete_'.$field,$_REQUEST)) {
         $this->deletePhoto($obj,$k);
@@ -84,20 +95,26 @@ class DB_DataObject_Plugin_Images extends DB_DataObject_Plugin
 	}
 	function insert(&$obj)
 	{
-		foreach($obj->photoFields as $k=>$v){
+	  $info = $obj->_getPluginsDef();
+    $info = $info['images'];
+		foreach($info as $k=>$v){
 			$obj->$k=$this->upPhoto($obj, $k, $obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix);
 		}
 	}
 	function update(&$obj)
 	{
-		foreach($obj->photoFields as $k=>$v){
+    $info = $obj->_getPluginsDef();
+    $info = $info['images'];
+		foreach($info as $k=>$v){
 			$obj->$k=$this->upPhoto($obj, $k, $obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix);
 		}
 
 	}
 	function delete(&$obj)
 	{
-    foreach($obj->photoFields as $field=>$params) {
+    $info = $obj->_getPluginsDef();
+    $info = $info['images'];
+    foreach($info as $field=>$params) {
       $this->deletePhoto($obj, $field);
     }
 	}
@@ -131,10 +148,12 @@ class DB_DataObject_Plugin_Images extends DB_DataObject_Plugin
   }
   function imageExists(&$obj,$field) 
   {
-    if(!key_exists($field,$obj->photoFields)) {
+    $info = $obj->_getPluginsDef();
+    $info = $info['images'];
+    if(!key_exists($field,$info)) {
       return false;
     }
-    $file = IMAGES_UPLOAD_FOLDER.$obj->photoFields[$field][0]['path'].$obj->{$field};
+    $file = IMAGES_UPLOAD_FOLDER.$info[$field][0]['path'].$obj->{$field};
     if(is_file($file)) {
       return true;
     }
@@ -142,7 +161,9 @@ class DB_DataObject_Plugin_Images extends DB_DataObject_Plugin
   }
  	function deletePhoto(&$obj,$field)
  	{
- 		$arr=key_exists(0,$obj->photoFields[$field])?$obj->photoFields[$field]:array($obj->photoFields[$field]);
+ 	  $info = $obj->_getPluginsDef();
+    $info = $info['images'];
+ 		$arr=key_exists(0,$info[$field])?$info[$field]:array($info[$field]);
  		foreach($arr as $k=>$v){
  			@unlink(IMAGES_UPLOAD_FOLDER.$v['path'].$obj->$field);
  			$obj->say('file deleted '.IMAGES_UPLOAD_FOLDER.$v['path'].$obj->$field);
@@ -150,14 +171,16 @@ class DB_DataObject_Plugin_Images extends DB_DataObject_Plugin
  	}
 
 	function regenerateThumbs(&$obj, $field){
-		$arr=key_exists(0,$obj->photoFields[$field])?$obj->photoFields[$field]:array($obj->photoFields[$field]);
+	  $info = $obj->_getPluginsDef();
+    $info = $info['images'];
+		$arr=key_exists(0,$info[$field])?$info[$field]:array($info[$field]);
 		require_once("M/traitephoto.php");
 		if(!file_exists(FileUtils::getFolderPath(TMP_PATH).$obj->$field)){
 	    $original = $this->getBestImage($obj,$field);
 	    if($original['isoriginal']){
 	        unset($arr[$original['index']]);
 	    }
-			$photo=IMAGES_UPLOAD_FOLDER.FileUtils::getFolderPath($obj->photoFields[$field][$original['index']]['path']).$obj->$field;
+			$photo=IMAGES_UPLOAD_FOLDER.FileUtils::getFolderPath($info[$field][$original['index']]['path']).$obj->$field;
       $firstRedim=false;
 		} else {
 			$photo=FileUtils::getFolderPath(TMP_PATH).$obj->$field;
@@ -173,7 +196,7 @@ class DB_DataObject_Plugin_Images extends DB_DataObject_Plugin
       }
       $firstRedim=true;
 		}
-		foreach($obj->photoFields[$field] as $k=>$v){
+		foreach($info[$field] as $k=>$v){
       $name = $this->_regenerateThumbUnit($photo,$v,$obj,$field);
     }
 		@unlink(FileUtils::getFolderPath(TMP_PATH).$obj->$field);
@@ -249,7 +272,9 @@ class DB_DataObject_Plugin_Images extends DB_DataObject_Plugin
 	}
 	function getBestImage(&$obj, $field)
 	{
-		$arr=key_exists(0,$obj->photoFields[$field])?$obj->photoFields[$field]:array($obj->photoFields[$field]);
+	  $info = $obj->_getPluginsDef();
+    $info = $info['images'];
+		$arr=key_exists(0,$info[$field])?$info[$field]:array($info[$field]);
 		$maxsurface=0;$maxid=null;
 		foreach($arr as $k=>$v){
       if(key_exists('original',$v)) {

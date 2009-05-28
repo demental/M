@@ -20,9 +20,6 @@
 
 
 require_once 'DB/DataObject.php';
-require_once 'M/DB/DataObject/Iterator.php';
-
-
 
 if(!defined('PLUGIN_DIR')) {
 	define('PLUGIN_DIR','M/DB/DataObject/Plugin/');
@@ -51,60 +48,92 @@ define('REQUIRED_RULE_MESSAGE',__("Le champ ci-dessous est requis."));
 define('VIOLATION_RULE_MESSAGE',__("Le champ ci-dessous n'est pas valide."));
 define('NEWVALUE_TEXT',__("--Nouveau--"));
 
-class DB_DataObject_Pluggable extends DB_DataObject_Iterator {
+class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
-	protected $_plugins = array();
+  protected $_listeners = array();
 
-	protected $_pluginInfos = array();
-	public $crossLinks_advmultiselect=array();
 
 	public $fb_requiredRuleMessage=REQUIRED_RULE_MESSAGE;
 	public $fb_ruleViolationMessage=VIOLATION_RULE_MESSAGE;
 	public $fb_linkNewValueText=NEWVALUE_TEXT;
   public $fb_dateFromDatabaseCallback='date2array';
 
-
-  // =====================================================================================
-  // = Automagically loads all needed plugins, based on the properties of the dataObject =
-  // = @access public
-  // =====================================================================================
-	public function _loadPlugins() {
-		$pluginInfos=$this->getInstalledPlugins();
-		foreach($pluginInfos as $aPluginInfos) {
-			if(isset($this->$aPluginInfos['var'])){
-				$this->_loadPlugin($aPluginInfos);
-
-			}
-		}
-		$this->_pluginsLoaded = true;
-	}
-  // =====================================================================
-  // = Loads a plugin , provided the information array about this plugin =
-  // = @access protected
-  // = @param array $plugininfo information associative array including the following keys :
-  // =  * include_file = path to the plugin file relative to the defined plugin dir
-  // =  * class_name = class name of the plugin
-  // =  * name = identifier name of the plugin 
-  // =====================================================================
-	protected function _loadPlugin($infos) {
-		require_once PLUGIN_DIR.$infos['include_file'];
-		$plugin = & new $infos['class_name'];
-		$this->_plugins[$infos['name']] = & $plugin;
-	}
-  // ================================================
-  // = Loads a plugin, provided its identifier name
-  // = @access public
-  // = @param string $pname name of the plugin
-  // ================================================
-	public function loadPlugin($pname) {
-    if(!$this->_plugins[$pname]) {
-  		$pluginInfos=$this->getInstalledPlugins();
-      foreach($pluginInfos as $aPluginInfo) {
-        if($aPluginInfo['name']==$pname) {
-          $this->_loadPlugin($aPluginInfo);                    
-        }
+  public function current() {
+      return $this;
+  }
+  public function key() {
+      global $_DB_DATAOBJECT;
+      $result = &$_DB_DATAOBJECT['RESULTS'][$this->_DB_resultid];
+      return $result->rowCount();
+  }
+  public function next() {
+      $this->fetch();
+  }
+  public function rewind() {
+      global $_DB_DATAOBJECT;
+      $result = &$_DB_DATAOBJECT['RESULTS'][$this->_DB_resultid];
+      if(!$result) return false;
+      $result->seek();
+      $this->fetch();
+  }
+  public function valid() {
+      if(empty($this->N)) {
+          return false;
       }
+      global $_DB_DATAOBJECT;
+      if (empty($_DB_DATAOBJECT['RESULTS'][$this->_DB_resultid]) || 
+          !is_object($result = &$_DB_DATAOBJECT['RESULTS'][$this->_DB_resultid])) 
+      {
+          return false;
+      }
+      return true;
+  }
+
+
+################ Plugin management ################
+
+  /**
+   * Returns an array containing plugin definitions. This method MUST be overriden
+   * if you want to use DB plugins.
+   * @example :
+   * <?php
+   * class DataObjects_Blogpost extends DB_DataObject_Pluggable
+   * {
+   * .....
+   * 
+   * public function _getPluginsDef() {
+   *  return array(
+   *      'i18n'=>array('name','title'),
+   *      'officePack'=>true,
+   *      );
+   * }
+   */
+  public function _getPluginsDef() {
+    return array();
+  }
+
+  /**
+   * Binds all needed plugins
+   * The plugin declaration resides in the method $myDataObject->_getPluginsDef()
+   * This method is executed only once per DBDO instance.
+   **/
+
+	public function _loadPlugins() {
+    if($this->_pluginsLoaded) return;
+    foreach($this->_getPluginsDef() as $pluginName=>$params) {
+      $this->addListener(PluginRegistry::getInstance($pluginName,'DB'));
     }
+    $this->_pluginsLoaded = true;
+	}
+  /**
+   * Loads a plugin, provided its identifier name
+   * @param string $pname name of the plugin
+   **/
+	public function loadPlugin($pluginName) {
+    $defs = $this->_getPluginsDef();
+    $params = $defs[$pluginName];
+    $this->addListener(PluginRegistry::getInstance($pluginName,'DB'));    
+    return $this;
   }
   /**
   * unloads a plugin, provided its identifier name
@@ -112,172 +141,23 @@ class DB_DataObject_Pluggable extends DB_DataObject_Iterator {
   * @param string $pname name of the plugin to unload
   **/
 
-	public function unloadPlugin($pname) {
-	    unset($this->_plugins[$pname]);
+	public function unloadPlugin($pluginName) {
+    $this->removeListener(PluginRegistry::getInstance($pluginName,'DB'));
+    return $this;
   }
   /**
-  * Unloads all loaded plugins
+  * Unbinds all binded plugins
   * @access public
   **/
   public function unloadPlugins()
   {
-
-    $this->_plugins = array();
+    if(!$this->_pluginsLoaded) return;
+    foreach($this->_getPluginsDef() as $pluginName=>$params) {
+      $this->addListener(PluginRegistry::getInstance($pluginName,'DB'));
+    }
     $this->_pluginsLoaded = false;
+    return $this;
   }
-  /**
-  * returns as an array the list of all available plugins
-  * @access protected 
-  * @return array array of information for available plugins
-  **/
-	protected function getInstalledPlugins() {
-		if(count($this->_pluginInfos)>0) {
-			return $this->_pluginInfos;
-		} else {
-      return self::getAvailablePlugins();
-		}
-		return array();
-	}
-	public static function getAvailablePlugins()
-	{
-		return array(
-          			  array(  'name'=>'wiki',
-          			  'include_file'=>'Wiki.php',
-          				'class_name'=>'DB_DataObject_Plugin_Wiki',
-          				'var'=>'wikiFields'
-          				),
-
-									array(  'name'=>'images',
-									'include_file'=>'Images.php',
-									'class_name'=>'DB_DataObject_Plugin_Images',
-									'var'=>'photoFields'
-									),
-								
-								
-									array(  'name'=>'upload',
-									'include_file'=>'Upload.php',
-									'class_name'=>'DB_DataObject_Plugin_Upload',
-									'var'=>'uploadFields'
-									),
-								
-								  array(  'name'=>'ownership',
-								  'include_file'=>'Ownership.php',
-								  'class_name'=>'DB_DataObject_Plugin_Ownership',
-								  'var'=>'ownerShipField'
-								  ),
-								  array(    'name'=>'user',
-								  'include_file'=>'User.php',
-								  'class_name'=>'DB_DataObject_Plugin_User',
-								  'var'=>'userFields'
-								  ),
-            			array(	'name'=>'international',
-            			'include_file'=>'i18n.php',
-  								'class_name'=>'DB_DataObject_Plugin_I18n',
-  								'var'=>'i18nFields'
-  								),
-            			array(	'name'=>'international',
-            			'include_file'=>'International.php',
-  								'class_name'=>'DB_DataObject_Plugin_International',
-  								'var'=>'internationalFields'
-  								),
-								  array(  'name'=>'tree',
-								  'include_file'=>'Tree.php',
-								  'class_name'=>'DB_DataObject_Plugin_Tree',
-								  'var'=>'treeFields'
-								  ),
-                  array(  'name'=>'rich',
-                  'include_file'=>'Rich.php',
-                  'class_name'=>'DB_DataObject_Plugin_Rich',
-                  'var'=>'richFields'
-                  ),
-  								array(  'name'=>'officePack',
-  								'include_file'=>'OfficePack.php',
-  								'class_name'=>'DB_DataObject_Plugin_OfficePack',
-  								'var'=>'officePack'),
-  								
-  								array(  'name'=>'pager',
-  								'include_file'=>'Pager.php',
-  								'class_name'=>'DB_DataObject_Plugin_Pager',
-  								'var'=>'pagerplugin'),
-  								array(  'name'=>'exporter',
-  								'include_file'=>'Exporter.php',
-  								'class_name'=>'DB_DataObject_Plugin_Exporter',
-  								'var'=>'exporterProperties')
-
-								);
-		// TODO Parse a plugins definition file instead of hardcoding the information array here
-
-	}
-	/**
-	 * Returns information for one plugin fetched from the available plugins
-	 * @static
-	 * @access public
-	 * @param mixed plugin name (string) or plugin instance
-	 * @return array plugin information
-	 * @return false is no info found for this plugin
-	 * 
-	 */
-  public static function getPluginInfo($plugin)
-  {
-    $infos = self::getAvailablePlugins();
-    if(is_object($plugin)) {
-      $field = 'class_name';
-      $value = get_class($plugin);
-    } else {
-      $field = 'name';
-      $value = $plugin;
-    }
-    foreach($infos as $info) {
-      if($info[$field]==$value) {
-        return $info;
-      }
-    }
-    return false;
-  }
-    /**
-     * @access protected
-     **/
-     protected function _getArrayFromPlugins($callback,$params = null) {
-         $res = array();
-     	if(!$this->_pluginsLoaded) {
-     	    $this->_loadPlugins();
-     	}	
- 		if(is_array($params)) {
- 			$params[]=&$this;
- 		} else {
- 			$params=array(&$this);
- 		}
-
- 		foreach($this->_plugins as $plugin) {
- 			$subres = call_user_func_array(array($plugin,$callback),$params);
-            if(is_array($subres)) {
-                $res = array_merge($res,$subres);
-            }
- 		}
-        return $res;
-     }
-	/**
-	 * @access public 
-	 * (for specific hacks... might be better to get it as a protected method)  
-	 **/
-	public function _executePlugins($callback,$params=null) {
-    	if(!$this->_pluginsLoaded) {
-    	    $this->_loadPlugins();
-    	}	
-		if(is_array($params)) {
-			$params[]=&$this;
-		} else {
-			$params=array(&$this);
-		}
-		$res=true;		
-		foreach($this->_plugins as $plugin) {
-				$tres =  call_user_func_array(array($plugin,$callback),$params);
-        if($tres===false) {
-          $res = false;
-        }
-		}
-		return $res;
-	}
 	/**
 	 * Returns a reference for a plugin, provided its identifier name
 	 * @access public
@@ -285,131 +165,169 @@ class DB_DataObject_Pluggable extends DB_DataObject_Iterator {
 	 * @return false if the plugin does not exist in the current object
 	 * @return Object plugin reference
 	 **/
-	public function &getPlugin($pname) {
-    	if(!$this->_pluginsLoaded) {
-    	    $this->_loadPlugins();
-    	}
-	  if(!key_exists($pname,$this->_plugins)) {
-          return false;
-	  } else {
-	    return $this->_plugins[$pname];
-	  }    
+	public function getPlugin($pname) {
+  	if(!$this->_pluginsLoaded) {
+  	    $this->loadPlugin($pname);
+  	}
+    return PluginRegistry::getInstance($pname,'DB');
 	}
-	/**
-	 * Overload
-	 **/
-/*	function _call($method,$params,&$return) {
-		if(parent::_call($method,$params,$return)) {
-			return true;
-		} else {
-			$this->executePlugins($method,$params,$return);
-		}
-	}
-	*/
-/**
- * End plugin management
- **/
+  public function addListener($listener)
+  {
+    if(!$this->hasListener($listener)) {
+      $this->_listeners[] = $listener;
+    }
+    return $this;
+  }
+  public function removeListener($listener)
+  {
+    foreach($this->_listeners as $i=>$alistener) {
+      if($alistener === $listener) {
+        unset($this->_listeners[$i]);
+      }
+    }
+    return $this;
+  }
+  public function removeAllListeners()
+  {
+    $this->_listeners = array();
+    return $this;
+  }
+  public function hasListener($listener)
+  {
+    foreach($this->_listeners as $alistener) {
+      if($listener === $alistener) return true;
+    }
+    return false;
+  }
+  /**
+   * @param string name of the event
+   * @param mixed parameters passed to the events
+   */
+  public function trigger($eventName,$params = null)
+  {
+    $eventName = strtolower($eventName);
+    if(!$this->_pluginsloaded) {
+      $this->_loadplugins();
+    }
+    $finalresult = null;
+    foreach($this->_listeners as $listener) {
+      $result = $listener->handleEvent($this,$eventName,$params);
+      if($result == 'fail') return 'fail';
+      if($result == 'bypass') $finalresult = 'bypass';
+    }
+    return $finalresult;
+    
+  }
+  /**
+   * Overload => transform it to an event call
+   */
+  public function __call($method,$args)
+  {
+    $this->trigger($method,$args);
+    return parent::__call($method,$args);
+  }
+###################### End plugin management #######################
 
-
-
+  /**
+   * Adds ability to get records by an array of primary keys
+   */
+  public function get($k = null,$v = null) {
+    if(is_array($k)) {
+        $k = implode(',',$k);
+        $this->whereAdd('id IN('.$k.')');
+        return $this->find();
+    } else {
+        return parent::get($k,$v);
+    }
+  }
+  /**
+   * Delete linked records
+   * @param $param1,$param2,...,$paramN strings foreign table names
+   */
+  function deleteLinks() {
+    $args=func_get_args();
+    foreach($args as $tbl){
+      $this->say('Deleting foreign records in '.$tbl);
+      $do=& DB_dataObject::factory($tbl);
+      $links=$do->links();
+      foreach ($links as $field=>$link) {
+        if(preg_match('`^'.$this->tableName().':.+$`',$link,$match)){
+          $do->$field=$this->pk();
+          break;
+        }
+      }
+      while($do->fetch()){
+        $do->delete();
+        $this->say('Deleting '.$do->tableName().' '.$do->id);
+      }
+    }
+  }
 
 // =======================================================
-// = DB_DataObject methods override - plugins executions =
+// = DB_DataObject methods override - events triggered   =
 // =======================================================    
 	function preGenerateForm(&$fb){
-		$this->_executePlugins('preGenerateForm',array(&$fb));
-		
-		$fb->populateOptions();
-/**
- * crosslinks => auto show crosslinks when no fb_fieldsToRender is set
- **/
+		$this->trigger('preGenerateForm',array(&$fb));
 		if(empty($this->fb_submitText)){
-			$this->fb_submitText=__("Valider");
+			$this->fb_submitText=__('Submit');
 		}
-	}
-	
+	}	
 	function postGenerateForm(&$form,&$fb){
-
-		$this->_executePlugins('postGenerateForm',array(&$form,&$fb));
-
-			/**
-			 * crosslink advmultiselect fields
-			 * TODO move this to a plugin
-			 **/
-			if(count($this->crossLinks_advmultiselect)>0){
-				foreach($this->crossLinks_advmultiselect as $k){
-					$field=$fb->elementNamePrefix.$k.$fb->elementNamePostfix;
-					if($form->elementExists($field)){
-						HTML_QuickForm::registerElementType('advmultiselect','HTML/QuickForm/advmultiselect.php','HTML_QuickForm_advmultiselect');
-						$current=& $form->getElement($field);
-						if(!PEAR::isError($current)){
-							$label=$current->_label;
-							if(!is_array($label)){
-								$label=array($label,'note'=>'éléments sélectionnés = bloc de droite');
-							}
-							$_cros=& HTML_QuickForm::createElement('advmultiselect',$field,$current->_label);
-							$_cros->_options=$current->_options;
-							if(is_array($this->fb_fieldAttributes) && key_exists($k, $this->fb_fieldAttributes)) {
-								$attribs = $this->fb_fieldAttributes[$k];
-							} else {
-								$attribs=array('style'=>'width:300px');
-							}
-							$_cros->updateAttributes($attribs);
-							$_cros->setSelected($current->getSelected());
-							$current=$_cros;
-						}
-
-					}
-				}
-			}
-		$form->setJsWarnings(__("Les champs suivants ne sont pas remplis correctement"),__("Merci de les corriger"));
-		$form->setRequiredNote(__("Champs obligatoires"));
+		$this->trigger('postGenerateForm',array(&$form,&$fb));
+		$form->setJsWarnings(__("The following fields are not valid"),__("Please correct them"));
+		$form->setRequiredNote(__("Required fields"));
 	}
 	
 	function prepareLinkedDataObject(&$linkedDataObject, $field){
-		$this->_executePlugins('prepareLinkedDataObject',array(&$linkedDataObject,$field));
+		$this->trigger('prepareLinkedDataObject',array($linkedDataObject,$field));
 	}
 	function preProcessForm(&$v,&$fb){
-		$this->_executePlugins('preProcessForm',array(&$v,&$fb));
-	    // On renseigne les prefixe et postfixe localement pour pouvoir récupérer par la suite les fichiers images et upload
-	    $this->fb_elementNamePrefix=$fb->elementNamePrefix;
-	    $this->fb_elementNamePostfix=$fb->elementNamePostfix;
+		$this->trigger('preProcessForm',array(&$v,&$fb));
 	}
 	function postProcessForm(&$v,&$fb){
-		$this->_executePlugins('postProcessForm',array(&$v,&$fb));
+		$this->trigger('postProcessForm',array(&$v,&$fb));
 	}				
 	function insert(){
 	  $this->getDatabaseConnection()->query('set names utf8');
-		$this->_executePlugins('insert');
+		$result = $this->trigger('insert');
+		switch($result) {
+		  case 'bypass':
+		    return true;
+		    break;
+		  case 'fail':
+		    return false;
+		    break;
+		  default:  
         if(parent::insert()) {
-    		$this->_executePlugins('postinsert');
-            return true;
+    		  $this->trigger('postinsert');
+          return true;
         }
         return false;
     }
-    function get($k = null,$v = null) {
-        if(is_array($k)) {
-            $k = implode(',',$k);
-            $this->whereAdd('id IN('.$k.')');
-            return $this->find();
-        } else {
-            return parent::get($k,$v);
-        }
-    }
+  }
 	function update($do = false){
     $this->getDatabaseConnection()->query('set names utf8');
-		$this->_executePlugins('update');
-        if(parent::update($do)!==false) {
-    		$this->_executePlugins('postupdate');
-            return true;
-        }
-        return false;		
+		$result = $this->trigger('update',array($do));
+		switch($result) {
+		  case 'bypass':
+		    return true;
+		    break;
+		  case 'fail':
+		    return false;
+		    break;
+		  default:  
+      if(parent::update($do)!==false) {
+    		$this->trigger('postupdate');
+        return true;
+      }
+      return false;		
+    }
 	}
 
 	function fetch(){
-		$this->_executePlugins('prefetch');
+		$this->trigger('prefetch');
 		if(parent::fetch()){
-  		$this->_executePlugins('postfetch');
+  		$this->trigger('postfetch');
 			return true;
 		}
 		return false;
@@ -417,89 +335,64 @@ class DB_DataObject_Pluggable extends DB_DataObject_Iterator {
 
 	function find($autoFetch=false){
     $this->getDatabaseConnection()->query('set names utf8');
-		$this->_executePlugins('find',array($autoFetch));
+		$this->trigger('find',array($autoFetch));
 		return parent::find($autoFetch);
 	}
 	function query($req){
     $this->getDatabaseConnection()->query('set names utf8');
+		$this->trigger('query',array($req));
     return parent::query($req);
   }
-	function count(){
-		$this->_executePlugins('count');
+	public function count(){
+		$this->trigger('count');
 		return parent::count();
 	}
 	
-	function delete()
+	public function delete()
 	{
-		$res = $this->_executePlugins('delete');
-    if($res===false) {
-      return true;
-    }
-    if(parent::delete()) {
-		$this->_executePlugins('postdelete');
+		$res = $this->trigger('delete');
+		switch($result) {
+		  case 'bypass':
+		    return true;
+		    break;
+		  case 'fail':
+		    return false;
+		    break;
+		  default:  
+      if(parent::delete()!==false) {
+    		$this->trigger('postdelete');
         return true;
+      }
+      return false;		
     }
-    return false;
   }
 		
-    function dateOptions($field, &$fb) {
-			$this->_executePlugins('dateOptions',array($field,$fb));
-      return array('format' => 'd-m-Y','addEmptyOption'=>true,'emptyOptionText'=>array('Y'=>'YYYY','m'=>'mm','d'=>'dd'));
-    }
-    function deleteLinks() {
-        $args=func_get_args();
-        foreach($args as $tbl){
-            $this->say('Suppression données connexes pour '.$tbl);
+  public function dateOptions($field, &$fb) {
+		$this->trigger('dateOptions',array($field,$fb));
+    return array('format' => 'd-m-Y','addEmptyOption'=>true,'emptyOptionText'=>array('Y'=>'YYYY','m'=>'mm','d'=>'dd'));
+  }
 
-            $do=& DB_dataObject::factory($tbl);
-            $links=$do->links();
-            foreach ($links as $field=>$link) {
-                if(preg_match('`^'.$this->tableName().':.+$`',$link,$match)){
-                    $do->$field=$this->id;// TODO getprimarykey
-                    break;
-                }
-            }
-            while($do->fetch()){
-                $do->delete();
-                $this->say('Suppression donnée connexe '.$do->tableName().' '.$do->id);
-            }
-        }    
+  public function getSingleMethods($base = null) {
+    if(!is_array($base)) {
+        $base = array();
     }
-    function getSingleMethods($base = null) {
-        if(is_null($base) || $base===false) {
-            $base = array();
-        }
-        $res = $this->_getArrayFromPlugins('getSingleMethods');
-        if(is_array($res)) {
-            return array_merge($base,$res);
-        } else {
-            return $base;
-        }
+    $this->trigger('getSingleMethods',array($base));
+    return $base;
+  }
+  public function getGlobalMethods($base = null) {
+    if(!is_array($base)) {
+      $base = array();
     }
-    function getGlobalMethods($base = null) {
-        if(is_null($base) || $base===false) {
-            $base = array();
-        }
-        $res = $this->_getArrayFromPlugins('getGlobalMethods');
-//        $res['utf8_convert'] = array('title'=>'Conversion UTF8');
-        
-        if(is_array($res)) {
-            return array_merge($base,$res);
-        } else {
-            return $base;
-        }
+    $this->trigger('getGlobalMethods',array($base));
+    return $base;
+  }
+  public function getBatchMethods($base = null) {
+    if(!is_array($base)) {
+      $base = array();
     }
-    function getBatchMethods($base = null) {
-        if(is_null($base) || $base===false) {
-            $base = array();
-        }
-        $res = $this->_getArrayFromPlugins('getBatchMethods');
-        if(is_array($res)) {
-            return array_merge($base,$res);
-        } else {
-            return $base;
-        }
-    }
+    $this->trigger('getBatchMethods',array($base));
+    return $base;
+  }
 	// =========================================
 	// = joinAdd patch over original DB_DataObject class =
 	// =========================================
@@ -813,12 +706,6 @@ class DB_DataObject_Pluggable extends DB_DataObject_Iterator {
         $this->whereAdd("($cond)");
         return true;
     }
-/*    public function _query($string)
-    {
-      $res = parent::_query($string);
-      $this->__last_query = $this->getDatabaseConnection()->last_query;
-      return $res;
-    }*/
     
     // ==================
     // = Helper methods =
@@ -838,17 +725,6 @@ class DB_DataObject_Pluggable extends DB_DataObject_Iterator {
   			$not->broadCastMessage($message , $type);
   		}
   	}
-    // =======================================================================================
-    // = Temporary use, therefore deprecated. Was used to convert old iso-encoded databases  =
-    // =======================================================================================
-    public function utf8_convert()
-    {
-      parent::find();
-      while(parent::fetch()) {
-        $this->getDatabaseConnection()->query('set names utf8');
-        parent::update();
-      }
-    }
     // =============================
     // = returns primary key value =
     // =============================
