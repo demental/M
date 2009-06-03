@@ -25,14 +25,10 @@ class M_Office_DeleteRecords extends M_Office_Controller {
     foreach ($delete as $deleteId => $value) {
       $deldo = clone($do);
       $deldo->get($deleteId);
-      if (isset($_REQUEST['choice']) && substr($_REQUEST['choice'], 0, 3) == __('Yes')) {
-        if($deldo->delete()) {
-					$this->say(__('Record # %s was deleted',array($deleteId)));
-				}
-        unset($deldo);
-      } else {
-        $this->showRecordToDelete($do, $this->getOption('deleteRecursive',$table));
-      }
+      if($deldo->delete()) {
+				$this->say(__('Record # %s was deleted',array($deleteId)));
+			}
+      unset($deldo);
     }
 	  $this->_initRequest();
 	  $this->say(__('The selected records were deleted'));
