@@ -36,13 +36,17 @@ class DB_DataObject_Plugin_tree extends M_Plugin
              $this->rebuild($obj);
          }
          function insert(&$obj) {
-            if(!$obj->{$obj->treeFields['parent']}) {
-                $obj->{$obj->treeFields['parent']} = 0;
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
+            if(!$obj->{$defs['parent']}) {
+                $obj->{$defs['parent']} = 0;
             }
         }
          function update(&$obj) {
-            if(!$obj->{$obj->treeFields['parent']}) {
-                $obj->{$obj->treeFields['parent']} = 0;
+             $defs = $obj->_getPluginsDef();
+             $defs = $defs['tree'];             
+            if(!$obj->{$defs['parent']}) {
+                $obj->{$defs['parent']} = 0;
             }
         }
          function postupdate(&$obj) {
@@ -64,8 +68,10 @@ class DB_DataObject_Plugin_tree extends M_Plugin
          */
         function _getFields(&$obj)
         {
-            return array('id', $obj->treeFields['parent'], $obj->treeFields['sort'],
-                         $obj->treeFields['left'], $obj->treeFields['right'], $obj->treeFields['level']);
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
+            return array('id', $defs['parent'], $defs['sort'],
+                         $defs['left'], $defs['right'], $defs['level']);
         }
  
         /**
@@ -101,7 +107,8 @@ class DB_DataObject_Plugin_tree extends M_Plugin
          */
         function &getDescendants(&$obj, $id = 0, $includeSelf = false, $childrenOnly = false)
         {
-
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
  
             $node = $this->getNode($obj, $id);
             if (is_null($node)) {
@@ -110,9 +117,9 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                 $parent_id = 0;
             }
             else {
-                $nleft = $node->{$obj->treeFields['left']};
-                $nright = $node->{$obj->treeFields['right']};
-                $parent_id = $node->{$obj->treeFields['parent']};
+                $nleft = $node->{$defs['left']};
+                $nright = $node->{$defs['right']};
+                $parent_id = $node->{$defs['parent']};
             }
  
             if ($childrenOnly) {
@@ -122,17 +129,17 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                                      $obj->tableName(),
                                      'id',
                                      $parent_id,
-                                     $obj->treeFields['parent'],
+                                     $defs['parent'],
                                      $parent_id,
-                                     $obj->treeFields['left']);
+                                     $defs['left']);
                 }
                 else {
                     $query = sprintf('select %s from %s where %s = %d order by %s',
                                      join(',', $this->_getFields($obj)),
                                      $obj->tableName(),
-                                     $obj->treeFields['parent'],
+                                     $defs['parent'],
                                      $parent_id,
-                                     $obj->treeFields['left']);
+                                     $defs['left']);
                 }
             }
             else {
@@ -140,28 +147,28 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                     $query = sprintf('select %s from %s where %s >= %d and %s <= %d order by %s',
                                      join(',', $this->_getFields($obj)),
                                      $obj->tableName(),
-                                     $obj->treeFields['left'],
+                                     $defs['left'],
                                      $nleft,
-                                     $obj->treeFields['right'],
+                                     $defs['right'],
                                      $nright,
-                                     $obj->treeFields['left']);
+                                     $defs['left']);
                 }
                 else if ($nleft > 0) {
                     $query = sprintf('select %s from %s where %s > %d and %s < %d order by %s',
                                      join(',', $this->_getFields($obj)),
                                      $obj->tableName(),
-                                     $obj->treeFields['left'],
+                                     $defs['left'],
                                      $nleft,
-                                     $obj->treeFields['right'],
+                                     $defs['right'],
                                      $nright,
-                                     $obj->treeFields['left']
+                                     $defs['left']
                                      );
                 }
                 else {
                     $query = sprintf('select %s from %s order by %s',
                                      join(',', $this->_getFields($obj)),
                                      $obj->tableName(),
-                                     $obj->treeFields['left']
+                                     $defs['left']
                                      );
                 }
             }
@@ -197,7 +204,9 @@ class DB_DataObject_Plugin_tree extends M_Plugin
          */
         function &getBranch(&$obj, $includeSelf = false)
         {
-            if(!$obj->{$obj->treeFields['parent']}) {
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
+            if(!$obj->{$defs['parent']}) {
                 if($includeSelf) {
                     return $obj;
                 } else {
@@ -208,21 +217,21 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                 $query = sprintf('select %s from %s where %s <= %d and %s >= %d order by %s',
                                  join(',', $this->_getFields($obj)),
                                  $obj->tableName(),
-                                 $obj->treeFields['left'],
-                                 $obj->{$obj->treeFields['left']},
-                                 $obj->treeFields['right'],
-                                 $obj->{$obj->treeFields['right']},
-                                 $obj->treeFields['level']);
+                                 $defs['left'],
+                                 $obj->{$defs['left']},
+                                 $defs['right'],
+                                 $obj->{$defs['right']},
+                                 $defs['level']);
             }
             else {
                 $query = sprintf('select %s from %s where %s < %d and %s > %d order by %s',
                                  join(',', $this->_getFields($obj)),
                                  $obj->tableName(),
-                                 $obj->treeFields['left'],
-                                 $obj->{$obj->treeFields['left']},
-                                 $obj->treeFields['right'],
-                                 $obj->{$obj->treeFields['right']},
-                                 $obj->treeFields['level']);
+                                 $defs['left'],
+                                 $obj->{$defs['left']},
+                                 $defs['right'],
+                                 $obj->{$defs['right']},
+                                 $defs['level']);
             }
  
             $result = DB_DataObject::factory($obj->tableName());
@@ -240,17 +249,19 @@ class DB_DataObject_Plugin_tree extends M_Plugin
          */
         function isDescendantOf(&$obj, $descendant_id, $ancestor_id)
         {
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
             $node = $this->getNode($obj, $ancestor_id);
             if (is_null($node)) {
                 return false;
             }
             $result = DB_DataObject::factory($obj->tableName());
             $result->id = $descendant_id;
-            $result->whereAdd(sprintf('%s > %d',$obj->treeFields['left'],
-            $node->{$obj->treeFields['left']}
+            $result->whereAdd(sprintf('%s > %d',$defs['left'],
+            $node->{$defs['left']}
             ));
-            $result->whereAdd(sprintf('%s < %d',$obj->treeFields['right'],
-            $node->{$obj->treeFields['right']}
+            $result->whereAdd(sprintf('%s < %d',$defs['right'],
+            $node->{$defs['right']}
             ));
             return $result->count() > 0;
  
@@ -267,16 +278,20 @@ class DB_DataObject_Plugin_tree extends M_Plugin
          */
         function isChildOf(&$obj, $child_id, $parent_id)
         {
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
             $result = DB_DataObject::factory($obj->tableName());
             $result->id = $child_id;
-            $result->{$obj->treeFields['parent']} = $parent_id;
+            $result->{$defs['parent']} = $parent_id;
             return $result->count()>0;
         }
         function doRebuild($bool) {
             $this->_doRebuild = false;
         }
         function isRoot(&$obj) {
-            return !$obj->{$obj->treeFields['parent']};
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
+            return !$obj->{$defs['parent']};
         }
         /**
          * Find the number of descendants a node has
@@ -286,13 +301,15 @@ class DB_DataObject_Plugin_tree extends M_Plugin
          */
         function numDescendants(&$obj, $id)
         {
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
             if ($id == 0) {
                 $result = DB_DataObject::factory($obj->tableName());
                 return (int)$result->count();
             }
             else {
 
-                    return ($obj->{$obj->treeFields['right']} - $obj->{$obj->treeFields['left']} - 1) / 2;
+                    return ($obj->{$defs['right']} - $obj->{$defs['left']} - 1) / 2;
                 }
             return -1;
         }
@@ -300,9 +317,11 @@ class DB_DataObject_Plugin_tree extends M_Plugin
             return $this->numDescendants($obj,$obj->id)>0;
         }
         function &getParent(&$obj,$toRoot = true) {
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
             $parent = DB_DataObject::factory($obj->tableName());
-            $parent->whereAdd($obj->treeFields['left'].' < '.$obj->{$obj->treeFields['left']}.' AND '.$obj->treeFields['right'].' > '.$obj->{$obj->treeFields['right']});
-            $parent->orderBy($obj->treeFields['left'].' DESC');
+            $parent->whereAdd($defs['left'].' < '.$obj->{$defs['left']}.' AND '.$defs['right'].' > '.$obj->{$defs['right']});
+            $parent->orderBy($defs['left'].' DESC');
             $parent->limit(0,1);
             if($parent->find(true)) {
                 if(!$toRoot && $this->isRoot($parent)) {
@@ -319,16 +338,18 @@ class DB_DataObject_Plugin_tree extends M_Plugin
           return $obj;
         }
         function &getPath(&$obj,$includeRoot = true,$includeSelf=false) {
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
           $query = sprintf('select * from %s where %s <%s %d and %s >%s %d %s order by %s',
                            $obj->tableName(),
-                           $obj->treeFields['left'],
+                           $defs['left'],
                            $includeSelf?'=':'',
-                           $obj->{$obj->treeFields['left']},
-                           $obj->treeFields['right'],
+                           $obj->{$defs['left']},
+                           $defs['right'],
                            $includeSelf?'=':'',
-                           $obj->{$obj->treeFields['right']},
-                           $includeRoot?'':' AND '.$obj->treeFields['left'].'>0',
-                           $obj->treeFields['left']);
+                           $obj->{$defs['right']},
+                           $includeRoot?'':' AND '.$defs['left'].'>0',
+                           $defs['left']);
 
             $path = DB_DataObject::factory($obj->tableName());
             $path->query($query);
@@ -336,8 +357,10 @@ class DB_DataObject_Plugin_tree extends M_Plugin
         }
 
         function getMaxLevel(&$obj) {
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
             $o = DB_DataOBject::factory($obj->tableName());
-            $o->query('SELECT max('.$obj->treeFields['level'].') as '.$obj->treeFields['level'].' from '.$obj->tableName().' WHERE gauche>'.$obj->{$obj->treeFields['left']}.' AND droite<'.$obj->{$obj->treeFields['right']});
+            $o->query('SELECT max('.$defs['level'].') as '.$defs['level'].' from '.$obj->tableName().' WHERE gauche>'.$obj->{$defs['left']}.' AND droite<'.$obj->{$defs['right']});
             $res = $o->getDatabaseResult();
 
 
@@ -351,8 +374,10 @@ class DB_DataObject_Plugin_tree extends M_Plugin
          */
         function numChildren(&$obj, $id)
         {
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
             $result = DB_DataObject::factory($obj->tableName());
-            $result->{$obj->treeFields['parent']} = $id;
+            $result->{$defs['parent']} = $id;
             return (int)$result->count();
         }
  
@@ -363,10 +388,12 @@ class DB_DataObject_Plugin_tree extends M_Plugin
          */
         function getTreeWithChildren($obj)
         {
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
             $idField = 'id';
-            $parentField = $obj->treeFields['parent'];
+            $parentField = $defs['parent'];
             $result = DB_DataObject::factory($obj->tableName());
-            $result->orderBy($obj->treeFields['sort']);
+            $result->orderBy($defs['sort']);
             $result->find();
             // create a root node to hold child data about first level items
             $root = new stdClass;
@@ -396,7 +423,8 @@ class DB_DataObject_Plugin_tree extends M_Plugin
          */
         function rebuild(&$obj)
         {
-
+            $defs = $obj->_getPluginsDef();
+            $defs = $defs['tree'];
             if(!$this->_doRebuild) {return;}
             $n = 0; // need a variable to hold the running n tally
             $level = 0; // need a variable to hold the running level tally
@@ -410,11 +438,11 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                 $record = DB_DataObject::factory($obj->tableName());
                 $record->query(sprintf('UPDATE %s SET %s = %d, %s = %d, %s = %d WHERE %s = "%s"',
                                     $obj->tableName(),
-                                    $obj->treeFields['left'],
+                                    $defs['left'],
                                     $row['left'],
-                                    $obj->treeFields['right'],
+                                    $defs['right'],
                                     $row['right'],
-                                    $obj->treeFields['level'],
+                                    $defs['level'],
                                     $row['level'],
                                     'id',
                                     $id));
@@ -426,12 +454,14 @@ class DB_DataObject_Plugin_tree extends M_Plugin
          **/
          function &getChildren(&$obj, $parent){
              $do = & DB_DataObject::factory($obj->tableName());
+             $defs = $obj->_getPluginsDef();
+             $defs = $defs['tree'];
              if(!$parent) {
-                 $do->whereAdd($obj->treeFields['parent'].' IS NULL OR '.$obj->treeFields['parent'].'="0"');
+                 $do->whereAdd($defs['parent'].' IS NULL OR '.$defs['parent'].'="0"');
              } else {
-                 $do->{$obj->treeFields['parent']} = $parent;
+                 $do->{$defs['parent']} = $parent;
              }
-             $do->orderBy($obj->treeFields['sort']);
+             $do->orderBy($defs['sort']);
              $do->find();
              return $do;
          }

@@ -141,29 +141,28 @@ class M_Office_Actions extends M_Office_Controller {
             // If $do and $obj are not identical, it's a plugin call, so we pass the $do as well
             call_user_func(array($obj,$preparemethod),$qfAction,$do === $obj?null:$do);
 
-						$qfAction->addElement('submit','__submit__','Valider');
-						if($qfAction->isSubmitted() && $qfAction->validate()){
-							$values=$qfAction->exportValues();
-              foreach ($qfAction->_elements as $key=>$elt) {
-                  if($elt->_type=='file') {
-                    $values[$elt->getAttribute('name')]=$elt->getValue();
-                  }
-              }
-        			unset($values['doaction']);
-        			unset($values['glaction']);
-        			unset($values['doSingleAction']);
-              unset($values['__actionscope']);
+				$qfAction->addElement('submit','__submit__','Valider');
+				if($qfAction->isSubmitted() && $qfAction->validate()){
 
-							$params="";
-							$aj="";
-              
-							if(is_subclass_of($obj,'DB_DataObject_Plugin')) {
-                
+					$values=$qfAction->exportValues();
+                    foreach ($qfAction->_elements as $key=>$elt) {
+                        if($elt->_type=='file') {
+                            $values[$elt->getAttribute('name')]=$elt->getValue();
+                        }
+                    }
+			        unset($values['doaction']);
+			        unset($values['glaction']);
+			        unset($values['doSingleAction']);
+                    unset($values['__actionscope']);
 
-                $res = call_user_func(array($obj,$action),$do,$values);
-							} else {
-                $res = call_user_func(array($obj2,$action),$values);
-							}
+					$params="";
+					$aj="";
+      
+					if(is_subclass_of($obj,'DB_DataObject_Plugin')) {
+                        $res = call_user_func(array($obj,$action),$do,$values);
+					} else {
+                        $res = call_user_func(array($obj2,$action),$values);
+					}
 							
 
               if(false !== $res) {

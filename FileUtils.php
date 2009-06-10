@@ -225,6 +225,48 @@ class fileUtils
 
 		}
 	}
+	/**
+	 *
+	 * Get Files list of a given folder with extension filtering capabilities
+	 * PLUS folders
+	 * @access	public
+	 * @static
+	 * @param	$folder				string	Source folder
+	 * @param	$extensionfilter	string	Extension to filter
+	 * @return	Files list			array
+	 */
+	public static function getAll($folder,$extensionfilter='')
+	{
+		if(!is_array($extensionfilter)) {
+			$extensionfilter = array($extensionfilter);
+		}
+		if(!ereg('\/$',$folder)) {
+			$folder.='/';
+		}
+		if(!is_dir($folder)) {
+			return array();
+		}
+		$out = array();
+		if ($dh = @opendir($folder)) {
+			while (($file = readdir($dh)) !== false)
+			{
+				if(ereg('^\.',$file)) continue;
+				if(is_dir($folder.$file)) {
+					$out = array_merge($out,self::getAllFiles($folder.$file,$extensionfilter),array($folder.$file));
+				} elseif(!is_file($folder.$file)) {
+					continue;
+				} else {
+					if(empty($extensionfilter) || eregi('\.'.implode('|',$extensionfilter),$file)) {
+						$out[]=$folder.$file;
+					}
+				}
+
+			}
+			sort($out);
+			return $out;
+
+		}
+	}
 
 	/**
 	 *

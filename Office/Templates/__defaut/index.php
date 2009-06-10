@@ -36,6 +36,11 @@
                   'top:'+mouse.y + 'px')
              });
 			$("#closepanel").click(function(){$("#messagePanel").hide("fast")});
+      say = function(text) {
+          $('#messagePanel ul').html('<li>'+text+'</li>');
+          $('#messagePanel').show();
+          $('#closepanel').focus();
+      }
 <?php
 foreach(Mtpl::getJSinline('ready') as $inst){
 	echo $inst."\n";

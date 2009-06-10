@@ -61,22 +61,22 @@ class DB_DataObject_Plugin_User extends M_Plugin
         }
 	}
 	public function checkUniqueLogin($values) {
-	  $defs = $this->_obj->_getPluginsDef();
-    $defs = $defs['user'];
-    $test = DB_DataObject::factory($this->_obj->tableName());
-    $test->whereAdd("id!='".$this->_obj->id."'");
-    $test->{$defs['login']} = $values[$defs['login']];
-    if($test->find(true)) {
-      return array($test->userFields['login']=>__('Cet identifiant existe déjà, veuillez en choisir un autre SVP'));
-    }
+	    $defs = $this->_obj->_getPluginsDef();
+        $defs = $defs['user'];
+        $test = DB_DataObject::factory($this->_obj->tableName());
+        $test->whereAdd("id!='".$this->_obj->id."'");
+        $test->{$defs['login']} = $values[$defs['login']];
+        if($test->find(true)) {
+          return array($defs['login']=>__('This username already exists, please choose another one'));
+        }
         return true;
 	}
 	public function preProcessForm(&$values,&$fb,&$obj) {
-  	  $defs = $this->_obj->_getPluginsDef();
-      $defs = $defs['user'];
-      if(!is_array($fb->userEditableFields) || count($fb->userEditableFields==0)) {
-            $fb->userEditableFields = array_keys($obj->table());
-      }
+      	$defs = $this->_obj->_getPluginsDef();
+        $defs = $defs['user'];
+        if(!is_array($fb->userEditableFields) || count($fb->userEditableFields==0)) {
+              $fb->userEditableFields = array_keys($obj->table());
+        }
 	    if(empty($values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix])) {
 	        if($index = array_search($defs['pwd'],$fb->userEditableFields)) {
 	            unset($fb->userEditableFields[$index]);
@@ -165,8 +165,10 @@ class DB_DataObject_Plugin_User extends M_Plugin
   }
   function postGenerateReminder(&$form,&$fb) {
       $do = $fb->_do;
-      $elt = HTML_QuickForm::createElement('static','remindertext','',__('Pour récupérer votre mot de passe entrez votre adresse email dans le champ ci-dessous, vous recevrez vos codes d\'accès par email.'));
-      $form->insertElementBefore($elt,$fb->elementNamePrefix.$do->userFields['email'].$fb->elementNamePostfix);
+      $defs = $do->_getPluginsDef();
+      $defs = $defs['user'];
+      $elt = HTML_QuickForm::createElement('static','remindertext','',__('To retreive your password, enter your email address in the field below, then you will be sent your new password.'));
+      $form->insertElementBefore($elt,$fb->elementNamePrefix.$defs['email'].$fb->elementNamePostfix);
   }
 
 }

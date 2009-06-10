@@ -51,6 +51,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       $obj->_i18nfbs[$lang]->useForm($form);
       $obj->_i18nfbs[$lang]->getForm();
     }
+    $elements = $obj->_i18nfbs[$lang]->_reorderElements();
 
       if(is_array($obj->fb_fieldsToRender)) {
         $iFields = array_intersect($info,$obj->fb_fieldsToRender);
@@ -63,14 +64,15 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       foreach($iFields as $field) {
         $fields = array();
         foreach($langs as $lang) {
-          $elem = $form->getElement($obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix.'_'.$lang);
-          $elem->setAttribute('rel',$field);
+          $completename = $obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix;
+          $elem = $form->getElement($completename.'_'.$lang);
+          $elem->setAttribute('rel',$completename);
           if($lang == $this->getDefaultLang($obj)) {
             $class='translatesource field_'.$lang;
-            $id = 'autotransid_'.$field;
+            $id = 'autotransid_'.$completename;
           } else {
-            $class='autotranslate source_autotransid_'.$field.' field_'.$lang;
-            $id = 'autotransid_'.$field.'_'.$lang;
+            $class='autotranslate source_autotransid_'.$completename.' field_'.$lang;
+            $id = 'autotransid_'.$completename.'_'.$lang;
           }
           $elem->setAttribute('class',$elem->getAttribute('class').($elem->getAttribute('class')?' ':'').$class);
           $elem->setAttribute('id',$id);
@@ -82,14 +84,17 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
           }
           $elem->setLabel($sublabel.'('.$lang.')');
           $fields[] =$elem;
-          $form->removeElement($obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix.'_'.$lang);
+          $form->removeElement($completename.'_'.$lang);
           
         }
         if(!$form->elementExists('__submit__')) {
-          $form->addElement('group', $field.'_group',$label,$fields,'');
+          $form->addElement('group', $completename.'_group',$label,$fields,'');
         } else {
           $form->insertElementBefore(HTML_QuickForm::createElement('group', $field.'_group',$label,$fields),'__submit__');
         }
+        if(in_array($field,$fb->fieldsRequired) || ($elements[$field] & DB_DATAOBJECT_NOTNULL)) {
+            $form->addGroupRule($completename.'_group',$fb->requiredRuleMessage,'required',null,1);
+        }        
         
       }
   }
@@ -98,11 +103,28 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
   {
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];
+    $elements = $obj->_i18nfbs[T::getLang()]->_reorderElements();      
     foreach($info as $field) {
+      $completename = $obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix;
+      $fieldhasempty = false;        
+      $nonempty=null;      
       foreach($this->getLangs($obj) as $lang) {
-        $values[$field.'_'.$lang] = $values[$field.'_group'][$field.'_'.$lang];
+        $values[$completename.'_'.$lang] = $values[$field.'_group'][$completename.'_'.$lang];
+        if(empty($values[$completename.'_'.$lang])) {
+            $fieldhasempty = true;
+        } else {
+            $nonempty = $values[$completename.'_'.$lang];
+        }
       }
-      unset($values[$field.'_group']);
+
+      if($fieldhasempty && (in_array($field,$fb->fieldsRequired) || ($elements[$field] & DB_DATAOBJECT_NOTNULL))) {
+          foreach($this->getLangs($obj) as $lang) {          
+              if(empty($values[$completename.'_'.$lang])) {
+                  $values[$completename.'_'.$lang] = $nonempty;
+              }
+          }
+      }      
+      unset($values[$completename.'_group']);
     }
     // To avoid duplicate saving of current lang record
     $this->_dontSavei18n = true;

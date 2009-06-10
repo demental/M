@@ -32,7 +32,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
   }
   
   ### 
-  protected function getControllerOption($opt,$module = null) 
+  public function getControllerOption($opt,$module = null) 
   {
       return $this->_controller->getOption($opt,$module);
   }
@@ -90,24 +90,32 @@ class M_Office_View_DOPaging extends M_Office_View_List
     $do->fb_fieldsToRender=$fields;
     $fb =& MyFB::create($do);
     $do->selectAdd();
+    
     if(is_array($do->i18nFields)) {
-      $i18nfields = implode(','.$do->tablename().'_i18n'.'.',array_intersect($fields,$do->i18nFields));
+      $tmparr = array_intersect($fields,$do->i18nFields);
+      $i18nfields = implode(','.$do->tablename().'_i18n'.'.',$tmparr);
+      $fieldsToRender = array_merge($usedFields,$tmparr);
+        unset($tmparr);
     } else {
       $i18nfields = null;
+      $fieldsToRender = $usedFields;
     }
     if($i18nfields) {
       $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;
     }
+
     if(!in_array($pk,$usedFields)) {
       $selectAdd = $do->tablename().'.'.$pk.','.$do->tablename().'.'.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:'');
     } else {
       $selectAdd = $do->tablename().'.'.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:'');
     }
+
     $do->selectAdd($selectAdd);
     $fb->populateOptions();
     $specialElements = $fb->_getSpecialElementNames();
     $eltTypes=$do->table();
-    foreach($usedFields as $aField) {
+
+    foreach($fieldsToRender as $aField) {
       switch(true) {
         case array_key_exists($aField,$links):
         $fieldTypes[$aField] = 'link';

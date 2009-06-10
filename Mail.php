@@ -238,10 +238,10 @@ class Mail extends Maman {
 
 	/**
 	 *
-	 * Send to vars
+	 * Send mail to $mail
 	 *
 	 * @access	public
-	 * @param	$mail
+	 * @param	$mail string
 	 */
 	public function sendTo ($mail)
 	{
