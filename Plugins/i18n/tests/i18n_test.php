@@ -25,7 +25,7 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
   }
   public function testInsert()
   {
-    // Vérification que l'enregistrement principal passe bien et qu'il passe bien dans la langue en cours.
+
     T::setLang('fr');
     $album = DB_DataObject::factory('album');
     $album->description='Test description album en Français';
@@ -33,7 +33,7 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
     $this->assertTrue($album->insert());
 
     $this->assertTrue($album->id);
-    // Vérification que l'enregistrement i18n passe bien.
+
     $i18n = DB_DataObject::factory('album_i18n');
     $i18n->i18n_lang = 'fr';
     $i18n->i18n_record_id = $album->id;
@@ -54,12 +54,13 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
   }
   public function testUpdate()
   {
-    // Vérification de mise à jour enregistrement (sans changement de langue)
+    // Setup
     T::setLang('fr');
     $album = DB_DataObject::factory('album');
     $album->description='Test description album en Français';
     $album->title='Bitch oh my Bitch';
     $album->insert();
+    // Test
     $album->description = 'Test description modifiée';
     $this->assertTrue($album->update());
     $i18n = DB_DataObject::factory('album_i18n');
@@ -68,10 +69,9 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
     $this->assertTrue($i18n->find());
     $i18n->fetch();
     $this->assertEqual($i18n->description,'Test description modifiée');
-    // On vérifie qu'un second enregistrement i18n n'a pas été créé plutôt que de mettre à jour l'original
-    $this->assertFalse($i18n->fetch());
+    $this->assertFalse($i18n->fetch());// One record only
 
-    // Vérification de la création d'un nouvel enregistrement i18n en cas de changement de langue
+
     T::setLang('en');
     $album->update();
     $i18n = DB_DataObject::factory('album_i18n');
@@ -84,7 +84,7 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
     $i18n2->i18n_record_id = $album->id;
     $this->assertTrue($i18n2->find());
 
-    // Vérification que seul l'enregistrement i18n de la langue en cours a été affecté
+
     $album->description = 'Modified description test';
     $album->update();
     $i18n = DB_DataObject::factory('album_i18n');
@@ -134,7 +134,7 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
     $album2->description='Test description album2 in english';
     $album2->update();
 
-    // Test fetch un enregistrement dans la langue en cours ...
+    // Test fetch a record in current language ...
     T::setLang('fr');
     $falbum = DB_DataObject::factory('album');
     $falbum->get($album->id);
@@ -144,9 +144,9 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
     $falbum->get($album->id);
     $this->assertEqual($falbum->description,'Test description album in english');    
 
-    // Test fetch sur une requête renvoyant plusieurs enregistrements
+    // Test fetch on a recordset
     T::setLang('fr');
-
+//    DB_DataObject::DebugLevel(1);
     $falbum = DB_DataObject::factory('album');
     $falbum->whereAdd('id in ('.implode(',',array($album->id,$album2->id)).')');
     
@@ -167,27 +167,28 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
   }
   public function testmigrateToI18n_UNITS()
   {
-    // Test migration de l'ancien plugin international vers le nouveau.
+    // Test migrating from old international plugin to i18n
+
     $notmigrated = DB_DataObject::factory('notmigrated');
     $db = $notmigrated->getDatabaseConnection();
     $iname='notmigrated_i18n';
-    // ETAPE 1 : création de la table *_i18n
-    // Test que la table copié est bien inexistante
+    // STEP 1 :  *_i18n table creation
+
     $this->assertTrue(PEAR::isError($db->query('SELECT id,titre,description,pays,testuser_id FROM notmigrated_i18n')));    
     $this->assertIdentical(true,$notmigrated->getPlugin('international')->migration_createI18nTable($notmigrated,$iname));
-    // Test si les champs sont ok dans la table copiée (et qu'elle existe)
+
     $this->assertFalse(PEAR::isError($db->query('SELECT id,titre,description,pays,testuser_id FROM notmigrated_i18n')));    
 
-    // ETAPE 2 : création des champs index i18n
-    // TODO Tester les clés (index)
+    // STEP 2 : index fields in the i18n table
+    // TODO Test indexes
     $this->assertIdentical(true,$notmigrated->getPlugin('international')->migration_createI18nIndexes($notmigrated,$iname));    
     $this->assertTrue(PEAR::isError($db->query('SELECT id FROM notmigrated_i18n')));    
     $this->assertFalse(PEAR::isError($db->query('SELECT i18n_id,i18n_lang,i18n_record_id FROM notmigrated_i18n')));    
 
-    // ETAPE 3 : suppression des champs non internationaux dans la table i18n
-    // Premier test de récup des champs à supprimer
+    // STEP 3 : non i18n fields must be dropped in the i18n table
+
     $this->assertEqual(array('pays'=>array(),'testuser_id'=>array()),$notmigrated->getPlugin('international')->migration_getNonI18nFields($notmigrated,$iname));
-    // Deuxième test suppression effective
+
     $this->assertIdentical(true,$notmigrated->getPlugin('international')->migration_removeNonI18nFields($notmigrated,$iname));
     $this->assertTrue(PEAR::isError($db->query('SELECT pays,testuser_id FROM notmigrated_i18n')));    
     $this->assertFalse(PEAR::isError($db->query('SELECT i18n_id,i18n_lang,i18n_record_id,titre,description FROM notmigrated_i18n')));    
@@ -220,8 +221,8 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
   }
   public function testmigrateToI18n_GLOBAL()
   {
-    // Test migration de l'ancien plugin international vers le nouveau.
-    // On teste ici l'action globale
+    // same as previous but we test the global action
+
     $notmigrated = DB_DataObject::factory('notmigrated');
     $this->assertTrue($notmigrated->getPlugin('international')->migrateToI18n($notmigrated));
     $obj = DB_DataObject::factory('notmigrated_i18n');// This is useless as anyway the class was previously loaded in the UNIT tests...
@@ -412,15 +413,23 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
     $t->get($tid);
     $this->assertEqual($t->titre,'nuevo elemento dos');
   }
+  /**
+   * Required fields should be transfered to translation form.
+   * If a field is required, at least ONE translation should be filled in the form
+   */
   public function testValidate()
   {
     T::setLang('fr');
+    // The field 'titre' is required
+    // Therefore we expect that at least one field is filled in the 'titre_group' group
+    // First test : submits a form with empty titre values.
+    // Should not validate
+
     $t = DB_DataObject::factory('formtest');
     $fb = MyFB::create($t);
     $form = new MyQuickForm('testform','POST',M_Office::URL());
-    
     $post = array_merge($form->exportValues(),array(
-      'titre_group'=>array('titre_fr'=>null,'titre_en'=>'New element two','titre_es'=>'nuevo elemento dos'),
+      'titre_group'=>array('titre_fr'=>null,'titre_en'=>null,'titre_es'=>null),
       'description_group'=>array('description_fr'=>'Nouv desc 2 FR','description_en'=>'New desc two EN','description_es'=>'nuevo desc dos ES'),      
       'pays'=>'ma',
       'testuser_id'=>1,
@@ -440,8 +449,105 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
     $fb->useForm($form);
     $fb->getForm();
     $this->assertFalse($form->validate());
-    echo $form->toHtml();
-  }  
+
+
+    // Second test : submits a form with one titre value.
+    // Should validate
+    $post['titre_group']['titre_en']='Test title';
+    $t = DB_DataObject::factory('formtest');
+    $fb = MyFB::create($t);
+    $form = new MyQuickForm('testform','POST',M_Office::URL());
+    $request = array_merge($get,$post);
+    
+    $form->initRequest($get,$post,$request);
+    $fb->useForm($form);
+    $fb->getForm();
+    $this->assertTrue($form->validate());
+  }
+  /**
+   * In order to properly record translations where some fields are required (NOT NULL), 
+   * and as we decided that only one translation should be provided, we need to fill the empty translation with one that's not empty.
+   * preferably if the current lang field is filled that's the one that's used.
+   * 
+   * Non-required fields do not follow this schema : if a translation is not provided, it leaves empty
+   */
+  public function testFillRequiredFields()
+  {
+      T::setLang('fr');
+      // First test
+      // only titre_fr provided => other langs are filled with it.
+      // description is not required therefore description_es leaves empty
+      $t = DB_DataObject::factory('formtest');
+      $fb = MyFB::create($t);
+      $form = new MyQuickForm('testform','POST',M_Office::URL());
+      $post = array_merge($form->exportValues(),array(
+        'titre_group'=>array('titre_fr'=>'Test titre','titre_en'=>null,'titre_es'=>null),
+        'description_group'=>array('description_fr'=>'Nouv desc 2 FR','description_en'=>null,'description_es'=>'Nueva desc 2 ES'),      
+        'pays'=>'ma',
+        'testuser_id'=>1,
+        '_qf__' . $form->getAttribute('name')=>1,
+        'i18n_id_fr'=>'',
+        'i18n_id_en'=>'',      
+        'i18n_id_es'=>'', 
+        'id'=>''     
+        )); 
+      $get = $_GET;
+      $request = array_merge($get,$post);
+    
+
+      $form->initRequest($get,$post,$request);
+
+      $fb->useForm($form);
+      $fb->getForm();
+      $form->validate();
+      $form->process(array($fb,'processForm'),false);
+      $t2 = DB_DataObject::factory('formtest');
+      $t2->get($t->id);
+      $this->assertEqual($t2->titre,'Test titre');
+      T::setLang('en');
+      $t2 = DB_DataObject::factory('formtest');
+      $t2->get($t->id);
+      $this->assertEqual($t2->description,null);
+      $this->assertEqual($t2->titre,'Test titre');      
+
+      T::setLang('es');
+      $t2 = DB_DataObject::factory('formtest');
+      $t2->get($t->id);
+      $this->assertEqual($t2->titre,'Test titre');          
+      // Second test : titre_fr and titre_en are provided.
+      // As fr is the current lang, titre_fr is used to fill the empty titre translations
+      T::setLang('fr');
+      $post = array_merge($form->exportValues(),array(
+        'titre_group'=>array('titre_fr'=>'Test titre','titre_en'=>'Test title','titre_es'=>null),
+        'description_group'=>array('description_fr'=>'Nouv desc 2 FR','description_en'=>'New desc two EN','description_es'=>null),      
+        'pays'=>'ma',
+        'testuser_id'=>1,
+        '_qf__' . $form->getAttribute('name')=>1,
+        'i18n_id_fr'=>'',
+        'i18n_id_en'=>'',      
+        'i18n_id_es'=>'', 
+        'id'=>''     
+        )); 
+    $t = DB_DataObject::factory('formtest');
+    $fb = MyFB::create($t);
+    $form = new MyQuickForm('testform','POST',M_Office::URL());
+    $get = $_GET;
+    $request = array_merge($get,$post);
+  
+
+    $form->initRequest($get,$post,$request);
+
+    $fb->useForm($form);
+    $fb->getForm();
+    $form->validate();
+    $form->process(array($fb,'processForm'),false);
+
+    T::setLang('es');
+    $t2 = DB_DataObject::factory('formtest');
+    $t2->get($t->id);
+    $this->assertEqual($t2->titre,'Test titre');      
+      
+  }
   public function testSetTranslation()
   {
     T::setLang('fr');
@@ -467,6 +573,42 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
     $t = DB_DataObject::factory('formtest');
     $t->get(1);
     $this->assertEqual('element one',$t->titre);
+  }
+  public function testWithNamePrefix()
+  {
+      T::setLang('fr');
+      $t = DB_DataObject::factory('formtest');
+      $t->fb_elementNamePrefix='test';
+      $fb = MyFB::create($t);
+      $form = new MyQuickForm('testform','POST',M_Office::URL());
+      $post = array_merge($form->exportValues(),array(
+        'testtitre_group'=>array('testtitre_fr'=>'Test titre','testtitre_en'=>'title','testtitre_es'=>'titulo'),
+        'testdescription_group'=>array('testdescription_fr'=>'Nouv desc 2 FR','testdescription_en'=>null,'testdescription_es'=>'Nueva desc 2 ES'),      
+        'testpays'=>'ma',
+        'testtestuser_id'=>1,
+        '_qf__' . $form->getAttribute('name')=>1,
+        'testi18n_id_fr'=>'',
+        'testi18n_id_en'=>'',      
+        'testi18n_id_es'=>'', 
+        'testid'=>''     
+        )); 
+      $get = $_GET;
+      $request = array_merge($get,$post);  
+      $form->initRequest($get,$post,$request);
+
+      $fb->useForm($form);
+      $fb->getForm();
+      $form->validate();
+      $form->process(array($fb,'processForm'),false);
+
+      T::setLang('es');
+      $t2 = DB_DataObject::factory('formtest');
+      $t2->get($t->id);
+      $this->assertEqual($t2->titre,'titulo');
+      T::setLang('en');
+      $t2 = DB_DataObject::factory('formtest');
+      $t2->get($t->id);
+      $this->assertEqual($t2->titre,'title');
   }
   public function testSetPoly()
   {

@@ -36,6 +36,7 @@ abstract class M_Plugin implements iListener
     if(!is_array($params)) {
       $params = array();
     }
-    return call_user_func_array(array($this,$event),array_merge($params,array($sender)));
+    $ret = call_user_func_array(array($this,$event),array_merge($params,array($sender)));
+    return $ret;
   }
 }

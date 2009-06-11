@@ -350,7 +350,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	
 	public function delete()
 	{
-		$res = $this->trigger('delete');
+		$result = $this->trigger('delete');
 		switch($result) {
 		  case 'bypass':
 		    return true;

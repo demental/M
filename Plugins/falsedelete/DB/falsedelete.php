@@ -29,7 +29,7 @@ class DB_DataObject_Plugin_FalseDelete extends M_Plugin
   function delete($obj) {
     $db = $obj->getDatabaseConnection();
     $db->exec('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET '.$db->quoteIdentifier('deleted').' = 1');
-    return false;
+    return 'bypass';
   }
   function find($autoFetch,$obj) {
     $obj->whereAdd($obj->tableName().'.deleted!=1');
