@@ -1,10 +1,12 @@
 <?php $f=$this->rf($form)?>
 <?php echo $f['javascript']?>
+<?php $num=1?>
 <form<?php echo $f['attributes']?>><?php echo $f['hidden']?>
 	<table align="center" class="formtable" width="100%">              
 	<?php foreach($f['sections'] as $section):?>
+  <?php $num++?>
 	<?php if(!$hideLegend && $section['header']): ?>
-	<tr><th colspan="2"><?php echo $section['header']?> </th></tr>
+	<tr><th colspan="2" <?php if($hidesection):?>class="sectionheader" rel="section_<?php echo $num?>"<?php endif?>><?php echo $section['header']?> </th></tr>
 	<?php endif?>
 	<?php foreach($section['elements'] as $k=>$element):?>
 		<?php if($endform==1):?>
@@ -19,9 +21,9 @@
 				<div class="submitbutton"><?php echo $element['label_prefix']?><?php echo $element['html']?>
 				    <?php echo $element['label_postfix']?><?php if($cancel):?>
 				      <?php if($cancelurl):?>
-  				      <input type="button" onclick="javascript:top.location.href='<?php echo $cancelurl?>'" value="Annuler" />
+  				      <input type="button" name="cancelbutton" onclick="javascript:top.location.href='<?php echo $cancelurl?>'" value="Annuler" />
               <?php else:?>
-				      <input type="button" onclick="javascript:history.go(-1)" value="Annuler" />
+				      <input type="button" name="cancelbutton" onclick="javascript:history.go(-1)" value="Annuler" />
 				      <?php endif?>
               <?php endif?>
 				</div>
@@ -29,7 +31,7 @@
 			</td>
 		</tr>
 		<?php elseif($element['type']=='checkbox'):?>
-		<tr id="formrow_<?php echo $element['name']?$element['name']:$k?>">
+		<tr <?php if($hidesection):?>class="sectionline section_<?php echo $num?>"<?php endif?> id="formrow_<?php echo $element['name']?$element['name']:$k?>">
 			<td colspan="2" class="formelement">
         <?php echo $element['html']?><?php echo $element['label']?>
 					<?php if($element['required']):?><span class="asterix">*</span><?php endif?>
@@ -47,7 +49,7 @@
 			<td colspan="2" class="formelement" style="text-align:justify">
 			<?php echo $element['html']?>
 		<?php else:?>
-		<tr id="formrow_<?php echo $element['name']?$element['name']:$k?>">
+		<tr <?php if($hidesection):?>class="sectionline section_<?php echo $num?>"<?php endif?> id="formrow_<?php echo $element['name']?$element['name']:$k?>">
 			<td align="right" valign="top"  <?php if($nowrap):?>nowrap="nowrap"<?php else:?>width="<?php echo $labelWidth?$labelWidth:'120px'?><?php endif?> <?php if ($element['error']):?>class="formLabelError"<?php else:?>class="formLabel"<?php endif?>><?php echo $element['label']?>
 				<?php if ($element['required']):?><span class="asterix">*</span><?php endif?>
 				<?php if (!empty($element['label_help'])):?>
@@ -106,3 +108,18 @@
 <?php endforeach?>
 </table>
 </form>
+<?php if($hidesection):?>
+<script type="text/javascript">
+  $(function(){
+    $('.sectionheader').css({'border-bottom':'1px solid #fff'}).toggle(
+    function(){
+      $(this).parent().parent().find('.'+$(this).attr('rel')).show('fast');
+    },
+    function(){
+      $(this).parent().parent().find('.'+$(this).attr('rel')).hide('fast');
+    }
+    );
+    $('.sectionline').hide();
+  })
+</script>
+<?php endif?>  
