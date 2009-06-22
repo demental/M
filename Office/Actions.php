@@ -83,7 +83,7 @@ class M_Office_Actions extends M_Office_Controller {
           }
 					if(method_exists($obj,$preparemethod)){
 				    $qfAction=& new HTML_QuickForm('actionparamsForm','POST',M_Office_Util::getQueryParams(array(),array('selected','doaction','glaction','doSingleAction'), false), '_self', null, true);
-            Mreg::get('tpl')->addJSinline('$("input[@type=text],textarea","form[@name=actionparamsForm]").eq(0).focus()','ready');
+            Mreg::get('tpl')->addJSinline('$("input[type=text],textarea","form[name=actionparamsForm]").eq(0).focus()','ready');
             Mreg::get('tpl')->assignRef('do',$do);
 						$qfAction->addElement('header','qfActionHeader',$actions[$action]['title']);
 						$qfAction->addElement('hidden',$typeval,$action);
