@@ -69,7 +69,8 @@ array(
   'net_url_mapper'        =>'Net/URL/Mapper.php',
   'iquerystorable'        =>'M/Plugin/Exporter/iQueryStorable.php',
   'pluginregistry'        =>'M/PluginRegistry.php',
-  'm_plugin'              =>'M/Plugin.php'
+  'm_plugin'              =>'M/Plugin.php',
+  'icommand'              =>'M/iCommand.php'
   )
   );
 

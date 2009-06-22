@@ -175,7 +175,7 @@ class M_Office_View_tree extends M_Office_View_List
                     $formatters=array();
                 }
                 Mreg::get('tpl')->addJS('interface');
-                Mreg::get('tpl')->addJSinline('    $("a[@rel=treeviewtoggle]").toggle(
+                Mreg::get('tpl')->addJSinline('    $("a[rel=treeviewtoggle]").toggle(
                                                 function(){
                                                     $(this).parent().parent().find("ul").hide();
                                                 },

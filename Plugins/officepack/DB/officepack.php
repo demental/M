@@ -33,8 +33,8 @@ class DB_DataObject_Plugin_OfficePack extends M_Plugin
     function delete($obj) {
       if(key_exists('deleted',$obj->table())) {
         $db = $obj->getDatabaseConnection();
-        $db->exec('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET '.$db->quoteIdentifier('deleted').' = 1');
-        return false;
+        $db->exec('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET '.$db->quoteIdentifier('deleted').' = 1 WHERE id='.$db->quote($obj->id));
+        return 'bypass';
       }
     }
     function insert($obj) {

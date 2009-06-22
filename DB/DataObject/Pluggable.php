@@ -722,7 +722,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   		@require_once 'M/Notifier.php';
   		if(class_exists('Notifier')){
   			$not=Notifier::getInstance();
-  			$not->broadCastMessage($message , $type);
+  			$not->broadCastMessage($this,$message,$type);
   		}
   	}
     // =============================

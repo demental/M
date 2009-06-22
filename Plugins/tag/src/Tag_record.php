@@ -1,0 +1,94 @@
+<?php
+/**
+ * Table Definition for tag_record
+ */
+require_once 'M/DB/DataObject/Pluggable.php';
+
+class DataObjects_Tag_record extends DB_DataObject_Pluggable 
+{
+    ###START_AUTOCODE
+    /* the code below is auto generated do not remove the above tag */
+
+    public $__table = 'tag_record';                      // table name
+    public $id;                              // bigint(8)  primary_key not_null unsigned
+    public $tag_id;                          // int(4)   not_null unsigned
+    public $record_id;                       // varchar(36)   not_null
+    public $tagged_table;                    // varchar(50)   not_null
+
+    /* Static get */
+    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Tag_record',$k,$v); }
+
+    function table()
+    {
+         return array(
+             'id' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
+             'tag_id' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
+             'record_id' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_NOTNULL,
+             'tagged_table' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_NOTNULL,
+         );
+    }
+
+    function keys()
+    {
+         return array('id');
+    }
+
+    function sequenceKey() // keyname, use native, native name
+    {
+         return array('id', true, false);
+    }
+
+    function defaults() // column default values 
+    {
+         return array(
+             '' => null,
+         );
+    }
+
+        
+    function links() {
+        // links generated from .links.ini file
+        return array(
+
+        );
+    }
+    function reverseLinks() {
+        // reverseLinks generated from .links.ini file
+        return array(
+
+        );
+    }
+    /* the code above is auto generated do not remove the tag below */
+    ###END_AUTOCODE
+    public function insert()
+    {
+      if($ret = parent::insert()) {
+        $this->addHistory('add');
+        $this->getTag()->incrementCount();
+        return $ret;
+      }
+      return false;
+    }
+    public function delete()
+    {
+      if($ret = parent::delete()) {
+        $this->addHistory('del');
+        $this->getTag()->decrementCount();
+        return $ret;
+      }
+      return false; 
+    }
+    public function addHistory($direction)
+    {
+      if(!in_array($direction,array('add','del'))) {
+        trigger_error(__('unknown tag direction %s',array($direction)));
+        return false;
+      }
+      $th = DB_DataObject::factory('tag_history');
+      $th->tag_id = $this->id;
+      $th->record_id = $this->record_id;
+      $th->tagged_table = $this->tagged_table;
+      $th->direction = $direction;
+      $th->insert();
+    }
+}
