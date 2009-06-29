@@ -395,16 +395,24 @@ class Module extends Maman {
 	
 	/**
 	 * 
-	 * description
+	 * Forces the current action to use the $tpl template instead of its default one (templates/moduleName/actionName.php)
 	 *
-	 * @param $tpl
-	 * @return unknown_type
+	 * @param $tpl string path to the desired template (module/action)
 	 */
 	public function setTemplate($tpl)
 	{
 		$this->_lastOutput->setConfigValue('template',$tpl);
 	}
-	
+	/**
+	 * 
+	 * Forces the current action to be decorated with the $tpl layout instead of the one defined by default (templates/index.php or the one defined in the modules/modulename.conf.php config file)
+	 *
+	 * @param $tpl string path to the desired layout
+	 */
+	public function setLayout($tpl)
+	{
+		$this->_lastOutput->setConfigValue('layout',$tpl);
+	}	
 	/**
 	 * 
 	 * description
