@@ -57,8 +57,9 @@ class DB_DataObject_Plugin_User extends M_Plugin
             $form->insertElementBefore($pwd2,$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix);
             $form->addRule(array($fb->elementNamePrefix.$defs['pwd'].'2'.$fb->elementNamePostfix,$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix),__('Vos deux mots de passe ne correspondent pas'),'compare');
             $form->addFormRule(array($this,'checkUniqueLogin'));
-            $this->_obj = $fb->_do;
+
         }
+        $this->_obj = $fb->_do;
 	}
 	public function checkUniqueLogin($values) {
 	    $defs = $this->_obj->_getPluginsDef();
