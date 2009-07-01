@@ -72,6 +72,15 @@ class MPdf extends Maman {
 	function setTemplate($tpl) {
 		$this->template = $tpl;
 	}
+	/**
+	 * Returns a MPdf_Form instance
+	 * @param string source file
+	 * 
+	 */
+	public static function &formfactory($formfile) {
+	  $pdf = new MPdf_Form($formfile);
+	  return $pdf;
+	}
 	public static function &factory ( $template,$settings = null )
 	{
 		$opt = array('all'=>PEAR::getStaticProperty('MPdf','global'));

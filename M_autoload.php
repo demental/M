@@ -64,6 +64,7 @@ array(
   'phpmailer'             =>'M/lib/phpmailer.php',
   'm_crypt'               =>'M/Crypt.php',
   'mpdf'                  =>'M/MPdf.php',
+  'mpdf_form'                  =>'M/MPdf/form.php',
   'tcpdf'                 =>APP_ROOT.WEB_FOLDER.'tcpdf/tcpdf.php',
   'mgeo'                  =>'M/MGeo.php',
   'net_url_mapper'        =>'Net/URL/Mapper.php',
