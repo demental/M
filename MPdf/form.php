@@ -35,6 +35,7 @@ class MPdf_Form extends MPdf {
     $this->fields_hidden= array();
     $this->fields_readonly= array();
     $this->fdf_data_names = array();
+    return $this;
   }
 	public function fetch()
 	{
