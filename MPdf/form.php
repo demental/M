@@ -20,6 +20,15 @@ class MPdf_Form extends MPdf {
 
   // @protected stores the raw pdf result
   protected $rawdata;
+
+  protected $_datafile;
+  //
+  public $sourcefile;
+  
+  public function __construct($sourcefile)
+  {
+    $this->sourcefile = $sourcefile;
+  }
   /**
    * Fills the form with data passed as array, writes to a temporary file and returns the file path
    * this is experimental for now, the API is not designed yet....
@@ -27,14 +36,14 @@ class MPdf_Form extends MPdf {
    */
   public function fillWithData($data)
   {
-    foreach( $arr as $key => $value ) {
+    foreach( $data as $key => $value ) {
       // translate tildes back to periods
       $this->strings[ strtr($key, '~', '.') ]= $value;
     }
 
-    $this->fields_hidden= array();
-    $this->fields_readonly= array();
-    $this->fdf_data_names = array();
+    $this->hidden= array();
+    $this->readonly= array();
+    $this->names = array();
     return $this;
   }
 	public function fetch()
@@ -45,14 +54,27 @@ class MPdf_Form extends MPdf {
     		 $this->names,
     		 $this->hidden,
     		 $this->readonly );
-    $this->rawdata = exec( 'pdftk test.pdf fill_form '. $fdf_fn. ' output - flatten' );
+       $fdf_fn= tempnam( TMP_PATH, 'fdf' );
+       $fp= fopen( $fdf_fn, 'w+' );
+       if( $fp ) {
+         fwrite( $fp, $params );
+         fclose( $fp );
+       } else {
+         die('could not save '.$fdf_fn);
+       }
+    
+    $com = 'pdftk '.$this->sourcefile.' fill_form '. $fdf_fn. ' output - flatten' ;
+
+    exec( $com,$res);
+    foreach($res as $line) {
+      $out.=$line."\n";
+    }
+    $this->rawdata = $out;
 		$this->fetched = 1;
 	}
 	public function serve($filename)
 	{
-    $fdf_fn= tempnam( TMP_PATH, 'fdf' );
-
-		$this->write($fdf_fn);
+    $this->fetch();
     header( 'Content-type: application/pdf' );
     header( 'Content-disposition: attachment; filename='.basename($filename,'.pdf').'.pdf' );
     echo $this->rawdata;
