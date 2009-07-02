@@ -61,11 +61,11 @@ class MGeo
 	 */
 	public function setAddress($address)
 	{
-		foreach(array('street','city','zipcode','country') as $k) {
+/*		foreach(array('street','city','zipcode','country') as $k) {
 			if(!key_exists($k,$address)) {
 				throw new Exception('Bad address format for Geo object');
 			}
-		}
+		}*/
 		$this->address = $address;
 	}
 	
@@ -122,8 +122,9 @@ class MGeo
 	public function getLatLong()
 	{
 		if(empty($this->q)) {
-			$this->q = $this->address['street'].', '.$this->address['city'].', '.$this->address['zipcode'].', '.$this->address['country'];
+			$this->q = (trim($this->address['street'])?$this->address['street'].', ':'').$this->address['city'].', '.$this->address['zipcode'].', '.$this->address['country'];
 		}
+    echo $this->q;
 		if($this->_debug) {
 			$this->debug('fetching : '.$this->q);
 		}
