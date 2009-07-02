@@ -19,7 +19,7 @@
 class MPdf_Form extends MPdf {
 
   // @protected stores the raw pdf result
-  protected $rawdata;
+  protected $_rawdatafile;
 
   protected $_datafile;
   //
@@ -38,9 +38,9 @@ class MPdf_Form extends MPdf {
   {
     foreach( $data as $key => $value ) {
       // translate tildes back to periods
-      $this->strings[ strtr($key, '~', '.') ]= $value;
+      $this->strings[ strtr($key, '~', '.') ]= utf8_decode($value);
     }
-
+//    var_dump($this->strings);exit;
     $this->hidden= array();
     $this->readonly= array();
     $this->names = array();
@@ -55,6 +55,7 @@ class MPdf_Form extends MPdf {
     		 $this->hidden,
     		 $this->readonly );
        $fdf_fn= tempnam( TMP_PATH, 'fdf' );
+       $this->_rawdatafile= tempnam( TMP_PATH, 'fdfpdf' );
        $fp= fopen( $fdf_fn, 'w+' );
        if( $fp ) {
          fwrite( $fp, $params );
@@ -63,13 +64,9 @@ class MPdf_Form extends MPdf {
          die('could not save '.$fdf_fn);
        }
     
-    $com = 'pdftk '.$this->sourcefile.' fill_form '. $fdf_fn. ' output - flatten' ;
+    $com = 'pdftk "'.$this->sourcefile.'" fill_form '. $fdf_fn. ' output - flatten > '.$this->_rawdatafile ;
 
-    exec( $com,$res);
-    foreach($res as $line) {
-      $out.=$line."\n";
-    }
-    $this->rawdata = $out;
+    exec($com);
 		$this->fetched = 1;
 	}
 	public function serve($filename)
@@ -77,15 +74,13 @@ class MPdf_Form extends MPdf {
     $this->fetch();
     header( 'Content-type: application/pdf' );
     header( 'Content-disposition: attachment; filename='.basename($filename,'.pdf').'.pdf' );
-    echo $this->rawdata;
+    readfile($this->_rawdatafile);
     die();
 	}
 	public function write($filename)
 	{
 		$this->fetch();
-		$fp = fopen($filename,'w+');
-		fwrite($fp,$this->rawdata);
-		fclose($fp);
+		copy($this->_rawdatafile,$filename);
 	}
 
 }
