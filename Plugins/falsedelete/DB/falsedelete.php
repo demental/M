@@ -28,7 +28,7 @@ class DB_DataObject_Plugin_FalseDelete extends M_Plugin
   }
   function delete($obj) {
     $db = $obj->getDatabaseConnection();
-    $db->exec('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET '.$db->quoteIdentifier('deleted').' = 1');
+    $db->exec('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET '.$db->quoteIdentifier('deleted').' = 1 where id='.$db->quote($obj->id));
     return 'bypass';
   }
   function find($autoFetch,$obj) {

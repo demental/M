@@ -15,7 +15,9 @@
  * requirements : needs the pdftk program to be installed on the server
  * EXPERIMENTAL
  */
-
+if(!defined('PDFTK_BIN_PATH')) {
+  define('PDFTK_BIN_PATH','pdftk');
+}
 class MPdf_Form extends MPdf {
 
   // @protected stores the raw pdf result
@@ -40,7 +42,7 @@ class MPdf_Form extends MPdf {
       // translate tildes back to periods
       $this->strings[ strtr($key, '~', '.') ]= utf8_decode($value);
     }
-//    var_dump($this->strings);exit;
+
     $this->hidden= array();
     $this->readonly= array();
     $this->names = array();
@@ -64,7 +66,7 @@ class MPdf_Form extends MPdf {
          die('could not save '.$fdf_fn);
        }
     
-    $com = 'pdftk "'.$this->sourcefile.'" fill_form '. $fdf_fn. ' output - flatten > '.$this->_rawdatafile ;
+    $com = PDFTK_BIN_PATH.' "'.$this->sourcefile.'" fill_form '. $fdf_fn. ' output - flatten > '.$this->_rawdatafile ;
 
     exec($com);
 		$this->fetched = 1;
