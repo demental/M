@@ -106,7 +106,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
   }
   function prepareForReminder(&$obj)
   {
-    $defs = $this->_obj->_getPluginsDef();
+    $defs = $obj->_getPluginsDef();
     $defs = $defs['user'];
       $obj->fb_formHeaderText = __('Mot de passe perdu ?');
       $obj->fb_submitText = '>> '.__('Envoyer');
