@@ -124,7 +124,6 @@ class MGeo
 		if(empty($this->q)) {
 			$this->q = (trim($this->address['street'])?$this->address['street'].', ':'').$this->address['city'].', '.$this->address['zipcode'].', '.$this->address['country'];
 		}
-    echo $this->q;
 		if($this->_debug) {
 			$this->debug('fetching : '.$this->q);
 		}
