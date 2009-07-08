@@ -76,7 +76,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
       	$defs = $this->_obj->_getPluginsDef();
         $defs = $defs['user'];
         if(!is_array($fb->userEditableFields) || count($fb->userEditableFields==0)) {
-              $fb->userEditableFields = array_keys($obj->table());
+              $fb->populateOptions();
         }
 	    if(empty($values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix])) {
 	        if($index = array_search($defs['pwd'],$fb->userEditableFields)) {

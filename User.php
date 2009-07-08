@@ -13,8 +13,8 @@
 define ('ERROR_WRONG_PASSWORD','1');
 define ('ERROR_NO_USER','2');
 
-$errorMessage[ERROR_WRONG_PASSWORD]="Mot de passe incorrect";
-$errorMessage[ERROR_NO_USER]="Ce compte n'existe pas";
+$errorMessage[ERROR_WRONG_PASSWORD]=__('Invalid password');
+$errorMessage[ERROR_NO_USER]=__('This username does not exist');
 
 /**
  * 
@@ -240,15 +240,7 @@ class User{
 			}
 		}
 		if($pass){
-			$this->setId($dbdo->id);
-			$this->currentContainer = $dbdo;
-			$this->getPrefs();
-			if($defs['last_cnx']) {
-				$this->setProperty('last_cnx',$this->currentContainer->{$defs['last_cnx']});
-				$this->currentContainer->{$defs['last_cnx']}=date('Y-m-d H:i:s');
-				$this->currentContainer->update();
-			}
-			$this->store();
+		  $this->forceLogin($dbdo,$defs);
 			return true;
 		} else {
 			$this->_error=$error;
@@ -256,7 +248,25 @@ class User{
 		}
 	}
 	/**
-	 * Page vers laquelle on est redirig�e apr�s identification/inscription
+	 * Forces loging in (bypass login/password checking)
+	 * @param DB_DataObject the current user database container
+	 * @param array user fields definition
+	 * @param bool (optional) default true wether to store in database last connection date
+	 */
+	public function forceLogin(DB_DataObject $dataobject, $fieldDefinition, $storecnxdate=true)
+	{
+	 	$this->setId($dataobject->pk());
+		$this->currentContainer = $dataobject;
+		$this->getPrefs();
+		if($fieldDefinition['last_cnx']) {
+			$this->setProperty('last_cnx',$this->currentContainer->{$fieldDefinition['last_cnx']});
+			$this->currentContainer->{$fieldDefinition['last_cnx']}=date('Y-m-d H:i:s');
+			$this->currentContainer->update();
+		}
+		$this->store();
+	}
+	/**
+	 * returns the web path user must be redirected to after loging in
 	 */
 	function getTarget(){
 		return($_SESSION[$this->context]['target']);
