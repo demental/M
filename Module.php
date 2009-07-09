@@ -175,14 +175,32 @@ class Module extends Maman {
 	
 	/**
 	 * 
-	 * description
+	 * returns the parameter that was passed to $this using setParam() or setParams()
+	 * handy when you insert a component in a template file (@see Mtpl::c ) with parameters passed to it
 	 *
-	 * @param $value
-	 * @return unknown_type
+	 * @param string name of the param
+	 * @return mixed
 	 */
 	public function getParam($value)
 	{
 		return $this->_params[$value];
+	}
+
+	/**
+	 * 
+	 * returns the parameter that was passed to $this using setParam() or setParams()
+	 * or, if it's not set, returns the request value
+	 * handy when you want to use an action both as a component and as a page (this is a common-use with UOJS)
+	 *
+	 * @param string name of the param
+	 * @return mixed
+	 */	
+	public function getParamOrRequest($value)
+	{
+    if(key_exists($value,$this->_params)) {
+      return $this->_params[$value];
+    }
+    return $this->getRequestParam($value);
 	}
 	
 	/**
@@ -480,38 +498,51 @@ class Module extends Maman {
 		$this->cache->save($ret);
 		return $ret;
 	}
+	
 	/**
-	 * TODO pouvoir récupérer n'importe quelle valeur de $_REQUEST
-	 **/
-	/**
-	 * 
-	 * description
-	 *
-	 * @return unknown_type
+	 * returns the original action name requested by the enduser
+	 * @return string
 	 */
-	public function getRequest()
+	public function getRequestedAction()
 	{
 		return ($_REQUEST['action']);
 	}
 	
 	/**
-	 * 
-	 * description
-	 *
-	 * @param $val
-	 * @return unknown_type
+	 * returns the request value for the $val key
+	 * @param string $val key name
+	 * @return mixed
 	 */
 	public function getRequestParam($val)
 	{
 		return ($_REQUEST[$val]);
 	}
+
+	/**
+	 * returns the get value for the $val key
+	 * @param string $val key name
+	 * @return mixed
+	 */
+	public function getGetParam($val)
+	{
+		return ($_GET[$val]);
+	}
+
+	/**
+	 * returns the post value for the $val key
+	 * @param string $val key name
+	 * @return mixed
+	 */
+	public function getPostParam($val)
+	{
+		return ($_POST[$val]);
+	}
+	
 	
 	/**
-	 * 
-	 * description
-	 *
-	 * @param $val
-	 * @return unknown_type
+	 * wether the request has a value
+	 * @param $val key name
+	 * @return bool
 	 */
 	public function hasRequest($val)
 	{
