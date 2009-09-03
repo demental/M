@@ -102,7 +102,7 @@ class DataObjects_Tag_record extends DB_DataObject_Pluggable
         return false;
       }
       $th = DB_DataObject::factory('tag_history');
-      $th->tag_id = $this->id;
+      $th->tag_id = $this->tag_id;
       $th->record_id = $this->record_id;
       $th->tagged_table = $this->tagged_table;
       $th->direction = $direction;
