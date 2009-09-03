@@ -2,14 +2,15 @@
 ini_set('memory_limit','512M');
 $vars = $_SERVER['argv'];
 //var_dump($vars);
-$host = $vars[1];
-$app_name = $vars[2];
-$commandlang = $vars[3];
+$approot = $vars[1];
+$host = $vars[2];
+$app_name = $vars[3];
+$commandlang = $vars[4];
 if(!$host || !$app_name || !$commandlang) {
 echo
 <<<HEREDOC
 Usage : 
-php extractlng.php host_name app_name target_language
+php extractlng.php app_root host_name app_name target_language
 
 What it does :
 Scan app files, finds all strings called by __ or _e functions and creates or append new strings in lang/target_language.xml file
@@ -21,10 +22,10 @@ HEREDOC;
   return;
 }
 define ('APP_NAME',$app_name);
-if(!file_exists('M_Startup.php')) {
-  $inc = '../M_Startup.php';
+if(!file_exists($approot.'M_Startup.php')) {
+  $inc = $approot.'../M_Startup.php';
 } else {
-  $inc = 'M_Startup.php';
+  $inc = $approot.'M_Startup.php';
 }
 if(!require $inc) {
   die('Not in M Project');

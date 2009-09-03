@@ -2,14 +2,15 @@
 
 $vars = $_SERVER['argv'];
 //var_dump($vars);
-$plugin = strtolower($vars[1]);
-$command = strtolower($vars[2]);
-$host = strtolower($vars[3]);
-$app = strtolower($vars[4]);
+$approot = $vars[1];
+$plugin = strtolower($vars[2]);
+$command = strtolower($vars[3]);
+$host = strtolower($vars[4]);
+$app = strtolower($vars[5]);
 
 if(!$host || !$command || !$host || !$app) {
 echo 'Usage : ';
-echo 'php plugin.php plugin_name command_name host_name app_name';
+echo 'php plugin.php app_root plugin_name command_name host_name app_name';
 echo '';
 echo 'What it does :';
 echo 'Launches a plugin command (if exists)';
@@ -19,10 +20,10 @@ echo '';
 }
 
 define ('APP_NAME',$app);
-if(!file_exists('M_Startup.php')) {
-  $inc = '../M_Startup.php';
+if(!file_exists($approot.'M_Startup.php')) {
+  $inc = $approot.'../M_Startup.php';
 } else {
-  $inc = 'M_Startup.php';
+  $inc = $approot.'M_Startup.php';
 }
 if(!require $inc) {
   die('Not in M Project');
