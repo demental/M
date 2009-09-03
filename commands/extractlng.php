@@ -22,10 +22,10 @@ HEREDOC;
   return;
 }
 define ('APP_NAME',$app_name);
-if(!file_exists($approot.'M_Startup.php')) {
-  $inc = $approot.'../M_Startup.php';
+if(!file_exists($approot.'M_startup.php')) {
+  $inc = $approot.'../M_startup.php';
 } else {
-  $inc = $approot.'M_Startup.php';
+  $inc = $approot.'M_startup.php';
 }
 if(!require $inc) {
   die('Not in M Project');

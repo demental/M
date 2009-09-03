@@ -1,5 +1,5 @@
 <?php
-while(!@include 'M/M_Startup.php') {
+while(!@include 'M/M_startup.php') {
   fwrite(STDOUT,'
 M framework does not seem to be in your include_path.
 Please provide M parent path or leave empty to abort : ');
