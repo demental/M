@@ -55,7 +55,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    */  
 
 
-  public function removeTag(DataObject_Tag $tag, DB_DataObject $obj)
+  public function removeTag($tag, DB_DataObject $obj)
   {
     
     if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus($obj);} 
