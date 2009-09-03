@@ -52,6 +52,31 @@ class M_Office_Util {
           }
           exit;
       }
+  /**
+   * Redirects using a POST form to send back post variables
+   * @param url target URL
+   * 
+   */
+  public static function postRedirect($url,$params,$template = null,$templateparams = null)
+  {
+    $form = new MyQuickForm('redirectform','POST',$url);
+    foreach($params as $k=>$v) {
+      self::addHiddenField($form,$k,$v);
+    }
+    if(is_null($template)) {
+      $template = 'postredirect';
+    }
+    if(is_null($templateparams)) {
+      $templateparams = array();
+    }
+    foreach($templateparams as $k=>$v) {
+      Mreg::get('tpl')->assign($k,$v);
+    }
+    Mreg::get('tpl')->assign('redirectform',$form);
+    Mreg::get('tpl')->assign('__action',$template);
+    echo Mreg::get('tpl')->fetch(M_Office::$dsp);
+    die;
+  }
 
   /**
    * Returns the name displayed in the interface for a module
@@ -406,5 +431,16 @@ class M_Office_Util {
           return $merged;
       }
       return true;
-  }  		
+  }
+  /**
+   * applies the method quote to an item.
+   * This method must be used with array_walk()
+   * @param string by reference
+   * @param string
+   * @param $dbcnx an instance of MDB2
+   */
+  public static function arrayquote(&$item,$key,$dbcnx)
+  {
+    $item = $dbcnx->quote($item);
+  }
 }

@@ -23,7 +23,7 @@ class Payment_Driver_SIPS extends Payment
   {
     $this->options = $options;
   }
-  function fetch() {      
+  public function fetch() {      
       $amount = $this->order->getAmount()*100;
     	$parm="merchant_id=".$this->getOption('merchant_id');
     	$parm="$parm merchant_country=".$this->getOption('merchant_country');

@@ -18,6 +18,7 @@
  */
 
 require_once 'M/Mreg.php';
+require 'M/M.php';
 Mreg::append('autoload',
 array(
   'isetup'                =>  'M/iSetup.php',

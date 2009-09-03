@@ -72,5 +72,6 @@ class DataObjects_Tag_history extends DB_DataObject_Pluggable
     public function insert()
     {
       $this->date = date('Y-m-d H:i:s');
+      return parent::insert();
     }
 }

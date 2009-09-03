@@ -1,4 +1,5 @@
 <?php
+
 $vars = $_SERVER['argv'];
 //var_dump($vars);
 $plugin = strtolower($vars[1]);
@@ -7,16 +8,16 @@ $host = strtolower($vars[3]);
 $app = strtolower($vars[4]);
 
 if(!$host || !$command || !$host || !$app) {
-echo
-<<<HEREDOC
-Usage : 
-php plugin.php plugin_name command_name host_name app_name
+echo 'Usage : ';
+echo 'php plugin.php plugin_name command_name host_name app_name';
+echo '';
+echo 'What it does :';
+echo 'Launches a plugin command (if exists)';
+echo '';
 
-What it does :
-Launches a plugin command (if exists)
-HEREDOC;
   return;
 }
+
 define ('APP_NAME',$app);
 if(!file_exists('M_Startup.php')) {
   $inc = '../M_Startup.php';

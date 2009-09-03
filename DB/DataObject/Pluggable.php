@@ -202,6 +202,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   /**
    * @param string name of the event
    * @param mixed parameters passed to the events
+   * @return events return : fail, bypass or an object containing the return value.
    */
   public function trigger($eventName,$params = null)
   {
@@ -212,18 +213,26 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     $finalresult = null;
     foreach($this->_listeners as $listener) {
       $result = $listener->handleEvent($this,$eventName,$params);
-      if($result == 'fail') return 'fail';
-      if($result == 'bypass') $finalresult = 'bypass';
+      if(!is_object($result)) {
+        switch($result) {
+          case 'fail':return 'fail';break;
+          case 'bypass':$finalresult='bypass';break;
+        }
+      } else {
+        return $result;break;
+      }
     }
     return $finalresult;
     
   }
   /**
    * Overload => transform it to an event call
+   * 
    */
   public function __call($method,$args)
   {
-    $this->trigger($method,$args);
+    $res = $this->trigger($method,$args);
+    if($res->status=='return') return $res->return;
     return parent::__call($method,$args);
   }
 ###################### End plugin management #######################
@@ -732,6 +741,14 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     {
       $k = $this->keys();
       return $this->{$k[0]};
+    }
+    // =============================
+    // = returns primary key field name =
+    // =============================
+    public function pkName()
+    {
+      $k = $this->keys();
+      return $k[0];
     }
     // ===========================================================
     // = Check wether the current record has a primary key value =

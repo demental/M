@@ -244,15 +244,16 @@ class M_Office_ShowTable extends M_Office_Controller {
 
      if (isset($_REQUEST['doaction']) && $this->getOption('actions',$table)) {
        require 'M/Office/Actions.php';
-       $subController = new M_Office_Actions($this->getOptions(), $do);
-
+       $subController = new M_Office_Actions($this->getOptions());
+       $subController->run($do, $_REQUEST['doaction'],'batch');
        if($subController->has_output) {
    	     return true;
    	   }
      } elseif(isset($_REQUEST['glaction']) && $this->getOption('actions',$table)) {
         require 'M/Office/Actions.php';
-        $result = new M_Office_Actions($this->getOptions(), $do,'global');
-        if($result->has_output) {
+        $subController = new M_Office_Actions($this->getOptions());
+        $subController->run($do, $_REQUEST['glaction'],'global');
+        if($subController->has_output) {
      	    return true;
      	  }
      }

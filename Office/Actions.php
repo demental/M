@@ -13,7 +13,8 @@
 * - global : this just launches a DB_DataObjects_* method as a static method
 * - batch : applies an action to user-selected records
 * - single : applies an action to one record
-* TODO : documentation about actions  
+* @todo
+* - Security leak : check ACL for actions list. Currently this is done during the output of actions list, but not here which is a security leak. 
 *
 * @package      M
 * @subpackage   M_Office
@@ -24,230 +25,390 @@
 */
 
 class M_Office_Actions extends M_Office_Controller {
+
+  protected $_selected;
+
+  public $__start;
   /**
    * @param $options array of options
-   * @param $do the DataObject recordset upon which the action will be applied
-   * @param $type string default 'batch'(default) 'global' or 'single' : action type
    */
-	public function __construct($options, $do,$type='batch') {
+	public function __construct($options) {
 		parent::__construct($options);
-    
-        switch($type) {
-            case 'batch':
-                $action = $_REQUEST['doaction'];
-                $listCallback = 'getBatchMethods';
-                $typeval = 'doaction';
-                break;
-            case 'global':
-                $action = $_REQUEST['glaction'];
-                $listCallback = 'getGlobalMethods';
-                $typeval = 'glaction';
-                break;
-            case 'single':
-                $action = $_REQUEST['doSingleAction'];
-                $listCallback = 'getSingleMethods';
-                $typeval = 'doSingleAction';
-                break;
-            
-        }
-        $this->assign('__action',array('action_'.$action,'action'));
-        $scope = $_REQUEST['__actionscope'];
-        switch($scope) {
-            case 'checked':
-                $selected=array_flip($_REQUEST['selected']);
-                break;
-            case 'all':
-                break;
-        }
-		switch($action){
-			case 'delete':
-				if($this->getOption('delete', $table)){
-		  			require_once('M/Office/DeleteRecords.php');
-		  			$subController = new M_Office_DeleteRecords($do, $selected);
-				}
-				break;
-			default:
+		$this->has_output=false;
+    $this->nextactions = explode(',',$_REQUEST['__actionchain']);
 
-				$actions = call_user_func(array($do,$listCallback));
-				if(key_exists($action,$actions)){
-					$pk = DB_DataObject_FormBuilder::_getPrimaryKey($do);
-					$aj="";
-					$clause="";
-					$preparemethod='prepare'.$action;
-          $stepmethod = 'step'.$action;
-					$obj = empty($actions[$action]['plugin'])?$do:$do->getPlugin($actions[$action]['plugin']);
-          $tpl = Mreg::get('tpl');
-          $tpl->concat('adminTitle',' :: '.$actions[$action]['title']);
-          if(!empty($actions[$action]['plugin'])) {
-            $tpl->addPath('M/DB/DataObject/Plugin/'.$do->getPlugin($actions[$action]['plugin'])->getFolderName().'/templates/','beforeUser');
-          }
-					if(method_exists($obj,$preparemethod)){
-				    $qfAction=& new HTML_QuickForm('actionparamsForm','POST',M_Office_Util::getQueryParams(array(),array('selected','doaction','glaction','doSingleAction'), false), '_self', null, true);
-            Mreg::get('tpl')->addJSinline('$("input[type=text],textarea","form[name=actionparamsForm]").eq(0).focus()','ready');
-            Mreg::get('tpl')->assignRef('do',$do);
-						$qfAction->addElement('header','qfActionHeader',$actions[$action]['title']);
-						$qfAction->addElement('hidden',$typeval,$action);
-						if($typeval=='doaction') {
+    if(empty($this->nextactions[0]) && !empty($_REQUEST['__nextaction'])) {
+      $this->nextactions = array($_REQUEST['__nextaction']);
+    }
+    if(empty($this->nextactions[0])) {
+      $this->nextactions = array();
+    }
+    $this->target = count($this->nextactions)>0?'nextaction':$_REQUEST['__target'];
+		$this->__start = $_REQUEST['__start']<1?0:$_REQUEST['__start'];
+    $this->__step = null;
+  }
 
-
-  						$qfAction->addelement('hidden','__actionscope',$scope);
-              $clause='';
-              if($scope=='checked') {
-                $db = $do->getDatabaseConnection();
-  						  foreach($selected as $id=>$v){
-    							$qfAction->addElement('hidden','selected['.$v.']',$id);
-  							  $clause.=$aj.$db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($pk).' = '.$db->quote($id);
-  							  $aj=" OR ";
-  						  }
-                $do->whereAdd($clause);
-              }
-              $obj2 = clone($do);
-						  if((empty($clause) && $scope=='checked') || !$do->find()) {
-						    $this->say('Aucun élément sélectionné. Aucune action n\'a été effectuée');
-                M_Office_Util::clearRequest($values);
-                if(!$_REQUEST['debug']) {
-                  M_Office_Util::refresh(M_Office_Util::getQueryParams());
-                }
-                return;
-					    }
-                $start = $_REQUEST['__start']?$_REQUEST['__start']:0;
-
-                if(method_exists($obj2,$stepmethod) && list($step,$timeout) = call_user_func(array($obj2,$stepmethod))) {
-                  $objc = clone($obj2);
-                  $count = $objc->count();
-                  if($count>$step) {
-                    $obj2->limit($start,$step);
-                    $start+=$step;
-                    if(!$obj2->find()) {
-      						    $this->say('Action par lot terminée');
-                      M_Office_Util::clearRequest($values);
-                      if(!$_REQUEST['debug']) {
-                        M_Office_Util::refresh(M_Office_Util::getQueryParams());
-                      }
-                      return;
-      					    }
-                  } else {
-                    $obj2->find();
-                    $step=false;
-                  }
-                } else {
-                  $obj2->find();
-                }
-
-						} else {
-						  $obj2 = $obj;
-						}
-            // Calling the 'prepareActionName()' method to populaite the form
-            // If $do and $obj are not identical, it's a plugin call, so we pass the $do as well
-            call_user_func(array($obj,$preparemethod),$qfAction,$do === $obj?null:$do);
-
-				$qfAction->addElement('submit','__submit__','Valider');
-				if($qfAction->isSubmitted() && $qfAction->validate()){
-
-					$values=$qfAction->exportValues();
-                    foreach ($qfAction->_elements as $key=>$elt) {
-                        if($elt->_type=='file') {
-                            $values[$elt->getAttribute('name')]=$elt->getValue();
-                        }
-                    }
-			        unset($values['doaction']);
-			        unset($values['glaction']);
-			        unset($values['doSingleAction']);
-                    unset($values['__actionscope']);
-
-					$params="";
-					$aj="";
-      
-					if(is_subclass_of($obj,'DB_DataObject_Plugin')) {
-                        $res = call_user_func(array($obj,$action),$do,$values);
-					} else {
-                        $res = call_user_func(array($obj2,$action),$values);
-					}
-							
-
-              if(false !== $res) {
-
-                  if($step) {
-                    $this->assign('__action',array('actionstep_'.$action,'actionstep'));                    
-        				    $qfActionStep=& new HTML_QuickForm('actionparamsForm','POST',M_Office_Util::getQueryParams(array(),array('selected','doaction','glaction','doSingleAction'), false), '_self', null, true);
-                    $stepValues = $qfAction->exportValues();
-                    foreach($stepValues as $k=>$v) {
-                      if($k=='__start') {
-                        continue;
-                      }
-                      if(is_array($v)) {
-                        foreach($v as $sk=>$sv) {
-                          $qfActionStep->addElement('hidden',$k.'['.$sk.']',$sv);
-                        }
-                      } else {
-                        $qfActionStep->addElement('hidden',$k,$v);
-                      }
-                    }
-                    $this->assign('step',$step);
-      							$this->assignRef('stepform',$qfActionStep);
-      							$this->assign('start',min($start,$count));
-                    $this->assign('total',$count);
-                    $this->assign('actionName',$actions[$action]['title']);
-                    $this->assign('timeout',$timeout*1000);
-      							$this->has_output=true;
-                    return;
-                  }
-		              $this->say(__('Action was executed successfully.'));
-              } else {
-                  $this->say(__('ERROR. No action executed.'));
-              }
-              M_Office_Util::clearRequest(array_merge($qfAction->getSubmitValues(), array('doaction'=>'','glaction'=>'','doSingleAction'=>'','selected'=>'','choice'=>'')));
-              if(!$_REQUEST['debug']) {
-                M_Office_Util::refresh(M_Office_Util::getQueryParams());
-              }
-						} else {
-
-							$this->assignRef('actionform',$qfAction);
-							$this->has_output=true;
-						}
-					} else {
-					  $db = $do->getDatabaseConnection();
-					    if($type == 'batch') {
-                            if(!is_array($_REQUEST['selected'])) {
-                                $_REQUEST['selected']=array();
-                            }
-						    foreach($_REQUEST['selected'] as $v=>$id){
-							    $clause.=$aj.$pk.' = '.$db->quote($id);
-							    $aj=" OR ";
-						    }
-						    unset($_REQUEST['selected']);
-                            if(empty($clause)) {
-							    $this->say(__('No record selected. Aucune action was executed'));
-                                M_Office_Util::clearRequest($values);
-                                if(!$_REQUEST['debug']) {
-                                  M_Office_Util::refresh(M_Office_Util::getQueryParams());
-                                }
-                                return;                                
-                            }
-    						$do->whereAdd($clause);
-                        }
-						if('global' == $type || 'single' == $type || $do->find()){
-							if(is_subclass_of($obj,'DB_DataObject_Plugin')) {
-							    $values = array(&$do);
-							} else {
-							    $values = array();
-							}
-            $res = call_user_func_array(array($obj,$action),$values);
-
-							if(false !== $res) {
-						        $this->say('Action was executed successfully.');
-                            } else {
-                                $this->say(__('ERROR. No action executed.'));
-                            }
-                        }
-                        M_Office_Util::clearRequest(array('doaction'=>'','glaction'=>'','doSingleAction'=>'','selected'=>'','choice'=>''));
-                        if(!$_REQUEST['debug']) {
-                          M_Office_Util::refresh(M_Office_Util::getQueryParams());
-                        }
-					}
-
-				}
-				  break;
+  /**
+   * Runs the action
+   * @param DB_DataObject on which to apply the action
+   * @param string name of the DO method
+   * @param string type of action (global,batch or single)
+   */
+  public function run($do,$actionName,$type='batch')
+  {
+	  $this->actionName = $actionName;
+    $this->type=$type;
+    switch($this->type) {
+      case 'global':
+      $this->typeval = 'glaction';
+      break;
+      case 'batch':
+      $this->typeval = 'doaction';
+      break;
+      case 'single':
+      $this->typeval = 'doSingleAction';
+      break;
+    }
+    $this->do = $this->actiondo = $do;
+    $this->scope = $_REQUEST['__actionscope']=='all'?'all':'selected';
+    if($actionName == 'delete') {
+			if($this->getOption('delete', $table)){
+	  			require_once('M/Office/DeleteRecords.php');
+	  			$subController = new M_Office_DeleteRecords($do, $this->getSelectedIds());
 			}
-}		
+		  return;
+	  }
+
+    if(!$this->fillActionInfo($actionName,$type)) {
+      $this->say('action not found !');
+      require_once 'M/Office/Actionresult.php';
+      $result = new M_Office_Actionresult($this);
+      $result->status='error';
+      $this->redirectTo($result);
+    }
+    $form = $this->createParamsForm();
+    if($this->isValid($form)) {
+      $result = $this->applyActionWithParamsTo($this->actionName,$this->getParams($form),$this->type=='single'?$this->do:$this->getSelected(false));
+      $this->redirectTo($result);
+    } else {
+			$this->assign('actionform',$form);
+			$this->has_output=true;
+      $this->assign('__action',array('action_'.$this->actionName,'action'));
+    }
+  }
+  /**
+   * Applies the action to the passed collection
+   * @param string name of the method to apply
+   * @param mixed parameters to pass to the action method
+   * @param DB_DataObject collection on which the action is applied (query ready, not executed)
+   * @return M_Office_Actionresult containing the status of the action after applying it
+   */
+   public function applyActionWithParamsTo($actionName,$params,$focus)
+   {
+     require_once 'M/Office/Actionresult.php';
+     $applyto = $this->getCurrentPartial($focus);
+     $result = new M_Office_Actionresult($this);
+     $result->params = $params;
+	   if('batch'==$this->type) {
+       $result->setSelected($focus);
+       $result->setApplyto($applyto);
+     }
+     if(is_subclass_of($this->actiondo,'M_Plugin')) {
+       $res = call_user_func(array($this->actiondo,$actionName),$applyto,$params);
+		 } else {
+       $res = call_user_func(array($applyto,$actionName),$params);
+		 }
+		 if($res === false) {
+		   $result->status = 'error';
+		 } else {
+		   if('batch'==$this->type) {
+         $result->processBatchStatus();
+		   } else {
+	       $result->status='complete';
+		   }
+		 }
+		 return $result;
+   }
+   /**
+    * Returns the stored parameters for the action.
+    * If no action required, returns an empty array
+    * @param mixed HTML_QuickForm or null if no params required for this action.
+    * @return array if params
+    * @return array empty array if no params
+    */
+   public function getParams($form)
+   {
+     if(is_a($form,'HTML_QuickForm')) {
+       $data = $form->exportValues();
+       unset($data['selected']);
+       unset($data['__submit__']);
+       unset($data[$this->typeval]);
+       return $data;
+     }
+     return array();
+   }
+   /**
+    * returns the current portion of the collection on which to apply the action
+    * in case of multi-page action (otherwise returns the passed param with query executed)
+    * @param DB_DataObject the complete collection with query not executed
+    * @return DB_DataObject the partial collection with query executed
+    */
+   public function getCurrentPartial($focus)
+   {
+
+     switch($this->type) {
+       // Single and global methods = no partial, we send back the whole resultset
+       case 'single':
+       case 'global':
+        return $focus;
+        break;
+       // Batch : if the stepmethod exists, we apply a limit and execute the query to a clone of $this->do   
+       case 'batch':
+        $res = clone($focus);
+        if(is_array($stepinfo = $this->getStepInfo())) {
+          list($step,$timeout) = $stepinfo;
+          $this->__step = $step;
+          $res->limit($this->__start,$this->__step);
+        }
+        $res->find();
+        return $res;
+        break; 
+     }
+   }
+  /**
+   * Returns a DB_DataObjects collection, containing the tuples on which to apply the action
+   * @param bool (default true) wether to query or just prepare the query (giving the possibility to add further clause)
+   */
+  public function getSelected($doQuery = true)
+  {
+    if(!$this->_selected || !$doQuery) {
+      $db = $this->do->getDatabaseConnection();
+      $ids = $this->getSelectedIds();
+      array_walk($ids,array('M_Office_Util','arrayquote'),$db);
+      $selected = DB_DataObject::factory($this->do->tableName());
+      $selected->whereAdd(
+        $db->quoteIdentifier($this->do->pkName()).' IN ('.
+        implode(',',$ids).')'
+      );
+      if($doQuery) {
+        $selected->find();
+      }
+    }
+    if($doQuery) {
+      $this->_selected = $selected;
+    } else {
+      return $selected;
+    }
+    return $this->_selected;
+  }
+  /**
+   * Returns an indexed array of primary keys containing all the selected elements.
+   * @return array
+   */
+   public function getSelectedIds()
+   {
+     switch($this->type) {
+       case 'global':
+         return array();
+         break;
+       case 'single':
+         return array($this->do->pk());
+         break;
+       case 'batch':
+         if('all'==$this->scope) {
+           $all = clone($this->do);
+           $arr = array();
+           while($all->fetch()) {
+             $arr[] = $all->pk();
+           }
+         } else {
+           return $_REQUEST['selected'];// TODO abstract this
+         }
+         return $arr;
+         break;
+     }        
+   }
+  /**
+   * Redirects to the next page depending on $result status
+   * @param $result M_Office_Actionresult
+   */
+  public function redirectTo(M_Office_Actionresult $result)
+  {
+    switch($result->status) {
+      case 'error':
+        $this->say('An error occured while applying action');
+        switch($this->target) {
+          case 'list':
+            M_Office_Util::refresh(M_Office::URL(array(),
+              array('record','__actionscope','doSingleAction','glaction','doaction','__start')
+            ));
+          break;
+          default:
+            M_Office_Util::refresh(M_Office::URL(array(),
+              array('__actionscope','doSingleAction','glaction','doaction','__start')
+            ));
+        }
+      break;
+      case 'complete':
+
+        switch($this->target) {
+          case 'list':
+            $this->say('Action applied successfully');
+            M_Office_Util::refresh(M_Office::URL(array(),
+              array('record','__actionscope','doSingleAction','glaction','doaction','__start')
+            ));
+          break;
+          case 'nextaction':
+            $next = array_shift($this->nextactions);
+            M_Office_Util::postRedirect(M_Office::URL(array($this->typeval=>$next,'__actionchain'=>implode(',',$this->nextactions)),
+              array('__start')
+              ),array('selected'=>$this->getSelectedIds()));
+          break;
+          default:
+            $this->say('Action applied successfully');
+            M_Office_Util::refresh(M_Office::URL(array(),
+              array('__actionscope','doSingleAction','glaction','doaction','__start')
+            ));
+        }
+
+      break;
+      case 'partial':
+        $this->nextStep($result);
+      break;
+    }
+  }
+  /**
+   * Return step-by-step info as an array, false if the method must be applied at once
+   * @return mixed : array(step,timeout) or false;
+   */
+  public function getStepInfo()
+  {
+    $stepmethod = 'step'.$this->actionName;
+    if(method_exists($this->do,$stepmethod)) {
+      return call_user_func(array($this->do,$stepmethod));
+    } else {
+      return false;
+    }
+  }
+  /**
+   * In case of a multi-page action, redirects to the next step
+   */
+  public function nextStep($result)
+  {
+    list($step,$timeout) = $this->getStepInfo();
+    M_Office_Util::postRedirect(
+      M_Office::URL(array('__start'=>$result->next)),
+      $_POST,
+      array('actionstep_'.$this->actionName,'actionstep'),
+      array('start'=>$result->next,'timeout'=>$timeout*1000,'total'=>$result->total,'actionName'=>$this->getActionTitle())
+    );
+  }
+
+  /**
+   * Creates the form for action parameters, if params are required for the current action
+   * @return null if no param
+   * @return HTML_QuickForm if params
+   */
+  public function createParamsForm()
+  {
+    $tpl = Mreg::get('tpl');
+    $tpl->concat('adminTitle',' :: '.$this->getActionTitle());
+
+    if(!empty($actions[$action]['plugin'])) {
+      $tpl->addPath('M/DB/DataObject/Plugin/'.$do->getPlugin($actions[$action]['plugin'])->getFolderName().'/templates/','beforeUser');
+    }
+    
+    $prepareMethod = 'prepare'.$this->actionName;
+    if(method_exists($this->actiondo,$prepareMethod) || is_array($this->_actionInfo['chainable'])) {
+	    $qfAction=& new HTML_QuickForm('actionparamsForm','POST',M_Office_Util::getQueryParams(array(),array('selected','doaction','glaction','doSingleAction'), false), '_self', null, true);      
+      Mreg::get('tpl')->addJSinline('$("input[type=text],textarea","form[name=actionparamsForm]").eq(0).focus()','ready');
+      Mreg::get('tpl')->assign('do',$do);
+			$qfAction->addElement('header','qfActionHeader',$this->getActionTitle());
+			$qfAction->addElement('hidden',$this->typeval,$this->actionName);
+      M_Office_Util::addHiddenField(&$qfAction, 'selected', $this->getSelectedIds());
+      if(method_exists($this->actiondo,$prepareMethod)) {
+        call_user_func(array($this->actiondo,$prepareMethod),$qfAction);
+      }
+      if($this->_actionInfo['chainable'] && count($this->nextactions)==0) {
+        $qfAction->addElement('select','__nextaction',__('Execute this action then ...'),
+        array_merge(array(''=>''),$this->getNextActions())
+        );
+      }
+      if(count($this->nextactions)>0) {
+        $qfAction->addElement('hidden','__actionchain',implode(',',$this->nextactions));
+      }
+		  $qfAction->addElement('submit','__submit__',__('Execute'));      
+      return $qfAction;
+    } else {
+      return null;
+    }
+  }
+  
+  /**
+   * Checks wether :
+   * - the passed variable is not a HTML_QuickForm. Therefore it's valid
+   * - the passed variable is an HTML_QuickForm, and it validates
+   */
+  public function isValid($form)
+  {
+    if(is_a($form,'HTML_QuickForm') && $form->validate()) {
+     return true; 
+    } else {
+      if(!is_a($form,'HTML_QuickForm')) {
+        return true;
+      }
+    }
+    return false;
+  }
+  /**
+   * fills the local array $_actionInfo provided the location of the method
+   * @param string name of the action (method)
+   * @param string type of the action (batch,single or global)
+   * @return bool : true if the action exists, false if not.
+   */
+  public function fillActionInfo()
+  {
+    if(!$this->_actionInfo) {
+      $this->_actionInfo = $this->getActionInfo($this->actionName,$this->type);
+    }
+    return $this->_actionInfo;
+  }
+  public function getActionInfo($actionName,$type)
+  {
+    $method = 'get'.$type.'methods';
+    $allInfo = $this->do->{$method}();
+    if(!key_exists($actionName,$allInfo)) {
+      $res = false;
+    } else {
+      $res = $allInfo[$actionName];
+    }
+    return $res;
+  }
+  /**
+   * Returns human-readable action name
+   * @return string
+   */
+  public function getActionTitle()
+  {
+    $arr = $this->fillActionInfo();
+    return $arr['title'];
+  }
+  /**
+   * Returns an array of action if the current one is chainable ('chain' key in the action info)
+   * @return array
+   */
+  public function getNextActions()
+  {
+    
+    if(!is_array($this->_actionInfo['chainable'])) {
+      return array();
+    }
+    $out = array();
+    foreach($this->_actionInfo['chainable'] as $anAction) {
+      $info = $this->getActionInfo($anAction,$this->type);
+      $out[$anAction] = $info['title'];
+    }
+
+    return $out;
+  }
 }

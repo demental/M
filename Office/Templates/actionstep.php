@@ -2,17 +2,15 @@
 $(function(){
   $('#next').hide();
   resend = function(){
-    $('#actionparamsForm').submit();
+    $('#redirectform').submit();
   }
     setTimeout(resend,<?php echo $timeout?>);
 });
 </script>
-<?php $f = $this->rf($stepform,'static')?>
+<?php $f = $this->rf($redirectform,'static')?>
 <h3><?php echo $actionName?> - traitement par lot</h3>
 <form <?php echo $f['attributes']?>>
   <?php echo $f['hidden']?>
-  <input type="hidden" name="__start" value="<?php echo $start?>" />
-
 <div style="width:100%;border:1px solid #000;padding:2px">
   <div style="width:<?php echo $start*100/$total?>%;background:#449">&nbsp;</div>
 </div>  
@@ -25,5 +23,5 @@ $(function(){
   <p>Vous pouvez continuer à travailler en <a href="<?php echo M_Office_Util::getQueryParams(array(),array('glaction','step','__start','doaction','dosingleaction'))?>" target="_blank">cliquant ce lien</a> (ouvre l'office dans une nouvelle fenêtre)</p>
 <?php endif?>
 
-<input type="submit" id="next" value="Suivants" />
+<input type="submit" name="__submit__" id="next" value="Suivants" />
 </form>

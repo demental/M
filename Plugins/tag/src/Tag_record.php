@@ -65,6 +65,7 @@ class DataObjects_Tag_record extends DB_DataObject_Pluggable
       if($ret = parent::insert()) {
         $this->addHistory('add');
         $this->getTag()->incrementCount();
+        
         return $ret;
       }
       return false;
@@ -77,6 +78,22 @@ class DataObjects_Tag_record extends DB_DataObject_Pluggable
         return $ret;
       }
       return false; 
+    }
+    public function setTag($tag)
+    {
+      $this->tag_id = $tag->id;
+    }
+    public function setRecord(DB_DataObject $record)
+    {
+      $this->record_id = $record->pk();
+      $this->tagged_table = $record->tableName();
+    }
+    public function getTag()
+    {
+      $t = DB_DataObject::factory('tag');
+      $t->id = $this->tag_id;
+      $t->find(true);
+      return $t;
     }
     public function addHistory($direction)
     {

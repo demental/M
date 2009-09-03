@@ -66,6 +66,8 @@ class M_Office extends M_Office_Controller implements iListener {
 		)
 		);
 		$tpl->assign('adminTitle',$this->getOption('adminTitle'));
+		$tpl->assign('jsdir',SITE_URL.'js/');
+
 		Mreg::set('tpl',$tpl);
 
 
@@ -196,9 +198,7 @@ class M_Office extends M_Office_Controller implements iListener {
 		if(self::isAjaxRequest()) {
 			M_Office::$dsp='__defaut/ajaxindex';
 		}
-
-		$tpl = Mreg::get('tpl');
-		$tpl->assign('jsdir',SITE_URL.'js/');
+    $tpl = Mreg::get('tpl');
 		$tpl->assign('regenerate',$this->getOption('regenerate'));
 		$tables = $this->getGlobalOption('searchInTables','frontendhome');
 		$tpl->assign('messages',$_SESSION['flashmessages']);

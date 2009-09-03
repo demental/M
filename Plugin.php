@@ -39,4 +39,17 @@ abstract class M_Plugin implements iListener
     $ret = call_user_func_array(array($this,$event),array_merge($params,array($sender)));
     return $ret;
   }
+  /**
+   * In case an event is fired and the expected behaviour for it is to return a value, 
+   * the plugin must use this method to return the result
+   * @param mixed whatever must be returned and retreived by the event caller.
+   */
+  public function returnStatus($returnedValue)
+  {
+    $c = new StdClass();
+    $c->status = 'return';
+    $c->return = $returnedValue;
+    return $c;
+  }
+  
 }

@@ -21,7 +21,13 @@ class Payment {
 		$className = 'Payment_Driver_'.$driver;
 		require_once 'M/Payment/Driver/'.$driver.'.php';
 		$options = PEAR::getStaticProperty('Payment_process','options');
-		return new $className($options);
+		$res = new $className($options);
+		$res->_is = $driver;
+		return $res;
+	}
+	public function is($name)
+	{
+	 return strtolower($name) == strtolower($this->_is);
 	}
 	public function getOption($value)
 	{
