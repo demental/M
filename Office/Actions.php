@@ -326,8 +326,13 @@ class M_Office_Actions extends M_Office_Controller {
 			$qfAction->addElement('header','qfActionHeader',$this->getActionTitle());
 			$qfAction->addElement('hidden',$this->typeval,$this->actionName);
       M_Office_Util::addHiddenField(&$qfAction, 'selected', $this->getSelectedIds());
+      $selectedDo = $this->getSelected(true);
       if(method_exists($this->actiondo,$prepareMethod)) {
-        call_user_func(array($this->actiondo,$prepareMethod),$qfAction);
+        if(is_a($this->actiondo,'M_Plugin')) {
+          call_user_func(array($this->actiondo,$prepareMethod),$qfAction,$selectedDo);                    
+        } else {
+          call_user_func(array($selectedDo,$prepareMethod),$qfAction);          
+        }
       }
       if($this->_actionInfo['chainable'] && count($this->nextactions)==0) {
         $qfAction->addElement('select','__nextaction',__('Execute this action then ...'),
