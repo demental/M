@@ -181,6 +181,7 @@ class M_Office_Actions extends M_Office_Controller {
    */
   public function getSelected($doQuery = true)
   {
+    if($this->type=='single') return $this->do;
     if(!$this->_selected || !$doQuery) {
       $db = $this->do->getDatabaseConnection();
       $ids = $this->getSelectedIds();
