@@ -327,6 +327,9 @@ class M_Office_Actions extends M_Office_Controller {
 			$qfAction->addElement('hidden',$this->typeval,$this->actionName);
       M_Office_Util::addHiddenField(&$qfAction, 'selected', $this->getSelectedIds());
       $selectedDo = $this->getSelected(true);
+      if('single'==$this->type) {
+        $selectedDo->fetch();
+      }
       if(method_exists($this->actiondo,$prepareMethod)) {
         if(is_a($this->actiondo,'M_Plugin')) {
           call_user_func(array($this->actiondo,$prepareMethod),$qfAction,$selectedDo);                    
