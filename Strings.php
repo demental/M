@@ -146,14 +146,17 @@ class Strings {
 
 	public static function autocap($text)
 	{
-		$tab = explode('.',$text);
-		array_walk($tab,array(self,'aucfirst'));
-		return implode('. ',$tab);
+	  while(ereg('[A-Z]{2}',$text)) {
+	    $text = preg_replace('/([A-Z][A-Z]+)/e',"strtolower('\\1')",$text);
+	  }
+    $text = preg_replace('/\. ?([a-z])/e',"'. '.strtoupper('\\1')",$text);
+		return ucfirst($text);
 	}
 	public static function aucfirst(&$item,$key)
 	{
 		$item = ucfirst(trim(strtolower($item)));
 	}
+
 
 }
 function create_guid_section($characters)
