@@ -617,6 +617,9 @@ class Module extends Maman {
 			header('location:'.$modulaction);
 			exit;
 		}
+		if($this->isAjaxRequest()) {
+      $vars['__ajax']=1;
+    }
 		$url = URL::get($modulaction,$vars,$lang,$secure);
 		if ((stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') && stristr($_SERVER['HTTP_USER_AGENT'], 'Mac')) || headers_sent()) {
 

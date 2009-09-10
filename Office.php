@@ -217,7 +217,7 @@ class M_Office extends M_Office_Controller implements iListener {
 		$_SESSION['flashmessages'][]=array($params,$event);
 	}
 	public static function isAjaxRequest() {
-		return strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])=='xmlhttprequest';
+		return strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])=='xmlhttprequest' || $_REQUEST['__ajax'];
 	}
 	// ==============================
 	// = Proxy (for faster writing) =
