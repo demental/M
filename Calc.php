@@ -34,6 +34,7 @@ class Calc
 	 */
 	public static function HT2TTC($price,$vat)
 	{
+    if($vat==0) return number_format($price,2,'.','');
 		$vat=$vat>1?$vat/100:$vat;
    $result = $price*(1+$vat);
    // We round the result to avoid 1cent difference
