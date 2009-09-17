@@ -34,21 +34,20 @@ class Calc
 	 */
 	public static function HT2TTC($price,$vat)
 	{
-    if($vat==0) return number_format($price,2,'.','');
+	  if($vat==0) return number_format($price,2,'.','');
 		$vat=$vat>1?$vat/100:$vat;
-   $result = $price*(1+$vat);
+   $result = abs($price*(1+$vat));
+   $dir = $price/abs($price);
    // We round the result to avoid 1cent difference
    $mod = $result-floor($result);
    if($mod==0) {
      // no round
-   } elseif($result<0.02) {
+   } elseif($result < 0.05) {
      $result = 0;
-   } elseif(($mod > 0.48 && $mod < 0.50) || ($mod > 0.98)) {
-     $result+=0.006;
-   } elseif(($mod > 0.50 && $mod < 0.52) || ($mod < 0.02)) {
-     $result-=0.006;
+   } elseif(($mod > 0.48 && $mod < 0.50) || ($mod > 0.98) || ($mod > 0.50 && $mod < 0.52) || ($mod < 0.02)) {
+     $result=round($result*2)/2;
    }
-		return number_format($result,2, '.', '');
+		return number_format($dir*$result,2, '.', '');
 	}
 	// Alias
   public static function addVAT($price,$vat)
