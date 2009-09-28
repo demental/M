@@ -110,11 +110,7 @@ class T {
 			// @see TODO in this getStringsFromXML()
 			throw new Exception($cachefile.' is not writable. Please check permissions');
 		}
-		$data = '<?php $data = array('."\n";
-		foreach($this->strings as $k=>$v) {
-			$data.='\''.str_replace('\'','\\\'',$k).'\'=>\''.str_replace('\'','\\\'',$v).'\','."\n";
-		}
-		$data.=');';
+		$data = '<?php $data = '.var_export($this->strings,true).';';
 		fwrite($fp,$data);
 		fclose($fp);
 		Log::info('lang cache file rebuilt as '.$cachefile);
