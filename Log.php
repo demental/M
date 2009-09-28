@@ -17,32 +17,12 @@
  */
 class Log 
 {
-
-	/**
-	 *
-	 * Log level
-	 *
-	 * @var		string
-	 */
-	const LOGLEVEL_INFO = 'Info';
-
-	/**
-	 *
-	 * Log level warning
-	 *
-	 * @var		string
-	 */
-	const LOGLEVEL_WARNING = 'Warning';
-
-	/**
-	 *
-	 * Log level notice
-	 *
-	 * @var		string
-	 */
-	const LOGLEVEL_NOTICE = 'Notice';
-
-
+  protected static $instances;
+  
+  public function getInstance($driver = 'none')
+  {
+    # code...
+  }
 	/**
 	 *
 	 * Info
@@ -57,18 +37,14 @@ class Log
 
 	/**
 	 *
-	 * Write message to log file
+	 * Write message to log
 	 *
 	 * @access	public
 	 * @static
 	 */
-	public static function message($message,$level = Log::LOGLEVEL_INFO)
+	public static function message($message,$level = 'info')
 	{
-
-		return;
-		$file = Config::get('logfile');
-		file_put_contents($file,date('Y-m-d H:i:s').' == '.$level.' == '.$message."\n",FILE_APPEND);
-
+    self::getInstance(Config::get('driver'))->logMessage($message,$loglevel);
 	}
 
 	/**
@@ -85,4 +61,3 @@ class Log
 		$m->sendTo(TECH_EMAIL);
 	}
 }
-?>

@@ -16,7 +16,8 @@
  *
  */
 class Mtpl {
-
+  
+  protected $_addComments = true;
 	protected $_assignvars = array();
 	protected $_config;
 	protected $_postFilters = array();
@@ -174,7 +175,18 @@ class Mtpl {
 			$this->_tplfile=$file;
 			if($tpl = $this->getTemplatePath()) {
 				ob_start();
-				include($tpl);
+                if($this->_addComments) {
+        echo '
+<!-- Start include '.$file.' -->
+';
+
+        include($tpl);
+                		echo '
+<!-- End include '.$file.' -->
+';
+        } else {
+          include($tpl);        
+        }
 				$included=true;
 				$ret = ob_get_contents();
 				/*      foreach($this->_postFilters as $filter) {
@@ -292,7 +304,16 @@ class Mtpl {
 
 		$c->execute();
 
-		return $c->display();
+    if($this->_addComments) {
+    		  return '
+<!-- Start component '.$module.'/'.$action.' routed to '.$c->getPage()->getCurrentModule().'/'.$c->getPage()->getCurrentAction().'-->
+'.$c->display().'
+<!-- End component '.$module.'/'.$action.'-->
+';
+        } else {
+    		  return $c->display();      
+        }
+
 	}
 	public function toArray() {
 		return $this->_assignvars;

@@ -241,7 +241,14 @@ class Module extends Maman {
 	{
 		return $this->currentAction;
 	}
-	
+
+	/**
+	 * Returns the name of the current module
+	 */
+	 public function getCurrentModule()
+	 {
+	   return $this->_modulename;
+	 }	
 	/**
 	 * 
 	 * description
