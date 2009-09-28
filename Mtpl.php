@@ -175,9 +175,13 @@ class Mtpl {
 			$this->_tplfile=$file;
 			if($tpl = $this->getTemplatePath()) {
 				ob_start();
-        echo $this->comment('Start include '.$file);
+        if(!empty($buffer)) {
+          echo $this->comment('Start include '.$file);
+        }
         include($tpl);
-        echo $this->comment('End include '.$file);
+        if(!empty($buffer)) {
+          echo $this->comment('End include '.$file);
+        }
 				$included=true;
 				$ret = ob_get_contents();
 				/*      foreach($this->_postFilters as $filter) {
