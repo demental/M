@@ -175,18 +175,9 @@ class Mtpl {
 			$this->_tplfile=$file;
 			if($tpl = $this->getTemplatePath()) {
 				ob_start();
-                if($this->_addComments) {
-        echo '
-<!-- Start include '.$file.' -->
-';
-
+        echo $this->comment('Start include '.$file);
         include($tpl);
-                		echo '
-<!-- End include '.$file.' -->
-';
-        } else {
-          include($tpl);        
-        }
+        echo $this->comment('End include '.$file);
 				$included=true;
 				$ret = ob_get_contents();
 				/*      foreach($this->_postFilters as $filter) {
@@ -304,18 +295,18 @@ class Mtpl {
 
 		$c->execute();
 
-    if($this->_addComments) {
-    		  return '
-<!-- Start component '.$module.'/'.$action.' routed to '.$c->getPage()->getCurrentModule().'/'.$c->getPage()->getCurrentAction().'-->
-'.$c->display().'
-<!-- End component '.$module.'/'.$action.'-->
-';
-        } else {
-    		  return $c->display();      
-        }
-
+    return $this->comment('Start component '.$module.'/'.$action.' routed to '.$c->getPage()->getCurrentModule().'/'.$c->getPage()->getCurrentAction())
+      .$c->display()
+      .$this->comment('End component '.$module.'/'.$action);
 	}
 	public function toArray() {
 		return $this->_assignvars;
+	}
+	public function comment($comment)
+	{
+	  if(!$this->_addComments) return '';
+	  return '
+<!-- '.$comment.' -->
+';
 	}
 }
