@@ -44,6 +44,7 @@ class Log
 	 */
 	public static function message($message,$level = 'info')
 	{
+	  return;// desactivating logging
     self::getInstance(Config::get('driver'))->logMessage($message,$loglevel);
 	}
 
