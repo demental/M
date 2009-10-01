@@ -295,9 +295,11 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       $this->saveTranslation($obj,T::getLang());
     }
 	}
-  public function update($obj)
+  public function update($originalDo=false,$obj)
   {
+        $obj->whereAdd();
         $obj->_query['condition'] = '';
+        
   }
 	public function postUpdate($obj)
 	{
