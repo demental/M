@@ -42,7 +42,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                 $obj->{$defs['parent']} = 0;
             }
         }
-         function update(&$obj) {
+         function update($originaldo=false,&$obj) {
              $defs = $obj->_getPluginsDef();
              $defs = $defs['tree'];             
             if(!$obj->{$defs['parent']}) {
