@@ -250,7 +250,14 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       $t->fb_createSubmit = false;
       $t->fb_addFormHeader = true;
       $t->fb_formHeaderText = $lang;
-
+      switch(true) {
+        case !$t->i18n_available:
+          $t->i18n_master_culture='';
+          break;
+        case empty($t->i18n_master_culture):
+        $t->i18n_master_culture=1;
+        break;  
+      }
       $out[$lang] = $t;
     }
     return $out;
