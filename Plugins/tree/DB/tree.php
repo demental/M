@@ -456,7 +456,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
            $defs = $obj->_getPluginsDef();
            $defs = $defs['tree'];
            $do->whereAdd($defs['left'].' > '.$obj->{$defs['left']});
-           $do->{$defs['parent']} = $obj->{$defs['parent']};
+           $do->{$defs['parent']} = $obj->pk();
            $do->orderBy($defs['left'].' ASC');
            $do->limit(0,1);
            $do->find(true);

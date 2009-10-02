@@ -53,7 +53,8 @@ class Module_CMS extends Module {
       return;
     }
     if($content->{$this->_dbisnode}) {
-      $this->redirect301(strtolower(str_replace('Module_', '', get_class($this))).'/'.$content->getPlugin('tree')->getFirstChild($content)->{$this->_dbstrip});
+      $target = strtolower(str_replace('Module_', '', get_class($this))).'/'.$content->getPlugin('tree')->getFirstChild($content)->{$this->_dbstrip};
+      $this->redirect301($target);
     }
     $this->assignRef('content',$content);
     $this->_content = $content;
