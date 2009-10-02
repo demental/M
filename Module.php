@@ -506,6 +506,15 @@ class Module extends Maman {
 		return $ret;
 	}
 	
+	public function isComponent($bool = null)
+	{
+    if(!is_null($bool)) {
+      $this->__isComponent = $bool;
+    }
+    return $this->__isComponent;
+
+	}
+	
 	/**
 	 * returns the original action name requested by the enduser
 	 * @return string
@@ -620,6 +629,10 @@ class Module extends Maman {
 	 * @return unknown_type
 	 */
 	public function redirect($modulaction,$vars = null,$lang=null,$secure=null) {
+    if($this->isComponent()) {
+      list($module,$action)=explode($modulaction);
+      return $this->forward($module[0],$module[1]?$module[1]:'index',array_merge($vars,$this->_params));
+    }
 		if(eregi('^(http|https)://',$modulaction)) {
 			header('location:'.$modulaction);
 			exit;
@@ -647,7 +660,26 @@ class Module extends Maman {
 		exit;
 
 	}
-	
+	public function redirect301($modulaction,$vars = null,$lang=null,$secure=null) 
+	{
+	  $this->addHeader('301 Moved Permanently');
+    $this->redirect($modulaction,$vars,$lang,$secure);
+	}
+
+	public function redirect404($modulaction,$vars = null,$lang=null,$secure=null) 
+	{
+    $this->addHeader('404 Not Found');
+    $this->redirect($modulaction,$vars,$lang,$secure);
+	}
+  public function addHeader($header)
+  {
+    if($this->isComponent()) return;
+    if (php_sapi_name()=='cgi') {
+        header('Status: '.$header);
+    } else {
+        header('HTTP/1.1 '.$header);
+    }
+  }
 	/**
 	 * 
 	 * description

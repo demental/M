@@ -448,7 +448,21 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                                     $id));
             }
         }
-        
+        /**
+         * Returns the first child of $obj
+         */
+         public function &getFirstChild($obj) {
+           $do = & DB_DataObject::factory($obj->tableName());
+           $defs = $obj->_getPluginsDef();
+           $defs = $defs['tree'];
+           $do->whereAdd($defs['left'].' > '.$obj->{$defs['left']});
+           $do->{$defs['parent']} = $obj->{$defs['parent']};
+           $do->orderBy($defs['left'].' ASC');
+           $do->limit(0,1);
+           $do->find(true);
+           return $do;
+           
+         }        
         /**
          * returns the dataobject with all the roots (multi-tree)
          **/

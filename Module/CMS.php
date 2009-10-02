@@ -24,15 +24,39 @@ class Module_CMS extends Module {
   protected $_dbstrip='strip';
   protected $_tpltitle='pageTitle';
   protected $_dbtitle='titrelong';
-
+  protected $_dbmodulaction='modulaction';
+  protected $_dbaccessibleaspage = 'accessibleaspage';
+  protected $_dbisnode = 'isnode';
+  protected $_forceaccessible = false;  
+  protected $_redirToIndexIfNotFound = false;
+  protected function newCMS()
+  {
+    $cms = DB_DataObject::factory($this->_dbtable);
+    if(!$this->_forceaccessible) {
+      $cms->{$this->_dbaccessibleaspage} = 1;
+    }
+    return $cms;
+  }
+  public function handleNotFound()
+  {
+    if($this->_redirToIndexIfNotFound) {
+      $this->redirect301(strtolower(str_replace('Module_', '', get_class($this))).'/index');
+    } else {
+      $this->redirect404('error/404');
+    }
+  }
   protected function populateCMS()
   {
-    $content = DB_DataObject::factory($this->_dbtable);
+    $content = $this->newCMS();
     if(!$content->get($this->_dbstrip,$this->_dataAction)) {
-      $this->_dbnotfound=1;
+      $this->handleNotFound();
       return;
     }
+    if($content->{$this->_dbisnode}) {
+      $this->redirect301(strtolower(str_replace('Module_', '', get_class($this))).'/'.$content->getPlugin('tree')->getFirstChild($content)->{$this->_dbstrip});
+    }
     $this->assignRef('content',$content);
+    $this->_content = $content;
     try{
       Mreg::set('content',$content);
     } catch (Exception $e) {
@@ -47,7 +71,7 @@ class Module_CMS extends Module {
   }
   public function executeAction($action)
   {
-    $this->_dataAction = $action;
+    $this->_dataAction = $this->_content->{$this->_dbmodulaction}?$this->_content->{$this->_dbmodulaction}:$action;
     try {
       parent::executeAction($action);
     } catch (Error404Exception $e) {
@@ -67,4 +91,4 @@ class Module_CMS extends Module {
     }
     return $out;
   }
-}?>
+}

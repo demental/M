@@ -89,7 +89,7 @@ class Dispatcher extends Maman {
       try
       {
         Log::info('Trying module '.$this->module);
-      	$this->page = Module::factory($this->module,$path,$this->params);
+      	$this->page = $this->moduleInstance($this->module,$path,$this->params);
       	try
       	{
             Log::info('Trying action '.$this->action);
@@ -116,14 +116,14 @@ class Dispatcher extends Maman {
           unset($data['module']);
           unset($data['action']);
           User::getInstance()->setTarget($this->module.'/'.$this->action,$data);
-          $this->page = Module::factory($this->getConfig('loginmodule',$this->module),$path);
+          $this->page = $this->moduleInstance($this->getConfig('loginmodule',$this->module),$path);
           $this->page->executeAction($this->getConfig('loginaction',$this->module));
       }
       catch (Exception $e)
       {
         
           Log::info('Error module '.$this->module.'. Revealing as 404');
-      	  $this->page = Module::factory('error',$path);
+      	  $this->page = $this->moduleInstance('error',$path);
           $this->page->executeAction('404');
       }        
       Log::info($this->module.'/'.$this->action.' executed successfully');
@@ -140,8 +140,15 @@ class Dispatcher extends Maman {
 	 */
     private function returnModuleNotFound() {
       Log::info('Module '.$this->module.' not found');
-      $this->page = Module::factory('error',$path);
+      $this->page = $this->moduleInstance('error',$path);
       $this->page->executeAction('404');
+    }
+
+    public function moduleInstance()
+    {
+      $args = func_get_args();
+      $res = call_user_func_array(array('Module','factory'),$args);
+      return $res;
     }
     
   /**
