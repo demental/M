@@ -81,6 +81,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
         $fields = array();
         foreach($langs as $lang) {
           $completename = $obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix;
+
           $elem = $form->getElement($completename.'_'.$lang);
           $elem->setAttribute('rel',$completename);
           if($lang == $this->getDefaultLang($obj)) {

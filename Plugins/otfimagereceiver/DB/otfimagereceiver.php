@@ -44,10 +44,10 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
    */
   public function getMainImage(DB_DataObject $obj)
   {
-    $tbl = $this->newImage($obj);
+    $tbl = $this->_newImage($obj);
     $tbl->ismain=1;
     $tbl->find(true);
-    return $tbl;
+    return $this->returnStatus($tbl);
   }
   /**
    * Returns a recordSet including all images linked to $obj
@@ -55,9 +55,9 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
    */
   public function getAllImages(DB_DataObject $obj)
   {
-    $tbl = $this->newImage($obj);
+    $tbl = $this->_newImage($obj);
     $tbl->find();
-    return $tbl;
+    return $this->returnStatus($tbl);
   }
   /**
    * base method for getting recordset of images
@@ -65,6 +65,9 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
    */
   public function newImage(DB_DataObject $obj)
   {
+    return $this->returnStatus($this->_newImage($obj));
+  }
+  protected function _newImage(DB_DataObject $obj) {
     $defs = $obj->_getPluginsDef();
     $tbl = DB_DataObject::factory($defs['otfimagereceiver']['table']);
     $tbl->record_table = $obj->tableName();

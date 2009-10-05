@@ -29,14 +29,6 @@ class Module_CMS extends Module {
   protected $_dbisnode = 'isnode';
   protected $_forceaccessible = false;  
   protected $_redirToIndexIfNotFound = false;
-  protected function newCMS()
-  {
-    $cms = DB_DataObject::factory($this->_dbtable);
-    if(!$this->_forceaccessible) {
-      $cms->{$this->_dbaccessibleaspage} = 1;
-    }
-    return $cms;
-  }
   public function handleNotFound()
   {
     if($this->_redirToIndexIfNotFound) {
@@ -47,7 +39,11 @@ class Module_CMS extends Module {
   }
   protected function populateCMS()
   {
-    $content = $this->newCMS();
+    $content = Mreg::get('content');
+    if(!$this->_forceaccessible) {
+      $content->{$this->_dbaccessibleaspage} = 1;
+    }
+
     if(!$content->get($this->_dbstrip,$this->_dataAction)) {
       $this->handleNotFound();
       return;
