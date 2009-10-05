@@ -35,6 +35,7 @@ class Calc
 	public static function HT2TTC($price,$vat)
 	{
 	  if($vat==0) return number_format($price,2,'.','');
+   if($price==0) return '0.00';
 		$vat=$vat>1?$vat/100:$vat;
    $result = abs($price*(1+$vat));
    $dir = $price/abs($price);

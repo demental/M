@@ -116,19 +116,11 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
 		}
 		return $obj->$field;
 	}
-	function find($autoFetch=false,&$obj)
-	{
-		return;
-	}
-	function count(&$obj)
-	{
-	  return;
-	}
+  /**
+   * @todo : file deletion
+   */
 	function delete(&$obj)
 	{
-		return;
-	}
-  function dateOptions($field, &$fb,&$obj) {
 		return;
 	}
 }
