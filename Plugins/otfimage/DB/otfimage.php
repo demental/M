@@ -31,7 +31,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
 	{
     $defs = $obj->_getPluginsDef();
 		$field=$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix;
-		$obj->filename=$this->_upFile($obj,'filename',$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$defs['otfimage']['path']);
+		$obj->filename=$this->_upFile($obj,$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$defs['otfimage']['path'],$obj->getOwner()->tableName());
     $obj->update();
     $main = $obj->getOwner()->newImage();
     $main->ismain=1;
@@ -45,6 +45,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
    */
 	function delete($obj)
 	{
+	  @unlink($this->_getOriginalPath($obj));
 		return;
 	}
 	public function atSize($params = null,$obj)
@@ -103,16 +104,16 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
 	/**
 	 * Helper method to store the file
 	 */
-	protected function _upFile($obj, $field, $fieldName=null, $relativePathFromUploadFolder){
-	    if(is_null($fieldName)){
-	        $fieldName=$field;
-       }
-		if (is_uploaded_file($_FILES[$fieldName]['tmp_name'])){
-     $ext = FileUtils::getFileExtension($_FILES[$fieldName]['name']);
-			$name = $obj->tableName().'_'.$field.substr(md5(time()+rand(0,100)),0,6).".".$ext;
+	protected function _upFile($obj, $field, $relativePathFromUploadFolder,$prefix = null){
+    if(is_null($prefix)) {
+      $prefix = $obj->tableName();
+    }
+		if (is_uploaded_file($_FILES[$field]['tmp_name'])){
+     $ext = FileUtils::getFileExtension($_FILES[$field]['name']);
+		 $name = $prefix.'_'.substr(md5(time()+rand(0,100)),0,10).".".$ext;
      $destination = IMAGES_UPLOAD_FOLDER.$relativePathFromUploadFolder.'/'.$name;
 
-			if (move_uploaded_file($_FILES[$fieldName]["tmp_name"], $destination)
+			if (move_uploaded_file($_FILES[$field]["tmp_name"], $destination)
 				&&chmod($destination, 0644)){
 				return $name;
 			}

@@ -27,7 +27,7 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
   public function getEvents()
   {
     return array('pregenerateform','postgenerateform','preprocessform','postprocessform','preparelinkeddataobject',
-                  'insert','update','find','count','delete');
+                  'insert','update','find','delete');
   }
 
 	function preGenerateForm(&$fb,&$obj)
