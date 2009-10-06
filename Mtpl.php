@@ -303,6 +303,9 @@ class Mtpl {
       .$c->display()
       .$this->comment('End component '.$module.'/'.$action);
 	}
+	
+	
+	
 	public function toArray() {
 		return $this->_assignvars;
 	}
@@ -312,5 +315,24 @@ class Mtpl {
 	  return '
 <!-- '.$comment.' -->
 ';
+	}
+	public function img($filename,$subfolders=null,$mainfolder = null)
+	{
+    if(is_null($mainfolder)) {
+      $mainfolder='images/';
+    }
+    if(!is_array($subfolders)) {
+      return SITE_URL.$mainfolder.$filename;
+    } else {
+      foreach($subfolders as $afolder) {
+        if(file_exists(APP_ROOT.WEB_FOLDER.'/'.$mainfolder.$afolder.'/'.$filename)) {
+          return SITE_URL.$mainfolder.$afolder.'/'.$filename;
+        }
+      }
+    }
+	}
+	public function localeimg($filename,$mainfolder = 'images/locale/')
+	{
+    return $this->img($filename,array(T::getLang(),substr(T::getLang(),0,2)),$mainfolder);
 	}
 }
