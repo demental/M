@@ -70,14 +70,14 @@ class T {
 	}
 	public function init ( $lang ,$verbose = false)
 	{
-		$this->locale=$lang;
+		$this->locale=substr($lang,0,2);
 
-		$file = T::getConfig('path').$lang.".xml";
+		$file = T::getConfig('path').$this->locale.".xml";
 		if($verbose) {
 			echo 'Source file : '.$file."\n";
 		}
-		if($this->cacheIsUpToDate($lang,$file)) {
-			$this->getStringsFromCache($lang,$verbose);
+		if($this->cacheIsUpToDate($this->locale,$file)) {
+			$this->getStringsFromCache($this->locale,$verbose);
 			if($verbose) {
 				echo 'Cache is up to date, retreiving from cache'."\n";
 			}
