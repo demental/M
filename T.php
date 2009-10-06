@@ -17,9 +17,10 @@
  *
  */
 class T {
-	static $lang;
-	static $instances=array();
-	static $config = array('driver'=>'reader');
+	public static $lang;
+	public static $culture;
+	public static $instances=array();
+	public static $config = array('driver'=>'reader');
 	protected $locale;
 	protected $loaded=TRUE;
 	protected $strings=array();
@@ -211,12 +212,26 @@ Error while serializing data !
 	{
 		return T::$lang;
 	}
-
+  public static function getCulture()
+  {
+    if(!T::$culture) {
+      if(strlen(T::$lang)==4) {
+        T::$culture = substr(T::$lang,0,2).'_'.strtoupper(substr(T::$lang,2,2));
+      } else {
+        if(T::$lang=='fr') {
+          return 'fr_FR';
+        } elseif(T::$lang=='en') {
+          return 'en_GB';
+        }      
+      }
+    }
+    return T::$culture;
+  }
 	public static function setLang ( $lang = null )
 	{
 		if(!is_null($lang)) {
 			T::$lang = $lang;
-			Log::info('Passage en langue '.T::$lang);
+      T::$culture = null;
 		}
 		return T::$lang;
 	}
