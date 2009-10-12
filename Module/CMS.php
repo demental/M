@@ -18,7 +18,7 @@
 * @version      0.1
 */
 
-class Module_CMS extends Module {
+class CMS_Module extends Module {
 
   protected $_dbtable='cms';
   protected $_dbstrip='strip';
@@ -39,8 +39,12 @@ class Module_CMS extends Module {
   }
   protected function populateCMS()
   {
-    $content = Mreg::get('content');
-    if(!$this->_forceaccessible) {
+    try {
+      $content = Mreg::get('content');
+    } catch (Exception $e) {
+      $content = DB_DataObject::factory($this->_dbtable);
+    }
+    if(!$this->_forceaccessible && !empty($this->_dbaccessibleaspage)) {
       $content->{$this->_dbaccessibleaspage} = 1;
     }
 

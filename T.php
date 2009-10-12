@@ -52,6 +52,13 @@ class T {
 	{
 		return $this->locale;
 	}
+  /**
+   * Returns countrycode
+   */
+	public function getCountry()
+	{
+	 return substr(self::getLang(),2,2);
+	}
 	public static function addInstance ( &$i, $l )
 	{
 		T::$instances[$l]=$i;

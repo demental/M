@@ -84,9 +84,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
         $fields = array_diff($AllFields,array($pk));
     }
     $usedFields = array_intersect($fields,$AllFields);
-    while($offset = array_search($pk,$usedFields)){
-        unset($usedFields[$offset]);
-    }
+
     $do->fb_fieldsToRender=$fields;
     $fb =& MyFB::create($do);
     $do->selectAdd();

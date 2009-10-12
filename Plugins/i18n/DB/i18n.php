@@ -115,71 +115,76 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
   
   public function postProcessForm(&$values,$fb,$obj)
   {
-    foreach($this->getLangs($obj) as $lang) {
-      // Alter values depending on behaviour.
-      switch($values['i18n_master_culture_'.$lang]) {
-        case 1://specific content.
-          $obj->_i18ndos[$lang]->i18n_master_culture = null;
-          $obj->_i18ndos[$lang]->i18n_available = true;
-          $values['i18n_available_'.$lang]=1;
+    $defs = $obj->_getPluginsDef();
+    $defs = $defs['i18n'];
+    if($defs['handlebehaviour']) {
+      foreach($this->getLangs($obj) as $lang) {
+        // Alter values depending on behaviour.
+        switch($values['i18n_master_culture_'.$lang]) {
+          case 1://specific content.
+            $obj->_i18ndos[$lang]->i18n_master_culture = null;
+            $obj->_i18ndos[$lang]->i18n_available = true;
+            $values['i18n_available_'.$lang]=1;
+            break;
+          case ''://not available
+            $obj->_i18ndos[$lang]->i18n_master_culture = '';
+            $obj->_i18ndos[$lang]->i18n_available = false;
+            // we fill fields with 'n-a' to avoid not null fields to be empty
+            foreach($obj->i18nFields as $field) {
+              $slaveindex = $obj->fb_elementNamePrefix
+                                .$field
+                                .'_'
+                                .$lang
+                                .$obj->fb_elementNamePostfix;          
+
+              $values[$slaveindex]='n-a';
+            }
+
+            break;
+          default:// mirror of another language
+            $obj->_i18ndos[$lang]->i18n_available = true;
+            foreach($obj->i18nFields as $field) {
+              $masterindex = $obj->fb_elementNamePrefix
+                        .$field
+                        .'_'
+                        .$values['i18n_master_culture_'.$lang]
+                        .$obj->fb_elementNamePostfix;
+              $slaveindex = $obj->fb_elementNamePrefix
+                                .$field
+                                .'_'
+                                .$lang
+                                .$obj->fb_elementNamePostfix;          
+              $values[$slaveindex] = $values[$masterindex];
+            }
           break;
-        case ''://not available
-          $obj->_i18ndos[$lang]->i18n_master_culture = '';
-          $obj->_i18ndos[$lang]->i18n_available = false;
-          // we fill fields with 'n-a' to avoid not null fields to be empty
-          foreach($obj->i18nFields as $field) {
-            $slaveindex = $obj->fb_elementNamePrefix
-                              .$field
-                              .'_'
-                              .$lang
-                              .$obj->fb_elementNamePostfix;          
-
-            $values[$slaveindex]='n-a';
-          }
-
-          break;
-        default:// mirror of another language
-          $obj->_i18ndos[$lang]->i18n_available = true;
-          foreach($obj->i18nFields as $field) {
-            $masterindex = $obj->fb_elementNamePrefix
-                      .$field
-                      .'_'
-                      .$values['i18n_master_culture_'.$lang]
-                      .$obj->fb_elementNamePostfix;
-            $slaveindex = $obj->fb_elementNamePrefix
-                              .$field
-                              .'_'
-                              .$lang
-                              .$obj->fb_elementNamePostfix;          
-            $values[$slaveindex] = $values[$masterindex];
-          }
-        break;
-      }  
-    }    
-
+        }  
+      }    
+    }
     foreach($this->getLangs($obj) as $lang) {      
       $obj->_i18ndos[$lang]->i18n_record_id = $obj->pk();
       $obj->_i18nfbs[$lang]->processForm($values);
     }
-    // Patch
-    foreach($this->getLangs($obj) as $lang) {      
-      switch($values['i18n_master_culture_'.$lang]) {
-        case 1://specific content.
+    if($defs['addbehaviour']) {
+      // Patch
+      foreach($this->getLangs($obj) as $lang) {      
+        switch($values['i18n_master_culture_'.$lang]) {
+          case 1://specific content.
+            $obj->_i18ndos[$lang]->i18n_master_culture = '';
+            $obj->_i18ndos[$lang]->i18n_available = true;
+            $obj->_i18ndos[$lang]->update();
+            break;
+          case ''://not available.
           $obj->_i18ndos[$lang]->i18n_master_culture = '';
+          $obj->_i18ndos[$lang]->i18n_available = false;
+          $obj->_i18ndos[$lang]->update();
+          break;
+          default:
           $obj->_i18ndos[$lang]->i18n_available = true;
           $obj->_i18ndos[$lang]->update();
           break;
-        case ''://not available.
-        $obj->_i18ndos[$lang]->i18n_master_culture = '';
-        $obj->_i18ndos[$lang]->i18n_available = false;
-        $obj->_i18ndos[$lang]->update();
-        break;
-        default:
-        $obj->_i18ndos[$lang]->i18n_available = true;
-        $obj->_i18ndos[$lang]->update();
-        break;
-      }
-    }  
+        }
+      }  
+    }
   }
   /**
    * Generates a FormBuilder instance for each language.
@@ -414,7 +419,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       return $res;
     }
     // Changing foreign key format if officepack used (CHAR(36))
-    if($obj->hasplugin('officepack')) {
+    if($obj->hasplugin('officepack') || $obj->hasplugin('guid')) {
       $foreignkeyspecs = array('type'=>'text','length'=>36);
     } else {
       $foreignkeyspecs = array('type'=>'integer','unsigned'=>1);      
