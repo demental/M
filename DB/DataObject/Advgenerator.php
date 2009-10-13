@@ -49,6 +49,10 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
             if(ereg('^(.+)_i18n$',$this->table,$tab)) {
               $links.="\t\t\t'i18n_record_id'=>'".$tab[1].":id',\n";
             }
+            elseif(ereg('^(.+)_l10n$',$this->table,$tab)) {
+              $links.="\t\t\t'l10n_record_id'=>'".$tab[1].":id',\n";
+            }
+
           }
         }
         if($addreverselinks) {

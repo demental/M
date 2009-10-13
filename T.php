@@ -48,16 +48,19 @@ class T {
 			return $t;
 		}
 	}
-	public function getLocale()
-	{
-		return $this->locale;
-	}
   /**
    * Returns countrycode
    */
 	public function getCountry()
 	{
 	 return substr(self::getLang(),2,2);
+	}
+  /**
+   * Returns language (first 2 chars of T::getLang())
+   */
+	public static function getLocale()
+	{
+	 return substr(self::getLang(),0,2);
 	}
 	public static function addInstance ( &$i, $l )
 	{

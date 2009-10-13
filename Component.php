@@ -37,6 +37,7 @@ class Component extends Dispatcher
   }
   public function moduleInstance()
   {
+
     $args = func_get_args();
     $res = call_user_func_array(array('parent','moduleInstance'),$args);
     $res->isComponent(true);

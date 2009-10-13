@@ -75,16 +75,38 @@ class Config
 
 	/**
 	 *
-	 * Get all language
+	 * Get all language/country pairs
 	 *
 	 * @access	public
-	 * @return	array indexed array of all the languages iso2 codes handled by the application
+	 * @return	array indexed array of all the languages/country iso2iso2 codes handled by the application
 	 * @static
 	 *
 	 */
 	public static function getAllLangs() 
 	{
 		return Config::get('installedLangs');
+	}
+
+	/**
+	 *
+	 * Get all languages
+	 *
+	 * @access	public
+	 * @return	array indexed array of all the languages iso2 codes handled by the application
+	 * @static
+	 *
+	 */
+	public static function getAllLocales() 
+	{
+		$ret = Config::get('installedLocales');
+		if(!is_array($ret)) {
+      $ret = array();
+		  foreach(self::getAllLangs() as $pair) {
+		    $ret[] = substr($pair,0,2);
+		  }
+		  self::set('installedLocales',array_unique($ret));
+		}
+		return $ret;
 	}
 
 	/**

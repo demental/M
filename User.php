@@ -46,6 +46,7 @@ class User{
 			$_SESSION[$this->context]['userLanguage']=$this->language;
 		}
 		$_SESSION[$this->context]['userProperties'] = $this->properties;
+		$_SESSION[$this->context]['target'] = $this->target;
 
 	}
 	public function hasProperty($prop)
@@ -89,6 +90,7 @@ class User{
 			self::$_instance[$context]->setLanguage($_SESSION[$context]['userLanguage']);
 			self::$_instance[$context]->setId($_SESSION[$context]['userId']);
 			self::$_instance[$context]->setProperties($_SESSION[$context]['userProperties']);
+			self::$_instance[$context]->setTarget($_SESSION[$context]['target']);			
 			self::$_instance[$context]->setLevel($data['defaults']['level']);
 			if(!empty($data['defaults']['preInitHook']) && function_exists($data['defaults']['preInitHook'])) {
 				call_user_func($data['defaults']['preInitHook'],self::$_instance[$context]);
