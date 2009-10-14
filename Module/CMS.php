@@ -37,7 +37,7 @@ class CMS_Module extends Module {
       $this->redirect404('error/404');
     }
   }
-  protected function populateCMS()
+  protected function populateCMS($action)
   {
     try {
       $content = Mreg::get('content');
@@ -48,7 +48,7 @@ class CMS_Module extends Module {
       $content->{$this->_dbaccessibleaspage} = 1;
     }
 
-    if(!$content->get($this->_dbstrip,$this->_dataAction)) {
+    if(!$content->get($this->_dbstrip,$action)) {
       $this->handleNotFound();
       return;
     }
@@ -65,14 +65,13 @@ class CMS_Module extends Module {
     }
     $this->assign($this->_tpltitle,$content->{$this->_dbtitle});
   }
-  
-  public function preExecuteAction($action)
-  {
-    $this->populateCMS();
-  }
   public function executeAction($action)
   {
-    $this->_dataAction = $this->_content->{$this->_dbmodulaction}?$this->_content->{$this->_dbmodulaction}:$action;
+    Mreg::get('setup')->setUpEnv();
+
+    $this->populateCMS($action);
+
+    $action = $this->_content->{$this->_dbmodulaction}?$this->_content->{$this->_dbmodulaction}:$action;
     try {
       parent::executeAction($action);
     } catch (Error404Exception $e) {
@@ -85,6 +84,9 @@ class CMS_Module extends Module {
   }
   public function output($template=null,$layout=null)
   {
+    if(is_null($template)) {
+      $template = strtolower(str_replace('Module_', '', get_class($this))).'/'.$this->_content->{$this->_dbmodulaction};      
+    }
     try {
       $out = parent::output($template,$layout);
     } catch(Exception $e) {
