@@ -19,20 +19,18 @@ define('APP_NAME','{$APP_NAME}');
 
 require '{$APP_RELATIVE_FILE_TO_ROOT}/M_Startup.php';
 
- /**
- *
- * Dispatching
- *
- **/
- 
-$module = empty($_REQUEST['module'])?'defaut':$_REQUEST['module'];
-$action = empty($_REQUEST['action'])?'index':$_REQUEST['action'];
 
+require(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'routing.php');
+$result = Net_URL_Mapper::getInstance()->match($_GET['route']);
+$getvalues = array_merge($result,$_GET);
+$requestvalues = array_merge($_POST,$get);
 
-$d = new Dispatcher($module,$action);
+$request = new MRequest($getvalues,$requestvalues);
+
+$d = new Dispatcher($request);
 $d->setConfig(PEAR::getStaticProperty('Dispatcher','global'));
-$d->execute();
 
+$d->execute();
 
 header('Content-type:text/html; charset=utf-8');
 echo $d->display();
