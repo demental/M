@@ -62,7 +62,7 @@ array(
   'office_usermodule'     =>'M/Office/UserModule.php',
   'office_dbmodule'       =>'M/Office/DbModule.php',
   'payment'               =>'M/Payment.php',
-  'iorder'                =>'M/Payment/iOrder.php',
+  'itransaction'          =>'M/Payment/iTransaction.php',
   'phpmailer'             =>'M/lib/phpmailer.php',
   'm_crypt'               =>'M/Crypt.php',
   'mpdf'                  =>'M/MPdf.php',

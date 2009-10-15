@@ -19,10 +19,6 @@
 
 class Payment_Driver_SIPS extends Payment
 {
-  function __construct($options)
-  {
-    $this->options = $options;
-  }
   public function fetch() {      
       $amount = $this->order->getAmount()*100;
     	$parm="merchant_id=".$this->getOption('merchant_id');
@@ -247,11 +243,6 @@ class Payment_Driver_SIPS extends Payment
   }
   function getOrderId() {
       return $this->orderId;
-  }
-  public function setOrder(iOrder $order)
-  {
-    $this->order = $order;
-    $this->orderId = $order->getId();
   }
   public function setAdditionalInfo($info)
   {

@@ -2,12 +2,12 @@
 /**
 * M PHP Framework
 * @package      M
-* @subpackage   iOrder
+* @subpackage   iTransaction
 */
 /**
 * M PHP Framework
 *
-* Order interface to be implemented in whatever order has to be handled by a Payment object
+* Transaction interface to be implemented in whatever transaction object has to be handled by a Payment process
 *
 * @package      M
 * @subpackage   iOrder
@@ -17,10 +17,12 @@
 * @version      0.1
 */
 
-interface iOrder {
+interface iTransaction {
   public function getId();
   public function retrieveById($value);
-  public function success($transcript);
-  public function error($err_code);
+  public function success(Payment_Driver $payment_driver);
+  public function error(Payment_Driver $err_code);
   public function getAmount();
+  public function getLanguage();
+  public function getCurrency();    
 }
