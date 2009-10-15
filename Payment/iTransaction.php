@@ -25,4 +25,5 @@ interface iTransaction {
   public function getAmount();
   public function getLanguage();
   public function getCurrency();    
+  public function tagAsAnalysisSent();
 }

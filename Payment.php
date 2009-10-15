@@ -179,6 +179,13 @@ class Payment {
    * Analysis is provided by third-party companies AFTER payment is being valid.
    */
 
+    /**
+     * Wether this payment includes an analysis part.
+     */
+    public function hasAnalysis()
+    {
+      return false;
+    }
    /**
     * @return bool
     * If there is a post-acceptance transaction analysis, isValid can be used for
@@ -194,7 +201,7 @@ class Payment {
     * for the transaction.
     */
    public function requestAnalysis() {
-     return;
+     $this->getTransaction()->tagAsAnalysisSent();
    }
 
    /**

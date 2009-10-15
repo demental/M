@@ -488,6 +488,9 @@ class Module extends Maman {
 				array_unshift($template,$t.'.bloc');
 			}
 		}
+		if($this->isComponent()) {
+		  $layout='__self';
+		}
 		if($layout=='__self'){
 			Log::info('Displaying selfsufficient for module '.get_class($this->_lastOutput));
 			$ret = $this->_lastOutput->view->fetch($template);

@@ -63,6 +63,8 @@ array(
   'office_dbmodule'       =>'M/Office/DbModule.php',
   'payment'               =>'M/Payment.php',
   'itransaction'          =>'M/Payment/iTransaction.php',
+  'Payment_Request_Exception'=>'M/Payment/Exception.php',
+  'Payment_Response_Exception'=>'M/Payment/Exception.php',  
   'phpmailer'             =>'M/lib/phpmailer.php',
   'm_crypt'               =>'M/Crypt.php',
   'mpdf'                  =>'M/MPdf.php',
