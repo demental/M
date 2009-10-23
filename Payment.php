@@ -56,31 +56,63 @@ class Payment {
    * Creates configuration from a string (serialized data by default)
    */
   public function setConfigFromString($string){
-    $this->_config = unserialize($string);
+    $config = unserialize($string);
+    foreach($config as $k=>$v) {
+      $this->setOption($k,$v);
+    }
+
   }
 
   public function setOption($ky,$val)
   {
-    $this->_config[$ky] = $val;
+    $this->_options[$ky] = $val;
   }
   public function getOption($ky) {
-    return $this->_config[$ky];
+    return $this->_options[$ky];
   }
   /**
    * Retreives the configuration to a string (that can be stored in a database field for example)
    * This string can then be retreived with setConfigFromString
    */
   public function getConfigToString() {
-    return serialize($this->_config);
+    return serialize($this->_options);
   }
 
+  /**
+   * Set a language for payment interface (iso2)
+   */
+  public function setLanguage($l)
+  {
+    $this->setOption('language',$l);
+  }
+
+  /**
+   * Set a currency for payment (3 letters)
+   */
+  public function setCurrency($c)
+  {
+    $this->setOption('currency',$c);
+  }
+  public function setSuccessUrl($url)
+  {
+    $this->setOption('success_url',$url);
+  }
+  public function setErrorUrl($url)
+  {
+    $this->setOption('error_url',$url);
+  }
+  public function setAutoresponseUrl($url)
+  {
+    $this->setOption('autoresponse_url',$url);
+  }
+  
   /**
    * Adds fields to a HTML_QuickForm to configure this driver.
    * Additionnaly A prefix can be prepended to field names
    */
   public function createConfigForm(HTML_QuickForm $form,$prefix=''){
     $this->_configprefix = $prefix;
-    foreach($this->_config as $key=>$value) {
+    foreach($this->_options as $key=>$value) {
       $form->addElement('text',$prefix.$key,$key);
       $defaults[$prefix.$key] = $value;
     }
@@ -91,7 +123,10 @@ class Payment {
    * If a prefix was set previously with configForm(), it's taken in account
    */
   public function processConfigForm($values) {
-    $this->_config = $values;
+    foreach($values as $k=>$v) {
+      if(!eregi('^'.$this->_configprefix,$k)) continue;
+      $this->_options[ereg_replace('^'.$this->_configprefix,'',$k)] = $v;
+    }
   }
 
   /**
