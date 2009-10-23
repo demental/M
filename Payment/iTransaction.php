@@ -20,8 +20,8 @@
 interface iTransaction {
   public function getId();
   public function retrieveById($value);
-  public function success(Payment_Driver $payment_driver);
-  public function error(Payment_Driver $err_code);
+  public function success(Payment $payment_driver);
+  public function error(Payment $payment_driver);
   public function getAmount();
   public function getLanguage();
   public function getCurrency();    

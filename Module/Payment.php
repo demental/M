@@ -14,7 +14,6 @@
  * Module to handle payment gateway response
  */
 
-
 class Payment_Module extends Module {
   public function getCacheId($action)
   {
@@ -23,7 +22,7 @@ class Payment_Module extends Module {
   public function executeAction($action)
   {
     $driver = ereg_replace('^(success|error|autoresponse)_','',$action);
-    $action = ereg_replace($driver.'$','',$action);
+    $action = ereg_replace('_'.$driver.'$','',$action);
     $this->setParam('driver',$driver);
     parent::executeAction($action);
   }

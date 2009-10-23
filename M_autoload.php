@@ -54,6 +54,7 @@ array(
   'dispatcher'            =>'M/Dispatcher.php',
   'cms_module'            =>'M/Module/CMS.php',
   'payment_module'        =>'M/Module/Payment.php',
+  'payment_response'      =>'M/Payment/Response.php',
   'maman'                 =>'M/Maman.php',
   'm_office_util'         =>'M/Office/Util.php',
   'authhelper'            =>'M/Office/AuthHelper.php',
