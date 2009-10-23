@@ -326,7 +326,7 @@ class M_Office_Actions extends M_Office_Controller {
       Mreg::get('tpl')->assign('do',$do);
 			$qfAction->addElement('header','qfActionHeader',$this->getActionTitle());
 			$qfAction->addElement('hidden',$this->typeval,$this->actionName);
-      M_Office_Util::addHiddenField(&$qfAction, 'selected', $this->getSelectedIds());
+      M_Office_Util::addHiddenField($qfAction, 'selected', $this->getSelectedIds());
       $selectedDo = $this->getSelected(true);
       if('single'==$this->type) {
         $selectedDo->fetch();
