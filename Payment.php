@@ -18,11 +18,12 @@
 class Payment {
 
   protected static $driverpaths = array('M/Payment/Driver/');
-
-	public static function &factory($driver)
+  protected $_analysisSummary;
+  protected $__name;
+	public static final function &factory($driver)
 	{
 	  $success = false;
-		$className = 'Payment_Driver_'.$driver;
+		$className = 'Payment_Driver_'.ucfirst($driver);
 		$baseName = strtolower($driver).'.php';
     foreach(self::$driverpaths as $path) {
       $classFile = $path.$baseName;
@@ -34,12 +35,16 @@ class Payment {
 		if($success) {
 		  require_once $classFile;
   		$res = new $className();
+  		$res->__name = $driver;
   		return $res;
 		} else {
 		  throw new Exception('Payment :: '.$driver.' driver not found !');
 		}
 	}
-  public static function addDriverPath($path)
+	public final function getName() {
+	  return $this->__name;
+	}
+  public static final function addDriverPath($path)
   {
     if(substr($path,-1,1)!=DIRECTORY_SEPARATOR) {
       $path.=DIRECTORY_SEPARATOR;
@@ -93,11 +98,11 @@ class Payment {
    * Attach a transaction to this payment. Tipically a database record.
    * Allows to store result of the transaction
    */
-  public function setTransaction(iTransaction $transaction) {
+  public final function setTransaction(iTransaction $transaction) {
     $this->_transaction = $transaction;
   }
 
-  public function getTransaction() {
+  public final function getTransaction() {
 
     return $this->_transaction;
   }
@@ -146,7 +151,6 @@ class Payment {
   public function parseResponse($response) {
     $this->_rawresponse = $response;
     $_response = new Payment_Response($this);
-    $_response->statut=$response['statut'];
     $this->_response = $_response;
     return $this;
   }
@@ -154,11 +158,11 @@ class Payment {
   /**
    * Gets the response raw data (if previously set in setRawResponse)
    */  
-  public function getRawResponse() {
+  public final function getRawResponse() {
     return $this->_rawresponse;
   }
-
-  public function getResponse()
+  
+  public final function getResponse()
   {
     if(!is_a($this->_response,'Payment_Response')) {
       return false;
@@ -166,7 +170,7 @@ class Payment {
     return $this->_response;    
   }
 
-  public function execute()
+  public final function execute()
   {
     if($this->isAccepted()) {
       $this->getTransaction()->success($this);
@@ -174,40 +178,69 @@ class Payment {
       $this->getTransaction()->error($this);      
     }
   }
-  /**
-   * Analysis section (e.g. fia-net is an analysis service)
-   * Analysis is provided by third-party companies AFTER payment is being valid.
-   */
 
-    /**
-     * Wether this payment includes an analysis part.
-     */
+  /**
+   * Returns a human-readable strings that reflects the current payment mode (example : "credit card")
+   * @return string
+   */
+  public function getMode()
+  {
+    return;
+  }
+  /**
+   * Returns a human-readable strings that reflects the current payment mode.
+   * This method must return a more precise definition
+   *  (example : "credit card with thawte analysis")
+   * @return string
+   */
+ public function getDetailedMode()
+ {
+   return;
+ }
+ /**
+  * Returns the unique identifier of the payment.
+  * It can be determined either by the payment gateway or by the local 
+  * workflow (e.g. database record id) 
+  */
+ public function getId()
+ {
+   return;
+ }
+// ==========================================================
+// = Analysis section (e.g. fia-net is an analysis service)
+// = Analysis is provided by third-party companies AFTER payment is being valid.
+// ==========================================================
+
+   /**
+    * Wether this payment includes an analysis part.
+    * @return bool
+    */
     public function hasAnalysis()
     {
       return false;
     }
    /**
-    * @return bool
     * If there is a post-acceptance transaction analysis, isValid can be used for
     * this
+    * @return bool
     */
    public function isValid() {
-     return;
+     return $this->isAccepted();
    }
 
    /**
-    * @return bool
     * if the payment was accepted, sends a request to the analysis gateway
     * for the transaction.
+    * @return bool
     */
    public function requestAnalysis() {
-     $this->getTransaction()->tagAsAnalysisSent();
+     $this->getTransaction()->tagAsAnalysisSent($this);
    }
 
    /**
-    * @return bool
     * Query the analysis gateway to update the validity status, if applicable
     * returns true if analysis was updated since last query, false otherwise.
+    * @return bool
     */
    public function updateAnalysis() {
      return;
@@ -215,9 +248,19 @@ class Payment {
 
    /**
     * Returns a link to an analysis detail page, if applicable.
+    * @return string (url)
     */
    public function getAnalysisUrl() {
      return;
    }	
-	
+	/**
+	 * Returns a text summary of the current analysis
+	 * @return string
+	 */
+	 public function getAnalysisSummary()
+	 {
+	   return $this->_analysisSummary;
+	 }
+
+
 }

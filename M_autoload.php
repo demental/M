@@ -68,14 +68,21 @@ array(
   'phpmailer'             =>'M/lib/phpmailer.php',
   'm_crypt'               =>'M/Crypt.php',
   'mpdf'                  =>'M/MPdf.php',
-  'mpdf_form'                  =>'M/MPdf/form.php',
+  'mpdf_form'             =>'M/MPdf/form.php',
   'tcpdf'                 =>APP_ROOT.WEB_FOLDER.'tcpdf/tcpdf.php',
   'mgeo'                  =>'M/MGeo.php',
   'net_url_mapper'        =>'Net/URL/Mapper.php',
   'iquerystorable'        =>'M/Plugin/Exporter/iQueryStorable.php',
   'pluginregistry'        =>'M/PluginRegistry.php',
   'm_plugin'              =>'M/Plugin.php',
-  'icommand'              =>'M/iCommand.php'
+  'icommand'              =>'M/iCommand.php',
+  'ianalyzabletransaction'=>'M/Payment/iAnalyzable.php',
+  'ianalyzableorder'      =>'M/Payment/iAnalyzable.php',
+  'ianalyzableorderline'      =>'M/Payment/iAnalyzable.php',
+  'ianalyzablecustomer'   =>'M/Payment/iAnalyzable.php',
+  'ianalyzableaddress'    =>'M/Payment/iAnalyzable.php',
+  'payment_response_exception'=>'M/Payment/Exception.php',
+  'payment_request_exception'=>'M/Payment/Exception.php'
   )
   );
 
@@ -108,4 +115,5 @@ array(
   	}
   	return false;
   }
+
 
