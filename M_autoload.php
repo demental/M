@@ -81,6 +81,7 @@ array(
   'ianalyzableorderline'      =>'M/Payment/iAnalyzable.php',
   'ianalyzablecustomer'   =>'M/Payment/iAnalyzable.php',
   'ianalyzableaddress'    =>'M/Payment/iAnalyzable.php',
+  'ianalyzableshippingmethod'    =>'M/Payment/iAnalyzable.php',
   'payment_response_exception'=>'M/Payment/Exception.php',
   'payment_request_exception'=>'M/Payment/Exception.php'
   )
