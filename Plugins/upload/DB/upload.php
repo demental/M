@@ -27,19 +27,33 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
   public function getEvents()
   {
     return array('pregenerateform','postgenerateform','preprocessform','postprocessform','preparelinkeddataobject',
-                  'insert','update','find','delete');
+                  'insert','update','delete','serve');
   }
 
-	function preGenerateForm(&$fb,&$obj)
+  public function serve($field,$name,$obj)
+  {
+	  $uploadFields = $obj->_getPluginsDef();
+	  $info = $uploadFields['upload'][$field];
+	  $filename = IMAGES_UPLOAD_FOLDER.$info['path'].$obj->$field;
+    FileUtils::output($filename,$name);
+    die();
+  }
+
+	public function preGenerateForm(&$fb,&$obj)
 	{
-		$upFields=array_keys($obj->uploadFields);
+	  $uploadFields = $obj->_getPluginsDef();
+	  $uploadFields = $uploadFields['upload'];
+		$upFields=array_keys($uploadFields);
 		foreach($upFields as $k){
 			$obj->fb_preDefElements[$k]=& HTML_QuickForm::createElement('file',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel[$k]);            
 		}
 	}
 	function postGenerateForm(&$form,&$fb,&$obj)
 	{
-		foreach($obj->uploadFields as $k=>$v){
+	  $uploadFields = $obj->_getPluginsDef();
+	  $uploadFields = $uploadFields['upload'];
+
+		foreach($uploadFields as $k=>$v){
 			$field=$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix;
 			if($form->elementExists($field)){
 				if(!empty($obj->$k)){
@@ -67,10 +81,13 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
 	}
 	function postProcessForm(&$v,&$fb,&$obj)
 	{
-		foreach($obj->uploadFields as $k=>$v){
+	  $uploadFields = $obj->_getPluginsDef();
+	  $uploadFields = $uploadFields['upload'];
+	  
+		foreach($uploadFields as $k=>$v){
 			$field=$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix;
             if(key_exists('__upload_delete_'.$field,$_REQUEST)) {
-                $file=SITE_URL.WWW_IMAGES_FOLDER.$v['path'].$obj->$k;
+                $file=SITE_URL.WWW_IMAGES_FOLDER.'/'.$v['path'].'/'.$obj->$k;
                 @unlink($file);
                 $obj->$k='';
                 $obj->update();
@@ -80,20 +97,29 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
 	}
 	function insert(&$obj)
 	{
-		foreach($obj->uploadFields as $k=>$v){
+	  $uploadFields = $obj->_getPluginsDef();
+	  $uploadFields = $uploadFields['upload'];
+	  
+		foreach($uploadFields as $k=>$v){
 			$obj->$k=$this->upFile($obj,$k,$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix);
 		}
 
 	}
 	function update(&$obj)
 	{
-		foreach($obj->uploadFields as $k=>$v){
+	  $uploadFields = $obj->_getPluginsDef();
+	  $uploadFields = $uploadFields['upload'];
+	  
+		foreach($uploadFields as $k=>$v){
 			$obj->$k=$this->upFile($obj, $k, $obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix);
 		}
 	}
 	
 	function upFile($obj, $field, $fieldName=null){
-		$info=$obj->uploadFields[$field];
+	  $uploadFields = $obj->_getPluginsDef();
+	  $uploadFields = $uploadFields['upload'];
+
+		$info=$uploadFields[$field];
 	    if(is_null($fieldName)){
 	        $fieldName=$field;
         }
@@ -121,6 +147,12 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
    */
 	function delete(&$obj)
 	{
+	  $uploadFields = $obj->_getPluginsDef();
+	  $uploadFields = $uploadFields['upload'];
+		foreach($uploadFields as $k=>$v){
+	    $file=IMAGES_UPLOAD_FOLDER.'/'.$v['path'].'/'.$obj->$k;
+      @unlink($file);
+    }
 		return;
 	}
 }

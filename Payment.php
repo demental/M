@@ -57,10 +57,11 @@ class Payment {
    */
   public function setConfigFromString($string){
     $config = unserialize($string);
-    foreach($config as $k=>$v) {
-      $this->setOption($k,$v);
+    if(is_array($config)) {
+      foreach($config as $k=>$v) {
+        $this->setOption($k,$v);
+      }
     }
-
   }
 
   public function setOption($ky,$val)
@@ -69,6 +70,10 @@ class Payment {
   }
   public function getOption($ky) {
     return $this->_options[$ky];
+  }
+  public function getOptions()
+  {
+    return $this->_options;
   }
   /**
    * Retreives the configuration to a string (that can be stored in a database field for example)
@@ -173,13 +178,19 @@ class Payment {
   }
 
   /**
-   * Renders and returns  an HTML block that must be printed to the admin user
+   * HTML form that must be printed to the admin user
    * usage : call centers & check payments
    */
-  public function getPrivateBlock() {
-    return '';
+  public function getPrivateForm(HTML_QuickForm $form) {
+    return $form;
   }
-
+  /**
+   * Processes data received from private form
+   */
+  public function processPrivateForm($data)
+  {
+    return;
+  }
   /**
    * Sets the response raw data (tipically $_REQUEST) from the payment gateway
    */
@@ -298,4 +309,11 @@ class Payment {
 	 }
 
 
+   /**
+    * Debugging
+    */
+    public function debug($message)
+    {
+      # code...
+    }
 }

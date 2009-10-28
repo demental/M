@@ -341,8 +341,11 @@ class fileUtils
 	 * @access	public
 	 * @param	$file	string	File URL
 	 */
-	public function output($file)
+	public function output($file,$asname='')
 	{
+	  if(empty($asname)) {
+	    $asname=basename($file);
+	  }
 		switch(fileUtils::getFileExtension($file)){
 			case 'jpeg':
 			case 'jpg':
@@ -356,7 +359,9 @@ class fileUtils
 				$ctype='image/gif';
 				break;
 			default:
-				return;
+				$ctype='application/force-download';
+				header('content-disposition:attachment;filename='.$asname);
+				break;
 		}
 		header('Content-Type:'.$ctype);
 		readfile($file);

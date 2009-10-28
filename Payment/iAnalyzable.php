@@ -135,6 +135,10 @@ interface iAnalyzableAddress {
    */
   public function getZipcode();
 
+  /**
+   * @return string
+   */
+  public function getCityname();
 
   /**
    * returns the ISO2 code for the country of $this

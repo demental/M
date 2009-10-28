@@ -21,10 +21,14 @@ class Payment_Module extends Module {
   }
   public function executeAction($action)
   {
-    $driver = ereg_replace('^(success|error|autoresponse)_','',$action);
-    $action = ereg_replace('_'.$driver.'$','',$action);
-    $this->setParam('driver',$driver);
-    parent::executeAction($action);
+    try {
+      parent::executeAction($action);
+    } catch(Exception $e) {
+      $driver = ereg_replace('^(success|error|autoresponse)_','',$action);
+      $action = ereg_replace('_'.$driver.'$','',$action);
+      $this->setParam('driver',$driver);
+      parent::executeAction($action);
+    }
   }
   
 }

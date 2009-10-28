@@ -20,10 +20,10 @@ class Strings {
 		$string = trim($string);
 		if($moduleCompliant) {
 
-			$string=strtr(utf8_decode($string),utf8_decode('+ÂÔÊÎÛàâéêèîôûùç² ,!?&\'"./'),'_aoeiuaaeeeiouuc2_________');
+			$string=strtr(utf8_decode($string),utf8_decode('+ÉÈÀÂÔÊÎÛàâéêèîôûùç² ,!?&\'"./'),'_eeaaoeiuaaeeeiouuc2_________');
 			$sep='_';
 		} else {
-			$string=strtr(utf8_decode($string),utf8_decode('ÂÔÊÎÛàâéêèîôûùç² ,!?&\'"./'),'aoeiuaaeeeiouuc2---------');
+			$string=strtr(utf8_decode($string),utf8_decode('ÉÈÀÂÔÊÎÛàâéêèîôûùç² ,!?&\'"./'),'eeaaoeiuaaeeeiouuc2---------');
 			$sep='_';
 		}
 
