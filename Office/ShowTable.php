@@ -96,7 +96,7 @@ class M_Office_ShowTable extends M_Office_Controller {
           $res = $db->quote($_REQUEST['filterValue']);
         }
 
-        $do->whereAdd($db->quoteIdentifier($do->tableName().'.'.$_REQUEST['filterField']).' = '.$res);
+        $do->whereAdd($db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($_REQUEST['filterField']).' = '.$res);
         $filterString = __('%s for %s',array($do->tableName(),$_REQUEST['filterField'])).' = ';
         $links = $do->links();
         if (isset($links[$_REQUEST['filterField']])) {
