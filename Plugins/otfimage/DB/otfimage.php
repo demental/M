@@ -29,14 +29,25 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
 	}
 	public function postProcessForm(&$v,&$fb,&$obj)
 	{
+
     $defs = $obj->_getPluginsDef();
 		$field=$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix;
-		$obj->filename=$this->_upFile($obj,$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$defs['otfimage']['path'],$obj->getOwner()->tableName());
+	  if(!$_FILES[$field]['tmp_name']) return;
+
+    $filename = $obj->getImageName();
+    if(!$filename) {
+      $filename = $obj->getOwner()->tableName().'_'.substr(md5(time()+rand(0,100)),0,10);
+    }
+		$obj->filename=$this->_upFile($obj,$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$defs['otfimage']['path'],$filename);
     $obj->update();
-    $main = $obj->getOwner()->newImage();
-    $main->ismain=1;
-    if($obj->ismain || !$main->find(true)) {
-      $obj->setAsMain();
+    $main = $obj->getOwner();
+    if($main!==$obj) {
+      $main = $main->newImage();
+      $main->ismain=1;
+      
+      if($obj->ismain || !$main->find(true)) {
+        $obj->setAsMain();
+      }
     }
 	}
 
@@ -58,20 +69,34 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
         $params = array();        
       }
     }
+    $filename = eregi_replace('(\.[^\.]+)$','',basename($obj->filename));
+    
+
     ksort($params);
+    $paramskey = $this->paramstostring($params);
     $params['format'] = $params['format']?$params['format']:FileUtils::getFileExtension($obj->filename);
     $cachename = $defs['otfimage']['cache'].'/'
-    .md5(basename($obj->filename).print_r($params,true)).'.'.($params['format']);
+    .$filename.'_'.$paramskey.'.'.($params['format']);
     $cachefile = APP_ROOT.WEB_FOLDER.'/'
                 .$cachename;
-    $cacheurl = SITE_URL.$cachename;
+    $cacheurl = '/'.$cachename;
     if(!file_exists($cachefile)) {
       $this->_createResized($this->_getOriginalPath($obj),$cachefile,$params);
     }
     return $this->returnStatus($cacheurl);
   }
+  public function paramstostring($params)
+  {
+    $out='';
+    foreach($params as $k=>$aparam) {
+      if($k=='format') continue;
+      $out.=$k.'-'.$aparam;
+    }
+    return $out;
+  }
   public function getOwner($obj)
   {
+    if(!$obj->record_table) return $this->returnStatus($obj);
     $return = DB_DataObject::factory($obj->record_table);
     $return->{$return->pkName()} = $obj->record_id;
     $return->find(true);
@@ -110,7 +135,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
     }
 		if (is_uploaded_file($_FILES[$field]['tmp_name'])){
      $ext = FileUtils::getFileExtension($_FILES[$field]['name']);
-		 $name = $prefix.'_'.substr(md5(time()+rand(0,100)),0,10).".".$ext;
+		 $name = $prefix.".".$ext;
      $destination = IMAGES_UPLOAD_FOLDER.$relativePathFromUploadFolder.'/'.$name;
 
 			if (move_uploaded_file($_FILES[$field]["tmp_name"], $destination)

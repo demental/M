@@ -52,28 +52,37 @@ class CMS_Module extends Module {
       $this->handleNotFound();
       return;
     }
+
     if($content->{$this->_dbisnode}) {
       $target = strtolower(str_replace('Module_', '', get_class($this))).'/'.$content->getPlugin('tree')->getFirstChild($content)->{$this->_dbstrip};
       $this->redirect301($target);
     }
+
     $this->assignRef('content',$content);
     $this->_content = $content;
+
     try{
       Mreg::set('content',$content);
     } catch (Exception $e) {
       
     }
+
     $this->assign($this->_tpltitle,$content->{$this->_dbtitle});
+
   }
   public function executeAction($action)
   {
+
     Mreg::get('setup')->setUpEnv();
 
     $this->populateCMS($action);
 
     $action = $this->_content->{$this->_dbmodulaction}?$this->_content->{$this->_dbmodulaction}:$action;
+
     try {
+
       parent::executeAction($action);
+
     } catch (Error404Exception $e) {
       if($this->_dbnotfound) {
         throw new Error404Exception('content data not found !');
@@ -81,6 +90,7 @@ class CMS_Module extends Module {
       $action='index';
       parent::executeAction($action);
     }
+
   }
   public function output($template=null,$layout=null)
   {

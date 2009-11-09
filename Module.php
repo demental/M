@@ -91,12 +91,14 @@ class Module extends Maman {
 	 */
 	public static function &factory($modulename,$path=null,$params = null)
 	{
+
 		if(empty($path)) {
 			$path=array('modules');
 		}
 		if(!is_array($path)) {
 			$path = array($path);
 		}
+
 		$i=false;
 		foreach($path as $aPath) {
 			if (@include_once $aPath.'/'.$modulename.'.php') {
@@ -104,6 +106,7 @@ class Module extends Maman {
 				break;
 			}
 		}
+
 		if (!$i)
 		{
 			throw new Error404Exception("No $modulename module in path ".implode(',',$path));

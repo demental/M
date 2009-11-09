@@ -90,12 +90,16 @@ class Dispatcher extends Maman {
       {
         Log::info('Trying module '.$this->module);
       	$this->page = $this->moduleInstance($this->module,$path,$this->params);
+
       	try
       	{
             Log::info('Trying action '.$this->action);
       		  $this->page->executeAction($this->action);
             
       	}
+        catch (SecurityException $e) {        
+          $this->handleSecurity();
+        }
       	catch (Exception $e)
       	{
             Log::info('Action '.$this->action.' rejected for module '.$this->module.', trying index instead ');
@@ -106,18 +110,11 @@ class Dispatcher extends Maman {
 
       }
       catch (Error404Exception $e) {
+
         $this->returnModuleNotFound();
       }
       catch (SecurityException $e) {        
-
-          Log::info('User not allowed for '.$this->module);
-          Log::info('Setting target after login to '.$this->module.'/'.$this->action);
-          $data = $_REQUEST;
-          unset($data['module']);
-          unset($data['action']);
-          User::getInstance()->setTarget($this->module.'/'.$this->action,$data);
-          $this->page = $this->moduleInstance($this->getConfig('loginmodule',$this->module),$path);
-          $this->page->executeAction($this->getConfig('loginaction',$this->module));
+        $this->handleSecurity();
       }
       catch (Exception $e)
       {
@@ -129,6 +126,22 @@ class Dispatcher extends Maman {
       Log::info($this->module.'/'.$this->action.' executed successfully');
     }
 
+    protected function handleSecurity()
+    {
+      Log::info('User not allowed for '.$this->module);
+      Log::info('Setting target after login to '.$this->module.'/'.$this->action);
+      $data = $_REQUEST;
+      unset($data['module']);
+      unset($data['action']);
+      try {
+        User::getInstance()->setTarget($this->module.'/'.$this->action,$data);
+      } catch(Exception $e) {
+        
+      }
+      $this->page = $this->moduleInstance($this->getConfig('loginmodule',$this->module),$path);
+      $this->page->executeAction($this->getConfig('loginaction',$this->module));
+
+    }
   /**
 	 *
 	 * Handle "Not found error"
@@ -146,8 +159,11 @@ class Dispatcher extends Maman {
 
     public function moduleInstance()
     {
+
       $args = func_get_args();
+
       $res = call_user_func_array(array('Module','factory'),$args);
+
       return $res;
     }
     

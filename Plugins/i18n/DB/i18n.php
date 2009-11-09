@@ -17,17 +17,17 @@
 * @version      0.1
 */
 
+/**
+ * The difference between this plugin and i18n is this one is more basic :
+ * - language-based (i18n is culture-based)
+ * - no behaviour fields
+ */
+
 class DB_DataObject_Plugin_I18n extends M_Plugin {
   public $plugin_name='international';
   public $_autoActions = true;
 
 
-  /**
-   * @access public
-   * if set to true, records will be fetched even if marked as 
-   * not available (field i18n_available set in migration_addBehaviourFields)
-   */
-  public $_bypassAvailabilityField = false;
 
   public function getEvents()
   {
@@ -36,24 +36,24 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
   public function preGenerateForm($fb,$obj)
   {
     if(!$this->_autoActions) {
-      $langs = array(T::getLang());
+      $langs = array(T::getLocale());
     } else {
-      $langs = $this->getLangs($obj);
+      $langs = $this->getLocales($obj);
     }
     
     $obj->_i18ndos = $this->prepareTranslationRecords($obj,$langs);
   }
   public function getDefaultLang($obj)
   {
-    return T::getLang();
+    return T::getLocale();
   }
   public function postGenerateForm($form,$fb,$obj){
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];
     if(!$this->_autoActions) {
-      $langs = array(T::getLang());
+      $langs = array(T::getLocale());
     } else {
-      $langs = $this->getLangs($obj);
+      $langs = $this->getLocales($obj);
     }    
     foreach($obj->_i18ndos as $lang=>$arec) {
       $obj->_i18nfbs[$lang] = MyFB::create($obj->_i18ndos[$lang]);
@@ -62,45 +62,41 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 
 
     }
-    // @ todo : the BIG todo : find a way to make a conditional form rule :
-    // If a lang is marked as 'specific', check required fields
-    // If a lang is marked as 'not available' or 'mirror of ...', 
-    // don't check required fields for this lang.
-    // for now required fields are bypassed... 
+
     $elements = $obj->_i18nfbs[$lang]->_reorderElements();
 
-      if(is_array($obj->fb_fieldsToRender)) {
-        $iFields = array_intersect($info,$obj->fb_fieldsToRender);
-      } else {
-        $iFields = $info;
-      }
-      $allLangs = array_diff($langs,array($this->getDefaultLang($obj)));
-      array_unshift($allLangs,$this->getDefaultLang($obj));
-      $langs = $allLangs;
-      foreach($iFields as $field) {
-        $fields = array();
-        foreach($langs as $lang) {
-          $completename = $obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix;
+    if(is_array($obj->fb_fieldsToRender)) {
+      $iFields = array_intersect($info,$obj->fb_fieldsToRender);
+    } else {
+      $iFields = $info;
+    }
+    $allLangs = array_diff($langs,array($this->getDefaultLang($obj)));
+    array_unshift($allLangs,$this->getDefaultLang($obj));
+    $langs = $allLangs;
+    foreach($iFields as $field) {
+      $fields = array();
+      foreach($langs as $lang) {
+        $completename = $obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix;
 
-          $elem = $form->getElement($completename.'_'.$lang);
-          $elem->setAttribute('rel',$completename);
-          if($lang == $this->getDefaultLang($obj)) {
-            $class='translatesource field_'.$lang;
-            $id = 'autotransid_'.$completename;
-          } else {
-            $class='autotranslate source_autotransid_'.$completename.' field_'.$lang;
-            $id = 'autotransid_'.$completename.'_'.$lang;
-          }
-          $elem->setAttribute('class',$elem->getAttribute('class').($elem->getAttribute('class')?' ':'').$class);          
-        }        
-      }
+        $elem = $form->getElement($completename.'_'.$lang);
+        $elem->setAttribute('rel',$completename);
+        if($lang == $this->getDefaultLang($obj)) {
+          $class='translatesource field_'.$lang;
+          $id = 'autotransid_'.$completename;
+        } else {
+          $class='autotranslate source_autotransid_'.$completename.' field_'.$lang;
+          $id = 'autotransid_'.$completename.'_'.$lang;
+        }
+        $elem->setAttribute('class',$elem->getAttribute('class').($elem->getAttribute('class')?' ':'').$class);          
+      }        
+    }
   }
   
   public function preProcessForm(&$values,$fb,$obj)
   {
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];
-    $elements = $obj->_i18nfbs[T::getLang()]->_reorderElements();      
+    $elements = $obj->_i18nfbs[T::getLocale()]->_reorderElements();      
     // To avoid duplicate saving of current lang record
     $this->_dontSavei18n = true;
     unset($obj->i18n_lang);
@@ -115,71 +111,10 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
   
   public function postProcessForm(&$values,$fb,$obj)
   {
-    foreach($this->getLangs($obj) as $lang) {
-      // Alter values depending on behaviour.
-      switch($values['i18n_master_culture_'.$lang]) {
-        case 1://specific content.
-          $obj->_i18ndos[$lang]->i18n_master_culture = null;
-          $obj->_i18ndos[$lang]->i18n_available = true;
-          $values['i18n_available_'.$lang]=1;
-          break;
-        case ''://not available
-          $obj->_i18ndos[$lang]->i18n_master_culture = '';
-          $obj->_i18ndos[$lang]->i18n_available = false;
-          // we fill fields with 'n-a' to avoid not null fields to be empty
-          foreach($obj->i18nFields as $field) {
-            $slaveindex = $obj->fb_elementNamePrefix
-                              .$field
-                              .'_'
-                              .$lang
-                              .$obj->fb_elementNamePostfix;          
-
-            $values[$slaveindex]='n-a';
-          }
-
-          break;
-        default:// mirror of another language
-          $obj->_i18ndos[$lang]->i18n_available = true;
-          foreach($obj->i18nFields as $field) {
-            $masterindex = $obj->fb_elementNamePrefix
-                      .$field
-                      .'_'
-                      .$values['i18n_master_culture_'.$lang]
-                      .$obj->fb_elementNamePostfix;
-            $slaveindex = $obj->fb_elementNamePrefix
-                              .$field
-                              .'_'
-                              .$lang
-                              .$obj->fb_elementNamePostfix;          
-            $values[$slaveindex] = $values[$masterindex];
-          }
-        break;
-      }  
-    }    
-    foreach($this->getLangs($obj) as $lang) {      
+    foreach($this->getLocales($obj) as $lang) {      
       $obj->_i18ndos[$lang]->i18n_record_id = $obj->pk();
       $obj->_i18nfbs[$lang]->processForm($values);
     }
-
-    // Patch
-    foreach($this->getLangs($obj) as $lang) {      
-      switch($values['i18n_master_culture_'.$lang]) {
-        case 1://specific content.
-          $obj->_i18ndos[$lang]->i18n_master_culture = '';
-          $obj->_i18ndos[$lang]->i18n_available = true;
-          $obj->_i18ndos[$lang]->update();
-          break;
-        case ''://not available.
-        $obj->_i18ndos[$lang]->i18n_master_culture = '';
-        $obj->_i18ndos[$lang]->i18n_available = false;
-        $obj->_i18ndos[$lang]->update();
-        break;
-        default:
-        $obj->_i18ndos[$lang]->i18n_available = true;
-        $obj->_i18ndos[$lang]->update();
-        break;
-      }
-    }  
 
   }
   /**
@@ -231,43 +166,17 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
         }
       }
       $t->fb_fieldsToRender = $iFields;
-      $t->fb_fieldsToRender[]='i18n_master_culture';
-      $t->fb_userEditableFields[]='i18n_master_culture';
-      $t->fb_selectAddEmpty[]='i18n_master_culture';
-      $t->fb_selectAddEmptyLabel = __('Not available'); 
-      $t->fb_fieldAttributes['i18n_master_culture']='class="i18n_behaviour"';
-      $t->fb_enumFields[]='i18n_master_culture';
-      $t->fb_enumOptions['i18n_master_culture']['1']=__('Specific content');
-      $t->fb_fieldLabels['i18n_master_culture'] = __('Behaviour for this language (%s)',array($lang));
-      $t->fb_excludeFromAutoRules = $iFields;
-      foreach($langs as $alang) {
-        if($alang==$lang) continue;
-        $t->fb_enumOptions['i18n_master_culture'][$alang] = __('Mirror of %s',array($alang));
-      }
-      if(is_array($t->fb_preDefOrder)) {
-        array_unshift($t->fb_preDefOrder,'i18n_master_culture');
-      } else {
-        $t->fb_preDefOrder = array('i18n_master_culture');
-      }
       $t->fb_createSubmit = false;
       $t->fb_addFormHeader = true;
       $t->fb_formHeaderText = $lang;
-      switch(true) {
-        case !$t->i18n_available:
-          $t->i18n_master_culture='';
-          break;
-        case empty($t->i18n_master_culture):
-        $t->i18n_master_culture=1;
-        break;  
-      }
       $out[$lang] = $t;
     }
     return $out;
 	}
-  public function getLangs($obj)
+  public function getLocales($obj)
   {
     if(is_array($obj->_i18nlangs)) return $obj->_i18nlangs;
-    return Config::getAllLangs();
+    return Config::getAllLocales();
   }
   public function setLangs($obj,$langs)
   {
@@ -282,10 +191,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     foreach($do->table() as $field=>$type) {
       $do->$field = $obj->$field;
     }
-    $do->i18n_lang = T::getLang();
-    if(!$this->_bypassAvailabilityField) {
-      $do->ì18n_available=1;
-    }
+    $do->i18n_lang = T::getLocale();
     $obj->joinAdd($do);
 	}
 	public function delete($obj) {
@@ -301,7 +207,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 	{
 	  
     if(!$this->_dontSavei18n) {
-      $this->saveTranslation($obj,T::getLang());
+      $this->saveTranslation($obj,T::getLocale());
     }
 	}
   public function update($originalDo=false,$obj)
@@ -314,7 +220,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 	{
 
     if(!$this->_dontSavei18n) {
-      $this->saveTranslation($obj,T::getLang());
+      $this->saveTranslation($obj,T::getLocale());
     }
 	}
 	public function saveTranslation($obj,$lang)
@@ -353,10 +259,6 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       $obj->rollback();
       return false;
     }
-    $res = $this->migration_addBehaviourFields($obj,$iname);
-    if(PEAR::isError($res)) {
-      trigger_error('failed creating behaviourfields for '.$iname.' : '.$res->getMessage().' : '.$res->userinfo.' continuing...',E_USER_WARNING);
-    }
     $res = $this->migration_copyDataToI18n($obj,$iname);
     $res = $this->migration_removeNonI18nFields($obj,$iname);
     if(PEAR::isError($res)) {
@@ -365,7 +267,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       return false;
     }   
     $res = $this->migration_rebuildObjects($obj,$iname);
-    $res = $this->migration_removeI18FieldsFromOriginal($obj,$iname);
+    $res = $this->migration_removeI18nFieldsFromOriginal($obj,$iname);
     if(PEAR::isError($res)) {
       trigger_error('failed removing i18n fields from '.$obj->tableName().' : '.$res->getMessage().' : '.$res->userinfo,E_USER_WARNING);
       $obj->rollback();
@@ -381,25 +283,6 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       return $res;
     }
     return true;
-  }
-  public function migration_addBehaviourFields($obj,$iname)
-  {
-    $db = $obj->getDatabaseConnection();
-    $res = $db->loadModule('manager',null,true);
-    if(PEAR::isError($res)) {
-      return $res;
-    }
-    $res2 = $db->manager->alterTable($iname,array(    
-      'add'=>array('i18n_master_culture'=>array('type'=>'text','length'=>4),
-                  'i18n_available'=>array('type'=>'integer','length'=>1,'notnull'=>1,'default'=>0)
-                  )
-            ),
-        false    
-      );            
-    if(PEAR::isError($res2)) {
-      return $res2;
-    }
-    return true;    
   }
   public function migration_createI18nIndexes($obj,$iname)
   {
@@ -422,7 +305,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     }
 
     $res2 = $db->manager->alterTable($iname,array(    
-      'add'=>array( 'i18n_lang'=>array('type'=>'text','length'=>4,'notnull'=>1,'default'=>'frfr'),
+      'add'=>array( 'i18n_lang'=>array('type'=>'text','length'=>2,'notnull'=>1,'default'=>'fr'),
                     'i18n_record_id'=>array_merge($foreignkeyspecs,array('notnull'=>1,'default'=>0)),
                   )
                 ),false
@@ -506,7 +389,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     }
     return true;
   }
-  public function migration_removeI18FieldsFromOriginal($obj,$iname)
+  public function migration_removeI18nFieldsFromOriginal($obj,$iname)
   {
     $db = $obj->getDatabaseConnection();
     $res = $db->loadModule('manager',null,true);
