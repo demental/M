@@ -79,14 +79,14 @@ array(
   'pluginregistry'        =>'M/PluginRegistry.php',
   'm_plugin'              =>'M/Plugin.php',
   'icommand'              =>'M/iCommand.php',
-  'ianalyzabletransaction'=>'M/Payment/iAnalyzable.php',
-  'ianalyzableorder'      =>'M/Payment/iAnalyzable.php',
-  'ianalyzableorderline'      =>'M/Payment/iAnalyzable.php',
-  'ianalyzablecustomer'   =>'M/Payment/iAnalyzable.php',
-  'ianalyzableaddress'    =>'M/Payment/iAnalyzable.php',
-  'ianalyzableshippingmethod'    =>'M/Payment/iAnalyzable.php',
-  'payment_response_exception'=>'M/Payment/Exception.php',
-  'payment_request_exception'=>'M/Payment/Exception.php'
+  'ianalyzabletransaction'=>'M/Payment2/iAnalyzable.php',
+  'ianalyzableorder'      =>'M/Payment2/iAnalyzable.php',
+  'ianalyzableorderline'      =>'M/Payment2/iAnalyzable.php',
+  'ianalyzablecustomer'   =>'M/Payment2/iAnalyzable.php',
+  'ianalyzableaddress'    =>'M/Payment2/iAnalyzable.php',
+  'ianalyzableshippingmethod'    =>'M/Payment2/iAnalyzable.php',
+  'payment_response_exception'=>'M/Payment2/Exception.php',
+  'payment_request_exception'=>'M/Payment2/Exception.php'
   )
   );
 

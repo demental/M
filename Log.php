@@ -19,9 +19,15 @@ class Log
 {
   protected static $instances;
   
-  public function getInstance($driver = 'none')
+  public function getInstance($driver = 'nolog')
   {
-    # code...
+    if(!self::$instances[$driver]) {
+      $file = 'M/Log/'.strtolower($driver).'.php';
+      include $file;
+      $class = 'Log_'.$driver;
+      self::$instances[$driver] = new $class;
+    }
+    return self::$instances[$driver];
   }
 	/**
 	 *
@@ -44,8 +50,9 @@ class Log
 	 */
 	public static function message($message,$level = 'info')
 	{
-	  return;// desactivating logging
-    self::getInstance(Config::get('driver'))->logMessage($message,$loglevel);
+	  $driver = Config::get('log_driver');
+	  if(!$driver) $driver = 'nolog';
+    self::getInstance($driver)->logMessage($message,$loglevel);
 	}
 
 	/**

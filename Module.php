@@ -98,7 +98,7 @@ class Module extends Maman {
 		if(!is_array($path)) {
 			$path = array($path);
 		}
-
+    Log::info('Module::factory '.$modulename);
 		$i=false;
 		foreach($path as $aPath) {
 			if (@include_once $aPath.'/'.$modulename.'.php') {
@@ -109,15 +109,19 @@ class Module extends Maman {
 
 		if (!$i)
 		{
+    Log::info('Module::factory '.$modulename.' not found');
 			throw new Error404Exception("No $modulename module in path ".implode(',',$path));
 		}
-
+    Log::info('Module::factory '.$modulename.' OK');
 		$nommodule = 'Module_'.$modulename;
 		$module = new $nommodule($modulename);
 		$module->_path=$path;
-		$module->setConfig($module->generateOptions());
+		Log::info('Generating options');
+    $options = $module->generateOptions();
+		$module->setConfig($options);
 		$module->setParams($params);
 		$module->startView();
+    Log::info('Module::factory '.$modulename.' configured');
 		return $module;
 	}
 
@@ -141,23 +145,25 @@ class Module extends Maman {
         'fileNameProtection'=>false,
         'automaticSerialization'=>true
 		);
-
+    Log::info('preparing options');
 		$optcache = new Cache_Lite($options);
 		if(!$moduleopt = $optcache->get($this->_modulename))  {
+      Log::info('no cache for options, live generating');
 			foreach($this->_path as $path) {
 				if (@include $path.'/'.$this->_modulename.'.conf.php')
 				{
-					 
+					Log::info('loading module config file'); 
 					if(!is_array($config)) {$config=array();}
 					$moduleopt = MArray::array_merge_recursive_unique($opt, $config);
 					break;
 				} else {
 					$moduleopt=$opt;
 				}
-	 	}
-	 	$optcache->save($moduleopt);
+            Log::info('no cache for options, live generating');
+	 	  }
+	    if(MODE!='developpement')	$optcache->save($moduleopt);
 		}
-
+    Log::info('options prepared');
 		return $moduleopt;
 	}
 	
@@ -298,6 +304,7 @@ class Module extends Maman {
 	public function executeAction($action)
 	{
 		$meth = 'doExec'.$action;
+    Log::info('trying Module::'.$meth);
 		if(!method_exists($this,$meth))
 		{
 
@@ -332,12 +339,16 @@ class Module extends Maman {
 		}
 		else
 		{
+      Log::info('No security nor disabled config');
 			$this->setCurrentAction($action);
+
 			if($vars = $this->getconfig('templateVars',$action)) {
 				$this->view->assignArray($vars);
 			}
-
+      Log::info('vars assigned to view');
+      Log::info($action.' forcing execution');
 			$this->forceExecute($action);
+      Log::info($action.' was forced for execution');
 		}
 	}
 
@@ -388,13 +399,19 @@ class Module extends Maman {
 		$this->cache = new Cache_Lite($options);
 
 		if($cache_id = $this->getCacheId($action)) {
+		        Log::info($action.' is cachable');
 			if($this->_cachedData = $this->cache->get($cache_id.'_'.($this->isAjaxRequest()?'ajax':'')))  {
+        Log::info($action.' is retreived from cache');
 				return;
 			}
 		}
+    Log::info($action.' is not in cache');
 		Mreg::get('setup')->setUpEnv();
+    Log::info('env setup. launching preExecute');
 		$this->preExecuteAction($action);
+    Log::info('preExecute launched. Launching '.get_class($this).'::'.$meth);		
 		call_user_func(array($this,$meth));
+    Log::info('doExec launched');		
 		$this->postExecuteAction($action);
 	}
 
@@ -507,8 +524,7 @@ class Module extends Maman {
 			$ret = $this->_lastOutput->view->fetch($layout);
 
 		}
-
-		$this->cache->save($ret);
+    if(MODE!='developpement') $this->cache->save($ret);
 		return $ret;
 	}
 	

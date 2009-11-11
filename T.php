@@ -243,6 +243,7 @@ Error while serializing data !
 			T::$lang = $lang;
       T::$culture = null;
 		}
+//    Log::info('T::setLang - Switching to '.$lang);
 		return T::$lang;
 	}
 	public function setStrings( $arr )
