@@ -29,6 +29,7 @@ class Log
     }
     return self::$instances[$driver];
   }
+
 	/**
 	 *
 	 * Info
@@ -39,6 +40,28 @@ class Log
 	public static function info($message)
 	{
 		self::message($message);
+	}
+	/**
+	 *
+	 * Warn
+	 *
+	 * @access	public
+	 * @static
+	 */
+	public static function warn($message)
+	{
+		self::message($message,'warn');
+	}
+	/**
+	 *
+	 * Error
+	 *
+	 * @access	public
+	 * @static
+	 */
+	public static function error($message)
+	{
+		self::message($message,'error');
 	}
 
 	/**
@@ -52,7 +75,7 @@ class Log
 	{
 	  $driver = Config::get('log_driver');
 	  if(!$driver) $driver = 'nolog';
-    self::getInstance($driver)->logMessage($message,$loglevel);
+    self::getInstance($driver)->message($message,$level);
 	}
 
 	/**
