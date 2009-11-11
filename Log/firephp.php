@@ -8,6 +8,6 @@ class Log_firephp {
     if(!in_array($level,array('log','info','warn','error'))) {
       $level = 'log';
     }
-    call_user_func_array(array($fp,'log'),array($message));  
+    call_user_func_array(array($fp,$level),array($message));  
   }
 }
