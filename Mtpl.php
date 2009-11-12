@@ -74,7 +74,7 @@ class Mtpl {
 	{
 		return Mtpl::$_js;
 	}
-	public function getJSinline($event=0)
+	public function getJSinline($event='ready')
 	{
 		return is_array(Mtpl::$_jsinline[$event])?Mtpl::$_jsinline[$event]:array();
 	}
@@ -92,7 +92,7 @@ class Mtpl {
 		}
 		Mtpl::$_js = array_unique(Mtpl::$_js);
 	}
-	public function addJSinline($js,$event=0)
+	public function addJSinline($js,$event='ready')
 	{
 		Mtpl::$_jsinline[$event][] = $js;
 	}
@@ -335,4 +335,40 @@ class Mtpl {
 	{
     return $this->img($filename,array(T::getLang(),substr(T::getLang(),0,2)),$mainfolder);
 	}
+	
+	public function printJS()
+	{
+	  $out='';
+    foreach (Mtpl::getJS() as $js) {
+      $out.='
+<script type="text/javascript" src="/js/'.$js.'.js"></script>';
+    }
+    echo $out;
+	}
+	public function printCSS()
+	{
+    $out='';
+    foreach (Mtpl::getCSS() as $css) {
+      $out.='
+<link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />';
+    }
+    echo $out;
+	}
+	public function printJSinline($event='ready')
+	{
+    $out='';
+    foreach(Mtpl::getJSinline($event) as $line) {
+      $out.=$line."\n";
+    }
+    $out = trim($out);
+    if(!empty($out)) {
+      echo '
+<script type="text/javascript">
+$(function() {
+'.$out.'
+});
+</script>';
+    }
+	}
+	
 }
