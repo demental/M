@@ -292,7 +292,9 @@ class Mtpl {
 		if(is_array($conf)) {
 			$module = $conf[0];
 			$action = empty($conf[1])?'index':$conf[1];
-		} else {
+		} elseif($conf=='__none') {
+		  return;
+	  } else {
 			$module = $componentId;
 		}
 		$c = new Component($module, $action,$params);

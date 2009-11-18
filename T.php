@@ -128,6 +128,7 @@ class T {
 	}
 	private function getStringsFromCache ($lang,$verbose = false)
 	{
+	  Log::info('T::retreiving strings from cache');
 		$cachefile = T::getConfig('cacheDir').'/'.$lang.'.cache.php';
 		require_once $cachefile;
 		if($verbose) {
@@ -138,7 +139,7 @@ class T {
 	private function getStringsFromXML ( $file, $verbose = false )
 	{
 		require_once 'XML/Unserializer.php';
-
+	  Log::info('T::retreiving strings from xml');
 		$xml=new XML_Unserializer();
 		if(!file_exists($file)) {
 			if($verbose) {
@@ -243,7 +244,7 @@ Error while serializing data !
 			T::$lang = $lang;
       T::$culture = null;
 		}
-//    Log::info('T::setLang - Switching to '.$lang);
+    Log::info('T::setLang - Switching to '.$lang);
 		return T::$lang;
 	}
 	public function setStrings( $arr )

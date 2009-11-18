@@ -103,7 +103,7 @@ class traitephoto
 		$this -> nomsouhaite="";
 		$this -> gd=1;
 		$this->server="";
-    if(extension_loaded('imagick') || dl('imagick')) {
+    if(extension_loaded('imagick') || @dl('imagick')) {
 		  $this->imgT=& Image_Transform::factory("Imagick3");
       if(PEAR::isError($this->imgT)) {
         Log::error($this->imgT->getMessage());
