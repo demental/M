@@ -32,10 +32,10 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
    */
   public function getSecondaryImages(DB_DataObject $obj)
   {
-    $tbl = $this->newImage($obj);
+    $tbl = $this->_newImage($obj);
     $tbl->ismain=0;
     $tbl->find();
-    return $tbl;
+    return $this->returnStatus($tbl);
   }
   
   /**
