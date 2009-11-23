@@ -183,15 +183,22 @@ class M_Office_Actions extends M_Office_Controller {
   {
     if($this->type=='single') return $this->do;
     if(!$this->_selected || !$doQuery) {
-      $db = $this->do->getDatabaseConnection();
-      $ids = $this->getSelectedIds();
-      array_walk($ids,array('M_Office_Util','arrayquote'),$db);
-      $selected = DB_DataObject::factory($this->do->tableName());
-      $selected->whereAdd(
-        $db->quoteIdentifier($this->do->pkName()).' IN ('.
-        implode(',',$ids).')'
-      );
-      if($doQuery) {
+      switch($this->scope) {
+        case 'all':
+          $selected = clone($this->do);
+        break;
+        case 'selected':
+          $db = $this->do->getDatabaseConnection();      
+          $ids = $this->getSelectedIds();
+          array_walk($ids,array('M_Office_Util','arrayquote'),$db);
+          $selected = DB_DataObject::factory($this->do->tableName());
+          $selected->whereAdd(
+            $db->quoteIdentifier($this->do->pkName()).' IN ('.
+            implode(',',$ids).')'
+          );
+          break;
+        }  
+      if($doQuery && !$selected->N) {
         $selected->find();
       }
     }
@@ -326,7 +333,11 @@ class M_Office_Actions extends M_Office_Controller {
       Mreg::get('tpl')->assign('do',$do);
 			$qfAction->addElement('header','qfActionHeader',$this->getActionTitle());
 			$qfAction->addElement('hidden',$this->typeval,$this->actionName);
-      M_Office_Util::addHiddenField($qfAction, 'selected', $this->getSelectedIds());
+			$qfAction->addElement('hidden','__actionscope',$this->scope);
+
+      if($this->scope=='selected') {
+        M_Office_Util::addHiddenField($qfAction, 'selected', $this->getSelectedIds());
+      }
       $selectedDo = $this->getSelected(true);
       if('single'==$this->type) {
         $selectedDo->fetch();

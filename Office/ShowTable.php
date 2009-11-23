@@ -207,7 +207,7 @@ class M_Office_ShowTable extends M_Office_Controller {
      $batchActions=array();
      $globalActions=array();
 
-     $do->find();
+/*     $do->find();*/
      $this->assign('globalActions',array());
      if($this->getOption('delete',$table)) {
        $batchActions['delete']=array('title'=>__('Delete'));
