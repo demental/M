@@ -37,6 +37,9 @@ class Mtpl {
 		}
 		$this->_config['tplfolders'] = $tpldir;
 		$this->_module=$module;
+		if('production'==MODE) {
+		  $this->_addComments = false;
+		}
 	}
 	/**
 	 * Adds a string path to the current instance's paths array
