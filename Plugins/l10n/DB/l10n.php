@@ -115,6 +115,8 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
   
   public function postProcessForm(&$values,$fb,$obj)
   {
+    $info = $obj->_getPluginsDef();
+    $fields = $info['l10n'];
     foreach($this->getLangs($obj) as $lang) {
       // Alter values depending on behaviour.
       switch($values['l10n_master_culture_'.$lang]) {
@@ -127,7 +129,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
           $obj->_l10ndos[$lang]->l10n_master_culture = '';
           $obj->_l10ndos[$lang]->l10n_available = false;
           // we fill fields with 'n-a' to avoid not null fields to be empty
-          foreach($obj->l10nFields as $field) {
+          foreach($fields as $field) {
             $slaveindex = $obj->fb_elementNamePrefix
                               .$field
                               .'_'
@@ -140,7 +142,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
           break;
         default:// mirror of another language
           $obj->_l10ndos[$lang]->l10n_available = true;
-          foreach($obj->l10nFields as $field) {
+          foreach($fields as $field) {
             $masterindex = $obj->fb_elementNamePrefix
                       .$field
                       .'_'
@@ -179,7 +181,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
         $obj->_l10ndos[$lang]->update();
         break;
       }
-    }  
+    }
 
   }
   /**
