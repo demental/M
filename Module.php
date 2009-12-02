@@ -651,14 +651,15 @@ class Module extends Maman {
 	 * @return unknown_type
 	 */
 	public function redirect($modulaction,$vars = null,$lang=null,$secure=null) {
-    if($this->isComponent()) {
-      list($module,$action)=explode($modulaction);
-      return $this->forward($module[0],$module[1]?$module[1]:'index',array_merge($vars,$this->_params));
-    }
 		if(eregi('^(http|https)://',$modulaction)) {
 			header('location:'.$modulaction);
 			exit;
 		}
+
+    if($this->isComponent()) {
+      list($module,$action)=explode('/',$modulaction);
+      return $this->forward($module[0],$module[1]?$module[1]:'index',array_merge($vars,$this->_params));
+    }
 		if($this->isAjaxRequest()) {
       $vars['__ajax']=1;
     }
