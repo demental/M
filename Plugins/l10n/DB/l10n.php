@@ -286,7 +286,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
     }
     $do->l10n_lang = T::getLang();
     if(!$this->_bypassAvailabilityField) {
-      $do->ì18n_available=1;
+      $do->l10n_available=1;
     }
     $obj->joinAdd($do);
 	}
@@ -367,7 +367,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
       return false;
     }   
     $res = $this->migration_rebuildObjects($obj,$iname);
-    $res = $this->migration_removeI18FieldsFromOriginal($obj,$iname);
+    $res = $this->migration_removeL10FieldsFromOriginal($obj,$iname);
     if(PEAR::isError($res)) {
       trigger_error('failed removing l10n fields from '.$obj->tableName().' : '.$res->getMessage().' : '.$res->userinfo,E_USER_WARNING);
       $obj->rollback();
@@ -508,7 +508,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
     }
     return true;
   }
-  public function migration_removeI18FieldsFromOriginal($obj,$iname)
+  public function migration_removeL10nFieldsFromOriginal($obj,$iname)
   {
     $db = $obj->getDatabaseConnection();
     $res = $db->loadModule('manager',null,true);
