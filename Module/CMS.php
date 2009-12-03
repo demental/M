@@ -29,7 +29,7 @@ class CMS_Module extends Module {
   protected $_dbisnode = 'isnode';
   protected $_forceaccessible = false;  
   protected $_redirToIndexIfNotFound = false;
-  public function handleNotFound()
+  public function handleNotFound($strip)
   {
     if($this->_redirToIndexIfNotFound) {
       $this->redirect301(strtolower(str_replace('Module_', '', get_class($this))).'/index');
@@ -49,7 +49,7 @@ class CMS_Module extends Module {
     }
 
     if(!$content->get($this->_dbstrip,$action)) {
-      $this->handleNotFound();
+      $this->handleNotFound($this->_dbstrip);
       return;
     }
 

@@ -116,6 +116,7 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
 	}
 	
 	function upFile($obj, $field, $fieldName=null){
+    Log::info('starting upFile');
 	  $uploadFields = $obj->_getPluginsDef();
 	  $uploadFields = $uploadFields['upload'];
 
@@ -124,6 +125,7 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
 	        $fieldName=$field;
         }
 		if (is_uploaded_file($_FILES[$fieldName]["tmp_name"])){
+      Log::info('file is uploaded');
 				@unlink(IMAGES_UPLOAD_FOLDER.$info['path'].$obj->$field);
 				$obj->$field = $_FILES[$fieldName]["name"];
 				if(key_exists('nameField',$info)){
@@ -135,10 +137,15 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
 					$obj->$info['formatField']=$ext;
 				}
 				$obj->$field=$obj->tableName().'_'.$field.substr(md5(time()+rand(0,100)),0,6).".".$ext;
+        Log::info('Trying to move file to '.IMAGES_UPLOAD_FOLDER.$info['path'].$obj->$field);
 				if (move_uploaded_file($_FILES[$fieldName]["tmp_name"], IMAGES_UPLOAD_FOLDER.$info['path'].$obj->$field)
 					&&chmod(IMAGES_UPLOAD_FOLDER.$info['path'].$obj->$field, 0644)){
+            Log::info('Move OK, '.$field.' set to '.$obj->$field );
 						return $obj->$field;
+				} else {
+          Log::error('Move NOT OK');
 				}
+
 		}
 		return $obj->$field;
 	}
