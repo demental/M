@@ -49,7 +49,7 @@ class CMS_Module extends Module {
     }
 
     if(!$content->get($this->_dbstrip,$action)) {
-      $this->handleNotFound($this->_dbstrip);
+      $this->handleNotFound($action);
       return;
     }
 
