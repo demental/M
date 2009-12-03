@@ -443,4 +443,17 @@ class fileUtils
     $result = basename($filename);
     return escapeshellcmd($result);
   }
+  
+  public function getHumanFileSize($file)
+  {
+    $sizeArr = array('b','Kb','Mb','Gb','Tb');
+    $size = filesize($file);
+    $humansize = $size;
+    $cycle=0;
+    while($humansize>1) {
+      $humansize/=1024;
+      $cycle++;
+    }
+    return round($humansize*1024,1).' '.__($sizeArr[$cycle-1]);
+  }
 }

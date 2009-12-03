@@ -99,7 +99,7 @@
 				<span class="unit"><?php echo $element['label_unit']?></span>
 				<?php endif?>
 				<?php if(!empty($element['label_note'])):?>
-				<div class="label_note"><?php echo $element['label_unit']?></div>
+				<div class="label_note"><?php echo $element['label_note']?></div>
 				<?php endif?>
                 </td>
             </tr>
