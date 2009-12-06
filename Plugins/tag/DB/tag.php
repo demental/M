@@ -19,9 +19,50 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getEvents()
   {
-    return array('addtag','removetag','removetags','getbytags','postdelete','hastag','gettaglasthistory');
+    return array('addtagstoform','searchbytags','addtag','removetag','removetags','getbytags','postdelete','hastag','gettaglasthistory');
   }
   
+  /**
+   * Adds tag checkboxes to form passed as first parameter
+   * 2nd parameter is the actual name of the fields used to add tags
+   * @param HTML_QuickForm 
+   * @param string default _tags
+   */
+  public function addTagsToForm(HTML_QuickForm $form, $fieldname, DB_DataObject $obj)
+  {
+    Log::info('Adding tags to form');
+    $tags = DB_DataObject::factory('tag');
+    $tags->find();
+    while($tags->fetch()) {
+      
+      $arr[] = HTML_QuickForm::createElement('checkbox',$fieldname.'['.$tags->id.']','',$tags->strip);
+    }
+    $grp = HTML_QuickForm::createElement('group',$fieldname,'Tags',$arr,null,false);
+    Log::info('Tags to be added : '.count($arr));
+    if($form->elementExists('__submit__')) {
+      $form->insertElementBefore($grp,'__submit__');
+    } else {
+      $form->addElement($grp);
+    }
+  }
+  
+  /**
+   * Prepares query to retreive filtering by tags
+   * @param array(tagID1,tagID2,....tagIDn)
+   * 
+   */
+   public function searchByTags($tags,DB_DataObject $obj)
+   {
+     if(!is_array($tags) || count($tags)==0) return;
+     foreach($tags as $tag) {
+       $t = DB_DataObject::factory('tag_record');
+       $t->tag_id = $tag;
+       $t->tagged_table = $obj->tableName();
+       $t->selectAdd();
+       $t->selectAdd('tag_record.tag_id');
+       $obj->joinAdd($t,'inner','tags_'.$tag);
+      }
+   }
   /**
    * adds a tag to a record
    * @param mixed : DataObject_Tag tag to add or string.

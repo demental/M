@@ -45,13 +45,6 @@ class DataObjects_Tag_record extends DB_DataObject_Pluggable
          );
     }
 
-        
-    function links() {
-        // links generated from .links.ini file
-        return array(
-
-        );
-    }
     function reverseLinks() {
         // reverseLinks generated from .links.ini file
         return array(
@@ -60,6 +53,14 @@ class DataObjects_Tag_record extends DB_DataObject_Pluggable
     }
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
+
+    public function links()
+    {
+      return array(
+        'tag_id'=>'tag:id',
+        'record_id'=>$this->tagged_table.':id');
+    }
+
     public function insert()
     {
       if($ret = parent::insert()) {

@@ -62,7 +62,7 @@
 				<span class="formError"><?php echo $element['error']?></span><br />
 					<?php endif?>
 					<?php foreach ($element['elements'] as $selt):?>
-                <table style="display:inline;float:left;margin:0;padding:0;margin-right:2px" cellpadding="0" cellspacing="0">
+                <table style="display:inline;float:left;margin:0;padding:0;margin-right:2px" class="groupelement" cellpadding="0" cellspacing="0">
 					<tr><td>
               			<?php echo $selt['html']?>
 						<?php if(!empty($selt['label_unit'])):?>

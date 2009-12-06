@@ -227,15 +227,13 @@ class M_Office_Util {
     $do->fb_formHeaderText=__('Search');
     $do->fb_submitText='>>';
     $formBuilder =& MyFB::create($do);
-    $formBuilder->preGenerateFormCallback=$formBuilder->postGenerateFormCallback='fake';
+    $formBuilder->preGenerateFormCallback=array($do,'prepareSearchForm');
+    $formBuilder->postGenerateFormCallback=array($do,'postPrepareSearchForm');
     $form = new MyQuickForm(  'formSearch',
                               'GET',
                               self::getQueryParams(array(), array('page'), false));
    	$formBuilder->useForm($form);
 
-	  if(method_exists($do,'prepareSearchForm')){
-      $do->prepareSearchForm($form,$formBuilder);
-    }
     $do->fb_linkNewValue = false;
     $do->fb_userEditableFields=$do->fb_fieldsToRender;
       
