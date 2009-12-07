@@ -100,6 +100,10 @@ class Dispatcher extends Maman {
         catch (SecurityException $e) {        
           $this->handleSecurity();
         }
+        catch (Error404Exception $e) {
+
+            $this->returnModuleNotFound();
+          }
       	catch (Exception $e)
       	{
             Log::info('Action '.$this->action.' rejected for module '.$this->module.', trying index instead ');
