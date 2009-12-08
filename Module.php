@@ -693,7 +693,6 @@ class Module extends Maman {
 	{
     $this->addHeader('404 Not Found');
     $arr = explode('/',$modulaction);
-    $this->forward($arr[0], $arr[1]);
     $d = new Dispatcher($arr[0],$arr[1],$this->_params);
 		$d->execute();
 		echo $d->display();
