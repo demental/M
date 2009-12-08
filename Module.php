@@ -692,7 +692,12 @@ class Module extends Maman {
 	public function redirect404($modulaction,$vars = null,$lang=null,$secure=null) 
 	{
     $this->addHeader('404 Not Found');
-    $this->redirect($modulaction,$vars,$lang,$secure);
+    $arr = explode('/',$modulaction);
+    $this->forward($arr[0], $arr[1]);
+    $d = new Dispatcher($arr[0],$arr[1],$this->_params);
+		$d->execute();
+		echo $d->display();
+		die();
 	}
   public function addHeader($header)
   {
