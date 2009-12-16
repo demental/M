@@ -650,9 +650,9 @@ class Module extends Maman {
 	 * @param $secure
 	 * @return unknown_type
 	 */
-	public function redirect($modulaction,$vars = null,$lang=null,$secure=null) {
+	public function redirect($modulaction,$vars = null,$lang=null,$secure=null,$status = '302') {
 		if(eregi('^(http|https)://',$modulaction)) {
-			header('location:'.$modulaction);
+			header('location:'.$modulaction,true,$status);
 			exit;
 		}
 
@@ -677,7 +677,7 @@ class Module extends Maman {
       Redirection... merci de patienter ou cliquer <a href="'.$url.'">ici</a>.
       ';
 		} else {
-			header('location:'.$url);
+			header('location:'.$url,true,$status);
 		}
 		flush();
 		exit;
@@ -686,17 +686,13 @@ class Module extends Maman {
 	public function redirect301($modulaction,$vars = null,$lang=null,$secure=null) 
 	{
 	  $this->addHeader('301 Moved Permanently');
-    $this->redirect($modulaction,$vars,$lang,$secure);
+    $this->redirect($modulaction,$vars,$lang,$secure,'301');
 	}
 
 	public function redirect404($modulaction,$vars = null,$lang=null,$secure=null) 
 	{
     $this->addHeader('404 Not Found');
-    $arr = explode('/',$modulaction);
-    $d = new Dispatcher($arr[0],$arr[1],$this->_params);
-		$d->execute();
-		echo $d->display();
-		die();
+    return $this->redirect($modulaction,$vars,$lang,$secure,404);
 	}
   public function addHeader($header)
   {

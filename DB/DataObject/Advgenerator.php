@@ -107,16 +107,22 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
     // =============================
 
     function _getIniLinks($table) {
-        global $_DB_DATAOBJECT;       
+        global $_DB_DATAOBJECT;
+
+        $databaseIdentifier = 'database';
+        if(key_exists('table_'.$table,$_DB_DATAOBJECT['CONFIG'])) {
+          $databaseIdentifier = 'database_'.$_DB_DATAOBJECT['CONFIG']['table_'.$table];
+        }
+//        $databaseIdentifier = 'database'.($this->_database?'_'.$this->_database:'');
         if (!isset($_DB_DATAOBJECT['LINKS'][$this->_database])) {
             $schemas = isset($_DB_DATAOBJECT['CONFIG']['schema_location']) ?
-                array("{$_DB_DATAOBJECT['CONFIG']['schema_location']}/{$this->_database}.ini") :
+                array("{$_DB_DATAOBJECT['CONFIG']['schema_location']}/{$databaseIdentifier}.ini") :
                 array() ;
                      
             if (isset($_DB_DATAOBJECT['CONFIG']["ini_{$this->_database}"])) {
-                $schemas = is_array($_DB_DATAOBJECT['CONFIG']["ini_{$this->_database}"]) ?
+                $schemas = is_array($_DB_DATAOBJECT['CONFIG']["ini_{$databaseIdentifier}"]) ?
                     $_DB_DATAOBJECT['CONFIG']["ini_{$this->_database}"] :
-                    explode(PATH_SEPARATOR,$_DB_DATAOBJECT['CONFIG']["ini_{$this->_database}"]);
+                    explode(PATH_SEPARATOR,$_DB_DATAOBJECT['CONFIG']["ini_{$databaseIdentifier}"]);
             }
                         
              
@@ -124,8 +130,8 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
             foreach ($schemas as $ini) {
                 
                 $links =
-                    isset($_DB_DATAOBJECT['CONFIG']["links_{$this->_database}"]) ?
-                        $_DB_DATAOBJECT['CONFIG']["links_{$this->_database}"] :
+                    isset($_DB_DATAOBJECT['CONFIG']["links_{$databaseIdentifier}"]) ?
+                        $_DB_DATAOBJECT['CONFIG']["links_{$databaseIdentifier}"] :
                         str_replace('.ini','.links.ini',$ini);
         
                 if (empty($_DB_DATAOBJECT['LINKS'][$this->_database]) && file_exists($links) && is_file($links)) {

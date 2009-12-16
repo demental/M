@@ -102,7 +102,7 @@ class Dispatcher extends Maman {
         }
         catch (Error404Exception $e) {
 
-            $this->returnModuleNotFound();
+            $this->returnActionNotFound();
           }
       	catch (Exception $e)
       	{
@@ -160,7 +160,17 @@ class Dispatcher extends Maman {
       $this->page = $this->moduleInstance('error',$path);
       $this->page->executeAction('404');
     }
+    private function returnActionNotFound() {
+      Log::info('Action '.$this->action.' not found');
+      if(method_exists($this->page,'handleNotFound')) {
+        Log::info('Using custom handleNotFound() method');
 
+        $this->page->handleNotFound();
+      } else {
+        $this->page = $this->moduleInstance('error',$path); 
+        $this->page->executeAction('404');
+      }
+    }
     public function moduleInstance()
     {
 
