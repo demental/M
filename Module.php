@@ -691,8 +691,14 @@ class Module extends Maman {
 
 	public function redirect404($modulaction,$vars = null,$lang=null,$secure=null) 
 	{
-    $this->addHeader('404 Not Found');
-    return $this->redirect($modulaction,$vars,$lang,$secure,404);
+    header('Status: 404');
+    header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
+    $arr = explode('/',$modulaction);
+    $d = new Dispatcher($arr[0],$arr[1],$this->_params);
+		$d->execute();
+		echo $d->display();
+		die();
+
 	}
   public function addHeader($header)
   {
