@@ -159,6 +159,8 @@ class Dispatcher extends Maman {
       Log::info('Module '.$this->module.' not found');
       $this->page = $this->moduleInstance('error',$path);
       $this->page->executeAction('404');
+      header('Status: 404');
+      header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
     }
     private function returnActionNotFound() {
       Log::info('Action '.$this->action.' not found');
@@ -169,6 +171,8 @@ class Dispatcher extends Maman {
       } else {
         $this->page = $this->moduleInstance('error',$path); 
         $this->page->executeAction('404');
+        header('Status: 404');
+        header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
       }
     }
     public function moduleInstance()
