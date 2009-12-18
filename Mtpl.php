@@ -81,9 +81,9 @@ class Mtpl {
 	{
 		return is_array(Mtpl::$_jsinline[$event])?Mtpl::$_jsinline[$event]:array();
 	}
-	public function addCSS($css,$media='screen')
+	public function addCSS($css,$media='screen',$conditional=null)
 	{
-		Mtpl::$_css[] = array('name'=>$css,'media'=>$media);
+		Mtpl::$_css[] = array('name'=>$css,'media'=>$media,'conditional'=>$conditional);
 	}
 	public function addJS($js)
 	{
@@ -354,8 +354,15 @@ class Mtpl {
 	{
     $out='';
     foreach (Mtpl::getCSS() as $css) {
+      if (is_null($css['conditional'])) {
       $out.='
 <link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />';
+  } else {
+      $out.='
+<!--[if lt '.$css['conditional'].']>
+    <link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />
+<![endif]-->';
+  }
     }
     echo $out;
 	}
