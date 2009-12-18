@@ -83,7 +83,8 @@ class Mtpl {
 	}
 	public function addCSS($css,$media='screen',$conditional=null)
 	{
-		Mtpl::$_css[] = array('name'=>$css,'media'=>$media,'conditional'=>$conditional);
+	  $data = array('name'=>$css,'media'=>$media,'conditional'=>$conditional);
+		Mtpl::$_css[md5(serialize($data))] = $data;
 	}
 	public function addJS($js)
 	{
