@@ -359,7 +359,7 @@ class Mtpl {
 <link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />';
   } else {
       $out.='
-<!--[if lt '.$css['conditional'].']>
+<!--[if '.$css['conditional'].']>
     <link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />
 <![endif]-->';
   }
