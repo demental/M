@@ -85,7 +85,7 @@ class Calc
 	 */
 	public static function money($value,$currency='EUR')
 	{
-	 return ($value>0?'':'-').money_format('%.2n',abs($value)).$currency;
+	 return ($value>=0?'':'-').money_format('%.2n',abs($value)).$currency;
 	}
 
 	/**
