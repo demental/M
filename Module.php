@@ -510,7 +510,16 @@ class Module extends Maman {
 		}
 		if($this->isComponent()) {
 		  $layout='__self';
-		}
+		} else {
+		  // Module is rendered as page,
+  		// Let's add postFilters if some are provided in the postFilters configuration key
+      $postFilters = $this->getConfig('postfilters',$a);
+      if(is_array($postFilters)) {
+        foreach($postFilters as $filter) {
+          $this->_lastOutput->view->addPostFilter($filter);
+        }
+      }
+	  }
 		if($layout=='__self'){
 			Log::info('Displaying selfsufficient for module '.get_class($this->_lastOutput));
 			$ret = $this->_lastOutput->view->fetch($template);

@@ -143,7 +143,7 @@ class Mtpl {
 		$this->_assignvars[$var] = &$val;
 	}
 
-	public function addPostFilter ( Mfilter $filter )
+	public function addPostFilter ( Mtpl_filter $filter )
 	{
 		$this->_postFilters[] = &$filter;
 	}
@@ -188,12 +188,13 @@ class Mtpl {
         }
 				$included=true;
 				$ret = ob_get_contents();
-				/*      foreach($this->_postFilters as $filter) {
-				 $filter->execute($ret);
-				 }*/
+
 
 				ob_clean();
 				echo $buffer;
+				foreach($this->_postFilters as $filter) {
+				  $filter->execute($ret);
+				}
 				return $ret;
 				break;
 			}
@@ -341,31 +342,38 @@ class Mtpl {
 	{
     return $this->img($filename,array(T::getLang(),substr(T::getLang(),0,2)),$mainfolder);
 	}
-	
-	public function printJS()
-	{
-	  $out='';
-    foreach (Mtpl::getJS() as $js) {
-      $out.='
-<script type="text/javascript" src="/js/'.$js.'.js"></script>';
-    }
-    echo $out;
-	}
-	public function printCSS()
+	public static function getCSSblock()
 	{
     $out='';
     foreach (Mtpl::getCSS() as $css) {
       if (is_null($css['conditional'])) {
-      $out.='
-<link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />';
-  } else {
-      $out.='
-<!--[if '.$css['conditional'].']>
-    <link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />
-<![endif]-->';
-  }
+        $out.='
+    <link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />';
+      } else {
+        $out.='
+    <!--[if '.$css['conditional'].']>
+        <link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />
+    <![endif]-->';
+      }
     }
-    echo $out;
+    return $out;
+	}
+	public function getJSblock()
+	{
+	  $out='';
+    foreach (Mtpl::getJS() as $js) {
+      $out.='
+    <script type="text/javascript" src="/js/'.$js.'.js"></script>';
+    }
+    return $out;   
+	}
+	public static function printJS()
+	{
+    echo self::getJSblock();
+	}
+	public static function printCSS()
+	{
+    echo self::getCSSblock();
 	}
 	public function printJSinline($event='ready')
 	{

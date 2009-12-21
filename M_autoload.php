@@ -27,6 +27,8 @@ array(
   'cache_lite_file'       =>  'Cache/Lite/File.php',
   'config'                =>  'M/Config.php',
   'mtpl'                  =>  'M/Mtpl.php',
+  'mtpl_filter'           =>  'M/Mtpl/filter.php',
+  'mtpl_assetblock'           =>  'M/Mtpl/assetblock.php',  
   'calc'                  =>  'M/Calc.php',
   'fileutils'             =>  'M/FileUtils.php',  
   'securityexception'     =>  'M/Exception/SecurityException.php',
