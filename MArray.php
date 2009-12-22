@@ -53,4 +53,14 @@ class MArray {
 		return array_merge($first, $second);
 	}
 
+  public static function multisum($arr1,$arr2)
+  {
+    $result = array();
+    $keys = array_keys(array_merge($arr1,$arr2));
+
+    foreach($keys as $key) {
+      $result[$key] = $arr1[$key]+$arr2[$key];
+    }
+    return $result;
+  }
 }
