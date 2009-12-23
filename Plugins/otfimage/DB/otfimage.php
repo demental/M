@@ -163,7 +163,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
   		$ph->photo=$original;
   		$ph->path=dirname($destination);
   		$ph->nomsouhaite=basename($destination);
-  		$ph->qualite=$params['quality'];
+  		$ph->qualite=$params['q'];
   		$ph->width=$params['x'];
   		$ph->height=$params['y'];
   		$ph->maxx=$params['maxx'];
