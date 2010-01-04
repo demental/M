@@ -33,7 +33,7 @@ class PluginRegistry
   **/
   public static final function create($pluginName, $section = 'DB')
   {
-    if(!$className = self::_load($pluginName)) {
+    if(!$className = self::_load($pluginName,$section)) {
       throw new Exception(__('plugin "%s" does not exist',array($pluginName)));
     }
     $plugin = new $className($params);
@@ -44,16 +44,18 @@ class PluginRegistry
    * @param string $pluginName name of the plugin
    * @return string class name or false if not found
    */
-  protected function _load($pluginName)
+  protected function _load($pluginName,$section)
   {
     $cleanName = strtolower(FileUtils::sanitize($pluginName));
     $className = 'DB_DataObject_Plugin_'.$cleanName;
     if(class_exists($className,false)) {
       return $className;
     }
-    $classpath = self::$plugins_dir.$cleanName.'/DB/'.$cleanName.'.php';
+    $classpath = self::$plugins_dir.$cleanName.'/'.$section.'/'.$cleanName.'.php';
+    $initpath = self::$plugins_dir.$cleanName.'/init.php';
     if($pluginPath = FileUtils::file_exists_incpath($classpath)) {
       require $pluginPath;
+      @include $initpath;
       return $className;
     }
     return false;

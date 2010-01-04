@@ -19,7 +19,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getEvents()
   {
-    return array('addtagstoform','searchbytags','addtag','removetag','removetags','getbytags','postdelete','hastag','gettaglasthistory');
+    return array('addtagstoform','searchbytags','addtag','removetag','removetags','getbytags','postdelete','hastag','gettaglasthistory','gettags');
   }
   
   /**
@@ -98,7 +98,6 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function removeTag($tag, DB_DataObject $obj)
   {
-    
     if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus($obj);} 
     $dbo = DB_DataObject::factory('tag_record');
     $dbo->setTag($tag);
@@ -126,7 +125,23 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     return $this->returnStatus($obj);
   }
 
-
+  /**
+   * returns the recordset of tags attached to $obj
+   */
+  public function getTags($obj)
+  {
+    $tag = DB_DataObject::factory('tag');
+    $dbo = DB_DataObject::factory('tag_record');
+    $dbo->tagged_table = $obj->tableName();
+    $dbo->record_id = $obj->pk();
+    $tag->selectAdd();
+    $tag->selectAdd('tag.id,tag.strip');
+    $tag->joinAdd($dbo);
+    $tag->selectAs($dbo,'link_%s');
+    $tag->find();
+    return $this->returnStatus($tag);
+  }
+  
   /**
    * Prepares a select query, given a series of tags.
    * @param $tags mixed. Can be a tag table recordset or an array of tag records

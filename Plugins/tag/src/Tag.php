@@ -82,5 +82,9 @@ class DataObjects_Tag extends DB_DataObject_Pluggable
     {
       $this->recordcount++;
       $this->update();
-    }    
+    }  
+    public function __toString()
+    {
+      return $this->strip;
+    }  
 }

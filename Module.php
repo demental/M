@@ -109,7 +109,7 @@ class Module extends Maman {
 
 		if (!$i)
 		{
-    Log::info('Module::factory '.$modulename.' not found');
+    Log::info('Module::factory '.$modulename.' not found in path '.implode(',',$path));
 			throw new Error404Exception("No $modulename module in path ".implode(',',$path));
 		}
     Log::info('Module::factory '.$modulename.' OK');

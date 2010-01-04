@@ -31,7 +31,7 @@ if(!defined('OFFICE_TEMPLATES_FOLDER')) {
 }
 
 $dispatchopt = &PEAR::getStaticProperty('Dispatcher', 'global');
-$dispatchopt['all']['modulepath'][]='M/Office/modules/';
+//$dispatchopt['all']['modulepath'][]='M/Office/modules/';
 
 /**
  *
@@ -99,7 +99,7 @@ class M_Office extends M_Office_Controller implements iListener {
 			$this->say('Votre enregistrement a été modifié avec succès.');
 			M_Office_Util::clearRequest(array('updateSuccess'=>1));
 		}
-		// TODO beurk beurk beurk... Virer ces putains de vieux modules
+		// TODO remove those old modules
 		if(isset($_REQUEST['module'])) {
 			$info = M_Office_Util::getModuleInfo($_REQUEST['module']);
 			$module = $_REQUEST['module'];
@@ -171,8 +171,13 @@ class M_Office extends M_Office_Controller implements iListener {
 					$subController = new M_Office_ShowTable($_REQUEST['module'],$filter);
 					break;
 				case 'dyn':
+				  /*@todo : use a dispatcher here*/
 					$subController = Module::factory($_REQUEST['module'],array(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR,APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'modules/','M/Office/modules/'));
-					$subController->executeAction($_REQUEST['action']?$_REQUEST['action']:'index');
+          try {
+					  $subController->executeAction($_REQUEST['action']?$_REQUEST['action']:'index');
+          } catch (Error404Exception $e) {
+            $subController->handleNotFound();
+          }
 					$this->assign('__action','dyn');
 					$layout = $subController->getConfig('layout',$_REQUEST['action']?$_REQUEST['action']:'index');
 					if($layout=='__self') {
