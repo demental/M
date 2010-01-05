@@ -2,15 +2,16 @@
 
 $vars = $_SERVER['argv'];
 //var_dump($vars);
-$approot = $vars[1];
+$approot = getcwd().'/';
 $plugin = strtolower($vars[2]);
 $command = strtolower($vars[3]);
 $host = strtolower($vars[4]);
-$app = strtolower($vars[5]);
+$project = strtolower($vars[5]);
+$app = strtolower($vars[6]);
 
-if(!$host || !$command || !$host || !$app) {
+if(!$plugin || !$host || !$command || !$project) {
 echo 'Usage : ';
-echo 'php plugin.php app_root plugin_name command_name host_name app_name';
+echo 'php plugin.php plugin_name command_name host_name project_name [app_name]';
 echo '';
 echo 'What it does :';
 echo 'Launches a plugin command (if exists)';
@@ -19,7 +20,10 @@ echo '';
   return;
 }
 
-define ('APP_NAME',$app);
+if($app) {
+  define ('APP_NAME',$app);
+}
+define('PROJECT_NAME',$project);
 if(!file_exists($approot.'M_startup.php')) {
   $inc = $approot.'../M_startup.php';
 } else {
@@ -28,7 +32,7 @@ if(!file_exists($approot.'M_startup.php')) {
 if(!require $inc) {
   die('Not in M Project');
 }
-
+ini_set('display_errors',1);
 // Trying to include the plugin command and fire preSetup
 
 if(!FileUtils::file_exists_incpath ('M/Plugins/'.$plugin.'/commands/'.$command.'.php')) {

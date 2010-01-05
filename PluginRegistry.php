@@ -52,12 +52,17 @@ class PluginRegistry
       return $className;
     }
     $classpath = self::$plugins_dir.$cleanName.'/'.$section.'/'.$cleanName.'.php';
-    $initpath = self::$plugins_dir.$cleanName.'/init.php';
+
     if($pluginPath = FileUtils::file_exists_incpath($classpath)) {
       require $pluginPath;
-      @include $initpath;
+      self::initPlugin($cleanName);
       return $className;
     }
     return false;
+  }
+  public static function initPlugin($pluginName)
+  {
+    $initpath = self::$plugins_dir.$pluginName.'/init.php';
+    @include $initpath;
   }
 }

@@ -26,8 +26,13 @@ class Tag_Command_Install implements iCommand {
     $mysqlbin = M::getSQLbinpath();
     $sys = "cat $file | $mysqlbin --host=$h --user=$u --password=$p $dbn";
     system($sys,$return);
-
+    Log::info('Creating tables :
+* tag
+* tag_record
+* tag_history
+');
     foreach(array('Tag','Tag_record','Tag_history') as $table) {
+      Log::info('Creating DOclass : '.$table."\n");
       copy(M::getPearpath().'/M/Plugins/tag/src/'.$table.'.php',APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'DOclasses'.DIRECTORY_SEPARATOR.$table.'.php');
     }
   }

@@ -99,6 +99,13 @@ class Module extends Maman {
 			$path = array($path);
 		}
     Log::info('Module::factory '.$modulename);
+    $plugmod = explode(':',$modulename);
+    if($plugmod[1]) {
+      Log::info('Calling plugin module '.$modulename);
+      PluginRegistry::initPlugin($plugmod[0]);
+      $path = array('M/Plugins/'.$plugmod[0].'/modules/');
+      $modulename = $plugmod[1];
+    }
 		$i=false;
 		foreach($path as $aPath) {
 			if (@include_once $aPath.'/'.$modulename.'.php') {
