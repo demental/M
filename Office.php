@@ -71,7 +71,7 @@ class M_Office extends M_Office_Controller implements iListener {
 		Mreg::set('tpl',$tpl);
 
 
-		Mtpl::addJS(array('jquery','livesearch'));
+		Mtpl::addJS(array('livesearch'));
 		Mtpl::addCSS('livesearch');
 		Mtpl::addJSinline('$("#chooseTable input").livesearch({autosearch:true,url:"'.ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT.'?livesearch=1"'.',minchar:2});','ready');
 		$this->ajaxAuth=true;
