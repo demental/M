@@ -176,6 +176,12 @@ class Mtpl {
 
 		$included=false;
 		foreach($tplfile as $file) {
+		  $pluginfile = explode(':',$file);
+		  if($pluginfile[1]) {
+		    PluginRegistry::initPlugin($pluginfile[0]);
+		    $file = $pluginfile[1];
+		    $this->_config['tplfolders'] = array('M/Plugins/'.$pluginfile[0].'/templates/',APP_ROOT.PROJECT_NAME.'/plugins/'.$pluginfile[0].'/templates/');
+		  }
 			$this->_tplfile=$file;
 			if($tpl = $this->getTemplatePath()) {
 				ob_start();
