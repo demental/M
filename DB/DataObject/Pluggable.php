@@ -44,18 +44,11 @@ function date2array($dt){
     }
 }
 
-define('REQUIRED_RULE_MESSAGE',__("Le champ ci-dessous est requis."));
-define('VIOLATION_RULE_MESSAGE',__("Le champ ci-dessous n'est pas valide."));
-define('NEWVALUE_TEXT',__("--Nouveau--"));
 
 class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
   protected $_listeners = array();
 
-
-	public $fb_requiredRuleMessage=REQUIRED_RULE_MESSAGE;
-	public $fb_ruleViolationMessage=VIOLATION_RULE_MESSAGE;
-	public $fb_linkNewValueText=NEWVALUE_TEXT;
   public $fb_dateFromDatabaseCallback='date2array';
 
   public function current() {

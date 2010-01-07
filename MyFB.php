@@ -68,8 +68,8 @@ class myFB extends DB_DataObject_FormBuilder
 		}
 
 		$fb->_form =& new $className($fb);
-	  $fb->ruleViolationMessage = __('%s: The value you have entered is not valid.');
-    $fb->requiredRuleMessage = __('The field %s is required.');
+	  $fb->ruleViolationMessage = __('The value you have entered is not valid.');
+    $fb->requiredRuleMessage = __('The following field is required.');
 
 		return $fb;
 	}
