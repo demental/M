@@ -13,9 +13,6 @@
 define ('ERROR_WRONG_PASSWORD','1');
 define ('ERROR_NO_USER','2');
 
-$errorMessage[ERROR_WRONG_PASSWORD]=__('Invalid password');
-$errorMessage[ERROR_NO_USER]=__('This username does not exist');
-
 /**
  * 
  * Web user management
