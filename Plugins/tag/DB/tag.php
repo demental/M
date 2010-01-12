@@ -155,13 +155,16 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     }
     foreach($tags as $atag) {
     if(!$atag = $this->_getTagFromTag($atag)) {continue;}
-      $tagsid[] = $atag->pk();
+      $tagsdo[] = $atag;
     }
-    $dbo = DB_DataObject::factory('tag_record');
-    $dbo->whereAdd('tag_record.tag_id in('.explode(',',$tagsid).')');
-    $dbo->whereAdd('tag_record.tagged_table="'.$obj->tableName().'"');
-    $dbo->selectAdd();
-    $obj->joinAdd($dbo);
+    foreach($tagsdo as $tag) {
+      $t = DB_DataObject::factory('tag_record');
+      $t->tag_id = $tag->pk();
+      $t->tagged_table = $obj->tableName();
+      $t->selectAdd();
+      $t->selectAdd('tag_record.tag_id');
+      $obj->joinAdd($t,'inner','tags_'.$tag);
+     }
     return;
   }
   public function getTagged($tag)
