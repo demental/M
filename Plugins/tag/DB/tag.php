@@ -53,7 +53,9 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    */
    public function searchByTags($tags,DB_DataObject $obj)
    {
+     
      if(!is_array($tags) || count($tags)==0) return;
+     $obj->selectAs();
      foreach($tags as $tag) {
        $t = DB_DataObject::factory('tag_record');
        $t->tag_id = $tag;
@@ -154,16 +156,16 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       $tags = array($tags);
     }
     foreach($tags as $atag) {
-    if(!$atag = $this->_getTagFromTag($atag)) {continue;}
+      if(!$atag = $this->_getTagFromTag($atag)) {continue;}
       $tagsdo[] = $atag;
     }
+    $obj->selectAs();
     foreach($tagsdo as $tag) {
       $t = DB_DataObject::factory('tag_record');
       $t->tag_id = $tag->pk();
       $t->tagged_table = $obj->tableName();
-      $t->selectAdd();
-      $t->selectAdd('tag_record.tag_id');
       $obj->joinAdd($t,'inner','tags_'.$tag);
+
      }
     return;
   }
