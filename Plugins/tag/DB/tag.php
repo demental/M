@@ -150,6 +150,9 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getByTags($tags, DB_DataObject $obj)
   {
+    if(!is_array($tags) || $tags->N) {
+      $tags = array($tags);
+    }
     foreach($tags as $atag) {
     if(!$atag = $this->_getTagFromTag($atag)) {continue;}
       $tagsid[] = $atag->pk();

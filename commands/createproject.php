@@ -1,9 +1,21 @@
 <?php
-while(!@include 'M/M_startup.php') {
-  fwrite(STDOUT,'
-M framework does not seem to be in your include_path.
-Please provide M parent path or leave empty to abort : ');
-  $path = trim(fgets(STDIN));
-  if(empty($path)) die('Aborting project creation
-  ');
+/**
+ * M PHP Framework
+ *
+ * @package      M
+ * @subpackage   createproject.php
+ * @author       Arnaud Sellenet <demental@sat2way.com>
+ * @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+ * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
+ * @version      0.1
+ */
+
+/**
+ * This command should help to create base project
+ */
+class Command_createproject extends Command {
+  public function execute($params)
+  {
+    # code...
+  }
 }

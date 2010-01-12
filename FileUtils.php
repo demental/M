@@ -182,6 +182,32 @@ class fileUtils
 		}
 		return $out;
 	}
+	/**
+	 *
+	 * Get Subfolders list of a given folder
+	 *
+	 * @access public
+	 * @static
+	 * @param	$folder		string	Source folder
+	 * @return	Files list	array
+	 */
+	public static function getFolders($folder)
+	{
+		if(!is_dir($folder)) {
+			return array();
+		}
+		$out = array();
+		if ($dh = @opendir($folder)) {
+			while (($file = readdir($dh)) !== false)
+			{
+				if(is_file($folder.$file)) continue;
+
+				$out[]=$file;
+
+			}
+		}
+		return $out;
+	}
 
 	/**
 	 *

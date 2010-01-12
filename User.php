@@ -77,6 +77,7 @@ class User{
 			if(isset($_POST[$sn])) if(strlen($_POST[$sn])!=32) unset($_POST[$sn]);
 			if(isset($_COOKIE[$sn])) if(strlen($_COOKIE[$sn])!=32) unset($_COOKIE[$sn]);
 			if(isset($PHPSESSID)) if(strlen($PHPSESSID)!=32) unset($PHPSESSID);
+      
 			session_start();
 		}
 
@@ -227,6 +228,7 @@ class User{
 				throw new Exception('User login field was not set in the user ORM context property');
 			}
 		}
+
 		$dbdo->$lg=$login;
 		if(!$dbdo->find(TRUE)){
 			$error=ERROR_NO_USER;

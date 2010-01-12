@@ -24,6 +24,7 @@ array(
   'isetup'                =>  'M/iSetup.php',
   'db_dataobject'         =>  'DB/DataObject.php',
   'cache_lite'            =>  'Cache/Lite.php',
+  'command'               =>  'M/Command.php',
   'cache_lite_file'       =>  'Cache/Lite/File.php',
   'config'                =>  'M/Config.php',
   'mtpl'                  =>  'M/Mtpl.php',

@@ -10,12 +10,8 @@
  * it might be a better idea to have methods instead of constants ?
  */
 
-class Tag_Command_Install implements iCommand {
-  public static function preSetup()
-  {
-      
-  }
-  public static function execute()
+class Tag_Command_Install extends Command {
+  public function execute($params)
   {
     $db = MDB2::factory(M::getDatabaseDSN());
     $h = $db->dsn['hostspec'];
@@ -26,13 +22,13 @@ class Tag_Command_Install implements iCommand {
     $mysqlbin = M::getSQLbinpath();
     $sys = "cat $file | $mysqlbin --host=$h --user=$u --password=$p $dbn";
     system($sys,$return);
-    Log::info('Creating tables :
+    echo 'Creating tables :
 * tag
 * tag_record
 * tag_history
-');
+';
     foreach(array('Tag','Tag_record','Tag_history') as $table) {
-      Log::info('Creating DOclass : '.$table."\n");
+      echo 'Creating DOclass : '.$table."\n";
       copy(M::getPearpath().'/M/Plugins/tag/src/'.$table.'.php',APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'DOclasses'.DIRECTORY_SEPARATOR.$table.'.php');
     }
   }
