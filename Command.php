@@ -23,14 +23,12 @@ class Command {
     self::header('Application '.APP_NAME.' booted'."\n".'Welcome to the M command line tool'."\n\n".'Type \'help\' for full commands list');
 
     while(1) {
-      $readline = popen('history -r "$2/.getline_history"
+      $readline = popen('history -r "/tmp/.getline_history"
       LINE=""
-      read -re -p "$1" LINE
+      read -re -p "M console (Current App : '.APP_NAME.') > " LINE
       history -s "$LINE"
-      history -w "$2/.getline_history"
+      history -w "/tmp/.getline_history"
       echo $LINE','r');
-
-      self::prompt('M console (Current App : '.APP_NAME.')');
       $res = ereg_replace(';$','',trim(substr(fgets($readline,1024),0,-1)));
       fclose($readline);
       $args = explode(' ',$res);
