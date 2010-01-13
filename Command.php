@@ -64,6 +64,13 @@ class Command {
     echo $message."\n";
   }
   /**
+   * Display an inline content
+   */
+   public function inline($message)
+   {
+    echo $message;
+   }
+  /**
    * ask for a yes/no to the CLI user
    * @param string prompt message
    * @param string (default 'n') default value if user just types 'enter'
@@ -82,6 +89,9 @@ class Command {
     }
     self::prompt($message.' ['.$yes.'/'.$no.']');
     $res = strtolower(trim(fgets(STDIN)));
+    if(empty($res)) {
+      $res = $default;
+    }
     return $res == strtolower($yes);
   }
   /**

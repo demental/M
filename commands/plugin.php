@@ -57,7 +57,7 @@ class Command_plugin extends Command {
     if($result === false) {
       throw new Exception("\Failed");
     } else {
-      echo 'Done';
+      $this->line('Done');
     }
   }
 }

@@ -32,10 +32,12 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
     // = @param string $input already present input
     // = @return string generated methods
     // ===============================================================
-    
+    public static function hasCustomLinksMethod($input) {
+      return empty($input)?false:eregi('function links *\(.+###END_AUTOCODE',$input)?false:true;
+    }
     function derivedHookFunctions($input = "")
     {
-      $addlinks = empty($input)?true:eregi('function links *\(.+###END_AUTOCODE',$input)?true:false;
+      $addlinks = !self::hasCustomLinksMethod($input);
       $addreverselinks = empty($input)?true:eregi('function reverseLinks *\(.+###END_AUTOCODE',$input)?true:false;
 
         if($addlinks) {

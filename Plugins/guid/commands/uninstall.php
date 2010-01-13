@@ -15,12 +15,26 @@ class Guid_command_uninstall extends Command {
   
   protected $toRegenerate = array();
   protected $toRemove = array();
-
+  protected $toScan = array();
+  protected function _checkForCustomLinks()
+  {
+    $data = PEAR::getStaticProperty('DB_DataObject', 'options');
+    $folder = $data['class_location'];
+    $files = FileUtils::getAllFiles($folder,'php');
+    foreach($files as $file) {
+      $content = file_get_contents($file);
+      $classname = strtolower(basename($file,'.php'));
+      if(DB_DataObject_Advgenerator::hasCustomLinksMethod($content)) {
+        if($this->confirm($classname.' class seems to have dynamic/conditional links.'."\n".'Do you wish to scan all table for link fix (long but recommended) ?','y')) {
+          $this->toScan[]=$classname;
+        }
+      }
+    }
+  }
   public function execute($params)
   {
-
-
     if(count($params)>0) {
+      $this->_checkForCustomLinks();
       foreach($params as $table) {
         $do = DB_DataObject::factory($table);
         $defs = $do->_getPluginsDef();
@@ -32,6 +46,7 @@ class Guid_command_uninstall extends Command {
       }
     } else {
       if(!$this->confirm('You are about to uninstall guid on the whole project! ARE YOU SURE ?')) {echo 'Aborting';return;}
+       $this->_checkForCustomLinks();
        $g = new DB_DataObject_Advgenerator();
        $generators = $g->getGenerators();
        $officepacktables = array();
@@ -94,6 +109,33 @@ class Guid_command_uninstall extends Command {
        $this->line('Altering field '.$ftable.' to '.$fieldSize);
        $db->query($query2);
      }
+    foreach($this->toScan as $tableToScan) {
+      $this->line('Scanning all records from '.$tableToScan);
+      $rec = DB_DataObject::factory($tableToScan);
+      $rec->find();
+      while($rec->fetch()) {
+        $links = $rec->links();
+        foreach($links as $field=>$ftabledata) {
+          $ftablearr = explode(':',$ftabledata);
+          $ftable = $ftablearr[0];
+          $ffield = $ftablearr[1];
+          if($ftable == $table && $ffield == $d->pkName()) {
+            $this->inline('.');
+            $q = 'UPDATE %s SET %s=(SELECT n_id FROM %s WHERE %s=%s) WHERE %s=%s';
+            $fq = vsprintf($q,
+              array($db->quoteIdentifier($tableToScan),
+                    $db->quoteIdentifier($field),
+                    $db->quoteIdentifier($table),
+                    $db->quoteIdentifier($d->pkName()),
+                    $db->quote($rec->{$field}),
+                    $db->quoteIdentifier($rec->pkName()),
+                    $db->quote($rec->pk())
+                    ));
+            $db->exec($fq);
+          }
+        }
+      }
+    }
     // Third loop : we remove the old 'id' field and rename 'n_id' to 'id'
       $this->line('Dropping old guid pk.');
       $db->query('ALTER TABLE `'.$d->tableName().'` DROP id');
