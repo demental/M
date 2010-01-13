@@ -91,7 +91,7 @@ class Guid_command_uninstall extends Command {
      foreach($this->toRemove as $table) {
        $this->line('removing plugin guid for table '.$table);
        $data = file_get_contents(APP_ROOT.PROJECT_NAME.'/DOclasses/'.ucfirst($table).'.php');
-       $data = ereg_replace('(\'|")guid(\'|")[[:space:]]*=>[[:space:]]*(true|1),','',$data);
+       $data = ereg_replace('(\'|")guid(\'|")[[:space:]]*=>[[:space:]]*(true|1),*','',$data);
        file_put_contents(APP_ROOT.PROJECT_NAME.'/DOclasses/'.ucfirst($table).'.php',$data);
      }
      

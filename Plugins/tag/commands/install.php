@@ -11,6 +11,21 @@
  */
 
 class Tag_Command_Install extends Command {
+  protected $baseFolder;
+  public function __construct()
+  {
+    $this->baseFolder = realpath(dirname(__FILE__).'/../').'/';
+  }
+  public function shortHelp()
+  {
+    $this->line('installs necessary data to use the tag plugin');
+  }
+  public function longHelp($params)
+  {
+    $this->line('installs necessary data to use the tag plugin');
+    $this->line('* adds three tables to the database : tag, tag_record, tag_history');
+    $this->line('* adds the three corresponding DOclasses to the current project');
+  }
   public function execute($params)
   {
     $db = MDB2::factory(M::getDatabaseDSN());
@@ -18,9 +33,10 @@ class Tag_Command_Install extends Command {
     $u = $db->dsn['username'];
     $p = $db->dsn['password'];
     $dbn = $db->database_name;
-    $file = M::getPearpath().'/M/Plugins/tag/src/tag.sql';
-    $mysqlbin = M::getSQLbinpath();
-    $sys = "cat $file | $mysqlbin --host=$h --user=$u --password=$p $dbn";
+    $mysqlbin = '/usr/bin/env mysql';
+    $catbin = '/usr/bin/env cat';
+    $file = $this->baseFolder.'src/tag.sql';
+    $sys = "$catbin $file | $mysqlbin --host=$h --user=$u --password=$p $dbn";
     system($sys,$return);
     echo 'Creating tables :
 * tag
@@ -29,7 +45,7 @@ class Tag_Command_Install extends Command {
 ';
     foreach(array('Tag','Tag_record','Tag_history') as $table) {
       echo 'Creating DOclass : '.$table."\n";
-      copy(M::getPearpath().'/M/Plugins/tag/src/'.$table.'.php',APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'DOclasses'.DIRECTORY_SEPARATOR.$table.'.php');
+      copy($this->baseFolder.'src/'.$table.'.php',APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'DOclasses'.DIRECTORY_SEPARATOR.$table.'.php');
     }
   }
 }
