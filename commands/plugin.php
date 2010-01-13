@@ -27,8 +27,52 @@ class Command_plugin extends Command {
       $this->line('Usage:');
       $this->line('plugin [PLUGIN_NAME] [COMMAND_NAME] [[COMMAND_PARAMETERS]]');
       $this->line('');
+      $this->line('You can get a description of the plugin and list the available subcommands using:');
+      $this->line('help plugin [PLUGIN_NAME]');      
       $this->line('You can also get help from subcommands if provided using:');
-      $this->line('help plugin [PLUGIN_NAME] [COMMAND_NAME]');
+      $this->line('help plugin [PLUGIN_NAME] [COMMAND_NAME]');      
+      $this->line('============');
+      $this->line('Here is a list of available plugins:');
+      $dir = dirname(realpath(__FILE__));
+      $pluginsPath = realpath($dir.'/../Plugins/');
+      foreach(FileUtils::getFolders($pluginsPath) as $adir) {
+        if(ereg('^\.',basename($adir))) continue;
+        $this->line(basename($adir));
+      }
+      
+    } elseif(count($params)==1) {
+      $plugin = $params[0];
+      $pluginPath = 'M/Plugins/'.$plugin.'/';
+      if(!FileUtils::file_exists_incpath ($pluginPath.'commands/help.php')) {
+        if(!FileUtils::file_exists_incpath ('M/Plugins/'.$plugin)) {
+          throw new Exception($plugin.' plugin does not exist');
+        } else {
+          $this->line('no description for '.$plugin.' plugin');
+        }
+      } else {
+        require_once 'M/Plugins/'.$plugin.'/commands/help.php';
+        $className = $plugin.'_Command_help';
+        $h = new $className;
+        $h->execute();
+      }
+      $this->line('============');
+      $this->line('Here is a list of available commands for this plugin:');
+      $dir = dirname(realpath(__FILE__));
+      $commandsPath = realpath($dir.'/../../'.$pluginPath.'commands/');
+      foreach(FileUtils::getAllFiles($commandsPath) as $file) {
+        $commandname = basename($file,'.php');
+        if($commandname=='help') continue;
+        $className = $plugin.'_Command_'.$commandname;
+        require_once $file;
+        $newcommand = new $className();
+        $this->line('');
+        $this->line($commandname);
+        $newcommand->shortHelp();
+      }
+    } else {
+      $plugin = array_shift($params);
+      $command = array_shift($params);
+      $this->getPluginCommand($plugin,$command,$params)->longHelp();
     }
   }
   public function execute($params)
@@ -39,6 +83,16 @@ class Command_plugin extends Command {
     $plugin = array_shift($params);
     $command = array_shift($params);    
 
+    $com = $this->getPluginCommand($plugin,$command,$params);
+    $result = $com->execute($params);
+    if($result === false) {
+      throw new Exception("\Failed");
+    } else {
+      $this->line('Done');
+    }
+  }
+  protected function getPluginCommand($plugin,$command,$params = array())
+  {
     if(!FileUtils::file_exists_incpath ('M/Plugins/'.$plugin.'/commands/'.$command.'.php')) {
       if(!FileUtils::file_exists_incpath ('M/Plugins/'.$plugin)) {
         throw new Exception($plugin.' plugin does not exist');
@@ -53,11 +107,6 @@ class Command_plugin extends Command {
 
     // Executing
     $com = new $className;
-    $result = $com->execute($params);
-    if($result === false) {
-      throw new Exception("\Failed");
-    } else {
-      $this->line('Done');
-    }
+    return $com;
   }
 }

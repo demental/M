@@ -26,6 +26,16 @@ class Command_Help extends Command {
       $exec = Command::factory($command);
       $exec->longHelp($params);
     } else {
+      $this->line('This command displays global help text or specific help text for a command if provided');
+      $this->line('Usage:');
+      $this->line('help');
+      $this->line('  Displays this help');
+      $this->line('help [COMMAND_NAME]');
+      $this->line('  Displays specific and longer help for [COMMAND_NAME]');
+      $this->line('help [COMMAND_NAME] [SUBCOMMAND_NAME] and so on....');
+      $this->line('  Displays specific and longer help for [SUBCOMMAND_NAME] if [COMMAND_NAME] contains some subcommands (e.g. the plugin command)');
+      $this->line('==========');
+      $this->line('Here is the list of available root commands:');
       $dir = dirname(realpath(__FILE__));
       foreach(FileUtils::getAllFiles($dir) as $afile) {
         $subcname = basename($afile,'.php');

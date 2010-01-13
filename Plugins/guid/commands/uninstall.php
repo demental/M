@@ -16,6 +16,21 @@ class Guid_command_uninstall extends Command {
   protected $toRegenerate = array();
   protected $toRemove = array();
   protected $toScan = array();
+
+  public function longHelp($params)
+  {
+    $this->line('This command transforms CHAR(36) primary keys of the provided tables into numeric, auto-increment values.');
+    $this->line('* All foreign records related to the provided tables are also updated, including dynamic/conditional links');
+    $this->line('* The guid plugin is then removed from the DOclass definition');
+    $this->line('DISCLAIMER:');
+    $this->line('* This command cannot be reverted');
+    $this->line('* The execution time can be very long, if your database contains several tables with dynamic/conditional links,');
+    $this->line('as well as for tables with no index on the foreign key(s) that will be updated');        
+    $this->line('');
+    $this->line('Usage:');
+    $this->line('plugin guid uninstall [TABLE1] [TABLE2].....[TABLEN]');
+  }
+
   protected function _checkForCustomLinks()
   {
     $data = PEAR::getStaticProperty('DB_DataObject', 'options');
