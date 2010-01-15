@@ -184,12 +184,12 @@ class DB_DataObject_Plugin_Images extends M_Plugin
       $firstRedim=false;
 		} else {
 			$photo=FileUtils::getFolderPath(TMP_PATH).$obj->$field;
-      foreach($arr as $key=>$info) {
-        if($info['original']) {
-          $name = $this->_regenerateThumbUnit($photo,$info,$obj,$field);
+      foreach($arr as $key=>$value) {
+        if($value['original']) {
+          $name = $this->_regenerateThumbUnit($photo,$value,$obj,$field);
           $obj->{$field}=$name;
 
-    			$photo=IMAGES_UPLOAD_FOLDER.FileUtils::getFolderPath($info['path']).$name;
+    			$photo=IMAGES_UPLOAD_FOLDER.FileUtils::getFolderPath($value['path']).$name;
           unset($arr[$key]);
           break;
         }
