@@ -75,7 +75,7 @@ class DB_DataObject_Plugin_Images extends M_Plugin
     $obj->fb_elementNamePostfix=$fb->elementNamePostfix;
 		return;
 	}
-	function postProcessForm(&$v,&$fb,&$obj)
+	function postProcessForm(&$values,&$fb,&$obj)
 	{
 	  $info = $obj->_getPluginsDef();
     $info = $info['images'];
@@ -84,31 +84,14 @@ class DB_DataObject_Plugin_Images extends M_Plugin
       $field = $obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix;
       if(key_exists('__image_delete_'.$field,$_REQUEST)) {
         $this->deletePhoto($obj,$k);
-        $upd=true;
         $obj->$k='';
       }
 		}
-		if($upd) {
-	    $obj->update();
+		foreach($info as $k=>$v){
+			$obj->$k = $this->upPhoto($obj, $k, $obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix);
 		}
+    $obj->update();
 		return;
-	}
-	function insert(&$obj)
-	{
-	  $info = $obj->_getPluginsDef();
-    $info = $info['images'];
-		foreach($info as $k=>$v){
-			$obj->$k=$this->upPhoto($obj, $k, $obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix);
-		}
-	}
-	function update(&$obj)
-	{
-    $info = $obj->_getPluginsDef();
-    $info = $info['images'];
-		foreach($info as $k=>$v){
-			$obj->$k=$this->upPhoto($obj, $k, $obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix);
-		}
-
 	}
 	function delete(&$obj)
 	{
@@ -143,7 +126,8 @@ class DB_DataObject_Plugin_Images extends M_Plugin
       $res = copy($originalfile, FileUtils::getFolderPath(TMP_PATH).$obj->$field);
     }
     if($res && chmod(FileUtils::getFolderPath(TMP_PATH).$obj->$field, 0644)) {
-      $obj->$field = $this->regenerateThumbs($obj, $field);
+      $obj->say('regenerating thumbs');
+      $this->regenerateThumbs($obj, $field);
     }
   }
   function imageExists(&$obj,$field) 
@@ -174,7 +158,7 @@ class DB_DataObject_Plugin_Images extends M_Plugin
 	  $info = $obj->_getPluginsDef();
     $info = $info['images'];
 		$arr=key_exists(0,$info[$field])?$info[$field]:array($info[$field]);
-		require_once("M/traitephoto.php");
+		require_once 'M/traitephoto.php';
 		if(!file_exists(FileUtils::getFolderPath(TMP_PATH).$obj->$field)){
 	    $original = $this->getBestImage($obj,$field);
 	    if($original['isoriginal']){

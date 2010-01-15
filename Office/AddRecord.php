@@ -61,7 +61,6 @@ class M_Office_AddRecord extends M_Office_Controller {
         }
         M_Office_Util::addHiddenFields($form);
         if ($form->validate()) {
-            DB_DataObject::debugLevel(1);
             if (PEAR::isError($ret = $form->process(array(&$formBuilder, 'processForm'), false))) {
                 $this->append('error',__('An error occured while inserting record').' : '.$ret->getMessage());
             }else {
