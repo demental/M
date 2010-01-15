@@ -32,10 +32,10 @@ class Calc
 	 * @param	float 	$vat 		VAT Value
 	 * @return	Amount				Amount included VAT
 	 */
-	public static function HT2TTC($price,$vat)
+	public static function HT2TTC($price,$vat,$precision=2)
 	{
-	  if($vat==0) return number_format($price,2,'.','');
-   if($price==0) return '0.00';
+	  if($vat==0) return number_format($price,$precision,'.','');
+   if($price==0) return number_format(0,$precision,'.','');
 		$vat=$vat>1?$vat/100:$vat;
    $result = abs($price*(1+$vat));
    $dir = $price/abs($price);
@@ -48,7 +48,7 @@ class Calc
    } elseif(($mod > 0.48 && $mod < 0.50) || ($mod > 0.98) || ($mod > 0.50 && $mod < 0.52) || ($mod < 0.02)) {
      $result=round($result*2)/2;
    }
-		return number_format($dir*$result,2, '.', '');
+		return number_format($dir*$result,$precision, '.', '');
 	}
 	// Alias
   public static function addVAT($price,$vat)
