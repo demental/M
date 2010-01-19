@@ -116,6 +116,10 @@ class Guid_command_uninstall extends Command {
      foreach($d->reverseLinks() as $ftable=>$linkField) {
        $ftablearr = explode(':',$ftable);
        $this->line('Updating values for '.$ftable);
+       if(in_array($ftablearr[0],$this->toScan)) {
+         $this->line($ftablearr[0].' has dynamic/conditional links... IGNORING');
+         continue;
+       }
        $this->toRegenerate[] = $ftablearr[0];       
        $q = 'UPDATE %1$s,%2$s SET %2$s.%3$s=%1$s.n_id where %3$s=%1$s.%4$s';
        $db->query(vsprintf($q,array($table,$ftablearr[0],$ftablearr[1],$linkField)));
