@@ -23,10 +23,6 @@ class M_Setup implements iSetup {
   {
     $this->setUpDatabase();
     define('WEBROOT_FOLDER', APP_ROOT.WEB_FOLDER);
-    if(!defined('MAIL_TEMPLATES_FOLDER')) {
-        define('MAIL_TEMPLATES_FOLDER', APP_ROOT.'helpers/templates/htmltpl/mailtpl/');
-    }
-    define('TRANSLATE_FOLDER', APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.'/lang/');
 
     // ================================
     // = Absolute path to media files =
