@@ -115,13 +115,14 @@ class Guid_command_uninstall extends Command {
      }
      foreach($d->reverseLinks() as $ftable=>$linkField) {
        $ftablearr = explode(':',$ftable);
+       if($linkField!=$d->pkName()) continue;
        $this->line('Updating values for '.$ftable);
        if(in_array($ftablearr[0],$this->toScan)) {
          $this->line($ftablearr[0].' has dynamic/conditional links... IGNORING');
          continue;
        }
        $this->toRegenerate[] = $ftablearr[0];       
-       $q = 'UPDATE %1$s,%2$s SET %2$s.%3$s=%1$s.n_id where %3$s=%1$s.%4$s';
+       $q = 'UPDATE %1$s t1,%2$s t2 SET t2.%3$s=t1.n_id where %3$s=t1.%4$s';
        $db->query(vsprintf($q,array($table,$ftablearr[0],$ftablearr[1],$linkField)));
        $q2 = 'ALTER TABLE %s CHANGE `%s` `%s` %s UNSIGNED NOT NULL';
        $query2 = vsprintf($q2,array($ftablearr[0],$ftablearr[1],$ftablearr[1],$fieldSize));
