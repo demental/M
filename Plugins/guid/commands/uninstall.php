@@ -122,8 +122,10 @@ class Guid_command_uninstall extends Command {
          continue;
        }
        $this->toRegenerate[] = $ftablearr[0];       
-       $q = 'UPDATE %1$s t1,%2$s t2 SET t2.%3$s=t1.n_id where %3$s=t1.%4$s';
-       $db->query(vsprintf($q,array($table,$ftablearr[0],$ftablearr[1],$linkField)));
+       $q = 'UPDATE %1$s t1,%2$s t2 SET t2.%3$s=t1.n_id where t2.%3$s=t1.%4$s';
+       $qf = vsprintf($q,array($table,$ftablearr[0],$ftablearr[1],$linkField));
+       
+       $db->query($qf);
        $q2 = 'ALTER TABLE %s CHANGE `%s` `%s` %s UNSIGNED NOT NULL';
        $query2 = vsprintf($q2,array($ftablearr[0],$ftablearr[1],$ftablearr[1],$fieldSize));
        $this->line('Altering field '.$ftable.' to '.$fieldSize);
