@@ -45,8 +45,8 @@ class Command {
   /**
    * Factory to create command instances
    */
-  public static function factory($command) {
-    $commandfile = 'M/commands/'.strtolower($command).'.php';
+  public static function factory($command,$path='M/commands/') {
+    $commandfile = $path.strtolower($command).'.php';
     $commandclass = 'Command_'.$command;
     if(!FileUtils::File_exists_incpath($commandfile)) {
       throw new Exception('Command "'.$command.'" not found');
@@ -92,19 +92,18 @@ class Command {
     if(empty($res)) {
       $res = $default;
     }
-    return $res == strtolower($yes);
+    return strtolower($res) == strtolower($yes);
   }
   /**
    * Ask the CLI user to choose between several choices
    * @param string prompt message
-   * @param string default value id user just types 'enter'
+   * @param string default value if user just types 'enter'
    * @param array indexed array of the different possible choices
    */
   public function choose($message,$default='',$values)
   {
     $message = $message.' ['.implode(' / ',$values).'] (default : '.$default.')';
-    self::prompt($message);
-    $res = strtolower(trim(fgets(STDIN)));
+    $res = self::prompt($message);
     if(empty($res)) {
       $res = $default;
     }
@@ -115,7 +114,18 @@ class Command {
       return $res;
     }
   }
-
+  /**
+   * Ask the CLI user to type something, with a default value if provided
+   * @param string prompt message
+   * @param string default value id user just types 'enter'
+   */
+  public function ask($message,$default='')
+  {
+    $message = $message.(empty($default)?'':' ['.$default.']');
+    $res = self::prompt($message);
+    if(empty($res)) return $default;
+    return $res;
+  }
   public function error($message)
   {
     echo "\n".'***[ERROR]***'."\n".$message."\n";
@@ -135,6 +145,8 @@ class Command {
   public function prompt($message)
   {
     echo "\n".$message.' > ';
+    $res = strtolower(trim(fgets(STDIN)));
+    return $res;
   }
   /**
    * this method must implement the script fired when command is executed
