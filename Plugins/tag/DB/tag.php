@@ -32,29 +32,37 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   {
     Log::info('Adding tags to form');
     $tags = DB_DataObject::factory('tag');
+    $tags->archived=0;// @todo add this field to tags table
     $tags->find();
     while($tags->fetch()) {
-      
-      $arr[] = HTML_QuickForm::createElement('checkbox',$fieldname.'['.$tags->id.']','',$tags->strip);
+      $taglist[$tags->id] = $tags->strip;
     }
-    $grp = HTML_QuickForm::createElement('group',$fieldname,'Tags',$arr,null,false);
-    Log::info('Tags to be added : '.count($arr));
+    foreach($taglist as $id=>$strip) {
+      $arr[] = HTML_QuickForm::createElement('checkbox',$fieldname.'['.$id.']','',$strip);
+      $arr2[] = HTML_QuickForm::createElement('checkbox','exc_'.$fieldname.'['.$id.']','',$strip);      
+    }
+
+    $grp = HTML_QuickForm::createElement('group',$fieldname,__('Including Tags'),$arr,null,false);
+    $grp2 = HTML_QuickForm::createElement('group','exc_'.$fieldname,__('Excluding Tags'),$arr2,null,false);
+
     if($form->elementExists('__submit__')) {
       $form->insertElementBefore($grp,'__submit__');
+      $form->insertElementBefore($grp2,'__submit__');
     } else {
       $form->addElement($grp);
+      $form->addElement($grp2);      
     }
   }
   
   /**
    * Prepares query to retreive filtering by tags
-   * @param array(tagID1,tagID2,....tagIDn)
+   * @param array(tagID1,tagID2,....tagIDn) tags to include
+   * @param array(tagID1,tagID2,....tagIDn) tags to exclude
    * 
    */
-   public function searchByTags($tags,DB_DataObject $obj)
+   public function searchByTags($tags,$excludeTags,DB_DataObject $obj)
    {
-     
-     if(!is_array($tags) || count($tags)==0) return;
+     if((!is_array($tags) || count($tags)==0) && (!is_array($excludeTags) || count($excludeTags)==0)) return;
      $obj->selectAs();
      foreach($tags as $tag) {
        $t = DB_DataObject::factory('tag_record');
@@ -62,7 +70,16 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
        $t->tagged_table = $obj->tableName();
        $t->selectAdd();
        $t->selectAdd('tag_record.tag_id');
-       $obj->joinAdd($t,'inner','tags_'.$tag);
+       $obj->joinAdd(clone($t),array('joinType'=>'INNER','joinAs'=>'tags_'.$tag,'useWhereAsOn'=>true));
+      }
+      foreach($excludeTags as $tag) {
+        $t = DB_DataObject::factory('tag_record');
+        $t->whereAdd('extags_'.$tag.'.tag_id = '.$tag);
+        $t->tagged_table = $obj->tableName();
+        $obj->whereAdd('extags_'.$tag.'.id is null');
+        $t->selectAdd();
+        $t->selectAdd('extags_'.$tag.'.tag_id');
+        $obj->joinAdd(clone($t),array('joinType'=>'LEFT','joinAs'=>'extags_'.$tag,'useWhereAsOn'=>true));
       }
    }
   /**
