@@ -1,8 +1,12 @@
 <?php
-class Module_Taghelper extends Module {
+class PluginModule_Taghelper extends Module {
   public function getCacheId()
   {
     return false;
+  }
+  public function doExecIndex()
+  {
+    # code...
   }
   public function doExecCloud()
   {

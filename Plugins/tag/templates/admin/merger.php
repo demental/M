@@ -1,0 +1,1 @@
+<h1><?php _e('Plugins:Tag merger')?></h1>

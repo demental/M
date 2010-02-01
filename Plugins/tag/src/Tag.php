@@ -14,7 +14,8 @@ class DataObjects_Tag extends DB_DataObject_Pluggable
     public $strip;                           // varchar(30)   not_null
     public $description;                     // mediumtext()  
     public $recordcount;                     // int(4)  
-
+    public $archived;                        // tinyint(1) not_null
+    
     /* Static get */
     function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Tag',$k,$v); }
 
@@ -25,6 +26,7 @@ class DataObjects_Tag extends DB_DataObject_Pluggable
              'strip' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_NOTNULL,
              'description' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_TXT,
              'recordcount' =>  DB_DATAOBJECT_INT,
+             'archived' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_BOOL + DB_DATAOBJECT_NOTNULL,             
          );
     }
 

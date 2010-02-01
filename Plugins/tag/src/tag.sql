@@ -8,6 +8,7 @@ CREATE TABLE `tag` (
   `strip` varchar(30) collate utf8_unicode_ci NOT NULL,
   `description` mediumtext collate utf8_unicode_ci,
   `recordcount` int(11) NULL,
+  `archived` int(1) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 

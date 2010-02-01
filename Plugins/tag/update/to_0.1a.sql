@@ -1,0 +1,1 @@
+ALTER TABLE `tag` ADD `archived` BOOL NOT NULL ;

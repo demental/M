@@ -100,15 +100,19 @@ class Module extends Maman {
 		}
     Log::info('Module::factory '.$modulename);
     $plugmod = explode(':',$modulename);
+    $moduleOpt = PEAR::getStaticProperty('Module','global');
+
     if($plugmod[1]) {
       Log::info('Calling plugin module '.$modulename);
       PluginRegistry::initPlugin($plugmod[0]);
       $path = array(APP_ROOT.PROJECT_NAME.'/Plugins/'.$plugmod[0].'/modules/','M/Plugins/'.$plugmod[0].'/modules/');
 
-      $moduleOpt = &PEAR::getStaticProperty('Module','global');
-      $moduleOpt['template_dir'][]='M/Plugins/'.$plugmod[0].'/templates/';
-      $moduleOpt['template_dir'][]=APP_ROOT.PROJECT_NAME.'/Plugins/'.$plugmod[0].'/templates/';
+      $moduleOpt['template_dir'][] = 'M/Plugins/'.$plugmod[0].'/templates/';
+      $moduleOpt['template_dir'][] = APP_ROOT.PROJECT_NAME.'/Plugins/'.$plugmod[0].'/templates/';
       $modulename = $plugmod[1];
+		  $className = 'PluginModule_'.$modulename;
+    } else {
+      $className = 'Module_'.$modulename;
     }
 		$i=false;
 		foreach($path as $aPath) {
@@ -124,15 +128,15 @@ class Module extends Maman {
 			throw new Error404Exception("No $modulename module in path ".implode(',',$path));
 		}
     Log::info('Module::factory '.$modulename.' OK');
-		$nommodule = 'Module_'.$modulename;
-		$module = new $nommodule($modulename);
+
+		$module = new $className($modulename);
 		$module->_path=$path;
 		Log::info('Generating options');
-    $options = $module->generateOptions();
+    $options = $module->generateOptions($moduleOpt);
 		$module->setConfig($options);
 		$module->setParams($params);
 		$module->startView();
-    Log::info('Module::factory '.$modulename.' configured');
+    Log::info('Module::factory '.$className.' configured');
 		return $module;
 	}
 
@@ -146,19 +150,19 @@ class Module extends Maman {
 	 *
 	 * @return unknown_type
 	 */
-	protected function generateOptions()
+	protected function generateOptions($opt)
 	{
-		$opt = array('all'=>PEAR::getStaticProperty('Module', 'global'));
+		$opt = array('all'=>$opt);
 		$options = array(
         'caching' =>(MODE=='developpement'?false:true),
         'cacheDir' => $opt['all']['cacheDir'].'/config/',
-        'lifeTime' => 72000,//TODO affiner éa...
+        'lifeTime' => 72000,//TODO make configurable...
         'fileNameProtection'=>false,
         'automaticSerialization'=>true
 		);
     Log::info('preparing options');
 		$optcache = new Cache_Lite($options);
-		if(!$moduleopt = $optcache->get($this->_modulename))  {
+		if(!$moduleopt = $optcache->get(get_class($this)))  {
       Log::info('no cache for options, live generating');
 			foreach($this->_path as $path) {
 				if (@include $path.'/'.$this->_modulename.'.conf.php')
@@ -492,15 +496,19 @@ class Module extends Maman {
 		if(is_null($template)) {
 			$template = $this->_lastOutput->getConfig('template',$a)?
 			$this->_lastOutput->getConfig('template',$a):
-			strtolower(str_replace('Module_', '', get_class($this->_lastOutput))).'/'.$a;
+			  strtolower(preg_replace('`^(.*Module_)`i', '', get_class($this->_lastOutput))).'/'.$a;
+
 			Log::info('Setting template '.$template.' for module '.get_class($this->_lastOutput));
 		}
+
 		if($template=='__none') {
 			return;
 		}
+
 		if(!is_array($template)) {
 			$template = array($template);
 		}
+
 		// Le fichier de template englobant est-il celui par défaut (index.tpl) ou a-t-il été spécifié
 		// dans la configuration du module ?
 		if(is_null($layout)) {
@@ -531,9 +539,10 @@ class Module extends Maman {
         }
       }
 	  }
+
 		if($layout=='__self'){
 			Log::info('Displaying selfsufficient for module '.get_class($this->_lastOutput));
-			$ret = $this->_lastOutput->view->fetch($template);
+			$ret = $this->view->fetch($template);
 
 		} else {
 			// Sinon c'est que le layout posséde une variable $__action qui est utilisé pour inclure le template de l'action 	

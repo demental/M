@@ -1,0 +1,1 @@
+<h1><?php _e('Plugins:Tag statistics')?></h1>
