@@ -14,7 +14,7 @@
 <?php endif?>
 </li>
 <?php endforeach?>
-</div>
+</ul>
 <?php $this->endcapture()?>
 
 <a href="<?php echo M_Office::URL('otfimage:photohelper/widget',array('record'=>$record->pk(),'table'=>$record->tableName()))?>" id="showimagelist_<?php echo $record->tableName()?>_<?php echo $record->pk()?>"><?php _e('%s images',array($cnt))?></a> - 
