@@ -15,14 +15,27 @@
  */
 
 class Command {
-  
+  /**
+   * Options that can be set to true at startup
+   * @example : sh>./M host_name.org front --noheader --noninteractive
+   */
+  protected static $options = array(
+    'noheader'=>false,
+    'noninteractive'=>false
+  );
   /**
    * Command interface core
    */
-  public static function start(){
-    self::header('Application '.APP_NAME.' booted'."\n".'Welcome to the M command line tool'."\n\n".'Type \'help\' for full commands list');
+  public static function start($initialcommand,$options = array()){
 
-    while(1) {
+    self::setOptions($options);
+    if(!self::getOption('noheader')) {
+      self::header('Application '.APP_NAME.' booted'."\n".'Welcome to the M command line tool'."\n\n".'Type \'help\' for full commands list');
+    }
+    if(!empty($initialcommand)) {
+      self::launch($initialcommand);
+    }
+    while(1 && !self::getOption('noninteractive')) {
       $readline = popen('history -r "/tmp/.getline_history"
       LINE=""
       read -re -p "M console (Current App : '.APP_NAME.') > " LINE
@@ -31,16 +44,28 @@ class Command {
       echo $LINE','r');
       $res = ereg_replace(';$','',trim(substr(fgets($readline,1024),0,-1)));
       fclose($readline);
-      $args = explode(' ',$res);
-      $command = preg_replace('`\W`','',array_shift($args));
-
-      try {
-        $exec = self::factory($command);
-        $exec->execute($args);
-      } catch(Exception $e) {
-        self::error($e->getMessage());
-      }
+      self::launch($res);
     }
+    if(self::getOption('noninteractive'))
+    self::launch('exit');
+  }
+  public static function launch($input) {
+    $args = explode(' ',$input);
+    $command = preg_replace('`\W`','',array_shift($args));
+
+    try {
+      $exec = self::factory($command);
+      $exec->execute($args);
+    } catch(Exception $e) {
+      self::error($e->getMessage());
+    }
+  }
+  public static function setOptions($options) {
+    self::$options = array_merge(self::$options,$options);
+  }
+  public static function getOption($name)
+  {
+    return self::$options[$name];
   }
   /**
    * Factory to create command instances
