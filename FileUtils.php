@@ -217,13 +217,15 @@ class fileUtils
 	 * @static
 	 * @param	$folder				string	Source folder
 	 * @param	$extensionfilter	string	Extension to filter
+	 * @param $recursive bool recursively scan folders (equivalent to ls -R)
 	 * @return	Files list			array
 	 */
-	public static function getAllFiles($folder,$extensionfilter='')
+	public static function getAllFiles($folder,$extensionfilter='',$recursive = true)
 	{
 		if(!is_array($extensionfilter)) {
 			$extensionfilter = array($extensionfilter);
 		}
+    $extensionfilter = implode('',$extensionfilter);
 		if(!ereg('\/$',$folder)) {
 			$folder.='/';
 		}
@@ -235,12 +237,12 @@ class fileUtils
 			while (($file = readdir($dh)) !== false)
 			{
 				if(ereg('^\.',$file)) continue;
-				if(is_dir($folder.$file)) {
+				if(is_dir($folder.$file) && $recursive) {
 					$out = array_merge($out,self::getAllFiles($folder.$file,$extensionfilter));
 				} elseif(!is_file($folder.$file)) {
 					continue;
 				} else {
-					if(empty($extensionfilter) || eregi('\.'.implode('|',$extensionfilter),$file)) {
+					if(empty($extensionfilter) || eregi('\.'.$extensionfilter,$file)) {
 						$out[]=$folder.$file;
 					}
 				}
