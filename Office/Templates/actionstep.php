@@ -15,7 +15,7 @@ $(function(){
   <div style="width:<?php echo $start*100/$total?>%;background:#449">&nbsp;</div>
 </div>  
 <?php echo $start?> / <?php echo $total?>.
-</p><?php $remaining=($timeout+2)*(($total-$start)/$step)?>Temps restant estimé : <?php echo round($remaining/60)?> m <?php echo $remaining%60?> s</p>
+</p><?php $remaining=($step>0)?($timeout+2)*(($total-$start)/$step):0; ?>Temps restant estimé : <?php echo round($remaining/60)?> m <?php echo $remaining%60?> s</p>
 <?php if($timeout):?>
 <p>Cette page se rafraîchit automatiquement toutes les <?php echo $timeout/1000?> secondes...</p>
 <?php endif?>
