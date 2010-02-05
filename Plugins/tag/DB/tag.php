@@ -39,24 +39,25 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     $tags->selectAdd();
     $tags->selectAdd('tag.*');
     $tags->groupBy('tag.strip');
-    $tags->find();
-    while($tags->fetch()) {
-      $taglist[$tags->id] = $tags->strip;
-    }
-    foreach($taglist as $id=>$strip) {
-      $arr[] = HTML_QuickForm::createElement('checkbox',$fieldname.'['.$id.']','',$strip);
-      $arr2[] = HTML_QuickForm::createElement('checkbox','exc_'.$fieldname.'['.$id.']','',$strip);      
-    }
+    if ($tags->find()) {
+      while($tags->fetch()) {
+        $taglist[$tags->id] = $tags->strip;
+      }
+      foreach($taglist as $id=>$strip) {
+        $arr[] = HTML_QuickForm::createElement('checkbox',$fieldname.'['.$id.']','',$strip);
+        $arr2[] = HTML_QuickForm::createElement('checkbox','exc_'.$fieldname.'['.$id.']','',$strip);      
+      }
 
-    $grp = HTML_QuickForm::createElement('group',$fieldname,__('Including Tags'),$arr,null,false);
-    $grp2 = HTML_QuickForm::createElement('group','exc_'.$fieldname,__('Excluding Tags'),$arr2,null,false);
-
-    if($form->elementExists('__submit__')) {
-      $form->insertElementBefore($grp,'__submit__');
-      $form->insertElementBefore($grp2,'__submit__');
-    } else {
-      $form->addElement($grp);
-      $form->addElement($grp2);      
+      $grp = HTML_QuickForm::createElement('group',$fieldname,__('Including Tags'),$arr,null,false);
+      $grp2 = HTML_QuickForm::createElement('group','exc_'.$fieldname,__('Excluding Tags'),$arr2,null,false);
+  
+      if($form->elementExists('__submit__')) {
+        $form->insertElementBefore($grp,'__submit__');
+        $form->insertElementBefore($grp2,'__submit__');
+      } else {
+        $form->addElement($grp);
+        $form->addElement($grp2);      
+      }
     }
   }
   
