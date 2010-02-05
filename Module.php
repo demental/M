@@ -687,7 +687,8 @@ class Module extends Maman {
 
     if($this->isComponent()) {
       list($module,$action)=explode('/',$modulaction);
-      return $this->forward($module[0],$module[1]?$module[1]:'index',array_merge($vars,$this->_params));
+      $varsAr = is_null($vars) ? $this->_params : array_merge($vars,$this->_params);
+      return $this->forward($module[0],$module[1]?$module[1]:'index', $varAr);
     }
 		if($this->isAjaxRequest()) {
       $vars['__ajax']=1;

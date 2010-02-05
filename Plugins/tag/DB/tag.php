@@ -30,9 +30,14 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    */
   public function addTagsToForm(HTML_QuickForm $form, $fieldname, DB_DataObject $obj)
   {
+    //DB_DataObject::debugLevel(1);
     Log::info('Adding tags to form');
     $tags = DB_DataObject::factory('tag');
     $tags->archived=0;// @todo add this field to tags table
+    $tag_record = DB_DataObject::factory('tag_record');
+    $tags->joinAdd($tag_record);
+    $tags->whereAdd("tag_record.tagged_table = '".$obj->__table."'");
+    $tags->groupBY('tag.strip');
     $tags->find();
     while($tags->fetch()) {
       $taglist[$tags->id] = $tags->strip;
