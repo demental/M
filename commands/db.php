@@ -28,7 +28,7 @@ class Command_Db extends Command {
     $this->line('db backup [filename]');
     $this->line("\t".'Creates a .sql.gz backup file for the current database. If filename is not provided, the resulting file will be named database_name_YYYY-mm-dd. file extension is automatically appendend and therefore not needed.');
     $this->line("\t".'Usage: db backup my_backup');
-    $this->line('db backup filename');
+    $this->line('db restore filename');
     $this->line("\t".'Restores the database from either a .sql.gz or a .sql dump file. File extension is automatically appended if not provided and therefore not needed');
     $this->line("\t".'Usage: db restore my_backup');
     $this->line("\t\t".'db restore my_backup.sql.gz');    
