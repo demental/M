@@ -542,7 +542,7 @@ class Module extends Maman {
 
 		if($layout=='__self'){
 			Log::info('Displaying selfsufficient for module '.get_class($this->_lastOutput));
-			$ret = $this->view->fetch($template);
+			$ret = $this->_lastOutput->view->fetch($template);
 
 		} else {
 			// Sinon c'est que le layout posséde une variable $__action qui est utilisé pour inclure le template de l'action 	
