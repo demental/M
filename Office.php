@@ -93,6 +93,9 @@ class M_Office extends M_Office_Controller implements iListener {
 		$not = Notifier::getInstance();
 		$not->addListener($this);
 		if($this->getOption('auth') && !User::getInstance('office')->isLoggedIn()) {
+      if(self::isAjaxRequest()) {
+					$this->assign('__action','ajaxlogin');        
+      }
 			return;
 		}
 		if(key_exists('updateSuccess',$_REQUEST)) {
