@@ -52,6 +52,10 @@ class Guid_command_uninstall extends Command {
       $this->_checkForCustomLinks();
       foreach($params as $table) {
         $do = DB_DataObject::factory($table);
+        if(PEAR::isError($do)) {
+          $this->error('Table problem with '.$table.' : '.$do->getMessage());
+          continue;
+        }
         $defs = $do->_getPluginsDef();
         if(key_exists('guid',$defs)) {
           $this->_removeGuidFromTable($table);
@@ -137,6 +141,7 @@ class Guid_command_uninstall extends Command {
       $rec->find();
       while($rec->fetch()) {
         $links = $rec->links();
+        if(!is_array($links)) continue;
         foreach($links as $field=>$ftabledata) {
           $ftablearr = explode(':',$ftabledata);
           $ftable = $ftablearr[0];

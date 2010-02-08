@@ -21,7 +21,8 @@ class Command {
    */
   protected static $options = array(
     'noheader'=>false,
-    'noninteractive'=>false
+    'noninteractive'=>false,
+    'silent'=>false
   );
   /**
    * Command interface core
@@ -50,6 +51,20 @@ class Command {
     self::launch('exit');
   }
   public static function launch($input) {
+    if(strpos($input,'--')===0) {
+      $input = explode('=',$input);
+      $input[0] = preg_replace('`^--`','',$input[0]);
+      if(empty($input[0])) {
+        self::error('no option specified');return;
+      }
+      if(isset($input[1])) {
+        self::setOption(trim($input[0]),trim($input[1]));
+      } else {
+        self::setOption(trim($input[0]),true);
+      }
+      self::line('Set "'.$input[0].'" option to '.self::getOption($input[0]));
+      return;
+    }
     $args = explode(' ',$input);
     $command = preg_replace('`\W`','',array_shift($args));
 
@@ -62,6 +77,9 @@ class Command {
   }
   public static function setOptions($options) {
     self::$options = array_merge(self::$options,$options);
+  }
+  public static function setOption($option,$val) {  
+    self::$options[$option] = $val;
   }
   public static function getOption($name)
   {
@@ -86,6 +104,7 @@ class Command {
    * @param string text to be displayed
    */
   public function line($message) {
+    if(self::getOption('silent')) return;
     echo $message."\n";
   }
   /**
@@ -93,7 +112,8 @@ class Command {
    */
    public function inline($message)
    {
-    echo $message;
+     if(self::getOption('silent')) return;
+     echo $message;
    }
   /**
    * ask for a yes/no to the CLI user
@@ -112,10 +132,14 @@ class Command {
         $no = strtoupper($no);
         break;
     }
-    self::prompt($message.' ['.$yes.'/'.$no.']');
-    $res = strtolower(trim(fgets(STDIN)));
-    if(empty($res)) {
+    if(self::getOption('noninteractive')){
       $res = $default;
+      self::line($message.' : '.$res);
+    } else {
+      $res = self::prompt($message.' ['.$yes.'/'.$no.']');
+      if(empty($res)) {
+        $res = $default;
+      }
     }
     return strtolower($res) == strtolower($yes);
   }
@@ -128,8 +152,11 @@ class Command {
   public function choose($message,$default='',$values)
   {
     $message = $message.' ['.implode(' / ',$values).'] (default : '.$default.')';
-    $res = self::prompt($message);
+    if(!self::getOption('noninteractive')){
+      $res = self::prompt($message);
+    }
     if(empty($res)) {
+      self::line($message.' : '.$default);
       $res = $default;
     }
     if(!in_array($res,$values)) {
@@ -147,19 +174,24 @@ class Command {
   public function ask($message,$default='')
   {
     $message = $message.(empty($default)?'':' ['.$default.']');
-    $res = self::prompt($message);
+    if(!self::getOption('noninteractive')) {
+      $res = self::prompt($message);
+    }
     if(empty($res)) return $default;
     return $res;
   }
   public function error($message)
   {
+    if(self::getOption('silent')) return;
     echo "\n".'***[ERROR]***'."\n".$message."\n";
   }
   public function info($message)
   {
+    if(self::getOption('silent')) return;    
     echo '[INFO] '.$message."\n";
   }
   public function header($message) {
+    if(self::getOption('silent')) return;    
     echo "\n".str_repeat('*',80)."\n";
     $content = explode("\n",$message);
     foreach($content as $line) {
