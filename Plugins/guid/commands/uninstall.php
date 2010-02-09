@@ -46,7 +46,7 @@ class Guid_command_uninstall extends Command {
       }
     }
   }
-  public function execute($params)
+  public function execute($params,$options = array())
   {
     if(count($params)>0) {
       $this->_checkForCustomLinks();
@@ -87,18 +87,19 @@ class Guid_command_uninstall extends Command {
 /*     $options = &PEAR::getStaticProperty('DB_DataObject', 'options');
      $oldoption = $options['generator_include_regex'];
      $options['generator_include_regex'] = '`^('.explode('|',$this->toRegenerate).')$`';*/
-     $this->line('regenerating DOclasses');
- 	   $generator = new DB_DataObject_Advgenerator();
- 	   $generator->start();
-/*     $options['generator_include_regex'] = $oldoption;*/
-     // Removing guid plugin to the DO file
-     foreach($this->toRemove as $table) {
-       $this->line('removing plugin guid for table '.$table);
-       $data = file_get_contents(APP_ROOT.PROJECT_NAME.'/DOclasses/'.ucfirst($table).'.php');
-       $data = ereg_replace('(\'|")guid(\'|")[[:space:]]*=>[[:space:]]*(true|1),*','',$data);
-       file_put_contents(APP_ROOT.PROJECT_NAME.'/DOclasses/'.ucfirst($table).'.php',$data);
+     if(!$options['noregen']) {
+       $this->line('regenerating DOclasses');
+   	   $generator = new DB_DataObject_Advgenerator();
+   	   $generator->start();
+  /*     $options['generator_include_regex'] = $oldoption;*/
+       // Removing guid plugin to the DO file
+       foreach($this->toRemove as $table) {
+         $this->line('removing plugin guid for table '.$table);
+         $data = file_get_contents(APP_ROOT.PROJECT_NAME.'/DOclasses/'.ucfirst($table).'.php');
+         $data = ereg_replace('(\'|")guid(\'|")[[:space:]]*=>[[:space:]]*(true|1),*','',$data);
+         file_put_contents(APP_ROOT.PROJECT_NAME.'/DOclasses/'.ucfirst($table).'.php',$data);
+       }
      }
-     
    }
    protected function _removeGuidFromTable($table)
    {

@@ -67,13 +67,43 @@ class Command {
     }
     $args = explode(' ',$input);
     $command = preg_replace('`\W`','',array_shift($args));
-
+    list($params,$options) = self::parseArgs($args);
     try {
       $exec = self::factory($command);
-      $exec->execute($args);
+      $exec->execute($params,$options);
     } catch(Exception $e) {
       self::error($e->getMessage());
     }
+  }
+  /**
+   * Determines from an args array which ones should be considered as arguments and which ones should be considered as options
+   * And returns an array of two arrays 
+   * @param array raw args list
+   * @return array array(array(args),array(options))
+   */ 
+  public static function parseArgs($arr)
+  {
+    $options = array();
+    $params = array();
+    foreach($arr as $item) {
+      // option
+      if(strpos($item,'--')===0) {
+        $item = explode('=',$item);
+        $item[0] = preg_replace('`^--`','',$item[0]);
+        if(empty($item[0])) {
+          // empty option => bypass
+          continue;
+        }
+        if(isset($item[1])) {
+          $options[trim($item[0])] = trim($item[1]);
+        } else {
+          $options[trim($item[0])] = true;
+        }
+      } else {
+        $params[] = $item;
+      }
+    }
+    return array($params,$options);
   }
   public static function setOptions($options) {
     self::$options = array_merge(self::$options,$options);
@@ -209,7 +239,7 @@ class Command {
    * this method must implement the script fired when command is executed
    * Can throw an Exception if command fails 
    */
-  public function execute($params)
+  public function execute($params,$options)
   {
     # code...
   }
