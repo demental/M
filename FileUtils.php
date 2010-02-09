@@ -139,7 +139,7 @@ class fileUtils
    */
   public static function file_exists_incpath ($file)
   {
-    if(ereg('^'.DIRECTORY_SEPARATOR,$file)) {
+    if(strpos($file,DIRECTORY_SEPARATOR) === 0) {
       return file_exists($file);
     }
     $paths = explode(PATH_SEPARATOR, get_include_path());
