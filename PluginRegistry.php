@@ -52,8 +52,8 @@ class PluginRegistry
       return $className;
     }
     $classpaths = array(
-      APP_ROOT.PROJECT_NAME.'/plugins/'.$cleanName.'/'.$section.'/'.$cleanName.'.php',
-      dirname(__FILE__).'/plugins/'.$cleanName.'/'.$section.'/'.$cleanName.'.php'
+      APP_ROOT.PROJECT_NAME.'/Plugins/'.$cleanName.'/'.$section.'/'.$cleanName.'.php',
+      dirname(__FILE__).'/Plugins/'.$cleanName.'/'.$section.'/'.$cleanName.'.php'
     );
 
     foreach($classpaths as $pluginPath) {
