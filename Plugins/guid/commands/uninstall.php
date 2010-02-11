@@ -131,7 +131,17 @@ class Guid_command_uninstall extends Command {
        $qf = vsprintf($q,array($table,$ftablearr[0],$ftablearr[1],$linkField));
        
        $db->query($qf);
-       $q2 = 'ALTER TABLE %s CHANGE `%s` `%s` %s UNSIGNED NOT NULL';
+       // Check wether the foreign field is null, we must keep this when rewriting the field definition.
+       $fobj = DB_DataObject::factory($ftablearr[0]);
+       $fobj_tbl = $fobj->table();
+       $fobj_fieldDef = $fobj_tbl[$ftablearr[1]];
+       if($fobj_fieldDef&DB_DATAOBJECT_NULL) {
+         $is_null = '';
+       } else {
+         $is_null = ' NOT NULL';
+       }
+       // Change the foreign field definition in the table
+       $q2 = 'ALTER TABLE %s CHANGE `%s` `%s` %s UNSIGNED'.$is_null;
        $query2 = vsprintf($q2,array($ftablearr[0],$ftablearr[1],$ftablearr[1],$fieldSize));
        $this->line('Altering field '.$ftable.' to '.$fieldSize);
        $db->query($query2);

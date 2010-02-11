@@ -112,9 +112,30 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     if(!$dbo->find(true)) {
       $dbo->insert();
     }
+
+    $this->triggerTag($tag,'add',$obj);
     return $this->returnStatus($obj);
   }
 
+  public function triggerTag($tag,$trigger,$obj)
+  {
+    $strip = Strings::stripify($tag->strip,true);
+    $classes = array(
+      APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger_'.$strip.'_'.$obj->tableName()),
+      APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'.php'=>strtolower('tagtrigger_'.$strip)
+      );
+    foreach($classes as $file=>$class) {
+      if(class_exists($class)) {    
+        call_user_func_array(array($class,'on'.$trigger),array($obj));
+        break;
+      }
+      if(file_exists($file)) {
+        require_once $file;
+        call_user_func_array(array($class,'on'.$trigger),array($obj));
+        break;
+      }
+    }
+  }
   /**
    * removes a tag from a record
    * @param DataObject_Tag tag to remove
@@ -131,6 +152,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     if($dbo->find(true)) {
       $dbo->delete();
     }
+    $this->triggerTag($tag,'remove',$obj);
     return $this->returnStatus($obj);
   }
 

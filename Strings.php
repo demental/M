@@ -16,11 +16,11 @@
  *
  */
 class Strings {
-	public static function stripify($string,$moduleCompliant=false) {
+	public static function stripify($string,$varCompliant=false) {
 		$string = trim($string);
-		if($moduleCompliant) {
+		if($varCompliant) {
 
-			$string=strtr(utf8_decode($string),utf8_decode('+ëËÉÈÀÂÔÊÎÛàâéêèîôûùç² ,!?&\'"./'),'_eeeeaaoeiuaaeeeiouuc2_________');
+			$string=strtr(utf8_decode($string),utf8_decode(':+ëËÉÈÀÂÔÊÎÛàâéêèîôûùç² ,!?&\'"./'),'__eeeeaaoeiuaaeeeiouuc2_________');
 			$sep='_';
 		} else {
 			$string=strtr(utf8_decode($string),utf8_decode('ëËÉÈÀÂÔÊÎÛàâéêèîôûùç² ,!?&\'"./'),'eeeeaaoeiuaaeeeiouuc2---------');

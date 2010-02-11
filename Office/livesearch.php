@@ -25,7 +25,7 @@ class M_Office_livesearch extends M_Office_Controller
     
     function __construct($searchtext,$expandTable=null) {
         parent::__construct();
-        $this->searchtext=$searchtext;
+        $this->searchtext=trim($searchtext);
         $this->expand=$expandTable!==null;
         $this->expandTable=$expandTable;
         M_Office::$dsp='__defaut/ajaxindex';
