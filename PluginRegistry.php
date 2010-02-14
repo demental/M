@@ -51,20 +51,27 @@ class PluginRegistry
     if(class_exists($className,false)) {
       return $className;
     }
-    $classpaths = array(
-      APP_ROOT.PROJECT_NAME.'/Plugins/'.$cleanName.'/'.$section.'/'.$cleanName.'.php',
-      dirname(__FILE__).'/Plugins/'.$cleanName.'/'.$section.'/'.$cleanName.'.php'
-    );
+    $classpaths = self::getPaths($cleanName,'DB');
 
     foreach($classpaths as $pluginPath) {
-      if(file_exists($pluginPath)) {
-        require $pluginPath;
+      $classpath = $pluginPath.$cleanName.'.php';
+      if(file_exists($classpath)) {
+        require $classpath;
         self::initPlugin($cleanName);
         return $className;
       }
     }
 
     return false;
+  }
+  /**
+   * Returns the paths potentially associated with a plugin
+   */
+  public static function getPaths($cleanName,$section) {
+    return array(
+      APP_ROOT.PROJECT_NAME.'/Plugins/'.$cleanName.'/'.$section.'/',
+      dirname(__FILE__).'/Plugins/'.$cleanName.'/'.$section.'/'
+    ); 
   }
   public static function initPlugin($pluginName)
   {

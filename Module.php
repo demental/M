@@ -110,7 +110,7 @@ class Module extends Maman {
       $moduleOpt['template_dir'][] = 'M/Plugins/'.$plugmod[0].'/templates/';
       $moduleOpt['template_dir'][] = APP_ROOT.PROJECT_NAME.'/Plugins/'.$plugmod[0].'/templates/';
       $modulename = $plugmod[1];
-		  $className = 'PluginModule_'.$modulename;
+		  $className = $plugmod[0].'_Module_'.$modulename;
     } else {
       $className = 'Module_'.$modulename;
     }

@@ -229,11 +229,11 @@ class Mtpl {
 		return Mtpl::$_captures[$name];
 	}
 	// partial inclusion
-	private function includetpl($file, $params = null,$autoglobal = false)
+	private function includetpl($file, $params = array(),$autoglobal = false)
 	{
-		return $this->i($file, $params = null,$autoglobal = false);
+		return $this->i($file, $params,$autoglobal);
 	}
-	private function i($file, $params = null,$autoglobal = false)
+	private function i($file, $params = array(),$autoglobal = false)
 	{
 		$tpl = & new Mtpl($this->_config['tplfolders']);
 		if($autoglobal) {

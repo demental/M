@@ -1,6 +1,6 @@
 <?php
 
-class PluginModule_Photohelper extends Module {
+class Otfimage_Module_Photohelper extends Module {
   public function getCacheId($action)
   {
     return false;

@@ -35,6 +35,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
   }
   public function preGenerateForm($fb,$obj)
   {
+
     if(!$this->_autoActions) {
       $langs = array(T::getLocale());
     } else {
@@ -182,6 +183,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
   {
     if(!is_array($langs)) return false;
     $obj->_i18nlangs = $langs;
+
     return true;
   }
 	public function find($autoFetch,$obj)

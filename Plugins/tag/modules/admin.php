@@ -1,5 +1,5 @@
 <?php
-class PluginModule_Admin extends Module {
+class Tag_Module_Admin extends Module {
   public function getCacheId($action)
   {
     return false;

@@ -35,6 +35,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
   }
   public function preGenerateForm($fb,$obj)
   {
+
     if(!$this->_autoActions) {
       $langs = array(T::getLang());
     } else {
@@ -76,13 +77,14 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
       }
       $allLangs = array_diff($langs,array($this->getDefaultLang($obj)));
       array_unshift($allLangs,$this->getDefaultLang($obj));
-      $langs = $allLangs;
+//      $langs = $allLangs;
       foreach($iFields as $field) {
         $fields = array();
         foreach($langs as $lang) {
           $completename = $obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix;
 
           $elem = $form->getElement($completename.'_'.$lang);
+
           $elem->setAttribute('rel',$completename);
           if($lang == $this->getDefaultLang($obj)) {
             $class='translatesource field_'.$lang;
@@ -100,7 +102,13 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
   {
     $info = $obj->_getPluginsDef();
     $info = $info['l10n'];
-    $elements = $obj->_l10nfbs[T::getLang()]->_reorderElements();      
+    if(!$this->_autoActions) {
+      $langs = array(T::getLang());
+    } else {
+      $langs = $this->getLangs($obj);
+    }    
+    
+    $elements = $obj->_l10nfbs[$langs[0]]->_reorderElements();      
     // To avoid duplicate saving of current lang record
     $this->_dontSavel10n = true;
     unset($obj->l10n_lang);

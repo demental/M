@@ -1,5 +1,5 @@
 <?php
-class PluginModule_Taghelper extends Module {
+class Tag_Module_Taghelper extends Module {
   public function getCacheId()
   {
     return false;
