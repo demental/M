@@ -106,7 +106,7 @@ class M_Office_EditRecord extends M_Office_Controller {
         if (PEAR::isError($form)) {
             die($form->getMessage().' '.print_r($form->getUserInfo(), true));
         }
-        M_Office_Util::addHiddenFields($form);
+//        M_Office_Util::addHiddenFields($form);
                 if ($form->validate()) {
 
                     if (PEAR::isError($ret = $form->process(array(&$formBuilder, 'processForm'), false))) {

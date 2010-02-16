@@ -20,7 +20,8 @@
 class DB_DataObject_Plugin_L10n extends M_Plugin {
   public $plugin_name='international';
   public $_autoActions = true;
-
+  public $_l10ndos;
+  public $_l10nfbs;  
 
   /**
    * @access public
@@ -42,7 +43,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
       $langs = $this->getLangs($obj);
     }
     
-    $obj->_l10ndos = $this->prepareTranslationRecords($obj,$langs);
+    $this->_l10ndos[$obj->tableName().$obj->pk()] = $this->prepareTranslationRecords($obj,$langs);
   }
   public function getDefaultLang($obj)
   {
@@ -56,10 +57,10 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
     } else {
       $langs = $this->getLangs($obj);
     }    
-    foreach($obj->_l10ndos as $lang=>$arec) {
-      $obj->_l10nfbs[$lang] = MyFB::create($obj->_l10ndos[$lang]);
-      $obj->_l10nfbs[$lang]->useForm($form);
-      $obj->_l10nfbs[$lang]->getForm();
+    foreach($this->_l10ndos[$obj->tableName().$obj->pk()] as $lang=>$arec) {
+      $this->_l10nfbs[$obj->tableName().$obj->pk()][$lang] = MyFB::create($this->_l10ndos[$obj->tableName().$obj->pk()][$lang]);
+      $this->_l10nfbs[$obj->tableName().$obj->pk()][$lang]->useForm($form);
+      $this->_l10nfbs[$obj->tableName().$obj->pk()][$lang]->getForm();
 
 
     }
@@ -68,7 +69,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
     // If a lang is marked as 'not available' or 'mirror of ...', 
     // don't check required fields for this lang.
     // for now required fields are bypassed... 
-    $elements = $obj->_l10nfbs[$lang]->_reorderElements();
+    $elements = $this->_l10nfbs[$obj->tableName().$obj->pk()][$lang]->_reorderElements();
 
       if(is_array($obj->fb_fieldsToRender)) {
         $iFields = array_intersect($info,$obj->fb_fieldsToRender);
@@ -108,7 +109,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
       $langs = $this->getLangs($obj);
     }    
     
-    $elements = $obj->_l10nfbs[$langs[0]]->_reorderElements();      
+    $elements = $this->_l10nfbs[$obj->tableName().$obj->pk()][$langs[0]]->_reorderElements();      
     // To avoid duplicate saving of current lang record
     $this->_dontSavel10n = true;
     unset($obj->l10n_lang);
@@ -129,13 +130,13 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
       // Alter values depending on behaviour.
       switch($values['l10n_master_culture_'.$lang]) {
         case 1://specific content.
-          $obj->_l10ndos[$lang]->l10n_master_culture = null;
-          $obj->_l10ndos[$lang]->l10n_available = true;
+          $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_master_culture = null;
+          $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_available = true;
           $values['l10n_available_'.$lang]=1;
           break;
         case ''://not available
-          $obj->_l10ndos[$lang]->l10n_master_culture = '';
-          $obj->_l10ndos[$lang]->l10n_available = false;
+          $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_master_culture = '';
+          $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_available = false;
           // we fill fields with 'n-a' to avoid not null fields to be empty
           foreach($fields as $field) {
             $slaveindex = $obj->fb_elementNamePrefix
@@ -149,7 +150,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
 
           break;
         default:// mirror of another language
-          $obj->_l10ndos[$lang]->l10n_available = true;
+          $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_available = true;
           foreach($fields as $field) {
             $masterindex = $obj->fb_elementNamePrefix
                       .$field
@@ -167,26 +168,26 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
       }  
     }    
     foreach($this->getLangs($obj) as $lang) {      
-      $obj->_l10ndos[$lang]->l10n_record_id = $obj->pk();
-      $obj->_l10nfbs[$lang]->processForm($values);
+      $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_record_id = $obj->pk();
+      $this->_l10nfbs[$obj->tableName().$obj->pk()][$lang]->processForm($values);
     }
 
     // Patch
     foreach($this->getLangs($obj) as $lang) {      
       switch($values['l10n_master_culture_'.$lang]) {
         case 1://specific content.
-          $obj->_l10ndos[$lang]->l10n_master_culture = '';
-          $obj->_l10ndos[$lang]->l10n_available = true;
-          $obj->_l10ndos[$lang]->update();
+          $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_master_culture = '';
+          $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_available = true;
+          $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->update();
           break;
         case ''://not available.
-        $obj->_l10ndos[$lang]->l10n_master_culture = '';
-        $obj->_l10ndos[$lang]->l10n_available = false;
-        $obj->_l10ndos[$lang]->update();
+        $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_master_culture = '';
+        $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_available = false;
+        $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->update();
         break;
         default:
-        $obj->_l10ndos[$lang]->l10n_available = true;
-        $obj->_l10ndos[$lang]->update();
+        $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->l10n_available = true;
+        $this->_l10ndos[$obj->tableName().$obj->pk()][$lang]->update();
         break;
       }
     }
@@ -276,13 +277,13 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
 	}
   public function getLangs($obj)
   {
-    if(is_array($obj->_l10nlangs)) return $obj->_l10nlangs;
+    if(is_array($this->_l10nlangs)) return $this->_l10nlangs;
     return Config::getAllLangs();
   }
   public function setLangs($obj,$langs)
   {
     if(!is_array($langs)) return false;
-    $obj->_l10nlangs = $langs;
+    $this->_l10nlangs = $langs;
     return true;
   }
 	public function find($autoFetch,$obj)
