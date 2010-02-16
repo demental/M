@@ -58,26 +58,18 @@
     background:#fdd;
 }
 </style>
-<div class="yui-gc">
-  <div class="yui-u first" id="blackboard">
-      <h2>Tableau noir</h2>
-    <div id="blackboardcontainer">
+<div id="blackboard">
+  <h2>Tableau noir</h2>
+  <div id="blackboardcontainer">
 
-      <?php echo $this->c('home','addmessage')?>
-      <ul>
-      <?php foreach($messages as $mess):?>
-        <?php $this->i('home/messageline',array('mess'=>$mess))?>
-      <?php endforeach?>
-      </ul>
-    </div>
+    <?php echo $this->c('home','addmessage')?>
+    <ul>
+    <?php foreach($messages as $mess):?>
+      <?php $this->i('home/messageline',array('mess'=>$mess))?>
+    <?php endforeach?>
+    </ul>
   </div>
-  <div class="yui-u">
-      <?php echo $this->c('tasks','widget')?>    
-      <?php echo $this->c('timeline','widget',array('cat'=>'technique'))?>    
-      <?php echo $this->c('timeline','widget',array('cat'=>'commerciale'))?>
-      <?php echo $this->c('timeline','widget',array('cat'=>'contenu'))?>
-  </div>
-</div>
+</div>    
 <script type="text/javascript" src="/js/jquery.form.js"></script>
 <script type="text/javascript">
 $(function(){

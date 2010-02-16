@@ -26,12 +26,20 @@
 class DB_DataObject_Plugin_I18n extends M_Plugin {
   public $plugin_name='international';
   public $_autoActions = true;
-
+  protected $_grouped;
 
 
   public function getEvents()
   {
     return array('pregenerateform','postgenerateform','preprocessform','postprocessform','find','update','postupdate','delete','postinsert');
+  }
+  public function setGrouped($bool,$obj)
+  {
+    if($bool) {
+      $this->_grouped = true;
+    } else {
+      $this->_grouped = false;
+    }
   }
   public function preGenerateForm($fb,$obj)
   {
@@ -49,21 +57,26 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     return T::getLocale();
   }
   public function postGenerateForm($form,$fb,$obj){
+    
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];
-    if(!$this->_autoActions) {
-      $langs = array(T::getLocale());
-    } else {
-      $langs = $this->getLocales($obj);
-    }    
+    $langs = $this->getLocales($obj);
     foreach($obj->_i18ndos as $lang=>$arec) {
+      if($this->_grouped) {
+        $obj->_i18ndos[$lang]->fb_addFormHeader = false;
+      }
       $obj->_i18nfbs[$lang] = MyFB::create($obj->_i18ndos[$lang]);
+
       $obj->_i18nfbs[$lang]->useForm($form);
       $obj->_i18nfbs[$lang]->getForm();
 
 
     }
 
+    if($this->_grouped) {
+      $this->postGenerateFormGrouped($form,$fb,$info,$langs,$obj);
+      return;
+    }
     $elements = $obj->_i18nfbs[$lang]->_reorderElements();
 
     if(is_array($obj->fb_fieldsToRender)) {
@@ -92,7 +105,58 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       }        
     }
   }
-  
+  public function postGenerateFormGrouped($form,$fb,$info,$langs,$obj)
+  {
+    $lang = $langs[0];
+      $elements = $obj->_i18nfbs[$lang]->_reorderElements();
+      if(is_array($obj->fb_fieldsToRender)) {
+        $iFields = array_intersect($info,$obj->fb_fieldsToRender);
+      } else {
+        $iFields = $info;
+      }
+      $allLangs = array_diff($langs,array($this->getDefaultLang($obj)));
+      array_unshift($allLangs,$this->getDefaultLang($obj));
+      $langs = $allLangs;
+
+      foreach($iFields as $field) {
+        $fields = array();
+        foreach($langs as $lang) {
+          $completename = $obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix;
+
+          $elem = $form->getElement($completename.'_'.$lang);
+          
+          $elem->setAttribute('rel',$completename);
+          if($lang == $this->getDefaultLang($obj)) {
+            $class='translatesource field_'.$lang;
+            $id = 'autotransid_'.$completename;
+          } else {
+            $class='autotranslate source_autotransid_'.$completename.' field_'.$lang;
+            $id = 'autotransid_'.$completename.'_'.$lang;
+          }
+          $elem->setAttribute('class',$elem->getAttribute('class').($elem->getAttribute('class')?' ':'').$class);
+          $elem->setAttribute('id',$id);
+          $label = $elem->getLabel();
+          if(is_array($label)) {
+            $sublabel = $label[0];
+          } else {
+            $sublabel = $label;
+          }
+          $elem->setLabel($sublabel.'('.$lang.')');
+          $fields[] =$elem;
+          $form->removeElement($completename.'_'.$lang);
+          
+        }
+        if(!$form->elementExists('__submit__')) {
+          $form->addElement('group', $completename.'_group',$label,$fields,'');
+        } else {
+          $form->insertElementBefore(HTML_QuickForm::createElement('group', $completename.'_group',$label,$fields),'__submit__');
+        }
+        if(in_array($field,$fb->fieldsRequired) || ($elements[$field] & DB_DATAOBJECT_NOTNULL)) {
+            $form->addGroupRule($completename.'_group',$fb->requiredRuleMessage,'required',null,1);
+        }        
+      }
+    }
+
   public function preProcessForm(&$values,$fb,$obj)
   {
     $info = $obj->_getPluginsDef();
@@ -176,8 +240,16 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 	}
   public function getLocales($obj)
   {
-    if(is_array($obj->_i18nlangs)) return $obj->_i18nlangs;
-    return Config::getAllLocales();
+    if(!$this->_autoActions) {
+      $langs = array(T::getLocale());
+    } else {
+      if(is_array($obj->_i18nlangs)) {
+        $langs = $obj->_i18nlangs;
+      } else {
+        $langs = Config::getAllLocales();
+      }
+    }    
+    return $langs;
   }
   public function setLangs($obj,$langs)
   {

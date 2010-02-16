@@ -27,7 +27,7 @@ class DB_DataObject_Plugin_Images extends M_Plugin
   public $plugin_name='images';
   public function getEvents()
   {
-    return array('pregenerateform','postgenerateform','preprocessform','postprocessform','insert','update','delete');
+    return array('pregenerateform','postgenerateform','preprocessform','postprocessform','delete');
   }
 	function preGenerateForm(&$fb,&$obj)
 	{
