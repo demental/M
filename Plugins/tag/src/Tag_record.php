@@ -2,7 +2,7 @@
 /**
  * Table Definition for tag_record
  */
-require_once 'M/DB/DataObject/Pluggable.php';
+
 
 class DataObjects_Tag_record extends DB_DataObject_Pluggable 
 {

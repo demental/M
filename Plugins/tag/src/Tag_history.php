@@ -2,7 +2,7 @@
 /**
  * Table Definition for tag_history
  */
-require_once 'M/DB/DataObject/Pluggable.php';
+
 
 class DataObjects_Tag_history extends DB_DataObject_Pluggable 
 {
