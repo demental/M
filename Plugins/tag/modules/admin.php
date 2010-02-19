@@ -66,7 +66,7 @@ class Tag_Module_Admin extends Module {
   public function checkApplier($values)
   {
 
-    $q = 'SELECT '.($values['distinct']?'DISTINCT ':' ').$values['table'].'.* FROM '.$values['table'].' '.$values['clause'].' LIMIT 0,1';
+    $q = 'SELECT '.($values['distinct']?'DISTINCT ':' ').$values['table'].'.* FROM '.$values['table'].' '.$values['clause'];
     $c = DB_DataObject::factory($values['table']);
     $db = $c->getDatabaseConnection();
     if(PEAR::isError($db->query($q))){
