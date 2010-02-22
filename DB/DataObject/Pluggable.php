@@ -345,9 +345,9 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		$this->trigger('query',array($req));
     return parent::query($req);
   }
-	public function count(){
+	public function count($countWhat = false,$whereAddOnly = false){
 		$this->trigger('count');
-		return parent::count();
+		return parent::count($countWhat,$whereAddOnly);
 	}
 	
 	public function delete()

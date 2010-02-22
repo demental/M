@@ -54,7 +54,7 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
     }
     function preparePager($obj) {
       $c = clone($obj);
-      $this->pagerOpts['totalItems'] = $this->totalItems = $c->count();
+      $this->pagerOpts['totalItems'] = $this->totalItems = $c->count('distinct');
 
       if($this->hasPager) {
         require_once 'Pager.php';
