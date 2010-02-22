@@ -7,6 +7,7 @@
     <tr>
       <td valign="top">SELECT <?php echo $f['distinct']['html']?><strong>DISTINCT</strong> <?php echo $f['table']['html']?>.* FROM <span id="tableclone"></span> </td><td><?php echo $f['clause']['html']?></td></tr>
       <tr><td colspan="2">Apply tag: <?php echo $f['tagname']['html']?></td></tr>
+      <tr><td colspan="2">And/or remove tag: <?php echo $f['tagdel']['html']?></td></tr>
     <tr>
       <td colspan="2"><h2><?php echo $f['__submit__']['html']?></h2></td>
     </tr>

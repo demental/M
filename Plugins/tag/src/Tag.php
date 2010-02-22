@@ -64,16 +64,12 @@ class DataObjects_Tag extends DB_DataObject_Pluggable
     ###END_AUTOCODE
     public function delete()
     {
-      $nb = $this->countTagged();
+      $nb = $this->nbTagged();
       if($nb>0) {
         trigger_error(__('Tag "%s" could not be deleted because %s records use it',array($this->__toString(),$nb)));
         return false;
       }
       return parent::delete();
-    }
-    public function countTagged()
-    {
-      return DB_DataObject_Plugin_Tag::countTagged();
     }
     public function decrementcount()
     {
@@ -89,4 +85,20 @@ class DataObjects_Tag extends DB_DataObject_Pluggable
     {
       return $this->strip;
     }  
+    public function nbTagged()
+    {
+      $db = $this->getDatabaseConnection();
+      return $db->queryOne('select count(1) from tag_record where tag_id = '.$this->id);
+    }
+    public function nbWasadded()
+    {
+      $db = $this->getDatabaseConnection();
+      return $db->queryOne('select count(1) from tag_history where tag_id = '.$this->id.' AND direction="add"');
+    }
+    public function nbWasremoved()
+    {
+      $db = $this->getDatabaseConnection();
+      return $db->queryOne('select count(1) from tag_history where tag_id = '.$this->id.' AND direction="remove"');
+    }
+    
 }
