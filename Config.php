@@ -68,7 +68,7 @@ class Config
 	public static function getAlternateLangs() 
 	{
 		$l=Config::getAllLangs();
-		$cur=array_search(DEFAULT_LANG,$l);
+		$cur=array_search(self::get('defaultLang'),$l);
 		unset($l[$cur]);
 		return $l;
 	}

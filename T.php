@@ -30,7 +30,7 @@ class T {
 			$lang = T::getLang();
 		}
 		if(empty($lang)) {
-			$lang = DEFAULT_LANG;
+			$lang = Config::get('defaultLang');
 		}
 		if(key_exists($lang,T::$instances)) {
 			return T::$instances[$lang];

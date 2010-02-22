@@ -13,7 +13,7 @@ class TestOfDB_DataObject_Plugin_i18n extends DBTestCase {
     $options['class_prefix'] = 'DataObjects_';
     $this->setUpDatabase('Mfixture.sql',1);   
     // Setup 3 langs : fr en es and fr as default
-    define('DEFAULT_LANG','es');
+    Config::set('defautLang','es');
     Config::set('installedLangs',array('en','fr','es'));
     // Copy original test DO's
     foreach(FileUtils::getAllFiles(PEAR_FOLDER.'M/tests/DO/') as $file){
