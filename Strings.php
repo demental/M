@@ -20,7 +20,7 @@ class Strings {
 		$string = trim($string);
 		if($varCompliant) {
 
-			$string=strtr(utf8_decode($string),utf8_decode(':+ëËÉÈÀÂÔÊÎÛàâéêèîôûùç² ,!?&\'"./'),'__eeeeaaoeiuaaeeeiouuc2_________');
+			$string=strtr(utf8_decode($string),utf8_decode('-:+ëËÉÈÀÂÔÊÎÛàâéêèîôûùç² ,!?&\'"./'),'___eeeeaaoeiuaaeeeiouuc2_________');
 			$sep='_';
 		} else {
 			$string=strtr(utf8_decode($string),utf8_decode('ëËÉÈÀÂÔÊÎÛàâéêèîôûùç² ,!?&\'"./'),'eeeeaaoeiuaaeeeiouuc2---------');
