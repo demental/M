@@ -159,6 +159,11 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 
   public function preProcessForm(&$values,$fb,$obj)
   {
+    if($this->_grouped) {
+      $this->preProcessFormGrouped($values,$fb,$obj);
+      return;
+    }
+    
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];
     $elements = $obj->_i18nfbs[T::getLocale()]->_reorderElements();      
@@ -173,7 +178,42 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       $obj->whereAdd($db->quoteIdentifier($obj->pkName()).' = '.$db->quote($obj->pk()));
     }
   }
-  
+  public function preProcessFormGrouped(&$values,$fb,$obj)
+  {
+    $elements = $obj->_i18nfbs[T::getLang()]->_reorderElements();
+    $info = $obj->_getPluginsDef();
+    
+    foreach($info['i18n'] as $field) {
+      $completename = $obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix;
+
+      $fieldhasempty = false;        
+      $nonempty=null;
+      foreach($this->getLocales($obj) as $lang) {
+        $values[$completename.'_'.$lang] = $values[$field.'_group'][$completename.'_'.$lang];
+        if(empty($values[$completename.'_'.$lang])) {
+            $fieldhasempty = true;
+        } else {
+            $nonempty = $values[$completename.'_'.$lang];
+        }
+      }
+      if($fieldhasempty && (in_array($field,$fb->fieldsRequired) || ($elements[$field] & DB_DATAOBJECT_NOTNULL))) {
+          foreach($this->getLangs() as $lang) {          
+
+              if(empty($values[$completename.'_'.$lang])) {
+                  $values[$completename.'_'.$lang] = $nonempty;
+              }
+          }
+      }
+      unset($values[$completename.'_group']);
+    }
+
+    // To avoid duplicate saving of current lang record
+    $this->_dontSavei18n = true;
+    unset($obj->i18n_lang);
+    unset($obj->i18n_record_id);
+    unset($obj->i18n_id);
+    
+  }
   public function postProcessForm(&$values,$fb,$obj)
   {
     foreach($this->getLocales($obj) as $lang) {      
