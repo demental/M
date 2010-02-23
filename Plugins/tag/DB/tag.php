@@ -125,7 +125,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'.php'=>strtolower('tagtrigger_'.$strip)
       );
     foreach($classes as $file=>$class) {
-      if(class_exists($class)) {    
+      if(class_exists($class,false)) {    // avoid autoload
         call_user_func_array(array($class,'on'.$trigger),array($obj));
         break;
       }
