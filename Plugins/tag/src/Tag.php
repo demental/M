@@ -98,7 +98,7 @@ class DataObjects_Tag extends DB_DataObject_Pluggable
     public function nbWasremoved()
     {
       $db = $this->getDatabaseConnection();
-      return $db->queryOne('select count(1) from tag_history where tag_id = '.$this->id.' AND direction="remove"');
+      return $db->queryOne('select count(1) from tag_history where tag_id = '.$this->id.' AND direction="del"');
     }
     
 }
