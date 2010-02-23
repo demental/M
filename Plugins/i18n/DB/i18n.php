@@ -587,7 +587,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       unset($fields['i18n_id']);
       unset($fields['i18n_record_id']);
       foreach($fields as $field=>$val) {
-				$obj->$field=$translateDO->translatedvalue;
+				$obj->$field=$val;
 			}
 		}
 	}
