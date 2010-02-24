@@ -197,7 +197,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
         }
       }
       if($fieldhasempty && (in_array($field,$fb->fieldsRequired) || ($elements[$field] & DB_DATAOBJECT_NOTNULL))) {
-          foreach($this->getLangs() as $lang) {          
+          foreach($this->getLocales() as $lang) {          
 
               if(empty($values[$completename.'_'.$lang])) {
                   $values[$completename.'_'.$lang] = $nonempty;
