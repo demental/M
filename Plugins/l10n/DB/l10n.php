@@ -214,7 +214,12 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
       $t->l10n_lang=$lang;
       $t->l10n_record_id = $obj->pk();
       if($obj->pk()) {
-        $t->find(true);
+        if(!$t->find(true)) {
+          $t->l10n_available=1;
+          if($lang!=T::getLang()) {
+            $t->l10n_master_culture = T::getLang();
+          }
+        }
       }
       foreach(get_object_vars($obj) as $var=>$val) {
         if(preg_match('`^fb_`',$var)) {
