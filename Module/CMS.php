@@ -47,7 +47,9 @@ class CMS_Module extends Module {
     if(!$this->_forceaccessible && !empty($this->_dbaccessibleaspage)) {
       $content->{$this->_dbaccessibleaspage} = 1;
     }
-
+    if(key_exists('alias_id',$content->table())) {
+      $content->whereAdd('alias_id is null');
+    }
     if(!$content->get($this->_dbstrip,$action)) {
       $this->handleNotFound($action);
       return;
