@@ -47,7 +47,7 @@ class Command_clearcache extends Command
   }
   public function clearAssetsCache()
   {
-      $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',false);
+      $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);
   }
   public function clearConfigCache()
   {
@@ -68,9 +68,12 @@ class Command_clearcache extends Command
     if(is_dir($cacheFolder)) {
       $nbfiles = 0;
       foreach(FileUtils::getAllFiles($cacheFolder,'',false) as $file) {
-        if(is_file($file)) {
+        if(is_file($file) && !$recursive) {
           unlink($file);
           $nbfiles++;
+        } elseif(is_dir($file)) {
+          $this->_emptyfolder($file,true);
+          @rmdir($file);
         }
       }
       $this->line('Clearing dir '.$cacheFolder);

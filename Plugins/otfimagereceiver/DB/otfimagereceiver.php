@@ -23,7 +23,7 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
 {
   public function getEvents()
   {
-    return array('getsecondaryimages','getmainimage','getallimages','newimage');
+    return array('getsecondaryimages','getmainimage','getimagenum','getallimages','newimage');
   }
   
   /**
@@ -46,6 +46,18 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
   {
     $tbl = $this->_newImage($obj);
     $tbl->ismain=1;
+    $tbl->find(true);
+    return $this->returnStatus($tbl);
+  }
+	/**
+	 * Retrieve the nth image (currently sorted by the mysql insertion date)
+	 * @param int number
+	 */
+	public function getImageNum($num, DB_DataObject $obj)
+	{
+    $tbl = $this->_newImage($obj);
+    $tbl->orderBy('ismain DESC');
+    $tbl->limit($num-1,1);
     $tbl->find(true);
     return $this->returnStatus($tbl);
   }

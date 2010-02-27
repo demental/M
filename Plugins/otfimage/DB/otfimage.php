@@ -40,45 +40,79 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
     }
 		$obj->filename=$this->_upFile($obj,$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$defs['otfimage']['path'],$filename);
     $obj->update();
-    $main = $obj->getOwner();
-    if($main!==$obj) {
-      $main = $main->newImage();
-      $main->ismain=1;
+    /**
+     * Clearing cache for this image
+     **/ 
+     $filename = eregi_replace('(\.[^\.]+)$','',basename($obj->filename));
+     $cachefolder = APP_ROOT.WEB_FOLDER.'/'.$defs['otfimage']['cache'].'/'.$filename.'/';
+     foreach(FileUtils::getAllFiles($cachefolder) as $file) {
+       @unlink($file);
+     }
+     /**
+      * Setting as main if none exist
+      */
+
+      $main = $obj->getOwner();
+      $mainImg = $main->getMainImage();
       
-      if($obj->ismain || !$main->find(true)) {
+      
+      if(!$obj->ismain && !$mainImg->pk()) {
         $obj->setAsMain();
       }
-    }
-	}
+
+  	}
 
   /**
-   * @todo : file deletion
+   * @todo : cached files deletion
    */
 	function delete($obj)
 	{
 	  @unlink($this->_getOriginalPath($obj));
+    // CHecking if main is deleted, take arbitraty record to set as main
+    if($obj->ismain) {
+      $img = $obj->getOwner()->newImage();
+      $img->whereAdd($obj->pkName().' != '.$obj->getDatabaseConnection()->quote($obj->id));
+      $img->limit(0,1);
+      if($img->find(true)) {
+        $img->setAsMain();
+      }
+    }
 		return;
+	}
+	public function parseParams($string)
+	{
+	  if(is_array($string)) {
+	    return $string;
+	  }
+	  $tmpparams = explode(',',$string);
+    foreach($tmpparams as $apar) {
+      list($key,$value) = explode(':',$apar);
+      if($value) {
+        $params[$key] = $value;
+      } elseif($key) {
+        $params['maxx'] = $key;
+      }
+    }
+    if(!$params) {
+      $params = array('keeporiginal'=>'');
+    }
+    return $params;
 	}
 	public function atSize($params = null,$obj)
 	{
     $defs = $obj->_getPluginsDef();
-    if(!is_array($params)) {
-      if(!is_null($params)) {
-        $params = array('maxx'=>$params);
-      } else {
-        $params = array();        
-      }
-    }
+    $params = $this->parseParams($params);
     $filename = eregi_replace('(\.[^\.]+)$','',basename($obj->filename));
-    
-
     ksort($params);
     $paramskey = $this->paramstostring($params);
+
     $params['format'] = $params['format']?$params['format']:FileUtils::getFileExtension($obj->filename);
-    $cachename = $defs['otfimage']['cache'].'/'
-    .$filename.'_'.$paramskey.'.'.($params['format']);
+    $cachefolder = $defs['otfimage']['cache'].'/'.$filename.'/';
+    @mkdir(APP_ROOT.WEB_FOLDER.'/'.$cachefolder);
+    $cachename = $cachefolder.$paramskey.'.'.($params['format']);
     $cachefile = APP_ROOT.WEB_FOLDER.'/'
                 .$cachename;
+
     $cacheurl = '/'.$cachename;
     if(!file_exists($cachefile) && file_exists($this->_getOriginalPath($obj)) && is_file($this->_getOriginalPath($obj))) {
       $this->_createResized($this->_getOriginalPath($obj),$cachefile,$params);
