@@ -63,22 +63,23 @@ class Command_clearcache extends Command
       $this->_emptyfolder($root.$folder.'/cache',false);
     }
   }
-  protected function _emptyfolder($cacheFolder,$recursive)
+  protected function _emptyfolder($cacheFolder,$recursive, &$nbfiles=0, $silent=false)
   {
     if(is_dir($cacheFolder)) {
-      $nbfiles = 0;
-      foreach(FileUtils::getAllFiles($cacheFolder,'',false) as $file) {
-        if(is_file($file) && !$recursive) {
+      foreach(FileUtils::getAll($cacheFolder,'',false) as $file) {
+
+        if(is_file($file)) {
           unlink($file);
           $nbfiles++;
-        } elseif(is_dir($file)) {
-          $this->_emptyfolder($file,true);
-          @rmdir($file);
+        } elseif(is_dir($file) && $recursive) {
+          $this->_emptyfolder($file,true,$nbfiles,true);
+          rmdir($file);
         }
       }
-      $this->line('Clearing dir '.$cacheFolder);
-      $this->line(' ....... ['.$nbfiles.' files]');
-      
+      if(!$silent) {
+        $this->line('Clearing dir '.$cacheFolder);
+        $this->line(' ....... ['.$nbfiles.' files]');
+      }
     }
   }
 }
