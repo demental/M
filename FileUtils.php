@@ -225,7 +225,6 @@ class fileUtils
 		if(!is_array($extensionfilter)) {
 			$extensionfilter = array($extensionfilter);
 		}
-    $extensionfilter = implode('',$extensionfilter);
 		if(!ereg('\/$',$folder)) {
 			$folder.='/';
 		}
@@ -242,7 +241,7 @@ class fileUtils
 				} elseif(!is_file($folder.$file)) {
 					continue;
 				} else {
-					if(empty($extensionfilter) || eregi('\.'.$extensionfilter,$file)) {
+					if(empty($extensionfilter[0]) || eregi('\.'.implode('|',$extensionfilter),$file)) {
 						$out[]=$folder.$file;
 					}
 				}
@@ -284,7 +283,7 @@ class fileUtils
 				} elseif(!is_file($folder.$file)) {
 					continue;
 				} else {
-					if(empty($extensionfilter) || eregi('\.'.implode('|',$extensionfilter),$file)) {
+					if(empty($extensionfilter[0]) || eregi('\.'.implode('|',$extensionfilter),$file)) {
 						$out[]=$folder.$file;
 					}
 				}
