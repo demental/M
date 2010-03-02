@@ -29,6 +29,12 @@ class M_Office_ShowTable extends M_Office_Controller {
 
       return;
     }
+    if(isset($_REQUEST['addRecord']) && $this->getOption('add', $module)) {
+      require 'M/Office/AddRecord.php';
+      $subController = new M_Office_AddRecord($module);
+      return;
+    }
+
 
     $opts = PEAR::getStaticProperty('m_office','options');
     $this->module = $module;
@@ -46,6 +52,23 @@ class M_Office_ShowTable extends M_Office_Controller {
           $do = $this->getSearchDO($searchForm);
         }            
     }
+
+    if (isset($_REQUEST['doaction']) && $this->getOption('actions',$module)) {
+      require 'M/Office/Actions.php';
+      $subController = new M_Office_Actions($this->getOptions());
+      $subController->run($do, $_REQUEST['doaction'],'batch');
+      if($subController->has_output) {
+  	     return;
+  	   }
+    } elseif(isset($_REQUEST['glaction']) && $this->getOption('actions',$module)) {
+       require 'M/Office/Actions.php';
+       $subController = new M_Office_Actions($this->getOptions());
+       $subController->run($do, $_REQUEST['glaction'],'global');
+       if($subController->has_output) {
+    	    return;
+    	  }
+    }
+    
     if($this->getAndProcessActions(clone($do),$module)) {
 
         return;
@@ -233,29 +256,6 @@ class M_Office_ShowTable extends M_Office_Controller {
      }
      if(count($batchActions)>0) {
        $this->hasActions=true;
-     }
-
-
-     if(isset($_REQUEST['addRecord']) && $this->getOption('add', $table)) {
-       require 'M/Office/AddRecord.php';
-       $subController = new M_Office_AddRecord($table);
-       return true;
-     }
-
-     if (isset($_REQUEST['doaction']) && $this->getOption('actions',$table)) {
-       require 'M/Office/Actions.php';
-       $subController = new M_Office_Actions($this->getOptions());
-       $subController->run($do, $_REQUEST['doaction'],'batch');
-       if($subController->has_output) {
-   	     return true;
-   	   }
-     } elseif(isset($_REQUEST['glaction']) && $this->getOption('actions',$table)) {
-        require 'M/Office/Actions.php';
-        $subController = new M_Office_Actions($this->getOptions());
-        $subController->run($do, $_REQUEST['glaction'],'global');
-        if($subController->has_output) {
-     	    return true;
-     	  }
      }
      return false;
    }

@@ -50,7 +50,7 @@ class M_Office_AddRecord extends M_Office_Controller {
         
         
         $formBuilder->useForm($form);
-        $form =& $formBuilder->getForm();
+        $formBuilder->getForm();
 
         if ($this->getOption('createAnother', $table)) {
             $form->addElement('static', '&nbsp;', '&nbsp;');
