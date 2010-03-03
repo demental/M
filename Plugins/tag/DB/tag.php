@@ -210,7 +210,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       $t = DB_DataObject::factory('tag_record');
       $t->tag_id = $tag->pk();
       $t->tagged_table = $obj->tableName();
-      $obj->joinAdd($t,'inner','tags_'.$tag);
+      $obj->joinAdd($t,'inner','tags_'.Strings::stripify($tag->__toString(),true));
 
      }
     return;
