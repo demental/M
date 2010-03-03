@@ -75,6 +75,7 @@ class M_Office_AddRecord extends M_Office_Controller {
             }
         } elseif($form->isSubmitted()) {
         }
-        $this->assignref('addForm',$form);
+        $this->assign('addForm',$form);
+        $this->assign('do',$do);
     }
 }

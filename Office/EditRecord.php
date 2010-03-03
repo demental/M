@@ -166,6 +166,8 @@ class M_Office_EditRecord extends M_Office_Controller {
                                         if($nbLinkedRecords==1){
                                             $keys=$linkDo->keys();
                                             $key=$keys[0];
+                                            $linkDo->selectAdd();
+                                            $linkDo->selectAdd($linkDo->pkName());
                                             $linkDo->find(true);
                                             $parameters['record']=$linkDo->$key;
                                             $removed[]='record';

@@ -137,7 +137,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
         $this->_elements = array();
         $separator =  '';
         $locale    =& $this->_locale[$this->_options['language']];
-        $this->_elements[0] =& new HTML_QuickForm_select('firstselect', null, $locale['firstselect'],array('onChange'=>'advandate_Update(this.form,\'' . $this->_escapeString($this->getName()) . '\')'));
+        $this->_elements[0] =& new HTML_QuickForm_select('firstselect', null, $locale['firstselect']);
     		$this->_elements[1]=& new HTML_QuickForm_date('firstdate', null, $this->_options,$this->_style[1]);
     		$this->_elements[2]=& new HTML_QuickForm_static(null,null,'<span ' . $this->_style[2] .' id="'.$this->_escapeString($this->getName()).'_dates_separator">'.$locale['betweenseparator'].'</span>');
     		$this->_elements[3]=& new HTML_QuickForm_date('seconddate', null, $this->_options,$this->_style[3]);
@@ -149,44 +149,32 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
     	$this->_js = '';
     	       
 		if (!defined('HTML_QUICKFORM_ADVANDATE_EXISTS')) {
-			$this->_js .="function advandate_Update(form, groupName) {
-					index=form[groupName+'[firstselect]'].selectedIndex;
-					value=form[groupName+'[firstselect]'][index].value;
-						firstd=form[groupName+'[firstdate][d]'];
-						firstd.style.display='none';
-						firstM=form[groupName+'[firstdate][m]'];
-						firstM.style.display='none';
-						firstY=form[groupName+'[firstdate][Y]'];
-						firstY.style.display='none';
-						secondd=form[groupName+'[seconddate][d]'];
-						secondd.style.display='none';
-						secondM=form[groupName+'[seconddate][m]'];
-						secondM.style.display='none';
-						secondY=form[groupName+'[seconddate][Y]'];
-						secondY.style.display='none';
-						nbunits=form[groupName+'[nbunits]'];
-						nbunits.style.display='none';
-						unit=form[groupName+'[unit]'];
-						unit.style.display='none';
+			$this->_js .="
+
+			    var advandate_Update = function(groupName) {
+					  value=$('select[name=\"'+groupName+'[firstselect]\"]').val();
+						firstD = $('select[name^=\"'+groupName+'[firstdate]\"]');
+            $(firstD).hide();
+						secD = $('select[name^=\"'+groupName+'[seconddate]\"]');
+            $(secD).hide();
+						nbunits=$('select[name=\"'+groupName+'[nbunits]\"]');
+            $(nbunits).hide();
+						unit=$('select[name=\"'+groupName+'[unit]\"]');
+            $(unit).hide();
 						separator=\$('#".$this->_escapeString($this->getName())."_dates_separator');
 						separator.hide();
 					if(value=='before' || value=='after' || value=='is') {
-						firstd.style.display='inline';
-						firstM.style.display='inline';
-						firstY.style.display='inline';						
+            $(firstD).show();
 					} else {
 						if (value=='between'){
-							firstd.style.display='inline';
-							firstM.style.display='inline';
-							firstY.style.display='inline';						
-							secondd.style.display='inline';
-							secondM.style.display='inline';
-							secondY.style.display='inline';						
+              $(firstD).show();
+              $(secD).show();              
 							separator.show();
 						} else {
 							if (value=='inthelast'){
-								nbunits.style.display='inline';
-								unit.style.display='inline';
+                $(nbunits).show();
+                $(unit).show();
+                
 							} else {
 								if (value=='lastmonth'){
 									// Nothing to show
@@ -203,7 +191,9 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
         $renderer =& new HTML_QuickForm_Renderer_Default();
         $renderer->setElementTemplate('{element}');
         parent::accept($renderer);        
-        return (empty($this->_js)? '': "<script type=\"text/javascript\">\n//<![CDATA[\n" . $this->_js . "//]]>\n</script>") . $renderer->toHtml();
+        return "<script type=\"text/javascript\">\n//<![CDATA[\n\$(function(){" . (empty($this->_js)? '': $this->_js) . "\nadvandate_Update('".$this->_escapeString($this->getName())."');
+        $('select[name=\"".$this->_escapeString($this->getName())."[firstselect]\"]').bind('change',function(){advandate_Update('".$this->_escapeString($this->getName())."')});
+        });//]]>\n</script>" . $renderer->toHtml();
 }               
 
 

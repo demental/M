@@ -79,7 +79,8 @@ class myFB extends DB_DataObject_FormBuilder
 	$field = false,
 	$valueField = false,
 	$emptyLabel = false,
-	$maindo = null) {
+	$maindo = null,
+	$preferHtml = false) {
 		if(is_null($maindo)) {
 			$maindo = $this;
 		} else {
@@ -87,6 +88,7 @@ class myFB extends DB_DataObject_FormBuilder
 				$maindo->prepareLinkedDataObjectCallback = array($maindo,'prepareLinkedDataObject');
 			}
 		}
+	  
 		$opts = DB_DataObject::factory($table);
 		if (is_a($opts, 'db_dataobject')) {
 			if ($this->isCallableAndExists($maindo->prepareLinkedDataObjectCallback)) {
@@ -135,7 +137,7 @@ class myFB extends DB_DataObject_FormBuilder
 				// FINALLY, let's see if there are any results
 				if (isset($opts->_DB_resultid) || $opts->find() > 0) {
 					while ($opts->fetch()) {
-						$list[$opts->$valueField] = $this->getDataObjectString($opts, $displayFields);
+						$list[$opts->$valueField] = $this->getDataObjectString($opts, $displayFields, null,1,$preferHtml);
 					}
 				}
 
@@ -152,8 +154,10 @@ class myFB extends DB_DataObject_FormBuilder
 		$this->debug('Error: '.get_class($opts).' does not inherit from DB_DataObject');
 		return array();
 	}
-	function getDataObjectString(&$do, $displayFields = false, $linkDisplayLevel = null, $level = 1) {
-		if(DB_DataObject_FormBuilder::isCallableAndExists(array($do,'__toString'))) {
+	function getDataObjectString(&$do, $displayFields = false, $linkDisplayLevel = null, $level = 1,$preferHtml = false) {
+		if(DB_DataObject_FormBuilder::isCallableAndExists(array($do,'toHtml')) && $preferHtml) {
+			return $do->toHtml();
+		}if(DB_DataObject_FormBuilder::isCallableAndExists(array($do,'__toString'))) {
 			return $do->__toString();
 		} else {
 
@@ -392,7 +396,7 @@ class myFB extends DB_DataObject_FormBuilder
 						list($linkedtable, $linkedfield) = explode(':', $crossLinkLinks[$crossLink['toField']]);
 						list($fromtable, $fromfield) = explode(':', $crossLinkLinks[$crossLink['fromField']]);
 						//if ($fromtable !== $this->_do->tableName()) error?
-						$all_options      = $this->_getSelectOptions($linkedtable, false, false, false, $linkedfield,false,$crossLinkDo);
+						$all_options      = $this->_getSelectOptions($linkedtable, false, false, false, $linkedfield,false,$crossLinkDo,isset($crossLinkDo->fb_crossLinkExtraFields));
 						$selected_options = array();
 						if (isset($this->_do->$fromfield)) {
 							$crossLinkDo->{$crossLink['fromField']} = $this->_do->$fromfield;

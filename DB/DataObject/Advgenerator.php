@@ -135,7 +135,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
                     isset($_DB_DATAOBJECT['CONFIG']["links_{$databaseIdentifier}"]) ?
                         $_DB_DATAOBJECT['CONFIG']["links_{$databaseIdentifier}"] :
                         str_replace('.ini','.links.ini',$ini);
-        
+
                 if (empty($_DB_DATAOBJECT['LINKS'][$this->_database]) && file_exists($links) && is_file($links)) {
                     /* not sure why $links = ... here  - TODO check if that works */
                     $_DB_DATAOBJECT['LINKS'][$this->_database] = parse_ini_file($links, true);
@@ -154,10 +154,12 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
         // if there is no link data at all on the file!
         // we return null.
         if (!isset($_DB_DATAOBJECT['LINKS'][$this->_database])) {
+
             return '';
         }
         
         if (isset($_DB_DATAOBJECT['LINKS'][$this->_database][$table])) {
+
             return $_DB_DATAOBJECT['LINKS'][$this->_database][$table];
         }
         
