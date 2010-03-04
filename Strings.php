@@ -76,7 +76,7 @@ class Strings {
 	}
 	public static function extractEmails ($string)
 	{
-		preg_match_all('`([[:alnum:]]([-_.]?[[:alnum:]])*@[[:alnum:]]([-.]?[[:alnum:]])*\.([a-z]{2,4}))`i',$string,$res);
+		preg_match_all('`([[:alnum:]]([-_.]*[[:alnum:]])*@[[:alnum:]]([-.]?[[:alnum:]])*\.([a-z]{2,4}))`i',$string,$res);
 		return $res[1];
 	}
 	public static function truncate ($string,$length,$end=' ...')
