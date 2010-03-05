@@ -132,6 +132,23 @@ class M_Office_ShowTable extends M_Office_Controller {
         }
         $this->append('subActions',$filterString);
       }
+      if(isset($_REQUEST['filternTable']) && isset($_REQUEST['filternField']) && isset($_REQUEST['filternValue'])) {
+        $joinDo = DB_DataObject::factory($_REQUEST['filternTable']);
+        $joinDo->{$_REQUEST['filternField']} = $_REQUEST['filternValue'];
+        $do->joinAdd($joinDo);
+        $joinDOlinks = $joinDo->links();
+        $targetTableArray = explode(':',$joinDOlinks[$_REQUEST['filternField']]);
+        $targetDO = DB_DataObject::factory($targetTableArray[0]);
+        $targetDO->get($_REQUEST['filternValue']);
+        if(method_exists($targetDO,'__toString')) {
+          $targetName = $targetDO->__toString();
+        } else {
+          $targetName = $targetDO->pk();
+        }
+        $filterString = __('%s linked to %s',array($do->tableName(),$targetTableArray[0])).' '.$targetName;        
+        $this->append('subActions',$filterString);
+        
+      }
       /** Adding join objects if specified in the module configuration.
       * To add a join object you can :
       * - specify the foreign key against which the join will be added

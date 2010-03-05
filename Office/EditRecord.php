@@ -155,30 +155,51 @@ class M_Office_EditRecord extends M_Office_Controller {
                                     if($linkFromTables===TRUE || (is_array($linkFromTables) && in_array($linkTab,$linkFromTables))) {
 
                                         $linkDo=& DB_DataObject::factory($linkTab);
-                                        $linkDo->$linkField=$do->$field;
-                                        $nbLinkedRecords=$linkDo->count();
-                                        $parameters=array(  'module' => $linkTab,
-                                                            'filterField' => $linkField,
-                                                            'filterValue' => $do->$field);
+                                        if($nfield = $linkDo->isNtable()) {
+                                          // @todo : 
+                                          $nFields = $linkDo->links();
+                                          $ntableArray = explode(':',$nFields[$nfield]);
+                                          $nDo = DB_DataObject::factory($ntableArray[0]);
+                                          $nDo->joinAdd($linkDo);
+                                          $linkDo->$linkField=$do->$field;
+                                          $nbLinkedRecords=$linkDo->count();
+                                          $parameters=array(  'module' => $nDo->tableName(),
+                                                              'filternField' => $linkField,
+                                                              'filternTable' => $linkTab,                                                              
+                                                              'filternValue' => $do->$field);
 
-                                                            $removed=array('module','filterValue','filterField');
+                                                              $removed=array('module','filternValue','filternField');
+                                          $add = false;         
+                                          $tableName = M_Office_Util::getFrontTableName($ntableArray[0].' <small>(n-n)</small>');
+                                        } else {
+                                          $linkDo->$linkField=$do->$field;
+                                          $nbLinkedRecords=$linkDo->count();
+                                          $parameters=array(  'module' => $linkTab,
+                                                              'filterField' => $linkField,
+                                                              'filterValue' => $do->$field);
 
-                                        if($nbLinkedRecords==1){
-                                            $keys=$linkDo->keys();
-                                            $key=$keys[0];
-                                            $linkDo->selectAdd();
-                                            $linkDo->selectAdd($linkDo->pkName());
-                                            $linkDo->find(true);
-                                            $parameters['record']=$linkDo->$key;
-                                            $removed[]='record';
+                                                              $removed=array('module','filterValue','filterField');
+                                        
+                                          if($nbLinkedRecords==1){
+                                              $keys=$linkDo->keys();
+                                              $key=$keys[0];
+                                              $linkDo->selectAdd();
+                                              $linkDo->selectAdd($linkDo->pkName());
+                                              $linkDo->find(true);
+                                              $parameters['record']=$linkDo->$key;
+                                              $removed[]='record';
+                                          }
+                                          $tableName = M_Office_Util::getFrontTableName($linkTab);
+                                          $add = $this->getGlobalOption('add','showtable', $linkTab)?true:false;
                                         }
                                         $this->append('linkFromTables',array('table'=>$linkTab,
                                                                              'linkField'=>$linkField,
                                                                              'field'=>$field,
                                                                              'link'=>M_Office_Util::getQueryParams($parameters,array_diff(array_keys($_GET),$removed)),
                                                                              'nb'=>$nbLinkedRecords,
-                                                                             'tablename'=>M_Office_Util::getFrontTableName($linkTab),
-                                                                             'add'=>($this->getGlobalOption('add','showtable', $linkTab)?true:false)));
+                                                                             'tablename'=>$tableName,
+                                                                             'add'=>$add
+                                                                            )); 
                                     }
                                 }
                             }
