@@ -160,9 +160,10 @@ class M_Office_EditRecord extends M_Office_Controller {
                                           $nFields = $linkDo->links();
                                           $ntableArray = explode(':',$nFields[$nfield]);
                                           $nDo = DB_DataObject::factory($ntableArray[0]);
-                                          $nDo->joinAdd($linkDo);
                                           $linkDo->$linkField=$do->$field;
-                                          $nbLinkedRecords=$linkDo->count();
+                                          $nDo->joinAdd($linkDo);
+
+                                          $nbLinkedRecords=$nDo->count();
                                           $parameters=array(  'module' => $nDo->tableName(),
                                                               'filternField' => $linkField,
                                                               'filternTable' => $linkTab,                                                              
