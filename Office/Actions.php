@@ -140,6 +140,9 @@ class M_Office_Actions extends M_Office_Controller {
    {
      if(is_a($form,'HTML_QuickForm')) {
        $data = $form->exportValues();
+       if(is_array($_FILES) && count($_FILES)>1) {
+         $data = array_merge($data,$_FILES);
+       }
        unset($data['selected']);
        unset($data['__submit__']);
        unset($data[$this->typeval]);

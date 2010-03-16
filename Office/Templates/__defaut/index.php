@@ -4,10 +4,10 @@
 	<head>
 	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	  <title><?php echo $adminTitle ?></title>
-  	<link rel="stylesheet" type="text/css" media="screen" href="/css/reset-fonts-grids.css" />
+  	<link rel="stylesheet" type="text/css" media="screen,print" href="/css/reset-fonts-grids.css" />
 
-  	<link rel="stylesheet" type="text/css" media="screen" href="/css/styleforms.css" />
-  	<link rel="stylesheet" type="text/css" media="screen" href="/css/style_admin.css" />
+  	<link rel="stylesheet" type="text/css" media="screen,print" href="/css/styleforms.css" />
+  	<link rel="stylesheet" type="text/css" media="screen,print" href="/css/style_admin.css" />
     <?php 
     foreach (Mtpl::getCSS() as $css){
             echo '<link rel="stylesheet" type="text/css" media="'.$css['media'].'" href="/css/'.$css['name'].'.css" />';
