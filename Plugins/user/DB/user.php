@@ -30,7 +30,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
   protected $_usercontext;
   public function getEvents()
   {
-    return array('pregenerateform','postgenerateform','preprocessform');
+    return array('pregenerateform','postgenerateform','postgeneratelogin','preprocessform','prepareforlogin');
   }  
 	public function preGenerateForm(&$fb,&$obj)
 	{
@@ -89,7 +89,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
 	        $values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix] = call_user_func($defs['passEncryption'],$values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix]);
 	    }
 	}
-  function prepareForLogin(&$obj,$reminder=true,$register=true)
+  function prepareForLogin($reminder=true,$register=true,&$obj)
   {
     $defs = $obj->_getPluginsDef();
     $defs = $defs['user'];    
@@ -105,7 +105,11 @@ class DB_DataObject_Plugin_User extends M_Plugin
       $this->_usercontext = $defs['context'];
       $obj->fb_fieldsToRender = array($defs['login'],$defs['pwd']);
       $obj->fb_preDefOrder = array($defs['login'],$defs['pwd']);
-      $obj->fb_postGenerateFormCallback=array($this,'postGenerateLogin');
+      if(method_exists($obj,'postGenerateLogin')) {
+        $obj->fb_postGenerateFormCallback=array($obj,'postGenerateLogin');
+      } else {
+        $obj->fb_postGenerateFormCallback=array($this,'postGenerateLogin');        
+      }
   }
   function prepareForReminder(&$obj)
   {
@@ -116,7 +120,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
       $obj->fb_fieldsToRender = array($defs['email']);
       $obj->fb_postGenerateFormCallback=array($this,'postGenerateReminder');
   }
-  function postGenerateLogin(&$form,&$fb) {
+  function postGenerateLogin(&$form,&$fb,$obj = null) {
       if($this->_addreminder) {
           $elt = HTML_QuickForm::createElement('static','remindertext','','<a href="'.$this->reminderUrl.'">'.__('Mot de passe perdu ?').'</a>');
           $form->insertElementBefore($elt,'__submit__');        

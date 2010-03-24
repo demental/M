@@ -211,10 +211,15 @@ class M_Office extends M_Office_Controller implements iListener {
 	}
 	public function fetch()
 	{
+    $tpl = Mreg::get('tpl');
 		if(self::isAjaxRequest()) {
 			M_Office::$dsp='__defaut/ajaxindex';
+      $vars = $tpl->getVars();
+      $action = $vars['__action'];
+      if(!is_array($action)) {
+        $tpl->assign('__action',array($action.'.bloc',$action));
+      }
 		}
-    $tpl = Mreg::get('tpl');
 		$tpl->assign('regenerate',$this->getOption('regenerate'));
 		$tables = $this->getGlobalOption('searchInTables','frontendhome');
 		$tpl->assign('messages',$_SESSION['flashmessages']);

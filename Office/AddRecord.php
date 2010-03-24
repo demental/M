@@ -22,6 +22,7 @@ class M_Office_AddRecord extends M_Office_Controller {
     public function __construct($module) {
         parent::__construct();
         $this->assign('__action','add');
+        
         $tpl = Mreg::get('tpl');
         $tpl->concat('adminTitle',' :: '.$this->moduloptions['title'].' :: '.__('Add record'));
 
