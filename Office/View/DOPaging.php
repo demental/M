@@ -88,18 +88,22 @@ class M_Office_View_DOPaging extends M_Office_View_List
     $do->fb_fieldsToRender=$fields;
     $fb =& MyFB::create($do);
     $do->selectAdd();
-    
-    if(is_array($do->i18nFields)) {
-      $tmparr = array_intersect($fields,$do->i18nFields);
+    $plugins = $do->_getPluginsDef();
+    if(is_array($plugins['i18n'])) {
+      $tmparr = array_intersect($fields,$plugins['i18n']);
       $i18nfields = implode(','.$do->tablename().'_i18n'.'.',$tmparr);
+      $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;      
       $fieldsToRender = array_merge($usedFields,$tmparr);
-        unset($tmparr);
+      unset($tmparr);
+    } elseif(is_array($plugins['l10n'])) {
+          $tmparr = array_intersect($fields,$plugins['l10n']);
+          $i18nfields = implode(','.$do->tablename().'_l10n'.'.',$tmparr);
+      $i18nfields = $do->tablename().'_l10n'.'.'.$i18nfields;
+          $fieldsToRender = array_merge($usedFields,$tmparr);
+            unset($tmparr);
     } else {
       $i18nfields = null;
       $fieldsToRender = $usedFields;
-    }
-    if($i18nfields) {
-      $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;
     }
 
     if(!in_array($pk,$usedFields)) {
