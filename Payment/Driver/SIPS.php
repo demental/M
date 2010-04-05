@@ -160,10 +160,10 @@ class Payment_Driver_SIPS extends Payment
 
     	//	OK, affiche le formulaire HTML
     	else {
-    		$output="<br /><br />";
+//    		$output="<br /><br />";
 
     		# OK, affichage du mode DEBUG si activé
-    		$output.=" $error <br />";
+    		$output.=$error?" $error <br />":'';
 
     		$output.="  $message <br />";
     	}
