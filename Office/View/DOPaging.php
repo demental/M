@@ -92,7 +92,9 @@ class M_Office_View_DOPaging extends M_Office_View_List
     if(is_array($plugins['i18n'])) {
       $tmparr = array_intersect($fields,$plugins['i18n']);
       $i18nfields = implode(','.$do->tablename().'_i18n'.'.',$tmparr);
-      $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;      
+      if(!empty($i18nfields)) {
+        $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;      
+      }
       $fieldsToRender = array_merge($usedFields,$tmparr);
       unset($tmparr);
     } elseif(is_array($plugins['l10n'])) {
