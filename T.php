@@ -102,6 +102,7 @@ class T {
 	}
 	private function cacheIsUpToDate ($lang,$file)
 	{
+	  if(T::getConfig('nocache')) return false;
 		$cachefile = T::getConfig('cacheDir').'/'.$lang.'.cache.php';
 		if(!file_exists($cachefile)) {
 			return false;
