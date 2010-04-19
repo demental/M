@@ -1,5 +1,5 @@
 <?php
-class i18n_Command_Install implements iCommand {
+class i18n_Command_Install extends Command {
   public static function preSetup()
   {
     // Using T editor driver to avoid script termination on non-existing xml files
@@ -7,27 +7,33 @@ class i18n_Command_Install implements iCommand {
     T::setConfig(array_merge(T::$config,array('driver'=>'editor')));
     return true;
   }
-  public static function execute()
+  public function execute($params,$options = array())
   {
-    require 'M/DB/DataObject/Advgenerator.php';
-    $g = new DB_DataObject_Advgenerator();
-    $generators = $g->getGenerators();
-
-    foreach($generators as $agenerator) {
-      foreach($agenerator->tables as $table) {
-        echo 'Checking i18n value for '.$table."\n";
-
-        $d = DB_DataObject::factory($table);
-        if(isset($d->i18nFields)) {
-          echo $table.' has i18n fields, generating '.$table.'_i18n table'."\n";
-
-          $d->_loadPlugins();
-          $d->getPlugin('international')->generateTable($d);
-        } else {
-          echo 'not an i18n capable table'."\n";
-        }
+    if(count($params)>0) {
+      foreach($params as $table) {
+        $this->_checkAndInstall($table);
       }
+    } else {
+      require 'M/DB/DataObject/Advgenerator.php';
+      $g = new DB_DataObject_Advgenerator();
+      $generators = $g->getGenerators();
+
+      foreach($generators as $agenerator) {
+        foreach($agenerator->tables as $table) {
+          $this->_checkAndInstall($table);
+        }
+      }  
     }
-    return true;
+  }
+  
+  protected function _checkAndInstall($table) {
+    $t = DB_DataObject::factory($table);
+    $tdef = $t->_getPluginsDef();
+    if($tdef['i18n']) {
+      echo $table.' has i18n fields, generating '.$table.'_i18n table'."\n";
+      $t->getPlugin('i18n')->generateTable($t);
+    } else {
+      $this->line($table.' : no i18n');
+    }
   }
 }

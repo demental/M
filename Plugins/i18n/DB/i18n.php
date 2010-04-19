@@ -24,7 +24,7 @@
  */
 
 class DB_DataObject_Plugin_I18n extends M_Plugin {
-  public $plugin_name='international';
+  public $plugin_name='i18n';
   public $_autoActions = true;
   protected $_grouped;
 
@@ -359,7 +359,6 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 	// =========================================
 	public function generateTable($obj)
   {
-    require_once 'M/DB/DataObject/Plugin/International.php';
     $iname = $obj->tableName().'_i18n';
     $res = $this->migration_createI18nTable($obj,$iname);
     if(PEAR::isError($res)) {
@@ -468,7 +467,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       T::setLang($lang);
       
       $original = DB_DataObject::factory($obj->tableName());
-      $original->unloadPlugin('international');
+/*      $original->unloadPlugin('international');*/
       $ifields = $info;
       unset($original->i18nFields);
 

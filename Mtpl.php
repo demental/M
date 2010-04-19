@@ -81,7 +81,7 @@ class Mtpl {
 	{
 		return is_array(Mtpl::$_jsinline[$event])?Mtpl::$_jsinline[$event]:array();
 	}
-	public function addCSS($css,$media='screen',$conditional=null)
+	public function addCSS($css,$media='screen,print',$conditional=null)
 	{
 	  $data = array('name'=>$css,'media'=>$media,'conditional'=>$conditional);
 		Mtpl::$_css[md5(serialize($data))] = $data;
