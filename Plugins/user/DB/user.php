@@ -59,10 +59,11 @@ class DB_DataObject_Plugin_User extends M_Plugin
             $form->addFormRule(array($this,'checkUniqueLogin'));
 
         }
+        $form->setDefaults(array($fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix=>'',$fb->elementNamePrefix.$defs['pwd'].'2'.$fb->elementNamePostfix=>''));
         $this->_obj = $fb->_do;
 	}
 	public function checkUniqueLogin($values) {
-	    $defs = $this->_obj->_getPluginsDef();
+	      $defs = $this->_obj->_getPluginsDef();
         $defs = $defs['user'];
         $test = DB_DataObject::factory($this->_obj->tableName());
         $test->whereAdd("id!='".$this->_obj->id."'");
