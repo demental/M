@@ -92,10 +92,11 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   /**
    * adds a tag to a record
    * @param mixed : DataObject_Tag tag to add or string.
+   * @param bool : is tag added by human or programatically
    * @param DB_DataObject database record to tag
    */
 
-  public function addTag($tag, DB_DataObject $obj)
+  public function addTag($tag, $byhuman = false, DB_DataObject $obj)
   {
     if(!$existingtag = $this->_getTagFromTag($tag)) {
       $newtag = DB_DataObject::factory('tag');
@@ -105,18 +106,42 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     } else {
       $tag = $existingtag;
     }
-    $dbo = DB_DataObject::factory('tag_record');
-    $dbo->tag_id = $tag->id;
-    $dbo->record_id = $obj->pk();
-    $dbo->tagged_table = $obj->tableName();
-    if(!$dbo->find(true)) {
-      $dbo->insert();
-    }
+    if($this->validateTriggerTag($tag,'add',$byhuman,$obj)) {
+      $dbo = DB_DataObject::factory('tag_record');
+      $dbo->tag_id = $tag->id;
+      $dbo->record_id = $obj->pk();
+      $dbo->tagged_table = $obj->tableName();
+      if(!$dbo->find(true)) {
+        $dbo->insert();
+      }
 
-    $this->triggerTag($tag,'add',$obj);
+      $this->triggerTag($tag,'add',$obj);
+    }
     return $this->returnStatus($obj);
   }
-
+  public function validateTriggerTag($tag,$trigger,$byhuman,$obj)
+  {
+    $strip = Strings::stripify($tag->strip,true);
+    $classes = array(
+      APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger_'.$strip.'_'.$obj->tableName()),
+      APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'.php'=>strtolower('tagtrigger_'.$strip)
+      );
+    foreach($classes as $file=>$class) {
+      if(class_exists($class,false)) {    // avoid autoload
+        $res = call_user_func_array(array($class,'validate'.$trigger),array($obj,$byhuman));
+        break;
+      }
+      if(file_exists($file)) {
+        require_once $file;
+        $res = call_user_func_array(array($class,'validate'.$trigger),array($obj,$byhuman));
+        break;
+      }
+    }
+    if($res === false) {
+      return $this->returnStatus(false);
+    }
+    return $this->returnStatus(true);
+  }
   public function triggerTag($tag,$trigger,$obj)
   {
     $strip = Strings::stripify($tag->strip,true);
@@ -143,16 +168,18 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    */  
 
 
-  public function removeTag($tag, DB_DataObject $obj)
+  public function removeTag($tag, $byhuman = false, DB_DataObject $obj)
   {
     if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus($obj);} 
-    $dbo = DB_DataObject::factory('tag_record');
-    $dbo->setTag($tag);
-    $dbo->setRecord($obj);
-    if($dbo->find(true)) {
-      $dbo->delete();
+    if($this->validateTriggerTag($tag,'remove',$byhuman,$obj)) {
+      $dbo = DB_DataObject::factory('tag_record');
+      $dbo->setTag($tag);
+      $dbo->setRecord($obj);
+      if($dbo->find(true)) {
+        $dbo->delete();
+      }
+      $this->triggerTag($tag,'remove',$obj);
     }
-    $this->triggerTag($tag,'remove',$obj);
     return $this->returnStatus($obj);
   }
 
