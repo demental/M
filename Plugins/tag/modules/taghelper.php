@@ -31,7 +31,7 @@ class Tag_Module_Taghelper extends Module {
     $focus = $this->getFocus();
     $tag = DB_DataObject::factory('tag');
     $tag->get($_REQUEST['tagid']);
-    $focus->removeTag($tag);
+    $focus->removeTagByHuman($tag);
     if(!$this->isAjaxRequest()) {
       $this->redirect($_REQUEST['target']);
     } else {
@@ -41,7 +41,7 @@ class Tag_Module_Taghelper extends Module {
   public function doExecAddByStrip()
   {
     $focus = $this->getFocus();
-    $focus->addTag($_REQUEST['strip']);
+    $focus->addTagByHuman($_REQUEST['strip']);
     if(!$this->isAjaxRequest()) {
       $this->redirect($_REQUEST['target']);
     } else {

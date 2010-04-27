@@ -19,7 +19,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getEvents()
   {
-    return array('addtagstoform','searchbytags','addtag','removetag','removetags','getbytags','postdelete','hastag','gettaglasthistory','gettags');
+    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','postdelete','hastag','gettaglasthistory','gettags');
   }
   
   /**
@@ -96,7 +96,14 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    * @param DB_DataObject database record to tag
    */
 
-  public function addTag($tag, $byhuman = false, DB_DataObject $obj)
+  
+   public function addTag($tag,DB_DataObject $obj) {
+     return $this->_addTag($tag,false,$obj);
+   }
+   public function addTagByHuman($tag,DB_DataObject $obj) {
+     return $this->_addTag($tag,true,$obj);
+   }   
+  protected function _addTag($tag, $byhuman, DB_DataObject $obj)
   {
     if(!$existingtag = $this->_getTagFromTag($tag)) {
       $newtag = DB_DataObject::factory('tag');
@@ -167,8 +174,13 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    * @param DB_DataObject database record to untag
    */  
 
-
-  public function removeTag($tag, $byhuman = false, DB_DataObject $obj)
+  public function removeTag($tag,DB_DataObject $obj) {
+    return $this->_removeTag($tag,false,$obj);
+  }
+  public function removeTagByHuman($tag,DB_DataObject $obj) {
+    return $this->_removeTag($tag,true,$obj);
+  }  
+  protected function _removeTag($tag, $byhuman, DB_DataObject $obj)
   {
     if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus($obj);} 
     if($this->validateTriggerTag($tag,'remove',$byhuman,$obj)) {
