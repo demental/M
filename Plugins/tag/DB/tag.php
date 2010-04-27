@@ -138,9 +138,9 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       }
     }
     if($res === false) {
-      return $this->returnStatus(false);
+      return false;
     }
-    return $this->returnStatus(true);
+    return true;
   }
   public function triggerTag($tag,$trigger,$obj)
   {
