@@ -126,6 +126,9 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     }
     return $this->returnStatus($obj);
   }
+  /**
+   * Calls and return tag validation result if it exists (the methods are validateAdd and validateRemove)
+   */
   public function validateTriggerTag($tag,$trigger,$byhuman,$obj)
   {
     $strip = Strings::stripify($tag->strip,true);
@@ -135,12 +138,16 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       );
     foreach($classes as $file=>$class) {
       if(class_exists($class,false)) {    // avoid autoload
-        $res = call_user_func_array(array($class,'validate'.$trigger),array($obj,$byhuman));
+        if(method_exists($class,'validate'.$trigger)) {
+          $res = call_user_func_array(array($class,'validate'.$trigger),array($obj,$byhuman));
+        }
         break;
       }
       if(file_exists($file)) {
         require_once $file;
-        $res = call_user_func_array(array($class,'validate'.$trigger),array($obj,$byhuman));
+        if(method_exists($class,'validate'.$trigger)) {
+          $res = call_user_func_array(array($class,'validate'.$trigger),array($obj,$byhuman));
+        }
         break;
       }
     }
@@ -149,6 +156,9 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     }
     return true;
   }
+  /**
+   * calls tag trigger if it exists
+   */
   public function triggerTag($tag,$trigger,$obj)
   {
     $strip = Strings::stripify($tag->strip,true);
@@ -158,12 +168,16 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       );
     foreach($classes as $file=>$class) {
       if(class_exists($class,false)) {    // avoid autoload
-        call_user_func_array(array($class,'on'.$trigger),array($obj));
+        if(method_exists($class,'on'.$trigger)) {
+          $res = call_user_func_array(array($class,'on'.$trigger),array($obj,$byhuman));
+        }
         break;
       }
       if(file_exists($file)) {
         require_once $file;
-        call_user_func_array(array($class,'on'.$trigger),array($obj));
+        if(method_exists($class,'on'.$trigger)) {
+          $res = call_user_func_array(array($class,'on'.$trigger),array($obj,$byhuman));
+        }
         break;
       }
     }
@@ -173,10 +187,11 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    * @param DataObject_Tag tag to remove
    * @param DB_DataObject database record to untag
    */  
-
+  // By code
   public function removeTag($tag,DB_DataObject $obj) {
     return $this->_removeTag($tag,false,$obj);
   }
+  // By human
   public function removeTagByHuman($tag,DB_DataObject $obj) {
     return $this->_removeTag($tag,true,$obj);
   }  
