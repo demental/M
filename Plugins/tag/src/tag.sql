@@ -53,6 +53,7 @@ CREATE TABLE `tag_record` (
   `tag_id` int(10) unsigned NOT NULL,
   `record_id` varchar(36) collate utf8_unicode_ci NOT NULL,
   `tagged_table` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `tagged_at` datetime NOT NULL,  
   PRIMARY KEY  (`id`),
   KEY `tag_id` (`tag_id`),
   KEY `tagged_table` (`tagged_table`)

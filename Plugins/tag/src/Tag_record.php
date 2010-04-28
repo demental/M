@@ -14,7 +14,7 @@ class DataObjects_Tag_record extends DB_DataObject_Pluggable
     public $tag_id;                          // int(4)   not_null unsigned
     public $record_id;                       // varchar(36)   not_null
     public $tagged_table;                    // varchar(50)   not_null
-
+    public $tagged_at;                      // datetime()   not_null default_0000-00-00%2000%3A00%3A00
     /* Static get */
     function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Tag_record',$k,$v); }
 
@@ -25,6 +25,7 @@ class DataObjects_Tag_record extends DB_DataObject_Pluggable
              'tag_id' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
              'record_id' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_NOTNULL,
              'tagged_table' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_NOTNULL,
+             'tagged_at' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_DATE + DB_DATAOBJECT_TIME + DB_DATAOBJECT_NOTNULL,             
          );
     }
 
@@ -63,6 +64,7 @@ class DataObjects_Tag_record extends DB_DataObject_Pluggable
 
     public function insert()
     {
+      $this->tagged_at = date('Y-m-d H:i:s');      
       if($ret = parent::insert()) {
         $this->addHistory('add');
         $this->getTag()->incrementCount();
