@@ -114,7 +114,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
       $selectAdd = $do->tablename().'.'.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:'');
     }
 
-    $do->selectAdd($selectAdd);
+    $do->selectAdd('distinct '.$selectAdd);
     $fb->populateOptions();
     $specialElements = $fb->_getSpecialElementNames();
     $eltTypes=$do->table();
