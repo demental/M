@@ -70,11 +70,13 @@ class M_Office_Actions extends M_Office_Controller {
       break;
     }
     $this->do = $this->actiondo = $do;
+    $this->do->selectAdd();
+    $this->do->selectAdd($this->do->getDatabaseConnection()->quoteIdentifier($this->do->tableName()).'.*');
     $this->scope = $_REQUEST['__actionscope']=='all'?'all':'selected';
     if($actionName == 'delete') {
 			if($this->getOption('delete', $table)){
 	  			require_once('M/Office/DeleteRecords.php');
-	  			$subController = new M_Office_DeleteRecords($do, $this->getSelectedIds());
+	  			$subController = new M_Office_DeleteRecords($this->do, $this->getSelectedIds());
 			}
 		  return;
 	  }
@@ -189,6 +191,8 @@ class M_Office_Actions extends M_Office_Controller {
       switch($this->scope) {
         case 'all':
           $selected = clone($this->do);
+          $selected->selectAdd();
+          $selected->selectAdd($this->do->tableName().'.*');
         break;
         case 'selected':
           $db = $this->do->getDatabaseConnection();      
