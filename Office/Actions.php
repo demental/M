@@ -82,10 +82,22 @@ class M_Office_Actions extends M_Office_Controller {
 	  }
 
     if(!$this->fillActionInfo($actionName,$type)) {
-      $this->say('action not found !');
+      $this->say(__('action %s not found !',array($actionName)));
       require_once 'M/Office/Actionresult.php';
       $result = new M_Office_Actionresult($this);
       $result->status='error';
+      $this->redirectTo($result);
+    }
+    if($_REQUEST['__submitnext__']) {
+      require_once 'M/Office/Actionresult.php';
+      $result = new M_Office_Actionresult($this);
+      if($_REQUEST['__nextaction'] || count($this->nextactions)>0) {
+        $this->target = 'nextaction';
+        $result->status='complete';
+      } else {
+        $result->status='complete';        
+        $this->target = 'list';
+      }
       $this->redirectTo($result);
     }
     $form = $this->createParamsForm();
@@ -95,7 +107,9 @@ class M_Office_Actions extends M_Office_Controller {
     } else {
 			$this->assign('actionform',$form);
 			$this->has_output=true;
+			
       $this->assign('__action',array('action_'.$this->actionName,'action'));
+      $this->assign('isdownload',$this->_actionInfo['isdownload']);
     }
   }
   /**
@@ -249,18 +263,19 @@ class M_Office_Actions extends M_Office_Controller {
    */
   public function redirectTo(M_Office_Actionresult $result)
   {
+    $toRemoveParams = array('record','__actionscope','doSingleAction','glaction','doaction','__start','__actionchain');
     switch($result->status) {
       case 'error':
-        $this->say('An error occured while applying action');
+        $this->say(__('An error occured while applying action'));
         switch($this->target) {
           case 'list':
             M_Office_Util::refresh(M_Office::URL(array(),
-              array('record','__actionscope','doSingleAction','glaction','doaction','__start')
+              $toRemoveParams
             ));
           break;
           default:
             M_Office_Util::refresh(M_Office::URL(array(),
-              array('__actionscope','doSingleAction','glaction','doaction','__start')
+              $toRemoveParams
             ));
         }
       break;
@@ -268,9 +283,9 @@ class M_Office_Actions extends M_Office_Controller {
 
         switch($this->target) {
           case 'list':
-            $this->say('Action applied successfully');
+            $this->say(__('Action applied successfully'));
             M_Office_Util::refresh(M_Office::URL(array(),
-              array('record','__actionscope','doSingleAction','glaction','doaction','__start')
+              $toRemoveParams
             ));
           break;
           case 'nextaction':
@@ -280,9 +295,9 @@ class M_Office_Actions extends M_Office_Controller {
               ),array('selected'=>$this->getSelectedIds()));
           break;
           default:
-            $this->say('Action applied successfully');
+            $this->say(__('Action applied successfully'));
             M_Office_Util::refresh(M_Office::URL(array(),
-              array('__actionscope','doSingleAction','glaction','doaction','__start')
+              $toRemoveParams
             ));
         }
 

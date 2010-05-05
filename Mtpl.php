@@ -156,8 +156,10 @@ class Mtpl {
 	public function getTemplatePath()
 	{
 		$folders = array_reverse($this->_config['tplfolders']);
+		Log::error('Searching file '.$this->_tplfile.' in '.print_r($folders,true));
 		foreach($folders as $folder) {
 			if(FileUtils::file_exists_incpath($folder.$this->_tplfile.'.php')) {
+		Log::error('Found file in '.$folder);
 				return $folder.$this->_tplfile.'.php';
 			}
 		}
@@ -168,6 +170,7 @@ class Mtpl {
 		if(!is_array($tplfile)) {
 			$tplfile = array($tplfile);
 		}
+
 		$buffer = ob_get_contents();
 		ob_clean();
 		extract($this->_assignvars);
