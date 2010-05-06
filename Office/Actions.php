@@ -263,7 +263,7 @@ class M_Office_Actions extends M_Office_Controller {
    */
   public function redirectTo(M_Office_Actionresult $result)
   {
-    $toRemoveParams = array('record','__actionscope','doSingleAction','glaction','doaction','__start','__actionchain');
+    $toRemoveParams = array('__actionscope','doSingleAction','glaction','doaction','__start','__actionchain');
     switch($result->status) {
       case 'error':
         $this->say(__('An error occured while applying action'));

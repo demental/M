@@ -16,7 +16,7 @@
  *
  */
 class Payment {
-	public function &factory($type='request',$driver='SIPS')
+	public function &factory($driver='SIPS')
 	{
 		$className = 'Payment_Driver_'.$driver;
 		require_once 'M/Payment/Driver/'.$driver.'.php';
