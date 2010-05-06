@@ -351,6 +351,13 @@ class Mtpl {
 	{
     return $this->img($filename,array(T::getLang(),substr(T::getLang(),0,2)),$mainfolder);
 	}
+	public function altlocaleimg($filename, $altfolder = NULL, $mainfolder = 'images/locale/')
+	{
+	  if (! is_null($altfolder)) {
+      return $this->img($filename,array($altfolder.'/'.T::getLang(),T::getLang(),substr(T::getLang(),0,2)),$mainfolder);
+	  }
+    return $this->img($filename,array(T::getLang(),substr(T::getLang(),0,2)),$mainfolder);
+	}
 	public static function getCSSblock()
 	{
     $out='';
