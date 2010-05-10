@@ -26,7 +26,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
         'language'         => 'en',
         'format'           => 'dmY',
         'minYear'          => 2001,
-        'maxYear'          => 2010,
+        'maxYear'          => 2020,
         'addEmptyOption'   => false,
         'emptyOptionValue' => '',
         'emptyOptionText'  => '&nbsp;',
