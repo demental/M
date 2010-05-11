@@ -20,13 +20,14 @@
 require_once 'HTML/QuickForm/group.php';
 require_once 'HTML/QuickForm/select.php';
 require_once 'HTML/QuickForm/date.php';
+
 class HTML_QuickForm_advandate extends HTML_QuickForm_group
 {
     var $_options = array(
         'language'         => 'en',
         'format'           => 'dmY',
         'minYear'          => 2001,
-        'maxYear'          => 2020,
+        //'maxYear'          => 2012,
         'addEmptyOption'   => false,
         'emptyOptionValue' => '',
         'emptyOptionText'  => '&nbsp;',
@@ -107,6 +108,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
     */
     function HTML_QuickForm_advandate($elementName = null, $elementLabel = null, $options = array(), $attributes = null)
     {
+        $this->_options['maxYear'] = date('Y')+2;
         $this->HTML_QuickForm_element($elementName, $elementLabel, $attributes);
         $this->_persistantFreeze = true;
         $this->_appendName = true;

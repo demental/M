@@ -371,7 +371,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		
   public function dateOptions($field, &$fb) {
 		$this->trigger('dateOptions',array($field,$fb));
-    return array('format' => 'd-m-Y','addEmptyOption'=>true,'emptyOptionText'=>array('Y'=>'YYYY','m'=>'mm','d'=>'dd'));
+    return array('format' => 'd-m-Y','addEmptyOption'=>true,'emptyOptionText'=>array('Y'=>'YYYY','m'=>'mm','d'=>'dd'),'maxYear'=>date('Y')+2);
   }
 
   public function getSingleMethods($base = null) {
