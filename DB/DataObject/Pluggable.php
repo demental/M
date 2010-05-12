@@ -290,7 +290,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		$this->trigger('postProcessForm',array(&$v,&$fb));
 	}				
 	function insert(){
-	  $this->getDatabaseConnection()->query('set names utf8');
+
 		$result = $this->trigger('insert');
 		switch($result) {
 		  case 'bypass':
@@ -308,7 +308,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     }
   }
 	function update($do = false){
-    $this->getDatabaseConnection()->query('set names utf8');
+
 		$result = $this->trigger('update',array($do));
 		switch($result) {
 		  case 'bypass':
@@ -334,14 +334,21 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		}
 		return false;
 	}
-
+  function _query($string)
+  {
+    if(!defined('MDB2_UTF8_NAMES_SET')) {
+      $this->getDatabaseConnection()->query('set names utf8'); 
+      define('MDB2_UTF8_NAMES_SET',true);
+    }
+    return parent::_query($string);
+  }
 	function find($autoFetch=false){
-    $this->getDatabaseConnection()->query('set names utf8');
+
 		$this->trigger('find',array($autoFetch));
 		return parent::find($autoFetch);
 	}
 	function query($req){
-    $this->getDatabaseConnection()->query('set names utf8');
+
 		$this->trigger('query',array($req));
     return parent::query($req);
   }

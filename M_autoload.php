@@ -44,6 +44,7 @@ array(
   'myfb'                  =>  'M/MyFB.php',
   'log'                   =>  'M/Log.php',
   'user'                  =>  'M/User.php',
+  'mdb2'                  =>  'MDB2.php',  
   'html_quickform'        =>'HTML/QuickForm.php',
   'strings'               =>'M/Strings.php',
   'db_dataobject_pluggable'=>'M/DB/DataObject/Pluggable.php',

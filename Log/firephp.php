@@ -10,4 +10,9 @@ class Log_firephp {
     }
     call_user_func_array(array($fp,$level),array($message));  
   }
+  public function table($caption,$data)
+  {
+        $fp = FirePHP::getInstance(true);
+        $fp->table($caption,$data);
+  }
 }
