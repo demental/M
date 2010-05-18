@@ -41,7 +41,7 @@ class Config
 	 */
 	protected static $cfgArr = array();
 
-
+  protected static $prefFile = 'preferences.php';
 	/**
 	 *
 	 * Loads a configuration array
@@ -55,6 +55,59 @@ class Config
 	public static function load($array)
 	{
 		self::$cfgArr = array_merge(self::$cfgArr,$array);
+	}
+
+	/**
+	 *
+	 * Loads a preference file into an array
+	 *
+	 * @access	public
+	 * @param	string	$file filename with path
+	 * @static
+	 *
+	 */
+	public static function loadPrefFile()
+	{
+    $file = APP_ROOT . PROJECT_NAME . '/' . self::$prefFile;
+    if (!file_exists($file))
+    {
+      // If preference file doesn't exist we will generate it
+      self::savePrefFile();
+    }
+    self::$prefArr = unserialize(file_get_contents($file));
+	}
+	/**
+	 *
+	 * Generate a preference file from database configuration table
+	 *
+	 * @access	public
+	 * @param	string	$file filename with path
+	 * @static
+	 *
+	 */
+	public static function savePrefFile()
+	{
+    $file = APP_ROOT . PROJECT_NAME . '/' . self::$prefFile;
+    $prefs = DB_DataObject::factory('preferences');
+    $prefs->find();
+    while($prefs->fetch())
+    {
+      if ($prefs->type == 'array')
+      {
+				$temp = explode("\n",$res->val);
+				foreach($temp as $k=>$v)
+				{
+					$temp2 = explode(':',$v);
+					$temp3[trim($temp2[0])] = trim($temp2[1]);
+				}
+				self::$prefArr[$prefs->var] = $temp3;
+      }
+      else
+      {
+				self::$prefArr[$prefs->var] = $prefs->val;
+      }
+    }
+    file_put_contents($file, serialize(self::$prefArr));
 	}
 
 	/**
@@ -152,22 +205,31 @@ class Config
 	 * @static
 	 *
 	 */
+	 
+
 	public static function getPref($var) 
 	{
-		if(!key_exists($var,self::$prefArr)) {
-			$res = & DB_DataObject::factory('preferences');
-			$res->var=$var;
-			$res->find(true);
-			if($res->type=='array') {
-				$temp = explode("\n",$res->val);
-				foreach($temp as $k=>$v) {
-					$temp2 = explode(':',$v);
-					$temp3[trim($temp2[0])] = trim($temp2[1]);
-				}
-				$res->val = $temp3;
-			}
-			self::$prefArr[$var]=$res->val;
+		if(!key_exists($var,self::$prefArr))
+		{
+		  self::loadPrefFile();
 		}
+/*
+  		if(!key_exists($var,self::$prefArr)) {
+  			$res = & DB_DataObject::factory('preferences');
+  			$res->var=$var;
+  			$res->find(true);
+  			if($res->type=='array') {
+  				$temp = explode("\n",$res->val);
+  				foreach($temp as $k=>$v) {
+  					$temp2 = explode(':',$v);
+  					$temp3[trim($temp2[0])] = trim($temp2[1]);
+  				}
+  				$res->val = $temp3;
+  			}
+  			self::$prefArr[$var]=$res->val;
+  		}
+		}
+*/
 		return self::$prefArr[$var];
 	}
 
