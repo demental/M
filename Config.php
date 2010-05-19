@@ -94,7 +94,7 @@ class Config
     {
       if ($prefs->type == 'array')
       {
-				$temp = explode("\n",$res->val);
+				$temp = explode("\n",$prefs->val);
 				foreach($temp as $k=>$v)
 				{
 					$temp2 = explode(':',$v);
