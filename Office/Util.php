@@ -22,7 +22,7 @@
 **/
 class M_Office_Util {
   public static $mainOptions;
-  public static $fieldCache;
+  public static $fieldCache = array();
   /**
    * Redirects to another url (uses javascript is some headers were already sent)
    * @param url string url to redirect to
