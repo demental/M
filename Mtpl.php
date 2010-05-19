@@ -362,13 +362,19 @@ class Mtpl {
 	{
     $out='';
     foreach (Mtpl::getCSS() as $css) {
+      if(preg_match('`^https*`',$css['name'])) {
+        $cssfile = $js;
+      } else {
+        $cssfile = '/css/'.$css['name'].'.css';
+      }
+
       if (is_null($css['conditional'])) {
         $out.='
-    <link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />';
+    <link rel="stylesheet" type="text/css" href="'.$cssfile.'" media="'.$css['media'].'" />';
       } else {
         $out.='
     <!--[if '.$css['conditional'].']>
-        <link rel="stylesheet" type="text/css" href="/css/'.$css['name'].'.css" media="'.$css['media'].'" />
+        <link rel="stylesheet" type="text/css" href="'.$cssfile.'" media="'.$css['media'].'" />
     <![endif]-->';
       }
     }
@@ -378,8 +384,13 @@ class Mtpl {
 	{
 	  $out='';
     foreach (Mtpl::getJS() as $js) {
+      if(preg_match('`^https*`',$js)) {
+        $jsfile = $js;
+      } else {
+        $jsfile = '/js/'.$js.'.js';
+      }
       $out.='
-    <script type="text/javascript" src="/js/'.$js.'.js"></script>';
+    <script type="text/javascript" src="'.$jsfile.'"></script>';
     }
     return $out;   
 	}
