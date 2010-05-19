@@ -112,5 +112,20 @@ class MyQuickForm extends HTML_QuickForm {
     return $renderer->toHtml();
 	} // end func toFrozenHtml
     
+	public static function autoloadElements($className)
+	{
+	 if(preg_match('`HTML_QuickForm_(.+)`i',$className,$matches)) {
+     $match= $matches[1];
+	   switch($match) {
+	     case 'advandate':
+	      require_once 'M/HTML/QuickForm/advandate.php';
+	      return;
+	     default:
+	       require_once 'HTML/QuickForm/'.$match.'.php';
+	       return;
+	   }
+	 }
+	 return false;
+	}
 	
 }

@@ -111,7 +111,7 @@ array(
     $callbacks = Mreg::get('autoloadcallback');
     if(is_array($callbacks)) {
     	foreach($callbacks as $callback) {
-    		if(function_exists($callback)) {
+    		if(is_callable($callback)) {
     			call_user_func($callback,$class);
     		}
     	}

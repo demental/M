@@ -22,6 +22,7 @@
 **/
 class M_Office_Util {
   public static $mainOptions;
+  public static $fieldCache;
   /**
    * Redirects to another url (uses javascript is some headers were already sent)
    * @param url string url to redirect to
@@ -213,6 +214,24 @@ class M_Office_Util {
 
  	public static function &getSearchForm(&$do){
 
+    if(CACHE_FORMS===true) {
+      $cacheName = 'searchform_'.$do->tableName();
+      $options = array(
+          'caching' =>true,
+          'cacheDir' => APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/',
+          'lifeTime' => 3600,
+          'fileNameProtection'=>false,
+  		);
+
+  		$cache = new Cache_Lite($options);
+  		if($_cachedData = $cache->get($cacheName)) {
+        Mreg::append('autoloadcallback',array(array('MyQuickForm','autoloadElements')));
+  		  $cachedform = unserialize($_cachedData);
+        $cachedform->updateAttributes(array('action'=>self::getQueryParams(array(), array('page'), false)));
+        return $cachedform;
+  		}
+
+  	}	
     $do->fb_selectAddEmpty = array();
   	if(is_array($do->links())){
       foreach ($do->links() as $field => $link) {
@@ -247,6 +266,10 @@ class M_Office_Util {
     $form->_required = array();
     self::addHiddenFields($form, array('search', 'page','__dontpaginate'), true);
     $form->addElement('checkbox','__dontpaginate','Afficher les résultats sur une seule page');
+    if($cache) {
+      $cache->save(serialize($form));
+    }
+
 	  return $form;
 	}
 	public static function outputform(&$form,$template='bordered',$addwait = true) {
@@ -357,6 +380,8 @@ class M_Office_Util {
     return $obj->fb_enumOptions[$field][$obj->$field];
   }
 	public static function field_format_link($obj,$field) {
+    $identifier = $obj->tableName().'_field_'.$obj->$field;
+    if(key_exists($identifier,self::$fieldCache)) return self::$fieldCache[$identifier];
     if(is_object($obj->{'_'.$field})) {
       return $obj->{'_'.$field}->__toString();
     }
@@ -364,12 +389,15 @@ class M_Office_Util {
 	  if(is_object($link)) {
       foreach(array(array($link,'toHtmlCell'),array($link,'toHtml'),array($link,'__toString'),array('DB_DataObject_FormBuilder','getDataObjectString')) as $m) {
           if(method_exists($m[0],$m[1])){
-              return call_user_func($m,$link);
+              $res =  call_user_func($m,$link);
               break;
           }
       }
+    } else {
+      $res =  'n/a';
     }
-    return 'n/a';
+    self::$fieldCache[$identifier] = $res;
+    return $res;
 	}
   public static function getGlobalOption($name,$module,$table = null, $merge = false) {
       $options = PEAR::getStaticProperty('m_office_'.$module,'options');
