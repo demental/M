@@ -254,6 +254,7 @@ class Config
 		$res->val = $val;
 		$res->update();
 		self::$prefArr[$var]=$val;
+		self::savePrefFile();
 		return self::$prefArr[$var];
 	}
 }
