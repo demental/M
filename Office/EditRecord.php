@@ -41,7 +41,7 @@ class M_Office_EditRecord extends M_Office_Controller {
           $do->fb_fieldsToRender = $editopts['tableOptions'][$module]['fields'];
         }
         $tpl = Mreg::get('tpl');
-        $tpl->concat('adminTitle',' :: '.$this->moduloptions['title'].' :: '.$do->__toString());
+        $tpl->concat('adminTitle',$do->__toString().' :: '.$this->moduloptions['title']);
 
         $database = $do->database();
 

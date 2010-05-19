@@ -65,7 +65,7 @@ class M_Office extends M_Office_Controller implements iListener {
 
 		)
 		);
-		$tpl->assign('adminTitle',$this->getOption('adminTitle'));
+
 		$tpl->assign('jsdir',SITE_URL.'js/');
 
 		Mreg::set('tpl',$tpl);
@@ -220,6 +220,7 @@ class M_Office extends M_Office_Controller implements iListener {
 	public function fetch()
 	{
     $tpl = Mreg::get('tpl');
+    $tpl->concat('adminTitle',' :: '.$this->getOption('adminTitle'));
 		if(self::isAjaxRequest()) {
 			M_Office::$dsp='__defaut/ajaxindex';
       $vars = $tpl->getVars();
