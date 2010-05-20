@@ -68,7 +68,7 @@ class Config
 	 */
 	public static function loadPrefFile()
 	{
-    $file = APP_ROOT . PROJECT_NAME . '/' . self::$prefFile;
+    $file = APP_ROOT . PROJECT_NAME . '/cache/' . self::$prefFile;
     if (!file_exists($file))
     {
       // If preference file doesn't exist we will generate it
@@ -87,7 +87,7 @@ class Config
 	 */
 	public static function savePrefFile()
 	{
-    $file = APP_ROOT . PROJECT_NAME . '/' . self::$prefFile;
+    $file = APP_ROOT . PROJECT_NAME . '/cache/' . self::$prefFile;
     $prefs = DB_DataObject::factory('preferences');
     $prefs->find();
     while($prefs->fetch())
