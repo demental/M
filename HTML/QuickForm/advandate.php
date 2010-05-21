@@ -167,6 +167,10 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 						separator.hide();
 					if(value=='before' || value=='after' || value=='is') {
             $(firstD).show();
+            today = new Date();
+            $(firstD[0]).val(today.getDate());
+            $(firstD[1]).val(today.getMonth()+1);
+            $(firstD[2]).val(today.getFullYear());
 					} else {
 						if (value=='between'){
               $(firstD).show();
@@ -288,6 +292,12 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 				unset($value['unit']);
 				unset($value['nbunits']);
 				break;
+			case 'currentday':
+					$value['firstdate']=date('Y-m-d');
+					unset($value['seconddate']);
+					unset($value['unit']);
+					unset($value['nbunits']);
+					break;				
 			case 'currentmonth':
 					$value['firstdate']=date("Y-m", mktime(0, 0, 0, date('m'), 1, date('Y')));
 					unset($value['seconddate']);
