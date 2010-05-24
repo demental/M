@@ -165,12 +165,15 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
             $(unit).hide();
 						separator=\$('#".$this->_escapeString($this->getName())."_dates_separator');
 						separator.hide();
-					if(value=='before' || value=='after' || value=='is') {
-            $(firstD).show();
+				  if( value=='is' && $(\"input[name='created_at[firstselect]']\").val() != 'is' )
+				  {
             today = new Date();
             $(firstD[0]).val(today.getDate());
             $(firstD[1]).val(today.getMonth()+1);
             $(firstD[2]).val(today.getFullYear());
+				  }
+					if(value=='before' || value=='after' || value=='is') {
+            $(firstD).show();
 					} else {
 						if (value=='between'){
               $(firstD).show();
