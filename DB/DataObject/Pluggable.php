@@ -337,7 +337,9 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   function _query($string)
   {
     if(!defined('MDB2_UTF8_NAMES_SET')) {
-      $this->getDatabaseConnection()->query('set names utf8'); 
+      $db = $this->getDatabaseConnection(); 
+      $db->_doQuery('set names utf8', false, $db->getConnection(), $db->database_name);
+
       define('MDB2_UTF8_NAMES_SET',true);
     }
     return parent::_query($string);
