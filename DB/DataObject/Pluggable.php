@@ -451,18 +451,27 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     // =====================================
     public function begin()
     {
+      if($this->transactionRunning()) {
+        return;
+      }
       $this->getDatabaseConnection()->query('begin');
       $options = & PEAR::getStaticProperty('DB_DataObject', 'options');
       $options['transactionRunning'] = 1;
     }
     public function commit()
     {
+      if(!$this->transactionRunning()) {
+        return;
+      }
       $options = & PEAR::getStaticProperty('DB_DataObject', 'options');
       $this->getDatabaseConnection()->query('commit');
       $options['transactionRunning'] = 0;
     }
     public function rollback()
     {
+      if(!$this->transactionRunning()) {
+        return;
+      }      
       $options = & PEAR::getStaticProperty('DB_DataObject', 'options');
       $this->getDatabaseConnection()->query('rollback');
       $options['transactionRunning'] = 0;
