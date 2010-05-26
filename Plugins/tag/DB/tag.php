@@ -279,7 +279,8 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   }
   public function hastag($tag,$obj)
   {
-    if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus(false);}
+    if(!$tag = $this->_getTagFromTag($tag)) return $this->returnStatus(false);
+    if(!$obj->pk()) return $this->returnStatus(false);
     $dbo = DB_DataObject::factory('tag_record');
     $dbo->tag_id = $tag->id;
     $dbo->setRecord($obj);
