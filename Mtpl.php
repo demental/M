@@ -188,11 +188,12 @@ class Mtpl {
 			$this->_tplfile=$file;
 			if($tpl = $this->getTemplatePath()) {
 				ob_start();
-        if(!empty($buffer)) {
+				$bf = trim($buffer);
+        if(!empty($bf)) {
           echo $this->comment('Start include '.$file);
         }
         include($tpl);
-        if(!empty($buffer)) {
+        if(!empty($bf)) {
           echo $this->comment('End include '.$file);
         }
 				$included=true;

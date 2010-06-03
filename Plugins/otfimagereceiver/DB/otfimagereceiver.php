@@ -46,7 +46,6 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
   {
     $tbl = $this->_newImage($obj);
     $tbl->ismain=1;
-    $tbl->find(true);
     return $this->returnStatus($tbl);
   }
 	/**

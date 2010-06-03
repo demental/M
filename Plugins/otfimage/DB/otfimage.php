@@ -21,7 +21,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
 {
   public function getEvents()
   {
-    return array('getowner','attachto','setasmain','atsize','pregenerateform','postprocessform','delete');
+    return array('getowner','defaultimage','attachto','setasmain','atsize','pregenerateform','postprocessform','delete');
   }
   public function preGenerateForm(&$fb,&$obj)
 	{
@@ -181,10 +181,20 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
 	}
   protected function _getOriginalPath($obj)
   {
+    if(preg_match('`^\/`',$obj->filename)) {
+      return APP_ROOT.WEB_FOLDER.$obj->filename;
+    }
     $defs = $obj->_getPluginsDef();
     $res = IMAGES_UPLOAD_FOLDER.$defs['otfimage']['path'].'/'.$obj->filename;
 
     return $res;
+  }
+  public function defaultImage($default,$obj)
+  {
+    if(empty($obj->filename)) {
+      $obj->filename = $default;
+    }
+    return $this->returnStatus($obj);
   }
   protected function _createResized($original,$destination,$params)
   {
