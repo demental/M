@@ -88,6 +88,10 @@ class Config
 	public static function savePrefFile()
 	{
     $file = APP_ROOT . PROJECT_NAME . '/cache/' . self::$prefFile;
+    $setup = Mreg::get('setup');
+    if(is_object($setup)) {
+      $setup->setUpEnv();
+    }
     $prefs = DB_DataObject::factory('preferences');
     $prefs->find();
     while($prefs->fetch())
