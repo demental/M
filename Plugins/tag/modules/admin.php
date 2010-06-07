@@ -10,7 +10,31 @@ class Tag_Module_Admin extends Module {
   }
   public function doExecMerger()
   {
-    # code...
+    $tags = DB_DataObject::factory('tag');
+    $tags->find();
+    while($tags->fetch()) {
+      $opts[$tags->id] = $tags->strip;
+    }
+    $form = new HTML_QuickForm('mergeform','POST',M_Office::URL(),'',null,true);
+    foreach($opts as $id=>$strip) {
+      $form->addElement('checkbox','source['.$id.']',$strip);
+    }
+    foreach($opts as $id=>$strip) {
+      $form->addElement('radio','target',$strip,'',$id);
+    }
+    $form->addElement('submit','__submit__','Merge now !');
+    if($form->validate()) {
+      $values = $form->exportValues();
+      $db = $tags->getDatabaseConnection();
+      $dest = $values['target'];
+      foreach($values['source'] as $id=>$ok) {
+        $db->exec('UPDATE tag_record SET tag_id='.$db->quote($dest).' WHERE tag_id='.$db->quote($id));
+        $db->exec('UPDATE tag_history SET tag_id='.$db->quote($dest).' WHERE tag_id='.$db->quote($id));
+        $db->exec('DELETE FROM tag WHERE id='.$db->quote($id));
+      }
+      $this->redirect(M_Office::URL());
+    }
+    $this->assign('form',$form);
   }
   public function doExecArchiver()
   {
