@@ -760,13 +760,19 @@ class Module extends Maman {
 	}
 	
 	/**
-	 * 
-	 * description
+	 * Returns true if the current request is a XmlHttpRequest
 	 *
-	 * @return unknown_type
+	 * @return bool
 	 */
 	public function isAjaxRequest() {
 		return $_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest';
 	}
 
+  /**
+   * Events triggering
+   */
+  public function trigger($eventName,$params)
+  {
+    # code...
+  }
 }

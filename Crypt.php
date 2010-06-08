@@ -38,6 +38,7 @@ class M_Crypt
 		if(is_null($ky)) {
 			$ky = ENCSALT;
 		}
+    if(empty($val)) return '';
 		require_once 'Crypt/Blowfish.php';
 		$bf =& Crypt_Blowfish::factory('cbc');
 		if (PEAR::isError($bf)) {
@@ -64,6 +65,7 @@ class M_Crypt
 		if(is_null($ky)) {
 			$ky = ENCSALT;
 		}
+    if(empty($val)) return '';		
 		$val = base64_decode($val);
 		require_once 'Crypt/Blowfish.php';
 		$bf =& Crypt_Blowfish::factory('cbc');
