@@ -269,6 +269,31 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
      }
     return;
   }
+  /**
+  * Prepares a select query, given a series of tags to exclude.
+  * @param $tags mixed. Can be a tag table recordset or an array of tag records
+  * @param DB_DataObject $obj the recordset on which the select query will be executed 
+  */
+  public function getWithoutTags($tags,DB_DataObject $obj)
+  {
+    if(!is_array($tags) || $tags->N) {
+      $tags = array($tags);
+    }
+    foreach($tags as $atag) {
+      if(!$atag = $this->_getTagFromTag($atag)) {continue;}
+      $tagsdo[] = $atag;
+    }
+    foreach($tagsdo as $tag) {
+      $t = DB_DataObject::factory('tag_record');
+      $t->whereAdd('extags_'.$tag->id.'.tag_id = '.$tag->id);
+      $t->tagged_table = $obj->tableName();
+      $obj->whereAdd('extags_'.$tag->id.'.id is null');
+      $t->selectAdd();
+      $t->selectAdd('extags_'.$tag->id.'.tag_id');
+      $obj->joinAdd(clone($t),array('joinType'=>'LEFT','joinAs'=>'extags_'.$tag->id,'useWhereAsOn'=>true));
+    }
+    return;
+  }
   public function getTagged($tag)
   {
     if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus(false);}
