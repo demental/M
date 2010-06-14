@@ -236,6 +236,15 @@ class Mail extends Maman {
 		$this->fetched = 1;
 	}
 
+  /**
+   * Sets the sender email
+   * @param array (sender email address,sender email address label)
+   */
+  public function setFromEmail($from)
+  {
+    $this->setConfig('from',$from[0]);
+    $this->setConfig('fromname',$from[1]);    
+  }
 	/**
 	 *
 	 * Send mail to $mail
