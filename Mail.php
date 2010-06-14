@@ -242,8 +242,8 @@ class Mail extends Maman {
    */
   public function setFromEmail($from)
   {
-    $this->setConfig('from',$from[0]);
-    $this->setConfig('fromname',$from[1]);    
+    $this->setConfigValue('from',$from[0]);
+    $this->setConfigValue('fromname',$from[1]);    
   }
 	/**
 	 *
