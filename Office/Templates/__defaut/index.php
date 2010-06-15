@@ -13,9 +13,7 @@
             echo '<link rel="stylesheet" type="text/css" media="'.$css['media'].'" href="/css/'.$css['name'].'.css" />';
     }
     
-    foreach (Mtpl::getJS() as $js){
-            echo '<script type="text/javascript" src="'.$jsdir.$js.'.js"></script>';
-        }
+    Mtpl::printJS();
     ?>
     
 		<script type="text/javascript">
