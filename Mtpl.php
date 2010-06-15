@@ -27,6 +27,7 @@ class Mtpl {
 	private   $_currentFetch;
 	protected static $_css=array();
 	protected static $_js=array();
+	protected static $_jsgroups=array();	
 	protected static $_jsinline=array();
 	protected static $_meta=array();
 
@@ -77,6 +78,10 @@ class Mtpl {
 	{
 		return Mtpl::$_js;
 	}
+	public function getJSgroups()
+	{
+		return Mtpl::$_jsgroups;
+	}	
 	public function getJSinline($event='ready')
 	{
 		return is_array(Mtpl::$_jsinline[$event])?Mtpl::$_jsinline[$event]:array();
@@ -85,6 +90,15 @@ class Mtpl {
 	{
 	  $data = array('name'=>$css,'media'=>$media,'conditional'=>$conditional);
 		Mtpl::$_css[md5(serialize($data))] = $data;
+	}
+  public function addJSgroup($group)
+  {
+		if(is_array($group)) {
+			Mtpl::$_jsgroups = array_merge(Mtpl::$_jsgroups,$group);
+		} else {
+			Mtpl::$_jsgroups[] = $group;
+		}
+		Mtpl::$_jsgroups = array_unique(Mtpl::$_jsgroups);
 	}
 	public function addJS($js)
 	{
@@ -384,6 +398,16 @@ class Mtpl {
 	public function getJSblock()
 	{
 	  $out='';
+    $groups = Mtpl::getJSgroups();
+    if(count($groups)>0) {
+      $assetsversion = (int)file_get_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION');
+      foreach(Mtpl::getJSgroups() as $group) {
+        $jsfile = '/cache/'.$group.$assetsversion.'.js';
+          $out.='
+        <script type="text/javascript" src="'.$jsfile.'"></script>';
+      }
+    }
+
     foreach (Mtpl::getJS() as $js) {
       if(preg_match('`^https*`',$js)) {
         $jsfile = $js;
@@ -393,6 +417,7 @@ class Mtpl {
       $out.='
     <script type="text/javascript" src="'.$jsfile.'"></script>';
     }
+    
     return $out;   
 	}
 	public static function printJS()

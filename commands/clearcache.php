@@ -32,6 +32,9 @@ class Command_clearcache extends Command
   }
   public function execute($params)
   {
+    if(count($params)==0) {
+      $this->clearAllCache();
+    }
     foreach($params as $par) {
       $fun = 'clear'.$par.'cache';
       if(method_exists($this,$fun)) {
@@ -41,13 +44,14 @@ class Command_clearcache extends Command
   }
   public function clearAllCache()
   {
-    $this->clearAssetsCache();
     $this->clearConfigCache();    
     $this->clearHtmlCache();    
+    $this->clearAssetsCache();
   }
   public function clearAssetsCache()
   {
-      $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);
+    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);
+    $this->_regenerateAssets();  
   }
   public function clearConfigCache()
   {
@@ -81,5 +85,27 @@ class Command_clearcache extends Command
         $this->line(' ....... ['.$nbfiles.' files]');
       }
     }
+  }
+  protected function _regenerateAssets()
+  {
+    $this->header('Regenerating assets');
+    require_once 'M/lib/jsmin/jsmin.php';
+    $assetsversion = (int)file_get_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION');
+    $assetsversion++;
+    $folder = APP_ROOT.WEB_FOLDER.'/assets/';
+    $jsfolder = $folder.'js/';
+    foreach(FileUtils::getFolders($jsfolder) as $folder) {
+      if(preg_match('`^\.`',$folder)) continue;
+      $this->line('Regenerating '.$folder.' javascript asset');
+      $out='';
+      foreach(FileUtils::getAllFiles($jsfolder.$folder) as $file) {
+        $out.=file_get_contents($file)."\n";
+      }
+      if(MODE=='production') {
+        $out=JSmin::minify($out);
+      }
+      file_put_contents(APP_ROOT.WEB_FOLDER.'/cache/'.$folder.$assetsversion.'.js',$out);
+    }
+    file_put_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION',$assetsversion);
   }
 }
