@@ -92,6 +92,7 @@ class Command_clearcache extends Command
     require_once 'M/lib/jsmin/jsmin.php';
     $assetsversion = (int)file_get_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION');
     $assetsversion++;
+    file_put_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION',$assetsversion);
     $folder = APP_ROOT.WEB_FOLDER.'/assets/';
     $jsfolder = $folder.'js/';
     foreach(FileUtils::getFolders($jsfolder) as $folder) {
@@ -106,6 +107,5 @@ class Command_clearcache extends Command
       }
       file_put_contents(APP_ROOT.WEB_FOLDER.'/cache/'.$folder.$assetsversion.'.js',$out);
     }
-    file_put_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION',$assetsversion);
   }
 }
