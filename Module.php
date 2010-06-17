@@ -553,7 +553,7 @@ class Module extends Maman {
 			$ret = $this->_lastOutput->view->fetch($layout);
 
 		}
-    if(MODE!='developpement') $this->cache->save($ret);
+    if(MODE!='developpement' && is_a($this->cache,'Cache_Lite')) $this->cache->save($ret);
 		return $ret;
 	}
 	
