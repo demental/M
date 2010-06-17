@@ -107,23 +107,22 @@ class M_Office_EditRecord extends M_Office_Controller {
             die($form->getMessage().' '.print_r($form->getUserInfo(), true));
         }
 //        M_Office_Util::addHiddenFields($form);
-                if ($form->validate()) {
-
-                    if (PEAR::isError($ret = $form->process(array(&$formBuilder, 'processForm'), false))) {
-                        $this->append('errors',__('An error occured while updating record').' : '.$ret->getMessage().'<br />'.$do->_lastError);
-                        $this->assign('__action','error');
-                        return;
-                        } else {
-                            $values=$form->exportValues();
-                            $remove[]='editmode';
-                            if($values['__backtolist__']){$remove[]='record';}
-                            if(!key_exists('debug',$_REQUEST)){
-                              $this->say('Vous pouvez maintenant travailler sur les données connexes');                      		    
-                                M_Office_Util::refresh(M_Office_Util::getQueryParams(array(), $remove, false));
-                            }
-                        }
-                    }
-                    $this->assignRef('editForm',$form);
+        if ($form->validate()) {
+          if (PEAR::isError($ret = $form->process(array(&$formBuilder, 'processForm'), false))) {
+            $this->append('errors',__('An error occured while updating record').' : '.$ret->getMessage().'<br />'.$do->_lastError);
+            $this->assign('__action','error');
+            return;
+          } else {
+            $values=$form->exportValues();
+            $remove[]='editmode';
+            if($values['__backtolist__']){$remove[]='record';}
+            if(!key_exists('debug',$_REQUEST)){
+              $this->say('Vous pouvez maintenant travailler sur les données connexes');                      		    
+                M_Office_Util::refresh(M_Office_Util::getQueryParams(array(), $remove, false));
+            }
+          }
+        }
+        $this->assignRef('editForm',$form);
 
                     if ($linkFromTables = $this->getOption('linkFromTables', $table)) {
                         $linkTables = '';

@@ -2,7 +2,7 @@
 <?php echo $f['javascript']?>
 <?php $num=1?>
 <form<?php echo $f['attributes']?>><?php echo $f['hidden']?>
-	<table align="center" class="formtable" width="100%">              
+	<table align="center" class="<?php echo $class?$class:'formtable'?>" width="100%">              
 	<?php foreach($f['sections'] as $section):?>
   <?php $num++?>
 	<?php if(!$hideLegend && $section['header']): ?>
