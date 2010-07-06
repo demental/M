@@ -24,12 +24,13 @@ class Payment_Driver_SIS4B extends Payment
     $this->options = $options;
   }
   function fetch() {      
-    $res = '<form method="POST" action="'.$this->getOption('request_url').'" />';
+    $res = '<form id="sis4bform" method="POST" action="'.$this->getOption('request_url').'" />';
     $res.='<input type="hidden" value="'.$this->getOrderId().'" />';
     $res.='<input type="hidden" value="'.$this->getOption('merchant_id').'" />';
     $res.='<input type="hidden" value="'.T::getLocale().'" />';
-    $res.='<input type="submit" value="'.__('Valider').'"/>';
+    $res.='<a href="#">'.__('Valider').'"</a>';
     $res.='</form>';
+    $res.='<script type="text/javascript">$(function(){$("#sis4bform a").click(function(){$("#sis4bform").submit()});})</script>';
     return $res;
   }
   function setResponse($response) {
