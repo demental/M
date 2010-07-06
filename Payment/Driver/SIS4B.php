@@ -28,9 +28,8 @@ class Payment_Driver_SIS4B extends Payment
     $res.='<input type="hidden" name="var1" value="'.$this->getOrderId().'" />';
     $res.='<input type="hidden" name="var2" value="'.$this->getOption('merchant_id').'" />';
     $res.='<input type="hidden" name="var3" value="'.T::getLocale().'" />';
-    $res.='<a href="#">'.__('Valider').'"</a>';
+    $res.='<input type="submit" name="__submit__" value="'.__('Valider').'" />';
     $res.='</form>';
-    Mtpl::addJSinline('$("#sis4bform a").click(function(){$("#sis4bform").submit()});');
     return $res;
   }
   function setResponse($response) {
