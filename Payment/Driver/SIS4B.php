@@ -38,14 +38,14 @@ class Payment_Driver_SIS4B extends Payment
   }
   function getResponse() {
     $this->transcript = $_POST;
-    $this->transaction_id = $_POST['OrderId'];
+    $this->transaction_id = $_POST['pszPurchorderNum'];
     
     $this->fillFromTranscript();
   }
   function fillFromTranscript() {
-    $this->orderId = $this->transcript['OrderId'];
-    $this->transcript['response_code'] = $this->transcript['CpiResultsCode']=='0'?'00':$this->transcript['CpiResultsCode'];
-    $this->transaction_id=$this->transcript['OrderId'];
+    $this->orderId = $this->transcript['pszPurchorderNum'];
+    $this->transcript['response_code'] = $this->transcript['result']=='0'?'00':$this->transcript['result'];
+    $this->transaction_id=$this->transcript['pszPurchorderNum'];
     $this->_additionalInfo = $this->transcript['MerchantData'];
   }
   public function isSuccess()
