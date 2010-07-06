@@ -30,7 +30,7 @@ class Payment_Driver_SIS4B extends Payment
     $res.='<input type="hidden" value="'.T::getLocale().'" />';
     $res.='<a href="#">'.__('Valider').'"</a>';
     $res.='</form>';
-    $res.='<script type="text/javascript">$(function(){$("#sis4bform a").click(function(){$("#sis4bform").submit()});})</script>';
+    Mtpl::addJSinline('$("#sis4bform a").click(function(){$("#sis4bform").submit()});');
     return $res;
   }
   function setResponse($response) {
