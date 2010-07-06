@@ -18,10 +18,15 @@
 class Payment {
 	public function &factory($driver='SIPS')
 	{
+	  $driver = strtoupper($driver);
 		$className = 'Payment_Driver_'.$driver;
 		require_once 'M/Payment/Driver/'.$driver.'.php';
 		$options = PEAR::getStaticProperty('Payment_process','options');
 		return new $className($options);
+	}
+	public function setOptions($arr)
+	{
+	 $this->options = $arr;
 	}
 	public function getOption($value)
 	{
