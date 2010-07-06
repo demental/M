@@ -30,6 +30,7 @@ class Payment_Driver_SIS4B extends Payment
     $res.='<input type="hidden" value="'.T::getLocale().'" />';
     $res.='<input type="submit" value="'.__('Valider').'"/>';
     $res.='</form>';
+    return $res;
   }
   function setResponse($response) {
     $this->transcript = $response;
