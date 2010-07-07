@@ -37,8 +37,8 @@ class Payment_Driver_SIS4B extends Payment
     $this->fillFromTranscript();
   }
   function getResponse() {
-    $this->transcript = $_POST;
-    $this->transaction_id = $_POST['pszPurchorderNum'];
+    $this->transcript = $_REQUEST;
+    $this->transaction_id = $_REQUEST['pszPurchorderNum'];
     
     $this->fillFromTranscript();
   }
