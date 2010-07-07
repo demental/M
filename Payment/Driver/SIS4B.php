@@ -28,7 +28,12 @@ class Payment_Driver_SIS4B extends Payment
     $res.='<input type="hidden" name="var1" value="'.$this->getOrderId().'" />';
     $res.='<input type="hidden" name="var2" value="'.$this->getOption('merchant_id').'" />';
     $res.='<input type="hidden" name="var3" value="'.T::getLocale().'" />';
-    $res.='<input type="submit" name="__submit__" value="'.__('Valider').'" />';
+    $button = $this->getOption('button');
+    if($button) {
+      $res.=$button;
+    } else {
+      $res.='<input type="submit" name="__submit__" value="'.__('Valider').'" />';
+    }
     $res.='</form>';
     return $res;
   }
