@@ -114,7 +114,7 @@ class M_Office extends M_Office_Controller implements iListener {
 
 			  $info = array('type'=>'dyn','title'=>'Plugin');
 			  $module = $tab[1];
-      }elseif(eregi('^(.+)helper$',$_REQUEST['module'],$tab)) {
+      }elseif(preg_match('`^(.+)helper$`',$_REQUEST['module'],$tab)) {
 			  $info = array('type'=>'dyn','title'=>'Assistant '.$tab[1]);
 			  $module = $_REQUEST['module'];
       } 

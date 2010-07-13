@@ -77,13 +77,13 @@ class M_Office_ShowTable extends M_Office_Controller {
           
     if($this->getOption('view',$do->tableName())===TRUE) {
       require 'M/Office/View/DOPaging.php';
-      $dg = &new M_Office_View_DOPaging($this);
+      $dg =  new M_Office_View_DOPaging($this);
       $this->assign('__listview','dopaging');
     } else {
       $classfile = 'M/Office/View/'.$this->getOption('view',$this->module).'.php';
       $class = 'M_Office_View_'.$this->getOption('view',$this->module);
       require $classfile;
-      $dg = &new $class($this);
+      $dg =  new $class($this);
       $this->assign('__listview',$this->getOption('view',$this->module));
     }
     $tpl = Mreg::get('tpl');

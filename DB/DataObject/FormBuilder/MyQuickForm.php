@@ -25,7 +25,7 @@ class db_dataobject_formbuilder_myquickform extends db_dataobject_formbuilder_qu
   function _createFormObject($formName, $method, $action, $target)
   {
     if (!is_a($this->_form, 'html_quickform')) {
-        $this->_form =& new MyQuickForm($formName, $method, $action, $target, null, true);
+        $this->_form = new MyQuickForm($formName, $method, $action, $target, null, true);
     }
   }
 }

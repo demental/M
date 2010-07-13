@@ -212,7 +212,7 @@ class User{
 		$error="";
 		$pass=FALSE;
 		$belong="";
-		$dbdo=&DB_DataObject::factory($this->containers[$this->context]['table']);
+		$dbdo = DB_DataObject::factory($this->containers[$this->context]['table']);
     $defs = $dbdo->_getPluginsDef();
     $defs = $defs['user'];
 		$lg=$defs['login'];

@@ -139,12 +139,12 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
         $this->_elements = array();
         $separator =  '';
         $locale    =& $this->_locale[$this->_options['language']];
-        $this->_elements[0] =& new HTML_QuickForm_select('firstselect', null, $locale['firstselect']);
-    		$this->_elements[1]=& new HTML_QuickForm_date('firstdate', null, $this->_options,$this->_style[1]);
-    		$this->_elements[2]=& new HTML_QuickForm_static(null,null,'<span ' . $this->_style[2] .' id="'.$this->_escapeString($this->getName()).'_dates_separator">'.$locale['betweenseparator'].'</span>');
-    		$this->_elements[3]=& new HTML_QuickForm_date('seconddate', null, $this->_options,$this->_style[3]);
-    		$this->_elements[4]=& new HTML_QuickForm_select('nbunits', null, $this->_createOptionList(1,30,1),$this->_style[4]);
-    		$this->_elements[5]=& new HTML_QuickForm_select('unit', null, $locale['units'],$this->_style[5]);
+        $this->_elements[0] = new HTML_QuickForm_select('firstselect', null, $locale['firstselect']);
+    		$this->_elements[1] = new HTML_QuickForm_date('firstdate', null, $this->_options,$this->_style[1]);
+    		$this->_elements[2] = new HTML_QuickForm_static(null,null,'<span ' . $this->_style[2] .' id="'.$this->_escapeString($this->getName()).'_dates_separator">'.$locale['betweenseparator'].'</span>');
+    		$this->_elements[3] = new HTML_QuickForm_date('seconddate', null, $this->_options,$this->_style[3]);
+    		$this->_elements[4] = new HTML_QuickForm_select('nbunits', null, $this->_createOptionList(1,30,1),$this->_style[4]);
+    		$this->_elements[5] = new HTML_QuickForm_select('unit', null, $locale['units'],$this->_style[5]);
     }
    function toHtml()
     {
@@ -197,7 +197,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 				define('HTML_QUICKFORM_ADVANDATE_EXISTS',TRUE);
 		}
         include_once('HTML/QuickForm/Renderer/Default.php');
-        $renderer =& new HTML_QuickForm_Renderer_Default();
+        $renderer = new HTML_QuickForm_Renderer_Default();
         $renderer->setElementTemplate('{element}');
         parent::accept($renderer);        
         return "<script type=\"text/javascript\">\n//<![CDATA[\n\$(function(){" . (empty($this->_js)? '': $this->_js) . "\nadvandate_Update('".$this->_escapeString($this->getName())."');

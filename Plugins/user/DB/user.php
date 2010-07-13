@@ -92,6 +92,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
 	}
   function prepareForLogin($reminder=true,$register=true,&$obj)
   {
+    
     $defs = $obj->_getPluginsDef();
     $defs = $defs['user'];    
       $this->_addregister = $register;
@@ -136,6 +137,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
       $form->addFormRule(array($this,'validateLogin'));
   }
   function validateLogin($values) {
+
     $defs = $this->_obj->_getPluginsDef();
     $defs = $defs['user'];
     $noaccountError = $defs['noaccountError']?$defs['noaccountError']:__('Ce compte n\'existe pas');

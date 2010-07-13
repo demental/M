@@ -38,7 +38,7 @@ class myFB extends DB_DataObject_FormBuilder
 			DB_DATAOBJECT_FORMBUILDER_ERROR_UNKNOWNDRIVER);
 			return $err;
 		}
-		$fb =& new $mainClass($do, $options);
+		$fb = new $mainClass($do, $options);
 		$className = 'db_dataobject_formbuilder_'.strtolower($driver);
 
 		if (!class_exists($className)) {
@@ -67,7 +67,7 @@ class myFB extends DB_DataObject_FormBuilder
 			}
 		}
 
-		$fb->_form =& new $className($fb);
+		$fb->_form = new $className($fb);
 	  $fb->ruleViolationMessage = __('The value you have entered is not valid.');
     $fb->requiredRuleMessage = __('The following field is required.');
 

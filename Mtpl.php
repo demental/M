@@ -253,7 +253,7 @@ class Mtpl {
 	}
 	private function i($file, $params = array(),$autoglobal = false)
 	{
-		$tpl = & new Mtpl($this->_config['tplfolders']);
+		$tpl = new Mtpl($this->_config['tplfolders']);
 		if($autoglobal) {
 			$tpl->setVars($this->getVars());
 		}
