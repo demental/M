@@ -292,7 +292,7 @@ class M_Office_Actions extends M_Office_Controller {
             $next = array_shift($this->nextactions);
             M_Office_Util::postRedirect(M_Office::URL(array($this->typeval=>$next,'__actionchain'=>implode(',',$this->nextactions)),
               array('__start')
-              ),array('selected'=>$this->getSelectedIds()));
+              ),array('__actionscope'=>$this->scope,'selected'=>$this->getSelectedIds()));
           break;
           default:
             $this->say(__('Action applied successfully'));

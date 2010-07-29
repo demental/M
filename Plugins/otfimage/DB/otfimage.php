@@ -102,7 +102,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
 	{
     $defs = $obj->_getPluginsDef();
     $params = $this->parseParams($params);
-    $filename = eregi_replace('(\.[^\.]+)$','',basename($obj->filename));
+    $filename = preg_replace('`(\.[^\.]+)$`','',basename($obj->filename));
     ksort($params);
     $paramskey = $this->paramstostring($params);
 
