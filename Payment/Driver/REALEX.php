@@ -38,13 +38,13 @@ class Payment_Driver_REALEX extends Payment
   }
   function fillFromTranscript() {
     $this->orderId = $this->transcript['ORDER_ID'];
-    $this->transcript['response_code'] = $this->transcript['result'];
+    $this->transcript['response_code'] = $this->transcript['RESULT'];
     $this->transaction_id=$this->transcript['ORDER_ID'];
     $this->_additionalInfo = '';
   }
   public function isSuccess()
   {
-    return ($this->transcript['result']=='00');
+    return ($this->transcript['RESULT']=='00');
   }
   function getOrderId() {
       return $this->orderId;
