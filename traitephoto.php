@@ -103,16 +103,20 @@ class traitephoto
 		$this -> nomsouhaite="";
 		$this -> gd=1;
 		$this->server="";
-    if(extension_loaded('imagick') || @dl('imagick')) {
-		  $this->imgT=& Image_Transform::factory("Imagick3");
+/*
+    if(extension_loaded('imagick') || dl('imagick')) {
+
+		  $this->imgT= Image_Transform::factory("Imagick3");
       if(PEAR::isError($this->imgT)) {
         Log::error($this->imgT->getMessage());
       }
       Log::info('Using Imagick3 as image driver');
     } else {
-		  $this->imgT=& Image_Transform::factory("GD");		
+*/
+		  $this->imgT= Image_Transform::factory("GD");		
       Log::info('Using GD as image driver');
-    }
+//    }
+
 	}
 	function recadre(){
 		if($this->droit-$this->gauche!=0){

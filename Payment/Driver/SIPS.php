@@ -77,7 +77,9 @@ class Payment_Driver_SIPS extends Payment
     	//		$parm="$parm capture_day=";
     	//		$parm="$parm capture_mode=VALIDATION";
     	//		$parm="$parm bgcolor=";
-    	//		$parm="$parm block_align=";
+      if($this->getOption('block_align')) {
+    			$parm="$parm block_align=".$this->getOption('block_align');
+      }
     	//		$parm="$parm block_order=";
     	//		$parm="$parm textcolor=";
     	//		$parm="$parm receipt_complement=";
