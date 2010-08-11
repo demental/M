@@ -360,11 +360,17 @@ class Mtpl {
           return SITE_URL.$mainfolder.$afolder.'/'.$filename;
         }
       }
+      // No image found, so we return a default path to handle the "no image" in the app.
+      return SITE_URL.$mainfolder.$defaultfolder.$filename;
     }
 	}
 	public function localeimg($filename,$mainfolder = 'images/locale/')
 	{
-    return $this->img($filename,array(T::getLang(),substr(T::getLang(),0,2)),$mainfolder);
+    if (T::getLang() != Config::get('defaultLang')) {
+      return $this->img($filename,array(T::getLang(),substr(T::getLang(),0,2),Config::get('defaultLang')),$mainfolder);
+    } else {
+      return $this->img($filename,array(T::getLang(),substr(T::getLang(),0,2)),$mainfolder);
+    }
 	}
 	public function altlocaleimg($filename, $altfolder = NULL, $mainfolder = 'images/locale/')
 	{
