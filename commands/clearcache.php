@@ -27,7 +27,8 @@ class Command_clearcache extends Command
     $this->line('Either one or both of these parameters can be passed :');
     $this->line('html: removes all caches in each app cache dir');
     $this->line('config: removes all caches in each app cache/config dir');    
-    $this->line('assets: removes all caches in documentRoot cache dir');
+    $this->line('assets: removes all caches FILES in documentRoot cache dir');
+    $this->line('web: removes all caches FILES AND FOLDERS in documentRoot cache and cache dir');
     $this->line('all: removes html, config and assets cache');
   }
   public function execute($params)
@@ -46,11 +47,18 @@ class Command_clearcache extends Command
   {
     $this->clearConfigCache();    
     $this->clearHtmlCache();    
-    $this->clearAssetsCache();
+    $this->clearWebCache();    
   }
   public function clearAssetsCache()
   {
+    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',false);
+    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',false);    
+    $this->_regenerateAssets();  
+  }
+  public function clearWebCache()
+  {
     $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);
+    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);    
     $this->_regenerateAssets();  
   }
   public function clearConfigCache()

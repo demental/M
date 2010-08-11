@@ -680,7 +680,7 @@ class Module extends Maman {
 	 * @return unknown_type
 	 */
 	public function redirect($modulaction,$vars = null,$lang=null,$secure=null,$status = '302') {
-		if(eregi('^(http|https)://',$modulaction)) {
+		if(preg_match('`^(http|https)://`i',$modulaction)) {
 			header('location:'.$modulaction,true,$status);
 			exit;
 		}
