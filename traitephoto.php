@@ -103,7 +103,7 @@ class traitephoto
 		$this -> nomsouhaite="";
 		$this -> gd=1;
 		$this->server="";
-/*
+
     if(extension_loaded('imagick') || dl('imagick')) {
 
 		  $this->imgT= Image_Transform::factory("Imagick3");
@@ -112,7 +112,7 @@ class traitephoto
       }
       Log::info('Using Imagick3 as image driver');
     } else {
-*/
+
 		  $this->imgT= Image_Transform::factory("GD");		
       Log::info('Using GD as image driver');
 //    }

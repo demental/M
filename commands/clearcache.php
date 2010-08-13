@@ -51,14 +51,12 @@ class Command_clearcache extends Command
   }
   public function clearAssetsCache()
   {
-    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',false);
-    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',false);    
+    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',false);   
     $this->_regenerateAssets();  
   }
   public function clearWebCache()
   {
-    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);
-    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);    
+    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);   
     $this->_regenerateAssets();  
   }
   public function clearConfigCache()
