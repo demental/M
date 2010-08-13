@@ -115,7 +115,7 @@ class traitephoto
 
 		  $this->imgT= Image_Transform::factory("GD");		
       Log::info('Using GD as image driver');
-//    }
+    }
 
 	}
 	function recadre(){
