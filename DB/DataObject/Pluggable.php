@@ -26,9 +26,7 @@ if(!defined('PLUGIN_DIR')) {
 }
 
 if(!function_exists('__')){
-	function __($data){
-		return $data;
-	}
+	require_once 'M/T.php';
 }
 
 
