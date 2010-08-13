@@ -105,6 +105,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    }   
   protected function _addTag($tag, $byhuman, DB_DataObject $obj)
   {
+    if(!$obj->pk()) return $this->returnStatus($obj);
     if(!$existingtag = $this->_getTagFromTag($tag)) {
       $newtag = DB_DataObject::factory('tag');
       $newtag->strip = $tag;
@@ -197,6 +198,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   }  
   protected function _removeTag($tag, $byhuman, DB_DataObject $obj)
   {
+    if(!$obj->pk()) return $this->returnStatus($obj);
     if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus($obj);} 
     if($this->validateTriggerTag($tag,'remove',$byhuman,$obj)) {
       $dbo = DB_DataObject::factory('tag_record');
