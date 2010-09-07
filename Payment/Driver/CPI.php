@@ -19,6 +19,8 @@
 
 class Payment_Driver_CPI extends Payment
 {
+  protected $_mode = 'cb';
+  
   function __construct($options)
   {
     $this->options = $options;

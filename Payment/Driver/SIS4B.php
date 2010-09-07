@@ -19,6 +19,8 @@
 
 class Payment_Driver_SIS4B extends Payment
 {
+  protected $_mode = 'cb';
+  
   function __construct($options)
   {
     $this->options = $options;

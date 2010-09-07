@@ -66,4 +66,10 @@ class Payment {
 		$mail->sendTo('demental@sat2way.com');
 		return;
 	}
+  public function getMode() {
+    return $this->_mode;
+  }
+  public function setMode($mode) {
+    $this->_mode = $mode;
+  }
 }

@@ -2,7 +2,7 @@
 /**
 * M PHP Framework
 * @package      M
-* @subpackage   Payment_Driver_CPI
+* @subpackage   Payment_Driver_REALEX
 */
 /**
 * M PHP Framework
@@ -19,6 +19,8 @@
 
 class Payment_Driver_REALEX extends Payment
 {
+  protected $_mode = 'realex';
+  
   function __construct($options)
   {
     $this->options = $options;

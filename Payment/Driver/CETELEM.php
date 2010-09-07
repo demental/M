@@ -19,6 +19,8 @@
 
 class Payment_Driver_Cetelem extends Payment
 {
+  protected $_mode = 'cetelem';
+  
   function __construct($options)
   {
     $this->options = $options;

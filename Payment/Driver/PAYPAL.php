@@ -16,6 +16,8 @@
 
 class Payment_Driver_PAYPAL extends Payment
 {
+  protected $_mode = 'paypal';
+  
   function __construct($options)
   {
     $this->options = $options;
