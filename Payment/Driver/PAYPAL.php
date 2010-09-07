@@ -63,6 +63,6 @@ class Payment_Driver_PAYPAL extends Payment
     $this->transaction_id=$id;
   }
   public function getResponseCode() {
-    return $this->transcript['ACK'];
+    return ($this->transcript['ACK'] == 'Success') ? '00' : $this->transcript['ACK'];
   }
 }
