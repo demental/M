@@ -171,7 +171,7 @@ class M_Office_ajaxFromTable extends M_Office_Controller
         }
         $form = & new HTML_QuickForm($formname,'POST',M_Office_Util::getQueryParams(array('module'=>$this->table,'filterField'=>$this->field,'filterValue'=>$this->value,$formaction=>$formactionval,'ajaxfromtable'=>1),array_keys($_REQUEST),false));
         $form->updateAttributes(array('class'=>$formclass,'target'=>$update));
-        Mtpl::addJS('jquery.forms');
+        Mtpl::addJS('jquery.form');
         $record->fb_requiredRuleMessage = __('The field "%s" is required');
         $record->fb_ruleViolationMessage = __('The field "%s" is not valid');
         $record->fb_formAddHeader = true;
