@@ -72,4 +72,7 @@ class Payment {
   public function setMode($mode) {
     $this->_mode = $mode;
   }
+  public function getResponseCode() {
+    return $this->transcript['response_code'];
+  }
 }

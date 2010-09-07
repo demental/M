@@ -27,13 +27,13 @@ class Payment_Driver_PAYPAL extends Payment
   }
   function setResponse($response) {
     $this->transcript = $response;
-    // $this->fillFromTranscript();
+    $this->fillFromTranscript();
   }
   function getResponse() {
     # ...
   }
   function fillFromTranscript() {
-    // $this->transaction_id = $this->transcript['transaction_id'];
+    $this->transcript['response_code'] = $this->transcript['ACK'];
   }
   public function isSuccess()
   {
@@ -61,5 +61,8 @@ class Payment_Driver_PAYPAL extends Payment
   public function setTransactionId($id)
   {
     $this->transaction_id=$id;
+  }
+  public function getResponseCode() {
+    return $this->transcript['ACK'];
   }
 }
