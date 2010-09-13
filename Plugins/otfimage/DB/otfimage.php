@@ -114,8 +114,12 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
                 .$cachename;
 
     $cacheurl = '/'.$cachename;
-    if(!file_exists($cachefile) && file_exists($this->_getOriginalPath($obj)) && is_file($this->_getOriginalPath($obj))) {
-      $this->_createResized($this->_getOriginalPath($obj),$cachefile,$params);
+    if(file_exists($this->_getOriginalPath($obj)) && is_file($this->_getOriginalPath($obj))) {
+      if (!file_exists($cachefile)) {
+        $this->_createResized($this->_getOriginalPath($obj),$cachefile,$params);
+      }
+    } else {
+      return $this->returnStatus(null);
     }
     return $this->returnStatus($cacheurl);
   }
