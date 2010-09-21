@@ -96,7 +96,10 @@ class Config
     $prefs->find();
     while($prefs->fetch())
     {
-      if ($prefs->type == 'array')
+      if ($prefs->type == 'hidden')
+      {
+        self::$prefArr[$prefs->var] = unserialize($prefs->val);
+      } elseif ($prefs->type == 'array')
       {
 				$temp = explode("\n",$prefs->val);
         $temp3 = array();

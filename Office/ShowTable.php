@@ -45,8 +45,8 @@ class M_Office_ShowTable extends M_Office_Controller {
     }
     $do =& $this->doForTable($this->module);
     if($this->getOption('search',$module)){
-        $doSearch =& $this->doForTable($this->module);
-        $searchForm=& M_Office_Util::getSearchForm($doSearch);
+        $doSearch = $this->doForTable($this->module);
+        $searchForm = M_Office_Util::getSearchForm($doSearch);
         $this->assign('search',$searchForm);
         if (isset($_REQUEST['searchSubmit'])) {
           $do = $this->getSearchDO($searchForm);
