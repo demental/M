@@ -414,9 +414,9 @@ class Module extends Maman {
 		$this->cache = new Cache_Lite($options);
 
 		if($cache_id = $this->getCacheId($action)) {
-		        Log::info($action.' is cachable');
+		        Log::info($action.' is cachable with cacheId = '.$cache_id);
 			if($this->_cachedData = $this->cache->get($cache_id.'_'.($this->isAjaxRequest()?'ajax':'')))  {
-        Log::info($action.' is retreived from cache');
+        Log::info($action.' is retreived from cache with cacheId = '.$cache_id);
 				return;
 			}
 		}
