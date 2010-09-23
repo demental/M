@@ -22,7 +22,8 @@ class Command {
   protected static $options = array(
     'noheader'=>false,
     'noninteractive'=>false,
-    'silent'=>false
+    'silent'=>false,
+    'assetsurlrewriting'=>false,
   );
   /**
    * Command interface core

@@ -111,7 +111,8 @@ class Command_clearcache extends Command
       if(MODE=='production') {
         $out=JSmin::minify($out);
       }
-      file_put_contents(APP_ROOT.WEB_FOLDER.'/cache/'.$folder.$assetsversion.'.js',$out);
+      $version = (self::getOption('assetsurlrewriting')) ? '' : $assetsversion;
+      file_put_contents(APP_ROOT.WEB_FOLDER.'/cache/'.$folder.$version.'.js',$out);
     }
   }
 }
