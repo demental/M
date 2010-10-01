@@ -50,7 +50,7 @@
 			<?php echo $element['html']?>
 		<?php else:?>
 		<tr <?php if($hidesection):?>class="sectionline section_<?php echo $num?>"<?php endif?> id="formrow_<?php echo $element['name']?$element['name']:$k?>">
-			<td align="right" valign="top"  <?php if($nowrap):?>nowrap="nowrap"<?php else:?>width="<?php echo $labelWidth?$labelWidth:'120px'?><?php endif?> <?php if ($element['error']):?>class="formLabelError"<?php else:?>class="formLabel"<?php endif?>><?php echo $element['label']?>
+			<td align="right" valign="top"  <?php if($nowrap):?>nowrap="nowrap"<?php else:?>width="<?php echo $labelWidth?$labelWidth:'120px'?>"<?php endif?> <?php if ($element['error']):?>class="formLabelError"<?php else:?>class="formLabel"<?php endif?>><?php echo $element['label']?>
 				<?php if ($element['required']):?><span class="asterix">*</span><?php endif?>
 				<?php if (!empty($element['label_help'])):?>
 				<p class="label_help"><?php echo $element['label_help']?></p>
