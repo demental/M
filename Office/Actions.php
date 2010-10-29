@@ -69,6 +69,7 @@ class M_Office_Actions extends M_Office_Controller {
       $this->typeval = 'doSingleAction';
       break;
     }
+    
     $this->do = $this->actiondo = $do;
     $this->do->selectAdd();
     $this->do->selectAdd($this->do->getDatabaseConnection()->quoteIdentifier($this->do->tableName()).'.*');
@@ -207,7 +208,7 @@ class M_Office_Actions extends M_Office_Controller {
           $selected = clone($this->do);
           $selected->selectAdd();
           $selected->selectAdd($this->do->tableName().'.*');
-          $selected->orderBy($this->do->_query['order_by']);
+
         break;
         case 'selected':
           $db = $this->do->getDatabaseConnection();      
