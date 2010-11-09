@@ -423,12 +423,12 @@ class Module extends Maman {
     Log::info($action.' is not in cache');
     //	Mreg::get('setup')->setUpEnv();
 		// !gestion template_dir rajouté dans le setup coupons
-		if (Mreg::get('setup')->setUpEnv()!==false)
-		{
-      $optionsEnv = & PEAR :: getStaticProperty('Module', 'global');
-      $optionsThis = $this->config;
-      $diff = array_diff( $optionsEnv['template_dir'], $optionsThis['all']['template_dir']);
-
+		Mreg::get('setup')->setUpEnv();
+    $optionsEnv = & PEAR :: getStaticProperty('Module', 'global');
+    $optionsThis = $this->config;
+    $diff = array_diff( $optionsEnv['template_dir'], $optionsThis['all']['template_dir']);
+    if (is_array($diff))
+    {
       foreach($diff as $k => $v)
       {
         $this->view->addPath($v,'after');
