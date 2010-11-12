@@ -68,16 +68,7 @@ class Module_home extends Module {
     ) ENGINE = MYISAM ;";
     $op = PEAR::getStaticProperty('m_office', 'options');
     $mods = $op['modules'];
-    foreach($mods as $mod) {
-      if($mod['type']=='db') {
-        $t = DB_DataObject::factory($mod['table']);
-        $t->whereAdd('0=1');
-        $t->find();
-        $db = $t->getDatabaseConnection();
-        break;
-      }
-    }
-    $db->query($q);
+    MDB2::singleton(DB_URI)->query($q);
     $dash = DB_DataObject::factory('blackboard');
     if(PEAR::isError($dash)) {
       M_Office_Util::refresh(M_Office_Util::getQueryParams(array('regenerate'=>1),array_keys($_REQUEST)));

@@ -112,7 +112,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       $newtag->insert();
       $tag = $newtag;
     } else {
-      $tag = $existingtag;
+      return $this->returnStatus($obj);
     }
     if($this->validateTriggerTag($tag,'add',$byhuman,$obj)) {
       $dbo = DB_DataObject::factory('tag_record');
@@ -206,8 +206,8 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       $dbo->setRecord($obj);
       if($dbo->find(true)) {
         $dbo->delete();
+        $this->triggerTag($tag,'remove',$obj);
       }
-      $this->triggerTag($tag,'remove',$obj);
     }
     return $this->returnStatus($obj);
   }

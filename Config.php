@@ -106,7 +106,11 @@ class Config
 				foreach($temp as $k=>$v)
 				{
 					$temp2 = explode(':',$v);
-					$temp3[trim($temp2[0])] = trim($temp2[1]);
+					if(empty($temp2[1])) {
+					  $temp3[] = trim($temp2[0]);
+					} else {
+					  $temp3[trim($temp2[0])] = trim($temp2[1]);
+          }
 				}
 				self::$prefArr[$prefs->var] = $temp3;
       }
