@@ -16,9 +16,9 @@
           
 		<?php break;case ($element['type']=='submit' || $element['type']=='reset'):?>
         <?php if (!$f['frozen']):?>
-				<div class="submitbutton"><?php echo $element['label_prefix']?><?php echo $element['html']?>
+<?php echo $element['label_prefix']?><?php echo $element['html']?>
 				    <?php echo $element['label_postfix']?>
-				</div>
+
         <?php endif?>
 		<?php break;case ($element['type']=='checkbox'):?>
     <?php $this->i('_formelements/checkbox',array('elem'=>$element))?>

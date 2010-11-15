@@ -1,8 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="<?php echo T::getLocale()?>">
 	<head>
-	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	  <meta charset="utf-8" />
 	  <title><?php echo $adminTitle ?></title>
   	<link rel="stylesheet" type="text/css" media="screen,print" href="/css/reset-fonts-grids.css" />
 
@@ -17,6 +16,7 @@
     ?>
     
 		<script type="text/javascript">
+		/*<![CDATA[*/
 		<?php
 		if(is_array($javascript)){
 				foreach($javascript as $inst) {
@@ -65,12 +65,13 @@ foreach(Mtpl::getJSinline('ready') as $inst){
 			';
 		}		
 ?>
+/* ]]>*/
 		</script>
 	</head>
 	<body>
 	  <div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
       <div id="indicator" style="position:absolute; left:50%;top:50%;display:none;z-index:1000;background:#fff;border:1px solid #000">
-        <img src="images/indicator.gif" />Requête en cours...
+        <img src="images/indicator.gif" alt="indicator"/><?php _e('Requête en cours')?>...
       </div>
 		<div id="doc3">
       <div id="hd">
@@ -92,7 +93,7 @@ foreach(Mtpl::getJSinline('ready') as $inst){
                 			    <?php if($username):?>
                 			      <div class="logout">
                 			        <?php $this->i('profile')?>
-                			      <a href="<?php echo ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT?>?logout=1"><?echo __('Logout').' '.$username?></a>
+                			      <a href="<?php echo ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT?>?logout=1"><?php echo __('Logout %s',array($username))?></a>
                 			      </div>
                 			    <?php endif?>  
                 <?php echo $choosetable?>

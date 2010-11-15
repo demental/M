@@ -2,7 +2,7 @@
 <?php echo $f['javascript']?>
 <?php $num=1?>
 <form<?php echo $f['attributes']?>><?php echo $f['hidden']?>
-	<table align="center" class="<?php echo $class?$class:'formtable'?>" width="100%">              
+	<table class="<?php echo $class?$class:'formtable'?>">              
 	<?php foreach($f['sections'] as $section):?>
   <?php $num++?>
 	<?php if(!$hideLegend && $section['header']): ?>
@@ -11,14 +11,14 @@
 	<?php foreach($section['elements'] as $k=>$element):?>
 		<?php if($endform==1):?>
 		<?php $endform=0 ?>
-		<table class="formtable" cellspacing="4" width="100%">              
+		<table class="formtable" cellspacing="4">              
         <?php endif?>
         <?php if ($element['style']):?>
          	<?php $this->i('formelements/'.$element['style'].'.php',array('element'=>$element))?>
 		<?php elseif($element['type']=='submit' || $element['type']=='reset' && !$f['frozen']):?>
     	<tr>
-            <td colspan="2"><h2>
-				<div class="submitbutton"><?php echo $element['label_prefix']?><?php echo $element['html']?>
+            <td colspan="2"><h2 class="submitbutton">
+            <?php echo $element['label_prefix']?><?php echo $element['html']?>
 				    <?php echo $element['label_postfix']?><?php if($cancel):?>
 				      <?php if($cancelurl):?>
   				      <input type="button" name="cancelbutton" onclick="javascript:top.location.href='<?php echo $cancelurl?>'" value="Annuler" />
@@ -26,7 +26,6 @@
 				      <input type="button" name="cancelbutton" onclick="javascript:history.go(-1)" value="Annuler" />
 				      <?php endif?>
               <?php endif?>
-				</div>
 				</h2>
 			</td>
 		</tr>
@@ -50,7 +49,7 @@
 			<?php echo $element['html']?>
 		<?php else:?>
 		<tr <?php if($hidesection):?>class="sectionline section_<?php echo $num?>"<?php endif?> id="formrow_<?php echo $element['name']?$element['name']:$k?>">
-			<td align="right" valign="top"  <?php if($nowrap):?>nowrap="nowrap"<?php else:?>width="<?php echo $labelWidth?$labelWidth:'120px'?>"<?php endif?> <?php if ($element['error']):?>class="formLabelError"<?php else:?>class="formLabel"<?php endif?>><?php echo $element['label']?>
+			<td  <?php if($nowrap):?>nowrap="nowrap"<?php elseif($labelWidth):?>style="width:<?php echo $labelWidth?>"<?php endif?> <?php if ($element['error']):?>class="formLabelError"<?php else:?>class="formLabel"<?php endif?>><?php echo $element['label']?>
 				<?php if ($element['required']):?><span class="asterix">*</span><?php endif?>
 				<?php if (!empty($element['label_help'])):?>
 				<p class="label_help"><?php echo $element['label_help']?></p>
@@ -62,7 +61,7 @@
 				<span class="formError"><?php echo $element['error']?></span><br />
 					<?php endif?>
 					<?php foreach ($element['elements'] as $selt):?>
-                <table style="display:inline;float:left;margin:0;padding:0;margin-right:2px" class="groupelement" cellpadding="0" cellspacing="0">
+                <table class="groupelement">
 					<tr><td>
               			<?php echo $selt['html']?>
 						<?php if(!empty($selt['label_unit'])):?>
