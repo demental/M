@@ -102,7 +102,7 @@ class M_Office_Util {
    * @param $remove     array  indexed array of variable names to be excluded from the uri
    * @param $entities   bool   should the query be HTML-escaped ?
    */
-  public static function getQueryParams($params = array(), $remove = array(), $entities = true) {
+  public static function getQueryParams($params = array(), $remove = array(), $entities = false) {
       $ret = '';
       $arr = array();
       if (!isset($params['regenerate'])) {
