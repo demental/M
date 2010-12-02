@@ -101,6 +101,7 @@ class Module extends Maman {
     Log::info('Module::factory '.$modulename);
     $plugmod = explode(':',$modulename);
     $moduleOpt = PEAR::getStaticProperty('Module','global');
+    $optionsGroup = PEAR::getStaticProperty('Options','group');
 
     if($plugmod[1]) {
       Log::info('Calling plugin module '.$modulename);
@@ -132,7 +133,7 @@ class Module extends Maman {
 		$module = new $className($modulename);
 		$module->_path=$path;
 		Log::info('Generating options');
-    $options = $module->generateOptions($moduleOpt);
+    $options = $module->generateOptions($moduleOpt, $optionsGroup);
 		$module->setConfig($options);
 		$module->setParams($params);
 		$module->startView();
@@ -150,7 +151,7 @@ class Module extends Maman {
 	 *
 	 * @return unknown_type
 	 */
-	protected function generateOptions($opt)
+	protected function generateOptions($opt, $group = NULL)
 	{
 		$opt = array('all'=>$opt);
 		$options = array(
@@ -160,9 +161,11 @@ class Module extends Maman {
         'fileNameProtection'=>false,
         'automaticSerialization'=>true
 		);
+		
     Log::info('preparing options');
 		$optcache = new Cache_Lite($options);
-		if(!$moduleopt = $optcache->get(get_class($this)))  {
+		if (empty($group)) { $group = 'default'; }
+		if( !$moduleopt = $optcache->get(get_class($this), $group) )  {
       Log::info('no cache for options, live generating');
 			foreach($this->_path as $path) {
 				if (@include $path.'/'.$this->_modulename.'.conf.php')
@@ -174,9 +177,14 @@ class Module extends Maman {
 				} else {
 					$moduleopt=$opt;
 				}
-            Log::info('no cache for options, live generating');
+        Log::info('no cache for options, live generating');
 	 	  }
-	    if(MODE!='developpement')	$optcache->save($moduleopt);
+	    if(MODE!='developpement')
+	    {
+	     	$ret = $optcache->save($moduleopt);
+	     	Log::info('group = '.$group);
+	     	if ($ret) {Log::info('options saved');}
+	    }
 		}
     Log::info('options prepared');
 		return $moduleopt;
