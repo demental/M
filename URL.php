@@ -168,6 +168,8 @@ class URL {
 	{
 	  if(is_array($arr)) {
 	    $arr = array_merge($_GET,$arr);
+	  } else {
+	    $arr = $_GET;
 	  }
 		return self::get($_GET['module'].'/'.$_GET['action'],$arr);
 	}
