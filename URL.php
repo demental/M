@@ -164,9 +164,12 @@ class URL {
 	 * @return string generated url
 	 */
 
-	public static function getself()
+	public static function getself($arr = null)
 	{
-		return self::get($_GET['module'].'/'.$_GET['action'],$_GET);
+	  if(is_array($arr)) {
+	    $arr = array_merge($_GET,$arr);
+	  }
+		return self::get($_GET['module'].'/'.$_GET['action'],$arr);
 	}
 	/**
 	 * generates and echoes the currently requested URL

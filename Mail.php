@@ -340,10 +340,13 @@ class Mail extends Maman {
 			$note="-------Note : Test mode enabled, this message should have been sent to ".$to."---------\r\n";
 			$to=$only;
 		}
+
 		if($this->getConfig('sendmail')){
 			$mail = new phpmailer();
 			$mail->PluginDir='M/lib/phpmailer/';
+
 			if($this->getConfig('smtp')) {
+
 				$mail->isSMTP();
 				$mail->Host=$this->getConfig('smtphost');
 			}
