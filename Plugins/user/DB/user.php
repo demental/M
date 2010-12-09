@@ -30,7 +30,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
   protected $_usercontext;
   public function getEvents()
   {
-    return array('pregenerateform','postgenerateform','postgeneratelogin','preprocessform','prepareforlogin');
+    return array('pregenerateform','postgenerateform','postgeneratelogin','preprocessform','prepareforlogin','encrypt','clearpwd','generatepassword');
   }  
 	public function preGenerateForm(&$fb,&$obj)
 	{
@@ -88,6 +88,8 @@ class DB_DataObject_Plugin_User extends M_Plugin
 	        }
 	    } elseif($defs['passEncryption']) {
 	        $values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix] = call_user_func($defs['passEncryption'],$values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix]);
+	    } else {
+	      $values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix] = $this->encrype($values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix],$this->_obj);
 	    }
 	}
   function prepareForLogin($reminder=true,$register=true,&$obj)
@@ -181,5 +183,37 @@ class DB_DataObject_Plugin_User extends M_Plugin
       $elt = HTML_QuickForm::createElement('static','remindertext','',__('To retreive your password, enter your email address in the field below, then you will be sent your new password.'));
       $form->insertElementBefore($elt,$fb->elementNamePrefix.$defs['email'].$fb->elementNamePostfix);
   }
+  /**
+   * Encrypts obj's password field
+   * @param string
+   */
+  public function encrypt($pwd,$obj)
+  {
+    return M_Crypt::encrypt($pwd,ENCSALT);
+  }
+
+  /**
+   * Returns unencrypted password
+   * @return string
+   */
+  function clearPwd($obj) {
+    $defs = $obj->_getPluginsDef(); 
+    $field = $defs['user']['pwd'];
+    return M_Crypt::decrypt($obj->{$field},ENCSALT);
+  }
+
+  /**
+   * Generates a new random password
+   * @return string clear password
+   */
+  public function generatePassword($obj) {
+    $defs = $obj->_getPluginsDef(); 
+    $field = $defs['user']['pwd'];
+    require_once 'Text/Password.php';
+    $pwd = Text_Password::create(8);
+    $obj->{$field} = $this->encrypt($pwd,$obj);
+    return $pwd;
+  }
+  
 
 }
