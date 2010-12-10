@@ -230,10 +230,10 @@ class User{
 		if(!$dbdo->find(TRUE)){
 			$error=ERROR_NO_USER;
 		} else {
+      
 			if($callback = $defs['passEncryption']) {
 				$pwd = call_user_func($callback,$pwd);
 			} else {
-			  
 			  $pwd = $dbdo->encrypt($pwd);
 			}
 			if($dbdo->{$defs['pwd']}!=$pwd){

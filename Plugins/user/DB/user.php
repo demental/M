@@ -189,7 +189,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
    */
   public function encrypt($pwd,$obj)
   {
-    return M_Crypt::encrypt($pwd,ENCSALT);
+    return $this->returnStatus(M_Crypt::encrypt($pwd,ENCSALT));
   }
 
   /**
@@ -211,7 +211,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
     $field = $defs['user']['pwd'];
     require_once 'Text/Password.php';
     $pwd = Text_Password::create(8);
-    $obj->{$field} = $this->encrypt($pwd,$obj);
+    $obj->{$field} = $this->encrypt($pwd,$obj)->return;
     return $pwd;
   }
   
