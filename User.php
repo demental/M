@@ -233,6 +233,7 @@ class User{
 			if($callback = $defs['passEncryption']) {
 				$pwd = call_user_func($callback,$pwd);
 			} else {
+			  
 			  $pwd = $dbdo->encrypt($pwd);
 			}
 			if($dbdo->{$defs['pwd']}!=$pwd){
