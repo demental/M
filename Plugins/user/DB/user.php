@@ -199,7 +199,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
   function clearPwd($obj) {
     $defs = $obj->_getPluginsDef(); 
     $field = $defs['user']['pwd'];
-    return M_Crypt::decrypt($obj->{$field},ENCSALT);
+    return $this->returnStatus(M_Crypt::decrypt($obj->{$field},ENCSALT));
   }
 
   /**
