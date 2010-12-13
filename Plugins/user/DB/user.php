@@ -89,7 +89,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
 	    } elseif($defs['passEncryption']) {
 	        $values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix] = call_user_func($defs['passEncryption'],$values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix]);
 	    } else {
-	      $values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix] = $this->encrypt($values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix],$this->_obj);
+	      $values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix] = $this->encrypt($values[$fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix],$this->_obj)->return;
 	    }
 	}
   function prepareForLogin($reminder=true,$register=true,&$obj)
