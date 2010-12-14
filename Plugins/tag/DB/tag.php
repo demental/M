@@ -19,7 +19,9 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getEvents()
   {
-    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','postdelete','hastag','gettaglasthistory','gettags');
+    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','postdelete','hastag','gettaglasthistory','gettags',
+      'frontendsearch',
+    'postpreparesearchform');
   }
   
   /**
@@ -60,7 +62,16 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       }
     }
   }
-  
+  public function postPrepareSearchform($form,$fb,DB_DataObject $obj)
+  {
+    $obj->addTagsToForm($form,'_tags');
+  }
+  public function frontEndSearch($values, DB_DataObject $obj)
+  {
+    $values_tags = (is_array($values['_tags'])) ? array_keys($values['_tags']) : array();
+    $values_exc__tags = (is_array($values['exc__tags'])) ? array_keys($values['exc__tags']) : array();
+	  $obj->searchByTags($values_tags, $values_exc__tags);
+  }
   /**
    * Prepares query to retreive filtering by tags
    * @param array(tagID1,tagID2,....tagIDn) tags to include
