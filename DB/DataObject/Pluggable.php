@@ -227,7 +227,10 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     return parent::__call($method,$args);
   }
 ###################### End plugin management #######################
-
+  public function frontendsearch($values)
+  {
+    
+  }
   /**
    * Adds ability to get records by an array of primary keys
    */
@@ -266,6 +269,10 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 // =======================================================
 // = DB_DataObject methods override - events triggered   =
 // =======================================================    
+  public function frontEndSearch($values)
+  {
+    # code...
+  }
   function postPrepareSearchForm(&$form,&$fb){
 	  $this->trigger('postPrepareSearchForm',array(&$form,&$fb));
   }
