@@ -266,10 +266,6 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 // =======================================================
 // = DB_DataObject methods override - events triggered   =
 // =======================================================    
-  public function frontEndSearch($values)
-  {
-    $this->trigger('frontEndSearch',array(&$values));
-  }
 
   function postPrepareSearchForm(&$form,&$fb){
 	  $this->trigger('postPrepareSearchForm',array(&$form,&$fb));
