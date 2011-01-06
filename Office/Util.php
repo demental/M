@@ -289,6 +289,11 @@ class M_Office_Util {
   public static function &doFortable($table) {      
     $do = DB_DataObject::factory($table);
   	$viewOptions = PEAR::getStaticProperty('m_office_showtable', 'options');
+  	$filterMethod = $viewOptions['tableOptions'][$table]['method'];
+  	if($filterMethod) {
+  	  call_user_func(array($do,$filterMethod));
+  	}
+  	
   	if($viewOptions['tableOptions'][$table]['filters']){
       foreach($viewOptions['tableOptions'][$table]['filters'] as $filter) {
         if(is_array($filter)) {
@@ -319,10 +324,15 @@ class M_Office_Util {
     			$p->userIsInAdminMode(User::getInstance('office')->getProperty('level'));
     		}
     	}
+    	$filterMethod = $mod['method'];
+    	if($filterMethod) {
+    	  call_user_func(array($do,$filterMethod));
+    	}
       $filterArray = $mod['filters'];
       if(!is_array($filterArray)) {
         $filterArray = array();
       }
+      
       $shT = PEAR::getStaticProperty('m_office_showtable','options');
       if(!is_array($shT['tableOptions'][$module]['filters'])) {
         $shT['tableOptions'][$module]['filters']=array();
