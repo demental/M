@@ -320,7 +320,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		    return false;
 		    break;
 		  default:  
-      if(parent::update($do)!==false) {
+      if($this->_update($do)!==false) {
     		$this->trigger('postupdate');
         return true;
       }
@@ -485,4 +485,191 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       $options = PEAR::getStaticProperty('DB_DataObject', 'options');
       return $options['transactionRunning']==1?true:false;
     }
+    
+    /**
+     * Updates  current objects variables into the database
+     * DB_DataObject fix to allow update of objects that were fetched from a join query.
+     * 
+     */
+    function _update($dataObject = false)
+    {
+        global $_DB_DATAOBJECT;
+        // connect will load the config!
+        $this->_connect();
+        
+        
+        $original_query =  $this->_query;
+        
+        $items =  isset($_DB_DATAOBJECT['INI'][$this->_database][$this->__table]) ?   
+            $_DB_DATAOBJECT['INI'][$this->_database][$this->__table] : $this->table();
+        
+        // only apply update against sequence key if it is set?????
+        
+        $seq    = $this->sequenceKey();
+        if ($seq[0] !== false) {
+            $keys = array($seq[0]);
+            if (!isset($this->{$keys[0]}) && $dataObject !== true) {
+                $this->raiseError("update: trying to perform an update without 
+                        the key set, and argument to update is not 
+                        DB_DATAOBJECT_WHEREADD_ONLY
+                    ", DB_DATAOBJECT_ERROR_INVALIDARGS);
+                return false;  
+            }
+        } else {
+            $keys = $this->keys();
+        }
+        $pkName = $keys[0];
+        $pkVal = $this->{$keys[0]};
+         
+        if (!$items) {
+            $this->raiseError("update:No table definition for {$this->__table}", DB_DATAOBJECT_ERROR_INVALIDCONFIG);
+            return false;
+        }
+        $datasaved = 1;
+        $settings  = '';
+        $this->_connect();
+        
+        $DB            = &$_DB_DATAOBJECT['CONNECTIONS'][$this->_database_dsn_md5];
+        $dbtype        = $DB->dsn["phptype"];
+        $quoteIdentifiers = !empty($_DB_DATAOBJECT['CONFIG']['quote_identifiers']);
+        $options = $_DB_DATAOBJECT['CONFIG'];
+        
+        
+        $ignore_null = !isset($options['disable_null_strings'])
+                    || !is_string($options['disable_null_strings'])
+                    || strtolower($options['disable_null_strings']) !== 'full' ;
+                    
+        
+        foreach($items as $k => $v) {
+            
+            if (!isset($this->$k) && $ignore_null) {
+                continue;
+            }
+            // ignore stuff thats 
+          
+            // dont write things that havent changed..
+            if (($dataObject !== false) && isset($dataObject->$k) && ($dataObject->$k === $this->$k)) {
+                continue;
+            }
+            
+            // - dont write keys to left.!!!
+            if (in_array($k,$keys)) {
+                continue;
+            }
+            
+             // dont insert data into mysql timestamps 
+            // use query() if you really want to do this!!!!
+            if ($v & DB_DATAOBJECT_MYSQLTIMESTAMP) {
+                continue;
+            }
+            
+            
+            if ($settings)  {
+                $settings .= ', ';
+            }
+            
+            $kSql = ($quoteIdentifiers ? $DB->quoteIdentifier($k) : $k);
+            
+            if (is_a($this->$k,'DB_DataObject_Cast')) {
+                $value = $this->$k->toString($v,$DB);
+                if (PEAR::isError($value)) {
+                    $this->raiseError($value->getMessage() ,DB_DATAOBJECT_ERROR_INVALIDARG);
+                    return false;
+                }
+                $settings .= "$kSql = $value ";
+                continue;
+            }
+            
+            // special values ... at least null is handled...
+            if (!($v & DB_DATAOBJECT_NOTNULL) && DB_DataObject::_is_null($this,$k)) {
+                $settings .= "$kSql = NULL ";
+                continue;
+            }
+            // DATE is empty... on a col. that can be null.. 
+            // note: this may be usefull for time as well..
+            if (!$this->$k && 
+                    (($v & DB_DATAOBJECT_DATE) || ($v & DB_DATAOBJECT_TIME)) && 
+                    !($v & DB_DATAOBJECT_NOTNULL)) {
+                    
+                $settings .= "$kSql = NULL ";
+                continue;
+            }
+            
+
+            if ($v & DB_DATAOBJECT_STR) {
+                $settings .= "$kSql = ". $this->_quote((string) (
+                        ($v & DB_DATAOBJECT_BOOL) ? 
+                            // this is thanks to the braindead idea of postgres to 
+                            // use t/f for boolean.
+                            (($this->$k === 'f') ? 0 : (int)(bool) $this->$k) :  
+                            $this->$k
+                    )) . ' ';
+                continue;
+            }
+            if (is_numeric($this->$k)) {
+                $settings .= "$kSql = {$this->$k} ";
+                continue;
+            }
+            // at present we only cast to integers
+            // - V2 may store additional data about float/int
+            $settings .= "$kSql = " . intval($this->$k) . ' ';
+        }
+
+        
+        if (!empty($_DB_DATAOBJECT['CONFIG']['debug'])) {
+            $this->debug("got keys as ".serialize($keys),3);
+        }
+        if ($dataObject !== true) {
+            $this->_build_condition($items,$keys);
+        } else {
+            // prevent wiping out of data!
+            if (empty($this->_query['condition'])) {
+                 $this->raiseError("update: global table update not available
+                        do \$do->whereAdd('1=1'); if you really want to do that.
+                    ", DB_DATAOBJECT_ERROR_INVALIDARGS);
+                return false;
+            }
+        }
+        
+        
+        
+
+        if ($settings && isset($this->_query) && $this->_query['condition']) {
+            
+            $table = ($quoteIdentifiers ? $DB->quoteIdentifier($this->__table) : $this->__table);
+            if($dataObject === DB_DATAOBJECT_WHEREADD_ONLY) {
+              $r = $this->_query("UPDATE  {$table}  SET {$settings} {$this->_query['condition']} ");
+            } else {
+              $pkName = ($quoteIdentifiers ? $DB->quoteIdentifier($pkName):$pkName);
+              $pkVal = $DB->quote($pkVal);
+              $r = $this->_query("UPDATE  {$table}  SET {$settings} WHERE $pkName = $pkVal");
+            }
+            // restore original query conditions.
+            $this->_query = $original_query;
+            
+            if (PEAR::isError($r)) {
+                $this->raiseError($r);
+                return false;
+            }
+            if ($r < 1) {
+                return 0;
+            }
+
+            $this->_clear_cache();
+            return $r;
+        }
+        // restore original query conditions.
+        $this->_query = $original_query;
+        
+        // if you manually specified a dataobject, and there where no changes - then it's ok..
+        if ($dataObject !== false) {
+            return true;
+        }
+        
+        $this->raiseError(
+            "update: No Data specifed for query $settings , {$this->_query['condition']}", 
+            DB_DATAOBJECT_ERROR_NODATA);
+        return false;
+    }
+    
 }
