@@ -41,7 +41,7 @@ class Config
 	 */
 	protected static $cfgArr = array();
 
-  protected static $prefFile = 'preferences.php';
+  protected static $prefFile;
 	/**
 	 *
 	 * Loads a configuration array
@@ -57,6 +57,17 @@ class Config
 		self::$cfgArr = array_merge(self::$cfgArr,$array);
 	}
 
+  /**
+   * Returns (an creates if not set yet) the preference file name
+   */
+   protected static function getPrefFile()
+   {
+     if(!self::$prefFile) {
+       $name = preg_replace('`\W`','',SITE_URL);
+       self::$prefFile = 'preferences'.$name.'.php';
+     }
+     return self::$prefFile;
+   }
 	/**
 	 *
 	 * Loads a preference file into an array
@@ -68,7 +79,7 @@ class Config
 	 */
 	public static function loadPrefFile()
 	{
-    $file = APP_ROOT . PROJECT_NAME . '/cache/' . self::$prefFile;
+    $file = APP_ROOT . PROJECT_NAME . '/cache/' . self::getPrefFile();
     if (!file_exists($file))
     {
       // If preference file doesn't exist we will generate it
@@ -87,7 +98,7 @@ class Config
 	 */
 	public static function savePrefFile()
 	{
-    $file = APP_ROOT . PROJECT_NAME . '/cache/' . self::$prefFile;
+    $file = APP_ROOT . PROJECT_NAME . '/cache/' . self::getPrefFile();
     $setup = Mreg::get('setup');
     if(is_object($setup)) {
       $setup->setUpEnv();

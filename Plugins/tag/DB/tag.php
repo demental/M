@@ -272,6 +272,11 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       if(!$atag = $this->_getTagFromTag($atag)) {continue;}
       $tagsdo[] = $atag;
     }
+    if(!is_array($tagsdo)) {
+      // No tag exist, so we should retrieve no record at all,
+      $obj->whereAdd('1=2');
+      return;
+    }
     $obj->selectAs();
     foreach($tagsdo as $tag) {
       $t = DB_DataObject::factory('tag_record');
