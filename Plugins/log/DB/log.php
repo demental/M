@@ -25,15 +25,15 @@ class DB_DataObject_Plugin_Log extends M_Plugin
   
   public function postupdate($obj)
   {
-    $this->getLogger()->info(vsprintf('[%$2s %$3s U %$4s] %$4s has updated %$2s ID %$3s',array($obj->tableName(),$obj->pk(),self::getUsername())));
+    $this->getLogger()->info(vsprintf('[%1$s %2$s U %3$s] %3$s has updated %1$s ID %2$s',array($obj->tableName(),$obj->pk(),self::getUsername())));
   }
   public function postinsert($obj)
   {
-    $this->getLogger()->info(vsprintf('[%$2s %$3s U %$4s] %$4s has created %$2s ID %$3s',array($obj->tableName(),$obj->pk(),self::getUsername())));
+    $this->getLogger()->info(vsprintf('[%1$s %2$s U %3$s] %3$s has updated %1$s ID %2$s',array($obj->tableName(),$obj->pk(),self::getUsername())));
   }
   public function postdelete($obj)
   {
-    $this->getLogger()->info(vsprintf('[%$2s %$3s U %$4s] %$4s has deleted %$2s ID %$3s',array($obj->tableName(),$obj->pk(),self::getUsername())));
+    $this->getLogger()->info(vsprintf('[%1$s %2$s U %3$s] %3$s has updated %1$s ID %2$s',array($obj->tableName(),$obj->pk(),self::getUsername())));
   }
   public function log($message, DB_DataObject $obj)
   {
@@ -56,8 +56,13 @@ class DB_DataObject_Plugin_Log extends M_Plugin
   public function getLogger()
   {
     if(!self::$logger) {
-      $logger = Log::getInstance(LOG_DRIVER);
+      if(defined('LOG_DRIVER')) {
+        self::$logger = Log::getInstance(LOG_DRIVER);
+      } else {
+        self::$logger = Log::getInstance('nolog');        
+      }
     }
+    return self::$logger;
   }
   public function setLogger($logger)
   {
