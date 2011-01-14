@@ -20,21 +20,9 @@ class DB_DataObject_Plugin_Log extends M_Plugin
   protected static $logger;
   public function getEvents()
   {
-    return array('postinsert','postupdate','delete','log');
+    return array('log');
   }
-  
-  public function postupdate($obj)
-  {
-    $this->getLogger()->info(vsprintf('[%1$s %2$s UPDATE %3$s] %3$s has updated %1$s ID %2$s',array($obj->tableName(),$obj->pk(),self::getUsername())));
-  }
-  public function postinsert($obj)
-  {
-    $this->getLogger()->info(vsprintf('[%1$s %2$s INSERT %3$s] %3$s has updated %1$s ID %2$s',array($obj->tableName(),$obj->pk(),self::getUsername())));
-  }
-  public function postdelete($obj)
-  {
-    $this->getLogger()->info(vsprintf('[%1$s %2$s DELETE %3$s] %3$s has updated %1$s ID %2$s',array($obj->tableName(),$obj->pk(),self::getUsername())));
-  }
+
   public function log($message, $messagecode, DB_DataObject $obj)
   {
     self::getLogger()->info(vsprintf('[%1$s %2$s %5$s %3$s] %3$s %4$s %1$s ID %2$s',array($obj->tableName(),$obj->pk(),self::getUsername(),$message,$messagecode)));
