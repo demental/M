@@ -21,4 +21,8 @@ class Log_chromephp {
       break;
     }
   }
+  public function table($caption,$data)
+  {
+    ChromePhp::log($caption,$data);
+  }  
 }
