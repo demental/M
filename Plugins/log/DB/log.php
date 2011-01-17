@@ -20,7 +20,7 @@ class DB_DataObject_Plugin_Log extends M_Plugin
   protected static $logger;
   public function getEvents()
   {
-    return array('log');
+    return array('log','getlogger');
   }
 
   public function log($message, $messagecode, DB_DataObject $obj)
@@ -41,7 +41,7 @@ class DB_DataObject_Plugin_Log extends M_Plugin
     }
     return User::getInstance('office')->getDBDO()->__toString();
   }
-  public function getLogger()
+  public function getLogger($obj = null)
   {
     if(!self::$logger) {
       if(defined('LOG_DRIVER')) {
@@ -49,6 +49,9 @@ class DB_DataObject_Plugin_Log extends M_Plugin
       } else {
         self::$logger = Log::getInstance('nolog');        
       }
+    }
+    if($obj instanceOf DB_DataObject) {
+      return $this->returnStatus(self::$logger);
     }
     return self::$logger;
   }
