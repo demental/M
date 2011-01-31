@@ -21,9 +21,16 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   {
     return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','postdelete','hastag','gettaglasthistory','gettags',
       'frontendsearch',
-    'postpreparesearchform');
+    'postpreparesearchform',
+    'getbatchmethods');
   }
   
+  
+  public function getBatchMethods($arr,$obj)
+  {
+    $arr['batchaddtag'] = array('title'=>'Add tag','plugin'=>'tag');
+    return $this->returnStatus($arr);
+  }
   /**
    * Adds tag checkboxes to form passed as first parameter
    * 2nd parameter is the actual name of the fields used to add tags

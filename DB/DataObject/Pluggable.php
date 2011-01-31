@@ -119,10 +119,13 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   /**
    * Loads a plugin, provided its identifier name
    * @param string $pname name of the plugin
+   * @param optional custom parameteres for plugin (otherwise the params defines in _getPluginsDef will be loaded)
    **/
-	public function loadPlugin($pluginName) {
-    $defs = $this->_getPluginsDef();
-    $params = $defs[$pluginName];
+	public function loadPlugin($pluginName,$params = null) {
+    if(is_null($params)) {
+      $defs = $this->_getPluginsDef();
+      $params = $defs[$pluginName];
+    }
     $this->addListener(PluginRegistry::getInstance($pluginName,'DB'));    
     return $this;
   }
@@ -202,8 +205,9 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       $this->_loadplugins();
     }
     $finalresult = null;
+
     foreach($this->_listeners as $listener) {
-      $result = $listener->handleEvent($this,$eventName,$params);
+      $result = $listener->handleEvent($this,$eventName,&$params);
       if(!is_object($result)) {
         switch($result) {
           case 'fail':return 'fail';break;
@@ -216,6 +220,36 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     return $finalresult;
     
   }
+  /**
+   * This type of trigger allows to return an altered version of $params
+   * Should work only with ONE parameter in $params !
+   * @param string name of the event
+   * @param mixed parameters passed to the events
+   * @return events return : fail, bypass or an object containing the return value.
+   */
+  public function triggerAndAlter($eventName,$params = null)
+  {
+    $eventName = strtolower($eventName);
+    if(!$this->_pluginsloaded) {
+      $this->_loadplugins();
+    }
+    $finalresult = null;
+
+    foreach($this->_listeners as $listener) {
+      $result = $listener->handleEvent($this,$eventName,$params);
+      if(!is_object($result)) {
+        switch($result) {
+          case 'fail':return 'fail';break;
+          case 'bypass':$finalresult='bypass';break;
+        }
+      } else {
+        $params = array($result->return);
+      }
+    }
+    return $params[0];
+    
+  }
+
   /**
    * Overload => transform it to an event call
    * 
@@ -389,21 +423,22 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     if(!is_array($base)) {
         $base = array();
     }
-    $this->trigger('getSingleMethods',array($base));
+    $base = $this->triggerAndAlter('getSingleMethods',array($base));
     return $base;
   }
   public function getGlobalMethods($base = null) {
     if(!is_array($base)) {
       $base = array();
     }
-    $this->trigger('getGlobalMethods',array($base));
+    $base = $this->triggerAndAlter('getGlobalMethods',array($base));
     return $base;
   }
   public function getBatchMethods($base = null) {
     if(!is_array($base)) {
       $base = array();
     }
-    $this->trigger('getBatchMethods',array($base));
+
+    $base = $this->triggerAndAlter('getBatchMethods',array($base));
     return $base;
   }
 

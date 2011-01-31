@@ -26,5 +26,5 @@ interface iListener {
    * @param $params additional params (optional)
    * @return string "fail", "bypass" or any other value
    */
-	public function handleEvent($sender,$event,$params = null);
+	public function handleEvent($sender,$event,&$params = null);
 }

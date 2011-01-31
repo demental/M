@@ -130,10 +130,15 @@ class M_Office_Actions extends M_Office_Controller {
        $result->setSelected($focus);
        $result->setApplyto($applyto);
      }
-     if(is_subclass_of($this->actiondo,'M_Plugin')) {
+
+     if($this->actiondo instanceOf M_Plugin) {
        $res = call_user_func(array($this->actiondo,$actionName),$applyto,$params);
 		 } else {
-       $res = call_user_func(array($applyto,$actionName),$params);
+       if(count($params)>0) {
+          $res = call_user_func(array($applyto,$actionName),$params);
+        } else {
+          $res = call_user_func(array($applyto,$actionName));
+        }
 		 }
 		 if($res === false) {
 		   $result->status = 'error';
@@ -214,7 +219,7 @@ class M_Office_Actions extends M_Office_Controller {
           $db = $this->do->getDatabaseConnection();      
           $ids = $this->getSelectedIds();
           array_walk($ids,array('M_Office_Util','arrayquote'),$db);
-          $selected = DB_DataObject::factory($this->do->tableName());
+          $selected = M_Office_Util::doForTable($this->do->tableName());
           $selected->whereAdd(
             $db->quoteIdentifier($this->do->pkName()).' IN ('.
             implode(',',$ids).')'

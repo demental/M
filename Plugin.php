@@ -30,13 +30,16 @@ abstract class M_Plugin implements iListener
    * - any other value => the sender executes the event as it should
    * These statuses are mostly useful for 'pre...' events, as it alters the way the event is really executed.
    */
-  public function handleEvent($sender,$event,$params = null)
+  public function handleEvent($sender,$event,&$params = null)
   {
+
     if(!in_array($event,$this->getEvents())) return;
+
     if(!is_array($params)) {
       $params = array();
     }
     $ret = call_user_func_array(array($this,$event),array_merge($params,array(&$sender)));
+
     return $ret;
   }
   /**

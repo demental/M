@@ -287,11 +287,18 @@ class M_Office_Util {
 		return $tpl->fetch('form-'.$template);
 	}
   public static function &doFortable($table) {      
+
     $do = DB_DataObject::factory($table);
   	$viewOptions = PEAR::getStaticProperty('m_office_showtable', 'options');
   	$filterMethod = $viewOptions['tableOptions'][$table]['method'];
   	if($filterMethod) {
   	  call_user_func(array($do,$filterMethod));
+  	}
+    $mod = self::getModuleInfo($table);
+  	if(is_array($mod['plugins'])) {
+  	  foreach($mod['plugins'] as $plugin=>$info) {
+  	    $do->loadPlugin($plugin,$info);
+  	  }
   	}
   	
   	if($viewOptions['tableOptions'][$table]['filters']){
@@ -316,14 +323,15 @@ class M_Office_Util {
   public static function &doForModule($module,$filters=true) {      
       $mod = self::getModuleInfo($module);
       $do = DB_DataObject::factory($mod['table']);
+    	if(is_array($mod['plugins'])) {
+    	  foreach($mod['plugins'] as $plugin=>$info) {
+    	    $do->loadPlugin($plugin,$info);
+    	  }
+    	}
+
 
     	$AuthOptions = PEAR::getStaticProperty('m_office_auth', 'options');
-    	if($AuthOptions['ownership']){
-    		$do->filterowner=User::getInstance('office')->getProperty('level')!=NORMALUSER?false:User::getInstance('office')->getProperty('groupId');
-        if($p = &$do->getPlugin('ownership')) {
-    			$p->userIsInAdminMode(User::getInstance('office')->getProperty('level'));
-    		}
-    	}
+
     	$filterMethod = $mod['method'];
     	if($filterMethod) {
     	  call_user_func(array($do,$filterMethod));

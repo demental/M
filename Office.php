@@ -243,7 +243,7 @@ class M_Office extends M_Office_Controller implements iListener {
   public function getEvents() {
     return array('notification');
   }
-	public function handleEvent($sender,$event,$params = null) {
+	public function handleEvent($sender,$event,&$params = null) {
 		$_SESSION['flashmessages'][]=array($params,$event);
 	}
 	public static function isAjaxRequest() {
