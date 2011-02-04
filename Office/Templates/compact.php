@@ -53,7 +53,7 @@
 	<body>
 	  <div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
       <div id="indicator" style="position:absolute; left:50%;top:50%;display:none;z-index:1000;background:#fff;border:1px solid #000">
-        <img src="images/indicator.gif" />Requête en cours...
+        <img src="/images/indicator.gif" />Requête en cours...
       </div>
 		<div id="admincontainercompact">
 			<?php if(@is_array($this->output['messages']) && count($this->output['messages'])>0): ?>

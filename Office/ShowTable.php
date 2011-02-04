@@ -45,13 +45,14 @@ class M_Office_ShowTable extends M_Office_Controller {
     }
     $do =& $this->doForTable($this->module);
     if($this->getOption('search',$module)){
-        $doSearch = $this->doForTable($this->module);
-        $searchForm = M_Office_Util::getSearchForm($doSearch);
-        $this->assign('search',$searchForm);
-        if (isset($_REQUEST['searchSubmit'])) {
-          $do = $this->getSearchDO($searchForm);
-        }            
+      $doSearch = $this->doForTable($this->module);
+      $searchForm = M_Office_Util::getSearchForm($doSearch);
+      $this->assign('search',$searchForm);
+      $searchValues = $searchForm->exportValues();
+    } else {
+      $searchValues = array();
     }
+    $do = $this->getSearchDO($searchValues);
 
     if (isset($_REQUEST['doaction']) && $this->getOption('actions',$module)) {
       require 'M/Office/Actions.php';
@@ -200,28 +201,29 @@ class M_Office_ShowTable extends M_Office_Controller {
    /**
     * Returns a DAO filtered with the search criterias specified by the searchForm
     * Uses $do->frontEndSearch to process form values if this method exists in the DAO
-    * @param $searchForm HTML_QuickForm search form after submission
+    * @param $searchForm array of values HTML_QuickForm search form after submission
     * @return DB_DataObject filtered dataObject  
     */
-   function &getSearchDO($searchForm) {
+   function &getSearchDO($searchValues) {
      $do = $this->doForTable($this->module);
-     $s=$searchForm->exportValues();
-     $this->paginate = !$s['__dontpaginate'];
+     $this->paginate = !$searchValues['__dontpaginate'];
      // Cleaning unused form fields
-     unset($s['__submit__']);
-     unset($s['__dontpaginate']);
+     unset($searchValues['__submit__']);
+     unset($searchValues['__dontpaginate']);
 
      // Use of $do->frontendsearch() if the method exists
      if(method_exists($do,'frontEndsearch')) {                
-       $do->frontEndsearch($s);
+       $do->frontEndsearch($searchValues);
+       if(count($searchValues==0)) return $do;
      } else {
+       if(count($searchValues==0)) return $do;
        // Guess query from field types if $do->frontendsearch() is not implemented
        $searchWhere = '';
        $db = $do->getDatabaseConnection();
        $fields = $do->table();
        foreach ($do->table() as $field => $type) {
-         if (isset($_REQUEST[$field])) {
-           if (is_string($_REQUEST[$field]) && $_REQUEST[$field] !== '') {
+         if (isset($searchValues[$field])) {
+           if (is_string($searchValues[$field]) && $searchValues[$field] !== '') {
              if(key_exists($field,$do->links()) 
                // Foreign key, int or bool => search with field = value 
                 || $fields[$field]&DB_DATAOBJECT_INT 
@@ -234,7 +236,7 @@ class M_Office_ShowTable extends M_Office_Controller {
 
              } else {
                // Other (char, varchar)
-               $res = $db->quote('%'.$_REQUEST[$field].'%');
+               $res = $db->quote('%'.$searchValues[$field].'%');
                $do->whereAdd($db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($field).' LIKE '.$res);
 
              }

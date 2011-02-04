@@ -71,7 +71,7 @@ foreach(Mtpl::getJSinline('ready') as $inst){
 	<body>
 	  <div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
       <div id="indicator" style="position:absolute; left:50%;top:50%;display:none;z-index:1000;background:#fff;border:1px solid #000">
-        <img src="images/indicator.gif" alt="indicator"/><?php _e('Requête en cours')?>...
+        <img src="/images/indicator.gif" alt="indicator"/><?php _e('Requête en cours')?>...
       </div>
 		<div id="doc3">
       <div id="hd">

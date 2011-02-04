@@ -19,17 +19,29 @@ class DB_DataObject_Plugin_Archiver extends M_Plugin
 {
   public function getEvents()
   {
-    return array('find','getbatchmethods','batch_archiverarchive');
+    return array('frontendsearch','postpreparesearchform','getbatchmethods','batch_archiverarchive');
   }
-  public function find($autofetch,$obj)
+  public function postPrepareSearchForm($form,$obj)
   {
-    if(!$obj->archiver_archived) {
-      $obj->whereAdd($obj->tableName().'.archiver_archived!=1');
+    $archiver_archived = HTML_QuickForm::createElement('select','archiver_archived',__('Archived'),array(''=>__('No'),'B'=>__('Both'),'O'=>__('Yes')));
+    $form->insertElementBefore($archiver_archived,'__submit__');
+  }
+  public function frontendsearch($values,$obj)
+  {
+    switch($values['archiver_archived']) {
+      case 'O':
+        $obj->whereAdd($obj->tableName().'.archiver_archived=1');
+      break;
+      case 'B':
+      break;      
+      default:
+        $obj->whereAdd($obj->tableName().'.archiver_archived!=1');
+      break;  
     }
   }
   public function getbatchmethods($arr,$obj)
   {
-    $arr['batch_archiverarchive']=array('title'=>('Put into archive'),'plugin'=>'archiver');
+    $arr['batch_archiverarchive']=array('title'=>__('Put into archive'),'plugin'=>'archiver');
     return $this->returnStatus($arr);
   }
   public function batch_archiverarchive($obj)
