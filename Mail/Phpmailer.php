@@ -15,12 +15,10 @@
 
 class Mail_phpmailer extends Maman implements iMailDriver {
 	public function sendmail($from,$to,$subject,$body,$altbody = null, $options = null, $attachments = null, $html = false) {
-
 		if(!is_array($from)){
 			$from=array($from,$from);
 		}
 
-		if($this->getConfig('sendmail')){
 			$mail = new phpmailer();
 			$mail->PluginDir='M/lib/phpmailer/';
 
@@ -61,6 +59,5 @@ class Mail_phpmailer extends Maman implements iMailDriver {
 			$mail->IsHTML($html);
 			$result = 	$mail->send();
     }
-		}
 	
 }
