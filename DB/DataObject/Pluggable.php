@@ -207,7 +207,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     $finalresult = null;
 
     foreach($this->_listeners as $listener) {
-      $result = $listener->handleEvent($this,$eventName,&$params);
+      $result = $listener->handleEvent($this,$eventName,$params);
       if(!is_object($result)) {
         switch($result) {
           case 'fail':return 'fail';break;
