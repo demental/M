@@ -109,7 +109,7 @@ class M_Office_EditRecord extends M_Office_Controller {
 //        M_Office_Util::addHiddenFields($form);
         if ($form->validate()) {
           if (PEAR::isError($ret = $form->process(array(&$formBuilder, 'processForm'), false))) {
-            $this->append('errors',__('An error occured while updating record').' : '.$ret->getMessage().'<br />'.$do->_lastError);
+            $this->append('errors',__('An error occured while updating record').' : '.$ret->getMessage());
             $this->assign('__action','error');
             return;
           } else {
