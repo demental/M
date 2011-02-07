@@ -5,7 +5,6 @@
  * @package      M
  * @subpackage   M_autoload
  * @author       Arnaud Sellenet <demental@sat2way.com>
- * @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
  * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
  * @version      0.1
  */
@@ -87,6 +86,7 @@ array(
   'ianalyzablecustomer'   =>'M/Payment2/iAnalyzable.php',
   'ianalyzableaddress'    =>'M/Payment2/iAnalyzable.php',
   'ianalyzableshippingmethod'    =>'M/Payment2/iAnalyzable.php',
+  'imaildriver'    =>'M/Mail/iMailDriver.php',
   'payment_response_exception'=>'M/Payment2/Exception.php',
   'payment_request_exception'=>'M/Payment2/Exception.php'
   )

@@ -5,7 +5,6 @@
  * @package      M
  * @subpackage   Mail
  * @author       Arnaud Sellenet <demental@sat2way.com>
- * @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
  * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
  * @version      0.1
  */
@@ -65,18 +64,51 @@ class Mail extends Maman {
 	 */
 	public $to;
 
+  /**
+   * @static
+   * @access protected
+   * 
+   * Mail driver 
+   * 
+   */
+   static protected $_drivers = null;
 	/**
 	 *
 	 * Constructor
 	 *
 	 * @param $config	string	Template config
 	 */
-	function __construct($config) {
+	function __construct($config)
+	{
 		$this->setConfig($config);
 		$this->view = new Mtpl($this->getConfig('template_dir'));
 
 	}
 
+  public static function getDrivers()
+  {
+    if(is_null(self::$_drivers)) {
+		  $opt = PEAR::getStaticProperty('Mail','global');
+      $drivers = $opt['drivers'];      
+      foreach($drivers as $driver) {
+        $driver = ucfirst(strtolower(trim($driver)));
+        require_once 'M/Mail/'.$driver.'.php';
+        $driverClass = 'Mail_'.$driver;
+        $opt = array('all'=>PEAR::getStaticProperty('Mail','global'));
+        $driver = new $driverClass();
+        $driver->setConfig($opt);        
+        self::$_drivers[] = $driver;      
+      }
+    }
+    return self::$_drivers;
+  }
+  public static function addDriver(iMailDriver $driver)
+  {
+    self::$_drivers[] = $driver;
+  }
+  public static function removeDrivers() {
+    self::$_drivers = array();
+  }
 	/**
 	 *
 	 * Attach files
@@ -273,10 +305,10 @@ class Mail extends Maman {
 		$attachments = null;
 		if(is_array($to)){
 			foreach ($to as $e){
-				$this->_sendmail($from,$e,$this->subject,$this->body,$this->altbody,$options,$this->_attachments,$html);
+				$this->rawsend($from,$e,$this->subject,$this->body,$this->altbody,$options,$this->_attachments,$html);
 			}
 		} else {
-			$this->_sendmail($from,$to,$this->subject,$this->body,$this->altbody,$options,$this->_attachments,$html);
+			$this->rawsend($from,$to,$this->subject,$this->body,$this->altbody,$options,$this->_attachments,$html);
 		}
 	}
 
@@ -296,7 +328,9 @@ class Mail extends Maman {
 	 */
 	public function rawsend($from,$to,$subject,$htmlbody,$altbody=null,$options = null,$attachments=null,$html=false)
 	{
-		$this->_sendmail($from,$to,$subject,$htmlbody,$altbody,$options,$attachments,$html);
+		foreach(self::getDrivers() as $driver) {
+		 $driver->sendmail($from,$to,$subject,$htmlbody,$altbody,$options,$attachments,$html);
+    }
 	}
 
 	/**
@@ -312,97 +346,6 @@ class Mail extends Maman {
 		$out->body=$this->view->fetch($this->getConfig('template'));
 		$out->subject = $this->view->getCapture('subject');
 		$out->altbody = $this->view->getCapture('altbody');
-
-
 		return $out;
-	}
-
-	/**
-	 *
-	 * Send Mail
-	 *
-	 * @access private
-	 * @param $from			string or array	From (if array, format is Array('from','fromname'))
-	 * @param $to			string	To
-	 * @param $subject		string	Subject
-	 * @param $body			string	HTML Body
-	 * @param $altbody		string	Alternate body
-	 * @param $options		array	Options
-	 * @param $attachments	array	Attachments
-	 * @param $html			boolean	Is HTML
-	 */
-	private function _sendmail($from,$to,$subject,$body,$altbody = null, $options = null, $attachments = null, $html = false) {
-
-		if(!is_array($from)){
-			$from=array($from,$from);
-		}
-		if($only = $this->getConfig('sendonlyto')){
-			$note="-------Note : Test mode enabled, this message should have been sent to ".$to."---------\r\n";
-			$to=$only;
-		}
-
-		if($this->getConfig('sendmail')){
-			$mail = new phpmailer();
-			$mail->PluginDir='M/lib/phpmailer/';
-
-			if($this->getConfig('smtp')) {
-
-				$mail->isSMTP();
-				$mail->Host=$this->getConfig('smtphost');
-			}
-			$mail->CharSet=$this->getConfig('encoding');
-			$mail->AddAddress($to);
-			$mail->Subject = $subject;
-			$mail->Body = $note.$body;
-			$mail->AltBody=$altbody;
-			if(!is_array($from)){
-				$from=array($from,$from);
-			}
-			$mail->From = $from[0];
-			$mail->FromName = $from[1];
-
-			if(key_exists('reply-to',$options)){
-				$mail->AddReplyTo($options['reply-to']);
-				unset($options['reply-to']);
-			}
-			if(key_exists('Sender',$options)) {
-				$mail->Sender = $options['Sender'];
-			}
-
-			if(null!=$attachments){
-				if(!is_array($attachments)){
-					$attachments = array($attachments);
-				}
-				foreach($attachments as $k=>$v){
-					if(!$mail->AddAttachment($v, basename($v))){
-						trigger_error("Attachment $v could not be added");
-					}
-				}
-			}
-			$mail->IsHTML($html);
-			$result = 	$mail->send();
-		}
-		/**
-		 * Record to logfile
-		 */
-		if($this->getConfig('logmail')){
-			$newmailFile=date("Y-m-d-H-i-s").".mlog";
-			$fp=fopen($this->getConfig('log_folder').$newmailFile,"a+");
-			fwrite($fp,"Message from : ".$from[1]."<".$from[0].">\r\n");
-			fwrite($fp,"to : ".$to."\r\n");
-			fwrite($fp,"Subject : ".stripslashes($subject)."\r\n");
-			fwrite($fp,"Message : ".stripslashes($note.$body)."\r\n");
-			fwrite($fp,"\r\n");
-			if(!is_array($attachments)){
-				$attachments=array($attachments);
-			}
-			foreach($attachments as $k=>$v){
-				fwrite($fp,"Attachment : ".basename($v)."\r\n");
-			}
-			if($this->getConfig('sendmail')){
-				fwrite($fp,"This message was sent by mail.\r\n----------------------------------------\r\n\r\n");
-			}
-			fclose($fp);
-		}
 	}
 }

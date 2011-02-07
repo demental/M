@@ -5,7 +5,7 @@
 * @package      M
 * @subpackage   Dispatcher
 * @author       Arnaud Sellenet <demental@sat2way.com>
-* @copyright    Copyright (c) 2003-2009 Arnaud Sellenet
+
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
@@ -222,7 +222,7 @@ class Dispatcher extends Maman {
 	 * @static
 	 *
 	 */
-    public function display ()
+    public function display()
     {
         return $this->page->output();
     }
