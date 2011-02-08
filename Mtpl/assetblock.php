@@ -16,11 +16,13 @@
 class Mtpl_assetblock extends Mtpl_Filter
 {
   public $_JSblock="[[JS]]";
+  public $_JSblockinline="[[JSINLINE]]";  
   public $_CSSblock="[[CSS]]";
   
   public function execute(&$input)
   {
     $input = str_replace($this->_JSblock,Mtpl::getJSblock(),$input);
     $input = str_replace($this->_CSSblock,Mtpl::getCSSblock(),$input);
+    $input = str_replace($this->_JSblockinline,Mtpl::getJSinlineblock(),$input);
   }
 }

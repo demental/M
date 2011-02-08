@@ -433,21 +433,27 @@ class Mtpl {
 	{
     echo self::getCSSblock();
 	}
+	public function getJSinlineblock($event='ready')
+	{
+        $out='';
+        foreach(Mtpl::getJSinline($event) as $line) {
+          $out.=$line."\n";
+        }
+        $out = trim($out);
+        if(!empty($out)) {
+          $out= '
+    <script type="text/javascript">
+    $(function() {
+    '.$out.'
+    });
+    </script>';
+        }
+    return $out;    
+	}
+	
 	public function printJSinline($event='ready')
 	{
-    $out='';
-    foreach(Mtpl::getJSinline($event) as $line) {
-      $out.=$line."\n";
-    }
-    $out = trim($out);
-    if(!empty($out)) {
-      echo '
-<script type="text/javascript">
-$(function() {
-'.$out.'
-});
-</script>';
-    }
+    echo $this->getJSinlineblock($event);
 	}
 	
 }
