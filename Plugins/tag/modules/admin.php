@@ -148,6 +148,26 @@ class Tag_Module_Admin extends Module {
    } else {
      $this->redirect(M_Office::URL('tag:admin/manager',array(),array_keys($_REQUEST)));
    }
-
  } 
+ public function doExecRedirect()
+ {
+   $redirmodule = $_REQUEST['targetmodule'];
+   $extag = explode(',',$_REQUEST['ex_tag']);
+   $intag = explode(',',$_REQUEST['int_tag']);   
+   foreach($extag as $tagname) {
+     $t = DB_DataObject::factory('tag');
+     $t->strip = $tagname;
+     if($t->find(true)) {
+       $extagid[$t->id]=1;
+     }
+   }
+   foreach($intag as $tagname) {
+     $t = DB_DataObject::factory('tag');
+     $t->strip = $tagname;
+     if($t->find(true)) {
+       $intagid[$t->id]=1;
+     }
+   }
+   $this->redirect(M_Office::URL(array('module'=>$redirmodule,'exc__tags'=>$extagid,'_tags'=>$intagid),array('targetmodule','ex_tag','int_tag')));
+ }
 }
