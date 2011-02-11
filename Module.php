@@ -116,6 +116,7 @@ class Module extends Maman {
     }
 		$i=false;
 		foreach($path as $aPath) {
+
 			if (@include_once $aPath.'/'.$modulename.'.php') {
 				$i=true;
 				break;
