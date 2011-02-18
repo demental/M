@@ -43,7 +43,7 @@ class Command {
       history -s "$LINE"
       history -w "/tmp/.getline_history"
       echo $LINE','r');
-      $res = ereg_replace(';$','',trim(substr(fgets($readline,1024),0,-1)));
+      $res = preg_replace('`;$`','',trim(substr(fgets($readline,1024),0,-1)));
       fclose($readline);
       self::launch($res);
     }
