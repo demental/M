@@ -33,8 +33,9 @@ class DB_DataObject_Plugin_Exporter extends M_Plugin {
    */
   public function prepareBatchExport($form,$obj)
   {
-
-    foreach($obj->exporterProperties['groupableFields'] as $field) {
+    $defs = $obj->_getPluginsDef();
+    $defs = $defs['exporter'];
+    foreach($defs['groupableFields'] as $field) {
       $label = $obj->fb_fieldLabels[$field]?$obj->fb_fieldLabels[$field]:$field;
       if(is_array($label)) {
         $label = $label[0];
@@ -46,8 +47,8 @@ class DB_DataObject_Plugin_Exporter extends M_Plugin {
     $form->addElement('text','fields',__('Fields'));
     $form->addElement('text','join',__('Join'));
     $form->addElement('text','clause',__('Clause'));
-    if($obj->exporterProperties['storeTable']) {
-      $stored = DB_DataObject::factory($obj->exportProperties['storeTable']);
+    if($defs['storeTable']) {
+      $stored = DB_DataObject::factory($defs['storeTable']);
       if(!is_a($stored,'iQueryStorable')) {
         die(__('Query storage does not implement iQueryStorable, please check configuration'));
       }
@@ -63,6 +64,9 @@ class DB_DataObject_Plugin_Exporter extends M_Plugin {
    */
   public function batchExport($obj,$data)
   {
+    $defs = $obj->_getPluginsDef();
+    $defs = $defs['exporter'];
+    
     $result = array();
     // Custom query
     if($data['fields'] || $data['stored']) {
@@ -70,7 +74,7 @@ class DB_DataObject_Plugin_Exporter extends M_Plugin {
         $fields = explode(',',$data['fields']);
         $query = 'SELECT '.$data['fields'].' FROM '.$data['join'].' WHERE '.$data['clause'];
       } else {
-        $stored = DB_DataObject::factory($obj->exportProperties['storeTable']);
+        $stored = DB_DataObject::factory($defs['storeTable']);
         $query = $stored->getQueryByID($data['stored']);
         
       }
@@ -89,7 +93,7 @@ class DB_DataObject_Plugin_Exporter extends M_Plugin {
         $result[]=$tuple;
       }
       if($data['store']) {
-        $stored = DB_DataObject::factory($obj->exportProperties['storeTable']);
+        $stored = DB_DataObject::factory($defs['storeTable']);
         $stored->store($query,$obj->tableName(),$data['storeas']);
       }
     } else {
