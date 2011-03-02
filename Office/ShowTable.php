@@ -214,9 +214,9 @@ class M_Office_ShowTable extends M_Office_Controller {
      // Use of $do->frontendsearch() if the method exists
      if(method_exists($do,'frontEndsearch')) {                
        $do->frontEndsearch($searchValues);
-       if(count($searchValues==0)) return $do;
+       if(count($searchValues)==0) return $do;
      } else {
-       if(count($searchValues==0)) return $do;
+       if(count($searchValues)==0) return $do;
        // Guess query from field types if $do->frontendsearch() is not implemented
        $searchWhere = '';
        $db = $do->getDatabaseConnection();
