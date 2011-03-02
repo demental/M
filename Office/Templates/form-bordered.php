@@ -30,7 +30,7 @@
     <?php $this->i('_formelements/element',array('elem'=>$element))?>
     <?php endswitch?>
   <?php endforeach?>
-  <?php if(count($section['elements']!=0)):?></fieldset><?php endif?>
+  <?php if(count($section['elements'])!=0):?></fieldset><?php endif?>
 <?php endforeach?>  
 </table>
 </form>
