@@ -76,7 +76,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
 	public function preProcessForm(&$values,&$fb,&$obj) {
       	$defs = $this->_obj->_getPluginsDef();
         $defs = $defs['user'];
-        if(!is_array($fb->userEditableFields) || count($fb->userEditableFields==0)) {
+        if(!is_array($fb->userEditableFields) || count($fb->userEditableFields)==0) {
               $fb->populateOptions();
         }
         if(count($fb->userEditableFields) ==0) {
