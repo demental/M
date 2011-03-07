@@ -383,7 +383,7 @@ class Mtpl {
     $out='';
     foreach (Mtpl::getCSS() as $css) {
       if(preg_match('`^https*`',$css['name'])) {
-        $cssfile = $js;
+        $cssfile = $css['name'].'.css';
       } else {
         $cssfile = '/css/'.$css['name'].'.css';
       }
