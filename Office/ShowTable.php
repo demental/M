@@ -79,7 +79,7 @@ class M_Office_ShowTable extends M_Office_Controller {
     }
 
           
-    if($this->getOption('view',$do->tableName())===TRUE) {
+    if($this->getOption('view',$do->tableName())===TRUE || $this->getOption('view',$do->tableName())===1) {
       require 'M/Office/View/DOPaging.php';
       $dg =  new M_Office_View_DOPaging($this);
       $this->assign('__listview','dopaging');
