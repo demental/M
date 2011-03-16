@@ -36,14 +36,13 @@ class Payment_Driver_OGONE extends Payment
   function getResponse() {
     //@todo sha1 (must be done in a controller for now)
     $this->transcript = $_REQUEST;
-    $this->transaction_id = $_REQUEST['ORDERID'];
     
     $this->fillFromTranscript();
   }
   function fillFromTranscript() {
-    $this->orderId = $this->transcript['ORDERID'];
+    $this->orderId = $this->transcript['orderID'];
     $this->transcript['response_code'] = in_array($this->transcript['STATUS'],array(5,9))?'00':'R'.$this->transcript['result'];
-    $this->transaction_id=$this->transcript['ORDERID'];
+    $this->transaction_id = $this->transcript['orderID'];
   }
   public function isSuccess()
   {

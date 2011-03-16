@@ -286,16 +286,18 @@ Error while serializing data !
 
 /**
  * helper
- *
+ * don't init it if already declared by other tools.
  **/
-function __( $string, $args=null ) {
-	//  try {
-	$tr = T::getInstance();
-	//  } catch (Exception $e) {
-	//    die($e->getMessage());
-	//  }
-	return $tr->translate($string,$args);
-}
-function _e($string,$args = null) {
-	echo __($string,$args);
-}
+//if(!function_exists('__')) {
+  function __( $string, $args=null ) {
+  	//  try {
+  	$tr = T::getInstance();
+  	//  } catch (Exception $e) {
+  	//    die($e->getMessage());
+  	//  }
+  	return $tr->translate($string,$args);
+  }
+  function _e($string,$args = null) {
+  	echo __($string,$args);
+  }
+//}

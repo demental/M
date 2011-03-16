@@ -102,4 +102,34 @@ class Calc
 
 		return $ratio;
 	}
+	/**
+	 * Returns an array of dates for a monthly schedule (like subscription)
+	 * @param $startDate date('Y-m-d')
+	 * @param int number of months
+	 * @param bool (optional, default true) include start date in the schedule
+	 */
+	public static function monthlySchedule($startDate,$num,$inclstart = true)
+	{
+     require_once 'Date/Calc.php';   
+    $startTime = strtotime($startDate);
+    
+	  $startDay = date('d',$startTime);
+	  $startMonth = date('m',$startTime);
+	  $startYear = date('Y',$startTime);
+	  $startoffset = $inclstart ? 0:1;
+    for($i=$startoffset;$i<$num;$i++) {
+      $dt[] = Date_Calc::addMonths($i,
+                          $startDay,
+                          $startMonth,
+                          $startYear,
+                          '%Y-%m-%d');
+       // Correcting not valid dates (e.g. february 30, june 31)
+/*       $tempdt = date('d',strtotime($dt[$i]));
+       $numd = date('t',strtotime($dt[$i]));
+       if($tempdt>$numd) {
+         $dt[$i] = date('Y',strtotime($dt[$i])).'-'.date('m',strtotime($dt[$i])).'-'.$numd;
+       }*/
+    }
+    return $dt;
+	}
 }
