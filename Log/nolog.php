@@ -1,6 +1,6 @@
 <?php
 class Log_nolog {
-  public function message($message,$level)
+  public function message($message,$level='INFO')
   {
     return;
   }
