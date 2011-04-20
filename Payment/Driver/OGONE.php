@@ -41,7 +41,7 @@ class Payment_Driver_OGONE extends Payment
   }
   function fillFromTranscript() {
     $this->orderId = $this->transcript['orderID'];
-    $this->transcript['response_code'] = in_array($this->transcript['STATUS'],array(5,9))?'00':'R'.$this->transcript['result'];
+    $this->transcript['response_code'] = in_array($this->transcript['STATUS'],array(5,9,56))?'00':'R'.$this->transcript['result'];
     $this->transaction_id = $this->transcript['orderID'];
   }
   public function isSuccess()
