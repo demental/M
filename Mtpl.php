@@ -307,7 +307,7 @@ class Mtpl {
 		return $this->c($componentId,$action,$params);
 	}
 
-	private function c($componentId,$action='index',$params=null) {
+	public function c($componentId,$action='index',$params=null) {
 
 		if(is_object($this->_module)) {
 			$conf = $this->_module->getConfig('component_'.$componentId,$this->_module->getCurrentAction());
@@ -327,8 +327,7 @@ class Mtpl {
 		}
 		$c = new Component($module, $action,$params);
 
-		$c->execute();
-
+		  $c->execute();
     return $this->comment('Start component '.$module.'/'.$action.' routed to '.$c->getPage()->getCurrentModule().'/'.$c->getPage()->getCurrentAction())
       .$c->display()
       .$this->comment('End component '.$module.'/'.$action);

@@ -288,7 +288,7 @@ Error while serializing data !
  * helper
  * don't init it if already declared by other tools.
  **/
-//if(!function_exists('__')) {
+if(!function_exists('__')) {
   function __( $string, $args=null ) {
   	//  try {
   	$tr = T::getInstance();
@@ -297,7 +297,9 @@ Error while serializing data !
   	//  }
   	return $tr->translate($string,$args);
   }
+}
+if(!function_exists('_e')) {
   function _e($string,$args = null) {
   	echo __($string,$args);
   }
-//}
+}
