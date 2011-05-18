@@ -22,49 +22,57 @@ class M_Office_EditRecord extends M_Office_Controller {
       $opts = PEAR::getStaticProperty('m_office','options');
       $this->module = $module;
       $this->moduloptions = $opts['modules'][$module];
-      $table = $this->table=$this->moduloptions['table'];
-      
-        parent::__construct();
+      $table = $this->table = $this->moduloptions['table'];      
+      $this->do = $this->getRecord($module, $record);
+      parent::__construct();
+    }
+    public function getRecord($module, $record)
+    {
+      if($record instanceOf DB_DataObject) return $record;
+      $do = M_Office_Util::doForModule($module,false);
+      $keys = $do->keys();
+      $do->{$keys[0]} = $record;
+      if(!$do->find(true)) {
+        $this->assign('__action','error');
+        $this->append('errors',__('L\'enregistrement que vous avez tenté d\'atteindre est introuvable.'));
+        return false;
+        
+      }
+      return $do;
+    }
+    public function run()
+    {
         $this->assign('__action','edit');
-        $do = M_Office_Util::doForModule($module,false);
-        $keys = $do->keys();
-        $do->{$keys[0]} = $record;
-        if(!$do->find(true)) {
-          $this->assign('__action','error');
-          $this->append('errors',__('L\'enregistrement que vous avez tenté d\'atteindre est introuvable.'));
-          return;
-          
-        }
         $this->append('subActions','<a href="'.M_Office_Util::getQueryParams(array(), array('record','doSingleAction')).'">'.__('&lt; Back to list').'</a>');
         $editopts = PEAR::getStaticProperty('m_office_editrecord','options');
         if(!empty($editopts['tableOptions'][$module]['fields'])) {
-          $do->fb_fieldsToRender = $editopts['tableOptions'][$module]['fields'];
+          $this->do->fb_fieldsToRender = $editopts['tableOptions'][$module]['fields'];
         }
         $tpl = Mreg::get('tpl');
-        $tpl->concat('adminTitle',$do->__toString().' :: '.$this->moduloptions['title']);
+        $tpl->concat('adminTitle',$this->do->__toString().' :: '.$this->moduloptions['title']);
 
-        $database = $do->database();
+        $database = $this->do->database();
 
         /**
         *
         * Actions
         *
         **/
-        if (isset($_REQUEST['doSingleAction']) && $this->getGlobalOption('actions','showtable',$table)) {
+        if (isset($_REQUEST['doSingleAction']) && $this->getGlobalOption('actions','showtable',$this->table)) {
             require 'M/Office/Actions.php';
             $subController = new M_Office_Actions($this->getOptions());
-            $subController->run($do, $_REQUEST['doSingleAction'],'single');
+            $subController->run($this->do, $_REQUEST['doSingleAction'],'single');
             if($subController->hasOutput()) {
         	    return;
         	}
     	}
-        $this->createActions($do);
+        $this->createActions();
 
         if((!$this->getOption('directEdit',$module) && !isset($_REQUEST['editmode'])) || !$this->getOption('edit',$module)){
-            $do->fb_userEditableFields=array('__fakefield');
+            $this->do->fb_userEditableFields=array('__fakefield');
         }
 
-        $formBuilder =& MyFB::create($do);
+        $formBuilder =& MyFB::create($this->do);
         $form = new MyQuickForm('editRecord', 'POST', M_Office_Util::getQueryParams(array(), array('editmode'), false), '_self', null, true);
         Mtpl::addJS('jquery.form');
 
@@ -124,13 +132,13 @@ class M_Office_EditRecord extends M_Office_Controller {
         }
         $this->assignRef('editForm',$form);
 
-                    if ($linkFromTables = $this->getOption('linkFromTables', $table)) {
+                    if ($linkFromTables = $this->getOption('linkFromTables', $this->table)) {
                         $linkTables = '';
-                        $ajaxFrom = $this->getOption('ajaxLinksFromTable',$table);
+                        $ajaxFrom = $this->getOption('ajaxLinksFromTable',$this->table);
                         if(!is_array($ajaxFrom)) {
                             $ajaxFrom = array();
                         }
-                        foreach ($do->reverseLinks() as $linkFromTable => $field) {
+                        foreach ($this->do->reverseLinks() as $linkFromTable => $field) {
 
                             list($linkTab, $linkField) = explode(':', $linkFromTable);
 
@@ -143,7 +151,7 @@ class M_Office_EditRecord extends M_Office_Controller {
                                         $info = $ajaxFrom[$linkTab];
 
                                         require_once 'M/Office/ajaxFromTable.php';
-                                        $aja = new M_Office_ajaxFromTable($linkTab,$linkField,$do->$field);
+                                        $aja = new M_Office_ajaxFromTable($linkTab,$linkField,$this->do->$field);
                                         if($info['position']=='before') {
                                             $ajaxLinksBefore[]=$aja->getBlock();
                                         } else {
@@ -159,24 +167,24 @@ class M_Office_EditRecord extends M_Office_Controller {
                                           $nFields = $linkDo->links();
                                           $ntableArray = explode(':',$nFields[$nfield]);
                                           $nDo = DB_DataObject::factory($ntableArray[0]);
-                                          $linkDo->$linkField=$do->$field;
+                                          $linkDo->$linkField=$this->do->$field;
                                           $nDo->joinAdd($linkDo);
 
                                           $nbLinkedRecords=$nDo->count();
                                           $parameters=array(  'module' => $nDo->tableName(),
                                                               'filternField' => $linkField,
                                                               'filternTable' => $linkTab,                                                              
-                                                              'filternValue' => $do->$field);
+                                                              'filternValue' => $this->do->$field);
 
                                                               $removed=array('module','filternValue','filternField');
                                           $add = false;         
                                           $tableName = M_Office_Util::getFrontTableName($ntableArray[0].' <small>(n-n)</small>');
                                         } else {
-                                          $linkDo->$linkField=$do->$field;
+                                          $linkDo->$linkField=$this->do->$field;
                                           $nbLinkedRecords=$linkDo->count();
                                           $parameters=array(  'module' => $linkTab,
                                                               'filterField' => $linkField,
-                                                              'filterValue' => $do->$field);
+                                                              'filterValue' => $this->do->$field);
 
                                                               $removed=array('module','filterValue','filterField');
                                         
@@ -208,25 +216,25 @@ class M_Office_EditRecord extends M_Office_Controller {
 
                 $this->assign('ajaxFrom',array('before'=>$ajaxLinksBefore,'after'=>$ajaxLinksAfter));
                 $related='';
-            if (($linkToTables = $this->getOption('linkToTables', $table)) && is_array($links = $do->links())) {
+            if (($linkToTables = $this->getOption('linkToTables', $this->table)) && is_array($links = $this->do->links())) {
                 $linkTables = '';
                 foreach ($links as $linkField=>$link) {
 
                   list($linkTab, $linkRec) = explode(':', $link);
                   if ((!is_array($linkToTables) || in_array($linkTab, $linkToTables)) && $this->getOption('view',$linkTab)) {
                                         $this->append('linkToTables',array('table'=>$linkTab,
-                                                                            'link'=>M_Office_Util::getQueryParams(array('module' => $linkTab,'record'=>$do->$linkField),array('page'))
+                                                                            'link'=>M_Office_Util::getQueryParams(array('module' => $linkTab,'record'=>$this->do->$linkField),array('page'))
                                                                           )
                                                       );
                   }
                 }
             }
             $this->assign('related',$related);
-            $this->assignRef('do',$do);
+            $this->assignRef('do',$this->do);
         }
-        function createActions($do) {
-            $singleMethods=method_exists($do,'getSingleMethods')?$do->getSingleMethods():array();
-            $opt = $this->getOption('actions', $do->tableName());
+        function createActions() {
+            $singleMethods=method_exists($this->do,'getSingleMethods')?$this->do->getSingleMethods():array();
+            $opt = $this->getOption('actions', $this->module);
 
             if(is_array($opt)) {
                 foreach($opt as $k=>$v) {
@@ -238,27 +246,6 @@ class M_Office_EditRecord extends M_Office_Controller {
             } elseif(!$opt) {
                     $singleMethods = array();
             }
-            if(($_SESSION['adminLevel']==ADMINUSER || $_SESSION['adminLevel']==ROOTUSER) && key_exists('owner',$do->table())){
-                $l = $do->links();
-                $o = explode(':',$l['owner']);
-                require_once 'HTML/QuickForm.php';
-                $oDO = DB_DataObject::factory($o[0]);
-                $oPK = DB_DataObject_FormBuilder::_getPrimaryKey($oDO);
-                $oDO->find();
-                while($oDO->fetch()) {
-                    $oArr[$oDO->$oPK] = $oDO->__toString();
-                }
-                $userList = HTML_QuickForm::createElement('select','owner','Géré par',$oArr);
-
-                if($o = $do->getLink('owner')) {
-                $owner = $o->__toString();
-                } else {
-                    $owner='aucun';
-                }
-                $singleMethods['updateOwner']=array('title'=>'Changer le gérant(actuellement '.$owner.')','params'=>array('newowner'=>&$userList));
-
-            }
-
             if(is_array($singleMethods)){
                 foreach($singleMethods as $k=>$v){
                     $this->append('relatedaction',array('url'=>M_Office_Util::getQueryParams(array("doSingleAction"=>$k)),'title'=>$v['title']));

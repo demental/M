@@ -167,7 +167,7 @@ class Dispatcher extends Maman {
       if(method_exists($this->page,'handleNotFound')) {
         Log::info('Using custom handleNotFound() method');
 
-        $this->page->handleNotFound();
+        $this->page->handleNotFound($this->action);
       } else {
         $this->page = $this->moduleInstance('error',$path); 
         $this->page->executeAction('404');

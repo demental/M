@@ -79,4 +79,8 @@ class M_Office_AddRecord extends M_Office_Controller {
         $this->assign('addForm',$form);
         $this->assign('do',$do);
     }
+    public function run()
+    {
+      # code...
+    }
 }

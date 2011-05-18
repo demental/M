@@ -54,6 +54,20 @@ class M_Office_Util {
           exit;
       }
   /**
+   * returns trus if single action exists for $do (depending on user privileges)
+   * @param DB_DataObject
+   * @param string
+   * @return bool
+   */
+  public static function DoHasAction($module,$do,$action) {
+    require_once 'M/Office/EditRecord.php';
+    $controller = new M_Office_EditRecord($module,$do);
+    $actions = $controller->createActions();
+
+    if(key_exists($action,$actions)) return true;
+    return false;
+  }
+  /**
    * Redirects using a POST form to send back post variables
    * @param url target URL
    * 
