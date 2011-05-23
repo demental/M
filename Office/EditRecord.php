@@ -45,8 +45,8 @@ class M_Office_EditRecord extends M_Office_Controller {
         $this->assign('__action','edit');
         $this->append('subActions','<a href="'.M_Office_Util::getQueryParams(array(), array('record','doSingleAction')).'">'.__('&lt; Back to list').'</a>');
         $editopts = PEAR::getStaticProperty('m_office_editrecord','options');
-        if(!empty($editopts['tableOptions'][$module]['fields'])) {
-          $this->do->fb_fieldsToRender = $editopts['tableOptions'][$module]['fields'];
+        if(!empty($editopts['tableOptions'][$this->module]['fields'])) {
+          $this->do->fb_fieldsToRender = $editopts['tableOptions'][$this->module]['fields'];
         }
         $tpl = Mreg::get('tpl');
         $tpl->concat('adminTitle',$this->do->__toString().' :: '.$this->moduloptions['title']);
@@ -68,7 +68,7 @@ class M_Office_EditRecord extends M_Office_Controller {
     	}
         $this->createActions();
 
-        if((!$this->getOption('directEdit',$module) && !isset($_REQUEST['editmode'])) || !$this->getOption('edit',$module)){
+        if((!$this->getOption('directEdit',$this->module) && !isset($_REQUEST['editmode'])) || !$this->getOption('edit',$this->module)){
             $this->do->fb_userEditableFields=array('__fakefield');
         }
 
@@ -96,8 +96,8 @@ class M_Office_EditRecord extends M_Office_Controller {
 
         $formBuilder->elementTypeAttributes = array('longtext' => array('cols' => 50, 'rows' => 10));
         $formBuilder->useForm($form);
-        if($this->getOption('edit',$module)){
-            if((!$this->getOption('directEdit',$module) && !isset($_REQUEST['editmode']))){
+        if($this->getOption('edit',$this->module)){
+            if((!$this->getOption('directEdit',$this->module) && !isset($_REQUEST['editmode']))){
                 $form->addElement(MyQuickForm::createElement('header','modifHeader','<input type="button" onclick="top.location.href=\''.M_Office_Util::getQueryParams(array('editmode'=>1)).'\'"value="Modifier cet enregistrement"/>'));
                 $form->freeze();
 
