@@ -385,7 +385,7 @@ class M_Office_Util {
     	$AuthOptions = PEAR::getStaticProperty('m_office_auth', 'options');
 
     	$filterMethod = $mod['method'];
-    	if($filterMethod) {
+    	if($filterMethod && $filters) {
     	  call_user_func(array($do,$filterMethod));
     	}
       $filterArray = $mod['filters'];
