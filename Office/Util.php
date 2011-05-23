@@ -54,18 +54,56 @@ class M_Office_Util {
           exit;
       }
   /**
-   * returns trus if single action exists for $do (depending on user privileges)
+   * returns true if single action exists for $do (depending on user privileges)
+   * Also taking in account extra actions ($do->getExtraActions())
    * @param DB_DataObject
    * @param string
    * @return bool
+   * 
+   * 
+   * Alternative API (for use with dyn modules): 
+   * @param string module name
+   * @param string action name
    */
-  public static function DoHasAction($module,$do,$action) {
-    require_once 'M/Office/EditRecord.php';
-    $controller = new M_Office_EditRecord($module,$do);
-    $actions = $controller->createActions();
-
-    if(key_exists($action,$actions)) return true;
+  public static function doHasAction($module,$do,$action = null) {
+    if(is_null($action)) {
+      $actions = self::getGlobalOption('actions','editrecord', $module);      
+      if(!is_array($actions)) return true;
+      $action = $do;
+    } else {
+      $actions = self::getActionsFor( $do, $module, true );
+    }
+    if(key_exists($action, $actions)) return true;
     return false;
+  }
+
+  /**
+   * returns the array of single actions for $do (and optionally module)
+   */
+  public static function getActionsFor($do,$moduleName=null,$includeExtra = false)
+  {
+    if(is_null($moduleName)) $moduleName = $do->tableName();
+  
+    $singleMethods=method_exists($do,'getSingleMethods')?$do->getSingleMethods():array();
+    if($includeExtra) {
+      $extraMethods=method_exists($do,'getExtraMethods')?$do->getExtraMethods():array();
+      $singleMethods = array_merge($singleMethods,$extraMethods);
+    }
+
+    $opt = self::getGlobalOption('actions','editrecord', $moduleName);
+
+    if(is_array($opt)) {
+        foreach($opt as $k=>$v) {
+          if(key_exists($v,$singleMethods)) {
+            $thS[$v] = $singleMethods[$v];
+          }
+        }
+            $singleMethods = $thS;
+    } elseif(!$opt) {
+            $singleMethods = array();
+    }
+    return $singleMethods;
+    
   }
   /**
    * Redirects using a POST form to send back post variables

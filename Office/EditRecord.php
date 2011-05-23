@@ -233,24 +233,10 @@ class M_Office_EditRecord extends M_Office_Controller {
             $this->assignRef('do',$this->do);
         }
         function createActions() {
-            $singleMethods=method_exists($this->do,'getSingleMethods')?$this->do->getSingleMethods():array();
-            $opt = $this->getOption('actions', $this->module);
-
-            if(is_array($opt)) {
-                foreach($opt as $k=>$v) {
-                  if(key_exists($v,$singleMethods)) {
-                    $thS[$v] = $singleMethods[$v];
-                  }
-                }
-                    $singleMethods = $thS;
-            } elseif(!$opt) {
-                    $singleMethods = array();
-            }
-            if(is_array($singleMethods)){
-                foreach($singleMethods as $k=>$v){
-                    $this->append('relatedaction',array('url'=>M_Office_Util::getQueryParams(array("doSingleAction"=>$k)),'title'=>$v['title']));
-                }
-            }
-            return $singleMethods;    
-    }      
+          $singleMethods = M_Office_Util::getActionsFor($this->do,$this->module);
+          foreach($singleMethods as $k=>$v){
+            $this->append('relatedaction',array('url'=>M_Office_Util::getQueryParams(array("doSingleAction"=>$k)),'title'=>$v['title']));
+          }
+          return $singleMethods;    
+        }      
 }
