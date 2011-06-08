@@ -41,7 +41,7 @@ class M_Crypt
 		require_once 'Crypt/Blowfish.php';
 		$bf =& Crypt_Blowfish::factory($meth);
 		if (PEAR::isError($bf)) {
-			die($bf->getMessage());
+			throw new Exception($bf->getMessage());
 		}
 		$iv = 'abc123+=';
 
@@ -69,7 +69,7 @@ class M_Crypt
 		require_once 'Crypt/Blowfish.php';
 		$bf =& Crypt_Blowfish::factory($meth);
 		if (PEAR::isError($bf)) {
-			die($bf->getMessage());
+			throw new Exception($bf->getMessage());
 		}
 		$iv = 'abc123+=';
 		$bf->setKey($ky, $iv);
