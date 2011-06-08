@@ -75,7 +75,7 @@ class M_Crypt
 		$bf->setKey($ky, $iv);
 		$plaintext = $bf->decrypt($val);
 		if (PEAR::isError($plaintext)) {
-			die('decoding error : '.$plaintext->getMessage());
+			throw new Exception('decoding error : '.$plaintext->getMessage());
 		}
 		return trim($plaintext);
 	}
