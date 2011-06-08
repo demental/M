@@ -39,7 +39,7 @@ class M_Crypt
 		}
     if(empty($val)) return '';
 		require_once 'Crypt/Blowfish.php';
-		$encrypted = self::$_bf->encrypt($val);
+		$encrypted = self::getBf($method)->encrypt($val);
 		return base64_encode($encrypted);
 	}
 
@@ -65,7 +65,7 @@ class M_Crypt
 		}
 		return trim($plaintext);
 	}
-  protected static function getBF() {
+  protected static function getBF($meth='cbc') {
     if(!is_object(self::$_bf)) {
       require_once 'Crypt/Blowfish.php';
   		self::$_bf =& Crypt_Blowfish::factory($meth,null,null,CRYPT_BLOWFISH_PHP);
