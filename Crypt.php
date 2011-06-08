@@ -22,7 +22,7 @@
 
 class M_Crypt
 {
-	protected static $_bf;
+	
 	/**
 	 * Encrypt data
 	 *
@@ -39,7 +39,14 @@ class M_Crypt
 		}
     if(empty($val)) return '';
 		require_once 'Crypt/Blowfish.php';
-		$encrypted = self::getBf($meth)->encrypt($val);
+		$bf =& Crypt_Blowfish::factory($meth);
+		if (PEAR::isError($bf)) {
+			throw new Exception($bf->getMessage());
+		}
+		$iv = 'abc123+=';
+
+		$bf->setKey($ky, $iv);
+		$encrypted = $bf->encrypt($val);
 		return base64_encode($encrypted);
 	}
 
@@ -59,22 +66,17 @@ class M_Crypt
 		}
     if(empty($val)) return '';		
 		$val = base64_decode($val);
-		$plaintext = self::getBf($meth)->decrypt($val);
+		require_once 'Crypt/Blowfish.php';
+		$bf =& Crypt_Blowfish::factory($meth);
+		if (PEAR::isError($bf)) {
+			throw new Exception($bf->getMessage());
+		}
+		$iv = 'abc123+=';
+		$bf->setKey($ky, $iv);
+		$plaintext = $bf->decrypt($val);
 		if (PEAR::isError($plaintext)) {
 			throw new Exception('decoding error : '.$plaintext->getMessage());
 		}
 		return trim($plaintext);
 	}
-  protected static function getBF($meth='cbc') {
-    if(!is_object(self::$_bf)) {
-      require_once 'Crypt/Blowfish.php';
-  		self::$_bf =& Crypt_Blowfish::factory($meth,null,null,CRYPT_BLOWFISH_PHP);
-  		if (PEAR::isError($bf)) {
-  			throw new Exception($bf->getMessage());
-  		}
-  		$iv = 'abc123+=';
-  		self::$_bf->setKey($ky, $iv);
-    }
-    return self::$_bf;
-  }
 }
