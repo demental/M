@@ -208,7 +208,7 @@ class M_Office_ShowTable extends M_Office_Controller {
    function &getSearchDO($searchValues) {
      $do = $this->doForTable($this->module);
      $this->paginate = !$searchValues['__dontpaginate'];
-     if($this->paginate) ini_set('memory_limit','512M');
+     if(!$this->paginate) ini_set('memory_limit','512M');
      // Cleaning unused form fields
      unset($searchValues['__submit__']);
      unset($searchValues['__dontpaginate']);
