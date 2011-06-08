@@ -39,7 +39,7 @@ class M_Crypt
 		}
     if(empty($val)) return '';
 		require_once 'Crypt/Blowfish.php';
-		$encrypted = self::getBf($method)->encrypt($val);
+		$encrypted = self::getBf($meth)->encrypt($val);
 		return base64_encode($encrypted);
 	}
 
@@ -59,7 +59,7 @@ class M_Crypt
 		}
     if(empty($val)) return '';		
 		$val = base64_decode($val);
-		$plaintext = self::getBf($method)->decrypt($val);
+		$plaintext = self::getBf($meth)->decrypt($val);
 		if (PEAR::isError($plaintext)) {
 			throw new Exception('decoding error : '.$plaintext->getMessage());
 		}
