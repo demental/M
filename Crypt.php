@@ -22,7 +22,7 @@
 
 class M_Crypt
 {
-	
+	protected static $_bf;
 	/**
 	 * Encrypt data
 	 *
@@ -39,14 +39,7 @@ class M_Crypt
 		}
     if(empty($val)) return '';
 		require_once 'Crypt/Blowfish.php';
-		$bf =& Crypt_Blowfish::factory($meth,null,null,CRYPT_BLOWFISH_PHP);
-		if (PEAR::isError($bf)) {
-			throw new Exception($bf->getMessage());
-		}
-		$iv = 'abc123+=';
-
-		$bf->setKey($ky, $iv);
-		$encrypted = $bf->encrypt($val);
+		$encrypted = self::$_bf->encrypt($val);
 		return base64_encode($encrypted);
 	}
 
