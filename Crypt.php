@@ -39,7 +39,7 @@ class M_Crypt
 		}
     if(empty($val)) return '';
 		require_once 'Crypt/Blowfish.php';
-		$bf =& Crypt_Blowfish::factory($meth);
+		$bf =& Crypt_Blowfish::factory($meth,null,null,CRYPT_BLOWFISH_PHP);
 		if (PEAR::isError($bf)) {
 			throw new Exception($bf->getMessage());
 		}
@@ -67,7 +67,7 @@ class M_Crypt
     if(empty($val)) return '';		
 		$val = base64_decode($val);
 		require_once 'Crypt/Blowfish.php';
-		$bf =& Crypt_Blowfish::factory($meth);
+		$bf =& Crypt_Blowfish::factory($meth,null,null,CRYPT_BLOWFISH_PHP);
 		if (PEAR::isError($bf)) {
 			throw new Exception($bf->getMessage());
 		}
