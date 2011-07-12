@@ -71,6 +71,7 @@ class M_Office_Actions extends M_Office_Controller {
     }
     
     $this->do = $this->actiondo = $do;
+
     $this->do->selectAdd();
     $this->do->selectAdd($this->do->getDatabaseConnection()->quoteIdentifier($this->do->tableName()).'.*');
     $this->scope = $_REQUEST['__actionscope']=='all'?'all':'selected';
@@ -89,6 +90,7 @@ class M_Office_Actions extends M_Office_Controller {
       $result->status='error';
       $this->redirectTo($result);
     }
+
     if($_REQUEST['__submitnext__']) {
       require_once 'M/Office/Actionresult.php';
       $result = new M_Office_Actionresult($this);
@@ -351,8 +353,8 @@ class M_Office_Actions extends M_Office_Controller {
     $tpl = Mreg::get('tpl');
     $tpl->concat('adminTitle',' :: '.$this->getActionTitle());
 
-    if(!empty($actions[$action]['plugin'])) {
-      $tpl->addPath('M/DB/DataObject/Plugin/'.$do->getPlugin($actions[$action]['plugin'])->getFolderName().'/templates/','beforeUser');
+    if($this->actiondo instanceOf M_Plugin ) {
+      $tpl->addPath('M/DB/DataObject/Plugin/'.$this->actiondo->getFolderName().'/templates/','before');
     }
     
     $prepareMethod = 'prepare'.$this->actionName;
@@ -420,6 +422,10 @@ class M_Office_Actions extends M_Office_Controller {
     if(!$this->_actionInfo) {
       $this->_actionInfo = $this->getActionInfo($this->actionName,$this->type);
     }
+    if ($this->_actionInfo['plugin']) {
+      $this->actiondo = $this->do->getPlugin($this->_actionInfo['plugin']);
+    }
+
     return $this->_actionInfo;
   }
   public function getActionInfo($actionName,$type)

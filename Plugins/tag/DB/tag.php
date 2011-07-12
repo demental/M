@@ -27,8 +27,24 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   
   public function getBatchMethods($arr,$obj)
   {
-    $arr['batchaddtag'] = array('title'=>'Add tag','plugin'=>'tag');
+    $arr['batchaddtag'] = array('title'=>'Add/remove tags','plugin'=>'tag');
     return $this->returnStatus($arr);
+  }
+  public function prepareBatchAddTag($form)
+  {
+    $form->addElement('text','add','Add...');
+    $form->addElement('text','remove','And/or remove...');    
+  }
+  public function batchAddTAg($obj,$data)
+  {
+    while($obj->fetch()) {
+      if($data['add']) {
+        $obj->addTag($data['add']);
+      }
+      if($data['remove']) {
+        $obj->removeTag($data['remove']);
+      }
+    }
   }
   /**
    * Adds tag checkboxes to form passed as first parameter

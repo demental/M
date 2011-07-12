@@ -6,7 +6,7 @@
 
     <input type="hidden" name="target" value="<?php echo M_Office::URL()?>" />
     <input type="image" src="/images/icons/cross.png" /></form>
-<?php echo $tag?>
+<a title="<?php _e('On %s',array($tag->link_tagged_at))?>"><?php echo $tag?></a>
 </li>    
 <?php endforeach?>
 <li>

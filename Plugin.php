@@ -55,4 +55,9 @@ abstract class M_Plugin implements iListener
     return $c;
   }
   
+  public function getFolderName()
+  {
+    return strtolower(preg_replace('`DB_DataObject_Plugin_`','',get_class($this)));
+  }
+  
 }
