@@ -52,6 +52,39 @@ class Command_Db extends Command {
   public function executeBackup($params = array())
   {
     $filename = $params[0];
+    $this->_dobackup($filename);
+  }
+
+  public function executeBackupnrotate($params = array())
+  {
+    for($i=7;$i>0;$i--) {
+      $origfile = APP_ROOT."backups/".'j-'.$i.'.sql.gz';
+      $destfile = APP_ROOT."backups/".'j-'.($i+1).'.sql.gz';      
+      @rename($origfile,$destfile);
+    }
+
+    rename(APP_ROOT.'backups/latest.sql.gz',APP_ROOT.'backups/j-1.sql.gz');
+    if(date('w')==1 || in_array('week',$params)) {
+      for($i=4;$i>0;$i--) {
+        $origfile = APP_ROOT."backups/".'s-'.$i.'.sql.gz';
+        $destfile = APP_ROOT."backups/".'s-'.($i+1).'.sql.gz';      
+        @rename($origfile,$destfile);
+      }
+      @rename(APP_ROOT.'backups/j-8.sql.gz',APP_ROOT.'backups/s-1.sql.gz');      
+    }
+
+    if(date('d')=='01' || in_array('month',$params)) {
+      for($i=12;$i>0;$i--) {
+        $origfile = APP_ROOT."backups/".'m-'.$i.'.sql.gz';
+        $destfile = APP_ROOT."backups/".'m-'.($i+1).'.sql.gz';      
+        @rename($origfile,$destfile);
+      }
+      @rename(APP_ROOT.'backups/s-5.sql.gz',APP_ROOT.'backups/m-1.sql.gz');
+    }
+    $this->_dobackup('latest');
+  }
+  public function _dobackup($filename)
+  {
     $opt = PEAR::getStaticProperty('DB_DataObject', 'options');
     $db = MDB2::singleton($opt['database']);
     $h = $db->dsn['hostspec'];
@@ -61,9 +94,12 @@ class Command_Db extends Command {
     if(empty($filename)) {
       $filename = $dbn."_".date('Y-m-d');
     }
-    $com = "/usr/bin/env mysqldump --host=$h --user=$u --password=$p $dbn > ".APP_ROOT."backups/".$dbn."_".date('Y-m-d').".sql;gzip ".APP_ROOT."backups/".$filename.".sql";
+    $com = "/usr/bin/env mysqldump --host=$h --user=$u --password=$p $dbn > ".APP_ROOT."backups/".$filename.".sql;gzip ".APP_ROOT."backups/".$filename.".sql";
+    $this->line('executing SH:');
+    $this->line($com);
     passthru($com);
     $this->line('Backup done : '.$filename.'.sql.gz');
+    
   }
   public function executeRestore($params = array()) {
     $filename = $params[0];
@@ -105,4 +141,3 @@ class Command_Db extends Command {
     }
   }
 }
- 
