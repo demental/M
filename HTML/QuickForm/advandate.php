@@ -200,7 +200,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
         $renderer = new HTML_QuickForm_Renderer_Default();
         $renderer->setElementTemplate('{element}');
         parent::accept($renderer);        
-        return "<script type=\"text/javascript\">\n//<![CDATA[\n\$(function(){" . (empty($this->_js)? '': $this->_js) . "\nadvandate_Update('".$this->_escapeString($this->getName())."');
+        return "<script type=\"text/javascript\">\n//<![CDATA[\n" . (empty($this->_js)? '': $this->_js) . "\n\$(function(){advandate_Update('".$this->_escapeString($this->getName())."');
         $('select[name=\"".$this->_escapeString($this->getName())."[firstselect]\"]').bind('change',function(){advandate_Update('".$this->_escapeString($this->getName())."')});
         });//]]>\n</script>" . $renderer->toHtml();
 }               
