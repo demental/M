@@ -37,7 +37,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
       return $this->_controller->getOption($opt,$module);
   }
   public function getPaging() {
-      return $this->do->getPlugin('pager')->pager->getLinks();
+      return $this->do->getPager()->getLinks();
   }
   public function toHtml() {
       throw new Exception('toHTML not applicable with DOPaging');

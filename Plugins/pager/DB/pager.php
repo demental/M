@@ -34,7 +34,7 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
       'direction'=>'_pd'
       );
     public function getEvents() {
-      return array('find','query');
+      return array('find','query','getpager');
     }
     public function setVars($sort,$direction) {
       $this->vars['sort']=$sort;
@@ -58,8 +58,8 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
 
       if($this->hasPager) {
         require_once 'Pager.php';
-        $this->pager = Pager::factory($this->pagerOpts);  
-        $lim=$this->pager->getOffsetByPageId();
+        $obj->_pager = Pager::factory($this->pagerOpts);  
+        $lim=$obj->_pager->getOffsetByPageId();
         $obj->limit(($lim[0]-1),($lim[1]+1-$lim[0]));
       }
       if($this->pointer['sort']) {
@@ -87,15 +87,14 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
         require_once 'Pager.php';
         $this->preparePager($obj);
     }
-    function &getPager() {
-
-      return $this->pager;
+    function getPager($obj) {
+      return $this->returnStatus($obj->_pager);
     }
     function getSortLink($field) {
 
       $get=$_GET;
-      $get[$this->vars['sort']]=$field;
-      $get[$this->vars['direction']]=($_GET[$this->vars['sort']]==$field?($_GET[$this->vars['direction']]=='ASC'?'DESC':'ASC'):'ASC');
+      $get[$obj->_pagervars['sort']]=$field;
+      $get[$obj->_pagervars['direction']]=($_GET[$obj->_pagervars['sort']]==$field?($_GET[$obj->_pagervars['direction']]=='ASC'?'DESC':'ASC'):'ASC');
       return $_SERVER['PHP_SELF'].'?'.http_build_query($get,'','&amp;');
     }
     function setFields($fields) {

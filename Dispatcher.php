@@ -108,8 +108,7 @@ class Dispatcher extends Maman {
       	{
             Log::info('Action '.$this->action.' rejected for module '.$this->module.', trying index instead ');
             Log::info('Reason : '.$e->getMessage());
-      		  $this->action = 'index';
-      		  $this->page->executeAction($this->action);
+      		  $this->page->handleException($e);
       	}
 
       }

@@ -626,7 +626,14 @@ class Module extends Maman {
 		return ($_POST[$val]);
 	}
 	
-	
+
+	/**
+	 * handles exceptions that are not 404 or 403
+	 */
+	public function handleException($e)
+	{
+    $this->executeAction('index');
+	} 
 	/**
 	 * wether the request has a value
 	 * @param $val key name
