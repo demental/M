@@ -29,5 +29,12 @@ class M {
     $p = PEAR::getStaticProperty('DB_DataObject','options');
     return $p['database'];
   }
+  public static function hook($className,$methodName,$params = array())
+  {
+    if(method_exists($className.'_hook',$methodName)) {
+      call_user_func_array(array($className.'_hook',$methodName),$params);
+    }
+    
+  }
 }
  
