@@ -803,4 +803,22 @@ class Module extends Maman {
   {
     # code...
   }
+  /**
+   * stores flash message, released until displayed
+   * @param string the message
+   * @param string the message type (may be info, error, warning, success, @see http://twitter.github.com/bootstrap/ for alert types)
+   * defaults to info
+   * 
+   */
+   public function flash($message,$type='info')
+   {
+     if(!$_SESSION) session_start();
+     $_SESSION['flash'][$type][]=$message;
+   }
+   public function popflash($type='info')
+   {
+     if(!$_SESSION) session_start();     
+     if(!is_array($_SESSION['flash'][$type])) return false;
+     return array_shift($_SESSION['flash'][$type]);
+   }
 }
