@@ -272,7 +272,8 @@ class Mtpl {
 		if(is_array($form)) {
 			return $form;
 		}
-    M::Hook(__CLASS__,__FUNCTION__,func_get_args());
+		$args = func_get_args();
+    M::Hook(__CLASS__,__FUNCTION__,$args);
 
 		if($type=='dynamic') {
 			require_once 'M/HTML/QuickForm/Renderer/Array.php';
