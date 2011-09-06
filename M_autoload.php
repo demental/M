@@ -108,7 +108,7 @@ array(
     return true;
   	}
   	if(preg_match('`^(.+)_hook$`i',$class,$match)) {
-  	  require 'lib/hooks/'.strtoupper($match[1]).'.php';
+  	  @include 'lib/hooks/'.ucfirst($match[1]).'.php';
       if(class_exists($class)) {
   	    return true;
       }
