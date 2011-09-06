@@ -4,7 +4,7 @@ class Log_file {
   {
     $this->_options = $options;
   }
-  public function dump($var)
+  public function getdump($var)
   {
     $out='';
     switch(true) {
@@ -15,13 +15,18 @@ class Log_file {
       break;  
       case is_array($var):
       foreach($var as $k=>$v) {
-        $out.="\t".$k.' = '.$v."\n";
+
+        $out.="\t".$k.' = '.$this->getdump($v)."\n";
       }
       break;
       default:
         $out.="\t".$k."\n";
     }
-    $this->write($out,null,false);
+    return $out;
+  }
+  public function dump($var)
+  {
+    $this->write(print_r($var,true),null,false);
   }
   public function section($title)
   {

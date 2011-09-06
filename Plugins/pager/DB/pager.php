@@ -93,8 +93,8 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
     function getSortLink($field) {
 
       $get=$_GET;
-      $get[$obj->_pagervars['sort']]=$field;
-      $get[$obj->_pagervars['direction']]=($_GET[$obj->_pagervars['sort']]==$field?($_GET[$obj->_pagervars['direction']]=='ASC'?'DESC':'ASC'):'ASC');
+      $get[$this->vars['sort']]=$field;
+      $get[$this->vars['direction']]=($_GET[$this->vars['sort']]==$field?($_GET[$this->vars['direction']]=='ASC'?'DESC':'ASC'):'ASC');
       return $_SERVER['PHP_SELF'].'?'.http_build_query($get,'','&amp;');
     }
     function setFields($fields) {
