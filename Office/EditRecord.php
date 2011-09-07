@@ -58,7 +58,7 @@ class M_Office_EditRecord extends M_Office_Controller {
         * Actions
         *
         **/
-        if (isset($_REQUEST['doSingleAction']) && $this->getGlobalOption('actions','showtable',$this->table)) {
+        if (isset($_REQUEST['doSingleAction']) && $this->getGlobalOption('actions','showtable',$this->module)) {
             require 'M/Office/Actions.php';
             $subController = new M_Office_Actions($this->getOptions());
             $subController->run($this->do, $_REQUEST['doSingleAction'],'single');

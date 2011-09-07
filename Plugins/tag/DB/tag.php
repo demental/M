@@ -316,6 +316,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   */
   public function getWithoutTags($tags,DB_DataObject $obj)
   {
+    $tagsdo = array();
     if(!is_array($tags) || $tags->N) {
       $tags = array($tags);
     }
