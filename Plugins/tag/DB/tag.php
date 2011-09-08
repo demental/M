@@ -18,7 +18,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getEvents()
   {
-    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','postdelete','hastag','gettaglasthistory','gettags',
+    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','postdelete','hastag','gettaglasthistory','gettags',
       'frontendsearch',
     'postpreparesearchform',
     'getbatchmethods');
@@ -356,6 +356,18 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     }
     return $this->returnStatus(true);
   }
+  public function getTagDate($tag,$obj)
+  {
+    if(!$tag = $this->_getTagFromTag($tag)) return $this->returnStatus(false);
+    if(!$obj->pk()) return $this->returnStatus(false);
+    $dbo = DB_DataObject::factory('tag_record');
+    $dbo->tag_id = $tag->id;
+    $dbo->setRecord($obj);
+    if($dbo->find(true)) {
+      return $this->returnStatus($dbo->tagged_at);
+    }
+    return $this->returnStatus(false);
+  }
   public function getTagLastHistory($tag,$direction,DB_DataObject $obj)
   {
     if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus(false);}
@@ -368,6 +380,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     $h->find(true);
     return $this->returnStatus($h);
   }
+  
   public static function countTagged($tag)
   {
         if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus(0);}
