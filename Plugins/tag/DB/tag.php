@@ -18,7 +18,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getEvents()
   {
-    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','postdelete','hastag','gettaglasthistory','gettags',
+    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','gettagrecord','postdelete','hastag','gettaglasthistory','gettags',
       'frontendsearch',
     'postpreparesearchform',
     'getbatchmethods');
@@ -160,6 +160,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     }
     return $this->returnStatus($obj);
   }
+  
   /**
    * Calls and return tag validation result if it exists (the methods are validateAdd and validateRemove)
    */
@@ -368,6 +369,19 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     }
     return $this->returnStatus(false);
   }
+  public function getTagRecord($tag,$obj)
+  {
+    if(!$tag = $this->_getTagFromTag($tag)) return $this->returnStatus(false);
+    if(!$obj->pk()) return $this->returnStatus(false);
+    $dbo = DB_DataObject::factory('tag_record');
+    $dbo->tag_id = $tag->id;
+    $dbo->setRecord($obj);
+    if($dbo->find(true)) {
+      return $this->returnStatus($dbo);
+    }
+    return $this->returnStatus(false);
+  }
+
   public function getTagLastHistory($tag,$direction,DB_DataObject $obj)
   {
     if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus(false);}
