@@ -175,14 +175,14 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     foreach($classes as $file=>$class) {
       if(class_exists($class,false)) {    // avoid autoload
         if(method_exists($class,'validate'.$trigger)) {
-          $res = call_user_func_array(array($class,'validate'.$trigger),array($obj,$byhuman));
+          $res = call_user_func_array(array($class,'validate'.$trigger),array($obj,$byhuman,$tag));
         }
         break;
       }
       if(file_exists($file)) {
         require_once $file;
         if(method_exists($class,'validate'.$trigger)) {
-          $res = call_user_func_array(array($class,'validate'.$trigger),array($obj,$byhuman));
+          $res = call_user_func_array(array($class,'validate'.$trigger),array($obj,$byhuman,$tag));
         }
         break;
       }
