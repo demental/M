@@ -99,7 +99,7 @@ array(
    * @param	$class	string	Class to load
    * @return	boolean
    */
-  function __autoload($class) {
+  function M_autoload($class) {
   	$classes = Mreg::get('autoload');
     // Switch to lowercase as PHP is not case sensitive for objects and methods while it is for array keys
     $class = strtolower($class);
@@ -130,3 +130,4 @@ array(
   }
 
 
+spl_autoload_register('M_autoload');

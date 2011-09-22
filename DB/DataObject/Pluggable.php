@@ -48,7 +48,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   protected $_listeners = array();
 
   public $fb_dateFromDatabaseCallback='date2array';
-
+  public $_pluginsLoaded = false;
   public function current() {
       return $this;
   }
@@ -201,7 +201,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   public function trigger($eventName,$params = null)
   {
     $eventName = strtolower($eventName);
-    if(!$this->_pluginsloaded) {
+    if(!$this->_pluginsLoaded) {
       $this->_loadplugins();
     }
     $finalresult = null;
@@ -230,7 +230,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   public function triggerAndAlter($eventName,$params = null)
   {
     $eventName = strtolower($eventName);
-    if(!$this->_pluginsloaded) {
+    if(!$this->_pluginsLoaded) {
       $this->_loadplugins();
     }
     $finalresult = null;

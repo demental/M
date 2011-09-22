@@ -168,6 +168,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   {
     $strip = Strings::stripify($tag->strip,true);
     $classes = array(
+      APP_ROOT.PROJECT_NAME.'/tags/__tables/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger__'.$obj->tableName()),
       APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger_'.$strip.'_'.$obj->tableName()),
       APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'.php'=>strtolower('tagtrigger_'.$strip)
       );

@@ -75,7 +75,7 @@ class Log
     if(defined('LOG_DRIVER')) {
 	    $driver = LOG_DRIVER;
     }
-	  if(!$driver) $driver = 'nolog';
+	  if(!isset($driver)) $driver = 'nolog';
     self::getInstance($driver)->message($message,$level);
 	}
 
