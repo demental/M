@@ -55,7 +55,7 @@ class PluginRegistry
     foreach($classpaths as $pluginPath) {
       $classpath = $pluginPath.$cleanName.'.php';
       if(file_exists($classpath)) {
-        require $classpath;
+        require_once $classpath;
         self::initPlugin($cleanName);
         return $className;
       }

@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+define('APP_NAME','front');
+define('MODE','test');
+$host=$_ENV['M_HOST'];
+if(empty($host)) die('You must set shell ENV variable M_HOST to desired host before launching tests');
+include trim(`pwd`).'/M_startup.php';
+Mreg::get('setup')->setUpEnv();
+
+require_once 'PHP/CodeCoverage/Filter.php';
+PHP_CodeCoverage_Filter::getInstance()->addFileToBlacklist(__FILE__, 'PHPUNIT');
+
+if (strpos('/Applications/MAMP/bin/php/php5.3.6/bin/php', '@php_bin') === 0) {
+    set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
+}
+
+require_once 'PHPUnit/Autoload.php';
+
+define('PHPUnit_MAIN_METHOD', 'PHPUnit_TextUI_Command::main');
+
+PHPUnit_TextUI_Command::main();

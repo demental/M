@@ -46,8 +46,10 @@ class Command_Db extends Command {
   {
     $this->line('Regenerating DOclasses');
     require_once('M/DB/DataObject/Advgenerator.php');
-	  $generator = new DB_DataObject_Advgenerator();
-	  $generator->start();	  
+	$generator = new DB_DataObject_Advgenerator();
+	$generator->start();
+	$this->line('DOclasses need to be reloaded so ...');
+	$this->launch('reboot');
   }
   public function executeBackup($params = array())
   {
