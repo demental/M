@@ -39,6 +39,7 @@ array(
   'dao'                   =>  'M/DAO.php',
   'mail'                  =>  'M/Mail.php',    
   'url'                   =>  'M/URL.php',
+	'faker'									=>  'M/lib/faker/faker.php',
   'db_dataobject_formbuilder_myquickform' => 'DB/DataObject/FormBuilder/MyQuickForm.php',
   'myquickform'           =>  'M/HTML/MyQuickForm.php',
   'myfb'                  =>  'M/MyFB.php',
