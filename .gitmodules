@@ -1,0 +1,3 @@
+[submodule "lib/faker"]
+	path = lib/faker
+	url = git@github.com:demental/php-faker.git

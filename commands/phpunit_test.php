@@ -49,7 +49,7 @@ class Command_Phpunit_Test extends Command {
     $testfolder = TESTS_FOLDER.'/'.$folder;
 		if(is_dir($testfolder)) {
     	$testfolder.='/';
-		} elseif(!file_exists($testfolder.'.php')) {
+		} elseif(file_exists($testfolder.'.php')) {
     	$testfolder.='.php';			
 		} elseif(!file_exists($testfolder)) {
       return $this->error(TESTS_FOLDER.'/'.$folder.' does not exist');			

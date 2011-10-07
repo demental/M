@@ -27,7 +27,7 @@ class DAO {
 	public static function build($tablename,$overridefields = array())
 	{
 		$do = DB_DataObject::factory($tablename);
-		require APP_ROOT.PROJECT_NAME.'faketories/'.ucfirst($tablename).'.php';
+		require APP_ROOT.PROJECT_NAME.'/Faketories/'.ucfirst($tablename).'.php';
 		foreach($overridefields as $k=>$v) {
 			if($v instanceOf DB_DataObject_Pluggable) {
 				$do->setLinkObj($v,$k);

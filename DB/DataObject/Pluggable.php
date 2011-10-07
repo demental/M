@@ -80,6 +80,21 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       return true;
   }
 
+	/**
+	 * Set a DOclass as a linked obj.
+	 * @param DB_DataObject_Pluggable $obj linked record (must reside in database)
+	 * @param string foreign key name (automatically set if not provided)
+	 */
+	public function setLinkObj(DB_DataObject_Pluggable $linkObj,$field=null)
+	{
+		if(is_null($field)) {
+			$field = $linkObj->tableName().'_id';
+
+		}
+		$placeholder = '_'.$field.'_obj';
+		$this->{$field} = $obj->id;
+		$this->{$placeholder} = $obj;
+	}
 
 ################ Plugin management ################
 
