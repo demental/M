@@ -17,6 +17,21 @@ class DAO {
 		return $do;
 	}
 	/**
+	 * Returns a DO object.
+	 * if the object containing the overridefields values is found in the database then it is returned.
+	 * Otherwise a new fake object is created.
+	 * unlike faketory, $overridefields is mandatory
+	 * @param string table name
+	 * @param string key/value pairs for search criteria
+	 */
+	public function faketory_or_find($tablename,$overridefields)
+	{
+		$do = DB_DataObject::factory($tablename);
+		$do->setFrom($overridefields);
+		if($do->find(true)) return $do;
+		return self::faketory($tablename,$overridefields);
+	}
+	/**
 	 * returns a built DO object, not saved (except linked records that need to)
 	 * use values that are defined in project/faketories/...
 	 * @param string table name
@@ -27,9 +42,11 @@ class DAO {
 	public static function build($tablename,$overridefields = array())
 	{
 		$do = DB_DataObject::factory($tablename);
+		extract($overridefields);
 		require APP_ROOT.PROJECT_NAME.'/Faketories/'.ucfirst($tablename).'.php';
+
 		foreach($overridefields as $k=>$v) {
-			if($v instanceOf DB_DataObject_Pluggable) {
+			if($v instanceOf DB_DataObject_Pluggable) {				
 				$do->setLinkObj($v,$k);
 			} else {
 				$do->$k = $v;

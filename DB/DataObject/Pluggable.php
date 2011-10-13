@@ -92,10 +92,21 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
 		}
 		$placeholder = '_'.$field.'_obj';
-		$this->{$field} = $obj->id;
+		$this->{$field} = $linkObj->id;
 		$this->{$placeholder} = $obj;
 	}
-
+	
+	/**
+	 * Reloads the content of the object from the database
+	 * @warning relies on setFrom() and toArray()
+	 */
+	public function reload()
+	{
+		$obj2 = DB_DataObject::factory($this->tableName());
+		$obj2->{$this->pkName()} = $this->pk();
+		$obj2->find(true);
+		$this->setFrom($obj2->toArray());
+	}
 ################ Plugin management ################
 
   /**
