@@ -132,111 +132,112 @@ class M_Office_EditRecord extends M_Office_Controller {
         }
         $this->assignRef('editForm',$form);
 
-                    if ($linkFromTables = $this->getOption('linkFromTables', $this->table)) {
-                        $linkTables = '';
-                        $ajaxFrom = $this->getOption('ajaxLinksFromTable',$this->table);
-                        if(!is_array($ajaxFrom)) {
-                            $ajaxFrom = array();
-                        }
-                        foreach ($this->do->reverseLinks() as $linkFromTable => $field) {
+        if ($linkFromTables = $this->getOption('linkFromTables', $this->table)) {
+            $ajaxFrom = $this->getOption('ajaxLinksFromTable',$this->table);
+            if(!is_array($ajaxFrom)) {
+                $ajaxFrom = array();
+            }
+            foreach ($this->do->reverseLinks() as $linkFromTable => $field) {
 
-                            list($linkTab, $linkField) = explode(':', $linkFromTable);
+                list($linkTab, $linkField) = explode(':', $linkFromTable);
 
-                            if ($this->getGlobalOption('view','showtable',$linkTab)) {
+                switch(true) {
+                  case !$this->getGlobalOption('view','showtable',$linkTab): break;
+                  case key_exists($linkTab,$ajaxFrom):
+                    $fromfield = $ajaxFrom[$linkFromTable]['fromfield'];
+                    if($fromfield==$linkField || !$fromfield) {
+                        $info = $ajaxFrom[$linkTab];
 
-                                if(key_exists($linkTab,$ajaxFrom)) {
-
-                                    $fromfield = $ajaxFrom[$linkFromTable]['fromfield'];
-                                    if($fromfield==$linkField || !$fromfield) {
-                                        $info = $ajaxFrom[$linkTab];
-
-                                        require_once 'M/Office/ajaxFromTable.php';
-                                        $aja = new M_Office_ajaxFromTable($linkTab,$linkField,$this->do->$field);
-                                        if($info['position']=='before') {
-                                            $ajaxLinksBefore[]=$aja->getBlock();
-                                        } else {
-                                            $ajaxLinksAfter[]=$aja->getBlock();
-                                        }
-                                    }
-                                } else {
-                                    if($linkFromTables===TRUE || (is_array($linkFromTables) && in_array($linkTab,$linkFromTables))) {
-
-                                        $linkDo=& DB_DataObject::factory($linkTab);
-                                        if($nfield = $linkDo->isNtable()) {
-                                          // @todo : 
-                                          $nFields = $linkDo->links();
-                                          $ntableArray = explode(':',$nFields[$nfield]);
-                                          $nDo = DB_DataObject::factory($ntableArray[0]);
-                                          $linkDo->$linkField=$this->do->$field;
-                                          $nDo->joinAdd($linkDo);
-
-                                          $nbLinkedRecords=$nDo->count();
-                                          $parameters=array(  'module' => $nDo->tableName(),
-                                                              'filternField' => $linkField,
-                                                              'filternTable' => $linkTab,                                                              
-                                                              'filternValue' => $this->do->$field);
-
-                                                              $removed=array('module','filternValue','filternField');
-                                          $add = false;         
-                                          $tableName = M_Office_Util::getFrontTableName($ntableArray[0].' <small>(n-n)</small>');
-                                        } else {
-                                          $linkDo->$linkField=$this->do->$field;
-                                          $nbLinkedRecords=$linkDo->count();
-                                          $parameters=array(  'module' => $linkTab,
-                                                              'filterField' => $linkField,
-                                                              'filterValue' => $this->do->$field);
-
-                                                              $removed=array('module','filterValue','filterField');
-                                        
-                                          if($nbLinkedRecords==1){
-                                              $keys=$linkDo->keys();
-                                              $key=$keys[0];
-                                              $linkDo->selectAdd();
-                                              $linkDo->selectAdd($linkDo->pkName());
-                                              $linkDo->find(true);
-                                              $parameters['record']=$linkDo->$key;
-                                              $removed[]='record';
-                                          }
-                                          $tableName = M_Office_Util::getFrontTableName($linkTab);
-                                          $add = $this->getGlobalOption('add','showtable', $linkTab)?true:false;
-                                        }
-                                        $this->append('linkFromTables',array('table'=>$linkTab,
-                                                                             'linkField'=>$linkField,
-                                                                             'field'=>$field,
-                                                                             'link'=>M_Office_Util::getQueryParams($parameters,array_diff(array_keys($_GET),$removed)),
-                                                                             'nb'=>$nbLinkedRecords,
-                                                                             'tablename'=>$tableName,
-                                                                             'add'=>$add
-                                                                            )); 
-                                    }
-                                }
-                            }
+                        require_once 'M/Office/ajaxFromTable.php';
+                        $aja = new M_Office_ajaxFromTable($linkTab,$linkField,$this->do->$field);
+                        if($info['position']=='before') {
+                            $ajaxLinksBefore[]=$aja->getBlock();
+                        } else {
+                            $ajaxLinksAfter[]=$aja->getBlock();
                         }
                     }
-
-                $this->assign('ajaxFrom',array('before'=>$ajaxLinksBefore,'after'=>$ajaxLinksAfter));
-                $related='';
-            if (($linkToTables = $this->getOption('linkToTables', $this->table)) && is_array($links = $this->do->links())) {
-                $linkTables = '';
-                foreach ($links as $linkField=>$link) {
-
-                  list($linkTab, $linkRec) = explode(':', $link);
-                  if ((!is_array($linkToTables) || in_array($linkTab, $linkToTables)) && $this->getOption('view',$linkTab)) {
-                                        $this->append('linkToTables',array('table'=>$linkTab,
-                                                                            'link'=>M_Office_Util::getQueryParams(array('module' => $linkTab,'record'=>$this->do->$linkField),array('page'))
-                                                                          )
-                                                      );
-                  }
+                    break;
+                  case $linkFromTables===TRUE || (is_array($linkFromTables) && in_array($linkTab,$linkFromTables)):
+                    $linkFromTableArray[] = $this->getLinkFromTableItem($linkTab, $linkField, $field);
+                    break;
                 }
+              }
+            }  
+            M::hook($this->do->tableName(),'alterLinkFromTables',array(&$linkFromTableArray,$this->do));
+
+    $this->assign('linkFromTables',$linkFromTableArray);
+    $this->assign('ajaxFrom',array('before'=>$ajaxLinksBefore,'after'=>$ajaxLinksAfter));
+    $related='';
+      if (($linkToTables = $this->getOption('linkToTables', $this->table)) && is_array($links = $this->do->links())) {
+          foreach ($links as $linkField=>$link) {
+
+            list($linkTab, $linkRec) = explode(':', $link);
+            if ((!is_array($linkToTables) || in_array($linkTab, $linkToTables)) && $this->getOption('view',$linkTab)) {
+                                  $this->append('linkToTables',array('table'=>$linkTab,
+                                                                      'link'=>M_Office_Util::getQueryParams(array('module' => $linkTab,'record'=>$this->do->$linkField),array('page'))
+                                                                    )
+                                                );
             }
-            $this->assign('related',$related);
-            $this->assignRef('do',$this->do);
-        }
-        function createActions() {
-          $singleMethods = M_Office_Util::getActionsFor($this->do,$this->module);
-          foreach($singleMethods as $k=>$v){
-            $this->append('relatedaction',array('url'=>M_Office_Util::getQueryParams(array("doSingleAction"=>$k)),'title'=>$v['title']));
           }
-          return $singleMethods;    
-        }      
+    }
+    $this->assign('related',$related);
+    $this->assign('do',$this->do);
+  }
+  function createActions() {
+    $singleMethods = M_Office_Util::getActionsFor($this->do,$this->module);
+    foreach($singleMethods as $k=>$v){
+      $this->append('relatedaction',array('url'=>M_Office_Util::getQueryParams(array("doSingleAction"=>$k)),'title'=>$v['title']));
+    }
+    return $singleMethods;    
+  }  
+  public function getLinkFromTableItem($linkTab, $linkField, $field)
+  {            
+    $linkDo=& DB_DataObject::factory($linkTab);
+    if($nfield = $linkDo->isNtable()) {
+      $nFields = $linkDo->links();
+      $ntableArray = explode(':',$nFields[$nfield]);
+      $nDo = DB_DataObject::factory($ntableArray[0]);
+      $linkDo->$linkField=$this->do->$field;
+      $nDo->joinAdd($linkDo);
+
+      $nbLinkedRecords=$nDo->count();
+      $parameters=array(  'module' => $nDo->tableName(),
+                          'filternField' => $linkField,
+                          'filternTable' => $linkTab,                                                              
+                          'filternValue' => $this->do->$field);
+
+                          $removed=array('module','filternValue','filternField');
+      $add = false;         
+      $tableName = M_Office_Util::getFrontTableName($ntableArray[0].' <small>(n-n)</small>');
+    } else {
+      $linkDo->$linkField=$this->do->$field;
+      $nbLinkedRecords=$linkDo->count();
+      $parameters=array(  'module' => $linkTab,
+                          'filterField' => $linkField,
+                          'filterValue' => $this->do->$field);
+
+                          $removed=array('module','filterValue','filterField');
+    
+      if($nbLinkedRecords==1){
+          $keys=$linkDo->keys();
+          $key=$keys[0];
+          $linkDo->selectAdd();
+          $linkDo->selectAdd($linkDo->pkName());
+          $linkDo->find(true);
+          $parameters['record']=$linkDo->$key;
+          $removed[]='record';
+      }
+      $tableName = M_Office_Util::getFrontTableName($linkTab);
+      $add = $this->getGlobalOption('add','showtable', $linkTab)?true:false;
+    }
+    return array( 'table'=>$linkTab,
+                  'linkField'=>$linkField,
+                  'field'=>$field,
+                  'link'=>M_Office_Util::getQueryParams($parameters,array_diff(array_keys($_GET),$removed)),
+                  'nb'=>$nbLinkedRecords,
+                  'tablename'=>$tableName,
+                  'add'=>$add
+                ); 
+
+  }          
 }

@@ -31,8 +31,9 @@ class M {
   }
   public static function hook($className,$methodName,$params = array())
   {
+
     if(method_exists($className.'_hook',$methodName)) {
-      call_user_func_array(array($className.'_hook',$methodName),$params);
+      return call_user_func_array(array($className.'_hook',$methodName),$params);
     }
     
   }
