@@ -53,6 +53,10 @@ class MyQuickForm extends HTML_QuickForm {
   {
     return isset($this->__request[$param]);
   }
+  public function submit()
+  {
+    $this->_flagSubmitted = true;
+  }
   public function initRequest($get=null,$post=null,$request=null,$files=null)
   {
     $this->__get = is_array($get)?$get:$_GET;

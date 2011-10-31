@@ -103,7 +103,7 @@ class MPdf extends Maman {
 	public function fetch()
 	{
 		if($this->fetched) {return;}
-		$html = $this->view->fetch($this->getConfig('template'));
+		$html = utf8_decode($this->view->fetch($this->getConfig('template')));
 		//      $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
 
 		$this->pdf->load_html($html);

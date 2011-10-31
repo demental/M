@@ -1,3 +1,6 @@
 [submodule "lib/faker"]
 	path = lib/faker
 	url = git@github.com:demental/php-faker.git
+[submodule "lib/firephp"]
+	path = lib/firephp
+	url = git://github.com/cadorn/firephp-libs.git
