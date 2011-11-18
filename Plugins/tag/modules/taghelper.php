@@ -1,4 +1,5 @@
 <?php
+// TODO:  better feedback when record is not editable (not just die('not OK')).
 class Tag_Module_Taghelper extends Module {
   public function getCacheId()
   {
@@ -25,10 +26,26 @@ class Tag_Module_Taghelper extends Module {
   {
     $focus = $this->getFocus();
     $this->assign('focus',$focus);
+    $this->assign('module',$_REQUEST['module']);
+    if(!$this->_checkEditable($focus,$_REQUEST['module'])) {
+      $this->setTemplate('taghelper/viewer');
+    }
+  }
+  public function _checkEditable($focus,$module)
+  {
+    
+    if(!M_Office_Util::RecordBelongsToModule($focus,$module)) {
+      return false;
+    }
+    $edit = M_Office_Util::getGlobalOption('edit','showtable',$module);
+
+    if(!$edit) return false;
+    return true;
   }
   public function doExecRemove()
   {
-    $focus = $this->getFocus();
+    $focus = $this->getFocus();    
+    if(!$this->_checkEditable($focus,$_REQUEST['focusmodule'])) die('not OK');
     $tag = DB_DataObject::factory('tag');
     $tag->get($_REQUEST['tagid']);
     $focus->removeTagByHuman($tag);
@@ -41,6 +58,8 @@ class Tag_Module_Taghelper extends Module {
   public function doExecAddByStrip()
   {
     $focus = $this->getFocus();
+    if(!$this->_checkEditable($focus,$_REQUEST['focusmodule'])) die('not OK');
+
     $focus->addTagByHuman($_REQUEST['strip']);
     if(!$this->isAjaxRequest()) {
       $this->redirect($_REQUEST['target']);

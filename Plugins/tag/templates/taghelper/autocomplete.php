@@ -2,7 +2,6 @@
 <script type="text/javascript" src="/js/jquery.autocomplete.min.js"></script>
 <?php if($local):?>
 <?php else:?>
-  @todo : remote autocomplete
 <?php endif?>
 <?php foreach($tags as $tag):?>
 <?php $arr[]=$tag->strip?>

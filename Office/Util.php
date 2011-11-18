@@ -542,4 +542,11 @@ class M_Office_Util {
   {
     $item = $dbcnx->quote($item);
   }
+  public static function RecordBelongsToModule($record,$module)
+  {
+    $object = self::doForModule($module);
+    $object->{$object->pkName()} = $record->pk();
+    if($object->find()) return true;
+    return false;
+  }
 }

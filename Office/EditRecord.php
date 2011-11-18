@@ -30,6 +30,7 @@ class M_Office_EditRecord extends M_Office_Controller {
     {
       if($record instanceOf DB_DataObject) return $record;
       $do = M_Office_Util::doForModule($module,false);
+
       $keys = $do->keys();
       $do->{$keys[0]} = $record;
       if(!$do->find(true)) {
@@ -38,6 +39,7 @@ class M_Office_EditRecord extends M_Office_Controller {
         return false;
         
       }
+
       return $do;
     }
     public function run()
