@@ -29,4 +29,4 @@
 	<?php endif ?>
 	<br style="clear:both" />
 </div>
-<?php $this->i('editform',array('form'=>$editForm,'do'=>$do,'ajaxFrom'=>$ajaxFrom))?>
+<?php $this->i('editform',array('form'=>$editForm,'do'=>$do,'ajaxFrom'=>$ajaxFrom,'editable'=>$editable))?>

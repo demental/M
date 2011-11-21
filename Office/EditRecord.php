@@ -18,14 +18,18 @@
 */
 
 class M_Office_EditRecord extends M_Office_Controller {
+
     public function __construct($module, $record) {
+      
       $opts = PEAR::getStaticProperty('m_office','options');
       $this->module = $module;
       $this->moduloptions = $opts['modules'][$module];
       $table = $this->table = $this->moduloptions['table'];      
       $this->do = $this->getRecord($module, $record);
       parent::__construct();
+
     }
+
     public function getRecord($module, $record)
     {
       if($record instanceOf DB_DataObject) return $record;
@@ -101,22 +105,30 @@ class M_Office_EditRecord extends M_Office_Controller {
         if($this->getOption('edit',$this->module)){
             if((!$this->getOption('directEdit',$this->module) && !isset($_REQUEST['editmode']))){
                 $form->addElement(MyQuickForm::createElement('header','modifHeader','<input type="button" onclick="top.location.href=\''.M_Office_Util::getQueryParams(array('editmode'=>1)).'\'"value="Modifier cet enregistrement"/>'));
-                $form->freeze();
-
+                $doFreeze = true;
             } else {
-                    $form->addElement(MyQuickForm::createElement('header','modifHeader','Modification activée'));
-                    $form->addElement('hidden','editmode',1);
-                    $form->addElement(MyQuickForm::createElement('checkbox','__backtolist__','Retourner à la liste après les modifications',''));
+
+                $this->assign('editable',true);
+                $form->addElement(MyQuickForm::createElement('header','modifHeader','Modification activée'));
+                $form->addElement('hidden','editmode',1);
+                $form->addElement(MyQuickForm::createElement('checkbox','__backtolist__','Retourner à la liste après les modifications',''));
 //                                        $form->setDefaults(array('__backtolist__'=>1));
             }
         } else {
-            $form->freeze();
+          $doFreeze = true;
         }
-        $form =& $formBuilder->getForm();
+        $form = $formBuilder->getForm();
         if (PEAR::isError($form)) {
             die($form->getMessage().' '.print_r($form->getUserInfo(), true));
         }
-//        M_Office_Util::addHiddenFields($form);
+        if($doFreeze) {
+          $form->freeze();
+          $submit = $form->getElement('__submit__');
+          if(!PEAR::isError($submit)) {
+            $form->removeElement('__submit__');
+          }
+        }
+
         if ($form->validate()) {
           if (PEAR::isError($ret = $form->process(array(&$formBuilder, 'processForm'), false))) {
             $this->append('errors',__('An error occured while updating record').' : '.$ret->getMessage());
@@ -127,12 +139,12 @@ class M_Office_EditRecord extends M_Office_Controller {
             $remove[]='editmode';
             if($values['__backtolist__']){$remove[]='record';}
             if(!key_exists('debug',$_REQUEST)){
-              $this->say('Vous pouvez maintenant travailler sur les données connexes');                      		    
+              $this->say('Record saved !');                      		    
                 M_Office_Util::refresh(M_Office_Util::getQueryParams(array(), $remove, false));
             }
           }
         }
-        $this->assignRef('editForm',$form);
+        $this->assign('editForm',$form);
 
         if ($linkFromTables = $this->getOption('linkFromTables', $this->table)) {
             $ajaxFrom = $this->getOption('ajaxLinksFromTable',$this->table);
@@ -151,7 +163,7 @@ class M_Office_EditRecord extends M_Office_Controller {
                         $info = $ajaxFrom[$linkTab];
 
                         require_once 'M/Office/ajaxFromTable.php';
-                        $aja = new M_Office_ajaxFromTable($linkTab,$linkField,$this->do->$field);
+                        $aja = new M_Office_ajaxFromTable($this->do, $this->module, $linkTab, $linkField, $this->do->$field);
                         if($info['position']=='before') {
                             $ajaxLinksBefore[]=$aja->getBlock();
                         } else {

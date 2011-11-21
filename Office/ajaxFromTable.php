@@ -11,20 +11,29 @@
 *
 * @package      M
 * @subpackage   M_Office
-* @author       Arnaud Sellenet <demental@sat2way.com>
-
+* @author       Arnaud Sellenet <arnodmental[at]gmail.com>
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
 
 class M_Office_ajaxFromTable extends M_Office_Controller
 {
+  /**
+   * This module creates an UI for n-n relationships.
+   */
+   
     public $table;
     public $field;
     public $value;
-    public function __construct($linkTable,$linkField,$value) {
+    public $module;
+    public $parentDo;
+    public $parentModule;
+    
+    public function __construct($parentDo, $parentModule, $linkTable, $linkField, $value) {
 
         parent::__construct();
+        $this->parentDo = $parentDo;
+        $this->parentModule = $parentModule;        
         $this->table = $linkTable;
         $this->module = $linkTable;
         $this->field = $linkField;
@@ -33,7 +42,13 @@ class M_Office_ajaxFromTable extends M_Office_Controller
     function getBlock() {
         $tpl = $this->tplInstance($this->module);
         Mreg::get('tpl')->addJS('office/fromtableHelpers');
-        $add = $this->getGlobalOption('add','showtable',$this->table);
+
+        $parentEdit = $this->getGlobalOption('edit','showtable',$this->parentModule);
+        $add = $this->getGlobalOption('add','showtable',$this->table) && $parentEdit;
+        $edit = $this->getGlobalOption('edit','showtable',$this->table) && $parentEdit;
+        $delete = $this->getGlobalOption('delete','showtable',$this->table) && $parentEdit;
+
+
         $title = $this->getOption('title',$this->table);
 
         if(strlen($title)<2) {
@@ -47,8 +62,6 @@ class M_Office_ajaxFromTable extends M_Office_Controller
         $tpl->assign('table',$this->table);
         $tpl->assign('field',$this->field);
         $tpl->assign('value',$this->value);        
-        $edit = $this->getGlobalOption('edit','showtable',$this->table);
-        $delete = $this->getGlobalOption('delete','showtable',$this->table);
         $tpl->assign('edit',$edit);
         $tpl->assign('delete',$delete);
 
