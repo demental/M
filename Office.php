@@ -159,7 +159,10 @@ class M_Office extends M_Office_Controller implements iListener {
 			return;
 		} elseif(key_exists('ajaxfromtable',$_REQUEST)) {
 			require 'M/Office/ajaxFromTable.php';
-			$aj = new M_Office_ajaxFromTable($_REQUEST['module'],$_REQUEST['filterField'],$_REQUEST['filterValue']);
+      $table = $_REQUEST['module'];
+      $do = DB_DataObject::factory($table);
+      $do->get($_REQUEST['filterField'],$_REQUEST['filterValue']);
+			$aj = new M_Office_ajaxFromTable($do,$_REQUEST['module'],$_REQUEST['module'],$_REQUEST['filterField'],$_REQUEST['filterValue']);
 			$this->output = $aj->processRequest();
 			return;
 		}
