@@ -407,33 +407,33 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   {
     $this->removeTags($obj);
   }
-  protected function _getTagFromTag($tag) {
-    if(!is_a($tag,'DataObjects_Tag')) {  
-      $t = DB_DataObject::factory('tag');
-      $t->strip = $tag;
-      if(!$t->find(true)) {
-        return false;
-      }
-      $tag = $t;
-    }
-    return $tag;
-  }
   // protected function _getTagFromTag($tag) {
-  //   if(!is_a($tag,'DataObjects_Tag')) {
-  //     $t = DB_DataObject_Pluggable::retreiveFromRegistry('tag','strip',$tag);
-  //     if($t) {
-  //       $tag = $t;
-  //     } else {    
-  //       $t = DB_DataObject::factory('tag');
-  //       $t->strip = $tag;
-  //       if(!$t->find(true)) {
-  //         return false;
-  //       }
-  //       $tag = $t;
-  //       DB_DataObject_Pluggable::storeToRegistry($tag);
+  //   if(!is_a($tag,'DataObjects_Tag')) {  
+  //     $t = DB_DataObject::factory('tag');
+  //     $t->strip = $tag;
+  //     if(!$t->find(true)) {
+  //       return false;
   //     }
+  //     $tag = $t;
   //   }
   //   return $tag;
   // }
+  protected function _getTagFromTag($tag) {
+    if(!is_a($tag,'DataObjects_Tag')) {
+      $t = DB_DataObject_Pluggable::retreiveFromRegistry('tag','strip',$tag);
+      if($t) {
+        $tag = $t;
+      } else {    
+        $t = DB_DataObject::factory('tag');
+        $t->strip = $tag;
+        if(!$t->find(true)) {
+          return false;
+        }
+        $tag = $t;
+        DB_DataObject_Pluggable::storeToRegistry($tag);
+      }
+    }
+    return $tag;
+  }
     
 }
