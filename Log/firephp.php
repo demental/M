@@ -1,9 +1,10 @@
 <?php
-require_once 'M/lib/firephp/FirePHP.class.php';
+//require_once 'M/lib/firephp/FirePHP.class.php';
 
 class Log_firephp {
   public function message($message,$level)
   {
+    return;
     $fp = FirePHP::getInstance(true);
     if(!in_array($level,array('log','info','warn','error'))) {
       $level = 'log';
@@ -12,6 +13,7 @@ class Log_firephp {
   }
   public function table($caption,$data)
   {
+    return;
         $fp = FirePHP::getInstance(true);
         $fp->table($caption,$data);
   }

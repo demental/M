@@ -43,7 +43,8 @@ class Command_App extends Command {
     }
   }
   public static function factory($command) {
-    return parent::factory($command,APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'commands'.DIRECTORY_SEPARATOR);
+      $path = APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'commands'.DIRECTORY_SEPARATOR;
+    return parent::factory($command,$path);
   }
 
   public function execute($params)

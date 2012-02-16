@@ -47,8 +47,48 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
   protected $_listeners = array();
 
+
+  protected static $objectRegistry = array();
+
+
   public $fb_dateFromDatabaseCallback='date2array';
   public $_pluginsLoaded = false;
+
+  /**
+   * retreive from registery and inject data if object is provided
+   * avoid it would be better
+   */
+  public static function retreiveFromRegistry($tablename,$pk,$v = null,$inject = null) {
+    if(!is_null($v)) {
+      $keystore = $tablename.'__keystore_'.$pk;
+      $value = $v;
+    } else {
+      $keystore = $tablename;
+      $value = $pk;
+    }
+    if(key_exists($keystore,DB_DataObject_Pluggable::$objectRegistry) 
+    && key_exists($value,DB_DataObject_Pluggable::$objectRegistry[$keystore])) {
+      $ret = DB_DataObject_Pluggable::$objectRegistry[$keystore][$value];
+
+      if(is_object($inject)) {
+        $inject->setFrom($ret->toArray());
+      } else {
+        return $ret;
+      }
+    }
+
+    return false;
+  }
+
+  public static function storeToRegistry($object) {
+
+    self::$objectRegistry[$object->tableName()][$object->pk()] = $object;
+    if(is_array($object->__keystore)) {
+      foreach($object->__keystore as $keystore) {
+        DB_DataObject_Pluggable::$objectRegistry[$object->tableName().'__keystore_'.$keystore][$object->{$keystore}] = $object;      
+      }
+    }
+  }
   public function current() {
       return $this;
   }
@@ -297,6 +337,15 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
         $this->whereAdd('id IN('.$k.')');
         return $this->find();
     } else {
+        if(is_null($v) || $this->__keystore == $k) {
+          if(!$ret=DB_DataObject_Pluggable::retrieveFromRegistry($this->tableName(),$k,$v,$this)) {
+            if($ret=parent::get($k,$v)) {
+              DB_DataObject_Pluggable::storeToRegistry($this);
+              return $ret; 
+            }
+          }
+          return $ret;
+        }
         return parent::get($k,$v);
     }
   }
