@@ -153,8 +153,9 @@ class M_Office_Util {
    * @param $params     array  associative array to be passed as the GET request (multidimensional arrays are handled too)
    * @param $remove     array  indexed array of variable names to be excluded from the uri
    * @param $entities   bool   should the query be HTML-escaped ?
+   * @param $clean      bool  should we remove empty keys ?
    */
-  public static function getQueryParams($params = array(), $remove = array(), $entities = false) {
+  public static function getQueryParams($params = array(), $remove = array(), $entities = false, $clean = false) {
       $ret = '';
       $arr = array();
       if (!isset($params['regenerate'])) {
@@ -165,10 +166,12 @@ class M_Office_Util {
 
       foreach (array_merge($get, $params) as $key => $val) {
 //            if (substr($key, 0, 5) != '_qf__' && $key!=) {
-              $arr[$key] = $val;
+
+          $arr[$key] = $val;
 //            }
       }
-      $ret = self::queryString($arr);
+      
+      $ret = self::queryString($arr,'','',$clean);
       if ($entities) {
           $ret = htmlentities($ret, ENT_QUOTES);
       }
@@ -181,16 +184,53 @@ class M_Office_Util {
    * @param  $params  array  associative array of query params
    * @param  $prefix  string variable names prefix 
    * @param  $postfix string variable names postfix
+   * @param  $clean bool clean empty keys
    * @return string built query
    */
-  public static function queryString($params, $prefix = '', $postfix = '') {
+  public static function queryString($params, $prefix = '', $postfix = '',$clean = false) {
       $ret = '';
       foreach ($params as $key => $val) {
+
+          if($clean) {
+        // Cleaning empty params
+            if(empty($val)) continue;
+            if(is_array($val) && key_exists('firstselect',$val) && key_exists('firstdate',$val)) {
+              // Advandate, we want to clean it too
+              // @todo do it a better way (such as relying on quickform element itself)
+              // First, make string dates
+              $val['firstdate'] = date('Y-m-d',strtotime($val['firstdate']['Y'].'-'.$val['firstdate']['m'].$val['firstdate']['M'].'-'.$val['firstdate']['d']));
+              $val['seconddate'] = date('Y-m-d',strtotime($val['seconddate']['Y'].'-'.$val['seconddate']['m'].$val['seconddate']['M'].'-'.$val['seconddate']['d']));
+
+              switch($val['firstselect']) {
+                case 'none':  continue 2;// Most common, big clean !
+                case 'is':    
+                case 'before':    
+                case 'after':                                    
+                  $val = array('firstselect'=>$val['firstselect'],'firstdate'=>$val['firstdate']);
+                  break;
+                case 'currentmonth':
+                case 'lastmonth':
+                  $val = array('firstselect'=>$val['firstselect']);
+                  break;
+                case 'currentmonth':
+                  $val = array('firstselect'=>$val['firstselect']);
+                  break;
+                case 'inthelast':
+                $val = array('firstselect'=>$val['firstselect'],'unit'=>$val['unit'],'nbunits'=>$val['nbunits']);
+                break;
+                case 'between':
+                $val = array('firstselect'=>$val['firstselect'],'firstdate'=>$val['firstdate'],'seconddate'=>$val['seconddate']);
+                break;
+                
+                default:break;
+              }
+            }
+          }
           if ($ret) {
               $ret .= '&';
           }
           if (is_array($val)) {
-              $ret .= self::queryString($val, $prefix.$key.$postfix.'[', ']');
+              $ret .= self::queryString($val, $prefix.$key.$postfix.'[', ']','',$clean);
           } else {
               $ret .= urlencode($prefix.$key.$postfix).'='.urlencode((string)$val);
           }
@@ -266,10 +306,15 @@ class M_Office_Util {
 
  	public static function &getSearchForm(&$do){
 
-    if(CACHE_FORMS===true) {
+
+    $form = new MyQuickForm(  'formSearch',
+                              'GET',
+                              self::getQueryParams(array(), array('page','_c_'), false));
+
+
       $cacheName = 'searchform_'.$do->tableName();
       $options = array(
-          'caching' =>true,
+          'caching' =>true,//false
           'cacheDir' => APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/',
           'lifeTime' => 3600,
           'fileNameProtection'=>false,
@@ -278,49 +323,52 @@ class M_Office_Util {
   		$cache = new Cache_Lite($options);
   		if($_cachedData = $cache->get($cacheName)) {
         Mreg::append('autoloadcallback',array(array('MyQuickForm','autoloadElements')));
-  		  $cachedform = unserialize($_cachedData);
-        $cachedform->updateAttributes(array('action'=>self::getQueryParams(array(), array('page'), false)));
-        return $cachedform;
+        $_cachedData = unserialize($_cachedData);
+        foreach($_cachedData as $element) {
+          $form->addElement($element);
+          
+        }
+  		} else {
+            $do->fb_selectAddEmpty = array();
+          	if(is_array($do->links())){
+              foreach ($do->links() as $field => $link) {
+                $do->fb_selectAddEmpty[] = $field;
+              }
+          	}
+        		if(is_array($do->fb_enumFields)){
+        			foreach ($do->fb_enumFields as $field){
+        	       $do->fb_selectAddEmpty[] = $field;
+        			}
+        		}
+            $do->fb_formHeaderText=__('Search');
+            $do->fb_submitText='>>';
+            $do->fb_linkNewValue = false;
+
+            $formBuilder =& MyFB::create($do);
+            $formBuilder->_cacheOptions = array('name'=>'office_searchform','cacheDir'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/');
+        //    var_dump(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/');die();
+            $formBuilder->preGenerateFormCallback=array($do,'prepareSearchForm');
+            $do->prepareSearchForm($fb);
+            $do->fb_userEditableFields=$do->fb_fieldsToRender;
+
+            $formBuilder->postGenerateFormCallback=array($do,'postPrepareSearchForm');
+           	$formBuilder->useForm($form);
+
+
+            $formBuilder->getForm();
+  		  foreach($form->_elements as $elem) {
+  		    $cached[] = $elem;
+  		  }
+        if($cache) {
+          $cache->save(serialize($cached));
+        }
+        
   		}
-
-  	}	
-    $do->fb_selectAddEmpty = array();
-  	if(is_array($do->links())){
-      foreach ($do->links() as $field => $link) {
-        $do->fb_selectAddEmpty[] = $field;
-      }
-  	}
-		if(is_array($do->fb_enumFields)){
-			foreach ($do->fb_enumFields as $field){
-	       $do->fb_selectAddEmpty[] = $field;
-			}
-		}
-    $do->fb_formHeaderText=__('Search');
-    $do->fb_submitText='>>';
-    $do->fb_linkNewValue = false;
-
-    $formBuilder =& MyFB::create($do);
-    $formBuilder->preGenerateFormCallback=array($do,'prepareSearchForm');
-    $do->prepareSearchForm($fb);
-    $do->fb_userEditableFields=$do->fb_fieldsToRender;
-
-    $formBuilder->postGenerateFormCallback=array($do,'postPrepareSearchForm');
-    $form = new MyQuickForm(  'formSearch',
-                              'GET',
-                              self::getQueryParams(array(), array('page'), false));
-   	$formBuilder->useForm($form);
-
-      
-    $formBuilder->getForm();
-    $form->addElement('hidden', 'searchSubmit', 1);
     $form->_rules = array();
     $form->_formRules = array();
     $form->_required = array();
-    self::addHiddenFields($form, array('search', 'page','__dontpaginate'), true);
+    self::addHiddenFields($form, array('search', 'page','__dontpaginate','_c_'), true);
     $form->addElement('checkbox','__dontpaginate','Afficher les résultats sur une seule page');
-    if($cache) {
-      $cache->save(serialize($form));
-    }
 
 	  return $form;
 	}

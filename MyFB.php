@@ -80,6 +80,24 @@ class myFB extends DB_DataObject_FormBuilder
 	$emptyLabel = false,
 	$maindo = null,
 	$preferHtml = false) {
+	  
+	  if($this->_cacheOptions) {
+//	    var_dump($this->_cacheOptions['name'].'_'.$this->_do->tableName().'_'.$table.'_'.$field);
+      $cacheName = $this->_cacheOptions['name'].'_'.$this->_do->tableName().'_'.$table.'_'.$field;
+      $options = array(
+          'caching' =>true,
+          'cacheDir' => $this->_cacheOptions['cacheDir'],
+          'lifeTime' => 3600,
+          'fileNameProtection'=>false,
+  		);
+
+  		$cache = new Cache_Lite($options);
+  		if($_cachedData = $cache->get($cacheName)) {
+        return $_cachedData;
+      }
+    }
+    
+	  
 		if(is_null($maindo)) {
 			$maindo = $this;
 		} else {
@@ -146,6 +164,9 @@ class myFB extends DB_DataObject_FormBuilder
 			}
 			if(is_array($maindo->selectAddEmptyLabel) && key_exists($field,$maindo->selectAddEmptyLabel) && $selectAddEmpty) {
 				$opt['']=$this->selectAddEmptyLabel[$field];
+			}
+			if($cache) {
+			  $cache->save($opt);
 			}
 			return $opt;
 		}
@@ -395,7 +416,12 @@ class myFB extends DB_DataObject_FormBuilder
 						list($linkedtable, $linkedfield) = explode(':', $crossLinkLinks[$crossLink['toField']]);
 						list($fromtable, $fromfield) = explode(':', $crossLinkLinks[$crossLink['fromField']]);
 						//if ($fromtable !== $this->_do->tableName()) error?
-						$all_options      = $this->_getSelectOptions($linkedtable, false, false, false, $linkedfield,false,$crossLinkDo,isset($crossLinkDo->fb_crossLinkExtraFields));
+            
+						  $all_options      = $this->_getSelectOptions($linkedtable, false, false, false, $linkedfield,false,$crossLinkDo,isset($crossLinkDo->fb_crossLinkExtraFields));              
+
+            
+
+
 						$selected_options = array();
 						if (isset($this->_do->$fromfield)) {
 							$crossLinkDo->{$crossLink['fromField']} = $this->_do->$fromfield;

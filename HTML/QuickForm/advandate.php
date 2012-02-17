@@ -284,10 +284,13 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 
 	function exportvalue($submitvalues,$assoc=true)
 	{
-		$value=parent::exportvalue($submitvalues,$assoc);
-        if($assoc) {
-            $value = $value[$this->getName()];
-        }
+
+//		$value=parent::exportvalue($submitvalues,$assoc);
+      $value = $submitvalues;
+      if($assoc) {
+          $value = $value[$this->getName()];
+      }
+
 		switch($value['firstselect']){
 			case 'lastmonth':
 				$value['firstdate']=date("Y-m", mktime(0, 0, 0, date('m')-1, 1, date('Y')));
@@ -310,7 +313,10 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 			case 'is':
 			case 'before':
 			case 'after':
-				$value['firstdate']=$value['firstdate']['Y'].'-'.$value['firstdate']['m'].'-'.$value['firstdate']['d'];
+			  if(is_array($value['firstdate'])) {
+				  $value['firstdate']=$value['firstdate']['Y'].'-'.$value['firstdate']['m'].'-'.$value['firstdate']['d'];
+        }
+
 				unset($value['seconddate']);
 				unset($value['unit']);
 				unset($value['nbunits']);

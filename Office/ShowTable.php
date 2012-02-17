@@ -46,6 +46,11 @@ class M_Office_ShowTable extends M_Office_Controller {
     }
     $do =& $this->doForTable($this->module);
     if($this->getOption('search',$module)){
+      // 1. Url curation if needed
+      if(!key_exists('_c_',$_REQUEST)) {
+        M_Office_Util::refresh(M_Office::cleanURL(array('_c_'=>1),array('searchSubmit','__submit__')));
+      }
+      // 2. Process search
       $doSearch = $this->doForTable($this->module);
       $searchForm = M_Office_Util::getSearchForm($doSearch);
       $this->assign('search',$searchForm);

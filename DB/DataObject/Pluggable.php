@@ -79,7 +79,6 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
     return false;
   }
-
   public static function storeToRegistry($object) {
 
     self::$objectRegistry[$object->tableName()][$object->pk()] = $object;
@@ -470,6 +469,63 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		return parent::count($countWhat,$whereAddOnly);
 	}
 	
+	/**
+	 * Use ObjectRegistry
+	 */
+	public function getLink($row, $table = null, $link = false)
+  {
+//    return parent::getLink($row,$table,$link);
+    if ($table === null) {
+        $links = $this->links();
+        
+        if (is_array($links)) {
+        
+            if ($links[$row]) {
+                list($table,$link) = explode(':', $links[$row]);
+                if ($p = strpos($row,".")) {
+                    $row = substr($row,0,$p);
+                }
+                return $this->getLink($row,$table,$link);
+                
+            } 
+            
+            $this->raiseError(
+                "getLink: $row is not defined as a link (normally this is ok)", 
+                DB_DATAOBJECT_ERROR_NODATA);
+                
+            $r = false;
+            return $r;// technically a possible error condition?
+
+        }  
+        // use the old _ method - this shouldnt happen if called via getLinks()
+        if (!($p = strpos($row, '_'))) {
+            $r = null;
+            return $r; 
+        }
+        $table = substr($row, 0, $p);
+        return $this->getLink($row, $table);
+        
+
+    }
+    
+    
+    
+    if (!isset($this->$row)) {
+        $this->raiseError("getLink: row not set $row", DB_DATAOBJECT_ERROR_NODATA);
+        return false;
+    }
+    
+    if($obj = DB_DataObject_Pluggable::retreiveFromRegistry($table,$this->$row)) {
+      return $obj;
+    }
+    $obj = parent::getLink($row,$table,$link);
+    if(is_object($obj)) {
+      DB_DataObject_Pluggable::storeToRegistry($obj);
+    }
+    return $obj;
+  }
+  
+  
 	public function delete()
 	{
 		$result = $this->trigger('delete');

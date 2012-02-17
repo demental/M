@@ -255,7 +255,10 @@ class M_Office extends M_Office_Controller implements iListener {
 	// ==============================
 	// = Proxy (for faster writing) =
 	// ==============================
-	public static function URL($params = array(), $remove = array(), $entities = false)
+  public static function cleanURL($params = array(), $remove = array(), $entities = false) {
+		return self::URL($params,$remove,$entities,true);
+  }
+	public static function URL($params = array(), $remove = array(), $entities = false,$clean = false)
 	{
 		if(!is_array($params)) {
 			$tmp = explode('/',$params);
@@ -265,6 +268,6 @@ class M_Office extends M_Office_Controller implements iListener {
 			$remove = $entities;
 			$entities = false;
 		}
-		return M_Office_Util::getQueryParams($params,$remove,$entities);
+		return M_Office_Util::getQueryParams($params,$remove,$entities,$clean);
 	}
 }
