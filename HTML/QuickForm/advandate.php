@@ -322,8 +322,12 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 				unset($value['nbunits']);
 			break;
 			case 'between':
-				$value['firstdate']=$value['firstdate']['Y'].'-'.$value['firstdate']['m'].'-'.$value['firstdate']['d'];
-				$value['seconddate']=$value['seconddate']['Y'].'-'.$value['seconddate']['m'].'-'.$value['seconddate']['d'];
+  		  if(is_array($value['firstdate'])) {
+  			  $value['firstdate']=$value['firstdate']['Y'].'-'.$value['firstdate']['m'].'-'.$value['firstdate']['d'];
+        }
+  		  if(is_array($value['seconddate'])) {
+  			  $value['seconddate']=$value['seconddate']['Y'].'-'.$value['seconddate']['m'].'-'.$value['seconddate']['d'];
+        }
 				unset($value['unit']);
 				unset($value['nbunits']);
 			break;
