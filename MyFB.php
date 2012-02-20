@@ -82,7 +82,7 @@ class myFB extends DB_DataObject_FormBuilder
 	$preferHtml = false) {
 	  
 	  if($this->_cacheOptions) {
-//	    var_dump($this->_cacheOptions['name'].'_'.$this->_do->tableName().'_'.$table.'_'.$field);
+
       $cacheName = $this->_cacheOptions['name'].'_'.$this->_do->tableName().'_'.$table.'_'.$field;
       $options = array(
           'caching' =>true,
