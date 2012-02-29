@@ -25,9 +25,6 @@ class Log
       include $file;
       $class = 'Log_'.$driver;
       self::$instances[$driver] = new $class;
-      if(method_exists(self::$instances[$driver],'init')) {
-        self::$instances[$driver]->init(array());
-      }
     }
     return self::$instances[$driver];
   }

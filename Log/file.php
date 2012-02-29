@@ -2,12 +2,6 @@
 class Log_file {
   public function init($options)
   {
-    if(empty($options['file'])) {
-      $options['file'] = APP_ROOT.'logs'.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.date('Y-m-d').'.log';
-    }
-    if(!file_exists($options['file'])) {
-      touch($options['file']);
-    }
     $this->_options = $options;
   }
   public function getdump($var)
