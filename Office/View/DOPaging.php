@@ -108,6 +108,9 @@ class M_Office_View_DOPaging extends M_Office_View_List
       $fieldsToRender = $usedFields;
     }
 
+    if($plugins['tag'] && in_array('tagplugin_cache',$AllFields)) {
+      $usedFields[]='tagplugin_cache';
+    }
     if(!in_array($pk,$usedFields)) {
       $selectAdd = $do->tablename().'.'.$pk.','.$do->tablename().'.'.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:'');
     } else {
