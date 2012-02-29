@@ -346,7 +346,6 @@ class M_Office_Util {
 
             $formBuilder =& MyFB::create($do);
             $formBuilder->_cacheOptions = array('name'=>'office_searchform','cacheDir'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/');
-        //    var_dump(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/');die();
             $formBuilder->preGenerateFormCallback=array($do,'prepareSearchForm');
             $do->prepareSearchForm($fb);
             $do->fb_userEditableFields=$do->fb_fieldsToRender;
