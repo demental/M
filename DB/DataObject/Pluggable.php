@@ -224,12 +224,21 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	 * @return false if the plugin does not exist in the current object
 	 * @return Object plugin reference
 	 **/
-	public function getPlugin($pname) {
+	public function getPlugin($pname) 
+	{
   	if(!$this->_pluginsLoaded) {
   	    $this->loadPlugin($pname);
   	}
     return PluginRegistry::getInstance($pname,'DB');
 	}
+	
+	public function hasPlugin($pname)
+	{
+    $def =$this->_getPluginsDef();
+    if(array_key_exists($pname,$def)) return true;
+    return false;
+	}
+	
   public function addListener($listener)
   {
     if(!$this->hasListener($listener)) {
