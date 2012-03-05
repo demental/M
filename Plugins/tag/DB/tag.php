@@ -18,7 +18,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getEvents()
   {
-    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','gettagrecord','postdelete','hastag','gettaglasthistory','gettags',
+    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','gettagrecord','postdelete','hastag','gettaglasthistory','gettags','postfetch',
       'frontendsearch',
     'postpreparesearchform',
     'getbatchmethods');
@@ -29,6 +29,10 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   {
     $arr['batchaddtag'] = array('title'=>'Add/remove tags','plugin'=>'tag');
     return $this->returnStatus($arr);
+  }
+  public function postFetch($obj)
+  {
+    $obj->_tagplugin_cache = null;
   }
   public function prepareBatchAddTag($form)
   {
@@ -278,14 +282,9 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    */
   public function getTags($obj)
   {    
+
     $tag = DB_DataObject::factory('tag');
-    $dbo = DB_DataObject::factory('tag_record');
-    $dbo->tagged_table = $obj->tableName();
-    $dbo->record_id = $obj->pk();
-    $tag->selectAdd();
-    $tag->selectAdd('tag.id,tag.strip');
-    $tag->joinAdd($dbo);
-    $tag->selectAs($dbo,'link_%s');
+    $tag->whereAdd('strip in ("'.implode('","',$this->getTagsArray($obj)).'")');
     $tag->find();
     return $this->returnStatus($tag);
   }
@@ -298,7 +297,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getTagsArray($obj)
   {
-
+    if(is_array($obj->_tagplugin_cache)) return $obj->_tagplugin_cache;
     if(empty($obj->tagplugin_cache)) {
 
       $tag = DB_DataObject::factory('tag');
@@ -313,6 +312,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       $obj->tagplugin_cache = '|';
       while($tag->fetch()) {
         $obj->tagplugin_cache.=$tag->strip.'|';
+        $obj->_tagplugin_cache[]=$tag->strip;
       }
       $db = $obj->getDatabaseConnection();
       $sth = $db->prepare('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET tagplugin_cache=:cacheval where '.$db->quoteIdentifier($obj->pkName()).'=:pkval',array('text','text'));
@@ -320,7 +320,8 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       $sth->execute(array('cacheval'=>$obj->tagplugin_cache,'pkval'=>$obj->pk()));
 
     }
-    return explode('|',$obj->tagplugin_cache);
+    $obj->_tagplugin_cache = explode('|',$obj->tagplugin_cache);
+    return $obj->_tagplugin_cache;
 
   }
 
