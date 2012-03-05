@@ -18,7 +18,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getEvents()
   {
-    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','gettagrecord','postdelete','hastag','gettaglasthistory','gettags',
+    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','gettagrecord','postdelete','hastag','gettaglasthistory','gettags','postfetch',
       'frontendsearch',
     'postpreparesearchform',
     'getbatchmethods');
@@ -29,6 +29,10 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   {
     $arr['batchaddtag'] = array('title'=>'Add/remove tags','plugin'=>'tag');
     return $this->returnStatus($arr);
+  }
+  public function postFetch($obj)
+  {
+    $obj->_tagplugin_cache = null;
   }
   public function prepareBatchAddTag($form)
   {
@@ -54,12 +58,13 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    */
   public function addTagsToForm(HTML_QuickForm $form, $fieldname, DB_DataObject $obj)
   {
-    Log::info('Adding tags to form');
     $tags = DB_DataObject::factory('tag');
     $tags->archived=0;// @todo add this field to tags table
     $tag_record = DB_DataObject::factory('tag_record');
     $tags->joinAdd($tag_record);
+
     $tags->whereAdd("tag_record.tagged_table = '".$obj->__table."'");
+
     $tags->selectAdd();
     $tags->selectAdd('tag.*');
     $tags->groupBy('tag.strip');
@@ -155,10 +160,16 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       if(!$dbo->find(true)) {
         $dbo->insert();
         $this->triggerTag($tag,'add',$obj);
+        $this->clearTagCache($obj);
       }
 
     }
     return $this->returnStatus($obj);
+  }
+  public function clearTagCache($obj)
+  {
+    $obj->tagplugin_cache = '';
+    $obj->update();
   }
   
   /**
@@ -242,7 +253,9 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       if($dbo->find(true)) {
         $dbo->delete();
         $this->triggerTag($tag,'remove',$obj);
+        $this->clearTagCache($obj);      
       }
+
     }
     return $this->returnStatus($obj);
   }
@@ -268,15 +281,10 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    * returns the recordset of tags attached to $obj
    */
   public function getTags($obj)
-  {
+  {    
+
     $tag = DB_DataObject::factory('tag');
-    $dbo = DB_DataObject::factory('tag_record');
-    $dbo->tagged_table = $obj->tableName();
-    $dbo->record_id = $obj->pk();
-    $tag->selectAdd();
-    $tag->selectAdd('tag.id,tag.strip');
-    $tag->joinAdd($dbo);
-    $tag->selectAs($dbo,'link_%s');
+    $tag->whereAdd('strip in ("'.implode('","',$this->getTagsArray($obj)).'")');
     $tag->find();
     return $this->returnStatus($tag);
   }
@@ -286,6 +294,36 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    * @param $tags mixed. Can be a tag table recordset or an array of tag records
    * @param DB_DataObject $obj the recordset on which the select query will be executed 
    */
+
+  public function getTagsArray($obj)
+  {
+    if(is_array($obj->_tagplugin_cache)) return $obj->_tagplugin_cache;
+    if(empty($obj->tagplugin_cache)) {
+
+      $tag = DB_DataObject::factory('tag');
+      $dbo = DB_DataObject::factory('tag_record');
+      $dbo->tagged_table = $obj->tableName();
+      $dbo->record_id = $obj->pk();
+      $tag->selectAdd();
+      $tag->selectAdd('tag.id,tag.strip');
+      $tag->joinAdd($dbo);
+      $tag->selectAs($dbo,'link_%s');
+      $tag->find();
+      $obj->tagplugin_cache = '|';
+      while($tag->fetch()) {
+        $obj->tagplugin_cache.=$tag->strip.'|';
+        $obj->_tagplugin_cache[]=$tag->strip;
+      }
+      $db = $obj->getDatabaseConnection();
+      $sth = $db->prepare('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET tagplugin_cache=:cacheval where '.$db->quoteIdentifier($obj->pkName()).'=:pkval',array('text','text'));
+      if(PEAR::isError($sth)) die($sth->getMessage());
+      $sth->execute(array('cacheval'=>$obj->tagplugin_cache,'pkval'=>$obj->pk()));
+
+    }
+    $obj->_tagplugin_cache = explode('|',$obj->tagplugin_cache);
+    return $obj->_tagplugin_cache;
+
+  }
 
   public function getByTags($tags, DB_DataObject $obj)
   {
@@ -347,16 +385,14 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   }
   public function hastag($tag,$obj)
   {
-    if(!$tag = $this->_getTagFromTag($tag)) return $this->returnStatus(false);
+
     if(!$obj->pk()) return $this->returnStatus(false);
-    $dbo = DB_DataObject::factory('tag_record');
-    $dbo->tag_id = $tag->id;
-    $dbo->setRecord($obj);
-    $res = $dbo->count();
-    if($res<1) {
-        return $this->returnStatus(false);
-    }
-    return $this->returnStatus(true);
+
+    if(!$tag = $this->_getTagFromTag($tag)) return $this->returnStatus(false);
+
+    if(in_array($tag->strip,$this->getTagsArray($obj))) return $this->returnStatus(true);
+
+    return $this->returnStatus(false);
   }
   public function getTagDate($tag,$obj)
   {
