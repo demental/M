@@ -48,7 +48,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   protected $_listeners = array();
 
 
-  protected static $objectRegistry = array();
+  public static $objectRegistry = array();
 
 
   public $fb_dateFromDatabaseCallback='date2array';
@@ -58,7 +58,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
    * retreive from registery and inject data if object is provided
    * avoid it would be better
    */
-  public static function retreiveFromRegistry($tablename,$pk,$v = null,$inject = null) {
+  public static function &retreiveFromRegistry($tablename,$pk,$v = null,$inject = null) {
     if(!is_null($v)) {
       $keystore = $tablename.'__keystore_'.$pk;
       $value = $v;
@@ -79,9 +79,23 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
     return false;
   }
+  public static function clearFromRegistry($tablename,$pk,$v = null  ) {
+    if(!is_null($v)) {
+      $keystore = $tablename.'__keystore_'.$pk;
+      $value = $v;
+    } else {
+      $keystore = $tablename;
+      $value = $pk;
+    }
+    if(key_exists($keystore,DB_DataObject_Pluggable::$objectRegistry) 
+    && key_exists($value,DB_DataObject_Pluggable::$objectRegistry[$keystore])) {
+      unset(DB_DataObject_Pluggable::$objectRegistry[$keystore][$value]);
+    }
+  }
   public static function storeToRegistry($object) {
 
-    self::$objectRegistry[$object->tableName()][$object->pk()] = $object;
+    DB_DataObject_Pluggable::$objectRegistry[$object->tableName()][$object->pk()] = $object;
+
     if(is_array($object->__keystore)) {
       foreach($object->__keystore as $keystore) {
         DB_DataObject_Pluggable::$objectRegistry[$object->tableName().'__keystore_'.$keystore][$object->{$keystore}] = $object;      
@@ -420,7 +434,9 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		    break;
 		  default:  
         if(parent::insert()) {
-    		  $this->trigger('postinsert');
+
+          DB_DataObject_Pluggable::storeToRegistry($this);
+          $this->trigger('postinsert');
           return true;
         }
         return false;
@@ -525,11 +541,12 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     }
     
     if($obj = DB_DataObject_Pluggable::retreiveFromRegistry($table,$this->$row)) {
+      
       return $obj;
     }
     $obj = parent::getLink($row,$table,$link);
     if(is_object($obj)) {
-      DB_DataObject_Pluggable::storeToRegistry($obj);
+      DB_DataObject_Pluggable::storeToRegistry(&$obj);
     }
     return $obj;
   }
@@ -829,7 +846,6 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
             if ($r < 1) {
                 return 0;
             }
-
             $this->_clear_cache();
             return $r;
         }

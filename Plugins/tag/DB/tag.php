@@ -18,7 +18,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getEvents()
   {
-    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','gettagrecord','postdelete','hastag','gettaglasthistory','gettags','postfetch',
+    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','gettagrecord','delete','hastag','gettaglasthistory','gettags','postfetch','undelete',
       'frontendsearch',
     'postpreparesearchform',
     'getbatchmethods');
@@ -144,6 +144,17 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   protected function _addTag($tag, $byhuman, DB_DataObject $obj)
   {
     if(!$obj->pk()) return $this->returnStatus($obj);
+    if($this->validateTriggerTag($tag,'add',$byhuman,$obj)) {
+      // $tag will be replaced by its DO object if string passed as param
+      if($this->__createTagRecord($tag,$obj)) { 
+        $this->triggerTag($tag,'add',$obj);
+        $this->clearTagCache($obj);
+      }
+    }
+    return $this->returnStatus($obj);
+  }
+  protected function __createTagRecord(&$tag,$obj)
+  {
     if(!$existingtag = $this->_getTagFromTag($tag)) {
       $newtag = DB_DataObject::factory('tag');
       $newtag->strip = $tag;
@@ -152,19 +163,15 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     } else {
       $tag = $existingtag;
     }
-    if($this->validateTriggerTag($tag,'add',$byhuman,$obj)) {
-      $dbo = DB_DataObject::factory('tag_record');
-      $dbo->tag_id = $tag->id;
-      $dbo->record_id = $obj->pk();
-      $dbo->tagged_table = $obj->tableName();
-      if(!$dbo->find(true)) {
-        $dbo->insert();
-        $this->triggerTag($tag,'add',$obj);
-        $this->clearTagCache($obj);
-      }
-
+    $dbo = DB_DataObject::factory('tag_record');
+    $dbo->tag_id = $tag->id;
+    $dbo->record_id = $obj->pk();
+    $dbo->tagged_table = $obj->tableName();
+    if(!$dbo->find(true)) {
+      $dbo->insert();
+      return true;
     }
-    return $this->returnStatus($obj);
+    return false;
   }
   public function clearTagCache($obj)
   {
@@ -439,21 +446,22 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     $dbo->setTag($tag);
     return $this->returnStatus($dbo->count());
   }
-  public function postdelete($obj)
+  
+
+  public function delete($obj)
   {
+    $this->getTagsArray($obj);
     $this->removeTags($obj);
   }
-  // protected function _getTagFromTag($tag) {
-  //   if(!is_a($tag,'DataObjects_Tag')) {  
-  //     $t = DB_DataObject::factory('tag');
-  //     $t->strip = $tag;
-  //     if(!$t->find(true)) {
-  //       return false;
-  //     }
-  //     $tag = $t;
-  //   }
-  //   return $tag;
-  // }
+  public function undelete($obj)
+  {
+    if(!$obj->pk()) return;
+    foreach($this->getTagsArray($obj) as $atag) {
+
+      $this->__createTagRecord($atag,$obj);
+    }
+
+  }
   protected function _getTagFromTag($tag) {
     if(!is_a($tag,'DataObjects_Tag')) {
       $t = DB_DataObject_Pluggable::retreiveFromRegistry('tag','strip',$tag);
