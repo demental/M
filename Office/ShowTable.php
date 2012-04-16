@@ -12,7 +12,6 @@
 * @package      M
 * @subpackage   M_Office
 * @author       Arnaud Sellenet <demental@sat2way.com>
-
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
@@ -22,10 +21,13 @@ class M_Office_ShowTable extends M_Office_Controller {
   var $hasActions=false;
   function __construct($module) {
     parent::__construct();
-    if (isset($_REQUEST['record']) 
+    if ((isset($_REQUEST['record']) || isset($_REQUEST['__record_ref']))
     && ($this->getOption('edit', $module) || $this->getOption('view', $module) || $this->getOption('directEdit', $module))) {
       require 'M/Office/EditRecord.php';
-      $subController = new M_Office_EditRecord($module, $_REQUEST['record'],$additionalFilter);
+      
+      $subController = new M_Office_EditRecord($module, $_REQUEST['record'], $additionalFilter);
+      $subController->__record_ref = $_REQUEST['__record_ref'];
+      
       $subController->run();
       return;
     }

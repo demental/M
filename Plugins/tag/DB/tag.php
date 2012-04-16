@@ -325,9 +325,10 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       $sth = $db->prepare('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET tagplugin_cache=:cacheval where '.$db->quoteIdentifier($obj->pkName()).'=:pkval',array('text','text'));
       if(PEAR::isError($sth)) die($sth->getMessage());
       $sth->execute(array('cacheval'=>$obj->tagplugin_cache,'pkval'=>$obj->pk()));
-
+      
     }
     $obj->_tagplugin_cache = explode('|',$obj->tagplugin_cache);
+
     return $obj->_tagplugin_cache;
 
   }
@@ -396,7 +397,6 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     if(!$obj->pk()) return $this->returnStatus(false);
 
     if(!$tag = $this->_getTagFromTag($tag)) return $this->returnStatus(false);
-
     if(in_array($tag->strip,$this->getTagsArray($obj))) return $this->returnStatus(true);
 
     return $this->returnStatus(false);

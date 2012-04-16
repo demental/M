@@ -147,6 +147,38 @@ class M_Office_Util {
   public static function getAjaxQueryParams($params = array(), $remove = array(), $entities = false) {
       return self::getQueryParams(array_merge($params,array('ajax'=>1)),$remove,$entities);
   }
+  
+  public static function doURL($do,$module='',$add = array(), $remove = array())
+  {
+    $url = ROOT_ADMIN_URL;
+    if($module) {
+      $url.= $module.'/';
+    } else {
+      $url.= $do->tableName().'/';
+    }
+    if(method_exists($do,'getQueryParamValue')) {
+      $url .= $do->getQueryParamValue();
+    } elseif($do->ref) {
+      $url .= $do->ref;
+    } else {
+      $url .= $do->pk();
+    }
+    $params = $_GET;
+    $params = array_merge($params,$add);
+    foreach($remove as $k) {
+      unset($params[$k]);
+    }
+
+    unset($params['module']);
+    unset($params['record']);
+    unset($params['__record_ref']);
+    unset($params['regenerate']);
+    unset($params['_c_']);    
+    if(count($params)>0) {
+      $url.='?'.self::queryString($params,'','',true);
+    }
+    return $url;
+  }
   /**
    * Builds and URI, starting from the current GET request,
    * merging passed params as first parameter and excluding variable names passed as second (optional) parameter
@@ -155,6 +187,7 @@ class M_Office_Util {
    * @param $entities   bool   should the query be HTML-escaped ?
    * @param $clean      bool  should we remove empty keys ?
    */
+  
   public static function getQueryParams($params = array(), $remove = array(), $entities = false, $clean = false) {
       $ret = '';
       $arr = array();

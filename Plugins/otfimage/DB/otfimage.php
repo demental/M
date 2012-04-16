@@ -174,7 +174,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
      $ext = FileUtils::getFileExtension($_FILES[$field]['name']);
 		 $name = $prefix.".".$ext;
      $destination = IMAGES_UPLOAD_FOLDER.$relativePathFromUploadFolder.'/'.$name;
-
+     
 			if (move_uploaded_file($_FILES[$field]["tmp_name"], $destination)
 				&&chmod($destination, 0644)){
 				return $name;

@@ -1,5 +1,5 @@
 <?php if($edit):?>
   <td>
-    <a href="<?php echo M_Office_Util::getQueryParams(array('record' => $do->$pk))?>">Modifier</a>
+    <a href="<?php echo M_Office_Util::doURL($do, $_REQUEST['module'])?>"><?php _e('Edit')?></a>
   </td>
 <?php endif?>

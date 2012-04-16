@@ -53,7 +53,7 @@ class M_Office_livesearch extends M_Office_Controller
             $ret.='<dl><dt>'.$table.'</dt>';
             $cnt=0;
             foreach($obj as $rec) {
-                $ret.='<dd><a href="'.M_Office_Util::getQueryParams(array('module'=>$table,'record'=>$rec->id),array('livesearch')).'">'.$rec->livesearchText().'</a></dd>';
+                $ret.='<dd><a href="'.M_Office_Util::doURL($rec, $table, array(),array('livesearch')).'">'.$rec->livesearchText().'</a></dd>';
                 $cnt++;
                 if($cnt>10){break;}
             }

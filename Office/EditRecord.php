@@ -23,20 +23,30 @@ class M_Office_EditRecord extends M_Office_Controller {
       
       $opts = PEAR::getStaticProperty('m_office','options');
       $this->module = $module;
+      $this->__record_id = $record;
       $this->moduloptions = $opts['modules'][$module];
       $table = $this->table = $this->moduloptions['table'];      
-      $this->do = $this->getRecord($module, $record);
+
       parent::__construct();
 
     }
 
-    public function getRecord($module, $record)
+    public function getRecord()
     {
       if($record instanceOf DB_DataObject) return $record;
-      $do = M_Office_Util::doForModule($module,false);
+      $do = M_Office_Util::doForModule($this->module,false);
 
-      $keys = $do->keys();
-      $do->{$keys[0]} = $record;
+      if($this->__record_ref) {
+        if(method_exists($do, 'findByRequestParam')) {
+          $do->findByRequestParam($this->__record_ref);
+        } elseif(key_exists('ref',$do->table())) {
+          $do->ref = $this->__record_ref;
+        } else {
+          $do->{$do->pkName()} = $this->__record_ref;
+        }
+      } else {
+        $do->{$do->pkName()} = $this->__record_id;
+      }
       if(!$do->find(true)) {
         $this->assign('__action','error');
         $this->append('errors',__('L\'enregistrement que vous avez tenté d\'atteindre est introuvable.'));
@@ -48,38 +58,39 @@ class M_Office_EditRecord extends M_Office_Controller {
     }
     public function run()
     {
-        $this->assign('__action','edit');
-        $this->append('subActions','<a href="'.M_Office_Util::getQueryParams(array(), array('record','doSingleAction')).'">'.__('&lt; Back to list').'</a>');
-        $editopts = PEAR::getStaticProperty('m_office_editrecord','options');
-        if(!empty($editopts['tableOptions'][$this->module]['fields'])) {
-          $this->do->fb_fieldsToRender = $editopts['tableOptions'][$this->module]['fields'];
-        }
-        $tpl = Mreg::get('tpl');
-        $tpl->concat('adminTitle',$this->do->__toString().' :: '.$this->moduloptions['title']);
+      $this->do = $this->getRecord();
+      $this->assign('__action','edit');
+      $this->append('subActions','<a href="'.M_Office_Util::getQueryParams(array(), array('record','doSingleAction','__record_ref')).'">'.__('&lt; Back to list').'</a>');
+      $editopts = PEAR::getStaticProperty('m_office_editrecord','options');
+      if(!empty($editopts['tableOptions'][$this->module]['fields'])) {
+        $this->do->fb_fieldsToRender = $editopts['tableOptions'][$this->module]['fields'];
+      }
+      $tpl = Mreg::get('tpl');
+      $tpl->concat('adminTitle',$this->do->__toString().' :: '.$this->moduloptions['title']);
 
-        $database = $this->do->database();
+      $database = $this->do->database();
 
-        /**
-        *
-        * Actions
-        *
-        **/
-        if (isset($_REQUEST['doSingleAction']) && $this->getGlobalOption('actions','showtable',$this->module)) {
-            require 'M/Office/Actions.php';
-            $subController = new M_Office_Actions($this->getOptions());
-            $subController->run($this->do, $_REQUEST['doSingleAction'],'single');
-            if($subController->hasOutput()) {
-        	    return;
-        	}
+      /**
+      *
+      * Actions
+      *
+      **/
+      if (isset($_REQUEST['doSingleAction']) && $this->getGlobalOption('actions','showtable',$this->module)) {
+          require 'M/Office/Actions.php';
+          $subController = new M_Office_Actions($this->getOptions());
+          $subController->run($this->do, $_REQUEST['doSingleAction'],'single');
+          if($subController->hasOutput()) {
+      	    return;
+      	}
     	}
         $this->createActions();
 
-        if((!$this->getOption('directEdit',$this->module) && !isset($_REQUEST['editmode'])) || !$this->getOption('edit',$this->module)){
+        if(!$this->getOption('edit',$this->module)){
             $this->do->fb_userEditableFields=array('__fakefield');
         }
 
         $formBuilder =& MyFB::create($this->do);
-        $form = new MyQuickForm('editRecord', 'POST', M_Office_Util::getQueryParams(array(), array('editmode'), false), '_self', null, true);
+        $form = new MyQuickForm('editRecord', 'POST', M_Office_Util::doURL($this->do, $this->module, array()), '_self', null, true);
         Mtpl::addJS('jquery.form');
 
         Mtpl::addJsinline('
@@ -103,17 +114,8 @@ class M_Office_EditRecord extends M_Office_Controller {
         $formBuilder->elementTypeAttributes = array('longtext' => array('cols' => 50, 'rows' => 10));
         $formBuilder->useForm($form);
         if($this->getOption('edit',$this->module)){
-            if((!$this->getOption('directEdit',$this->module) && !isset($_REQUEST['editmode']))){
-                $form->addElement(MyQuickForm::createElement('header','modifHeader','<input type="button" onclick="top.location.href=\''.M_Office_Util::getQueryParams(array('editmode'=>1)).'\'"value="Modifier cet enregistrement"/>'));
-                $doFreeze = true;
-            } else {
-
-                $this->assign('editable',true);
-                $form->addElement(MyQuickForm::createElement('header','modifHeader','Modification activée'));
-                $form->addElement('hidden','editmode',1);
-                $form->addElement(MyQuickForm::createElement('checkbox','__backtolist__','Retourner à la liste après les modifications',''));
-//                                        $form->setDefaults(array('__backtolist__'=>1));
-            }
+          $this->assign('editable',true);
+          $form->addElement(MyQuickForm::createElement('checkbox','__backtolist__','Retourner à la liste après les modifications',''));
         } else {
           $doFreeze = true;
         }
@@ -136,11 +138,10 @@ class M_Office_EditRecord extends M_Office_Controller {
             return;
           } else {
             $values=$form->exportValues();
-            $remove[]='editmode';
             if($values['__backtolist__']){$remove[]='record';}
             if(!key_exists('debug',$_REQUEST)){
               $this->say('Record saved !');                      		    
-                M_Office_Util::refresh(M_Office_Util::getQueryParams(array(), $remove, false));
+                M_Office_Util::refresh(M_Office_Util::doURL($this->do, $this->module, array(), $remove));
             }
           }
         }
@@ -200,7 +201,7 @@ class M_Office_EditRecord extends M_Office_Controller {
   function createActions() {
     $singleMethods = M_Office_Util::getActionsFor($this->do,$this->module);
     foreach($singleMethods as $k=>$v){
-      $this->append('relatedaction',array('url'=>M_Office_Util::getQueryParams(array("doSingleAction"=>$k)),'title'=>$v['title']));
+      $this->append('relatedaction',array('url'=>M_Office_Util::doUrl($this->do, $this->module, array("doSingleAction"=>$k)),'title'=>$v['title']));
     }
     return $singleMethods;    
   }  
