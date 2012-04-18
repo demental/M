@@ -150,6 +150,7 @@ class M_Office_Util {
   
   public static function doURL($do,$module='',$add = array(), $remove = array())
   {
+    if(!is_object($do)) return '';
     $url = ROOT_ADMIN_URL;
     if($module) {
       $url.= $module.'/';

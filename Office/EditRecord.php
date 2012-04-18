@@ -183,17 +183,16 @@ class M_Office_EditRecord extends M_Office_Controller {
     $this->assign('linkFromTables',$linkFromTableArray);
     $this->assign('ajaxFrom',array('before'=>$ajaxLinksBefore,'after'=>$ajaxLinksAfter));
     $related='';
-      if (($linkToTables = $this->getOption('linkToTables', $this->table)) && is_array($links = $this->do->links())) {
-          foreach ($links as $linkField=>$link) {
-
-            list($linkTab, $linkRec) = explode(':', $link);
-            if ((!is_array($linkToTables) || in_array($linkTab, $linkToTables)) && $this->getOption('view',$linkTab)) {
-                                  $this->append('linkToTables',array('table'=>$linkTab,
-                                                                      'link'=>M_Office_Util::getQueryParams(array('module' => $linkTab,'record'=>$this->do->$linkField),array('page'))
-                                                                    )
-                                                );
-            }
+    if (($linkToTables = $this->getOption('linkToTables', $this->table)) && is_array($links = $this->do->links())) {
+      foreach ($links as $linkField=>$link) {
+        list($linkTab, $linkRec) = explode(':', $link);
+        if ((!is_array($linkToTables) || in_array($linkTab, $linkToTables)) && $this->getOption('view',$linkTab)) {
+          $linkDo = $this->do->getLink($linkField);
+          if($linkDo) {
+            $this->append('linkToTables',array('table'=>$linkTab, 'link'=>M_Office_Util::DoUrl($linkDo, $linkTab, array(),array('page'))));
           }
+        }
+      }
     }
     $this->assign('related',$related);
     $this->assign('do',$this->do);
