@@ -220,7 +220,8 @@ class M_Office_EditRecord extends M_Office_Controller {
                           'filternTable' => $linkTab,                                                              
                           'filternValue' => $this->do->$field);
 
-                          $removed=array('module','filternValue','filternField');
+                          $removed=array('module','filternValue','filternField', 'record','__record_ref');
+      $link = M_Office_Util::getQueryParams($parameters,$removed);
       $add = false;         
       $tableName = M_Office_Util::getFrontTableName($ntableArray[0].' <small>(n-n)</small>');
     } else {
@@ -230,16 +231,16 @@ class M_Office_EditRecord extends M_Office_Controller {
                           'filterField' => $linkField,
                           'filterValue' => $this->do->$field);
 
-                          $removed=array('module','filterValue','filterField');
+                          $removed=array('module','filterValue','filterField', 'record','__record_ref');
     
       if($nbLinkedRecords==1){
           $keys=$linkDo->keys();
           $key=$keys[0];
-          $linkDo->selectAdd();
-          $linkDo->selectAdd($linkDo->pkName());
           $linkDo->find(true);
-          $parameters['record']=$linkDo->$key;
-          $removed[]='record';
+          $link = M_Office_Util::doURL($linkDo, $linkTab, array('filterField' => $linkField, 'filterValue'=> $this->do->$field));
+
+      } else {
+        $link = M_Office_Util::getQueryParams($parameters,$removed);
       }
       $tableName = M_Office_Util::getFrontTableName($linkTab);
       $add = $this->getGlobalOption('add','showtable', $linkTab)?true:false;
@@ -247,7 +248,7 @@ class M_Office_EditRecord extends M_Office_Controller {
     return array( 'table'=>$linkTab,
                   'linkField'=>$linkField,
                   'field'=>$field,
-                  'link'=>M_Office_Util::getQueryParams($parameters,array_diff(array_keys($_GET),$removed)),
+                  'link'=>$link,
                   'nb'=>$nbLinkedRecords,
                   'tablename'=>$tableName,
                   'add'=>$add

@@ -138,7 +138,7 @@ class M_Office_ShowTable extends M_Office_Controller {
           list($lTab, $lFld) = explode(':', $links[$_REQUEST['filterField']]);
           $linkedDo = DB_DataObject::factory($lTab);
           $linkedDo->get($lFld, $_REQUEST['filterValue']);
-          $filterString .= '<a href="'.M_Office_Util::getQueryParams(array('module'=>$lTab,'record'=>$linkedDo->$lFld),array('filterValue','filterField')).'">'.MyFB::getDataObjectString($linkedDo).' ('.$_REQUEST['filterValue'].')</a>';
+          $filterString .= '<a href="'.M_Office_Util::doURL($linkedDo, $lTab,array(),array('filterValue','filterField')).'">'.MyFB::getDataObjectString($linkedDo).' ('.$_REQUEST['filterValue'].')</a>';
         } else {
           $filterString .= $_REQUEST['filterValue'].'<br/>';
         }
