@@ -93,7 +93,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     }
   }
   public static function storeToRegistry($object) {
-
+    if(!$object->isCachable()) return;
     DB_DataObject_Pluggable::$objectRegistry[$object->tableName()][$object->pk()] = $object;
 
     if(is_array($object->__keystore)) {
@@ -101,6 +101,10 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
         DB_DataObject_Pluggable::$objectRegistry[$object->tableName().'__keystore_'.$keystore][$object->{$keystore}] = $object;      
       }
     }
+  }
+  public function isCachable()
+  {
+    return true;
   }
   public function current() {
       return $this;
