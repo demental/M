@@ -345,14 +345,32 @@ class M_Office_Util {
                               'GET',
                               self::getQueryParams(array(), array('page','_c_'), false));
 
+    $fields = $_GET;
 
-      $cacheName = 'searchform_'.$do->tableName();
-      $options = array(
-          'caching' =>true,//false
-          'cacheDir' => APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/',
-          'lifeTime' => 3600,
-          'fileNameProtection'=>false,
-  		);
+    unset($fields['_c_']);
+    unset($fields['page']);
+    unset($fields['module']);
+    unset($fields['action']);    
+    unset($fields['filterField']);        
+    unset($fields['filterValue']);            
+
+    if(count($fields)==0) { 
+      Log::info('caching search form');
+      $cache = true;
+    } else { 
+
+      Log::info('NO SEARCH FORM CACHING');
+      $cache = false;
+    }
+  
+
+    $cacheName = 'searchform_'.$do->tableName();
+    $options = array(
+      'caching' =>$cache,
+      'cacheDir' => APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/',
+      'lifeTime' => 3600,
+      'fileNameProtection'=>false,
+  	 );
 
   		$cache = new Cache_Lite($options);
   		if($_cachedData = $cache->get($cacheName)) {
