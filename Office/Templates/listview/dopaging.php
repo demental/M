@@ -60,9 +60,7 @@ function deleteCheckboxClicked(checkbox) {
   <?php $col=$col=='odd'?'even':'odd'?>
   <tr class="<?php echo $col?>">
     <?php if($selectable):?>
-      <td>
-        <input type="checkbox" name="selected[]" value="<?php echo $do->$pk?>" onclick="deleteCheckboxClicked(this)" style="border:none;clear:left"/>
-      </td>
+      <?php $this->i('listview/dopaging/selector',array('do'=>$do))?>
     <?php endif?>
     <?php $this->i('listview/dopaging/actions',array('edit'=>$edit,'do'=>$do,'pk'=>$pk))?>
     <?php foreach($dg->fields as $field=>$type):?>
