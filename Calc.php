@@ -29,24 +29,27 @@ class Calc
 	 * @static
 	 * @param	float	$price 		Input price
 	 * @param	float 	$vat 		VAT Value
+   * @param bool  $round    Avoid .01 or .99
 	 * @return	Amount				Amount included VAT
 	 */
-	public static function HT2TTC($price,$vat,$precision=2)
+	public static function HT2TTC($price, $vat, $precision=2, $round = true)
 	{
 	  if($vat==0) return number_format($price,$precision,'.','');
    if($price==0) return number_format(0,$precision,'.','');
 		$vat=$vat>1?$vat/100:$vat;
    $result = abs($price*(1+$vat));
    $dir = $price/abs($price);
-   // We round the result to avoid 1cent difference
-   $mod = $result-floor($result);
-   if($mod==0) {
-     // no round
-   } elseif($result < 0.05) {
-     $result = 0;
-   } elseif(($mod > 0.48 && $mod < 0.50) || ($mod > 0.98) || ($mod > 0.50 && $mod < 0.52) || ($mod < 0.02)) {
-     $result=round($result*2)/2;
-   }
+   if($round) {
+     // We round the result to avoid 1cent difference
+     $mod = $result-floor($result);
+     if($mod==0) {
+       // no round
+     } elseif($result < 0.05) {
+       $result = 0;
+     } elseif(($mod > 0.48 && $mod < 0.50) || ($mod > 0.98) || ($mod > 0.50 && $mod < 0.52) || ($mod < 0.02)) {
+       $result=round($result*2)/2;
+     }
+    }
 		return number_format($dir*$result,$precision, '.', '');
 	}
 	// Alias
