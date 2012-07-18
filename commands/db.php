@@ -12,7 +12,7 @@
 /**
  * Various utilities related to DB_DataObject
  */
-
+define('DB_URI_BLABLA','mysql://root:root@localhost/fakedb');
 class Command_Db extends Command {
   public function shortHelp()
   {
@@ -24,14 +24,16 @@ class Command_Db extends Command {
     $this->line('Usage:');
     $this->line('db regen');
     $this->line("\t".'Regenerates DOclasses');
-    $this->line('db backup [filename]');
+    $this->line('db backup [filename] [db uri constant]');
     $this->line("\t".'Creates a .sql.gz backup file for the current database. If filename is not provided, the resulting file will be named database_name_YYYY-mm-dd. file extension is automatically appendend and therefore not needed.');
     $this->line("\t".'Usage: db backup my_backup');
     $this->line('db restore filename');
     $this->line("\t".'Restores the database from either a .sql.gz or a .sql dump file. File extension is automatically appended if not provided and therefore not needed');
     $this->line("\t".'Usage: db restore my_backup');
-    $this->line("\t\t".'db restore my_backup.sql.gz');    
+    $this->line("\t\t".'db restore my_backup.sql.gz');
     $this->line('Both examples above will have the same result');
+    $this->line("\t".'Usage: db backupnrotate [week|month|all] [db uri constant]');
+    $this->line("\t\t".'creates a backup and rotates it');
   }
   public function execute($params)
   {
@@ -46,22 +48,22 @@ class Command_Db extends Command {
   {
     $this->line('Regenerating DOclasses');
     require_once('M/DB/DataObject/Advgenerator.php');
-	$generator = new DB_DataObject_Advgenerator();
-	$generator->start();
-	$this->line('DOclasses need to be reloaded so ...');
-	$this->launch('reboot');
+    $generator = new DB_DataObject_Advgenerator();
+    $generator->start();
+    $this->line('DOclasses need to be reloaded so ...');
+    $this->launch('reboot');
   }
   public function executeBackup($params = array())
   {
     $filename = $params[0];
-    $this->_dobackup($filename);
+    $this->_dobackup($filename, $params[1]);
   }
 
   public function executeBackupnrotate($params = array())
   {
     for($i=7;$i>0;$i--) {
       $origfile = APP_ROOT."backups/".'j-'.$i.'.sql.gz';
-      $destfile = APP_ROOT."backups/".'j-'.($i+1).'.sql.gz';      
+      $destfile = APP_ROOT."backups/".'j-'.($i+1).'.sql.gz';
       @rename($origfile,$destfile);
     }
 
@@ -69,30 +71,39 @@ class Command_Db extends Command {
     if(date('w')==1 || in_array('week',$params)) {
       for($i=4;$i>0;$i--) {
         $origfile = APP_ROOT."backups/".'s-'.$i.'.sql.gz';
-        $destfile = APP_ROOT."backups/".'s-'.($i+1).'.sql.gz';      
+        $destfile = APP_ROOT."backups/".'s-'.($i+1).'.sql.gz';
         @rename($origfile,$destfile);
       }
-      @rename(APP_ROOT.'backups/j-8.sql.gz',APP_ROOT.'backups/s-1.sql.gz');      
+      @rename(APP_ROOT.'backups/j-8.sql.gz',APP_ROOT.'backups/s-1.sql.gz');
     }
 
     if(date('d')=='01' || in_array('month',$params)) {
       for($i=12;$i>0;$i--) {
         $origfile = APP_ROOT."backups/".'m-'.$i.'.sql.gz';
-        $destfile = APP_ROOT."backups/".'m-'.($i+1).'.sql.gz';      
+        $destfile = APP_ROOT."backups/".'m-'.($i+1).'.sql.gz';
         @rename($origfile,$destfile);
       }
       @rename(APP_ROOT.'backups/s-5.sql.gz',APP_ROOT.'backups/m-1.sql.gz');
     }
-    $this->_dobackup('latest');
+    $this->_dobackup('latest', $params[1]);
   }
-  public function _dobackup($filename)
+  public function _dobackup($filename, $db_uri_constant = null)
   {
-    $opt = PEAR::getStaticProperty('DB_DataObject', 'options');
-    $db = MDB2::singleton($opt['database']);
-    $h = $db->dsn['hostspec'];
-    $u = $db->dsn['username'];
-    $p = $db->dsn['password'];
-    $dbn = $db->database_name;
+    if(!is_null($db_uri_constant)) {
+      if(!defined($db_uri_constant)) return $this->error($db_uri_constant.' not defined as a Database constant');
+      $info = MDB2::parseDSN(constant($db_uri_constant));
+      $h = $info['hostspec'];
+      $u = $info['username'];
+      $p = $info['password'];
+      $dbn = $info['database'];
+    } else {
+      $opt = PEAR::getStaticProperty('DB_DataObject', 'options');
+      $db = MDB2::singleton($opt['database']);
+      $h = $db->dsn['hostspec'];
+      $u = $db->dsn['username'];
+      $p = $db->dsn['password'];
+      $dbn = $db->database_name;
+    }
     if(empty($filename)) {
       $filename = $dbn."_".date('Y-m-d');
     }
@@ -101,7 +112,7 @@ class Command_Db extends Command {
     $this->line($com);
     passthru($com);
     $this->line('Backup done : '.$filename.'.sql.gz');
-    
+
   }
   public function executeRestore($params = array()) {
     $filename = $params[0];
@@ -116,10 +127,10 @@ class Command_Db extends Command {
         break;
         case file_exists(APP_ROOT.'backups/'.$filename.'.sql.gz'):
           $filename.='.sql.gz';
-        break;          
+        break;
         default:
         $this->error('File does not exist');
-        return;        
+        return;
       }
     }
     if(eregi('\.gz$',$filename)) {
