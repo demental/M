@@ -12,7 +12,7 @@
 /**
  * Various utilities related to DB_DataObject
  */
-define('DB_URI_BLABLA','mysql://root:root@localhost/fakedb');
+
 class Command_Db extends Command {
   public function shortHelp()
   {
