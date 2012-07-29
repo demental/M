@@ -93,7 +93,7 @@ class M_Office extends M_Office_Controller implements iListener {
 		$not->addListener($this);
 		if($this->getOption('auth') && !User::getInstance('office')->isLoggedIn()) {
       if(self::isAjaxRequest()) {
-					$this->assign('__action','ajaxlogin');        
+					$this->assign('__action','ajaxlogin');
       }
 			return;
 		}
@@ -106,17 +106,15 @@ class M_Office extends M_Office_Controller implements iListener {
 			$info = M_Office_Util::getModuleInfo($_REQUEST['module']);
 			$module = $_REQUEST['module'];
 		}
-    
-		if(!$info) {
-		  //@todo use preg instead
-		  if(strpos($_REQUEST['module'],':')) {
 
-			  $info = array('type'=>'dyn','title'=>'Plugin');
-			  $module = $tab[1];
+		if(!$info) {
+		  if(strpos($_REQUEST['module'],':')) {
+        $info = array('type'=>'dyn','title'=>'Plugin');
+        $module = $tab[1];
       }elseif(preg_match('`^(.+)helper$`',$_REQUEST['module'],$tab)) {
-			  $info = array('type'=>'dyn','title'=>'Assistant '.$tab[1]);
-			  $module = $_REQUEST['module'];
-      } 
+        $info = array('type'=>'dyn','title'=>'Assistant '.$tab[1]);
+        $module = $_REQUEST['module'];
+      }
 		}
 
 		if($this->isAjaxRequest() && $this->ajaxAuth && $info['type']!='dyn') {

@@ -24,20 +24,21 @@ array(
   'db_dataobject'         =>  'DB/DataObject.php',
   'cache_lite'            =>  'Cache/Lite.php',
   'command'               =>  'M/Command.php',
+  'notifier'               =>  'M/Notifier.php',
   'cache_lite_file'       =>  'Cache/Lite/File.php',
   'config'                =>  'M/Config.php',
   'mtpl'                  =>  'M/Mtpl.php',
   'mtpl_filter'           =>  'M/Mtpl/filter.php',
-  'mtpl_assetblock'           =>  'M/Mtpl/assetblock.php',  
+  'mtpl_assetblock'           =>  'M/Mtpl/assetblock.php',
   'calc'                  =>  'M/Calc.php',
-  'fileutils'             =>  'M/FileUtils.php',  
+  'fileutils'             =>  'M/FileUtils.php',
   'securityexception'     =>  'M/Exception/SecurityException.php',
-  'error404exception'     =>  'M/Exception/Error404Exception.php', 
+  'error404exception'     =>  'M/Exception/Error404Exception.php',
   'module'                =>  'M/Module.php',
   'component'             =>  'M/Component.php',
   't'                     =>  'M/T.php',
   'dao'                   =>  'M/DAO.php',
-  'mail'                  =>  'M/Mail.php',    
+  'mail'                  =>  'M/Mail.php',
   'url'                   =>  'M/URL.php',
 	'faker'									=>  'M/lib/faker/faker.php',
   'db_dataobject_formbuilder_myquickform' => 'DB/DataObject/FormBuilder/MyQuickForm.php',
@@ -45,7 +46,7 @@ array(
   'myfb'                  =>  'M/MyFB.php',
   'log'                   =>  'M/Log.php',
   'user'                  =>  'M/User.php',
-  'mdb2'                  =>  'MDB2.php',  
+  'mdb2'                  =>  'MDB2.php',
   'html_quickform'        =>'HTML/QuickForm.php',
   'strings'               =>'M/Strings.php',
   'db_dataobject_pluggable'=>'M/DB/DataObject/Pluggable.php',
@@ -58,7 +59,7 @@ array(
   'ilistener'             =>'M/iListener.php',
   'dispatcher'            =>'M/Dispatcher.php',
   'cms_module'            =>'M/Module/CMS.php',
-  'module_cms'            =>'M/Module/CMS_old.php',  
+  'module_cms'            =>'M/Module/CMS_old.php',
   'payment_module'        =>'M/Module/Payment.php',
   'payment_response'      =>'M/Payment/Response.php',
   'maman'                 =>'M/Maman.php',
@@ -94,42 +95,42 @@ array(
   )
   );
 
-  /**
-   *
-   * Autoload
-   *
-   * @param	$class	string	Class to load
-   * @return	boolean
-   */
-  function M_autoload($class) {
-  	$classes = Mreg::get('autoload');
-    // Switch to lowercase as PHP is not case sensitive for objects and methods while it is for array keys
-    $class = strtolower($class);
-  	if(key_exists($class,$classes)) {
-    require $classes[$class];
+/**
+ *
+ * Autoload
+ *
+ * @param	$class	string	Class to load
+ * @return	boolean
+ */
+function M_autoload($class) {
+  $classes = Mreg::get('autoload');
+  // Switch to lowercase as PHP is not case sensitive for objects and methods while it is for array keys
+  $class = strtolower($class);
+	if(key_exists($class,$classes)) {
+  require $classes[$class];
+  return true;
+}
+if(preg_match('`^(.+)_hook$`i',$class,$match)) {
+  @include 'lib/hooks/'.ucfirst($match[1]).'.php';
+  if(class_exists($class)) {
     return true;
-  	}
-  	if(preg_match('`^(.+)_hook$`i',$class,$match)) {
-  	  @include 'lib/hooks/'.ucfirst($match[1]).'.php';
-      if(class_exists($class)) {
-  	    return true;
-      }
-      return false;
-  	}
-  	try {
-    $callbacks = Mreg::get('autoloadcallback');
-    if(is_array($callbacks)) {
-    	foreach($callbacks as $callback) {
-    		if(is_callable($callback)) {
-    			call_user_func($callback,$class);
-    		}
-    	}
-    }
-  	} catch (Exception $e) {
-
-  	}
-  	return false;
   }
+  return false;
+}
+try {
+  $callbacks = Mreg::get('autoloadcallback');
+  if(is_array($callbacks)) {
+  	foreach($callbacks as $callback) {
+  		if(is_callable($callback)) {
+        call_user_func($callback,$class);
+      }
+    }
+  }
+} catch (Exception $e) {
+
+}
+return false;
+}
 
 
 spl_autoload_register('M_autoload');
