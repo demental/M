@@ -14,7 +14,7 @@
 * - batch : applies an action to user-selected records
 * - single : applies an action to one record
 * @todo
-* - Security leak : check ACL for actions list. Currently this is done during the output of actions list, but not here which is a security leak. 
+* - Security leak : check ACL for actions list. Currently this is done during the output of actions list, but not here which is a security leak.
 *
 * @package      M
 * @subpackage   M_Office
@@ -69,7 +69,7 @@ class M_Office_Actions extends M_Office_Controller {
       $this->typeval = 'doSingleAction';
       break;
     }
-    
+
     $this->do = $this->actiondo = $do;
 
     $this->do->selectAdd();
@@ -98,7 +98,7 @@ class M_Office_Actions extends M_Office_Controller {
         $this->target = 'nextaction';
         $result->status='complete';
       } else {
-        $result->status='complete';        
+        $result->status='complete';
         $this->target = 'list';
       }
       $this->redirectTo($result);
@@ -110,7 +110,7 @@ class M_Office_Actions extends M_Office_Controller {
     } else {
 			$this->assign('actionform',$form);
 			$this->has_output=true;
-			
+
       $this->assign('__action',array('action_'.$this->actionName,'action'));
       $this->assign('isdownload',$this->_actionInfo['isdownload']);
     }
@@ -189,7 +189,7 @@ class M_Office_Actions extends M_Office_Controller {
        case 'global':
         return $focus;
         break;
-       // Batch : if the stepmethod exists, we apply a limit and execute the query to a clone of $this->do   
+       // Batch : if the stepmethod exists, we apply a limit and execute the query to a clone of $this->do
        case 'batch':
         $res = clone($focus);
         if(is_array($stepinfo = $this->getStepInfo())) {
@@ -199,7 +199,7 @@ class M_Office_Actions extends M_Office_Controller {
         }
         $res->find();
         return $res;
-        break; 
+        break;
      }
    }
   /**
@@ -218,7 +218,7 @@ class M_Office_Actions extends M_Office_Controller {
 
         break;
         case 'selected':
-          $db = $this->do->getDatabaseConnection();      
+          $db = $this->do->getDatabaseConnection();
           $ids = $this->getSelectedIds();
           array_walk($ids,array('M_Office_Util','arrayquote'),$db);
           $selected = M_Office_Util::doForTable($this->do->tableName());
@@ -227,7 +227,7 @@ class M_Office_Actions extends M_Office_Controller {
             implode(',',$ids).')'
           );
           break;
-        }  
+        }
       if($doQuery && !$selected->N) {
         $selected->find();
       }
@@ -264,7 +264,7 @@ class M_Office_Actions extends M_Office_Controller {
          }
          return $arr;
          break;
-     }        
+     }
    }
   /**
    * Redirects to the next page depending on $result status
@@ -356,10 +356,10 @@ class M_Office_Actions extends M_Office_Controller {
     if($this->actiondo instanceOf M_Plugin ) {
       $tpl->addPath('M/DB/DataObject/Plugin/'.$this->actiondo->getFolderName().'/templates/','before');
     }
-    
+
     $prepareMethod = 'prepare'.$this->actionName;
     if(method_exists($this->actiondo,$prepareMethod) || is_array($this->_actionInfo['chainable'])) {
-	    $qfAction= new HTML_QuickForm('actionparamsForm','POST',M_Office_Util::getQueryParams(array(),array('selected','doaction','glaction','doSingleAction'), false), '_self', null, true);      
+			$qfAction= new HTML_QuickForm('actionparamsForm','POST',M_Office_Util::getQueryParams(array(),array('selected','doaction','glaction','doSingleAction'), false), '_self', null, true);
       Mreg::get('tpl')->addJSinline('$("input[type=text],textarea","form[name=actionparamsForm]").eq(0).focus()','ready');
       Mreg::get('tpl')->assign('do',$do);
 			$qfAction->addElement('header','qfActionHeader',$this->getActionTitle());
@@ -375,9 +375,9 @@ class M_Office_Actions extends M_Office_Controller {
       }
       if(method_exists($this->actiondo,$prepareMethod)) {
         if(is_a($this->actiondo,'M_Plugin')) {
-          call_user_func(array($this->actiondo,$prepareMethod),$qfAction,$selectedDo);                    
+          call_user_func(array($this->actiondo,$prepareMethod),$qfAction,$selectedDo);
         } else {
-          call_user_func(array($selectedDo,$prepareMethod),$qfAction);          
+          call_user_func(array($selectedDo,$prepareMethod),$qfAction);
         }
       }
       if($this->_actionInfo['chainable'] && count($this->nextactions)==0) {
@@ -388,13 +388,13 @@ class M_Office_Actions extends M_Office_Controller {
       if(count($this->nextactions)>0) {
         $qfAction->addElement('hidden','__actionchain',implode(',',$this->nextactions));
       }
-		  $qfAction->addElement('submit','__submit__',__('Execute'));      
+		  $qfAction->addElement('submit','__submit__',__('Execute'));
       return $qfAction;
     } else {
       return null;
     }
   }
-  
+
   /**
    * Checks wether :
    * - the passed variable is not a HTML_QuickForm. Therefore it's valid
@@ -403,7 +403,7 @@ class M_Office_Actions extends M_Office_Controller {
   public function isValid($form)
   {
     if(is_a($form,'HTML_QuickForm') && $form->validate()) {
-     return true; 
+     return true;
     } else {
       if(!is_a($form,'HTML_QuickForm')) {
         return true;
@@ -454,7 +454,7 @@ class M_Office_Actions extends M_Office_Controller {
    */
   public function getNextActions()
   {
-    
+
     if(!is_array($this->_actionInfo['chainable'])) {
       return array();
     }

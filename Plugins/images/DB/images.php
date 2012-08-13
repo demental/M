@@ -16,14 +16,14 @@
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
- 
+
  if(!defined('TMP_PATH')){
  	define('TMP_PATH',ini_get('upload_tmp_dir'));
  }
 
 class DB_DataObject_Plugin_Images extends M_Plugin
 {
-  
+
   public $plugin_name='images';
   public function getEvents()
   {
@@ -126,11 +126,11 @@ class DB_DataObject_Plugin_Images extends M_Plugin
       $res = copy($originalfile, FileUtils::getFolderPath(TMP_PATH).$obj->$field);
     }
     if($res && chmod(FileUtils::getFolderPath(TMP_PATH).$obj->$field, 0644)) {
-      $obj->say('regenerating thumbs');
+      $obj->say(__('regenerating thumbs'));
       $this->regenerateThumbs($obj, $field);
     }
   }
-  function imageExists(&$obj,$field) 
+  function imageExists(&$obj,$field)
   {
     $info = $obj->_getPluginsDef();
     $info = $info['images'];
@@ -150,7 +150,7 @@ class DB_DataObject_Plugin_Images extends M_Plugin
  		$arr=key_exists(0,$info[$field])?$info[$field]:array($info[$field]);
  		foreach($arr as $k=>$v){
  			@unlink(IMAGES_UPLOAD_FOLDER.$v['path'].$obj->$field);
- 			$obj->say('file deleted '.IMAGES_UPLOAD_FOLDER.$v['path'].$obj->$field);
+ 			$obj->say(__('file deleted %s',array(IMAGES_UPLOAD_FOLDER.$v['path'].$obj->$field)));
  		}
  	}
 
@@ -268,7 +268,7 @@ class DB_DataObject_Plugin_Images extends M_Plugin
 			if($maxsurface<$surface) {
 				$maxid=$k;
 				$maxsurface=$surface;
-			}  
+			}
 		}
 		return array('original'=>false, 'index'=>$maxid);
 	}

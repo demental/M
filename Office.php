@@ -98,7 +98,7 @@ class M_Office extends M_Office_Controller implements iListener {
 			return;
 		}
 		if(key_exists('updateSuccess',$_REQUEST)) {
-			$this->say('Votre enregistrement a été modifié avec succès.');
+			$this->say(__('Record was successfully updated'));
 			M_Office_Util::clearRequest(array('updateSuccess'=>1));
 		}
 		// TODO remove those old modules

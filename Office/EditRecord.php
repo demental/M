@@ -20,12 +20,12 @@
 class M_Office_EditRecord extends M_Office_Controller {
 
     public function __construct($module, $record) {
-      
+
       $opts = PEAR::getStaticProperty('m_office','options');
       $this->module = $module;
       $this->__record_id = $record;
       $this->moduloptions = $opts['modules'][$module];
-      $table = $this->table = $this->moduloptions['table'];      
+      $table = $this->table = $this->moduloptions['table'];
 
       parent::__construct();
 
@@ -51,7 +51,7 @@ class M_Office_EditRecord extends M_Office_Controller {
         $this->assign('__action','error');
         $this->append('errors',__('L\'enregistrement que vous avez tenté d\'atteindre est introuvable.'));
         return false;
-        
+
       }
 
       return $do;
@@ -103,7 +103,7 @@ class M_Office_EditRecord extends M_Office_Controller {
             return "Vous avez effectué des modifications sur le formulaire qui seront annulées.";
         }
         ','ready');
-        
+
         Mtpl::addJSinline("$('#editRecord').formSerialize();",'ready');
         Mtpl::addJSinline("$('#editRecord').submit(function() {
             formInSave=true;
@@ -140,7 +140,7 @@ class M_Office_EditRecord extends M_Office_Controller {
             $values=$form->exportValues();
             if($values['__backtolist__']){$remove[]='record';}
             if(!key_exists('debug',$_REQUEST)){
-              $this->say('Record saved !');                      		    
+              $this->say(__('Record saved !'));
                 M_Office_Util::refresh(M_Office_Util::doURL($this->do, $this->module, array(), $remove));
             }
           }
@@ -177,7 +177,7 @@ class M_Office_EditRecord extends M_Office_Controller {
                     break;
                 }
               }
-            }  
+            }
             M::hook($this->do->tableName(),'alterLinkFromTables',array(&$linkFromTableArray,$this->do));
 
     $this->assign('linkFromTables',$linkFromTableArray);
@@ -202,10 +202,10 @@ class M_Office_EditRecord extends M_Office_Controller {
     foreach($singleMethods as $k=>$v){
       $this->append('relatedaction',array('url'=>M_Office_Util::doUrl($this->do, $this->module, array("doSingleAction"=>$k)),'title'=>$v['title']));
     }
-    return $singleMethods;    
-  }  
+    return $singleMethods;
+  }
   public function getLinkFromTableItem($linkTab, $linkField, $field)
-  {            
+  {
     $linkDo=& DB_DataObject::factory($linkTab);
     if($nfield = $linkDo->isNtable()) {
       $nFields = $linkDo->links();
@@ -217,12 +217,12 @@ class M_Office_EditRecord extends M_Office_Controller {
       $nbLinkedRecords=$nDo->count();
       $parameters=array(  'module' => $nDo->tableName(),
                           'filternField' => $linkField,
-                          'filternTable' => $linkTab,                                                              
+                          'filternTable' => $linkTab,
                           'filternValue' => $this->do->$field);
 
                           $removed=array('module','filternValue','filternField', 'record','__record_ref');
       $link = M_Office_Util::getQueryParams($parameters,$removed);
-      $add = false;         
+      $add = false;
       $tableName = M_Office_Util::getFrontTableName($ntableArray[0].' <small>(n-n)</small>');
     } else {
       $linkDo->$linkField=$this->do->$field;
@@ -232,7 +232,7 @@ class M_Office_EditRecord extends M_Office_Controller {
                           'filterValue' => $this->do->$field);
 
                           $removed=array('module','filterValue','filterField', 'record','__record_ref');
-    
+
       if($nbLinkedRecords==1){
           $keys=$linkDo->keys();
           $key=$keys[0];
@@ -252,7 +252,7 @@ class M_Office_EditRecord extends M_Office_Controller {
                   'nb'=>$nbLinkedRecords,
                   'tablename'=>$tableName,
                   'add'=>$add
-                ); 
+                );
 
-  }          
+  }
 }

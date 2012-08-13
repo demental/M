@@ -22,7 +22,7 @@ class M_Office_AddRecord extends M_Office_Controller {
     public function __construct($module) {
         parent::__construct();
         $this->assign('__action','add');
-        
+
         $tpl = Mreg::get('tpl');
         $tpl->concat('adminTitle',' :: '.$this->moduloptions['title'].' :: '.__('Add record'));
 
@@ -48,8 +48,8 @@ class M_Office_AddRecord extends M_Office_Controller {
             $linfo = explode(':',$links[$_REQUEST['filterField']]);
             $form->addElement('static','mod','',__('Add record with %s = %s',array($_REQUEST['filterField'],$_REQUEST['filterValue'])).'. '.'<a href="'.M_Office_Util::getQueryParams(array('table'=>$linfo[0],'record'=>$_REQUEST['filterValue']),array('addRecord','filterField','filterValue')).'">'.__('Back to main record').'</a>');
         }
-        
-        
+
+
         $formBuilder->useForm($form);
         $formBuilder->getForm();
 
@@ -66,7 +66,7 @@ class M_Office_AddRecord extends M_Office_Controller {
                 $this->append('error',__('An error occured while inserting record').' : '.$ret->getMessage());
             }else {
               $pk = DB_DataObject_FormBuilder::_getPrimaryKey($do);
-              $this->say('New record was successfully created. Its identifier is : %s',array($do->$pk));
+              $this->say(__('New record was successfully created. Its identifier is : %s',array($do->$pk)));
               if ($this->getOption('createAnother', $table) && isset($_REQUEST['returnHere']) && $_REQUEST['returnHere']) {
                 M_Office_Util::refresh(M_Office_Util::getQueryParams(array('returnHere' => $_REQUEST['returnHere']), array(), false));
               } else {

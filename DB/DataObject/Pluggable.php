@@ -66,7 +66,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       $keystore = $tablename;
       $value = $pk;
     }
-    if(key_exists($keystore,DB_DataObject_Pluggable::$objectRegistry) 
+    if(key_exists($keystore,DB_DataObject_Pluggable::$objectRegistry)
     && key_exists($value,DB_DataObject_Pluggable::$objectRegistry[$keystore])) {
       $ret = DB_DataObject_Pluggable::$objectRegistry[$keystore][$value];
 
@@ -87,7 +87,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       $keystore = $tablename;
       $value = $pk;
     }
-    if(key_exists($keystore,DB_DataObject_Pluggable::$objectRegistry) 
+    if(key_exists($keystore,DB_DataObject_Pluggable::$objectRegistry)
     && key_exists($value,DB_DataObject_Pluggable::$objectRegistry[$keystore])) {
       unset(DB_DataObject_Pluggable::$objectRegistry[$keystore][$value]);
     }
@@ -98,7 +98,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
     if(is_array($object->__keystore)) {
       foreach($object->__keystore as $keystore) {
-        DB_DataObject_Pluggable::$objectRegistry[$object->tableName().'__keystore_'.$keystore][$object->{$keystore}] = $object;      
+        DB_DataObject_Pluggable::$objectRegistry[$object->tableName().'__keystore_'.$keystore][$object->{$keystore}] = $object;
       }
     }
   }
@@ -129,8 +129,8 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
           return false;
       }
       global $_DB_DATAOBJECT;
-      if (empty($_DB_DATAOBJECT['RESULTS'][$this->_DB_resultid]) || 
-          !is_object($result = &$_DB_DATAOBJECT['RESULTS'][$this->_DB_resultid])) 
+      if (empty($_DB_DATAOBJECT['RESULTS'][$this->_DB_resultid]) ||
+          !is_object($result = &$_DB_DATAOBJECT['RESULTS'][$this->_DB_resultid]))
       {
           return false;
       }
@@ -152,7 +152,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		$this->{$field} = $linkObj->id;
 		$this->{$placeholder} = $obj;
 	}
-	
+
 	/**
 	 * Reloads the content of the object from the database
 	 * @warning relies on setFrom() and toArray()
@@ -174,7 +174,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
    * class DataObjects_Blogpost extends DB_DataObject_Pluggable
    * {
    * .....
-   * 
+   *
    * public function _getPluginsDef() {
    *  return array(
    *      'i18n'=>array('name','title'),
@@ -209,7 +209,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       $defs = $this->_getPluginsDef();
       $params = $defs[$pluginName];
     }
-    $this->addListener(PluginRegistry::getInstance($pluginName,'DB'));    
+    $this->addListener(PluginRegistry::getInstance($pluginName,'DB'));
     return $this;
   }
   /**
@@ -242,21 +242,21 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	 * @return false if the plugin does not exist in the current object
 	 * @return Object plugin reference
 	 **/
-	public function getPlugin($pname) 
+	public function getPlugin($pname)
 	{
   	if(!$this->_pluginsLoaded) {
   	    $this->loadPlugin($pname);
   	}
     return PluginRegistry::getInstance($pname,'DB');
 	}
-	
+
 	public function hasPlugin($pname)
 	{
     $def =$this->_getPluginsDef();
     if(array_key_exists($pname,$def)) return true;
     return false;
 	}
-	
+
   public function addListener($listener)
   {
     if(!$this->hasListener($listener)) {
@@ -310,7 +310,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       }
     }
     return $finalresult;
-    
+
   }
   /**
    * This type of trigger allows to return an altered version of $params
@@ -339,12 +339,12 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       }
     }
     return $params[0];
-    
+
   }
 
   /**
    * Overload => transform it to an event call
-   * 
+   *
    */
   public function __call($method,$args)
   {
@@ -352,7 +352,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     if($res->status=='return') return $res->return;
     return parent::__call($method,$args);
   }
-  
+
 ###################### End plugin management #######################
   /**
    * Adds ability to get records by an array of primary keys
@@ -367,7 +367,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
           if(!$ret=DB_DataObject_Pluggable::retrieveFromRegistry($this->tableName(),$k,$v,$this)) {
             if($ret=parent::get($k,$v)) {
               DB_DataObject_Pluggable::storeToRegistry($this);
-              return $ret; 
+              return $ret;
             }
           }
           return $ret;
@@ -382,7 +382,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   function deleteLinks() {
     $args=func_get_args();
     foreach($args as $tbl){
-      $this->say('Deleting foreign records in '.$tbl);
+      $this->say(__('Deleting foreign records in %s',array($tbl)));
       $do=& DB_dataObject::factory($tbl);
       $links=$do->links();
       foreach ($links as $field=>$link) {
@@ -393,14 +393,14 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       }
       while($do->fetch()){
         $do->delete();
-        $this->say('Deleting '.$do->tableName().' '.$do->id);
+        $this->say(__('Deleting %s %s',array($do->tableName(), $do->id)));
       }
     }
   }
 
 // =======================================================
 // = DB_DataObject methods override - events triggered   =
-// =======================================================    
+// =======================================================
 
   function postPrepareSearchForm(&$form,&$fb){
 	  $this->trigger('postPrepareSearchForm',array(&$form,&$fb));
@@ -410,13 +410,13 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		if(empty($this->fb_submitText)){
 			$this->fb_submitText=__('Submit');
 		}
-	}	
+	}
 	function postGenerateForm(&$form,&$fb){
 		$this->trigger('postGenerateForm',array(&$form,&$fb));
 		$form->setJsWarnings(__("The following fields are not valid"),__("Please correct them"));
 		$form->setRequiredNote(__("Required fields"));
 	}
-	
+
 	function prepareLinkedDataObject(&$linkedDataObject, $field){
 		$this->trigger('prepareLinkedDataObject',array($linkedDataObject,$field));
 	}
@@ -425,7 +425,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	}
 	function postProcessForm(&$v,&$fb){
 		$this->trigger('postProcessForm',array(&$v,&$fb));
-	}				
+	}
 	function insert(){
 
 		$result = $this->trigger('insert');
@@ -436,7 +436,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		  case 'fail':
 		    return false;
 		    break;
-		  default:  
+		  default:
         if(parent::insert()) {
 
           DB_DataObject_Pluggable::storeToRegistry($this);
@@ -456,12 +456,12 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		  case 'fail':
 		    return false;
 		    break;
-		  default:  
+		  default:
       if($this->_update($do)!==false) {
     		$this->trigger('postupdate');
         return true;
       }
-      return false;		
+      return false;
     }
 	}
 
@@ -476,7 +476,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   function _query($string)
   {
     if(!defined('MDB2_UTF8_NAMES_SET')) {
-      $db = $this->getDatabaseConnection(); 
+      $db = $this->getDatabaseConnection();
       $db->_doQuery('set names utf8', false, $db->getConnection(), $db->database_name);
 
       define('MDB2_UTF8_NAMES_SET',true);
@@ -497,7 +497,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		$this->trigger('count');
 		return parent::count($countWhat,$whereAddOnly);
 	}
-	
+
 	/**
 	 * Use ObjectRegistry
 	 */
@@ -506,46 +506,46 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 //    return parent::getLink($row,$table,$link);
     if ($table === null) {
         $links = $this->links();
-        
+
         if (is_array($links)) {
-        
+
             if ($links[$row]) {
                 list($table,$link) = explode(':', $links[$row]);
                 if ($p = strpos($row,".")) {
                     $row = substr($row,0,$p);
                 }
                 return $this->getLink($row,$table,$link);
-                
-            } 
-            
+
+            }
+
             $this->raiseError(
-                "getLink: $row is not defined as a link (normally this is ok)", 
+                "getLink: $row is not defined as a link (normally this is ok)",
                 DB_DATAOBJECT_ERROR_NODATA);
-                
+
             $r = false;
             return $r;// technically a possible error condition?
 
-        }  
+        }
         // use the old _ method - this shouldnt happen if called via getLinks()
         if (!($p = strpos($row, '_'))) {
             $r = null;
-            return $r; 
+            return $r;
         }
         $table = substr($row, 0, $p);
         return $this->getLink($row, $table);
-        
+
 
     }
-    
-    
-    
+
+
+
     if (!isset($this->$row)) {
         $this->raiseError("getLink: row not set $row", DB_DATAOBJECT_ERROR_NODATA);
         return false;
     }
-    
+
     if($obj = DB_DataObject_Pluggable::retreiveFromRegistry($table,$this->$row)) {
-      
+
       return $obj;
     }
     $obj = parent::getLink($row,$table,$link);
@@ -554,8 +554,8 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     }
     return $obj;
   }
-  
-  
+
+
 	public function delete()
 	{
 		$result = $this->trigger('delete');
@@ -566,15 +566,15 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		  case 'fail':
 		    return false;
 		    break;
-		  default:  
+		  default:
       if(parent::delete()!==false) {
     		$this->trigger('postdelete');
         return true;
       }
-      return false;		
+      return false;
     }
   }
-		
+
   public function dateOptions($field, &$fb) {
 		$this->trigger('dateOptions',array($field,$fb));
     return array('format' => 'd-m-Y','addEmptyOption'=>true,'emptyOptionText'=>array('Y'=>'YYYY','m'=>'mm','d'=>'dd'),'maxYear'=>date('Y')+2);
@@ -603,11 +603,11 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     return $base;
   }
 
-    
+
     // ==================
     // = Helper methods =
     // ==================
- 
+
   	/**
   	 * Notifications
   	 * Sends messages to Notifier instance
@@ -671,52 +671,52 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     {
       if(!$this->transactionRunning()) {
         return;
-      }      
+      }
       $options = & PEAR::getStaticProperty('DB_DataObject', 'options');
       $this->getDatabaseConnection()->query('rollback');
       $options['transactionRunning'] = 0;
-    }    
+    }
     public function transactionRunning()
     {
       $options = PEAR::getStaticProperty('DB_DataObject', 'options');
       return $options['transactionRunning']==1?true:false;
     }
-    
+
     /**
      * Updates  current objects variables into the database
      * DB_DataObject fix to allow update of objects that were fetched from a join query.
-     * 
+     *
      */
     function _update($dataObject = false)
     {
         global $_DB_DATAOBJECT;
         // connect will load the config!
         $this->_connect();
-        
-        
+
+
         $original_query =  $this->_query;
-        
-        $items =  isset($_DB_DATAOBJECT['INI'][$this->_database][$this->__table]) ?   
+
+        $items =  isset($_DB_DATAOBJECT['INI'][$this->_database][$this->__table]) ?
             $_DB_DATAOBJECT['INI'][$this->_database][$this->__table] : $this->table();
-        
+
         // only apply update against sequence key if it is set?????
-        
+
         $seq    = $this->sequenceKey();
         if ($seq[0] !== false) {
             $keys = array($seq[0]);
             if (!isset($this->{$keys[0]}) && $dataObject !== true) {
-                $this->raiseError("update: trying to perform an update without 
-                        the key set, and argument to update is not 
+                $this->raiseError("update: trying to perform an update without
+                        the key set, and argument to update is not
                         DB_DATAOBJECT_WHEREADD_ONLY
                     ", DB_DATAOBJECT_ERROR_INVALIDARGS);
-                return false;  
+                return false;
             }
         } else {
             $keys = $this->keys();
         }
         $pkName = $keys[0];
         $pkVal = $this->{$keys[0]};
-         
+
         if (!$items) {
             $this->raiseError("update:No table definition for {$this->__table}", DB_DATAOBJECT_ERROR_INVALIDCONFIG);
             return false;
@@ -724,48 +724,48 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
         $datasaved = 1;
         $settings  = '';
         $this->_connect();
-        
+
         $DB            = &$_DB_DATAOBJECT['CONNECTIONS'][$this->_database_dsn_md5];
         $dbtype        = $DB->dsn["phptype"];
         $quoteIdentifiers = !empty($_DB_DATAOBJECT['CONFIG']['quote_identifiers']);
         $options = $_DB_DATAOBJECT['CONFIG'];
-        
-        
+
+
         $ignore_null = !isset($options['disable_null_strings'])
                     || !is_string($options['disable_null_strings'])
                     || strtolower($options['disable_null_strings']) !== 'full' ;
-                    
-        
+
+
         foreach($items as $k => $v) {
-            
+
             if (!isset($this->$k) && $ignore_null) {
                 continue;
             }
-            // ignore stuff thats 
-          
+            // ignore stuff thats
+
             // dont write things that havent changed..
             if (($dataObject !== false) && isset($dataObject->$k) && ($dataObject->$k === $this->$k)) {
                 continue;
             }
-            
+
             // - dont write keys to left.!!!
             if (in_array($k,$keys)) {
                 continue;
             }
-            
-             // dont insert data into mysql timestamps 
+
+             // dont insert data into mysql timestamps
             // use query() if you really want to do this!!!!
             if ($v & DB_DATAOBJECT_MYSQLTIMESTAMP) {
                 continue;
             }
-            
-            
+
+
             if ($settings)  {
                 $settings .= ', ';
             }
-            
+
             $kSql = ($quoteIdentifiers ? $DB->quoteIdentifier($k) : $k);
-            
+
             if (is_a($this->$k,'DB_DataObject_Cast')) {
                 $value = $this->$k->toString($v,$DB);
                 if (PEAR::isError($value)) {
@@ -775,29 +775,29 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
                 $settings .= "$kSql = $value ";
                 continue;
             }
-            
+
             // special values ... at least null is handled...
             if (!($v & DB_DATAOBJECT_NOTNULL) && DB_DataObject::_is_null($this,$k)) {
                 $settings .= "$kSql = NULL ";
                 continue;
             }
-            // DATE is empty... on a col. that can be null.. 
+            // DATE is empty... on a col. that can be null..
             // note: this may be usefull for time as well..
-            if (!$this->$k && 
-                    (($v & DB_DATAOBJECT_DATE) || ($v & DB_DATAOBJECT_TIME)) && 
+            if (!$this->$k &&
+                    (($v & DB_DATAOBJECT_DATE) || ($v & DB_DATAOBJECT_TIME)) &&
                     !($v & DB_DATAOBJECT_NOTNULL)) {
-                    
+
                 $settings .= "$kSql = NULL ";
                 continue;
             }
-            
+
 
             if ($v & DB_DATAOBJECT_STR) {
                 $settings .= "$kSql = ". $this->_quote((string) (
-                        ($v & DB_DATAOBJECT_BOOL) ? 
-                            // this is thanks to the braindead idea of postgres to 
+                        ($v & DB_DATAOBJECT_BOOL) ?
+                            // this is thanks to the braindead idea of postgres to
                             // use t/f for boolean.
-                            (($this->$k === 'f') ? 0 : (int)(bool) $this->$k) :  
+                            (($this->$k === 'f') ? 0 : (int)(bool) $this->$k) :
                             $this->$k
                     )) . ' ';
                 continue;
@@ -811,7 +811,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
             $settings .= "$kSql = " . intval($this->$k) . ' ';
         }
 
-        
+
         if (!empty($_DB_DATAOBJECT['CONFIG']['debug'])) {
             $this->debug("got keys as ".serialize($keys),3);
         }
@@ -826,12 +826,12 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
                 return false;
             }
         }
-        
-        
-        
+
+
+
 
         if ($settings && isset($this->_query) && $this->_query['condition']) {
-            
+
             $table = ($quoteIdentifiers ? $DB->quoteIdentifier($this->__table) : $this->__table);
             if($dataObject === DB_DATAOBJECT_WHEREADD_ONLY) {
               $r = $this->_query("UPDATE  {$table}  SET {$settings} {$this->_query['condition']} ");
@@ -842,7 +842,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
             }
             // restore original query conditions.
             $this->_query = $original_query;
-            
+
             if (PEAR::isError($r)) {
                 $this->raiseError($r);
                 return false;
@@ -855,16 +855,16 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
         }
         // restore original query conditions.
         $this->_query = $original_query;
-        
+
         // if you manually specified a dataobject, and there where no changes - then it's ok..
         if ($dataObject !== false) {
             return true;
         }
-        
+
         $this->raiseError(
-            "update: No Data specifed for query $settings , {$this->_query['condition']}", 
+            "update: No Data specifed for query $settings , {$this->_query['condition']}",
             DB_DATAOBJECT_ERROR_NODATA);
         return false;
     }
-    
+
 }

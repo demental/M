@@ -18,7 +18,7 @@ class DB_DataObject_Plugin_Ownership extends DB_DataObject_Plugin
 {
   public $plugin_name='ownership';
   protected $userAdminModeForDBDOFBFE;
-  
+
 	function preGenerateForm(&$fb,&$obj)
 	{
 		if($obj->filterowner ||!defined('ROOT_ADMIN_URL')) {
@@ -62,7 +62,7 @@ class DB_DataObject_Plugin_Ownership extends DB_DataObject_Plugin
 	function getBatchMethods() {
         if($this->userIsInAdminMode()) {
             return array('batchUpdateOwner'=>array('title'=>'Changer le gérant','plugin'=>$this->plugin_name));
-        } 
+        }
 	}
 	function find($autoFetch=false,&$obj)
 	{
@@ -84,7 +84,7 @@ class DB_DataObject_Plugin_Ownership extends DB_DataObject_Plugin
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 	function prepareBatchUpdateOwner(&$obj) {
 	    return $this->prepareUpdateOwner($obj);
@@ -109,7 +109,7 @@ class DB_DataObject_Plugin_Ownership extends DB_DataObject_Plugin
 	function updateOwner(&$obj, $owner){
 		if(!key_exists($obj->ownerShipField,$obj->table())){
 			return;
-		}	
+		}
 		require_once 'DB/DataObject/FormBuilder.php';
 		if(($obj->filterowner || !empty($owner)) && !in_array($obj->tableName(),$obj->_alreadyUpdatedOwner)){
 			$obj->{$obj->ownerShipField}=$owner;
@@ -117,15 +117,15 @@ class DB_DataObject_Plugin_Ownership extends DB_DataObject_Plugin
 			$obj->update();
 			$obj->_alreadyUpdatedOwner[]=$obj->tableName();
 			$pk=DB_DataObject_FormBuilder::_getPrimaryKey($obj);
-			$obj->say($obj->__toString().' est maintenant géré par '.$ownername);
+			$obj->say(__('%s is now owned by %s', array($obj->__toString(), $ownername)));
 			foreach($obj->reverseLinks() as $link=>$field){
                 list($linkTab, $linkField) = explode(':', $link);
 	            if (!empty($obj->$field) && !in_array($linkTab,$obj->_alreadyUpdatedOwner)) {
-                    
+
 					$linkDo=& DB_DataObject::factory($linkTab);
   					$linkDo->$linkField=$obj->$field;
   					if($linkDo->find() && isset($linkDo->ownerShipField)){
-                        $obj->say('-------- propagation sur '.$linkTab.' --------');
+                        $obj->say(__('-------- propagating on %s --------',array($linkTab)));
 
 	  					while($linkDo->fetch()){
 	  						$linkDo->_alreadyUpdatedOwner=$obj->_alreadyUpdatedOwner;
@@ -143,10 +143,10 @@ class DB_DataObject_Plugin_Ownership extends DB_DataObject_Plugin
 					if($linkDo->get($obj->$field)){
 						$linkDo->_alreadyUpdatedOwner=$obj->_alreadyUpdatedOwner;
 						$linkDo->getPlugin('ownership')->updateOwner($linkDo,$owner);
-					}    
+					}
   	            }
-			}			    
+			}
 		 }
-	  }	
-	
+	  }
+
 }
