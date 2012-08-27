@@ -23,8 +23,8 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     'postpreparesearchform',
     'getbatchmethods');
   }
-  
-  
+
+
   public function getBatchMethods($arr,$obj)
   {
     $arr['batchaddtag'] = array('title'=>'Add/remove tags','plugin'=>'tag');
@@ -37,7 +37,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   public function prepareBatchAddTag($form)
   {
     $form->addElement('text','add','Add...');
-    $form->addElement('text','remove','And/or remove...');    
+    $form->addElement('text','remove','And/or remove...');
   }
   public function batchAddTAg($obj,$data)
   {
@@ -53,7 +53,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   /**
    * Adds tag checkboxes to form passed as first parameter
    * 2nd parameter is the actual name of the fields used to add tags
-   * @param HTML_QuickForm 
+   * @param HTML_QuickForm
    * @param string default _tags
    */
   public function addTagsToForm(HTML_QuickForm $form, $fieldname, DB_DataObject $obj)
@@ -74,18 +74,18 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       }
       foreach($taglist as $id=>$strip) {
         $arr[] = HTML_QuickForm::createElement('checkbox',$fieldname.'['.$id.']','',$strip);
-        $arr2[] = HTML_QuickForm::createElement('checkbox','exc_'.$fieldname.'['.$id.']','',$strip);      
+        $arr2[] = HTML_QuickForm::createElement('checkbox','exc_'.$fieldname.'['.$id.']','',$strip);
       }
 
       $grp = HTML_QuickForm::createElement('group',$fieldname,__('Including Tags'),$arr,null,false);
       $grp2 = HTML_QuickForm::createElement('group','exc_'.$fieldname,__('Excluding Tags'),$arr2,null,false);
-  
+
       if($form->elementExists('__submit__')) {
         $form->insertElementBefore($grp,'__submit__');
         $form->insertElementBefore($grp2,'__submit__');
       } else {
         $form->addElement($grp);
-        $form->addElement($grp2);      
+        $form->addElement($grp2);
       }
     }
   }
@@ -103,7 +103,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    * Prepares query to retreive filtering by tags
    * @param array(tagID1,tagID2,....tagIDn) tags to include
    * @param array(tagID1,tagID2,....tagIDn) tags to exclude
-   * 
+   *
    */
    public function searchByTags($tags,$excludeTags,DB_DataObject $obj)
    {
@@ -134,23 +134,24 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    * @param DB_DataObject database record to tag
    */
 
-  
+
    public function addTag($tag,DB_DataObject $obj) {
      return $this->_addTag($tag,false,$obj);
    }
    public function addTagByHuman($tag,DB_DataObject $obj) {
      return $this->_addTag($tag,true,$obj);
-   }   
+   }
   protected function _addTag($tag, $byhuman, DB_DataObject $obj)
   {
     if(!$obj->pk()) return $this->returnStatus($obj);
     if($this->validateTriggerTag($tag,'add',$byhuman,$obj)) {
       // $tag will be replaced by its DO object if string passed as param
-      if($this->__createTagRecord($tag,$obj)) { 
+      if($this->__createTagRecord($tag,$obj)) {
         $this->triggerTag($tag,'add',$obj);
         $this->clearTagCache($obj);
       }
     }
+		$obj->_tagadded=1;
     return $this->returnStatus($obj);
   }
   protected function __createTagRecord(&$tag,$obj)
@@ -176,9 +177,10 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   public function clearTagCache($obj)
   {
     $obj->tagplugin_cache = '';
+		$obj->_tagplugin_cache = null;
     $obj->update();
   }
-  
+
   /**
    * Calls and return tag validation result if it exists (the methods are validateAdd and validateRemove)
    */
@@ -240,7 +242,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    * removes a tag from a record
    * @param DataObject_Tag tag to remove
    * @param DB_DataObject database record to untag
-   */  
+   */
   // By code
   public function removeTag($tag,DB_DataObject $obj) {
     return $this->_removeTag($tag,false,$obj);
@@ -248,11 +250,11 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   // By human
   public function removeTagByHuman($tag,DB_DataObject $obj) {
     return $this->_removeTag($tag,true,$obj);
-  }  
+  }
   protected function _removeTag($tag, $byhuman, DB_DataObject $obj)
   {
     if(!$obj->pk()) return $this->returnStatus($obj);
-    if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus($obj);} 
+    if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus($obj);}
     if($this->validateTriggerTag($tag,'remove',$byhuman,$obj)) {
       $dbo = DB_DataObject::factory('tag_record');
       $dbo->setTag($tag);
@@ -260,7 +262,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       if($dbo->find(true)) {
         $dbo->delete();
         $this->triggerTag($tag,'remove',$obj);
-        $this->clearTagCache($obj);      
+        $this->clearTagCache($obj);
       }
 
     }
@@ -271,7 +273,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   /**
    * removes all tags from a record
    * @param DB_DataObject database record to untag
-   */  
+   */
 
   public function removeTags(DB_DataObject $obj)
   {
@@ -288,18 +290,18 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    * returns the recordset of tags attached to $obj
    */
   public function getTags($obj)
-  {    
+  {
 
     $tag = DB_DataObject::factory('tag');
     $tag->whereAdd('strip in ("'.implode('","',$this->getTagsArray($obj)).'")');
     $tag->find();
     return $this->returnStatus($tag);
   }
-  
+
   /**
    * Prepares a select query, given a series of tags.
    * @param $tags mixed. Can be a tag table recordset or an array of tag records
-   * @param DB_DataObject $obj the recordset on which the select query will be executed 
+   * @param DB_DataObject $obj the recordset on which the select query will be executed
    */
 
   public function getTagsArray($obj)
@@ -325,7 +327,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       $sth = $db->prepare('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET tagplugin_cache=:cacheval where '.$db->quoteIdentifier($obj->pkName()).'=:pkval',array('text','text'));
       if(PEAR::isError($sth)) die($sth->getMessage());
       $sth->execute(array('cacheval'=>$obj->tagplugin_cache,'pkval'=>$obj->pk()));
-      
+
     }
     $obj->_tagplugin_cache = explode('|',$obj->tagplugin_cache);
 
@@ -360,7 +362,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   /**
   * Prepares a select query, given a series of tags to exclude.
   * @param $tags mixed. Can be a tag table recordset or an array of tag records
-  * @param DB_DataObject $obj the recordset on which the select query will be executed 
+  * @param DB_DataObject $obj the recordset on which the select query will be executed
   */
   public function getWithoutTags($tags,DB_DataObject $obj)
   {
@@ -438,7 +440,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     $h->find(true);
     return $this->returnStatus($h);
   }
-  
+
   public static function countTagged($tag)
   {
         if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus(0);}
@@ -446,7 +448,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     $dbo->setTag($tag);
     return $this->returnStatus($dbo->count());
   }
-  
+
 
   public function delete($obj)
   {
@@ -467,7 +469,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       $t = DB_DataObject_Pluggable::retreiveFromRegistry('tag','strip',$tag);
       if($t) {
         $tag = $t;
-      } else {    
+      } else {
         $t = DB_DataObject::factory('tag');
         $t->strip = $tag;
         if(!$t->find(true)) {
@@ -479,5 +481,5 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     }
     return $tag;
   }
-    
+
 }
