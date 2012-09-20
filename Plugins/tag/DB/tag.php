@@ -157,6 +157,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   protected function __createTagRecord(&$tag,$obj)
   {
     if(!$existingtag = $this->_getTagFromTag($tag)) {
+      if(empty($tag)) return false;
       $newtag = DB_DataObject::factory('tag');
       $newtag->strip = $tag;
       $newtag->insert();
@@ -320,6 +321,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       $tag->find();
       $obj->tagplugin_cache = '|';
       while($tag->fetch()) {
+        if(empty($tag->strip)) continue;
         $obj->tagplugin_cache.=$tag->strip.'|';
         $obj->_tagplugin_cache[]=$tag->strip;
       }
