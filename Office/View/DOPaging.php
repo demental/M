@@ -30,9 +30,9 @@ class M_Office_View_DOPaging extends M_Office_View_List
   {
       parent::__construct($controller);
   }
-  
-  ### 
-  public function getControllerOption($opt,$module = null) 
+
+  ###
+  public function getControllerOption($opt,$module = null)
   {
       return $this->_controller->getOption($opt,$module);
   }
@@ -93,7 +93,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
       $tmparr = array_intersect($fields,$plugins['i18n']);
       $i18nfields = implode(','.$do->tablename().'_i18n'.'.',$tmparr);
       if(!empty($i18nfields)) {
-        $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;      
+        $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;
       }
       $fieldsToRender = array_merge($usedFields,$tmparr);
       unset($tmparr);
@@ -137,7 +137,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
         $fieldTypes[$aField] = 'bypass';
       }
     }
-    if($this->getControllerOption('edit', $module) || $this->getControllerOption('directEdit', $module) || $this->getControllerOption('view', $module)) {
+    if($this->getControllerOption('edit', $module) || $this->getControllerOption('view', $module)) {
         Mreg::get('tpl')->assign('edit',true);
     }
     if($this->_controller->hasActions) {
@@ -152,7 +152,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
             $('#showTableForm input:checkbox').attr('checked','');
         });
         ",'ready');
-      
+
     }
     Mreg::get('tpl')
           ->concat('adminTitle',' '.'page '.($_REQUEST['pageID']?$_REQUEST['pageID']:1));

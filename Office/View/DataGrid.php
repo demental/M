@@ -29,8 +29,8 @@ class M_Office_View_DataGrid extends M_Office_View_List
     {
         M_Office_View_List::M_Office_View_List($controller);
     }
-    ### 
-    function getControllerOption($opt,$table = null) 
+    ###
+    function getControllerOption($opt,$table = null)
     {
         return $this->_controller->getOption($opt,$table);
     }
@@ -109,9 +109,9 @@ class M_Office_View_DataGrid extends M_Office_View_List
                 ));
                 $dg->bindDataSource($dts);
                 if($frontend){
-                    if($this->getControllerOption('edit', $do->tableName()) || $this->getControllerOption('directEdit', $do->tableName()) || $this->getControllerOption('view', $do->tableName())) {
+                    if($this->getControllerOption('edit', $do->tableName()) || $this->getControllerOption('view', $do->tableName())) {
                         $dg->addColumn(new Structures_DataGrid_Column(null,null, null, array('width'=>'50px'), null,
-                        array('M_Office_ShowTable','getEditLink'),array('database' => $do->database(), 'table' => $do->tableName(), 'pk' => $pk, 'directEdit' => $this->getControllerOption('view',$do->tableName()) & $this->getControllerOption('directEdit',$do->tableName()))));
+                        array('M_Office_ShowTable','getEditLink'),array('database' => $do->database(), 'table' => $do->tableName(), 'pk' => $pk)));
                     }
                     if($this->_controller->hasActions) {
                         $dg->addColumn(new Structures_DataGrid_Column('',null, null, array('width'=>'20px'), null,

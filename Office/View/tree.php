@@ -31,7 +31,7 @@ class M_Office_View_tree extends M_Office_View_List
     {
         M_Office_View_List::M_Office_View_List($controller);
     }
-    ### 
+    ###
     function getPaging() {
         return '';
     }
@@ -44,7 +44,7 @@ class M_Office_View_tree extends M_Office_View_List
         $this->_odd='odd';
         return '<ul style="margin:0;padding:0;list-style-type:none;" id="sortablelist">'.$this->treePortion().'</ul>';
     }
-    
+
     function treePortion($pid=null) {
         $fatherField = $this->_do->treeFields['parent'];
         $right = $this->_do->treeFields['right'];
@@ -73,7 +73,7 @@ class M_Office_View_tree extends M_Office_View_List
                     $out.=$this->_do->$field;
                 }
                 $out.='</div>';
-            }        
+            }
         }
         if($treeSize!=1) {
             $pid = 'portion'.$this->_do->id;
@@ -85,9 +85,9 @@ class M_Office_View_tree extends M_Office_View_List
         $out.=$foldlink.$f.'</div><div style="clear:right">&nbsp;</div>';
         if($treeSize==1) {
             return '<li style="margin:0;padding:0;" id="'.$this->_do->id.'" class="sortableContainer'.$pid.'">'.$out.'</li>';
-        }            
+        }
         if($treeSize!=1) {
-            $out.='<ul style="margin:0;padding:0;padding-left:1em;list-style-type:none;border-left:1px dotted" id="'.$pid.'">';            
+            $out.='<ul style="margin:0;padding:0;padding-left:1em;list-style-type:none;border-left:1px dotted" id="'.$pid.'">';
             $fout='</ul>';
         } else {
           $fout='';
@@ -107,7 +107,7 @@ class M_Office_View_tree extends M_Office_View_List
                       				  serial = $.SortSerialize(\''.$pid.'\');
                       				  $.get(\''.M_Office_Util::getQueryParams(array('treesort'=>'1','parent'=>$pid),array(),false).'&\'+serial.hash);
                       				}})</script>';
-        }     
+        }
         return '<li id="'.$this->_do->id.'" class="sortableContainer'.$pid.'">'.$out.'</li>';
     }
     function setOptions($opts) {
@@ -116,7 +116,7 @@ class M_Office_View_tree extends M_Office_View_List
     function getEditLink($params,$args=null) {
       return '<a href="'.
       M_Office_Util::getQueryParams(array('record' => $params['record'][$args['pk']])).
-      '">'.($args['directEdit']?'Modifier':'Voir').'</a>';
+        '">'.__('Details').'</a>';
     }
     function getChildLink($params,$args=null) {
       return '<a href="'.
@@ -125,8 +125,8 @@ class M_Office_View_tree extends M_Office_View_List
     }
     function getSelectedEntry($params,$args) {
       return '<input type="checkbox" name="selected[]" value="'.$params['record'][$args['pk']].'" onclick="deleteCheckboxClicked(this)" style="border:none;clear:left"/>';
-    }  
-    
+    }
+
     function &prepare(&$do, $module, $pager = true) {
 
         require_once 'M/Office/DataSource/MyDataObj2.php';
@@ -156,11 +156,11 @@ class M_Office_View_tree extends M_Office_View_List
             $fb->populateOptions();
             $specialElements = $fb->_getSpecialElementNames();
             $this->fields = $fields;
-            
 
 
-                    if($this->getControllerOption('edit', $do->tableName()) || ($this->getControllerOption('view', $do->tableName()) && $this->getControllerOption('directedit', $do->tableName()))) {
-                        $this->fields[]=array($pk,array('M_Office_View_tree','getEditLink'),array('database' => $do->database(), 'table' => $do->tableName(), 'pk' => $pk, 'directEdit' => $this->getControllerOption('directEdit',$do->tableName())));
+
+                    if($this->getControllerOption('edit', $do->tableName()) || ($this->getControllerOption('view', $do->tableName()))) {
+                        $this->fields[]=array($pk,array('M_Office_View_tree','getEditLink'),array('database' => $do->database(), 'table' => $do->tableName(), 'pk' => $pk));
                         $this->fields[]=array($pk,array('M_Office_View_tree','getChildLink'),array('database' => $do->database(), 'table' => $do->tableName(), 'pk' => $pk));
                     }
 
@@ -169,7 +169,7 @@ class M_Office_View_tree extends M_Office_View_List
                     if($this->_controller->hasActions) {
                         $this->fields[]=array($pk,array('M_Office_View_tree','getSelectedEntry'),array('pk' =>$pk));
                     }
-                    
+
                     $formatters = $this->getControllerOption('formatters', $do->tableName());
                 if(!is_array($formatters)){
                     $formatters=array();

@@ -29,10 +29,10 @@ class Office_DbModule extends Module {
   public static function &factory($module,$path)
   {
     try {
-     $mod = parent::factory($module,$path); 
+     $mod = parent::factory($module,$path);
     } catch (Exception $e) {
       $opt = PEAR::getStaticProperty('m_office','options');
-      $modopt = $opt['modules'][$module];      
+      $modopt = $opt['modules'][$module];
       $mod = new Office_DbModule($module);
       $mod->_path=$path;
       $mod->setConfig(array_merge($mod->generateOptions(),$modopt));
@@ -49,9 +49,9 @@ class Office_DbModule extends Module {
         foreach ($fbOptions as $var => $value) {
             $do->{'fb_'.$var} = $value;
         }
-    }		
+    }
 		$AuthOptions = PEAR::getStaticProperty('m_office_auth', 'options');
-		$viewOptions = PEAR::getStaticProperty('m_office_showtable', 'options');	
+		$viewOptions = PEAR::getStaticProperty('m_office_showtable', 'options');
 		if($AuthOptions['ownership']){
 
 			$do->filterowner=User::getInstance('office')->getProperty('level')!=NORMALUSER?false:User::getInstance('office')->getProperty('groupId');
@@ -88,7 +88,7 @@ class Office_DbModule extends Module {
     	 	    $moduleopt=$opt;
     	 	  }
         $useropt = Mreg::get('authHelper')->getPrivilegesForModule(User::getInstance('office'),$this->_modulename);
-   		  $moduleopt = MArray::array_merge_recursive_unique($moduleopt, $useropt);        
+   		  $moduleopt = MArray::array_merge_recursive_unique($moduleopt, $useropt);
     	 	$optcache->save($moduleopt);
       }
   	  return $moduleopt;
@@ -110,19 +110,19 @@ class Office_DbModule extends Module {
         $this->assign('search',$searchForm);
         if (isset($_REQUEST['searchSubmit'])) {
           $do = $this->getSearchDO($searchForm);
-        }            
+        }
     }
     if($this->getAndProcessActions(clone($do),$table)) {
         return;
     }
-    if (isset($_REQUEST['record']) 
-    && ($this->getOption('edit', $table) || $this->getOption('view', $table) || $this->getOption('directEdit', $table))) {
+    if (isset($_REQUEST['record'])
+    && ($this->getOption('edit', $table) || $this->getOption('view', $table))) {
       require 'M/Office/EditRecord.php';
       $subController = new M_Office_EditRecord($table, $_REQUEST['record']);
       $this->assign('__action','edit');
       return;
     }
-          
+
     if($this->getOption('view',$do->tableName())===TRUE) {
       require 'M/Office/View/DOPaging.php';
       $dg = &new M_Office_View_DOPaging($this);
@@ -141,11 +141,11 @@ class Office_DbModule extends Module {
     $this->assign('fields',$dg->getFields());
     $this->assign('__action','showtable');
     $deleteForm = new HTML_QuickForm('showTableForm', 'post', M_Office_Util::getQueryParams(array(),array(),false), '_self', null, true);
-    M_Office_Util::addHiddenFields($deleteForm, array(), true); 
+    M_Office_Util::addHiddenFields($deleteForm, array(), true);
   }
   public function doExecAddrecord()
   {
-    $do = $this->getDO();      
+    $do = $this->getDO();
     $do->fb_fieldsToRender = $this->getConfig('fieldsindetail');
     $form = new HTML_QuickForm('editform','POST',URL::get($this->_modulename.'/editrecord',$_GET));
     $fb = MyFB::create($do);

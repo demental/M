@@ -22,7 +22,7 @@ class M_Office_ShowTable extends M_Office_Controller {
   function __construct($module) {
     parent::__construct();
     if ((isset($_REQUEST['record']) || isset($_REQUEST['__record_ref']))
-    && ($this->getOption('edit', $module) || $this->getOption('view', $module) || $this->getOption('directEdit', $module))) {
+    && ($this->getOption('edit', $module) || $this->getOption('view', $module))) {
       require 'M/Office/EditRecord.php';
 
       $subController = new M_Office_EditRecord($module, $_REQUEST['record'], $additionalFilter);
