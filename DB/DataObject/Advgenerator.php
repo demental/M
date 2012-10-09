@@ -417,6 +417,8 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
 
       $foot .= "}\n";
       $full = $head . $body . $foot;
+      $full = preg_replace('` +$`m','',$full);
+
 
       if (!$input) {
           return $full;
@@ -460,5 +462,78 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
 
       return $ret;
   }
+  /**
+  * Generate defaults Function - used generator_add_defaults or generator_no_ini is set.
+  * Only supports mysql and mysqli ... welcome ideas for more..
+  *
+  *
+  * @param    array  table and key definition.
+  * @return   string
+  * @access   public
+  */
+  function _generateDefaultsFunction($table,$defs)
+  {
+      $__DB= &$GLOBALS['_DB_DATAOBJECT']['CONNECTIONS'][$this->_database_dsn_md5];
+      if (!in_array($__DB->phptype, array('mysql','mysqli'))) {
+          return; // cant handle non-mysql introspection for defaults.
+      }
+      $options = PEAR::getStaticProperty('DB_DataObject','options');
+      $db_driver = empty($options['db_driver']) ? 'DB' : $options['db_driver'];
+      $method = $db_driver == 'DB' ? 'getAll' : 'queryAll';
+      $res = $__DB->$method('DESCRIBE ' . $table,DB_FETCHMODE_ASSOC);
+      $defaults = array();
+      foreach($res as $ar) {
+          // this is initially very dumb... -> and it may mess up..
+          $type = $defs[$ar['Field']];
 
+          switch (true) {
+
+              case (is_null( $ar['Default'])):
+                  $defaults[$ar['Field']]  = 'null';
+                  break;
+
+              case ($type & DB_DATAOBJECT_DATE):
+              case ($type & DB_DATAOBJECT_TIME):
+              case ($type & DB_DATAOBJECT_MYSQLTIMESTAMP): // not supported yet..
+                  break;
+
+              case ($type & DB_DATAOBJECT_BOOL):
+                  $defaults[$ar['Field']] = (int)(boolean) $ar['Default'];
+                  break;
+
+
+              case ($type & DB_DATAOBJECT_STR):
+                  $defaults[$ar['Field']] =  "'" . addslashes($ar['Default']) . "'";
+                  break;
+
+
+              default:    // hopefully eveything else...  - numbers etc.
+                  if (!strlen($ar['Default'])) {
+                      continue;
+                  }
+                  if (is_numeric($ar['Default'])) {
+                      $defaults[$ar['Field']] =   $ar['Default'];
+                  }
+                  break;
+
+          }
+          //var_dump(array($ar['Field'], $ar['Default'], $defaults[$ar['Field']]));
+      }
+      if (empty($defaults)) {
+          return;
+      }
+
+      $ret = "\n" .
+             "    function defaults() // column default values\n" .
+             "    {\n" .
+             "         return array(\n";
+      foreach($defaults as $k=>$v) {
+          $ret .= '             \''.addslashes($k).'\' => ' . $v . ",\n";
+      }
+      return $ret . "         );\n" .
+                    "    }\n";
+
+
+
+    }
 }
