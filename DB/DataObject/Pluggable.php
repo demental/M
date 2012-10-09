@@ -72,6 +72,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
       if(is_object($inject)) {
         $inject->setFrom($ret->toArray());
+        return true;
       } else {
         return $ret;
       }
@@ -364,7 +365,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
         return $this->find();
     } else {
         if(is_null($v) || $this->__keystore == $k) {
-          if(!$ret=DB_DataObject_Pluggable::retrieveFromRegistry($this->tableName(),$k,$v,$this)) {
+          if(!$ret = DB_DataObject_Pluggable::retreiveFromRegistry($this->tableName(),$k,$v,$this)) {
             if($ret=parent::get($k,$v)) {
               DB_DataObject_Pluggable::storeToRegistry($this);
               return $ret;
