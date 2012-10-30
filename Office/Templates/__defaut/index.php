@@ -7,14 +7,13 @@
 
   	<link rel="stylesheet" type="text/css" media="screen,print" href="/css/styleforms.css" />
   	<link rel="stylesheet" type="text/css" media="screen,print" href="/css/style_admin.css" />
-    <?php 
+    <?php
     foreach (Mtpl::getCSS() as $css){
             echo '<link rel="stylesheet" type="text/css" media="'.$css['media'].'" href="/css/'.$css['name'].'.css" />';
     }
-    
     Mtpl::printJS();
     ?>
-    
+
 		<script type="text/javascript">
 		/*<![CDATA[*/
 		<?php
@@ -28,7 +27,7 @@
 // =====================================================
 ?>
     $(function() {
-            $("#loading").ajaxStart(function(){ 
+            $("#loading").ajaxStart(function(){
               $('indicator').show().css(
                   'left:'+mouse.x + 'px',
                   'top:'+mouse.y + 'px')
@@ -63,7 +62,7 @@ foreach(Mtpl::getJSinline('ready') as $inst){
 			}
 			echo '});
 			';
-		}		
+		}
 ?>
 /* ]]>*/
 		</script>
@@ -84,7 +83,7 @@ foreach(Mtpl::getJSinline('ready') as $inst){
           	<div class="messageFooter">
           		<a href="javascript:void(0)" id="closepanel">Fermer</a>
           	</div>
-          </div>            
+          </div>
 			<div id="chooseTable">
 			<?php $this->i('header')?>
 			  <h3><a href="<?php echo ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT?>"><?php echo $adminTitle?></a></h3>
@@ -95,7 +94,7 @@ foreach(Mtpl::getJSinline('ready') as $inst){
                 			        <?php $this->i('profile')?>
                 			      <a href="<?php echo ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT?>?logout=1"><?php echo __('Logout %s',array($username))?></a>
                 			      </div>
-                			    <?php endif?>  
+                			    <?php endif?>
                 <?php echo $choosetable?>
 			</div>
 

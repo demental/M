@@ -72,6 +72,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
       if(is_object($inject)) {
         $inject->setFrom($ret->toArray());
+        $inject->{$inject->pkName()} = $ret->{$ret->pkName()};
         return true;
       } else {
         return $ret;

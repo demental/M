@@ -67,7 +67,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
           }
         }
         return '
-        '.($addlinks?'
+'.($addlinks?'
     function links() {
       // links generated from .links.ini file
       return array('.$links.'

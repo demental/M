@@ -15,7 +15,7 @@
  *
  */
 class Mtpl {
-  
+
   protected $_addComments = true;
 	protected $_assignvars = array();
 	protected $_config;
@@ -26,7 +26,7 @@ class Mtpl {
 	private   $_currentFetch;
 	protected static $_css=array();
 	protected static $_js=array();
-	protected static $_jsgroups=array();	
+	protected static $_jsgroups=array();
 	protected static $_jsinline=array();
 	protected static $_meta=array();
 
@@ -64,7 +64,7 @@ class Mtpl {
 	public function setPaths($paths)
 	{
 		$this->_config['tplfolders'] = $paths;
-	}	
+	}
 	public function getPaths()
 	{
 	 return $this->_config['tplfolders'];
@@ -80,7 +80,7 @@ class Mtpl {
 	public function getJSgroups()
 	{
 		return Mtpl::$_jsgroups;
-	}	
+	}
 	public function getJSinline($event='ready')
 	{
 		return is_array(Mtpl::$_jsinline[$event])?Mtpl::$_jsinline[$event]:array();
@@ -335,9 +335,9 @@ class Mtpl {
       .$c->display()
       .$this->comment('End component '.$module.'/'.$action);
 	}
-	
-	
-	
+
+
+
 	public function toArray() {
 		return $this->_assignvars;
 	}
@@ -417,6 +417,7 @@ class Mtpl {
 
     foreach (Mtpl::getJS() as $js) {
       if(preg_match('`^https*`',$js)) {
+
         $jsfile = $js;
       } else {
         $jsfile = '/js/'.$js.'.js';
@@ -424,8 +425,8 @@ class Mtpl {
       $out.='
     <script type="text/javascript" src="'.$jsfile.'"></script>';
     }
-    
-    return $out;   
+
+    return $out;
 	}
 	public static function printJS()
 	{
@@ -450,12 +451,12 @@ class Mtpl {
     });
     </script>';
         }
-    return $out;    
+    return $out;
 	}
-	
+
 	public function printJSinline($event='ready')
 	{
     echo $this->getJSinlineblock($event);
 	}
-	
+
 }
