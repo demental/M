@@ -13,6 +13,8 @@
 require 'M/Office/Controller.php';
 require 'M/Notifier.php';
 require 'M/Office/Icons.php';
+require 'M/Office/functions.php';
+
 if(!defined('NORMALUSER')) {
 	define('NORMALUSER',0);
 }
