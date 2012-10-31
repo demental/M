@@ -59,15 +59,15 @@ class M_Office_Util {
    * @param DB_DataObject
    * @param string
    * @return bool
-   * 
-   * 
-   * Alternative API (for use with dyn modules): 
+   *
+   *
+   * Alternative API (for use with dyn modules):
    * @param string module name
    * @param string action name
    */
   public static function doHasAction($module,$do,$action = null) {
     if(is_null($action)) {
-      $actions = self::getGlobalOption('actions','editrecord', $module);      
+      $actions = self::getGlobalOption('actions','editrecord', $module);
       if(!is_array($actions)) return true;
       $action = $do;
     } else {
@@ -83,7 +83,7 @@ class M_Office_Util {
   public static function getActionsFor($do,$moduleName=null,$includeExtra = false)
   {
     if(is_null($moduleName)) $moduleName = $do->tableName();
-  
+
     $singleMethods=method_exists($do,'getSingleMethods')?$do->getSingleMethods():array();
     if($includeExtra) {
       $extraMethods=method_exists($do,'getExtraMethods')?$do->getExtraMethods():array();
@@ -103,12 +103,12 @@ class M_Office_Util {
             $singleMethods = array();
     }
     return $singleMethods;
-    
+
   }
   /**
    * Redirects using a POST form to send back post variables
    * @param url target URL
-   * 
+   *
    */
   public static function postRedirect($url,$params,$template = null,$templateparams = null)
   {
@@ -147,7 +147,7 @@ class M_Office_Util {
   public static function getAjaxQueryParams($params = array(), $remove = array(), $entities = false) {
       return self::getQueryParams(array_merge($params,array('ajax'=>1)),$remove,$entities);
   }
-  
+
   public static function doURL($do,$module='',$add = array(), $remove = array())
   {
     if(!is_object($do)) return '';
@@ -174,7 +174,7 @@ class M_Office_Util {
     unset($params['record']);
     unset($params['__record_ref']);
     unset($params['regenerate']);
-    unset($params['_c_']);    
+    unset($params['_c_']);
     if(count($params)>0) {
       $url.='?'.self::queryString($params,'','',true);
     }
@@ -188,7 +188,7 @@ class M_Office_Util {
    * @param $entities   bool   should the query be HTML-escaped ?
    * @param $clean      bool  should we remove empty keys ?
    */
-  
+
   public static function getQueryParams($params = array(), $remove = array(), $entities = false, $clean = false) {
       $ret = '';
       $arr = array();
@@ -204,7 +204,7 @@ class M_Office_Util {
           $arr[$key] = $val;
 //            }
       }
-      
+
       $ret = self::queryString($arr,'','',$clean);
       if ($entities) {
           $ret = htmlentities($ret, ENT_QUOTES);
@@ -216,7 +216,7 @@ class M_Office_Util {
   /**
    * recursively builds a query string from passed parameters
    * @param  $params  array  associative array of query params
-   * @param  $prefix  string variable names prefix 
+   * @param  $prefix  string variable names prefix
    * @param  $postfix string variable names postfix
    * @param  $clean bool clean empty keys
    * @return string built query
@@ -237,9 +237,9 @@ class M_Office_Util {
 
               switch($val['firstselect']) {
                 case 'none':  continue 2;// Most common, big clean !
-                case 'is':    
-                case 'before':    
-                case 'after':                                    
+                case 'is':
+                case 'before':
+                case 'after':
                   $val = array('firstselect'=>$val['firstselect'],'firstdate'=>$val['firstdate']);
                   break;
                 case 'currentmonth':
@@ -255,7 +255,7 @@ class M_Office_Util {
                 case 'between':
                 $val = array('firstselect'=>$val['firstselect'],'firstdate'=>$val['firstdate'],'seconddate'=>$val['seconddate']);
                 break;
-                
+
                 default:break;
               }
             }
@@ -292,7 +292,7 @@ class M_Office_Util {
             }
         }
     }
-    return $out;    
+    return $out;
   }
   /**
    * returns HTML hidden fields (even arrays) of one name/value pair
@@ -350,19 +350,19 @@ class M_Office_Util {
     unset($fields['_c_']);
     unset($fields['page']);
     unset($fields['module']);
-    unset($fields['action']);    
-    unset($fields['filterField']);        
-    unset($fields['filterValue']);            
+    unset($fields['action']);
+    unset($fields['filterField']);
+    unset($fields['filterValue']);
 
-    if(count($fields)==0) { 
+    if(count($fields)==0) {
       Log::info('caching search form');
       $cache = true;
-    } else { 
+    } else {
 
       Log::info('NO SEARCH FORM CACHING');
       $cache = false;
     }
-  
+
 
     $cacheName = 'searchform_'.$do->tableName();
     $options = array(
@@ -378,7 +378,7 @@ class M_Office_Util {
         $_cachedData = unserialize($_cachedData);
         foreach($_cachedData as $element) {
           $form->addElement($element);
-          
+
         }
   		} else {
             $do->fb_selectAddEmpty = array();
@@ -413,7 +413,7 @@ class M_Office_Util {
         if($cache) {
           $cache->save(serialize($cached));
         }
-        
+
   		}
     $form->_rules = array();
     $form->_formRules = array();
@@ -437,7 +437,7 @@ class M_Office_Util {
 		$tpl->assignRef('form',$form);
 		return $tpl->fetch('form-'.$template);
 	}
-  public static function &doFortable($table) {      
+  public static function &doFortable($table) {
 
     $do = DB_DataObject::factory($table);
   	$viewOptions = PEAR::getStaticProperty('m_office_showtable', 'options');
@@ -451,7 +451,7 @@ class M_Office_Util {
   	    $do->loadPlugin($plugin,$info);
   	  }
   	}
-  	
+
   	if($viewOptions['tableOptions'][$table]['filters']){
       foreach($viewOptions['tableOptions'][$table]['filters'] as $filter) {
         if(is_array($filter)) {
@@ -465,13 +465,17 @@ class M_Office_Util {
   	}
     return $do;
   }
+  public static function getModulesInfo()
+  {
+    $ret =  PEAR::getStaticProperty('m_office', 'options');
+    return $ret['modules'];
+  }
   public static function getModuleInfo($module)
   {
-  	$op = PEAR::getStaticProperty('m_office', 'options');
-    $mod = $op['modules'][$module];
-    return $mod;
+    $op = self::getModulesInfo();
+    return $op[$module];
   }
-  public static function &doForModule($module,$filters=true) {      
+  public static function &doForModule($module,$filters=true) {
       $mod = self::getModuleInfo($module);
       $do = DB_DataObject::factory($mod['table']);
     	if(is_array($mod['plugins'])) {
@@ -491,7 +495,7 @@ class M_Office_Util {
       if(!is_array($filterArray)) {
         $filterArray = array();
       }
-      
+
       $shT = PEAR::getStaticProperty('m_office_showtable','options');
       if(!is_array($shT['tableOptions'][$module]['filters'])) {
         $shT['tableOptions'][$module]['filters']=array();
@@ -531,17 +535,17 @@ class M_Office_Util {
 
 		    foreach($values as $k=>$v) {
 		        unset($_REQUEST[$k]);
-		        unset($_POST[$k]);		    
-		        unset($_GET[$k]);		    
+		        unset($_POST[$k]);
+		        unset($_GET[$k]);
             }
 		unset($values['glaction']);
 		unset($values['doSingleAction']);
 	}
-	public static function field_format_bypass($obj,$field) 
+	public static function field_format_bypass($obj,$field)
 	{
 	 return $obj->$field;
 	}
-	public static function field_format_bool($obj,$field) 
+	public static function field_format_bool($obj,$field)
 	{
 	 return $obj->$field?'<span class="yes">'.__('Oui').'</span>':'<span class="no">'.__('Non').'</span>';
 	}
@@ -572,8 +576,8 @@ class M_Office_Util {
       $options = PEAR::getStaticProperty('m_office_'.$module,'options');
       return self::grabOption($name,$table,$merge,$options);
   }
-  public static function grabOption($name, $table = null, $merge = false,$options) {    
-    
+  public static function grabOption($name, $table = null, $merge = false,$options) {
+
       if ($merge == true) {
           $merged = array();
       }
@@ -641,11 +645,17 @@ class M_Office_Util {
   {
     $item = $dbcnx->quote($item);
   }
-  public static function RecordBelongsToModule($record,$module)
+  public static function record_belongs_to_module($record,$module)
   {
     $object = self::doForModule($module);
     $object->{$object->pkName()} = $record->pk();
     if($object->find()) return true;
     return false;
+  }
+  public static function get_module_for_do($do)
+  {
+    foreach(self::getModulesInfo() as $amod => $info) {
+      if($info['table'] == $do->tableName() && self::record_belongs_to_module($do, $amod)) return $amod;
+    }
   }
 }

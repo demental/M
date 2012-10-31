@@ -13,7 +13,7 @@ class Tag_Module_Taghelper extends Module {
   {
     # code...
   }
-  
+
   protected function getFocus() {
     $focus = $this->getParam('focus');
     if(!is_a($focus,'DB_DataObject')) {
@@ -33,8 +33,8 @@ class Tag_Module_Taghelper extends Module {
   }
   public function _checkEditable($focus,$module)
   {
-    
-    if(!M_Office_Util::RecordBelongsToModule($focus,$module)) {
+
+    if(!M_Office_Util::record_belongs_to_module($focus,$module)) {
       return false;
     }
     $edit = M_Office_Util::getGlobalOption('edit','showtable',$module);
@@ -44,7 +44,7 @@ class Tag_Module_Taghelper extends Module {
   }
   public function doExecRemove()
   {
-    $focus = $this->getFocus();    
+    $focus = $this->getFocus();
     if(!$this->_checkEditable($focus,$_REQUEST['focusmodule'])) die('not OK');
     $tag = DB_DataObject::factory('tag');
     $tag->get($_REQUEST['tagid']);
@@ -65,7 +65,7 @@ class Tag_Module_Taghelper extends Module {
       $this->redirect($_REQUEST['target']);
     } else {
       die('ok');
-    }    
+    }
   }
   public function doExecAutocomplete()
   {
