@@ -18,6 +18,7 @@ function can($action, $module, $record = null) {
     }
   } else {
     $result = M_Office_Util::getGlobalOption($opt, 'showtable', $module);
+
   }
   if(is_array($result)) {
     return in_array($action, $result);

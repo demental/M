@@ -26,6 +26,11 @@ class Mail_phpmailer extends Maman implements iMailDriver {
 
 				$mail->isSMTP();
 				$mail->Host=$this->getConfig('smtphost');
+        if($this->getConfig('smtpusername')) {
+          $mail->SMTPAuth = true;
+          $mail->Username = $this->getConfig('smtpusername');
+          $mail->Password = $this->getConfig('smtppassword');
+        }
 			}
 			$mail->CharSet=$this->getConfig('encoding');
 			$mail->AddAddress($to);
@@ -59,5 +64,5 @@ class Mail_phpmailer extends Maman implements iMailDriver {
 			$mail->IsHTML($html);
 			$result = 	$mail->send();
     }
-	
+
 }
