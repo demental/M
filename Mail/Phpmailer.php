@@ -28,6 +28,7 @@ class Mail_phpmailer extends Maman implements iMailDriver {
 				$mail->Host=$this->getConfig('smtphost');
         if($this->getConfig('smtpusername')) {
           $mail->SMTPAuth = true;
+          $mail->SMTPDebug = $this->smtpdebug;
           $mail->Username = $this->getConfig('smtpusername');
           $mail->Password = $this->getConfig('smtppassword');
         }
