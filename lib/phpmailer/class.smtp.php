@@ -152,6 +152,8 @@ class SMTP {
     if($this->do_debug >= 2) {
       echo "SMTP -> FROM SERVER:" . $announce . $this->CRLF . '<br />';
     }
+    $this->Hello();
+    $this->StartTLS();
 
     return true;
   }

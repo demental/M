@@ -32,7 +32,6 @@ class Mail_phpmailer extends Maman implements iMailDriver {
           $mail->SMTPDebug = $this->smtpdebug;
           $mail->Username = $this->getConfig('smtpusername');
           $mail->Password = $this->getConfig('smtppassword');
-          $mail->Helo = SITE_URL;
         }
 			}
 			$mail->CharSet=$this->getConfig('encoding');
