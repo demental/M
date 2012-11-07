@@ -548,7 +548,7 @@ class PHPMailer
                     $this->smtp->Hello($this->Helo);
                 else
                     $this->smtp->Hello($this->ServerHostname());
-
+                $this->smtp->StartTLS();
                 if($this->SMTPAuth)
                 {
                     if(!$this->smtp->Authenticate($this->Username,
