@@ -446,8 +446,11 @@ class M_Office_Util {
   	  call_user_func(array($do,$filterMethod));
   	}
     $mod = self::getModuleInfo($table);
+
   	if(is_array($mod['plugins'])) {
+
   	  foreach($mod['plugins'] as $plugin=>$info) {
+
   	    $do->loadPlugin($plugin,$info);
   	  }
   	}

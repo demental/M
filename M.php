@@ -35,7 +35,18 @@ class M {
     if(method_exists($className.'_hook',$methodName)) {
       return call_user_func_array(array($className.'_hook',$methodName),$params);
     }
-    
+  }
+  public static function tablesWithPlugin($pluginName)
+  {
+    foreach(FileUtils::getAllFiles(APP_ROOT.PROJECT_NAME.'/DOclasses/','php') as $file) {
+      $t = DB_DataObject::factory(strtolower(basename($file,'.php')));
+
+      if(PEAR::isError($t)) continue;
+      $plugs = $t->_getPluginsDef();
+      if($plugs[$pluginName]) {
+        $ret[] = $t->tableName();
+      }
+    }
+    return $ret;
   }
 }
- 

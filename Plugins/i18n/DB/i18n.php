@@ -231,7 +231,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 	{
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];
-	  $out = array();
+    $out = array();
     $tablename = $obj->tableName().'_i18n';
     if(is_array($obj->fb_fieldsToRender)) {
       $iFields = array_intersect($info,$obj->fb_fieldsToRender);

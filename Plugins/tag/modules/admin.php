@@ -55,20 +55,13 @@ class Tag_Module_Admin extends Module {
   public function doExecApplier()
   {
     $form = new HTML_QuickForm('applyform','POST',M_Office::URL());
-    foreach(FileUtils::getAllFiles(APP_ROOT.PROJECT_NAME.'/DOclasses/','php') as $file) {
-      $t = DB_DataObject::factory(strtolower(basename($file,'.php')));
-
-      if(PEAR::isError($t)) continue;
-      $plugs = $t->_getPluginsDef();
-      if($plugs['tag']) {
-        $opts[$t->tableName()] = $t->tableName();
-      }
-    }
+    $opts = M::tablesWithPlugin('tag');
+    $opts = array_combine($opts, $opts);
     $form->addElement('select','table','Table',$opts);
     $form->addElement('textarea','clause','clause','rows="4" cols="60"');
     $form->addElement('text','tagname','tagname');
     $form->addElement('text','tagdel','tagdel');
-    $form->addElement('checkbox','distinct','distinct');    
+    $form->addElement('checkbox','distinct','distinct');
     $form->addElement('submit','__submit__','Apply');
 
     $form->addFormRule(array($this,'checkApplier'));
@@ -87,7 +80,7 @@ class Tag_Module_Admin extends Module {
           $t->removeTag($values['tagdel']);
         }
         $applied++;
-        
+
       }
       $this->assign('success',1);
       $this->assign('applied',$applied);
@@ -122,7 +115,7 @@ class Tag_Module_Admin extends Module {
     if($t->find(true)) {
       $t->archived = !$t->archived;
       $t->update();
-    }  
+    }
     if($this->isAjaxRequest()) {
       die('OK');
     } else {
@@ -135,12 +128,12 @@ class Tag_Module_Admin extends Module {
    $t = DB_DataObject::factory('tag');
    $t->id= $_GET['id'];
    if($t->find(true)) {
-     
+
      $th = DB_DataObject::factory('tag_record');
      $th->tag_id = $t->id;
      $th->delete();
      $t->getDatabaseConnection()->query('DELETE FROM tag_history WHERE tag_id = '.$t->id);
-     
+
      $t->delete();
    }
    if($this->isAjaxRequest()) {
@@ -148,12 +141,12 @@ class Tag_Module_Admin extends Module {
    } else {
      $this->redirect(M_Office::URL('tag:admin/manager',array(),array_keys($_REQUEST)));
    }
- } 
+ }
  public function doExecRedirect()
  {
    $redirmodule = $_REQUEST['targetmodule'];
    $extag = explode(',',$_REQUEST['ex_tag']);
-   $intag = explode(',',$_REQUEST['int_tag']);   
+   $intag = explode(',',$_REQUEST['int_tag']);
    foreach($extag as $tagname) {
      $t = DB_DataObject::factory('tag');
      $t->strip = $tagname;
