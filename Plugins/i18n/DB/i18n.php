@@ -235,9 +235,8 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     $tablename = $obj->tableName().'_i18n';
     if(is_array($obj->fb_fieldsToRender)) {
       $iFields = array_intersect($info,$obj->fb_fieldsToRender);
-    } else {
-      $iFields = $info;
     }
+    if(count($iFields) == 0) $iFields = $info;
     foreach($langs as $lang) {
       $t = DB_DataObject::factory($tablename);
       $t->i18n_lang=$lang;
