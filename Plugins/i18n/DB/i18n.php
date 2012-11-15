@@ -49,7 +49,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     } else {
       $langs = $this->getLocales($obj);
     }
-    
+
     $obj->_i18ndos = $this->prepareTranslationRecords($obj,$langs);
   }
   public function getDefaultLang($obj)
@@ -57,7 +57,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     return T::getLocale();
   }
   public function postGenerateForm($form,$fb,$obj){
-    
+
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];
     $langs = $this->getLocales($obj);
@@ -101,8 +101,8 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
           $class='autotranslate source_autotransid_'.$completename.' field_'.$lang;
           $id = 'autotransid_'.$completename.'_'.$lang;
         }
-        $elem->setAttribute('class',$elem->getAttribute('class').($elem->getAttribute('class')?' ':'').$class);          
-      }        
+        $elem->setAttribute('class',$elem->getAttribute('class').($elem->getAttribute('class')?' ':'').$class);
+      }
     }
   }
   public function postGenerateFormGrouped($form,$fb,$info,$langs,$obj)
@@ -124,7 +124,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
           $completename = $obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix;
 
           $elem = $form->getElement($completename.'_'.$lang);
-          
+
           $elem->setAttribute('rel',$completename);
           if($lang == $this->getDefaultLang($obj)) {
             $class='translatesource field_'.$lang;
@@ -144,7 +144,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
           $elem->setLabel($sublabel.'('.$lang.')');
           $fields[] =$elem;
           $form->removeElement($completename.'_'.$lang);
-          
+
         }
         if(!$form->elementExists('__submit__')) {
           $form->addElement('group', $completename.'_group',$label,$fields,'');
@@ -153,7 +153,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
         }
         if(in_array($field,$fb->fieldsRequired) || ($elements[$field] & DB_DATAOBJECT_NOTNULL)) {
             $form->addGroupRule($completename.'_group',$fb->requiredRuleMessage,'required',null,1);
-        }        
+        }
       }
     }
 
@@ -163,10 +163,10 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       $this->preProcessFormGrouped($values,$fb,$obj);
       return;
     }
-    
+
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];
-    $elements = $obj->_i18nfbs[T::getLocale()]->_reorderElements();      
+    $elements = $obj->_i18nfbs[T::getLocale()]->_reorderElements();
     // To avoid duplicate saving of current lang record
     $this->_dontSavei18n = true;
     unset($obj->i18n_lang);
@@ -182,11 +182,11 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
   {
     $elements = $obj->_i18nfbs[T::getLang()]->_reorderElements();
     $info = $obj->_getPluginsDef();
-    
+
     foreach($info['i18n'] as $field) {
       $completename = $obj->fb_elementNamePrefix.$field.$obj->fb_elementNamePostfix;
 
-      $fieldhasempty = false;        
+      $fieldhasempty = false;
       $nonempty=null;
       foreach($this->getLocales($obj) as $lang) {
         $values[$completename.'_'.$lang] = $values[$field.'_group'][$completename.'_'.$lang];
@@ -197,7 +197,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
         }
       }
       if($fieldhasempty && (in_array($field,$fb->fieldsRequired) || ($elements[$field] & DB_DATAOBJECT_NOTNULL))) {
-          foreach($this->getLocales($obj) as $lang) {          
+          foreach($this->getLocales($obj) as $lang) {
 
               if(empty($values[$completename.'_'.$lang])) {
                   $values[$completename.'_'.$lang] = $nonempty;
@@ -212,11 +212,11 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     unset($obj->i18n_lang);
     unset($obj->i18n_record_id);
     unset($obj->i18n_id);
-    
+
   }
   public function postProcessForm(&$values,$fb,$obj)
   {
-    foreach($this->getLocales($obj) as $lang) {      
+    foreach($this->getLocales($obj) as $lang) {
       $obj->_i18ndos[$lang]->i18n_record_id = $obj->pk();
       $obj->_i18nfbs[$lang]->processForm($values);
     }
@@ -230,7 +230,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 	public function prepareTranslationRecords($obj,$langs)
 	{
     $info = $obj->_getPluginsDef();
-    $info = $info['i18n'];	  
+    $info = $info['i18n'];
 	  $out = array();
     $tablename = $obj->tableName().'_i18n';
     if(is_array($obj->fb_fieldsToRender)) {
@@ -254,7 +254,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       $t->fb_elementNamePostfix.='_'.$lang;
       foreach($info as $field) {
         if(!is_array($t->fb_fieldAttributes[$field])) {
-          $t->fb_fieldAttributes[$field].=($t->fb_fieldAttributes[$field]?' ':'').'lang="'.$lang.'"';        
+          $t->fb_fieldAttributes[$field].=($t->fb_fieldAttributes[$field]?' ':'').'lang="'.$lang.'"';
         } else {
           $t->fb_fieldAttributes[$field]['lang'] = $lang;
         }
@@ -288,7 +288,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       } else {
         $langs = Config::getAllLocales();
       }
-    }    
+    }
     return $langs;
   }
   public function setLangs($obj,$langs)
@@ -319,7 +319,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 	}
 	public function postInsert($obj)
 	{
-	  
+
     if(!$this->_dontSavei18n) {
       $this->saveTranslation($obj,T::getLocale());
     }
@@ -328,7 +328,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
   {
         $obj->whereAdd();
         $obj->_query['condition'] = '';
-        
+
   }
 	public function postUpdate($obj)
 	{
@@ -378,7 +378,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
       trigger_error('failed removing non i18n fields for '.$iname.' : '.$res->getMessage().' : '.$res->userinfo,E_USER_WARNING);
       $obj->rollback();
       return false;
-    }   
+    }
     $res = $this->migration_rebuildObjects($obj,$iname);
     $res = $this->migration_removeI18nFieldsFromOriginal($obj,$iname);
     if(PEAR::isError($res)) {
@@ -389,16 +389,19 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
   }
   public function migration_createI18nTable($obj,$iname)
   {
+    echo 'duplicating table';
     $db = $obj->getDatabaseConnection();
     $res = $db->query('create table '.$iname.' LIKE '.$obj->tableName());
     if(PEAR::isError($res)) {
       trigger_error($res->getMessage(),E_USER_WARNING);
       return $res;
     }
+    echo 'finish duplicating table';
     return true;
   }
   public function migration_createI18nIndexes($obj,$iname)
   {
+    echo 'creating indexes';
     $db = $obj->getDatabaseConnection();
     $res = $db->loadModule('manager',null,true);
     if(PEAR::isError($res)) {
@@ -414,10 +417,10 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     if($obj->hasplugin('officepack') || $obj->hasplugin('guid')) {
       $foreignkeyspecs = array('type'=>'text','length'=>36);
     } else {
-      $foreignkeyspecs = array('type'=>'integer','unsigned'=>1);      
+      $foreignkeyspecs = array('type'=>'integer','unsigned'=>1);
     }
 
-    $res2 = $db->manager->alterTable($iname,array(    
+    $res2 = $db->manager->alterTable($iname,array(
       'add'=>array( 'i18n_lang'=>array('type'=>'text','length'=>2,'notnull'=>1,'default'=>'fr'),
                     'i18n_record_id'=>array_merge($foreignkeyspecs,array('notnull'=>1,'default'=>0)),
                   )
@@ -431,9 +434,10 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     if(PEAR::isError($res3)) {
       return $res3;
     }
+    echo 'end creating indexes';
     return true;
   }
-  public function migration_getNonI18nFields($obj,$iname) 
+  public function migration_getNonI18nFields($obj,$iname)
   {
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];
@@ -460,18 +464,21 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
   }
   public function migration_copyDataToI18n($obj,$iname)
   {
+    echo 'copying data';
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];
     $db = $obj->getDatabaseConnection();
     foreach(Config::getAllLangs() as $lang) {
       T::setLang($lang);
-      
       $original = DB_DataObject::factory($obj->tableName());
-/*      $original->unloadPlugin('international');*/
+      $original->_loadPlugins();
+      echo 'unloading plugins';
+      $original->unloadPlugin('i18n');
       $ifields = $info;
       unset($original->i18nFields);
 
       $original->find();
+
       $fieldsToInsert = array_merge(array('i18n_lang','i18n_record_id'),$ifields);
       foreach($fieldsToInsert as $k=>$field) {
         $fieldsToInsert[$k] = $db->quoteIdentifier($field);
@@ -509,7 +516,10 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     if(PEAR::isError($res)) {
       die($res->getMessage());
     }
-    $toremove = array_flip($obj->i18nFields);
+    $info = $obj->_getPluginsDef();
+    $info = $info['i18n'];
+
+    $toremove = array_flip($info);
     foreach($toremove as $k=>$v) {
       $toremove[$k] = array();
     }
@@ -528,7 +538,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 	  $generator->start();
     return true;
   }
-  
+
   // =============================================================
   // = Cross-compatibility methods with old international plugin =
   // =============================================================
@@ -595,7 +605,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 	 * languages.
 	 * @param $obj      DB_DataObject
 	 * @param $field    string          object's field name
-	 * @return          array          translated values array('en'=>$string,'es'=>$string, etc...) 
+	 * @return          array          translated values array('en'=>$string,'es'=>$string, etc...)
 	 * Only returns translated values (i.e. not translated field returns an empty array)
 	 **/
 	function getPoly(&$obj, $field) {
@@ -605,21 +615,21 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 		$translateDO=& DB_DataObject::factory($obj->tableName().'_i18n');
     foreach(Config::getAllLangs() as $lang) {
 		    $out[$lang] = '';
-		} 
+		}
 		$translateDO->i18n_record_id=$obj->pk();
 		if($translateDO->find()){
 			while($translateDO->fetch()) {
                 $out[$translateDO->i18n_lang] = $translateDO->{$field};
             }
-        } 
-        return $out;         
+        }
+        return $out;
 	}
 	/**
 	 * fetches and updates all translated values for $obj's $field for every installed
 	 * languages using $arr.
 	 * @param $obj      DB_DataObject
 	 * @param $field    string          object's field name
-	 * @param $arr      array          translated values array('en'=>$string,'es'=>$string, etc...) 
+	 * @param $arr      array          translated values array('en'=>$string,'es'=>$string, etc...)
 	 * @return          NULL
 	 **/
 	function setPoly(&$obj,$field,$arr) {
@@ -649,7 +659,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
 	 * @param $field    string          object's field name
      * @param $lang     string  (optional)  lang to be fetched
 	 * @return          string          translated value
-	 **/	
+	 **/
 	 function getTranslation($obj,$field,$lang=null) {
      if(!$obj->pk()) return false;
 
