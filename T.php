@@ -141,6 +141,7 @@ class T {
 		require_once 'XML/Unserializer.php';
 	  Log::info('T::retreiving strings from xml');
 		$xml=new XML_Unserializer();
+
 		if(!file_exists($file)) {
 			if($verbose) {
 				echo 'file '.$file.' not found. Filling with an empty array'."\n";
@@ -156,8 +157,10 @@ class T {
 		}
 		$xmlC=file_get_contents($file);
 		$xml->setOption('encoding',T::getConfig('encoding'));
+    $xml->setOption(XML_SERIALIZER_OPTION_ENTITIES, XML_SERIALIZER_ENTITIES_NONE);
 		$xml->unserialize($xmlC);
 		$lngtb = $xml->getUnserializedData();
+
 		if($verbose) {
 			echo 'Retrieving lang strings from XML file '.$file.' encoding '.T::getConfig('encoding')."\n";
 		}
@@ -176,6 +179,7 @@ saving to '.$file.'...
           ';
 		}
 		$serializer = new XML_Serializer();
+    $serializer->setOption(XML_SERIALIZER_OPTION_ENTITIES, XML_SERIALIZER_ENTITIES_NONE);
 		// perform serialization
 
 		$lngtb=T::unlinearize($this->strings);
@@ -233,7 +237,7 @@ Error while serializing data !
           return 'fr_FR';
         } elseif(T::$lang=='en') {
           return 'en_GB';
-        }      
+        }
       }
     }
     return T::$culture;

@@ -10,7 +10,7 @@
 * Translation driver for editing purpose :
 * - if a translation request is not present this driver adds it to the translations array
 * - stores all used transation strings requested during the script
-* 
+*
 * @package      M
 * @subpackage   T_editor
 * @author       Arnaud Sellenet <demental@sat2way.com>
@@ -29,7 +29,10 @@ class T_editor extends T {
     self::$curStrings[]=$string;
       if(!key_exists($string,$this->strings)) {
         $this->strings[$string] = $string;
-        return vsprintf($string,$args);
+        if(is_array($args)) {
+          return vsprintf($string,$args);
+        }
+        return $string;
       }
       $string = $this->strings[$string];
       if(is_array($args)) {
