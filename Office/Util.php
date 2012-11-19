@@ -481,19 +481,21 @@ class M_Office_Util {
   public static function &doForModule($module,$filters=true) {
       $mod = self::getModuleInfo($module);
       $do = DB_DataObject::factory($mod['table']);
+
     	if(is_array($mod['plugins'])) {
     	  foreach($mod['plugins'] as $plugin=>$info) {
-    	    $do->loadPlugin($plugin,$info);
-    	  }
-    	}
+          $do->loadPlugin($plugin,$info);
+        }
+      }
 
 
-    	$AuthOptions = PEAR::getStaticProperty('m_office_auth', 'options');
+      $AuthOptions = PEAR::getStaticProperty('m_office_auth', 'options');
 
-    	$filterMethod = $mod['method'];
+      $filterMethod = $mod['method'];
     	if($filterMethod && $filters) {
-    	  call_user_func(array($do,$filterMethod));
-    	}
+        call_user_func(array($do,$filterMethod));
+      }
+
       $filterArray = $mod['filters'];
       if(!is_array($filterArray)) {
         $filterArray = array();

@@ -168,6 +168,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
         $do->getPlugin('pager')->setDefaultSort($do->fb_linkOrderFields);
     }
     $this->fields = $fieldTypes;
+
     $do->find();
     $this->do=$do;
     $this->totalItems = $do->getPlugin('pager')->totalItems;
