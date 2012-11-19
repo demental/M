@@ -172,9 +172,9 @@ class T {
 		require_once 'XML/Serializer.php';
 
     if(!empty($destfile)) {
-      $file = T::getConfig('path').$this->locale.".xml";
-    } else {
       $file = $destfile;
+    } else {
+      $file = T::getConfig('path').$this->locale.".xml";
     }
 		if($verbose) {
 			echo '
