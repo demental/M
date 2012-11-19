@@ -1,13 +1,14 @@
 <?php $this->comment('@todo : add CSS and JS as assets')?>
 <ul class="taglist">
 <?php foreach($focus->getTags() as $tag):?>
+
 <li>
   <form method="post" action="<?php echo M_Office::URL('tag:taghelper/remove',array('tagid'=>$tag->id,'focustable'=>$focus->tableName(),'focusid'=>$focus->pk(),'focusmodule'=>$module))?>">
 
     <input type="hidden" name="target" value="<?php echo M_Office::URL()?>" />
     <input type="image" src="/images/icons/cross.png" /></form>
 <a title="<?php _e('On %s',array($tag->link_tagged_at))?>"><?php echo $tag?></a>
-</li>    
+</li>
 <?php endforeach?>
 <li>
     <form method="post" action="<?php echo M_Office::URL('tag:taghelper/addbystrip',array('focustable'=>$focus->tableName(),'focusid'=>$focus->pk(),'focusmodule'=>$module))?>">
