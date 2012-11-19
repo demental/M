@@ -256,7 +256,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	{
     $def =$this->_getPluginsDef();
     if(array_key_exists($pname,$def)) return true;
-    if(PluginRegistry::getInstance($pname,'DB')) return true;
+    if(in_array(PluginRegistry::getInstance($pname,'DB'), $this->_listeners)) return true;
     return false;
 	}
 
