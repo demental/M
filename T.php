@@ -168,10 +168,14 @@ class T {
 		$this->setStrings($lngtb);
 	}
 
-	public function save($verbose = false) {
+	public function save($verbose = false, $destfile= '') {
 		require_once 'XML/Serializer.php';
 
-		$file = T::getConfig('path').$this->locale.".xml";
+    if(!empty($destfile)) {
+      $file = T::getConfig('path').$this->locale.".xml";
+    } else {
+      $file = $destfile;
+    }
 		if($verbose) {
 			echo '
 current language ('.$this->locale.') contains '.count($this->strings).' strings..
