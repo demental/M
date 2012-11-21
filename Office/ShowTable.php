@@ -46,14 +46,13 @@ class M_Office_ShowTable extends M_Office_Controller {
     if(!$this->getOption('view',$module)){
       M_Office_Util::refresh(ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT);
     }
-    $do =& $this->doForTable($this->module);
     if($this->getOption('search',$module)){
       // 1. Url curation if needed
       if(!key_exists('_c_',$_REQUEST)) {
         M_Office_Util::refresh(M_Office::cleanURL(array('_c_'=>1),array('searchSubmit','__submit__')));
       }
       // 2. Process search
-      $doSearch = $this->doForTable($this->module);
+      $doSearch = M_Office_Util::doForModule($this->module);
       $searchForm = M_Office_Util::getSearchForm($doSearch);
       $this->assign('search',$searchForm);
       $searchValues = $searchForm->exportValues();
@@ -110,26 +109,11 @@ class M_Office_ShowTable extends M_Office_Controller {
     $deleteForm = new HTML_QuickForm('showTableForm', 'post', M_Office_Util::getQueryParams(array(),array()), '_self', null, true);
     M_Office_Util::addHiddenFields($deleteForm, array(), true);
   }
-  function &doForTable($table) {
-    $do = M_Office_Util::doForModule($table);
-    if($this->moduloptions['filters']) {
-      foreach($this->moduloptions['filters'] as $filter) {
-        if(is_array($filter)) {
-          foreach($filter as $k=>$e) {
-            $do->{$k} = $e;
-          }
-        } else {
-					$do->whereAdd(preg_replace('`U::([a-zA-Z0-9_]+)`e',"User::getInstance('office')->getDBDO()->$1",$filter));
-        }
-      }
-    }
-    $db = $do->getDatabaseConnection();
+  function getDo($module) {
+    $do = M_Office_Util::doForModule($module);
     if (isset($_REQUEST['filterField']) && isset($_REQUEST['filterValue'])) {
-      if(method_exists('quoteSmart',$db)) {
-        $res = $db->quoteSmart($_REQUEST['filterValue']);
-      } else {
-        $res = $db->quote($_REQUEST['filterValue']);
-      }
+      $db = $do->getDatabaseConnection();
+      $res = $db->quote($_REQUEST['filterValue']);
 
       $do->whereAdd($db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($_REQUEST['filterField']).' = '.$res);
       $filterString = __('%s for %s',array($do->tableName(),$_REQUEST['filterField'])).' = ';
@@ -163,49 +147,6 @@ class M_Office_ShowTable extends M_Office_Controller {
       $this->append('subActions',$filterString);
 
     }
-    /** Adding join objects if specified in the module configuration.
-    * To add a join object you can :
-    * - specify the foreign key against which the join will be added
-    * - specify a foreign_table:foreign_field in cas of reverselink.
-    * If only one table to join with, the parameter can be a string.
-    * If more than one table, write it as an array (see example below)
-    * Example :
-    * 'order'=>array(
-    *  'type'=>'db',
-    *  'title'=>'Orders',
-    *  'table'=>'order',
-    *  'join'=>array('customer_id','invoice:order_id')
-    * )
-    * Will create the following query :
-    * SELECT order.* from order
-    * LEFT JOIN customer ON customer.id = order.customer_id
-    * LEFT JOIN invoice ON invoice.order_id = order.id
-    **/
-
-    if($this->moduloptions['join']) {
-      if(!is_array($this->moduloptions['join'])) {
-        $j = array($this->moduloptions['join']);
-      } else {
-        $j = $this->moduloptions['join'];
-      }
-      $links = $do->links();
-      $rlinks = $do->reverseLinks();
-      $joindos = array();
-      foreach($j as $ajoin) {
-        if(strstr($this->moduloptions['join'],':')) {
-          // Reverselink
-
-        } else {
-          // link
-          if(!key_exists($ajoin,$links)) continue;
-          $tfield = explode(':',$links[$ajoin]);
-          $joindos[$ajoin] = DB_DataObject::factory($tfield[0]);
-          $do->joinAdd($joindos[$ajoin]);
-          $do->selectAs(null);
-          $do->selectAs($joindos[$ajoin],$ajoin.'_%s');
-        }
-      }
-    }
 		return $do;
   }
   /**
@@ -214,8 +155,8 @@ class M_Office_ShowTable extends M_Office_Controller {
    * @param $searchForm array of values HTML_QuickForm search form after submission
    * @return DB_DataObject filtered dataObject
    */
-  function &getSearchDO($searchValues) {
-    $do = $this->doForTable($this->module);
+  function getSearchDO($searchValues) {
+    $do = $this->getDO($this->module);
     $this->paginate = !$searchValues['__dontpaginate'];
     if(!$this->paginate) ini_set('memory_limit','512M');
     // Cleaning unused form fields

@@ -438,35 +438,7 @@ class M_Office_Util {
 		return $tpl->fetch('form-'.$template);
 	}
   public static function &doFortable($table) {
-
-    $do = DB_DataObject::factory($table);
-  	$viewOptions = PEAR::getStaticProperty('m_office_showtable', 'options');
-  	$filterMethod = $viewOptions['tableOptions'][$table]['method'];
-  	if($filterMethod) {
-  	  call_user_func(array($do,$filterMethod));
-  	}
-    $mod = self::getModuleInfo($table);
-
-  	if(is_array($mod['plugins'])) {
-
-  	  foreach($mod['plugins'] as $plugin=>$info) {
-
-  	    $do->loadPlugin($plugin,$info);
-  	  }
-  	}
-
-  	if($viewOptions['tableOptions'][$table]['filters']){
-      foreach($viewOptions['tableOptions'][$table]['filters'] as $filter) {
-        if(is_array($filter)) {
-          foreach($filter as $k=>$e) {
-            $do->{$k} = $e;
-          }
-        } else {
-    	    $do->whereAdd(preg_replace('`U::([a-zA-Z0-9_]+)`e',"User::getInstance('office')->getDBDO()->$1",$filter));
-        }
-      }
-  	}
-    return $do;
+    return self::doForModule($table, false);
   }
   public static function getModulesInfo()
   {
@@ -479,46 +451,23 @@ class M_Office_Util {
     return $op[$module];
   }
   public static function &doForModule($module,$filters=true) {
-      $mod = self::getModuleInfo($module);
-      $do = DB_DataObject::factory($mod['table']);
-
-    	if(is_array($mod['plugins'])) {
-    	  foreach($mod['plugins'] as $plugin=>$info) {
-          $do->loadPlugin($plugin,$info);
-        }
+    $mod = self::getModuleInfo($module);
+    if(!$mod['table']) {
+      $mod = array('table' => $module);
+    }
+    $do = DB_DataObject::factory($mod['table']);
+  	if(is_array($mod['plugins'])) {
+  	  foreach($mod['plugins'] as $plugin=>$info) {
+        $do->loadPlugin($plugin,$info);
       }
+    }
 
-
-      $AuthOptions = PEAR::getStaticProperty('m_office_auth', 'options');
-
-      $filterMethod = $mod['method'];
-    	if($filterMethod && $filters) {
-        call_user_func(array($do,$filterMethod));
+  	if($filters && $mod['filters']){
+      foreach($mod['filters'] as $scope) {
+        call_user_func_array(array($do, $scope), array(User::getInstance('office')->getDBDO()));
       }
-
-      $filterArray = $mod['filters'];
-      if(!is_array($filterArray)) {
-        $filterArray = array();
-      }
-
-      $shT = PEAR::getStaticProperty('m_office_showtable','options');
-      if(!is_array($shT['tableOptions'][$module]['filters'])) {
-        $shT['tableOptions'][$module]['filters']=array();
-      }
-      $filterArray=array_merge($filterArray,$shT['tableOptions'][$module]['filters']);
-    	if($filterArray && $filters){
-        foreach($filterArray as $filter) {
-          if(is_array($filter)) {
-            foreach($filter as $k=>$e) {
-              $do->{$k} = $e;
-            }
-          } else {
-            $db = $do->getDatabaseConnection();
-      	    $do->whereAdd(preg_replace('`U::([a-zA-Z0-9_]+)`e',"\$db->quote(User::getInstance('office')->getDBDO()->$1)",$filter));
-          }
-        }
-    	}
-      return $do;
+    }
+    return $do;
   }
 	public static function isCached($id) {
 	    return false;

@@ -41,57 +41,33 @@ class Office_DbModule extends Module {
     return $mod;
 
   }
-  protected function doForTable($table)
-  {
-    $do = DB_DataObject::factory($table);
-    $fbOptions = $this->getConfig('fbOptions', $table, true);
-    if (is_array($fbOptions)) {
-        foreach ($fbOptions as $var => $value) {
-            $do->{'fb_'.$var} = $value;
-        }
-    }
-		$AuthOptions = PEAR::getStaticProperty('m_office_auth', 'options');
-		$viewOptions = PEAR::getStaticProperty('m_office_showtable', 'options');
-		if($AuthOptions['ownership']){
-
-			$do->filterowner=User::getInstance('office')->getProperty('level')!=NORMALUSER?false:User::getInstance('office')->getProperty('groupId');
-
-            if($p = &$do->getPlugin('ownership')) {
-				$p->userIsInAdminMode(User::getInstance('office')->getProperty('level'));
-			}
-		}
-		if($viewOptions['tableOptions'][$table]['filters']){
-        	$do->whereAdd($viewOptions['tableOptions'][$table]['filters']);
-  	}
-    return $do;
-  }
   protected function generateOptions()
   {
 		$AuthOptions = PEAR::getStaticProperty('m_office', 'options');
     $userOpt = $AuthOptions['auth'];
 		$opt = array('all'=>PEAR::getStaticProperty('Module', 'global'));
 
-      $options = array(
-          'caching' =>(MODE=='developpement'?false:true),
-          'cacheDir' => $opt['all']['cacheDir'].'/config/'.($userOpt?User::getInstance('office')->getId().'/':''),
-          'lifeTime' => null,
-          'fileNameProtection'=>false,
-          'automaticSerialization'=>true
-      );
-      $optcache = new Cache_Lite($options);
-      if(!$moduleopt = $optcache->get($this->_modulename))  {
-    	 	if (@include_once $this->_path.$this->_modulename.'.conf.php')
-    	 	{
-          if(!is_array($config)) {$config=array();}
-   		      $moduleopt = MArray::array_merge_recursive_unique($opt, $config);
-    	 	  } else {
-    	 	    $moduleopt=$opt;
-    	 	  }
-        $useropt = Mreg::get('authHelper')->getPrivilegesForModule(User::getInstance('office'),$this->_modulename);
-   		  $moduleopt = MArray::array_merge_recursive_unique($moduleopt, $useropt);
-    	 	$optcache->save($moduleopt);
+    $options = array(
+        'caching' =>(MODE=='developpement'?false:true),
+        'cacheDir' => $opt['all']['cacheDir'].'/config/'.($userOpt?User::getInstance('office')->getId().'/':''),
+        'lifeTime' => null,
+        'fileNameProtection'=>false,
+        'automaticSerialization'=>true
+    );
+    $optcache = new Cache_Lite($options);
+    if(!$moduleopt = $optcache->get($this->_modulename))  {
+  	 	if (@include_once $this->_path.$this->_modulename.'.conf.php')
+      {
+        if(!is_array($config)) {$config=array();}
+        $moduleopt = MArray::array_merge_recursive_unique($opt, $config);
+      } else {
+        $moduleopt=$opt;
       }
-  	  return $moduleopt;
+      $useropt = Mreg::get('authHelper')->getPrivilegesForModule(User::getInstance('office'),$this->_modulename);
+      $moduleopt = MArray::array_merge_recursive_unique($moduleopt, $useropt);
+      $optcache->save($moduleopt);
+    }
+	  return $moduleopt;
   }
   public function doExecIndex()
   {
