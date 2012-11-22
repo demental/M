@@ -17,20 +17,19 @@
 */
 
 class M_Office_ShowTable extends M_Office_Controller {
-  var $linkFields=array();
-  var $hasActions=false;
+  public $linkFields=array();
+  public $hasActions=false;
   function __construct($module) {
     parent::__construct();
     if ((isset($_REQUEST['record']) || isset($_REQUEST['__record_ref']))
     && ($this->getOption('edit', $module) || $this->getOption('view', $module))) {
       require 'M/Office/EditRecord.php';
-
       $subController = new M_Office_EditRecord($module, $_REQUEST['record'], $additionalFilter);
       $subController->__record_ref = $_REQUEST['__record_ref'];
-
       $subController->run();
       return;
     }
+
     if(isset($_REQUEST['addRecord']) && $this->getOption('add', $module)) {
       require 'M/Office/AddRecord.php';
       $subController = new M_Office_AddRecord($module);
@@ -38,14 +37,15 @@ class M_Office_ShowTable extends M_Office_Controller {
       return;
     }
 
-
     $opts = PEAR::getStaticProperty('m_office','options');
     $this->module = $module;
     $this->moduloptions = $opts['modules'][$module];
     $this->table=$this->moduloptions['table'];
+
     if(!$this->getOption('view',$module)){
       M_Office_Util::refresh(ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT);
     }
+
     if($this->getOption('search',$module)){
       // 1. Url curation if needed
       if(!key_exists('_c_',$_REQUEST)) {
@@ -65,24 +65,22 @@ class M_Office_ShowTable extends M_Office_Controller {
       require 'M/Office/Actions.php';
       $do->orderBy();
       $do->orderBy($_REQUEST['_ps'].' '.$_REQUEST['_pd']);
-
       $subController = new M_Office_Actions($this->getOptions());
       $subController->run($do, $_REQUEST['doaction'],'batch');
       if($subController->has_output) {
   	     return;
-  	   }
+       }
     } elseif(isset($_REQUEST['glaction']) && $this->getOption('actions',$module)) {
        require 'M/Office/Actions.php';
        $subController = new M_Office_Actions($this->getOptions());
        $subController->run($do, $_REQUEST['glaction'],'global');
        if($subController->has_output) {
     	    return;
-    	  }
+       }
     }
 
     if($this->getAndProcessActions(clone($do),$module)) {
-
-        return;
+      return;
     }
 
 
@@ -178,11 +176,11 @@ class M_Office_ShowTable extends M_Office_Controller {
           if (is_string($searchValues[$field]) && $searchValues[$field] !== '') {
             if(key_exists($field,$do->links())
               // Foreign key, int or bool => search with field = value
-               || $fields[$field]&DB_DATAOBJECT_INT
-               || $fields[$field]&DB_DATAOBJECT_BOOL) {
+               || $fields[$field] & DB_DATAOBJECT_INT
+               || $fields[$field] & DB_DATAOBJECT_BOOL) {
                $do->$field = $_REQUEST[$field];
 
-            } elseif($fields[$field]&DB_DATAOBJECT_DATE) {
+            } elseif($fields[$field] & DB_DATAOBJECT_DATE) {
               // Date => search by day
               $do->whereAdd('date('.$db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($field).') = '.$db->quote($fields[$field]));
 
