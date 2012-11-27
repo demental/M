@@ -91,7 +91,9 @@ array(
   'ianalyzableshippingmethod'    =>'M/Payment2/iAnalyzable.php',
   'imaildriver'    =>'M/Mail/iMailDriver.php',
   'payment_response_exception'=>'M/Payment2/Exception.php',
-  'payment_request_exception'=>'M/Payment2/Exception.php'
+  'payment_request_exception'=>'M/Payment2/Exception.php',
+  'wptools'=>'M/WPTools.php'
+
   )
   );
 
