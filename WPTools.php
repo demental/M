@@ -6,6 +6,7 @@ require_once 'Zend/XmlRpc/Client.php';
  * You also need to activate the following :
  * * get_page_by_path
  * * do_shortcode
+ * * wpautop
  */
 class WPTools {
   protected static $_inited  = false;
@@ -33,6 +34,7 @@ class WPTools {
 
     $client = new Zend_XmlRpc_Client(self::$wp_root.'/xmlrpc.php');
     $c = (object)$client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password,'get_page_by_path', array($pageID));
+    $c->post_content = $client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password, 'wpautop', array($c->post_content));
     if($apply_shortcodes) {
       $c->post_content = $client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password,'do_shortcode', array($c->post_content));
     }
