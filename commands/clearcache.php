@@ -25,7 +25,7 @@ class Command_clearcache extends Command
     $this->line('Clears project caches');
     $this->line('Either one or both of these parameters can be passed :');
     $this->line('html: removes all caches in each app cache dir');
-    $this->line('config: removes all caches in each app cache/config dir');    
+    $this->line('config: removes all caches in each app cache/config dir');
     $this->line('assets: removes all caches FILES in documentRoot cache dir');
     $this->line('web: removes all caches FILES AND FOLDERS in documentRoot cache and cache dir');
     $this->line('all: removes html, config and assets cache');
@@ -44,19 +44,19 @@ class Command_clearcache extends Command
   }
   public function clearAllCache()
   {
-    $this->clearConfigCache();    
-    $this->clearHtmlCache();    
-    $this->clearWebCache();    
+    $this->clearConfigCache();
+    $this->clearHtmlCache();
+    $this->clearWebCache();
   }
   public function clearAssetsCache()
   {
-    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',false);   
-    $this->_regenerateAssets();  
+    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',false);
+    $this->_regenerateAssets();
   }
   public function clearWebCache()
   {
-    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);   
-    $this->_regenerateAssets();  
+    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);
+    $this->_regenerateAssets();
   }
   public function clearConfigCache()
   {
@@ -95,11 +95,12 @@ class Command_clearcache extends Command
   {
     $this->header('Regenerating assets');
     require_once 'M/lib/jsmin/jsmin.php';
+    require_once 'M/lib/cssmin/cssmin.php';
     $assetsversion = (int)file_get_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION');
     $assetsversion++;
     file_put_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION',$assetsversion);
-    $folder = APP_ROOT.WEB_FOLDER.'/assets/';
-    $jsfolder = $folder.'js/';
+    $assetsfolder = APP_ROOT.WEB_FOLDER.'/assets/';
+    $jsfolder = $assetsfolder.'js/';
     foreach(FileUtils::getFolders($jsfolder) as $folder) {
       if(preg_match('`^\.`',$folder)) continue;
       $this->line('Regenerating '.$folder.' javascript asset');
@@ -108,10 +109,26 @@ class Command_clearcache extends Command
         $out.=file_get_contents($file)."\n";
       }
       if(MODE=='production') {
-        $out=JSmin::minify($out);
+        $out = JSmin::minify($out);
       }
       $version = (self::getOption('assetsurlrewriting')) ? '' : $assetsversion;
       file_put_contents(APP_ROOT.WEB_FOLDER.'/cache/'.$folder.$version.'.js',$out);
+    }
+    // css
+
+    $cssfolder = $assetsfolder.'css/';
+    foreach(FileUtils::getFolders($cssfolder) as $folder) {
+      if(preg_match('`^\.`',$folder)) continue;
+      $this->line('Regenerating '.$folder.' CSS asset');
+      $out='';
+      foreach(FileUtils::getAllFiles($cssfolder.$folder) as $file) {
+        $out.=file_get_contents($file)."\n";
+      }
+      if(MODE=='production') {
+        $out = CSSmin::minify($out);
+      }
+      $version = (self::getOption('assetsurlrewriting')) ? '' : $assetsversion;
+      file_put_contents(APP_ROOT.WEB_FOLDER.'/cache/'.$folder.$version.'.css',$out);
     }
   }
 }

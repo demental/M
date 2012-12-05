@@ -21,14 +21,15 @@ class Mtpl {
 	protected $_config;
 	protected $_postFilters = array();
 	protected $_module;
-	protected static $_captures;
 	private   $_currentCapture;
 	private   $_currentFetch;
-	protected static $_css=array();
-	protected static $_js=array();
-	protected static $_jsgroups=array();
-	protected static $_jsinline=array();
-	protected static $_meta=array();
+	protected static $_captures;
+	protected static $_css = array();
+	protected static $_js = array();
+	protected static $_jsgroups = array();
+	protected static $_cssgroups = array();
+	protected static $_jsinline = array();
+	protected static $_meta = array();
 
 	function __construct($tpldir,$module=null)
 	{
@@ -81,6 +82,10 @@ class Mtpl {
 	{
 		return Mtpl::$_jsgroups;
 	}
+	public function getCSSgroups()
+	{
+		return Mtpl::$_cssgroups;
+	}
 	public function getJSinline($event='ready')
 	{
 		return is_array(Mtpl::$_jsinline[$event])?Mtpl::$_jsinline[$event]:array();
@@ -89,6 +94,16 @@ class Mtpl {
 	{
 	  $data = array('name'=>$css,'media'=>$media,'conditional'=>$conditional);
 		Mtpl::$_css[md5(serialize($data))] = $data;
+	}
+	public function addCSSgroup($group, $media='screen,print')
+	{
+		if(is_array($group)) {
+			Mtpl::$_cssgroups[$media] = array_merge(Mtpl::$_cssgroups[$media],$group);
+		} else {
+			Mtpl::$_cssgroups[$media][] = $group;
+		}
+
+		Mtpl::$_cssgroups[$media] = array_unique(Mtpl::$_cssgroups[$media]);
 	}
   public function addJSgroup($group)
   {
@@ -381,12 +396,25 @@ class Mtpl {
 	{
 	  if (! is_null($altfolder)) {
       return $this->img($filename,array($altfolder.'/'.T::getLang(),T::getLang(),substr(T::getLang(),0,2)),$mainfolder);
-	  }
+    }
     return $this->img($filename,array(T::getLang(),substr(T::getLang(),0,2)),$mainfolder);
 	}
 	public static function getCSSblock()
 	{
     $out='';
+
+    $groups = Mtpl::getCSSgroups();
+    if(count($groups)>0) {
+      foreach($groups as $medias => $subgroups) {
+        if(count($subgroups) > 0) {
+          $assetsversion = (int)file_get_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION');
+          foreach($subgroups as $group) {
+            $cssfile = '/cache/'.$group.$assetsversion.'.css';
+            $out .= '<link rel="stylesheet" type="text/css" href="'.$cssfile.'" media="'.$medias.'" />';
+          }
+        }
+      }
+    }
     foreach (Mtpl::getCSS() as $css) {
       if(preg_match('`^https*`',$css['name'])) {
         $cssfile = $css['name'].'.css';
@@ -408,7 +436,7 @@ class Mtpl {
 	}
 	public function getJSblock()
 	{
-	  $out='';
+    $out='';
     $groups = Mtpl::getJSgroups();
     if(count($groups)>0) {
       $assetsversion = (int)file_get_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION');
