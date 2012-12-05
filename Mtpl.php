@@ -250,7 +250,7 @@ class Mtpl {
 	{
 		return $this->i($file, $params,$autoglobal);
 	}
-	private function i($file, $params = array(),$autoglobal = false)
+	private function get_part($file, $params = array(),$autoglobal = false)
 	{
 		$tpl = new Mtpl($this->_config['tplfolders']);
 		if($autoglobal) {
@@ -265,8 +265,12 @@ class Mtpl {
 				}
 			}
 		}
-		$tpl->display($file);
+		return $tpl->fetch($file);
 	}
+  private function i($file, $params = array(),$autoglobal = false)
+  {
+    echo $this->get_part($file, $params, $autoglobal);
+  }
 	// Render HTML_QuickForm
 	private function rf(&$form,$type='dynamic') {
 		if(is_array($form)) {

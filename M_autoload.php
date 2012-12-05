@@ -93,7 +93,6 @@ array(
   'payment_response_exception'=>'M/Payment2/Exception.php',
   'payment_request_exception'=>'M/Payment2/Exception.php',
   'wptools'=>'M/WPTools.php'
-
   )
   );
 
