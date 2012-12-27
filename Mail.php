@@ -10,7 +10,7 @@
  */
 
 /**
- * 
+ *
  * Mail class. Holds an Mtpl object so mails can be handled just like Module templates
  * Sent mails can be stored as log files (or not), mailed (or not), and also mailed to only one static recipient (for testing purpose)
  * depending on the configuration options setup in the PEAR::getStaticProperty('Mail','global')
@@ -67,9 +67,9 @@ class Mail extends Maman {
   /**
    * @static
    * @access protected
-   * 
-   * Mail driver 
-   * 
+   *
+   * Mail driver
+   *
    */
    static protected $_drivers = null;
 	/**
@@ -89,15 +89,15 @@ class Mail extends Maman {
   {
     if(is_null(self::$_drivers)) {
 		  $opt = PEAR::getStaticProperty('Mail','global');
-      $drivers = $opt['drivers'];      
+      $drivers = $opt['drivers'];
       foreach($drivers as $driver) {
         $driver = ucfirst(strtolower(trim($driver)));
         require_once 'M/Mail/'.$driver.'.php';
         $driverClass = 'Mail_'.$driver;
         $opt = array('all'=>PEAR::getStaticProperty('Mail','global'));
         $driver = new $driverClass();
-        $driver->setConfig($opt);        
-        self::$_drivers[] = $driver;      
+        $driver->setConfig($opt);
+        self::$_drivers[] = $driver;
       }
     }
     return self::$_drivers;
@@ -110,12 +110,12 @@ class Mail extends Maman {
     self::$_drivers = array();
   }
 	/**
-	 *
-	 * Attach files
-	 *
-	 * @access	public
-	 * @param	$filepath	string	Path to file
-	 */
+  *
+  * Attach files
+  *
+	* @access	public
+  * @param	$filepath	string	Path to file
+  */
 	public function addFile($filepath)
 	{
 		$this->_attachments[]=$filepath;
@@ -275,7 +275,7 @@ class Mail extends Maman {
   public function setFromEmail($from)
   {
     $this->setConfigValue('from',$from[0]);
-    $this->setConfigValue('fromname',$from[1]);    
+    $this->setConfigValue('fromname',$from[1]);
   }
 	/**
 	 *

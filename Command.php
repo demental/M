@@ -24,6 +24,7 @@ class Command {
     'silent'=>false,
     'assetsurlrewriting'=>false,
   );
+
   /**
    * Command interface core
    */
@@ -77,10 +78,10 @@ class Command {
   }
   /**
    * Determines from an args array which ones should be considered as arguments and which ones should be considered as options
-   * And returns an array of two arrays 
+   * And returns an array of two arrays
    * @param array raw args list
    * @return array array(array(args),array(options))
-   */ 
+   */
   public static function parseArgs($arr)
   {
     $options = array();
@@ -108,7 +109,7 @@ class Command {
   public static function setOptions($options) {
     self::$options = array_merge(self::$options,$options);
   }
-  public static function setOption($option,$val) {  
+  public static function setOption($option,$val) {
     self::$options[$option] = $val;
   }
   public static function getOption($name)
@@ -127,8 +128,8 @@ class Command {
     require_once $commandfile;
     return new $commandclass;
   }
-  
-  
+
+
   /**
    * display a text line (for information)
    * @param string text to be displayed
@@ -217,17 +218,17 @@ class Command {
   }
   public function info($message)
   {
-    if(self::getOption('silent')) return;    
+    if(self::getOption('silent')) return;
     echo '[INFO] '.$message."\n";
   }
   public function header($message) {
-    if(self::getOption('silent')) return;    
+    if(self::getOption('silent')) return;
     echo "\n".str_repeat('*',80)."\n";
     $content = explode("\n",$message);
     foreach($content as $line) {
       printf("* %-76s *\n",$line);
     }
-    echo str_repeat('*',80)."\n";  
+    echo str_repeat('*',80)."\n";
   }
   public function prompt($message)
   {
@@ -237,13 +238,13 @@ class Command {
   }
   /**
    * this method must implement the script fired when command is executed
-   * Can throw an Exception if command fails 
+   * Can throw an Exception if command fails
    */
   public function execute($params,$options)
   {
     # code...
   }
-  
+
   /**
    * display short help when 'help' global command is fired
    */
@@ -251,11 +252,11 @@ class Command {
   {
     $this->line('No help for this command');
   }
-  
+
   /**
    * display long help when 'help [command_name]' command is fired
    * @param array additional params that may refer to subcommands
-   */  
+   */
   public function longHelp($params)
   {
     $this->line('No help for this command');
