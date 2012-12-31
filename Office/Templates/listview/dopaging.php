@@ -38,11 +38,9 @@ function deleteCheckboxClicked(checkbox) {
 <?php echo $pager['next']?>
 <?php echo $pager['last']?>
 <?php $this->endCapture('pager')?>
-<div class="prefcontainer"><img src="/images/icons/cog.png" /></div>
 <div class="pager">
 <?php echo $this->getCapture('pager')?>
 </div>
-<br style="clear:both;height:0" />
 <table class="datagrid">
   <tr>
     <?php if($selectable):?>
