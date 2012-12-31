@@ -19,44 +19,44 @@
 
 
 class M_Office_ChooseTable extends M_Office_Controller {
-	function __construct() {
-		parent::__construct();
-        $o = '<ul class="chooseTables">';
-        $modules = $this->getOption('modulesToList');
-        $officeConfig = PEAR::getStaticProperty('m_office','options');
-        $moduleconf=$officeConfig['modules'];
-        if ($modules) {
-			    $diff = array_diff(array_keys($_GET),array('module'));
-            foreach ($modules as $module) {
-                    $o .= '<li';
-                    if($_REQUEST['module']==$module || (is_array($module) && in_array($_REQUEST['module'],$module))){
-                        $o.=' class="selected"';
-                    }
-                    if(is_array($module)) {
-                        $modgroup = $module;
-                        $module=array_shift($modgroup);
-                    } else {
-                        $modgroup=null;
-                    }
-                    $o.='>
-										<a href="'.M_Office_Util::getQueryParams(array('module' => $module),
-                                 $diff).'">'.$moduleconf[$module]['title'].'</a>';
-                    if($modgroup) {
-                        $o.='<ul>';
-                        foreach($modgroup as $submod) {
-                            $o.='<li><a href="'.M_Office_Util::getQueryParams(array('module' => $submod),$diff).'">'.$moduleconf[$submod]['title'].'</a></li>';
-                        }
-                        $o.='</ul>';
-
-                    }
-                    $o.='</li>';
-                }
-            $o .= '</ul>';
-        } else {
-            $o .= '</ul>No modules found';
-        }
-        $this->assign('choosetable',$o);
+  function __construct() {
+    parent::__construct();
+    $o = array();
+    $modules = $this->getOption('modulesToList');
+    if($modules) {
+      $o = $this->tree($modules);
     }
-}
+    $this->assign('choosetable',$o);
+  }
+  public function tree($modules)
+  {
+    $officeConfig = PEAR::getStaticProperty('m_office','options');
+    $moduleconf = $officeConfig['modules'];
+    $diff = array_diff(array_keys($_GET),array('module'));
+    $o = array();
+    foreach ($modules as $id => $module) {
 
-?>
+      if(is_array($module)) {
+        $res = array( 'title' => $moduleconf[$id]['title'] ? $moduleconf[$id]['title'] : $id,
+                      'icon'  => $moduleconf[$id]['icon']
+                    );
+
+        $res['submodules'] = $this->tree($module);
+        if(in_array($_REQUEST['module'], $module)) {
+          $res['expanded'] = true;
+        }
+      } else {
+        $res = array( 'title' => $moduleconf[$module]['title'],
+                      'icon'  => $moduleconf[$module]['icon'],
+                      'url'   => M_Office_Util::getQueryParams(array('module' => $module), $diff)
+
+                    );
+        if($_REQUEST['module'] == $module){
+          $res['active'] = true;
+        }
+      }
+      $o[] = $res;
+    }
+    return $o;
+  }
+}

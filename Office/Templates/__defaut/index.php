@@ -95,7 +95,8 @@ foreach(Mtpl::getJSinline('ready') as $inst){
                 			      <a href="<?php echo ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT?>?logout=1"><?php echo __('Logout %s',array($username))?></a>
                 			      </div>
                 			    <?php endif?>
-                <?php echo $choosetable?>
+                          <?php $this->i('choosetable',array('items' => $choosetable)) ?>
+
 			</div>
 
 			<?php

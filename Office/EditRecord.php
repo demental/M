@@ -67,7 +67,7 @@ class M_Office_EditRecord extends M_Office_Controller {
       }
       $tpl = Mreg::get('tpl');
       $tpl->concat('adminTitle',$this->do->__toString().' :: '.$this->moduloptions['title']);
-
+      $tpl->assign('adminHeader', $this->do->__toString());
       $database = $this->do->database();
 
       /**
@@ -81,8 +81,8 @@ class M_Office_EditRecord extends M_Office_Controller {
           $subController->run($this->do, $_REQUEST['doSingleAction'],'single');
           if($subController->hasOutput()) {
       	    return;
-      	}
-    	}
+          }
+        }
         $this->createActions();
 
         if(!$this->getOption('edit',$this->module)){
