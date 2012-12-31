@@ -57,7 +57,7 @@ class M_Office extends M_Office_Controller implements iListener {
 
     // adding Theme is available
     if(Config::getPref('theme')) {
-      array_unshift($modinfo['template_dir'],APP_ROOT.WEB_FOLDER.'/themes/'.Config::getPref('theme').'/templates/');
+      array_push($modinfo['template_dir'],APP_ROOT.WEB_FOLDER.'/themes/'.Config::getPref('theme').'/templates/');
     }
 		// TODO Check if requested module is valid
 
