@@ -69,7 +69,7 @@ class Calc
 	public static function TTC2HT($price,$vat)
 	{
 		$vat=$vat>1?$vat/100:$vat;
-		return number_format($price/(1+$vat),2, '.', '');
+		return number_format($price/(1+$vat),3, '.', '');
 	}
 	// Alias
   public static function removeVAT($price,$vat)
@@ -113,9 +113,9 @@ class Calc
 	 */
 	public static function monthlySchedule($startDate,$num,$inclstart = true)
 	{
-     require_once 'Date/Calc.php';   
+     require_once 'Date/Calc.php';
     $startTime = strtotime($startDate);
-    
+
 	  $startDay = date('d',$startTime);
 	  $startMonth = date('m',$startTime);
 	  $startYear = date('Y',$startTime);

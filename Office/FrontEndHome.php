@@ -7,7 +7,7 @@
 /**
 * M PHP Framework
 *
-* M_Office homepage handling. Basically this class creates a "home" Module (built-in or the specific one created in the project structure) 
+* M_Office homepage handling. Basically this class creates a "home" Module (built-in or the specific one created in the project structure)
 *
 * @package      M
 * @subpackage   M_Office
@@ -20,8 +20,8 @@
 class M_Office_FrontEndHome extends M_Office_Controller {
     public function __construct() {
         parent::__construct();
-        $tpl = new Mtpl(array('M/Office/Templates/',APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR));
+        $tpl = new Mtpl(array('M/Office/Templates/', APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR, APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR, APP_ROOT.WEB_FOLDER.'/themes/'.Config::getPref('theme').'/templates/'));
         $this->assign('output',$tpl->fetch('home'));
         $this->assign('__action','dyn');
-	  }    
+	  }
 }
