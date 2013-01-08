@@ -1,3 +1,8 @@
+<?php
+Mtpl::addJS('livesearch');
+Mtpl::addCSS('livesearch');
+Mtpl::addJSinline('$("#chooseTable input").livesearch({autosearch:true,url:"'.ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT.'?livesearch=1"'.',minchar:2});','ready');
+?>
 <!DOCTYPE html>
 <html lang="<?php echo T::getLocale()?>">
 	<head>

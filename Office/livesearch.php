@@ -21,8 +21,8 @@ class M_Office_livesearch extends M_Office_Controller
 {
     // @param   string the string to search for
     // @param   string (table for which to expand view)
-    // Expand 
-    
+    // Expand
+
     function __construct($searchtext,$expandTable=null) {
         parent::__construct();
         $this->searchtext=trim($searchtext);
@@ -36,32 +36,54 @@ class M_Office_livesearch extends M_Office_Controller
         $searchin=$this->expand?
             array($this->expandTable)
             :
-            $this->getGlobalOption('searchInTables','frontendhome');  
+            $this->getGlobalOption('searchInTables','frontendhome');
         if(!is_array($searchin) || count($searchin)==0) {
-            return '<p>'.__('No search domain').'</p>';
+          return array('message' => __('No search domain'));
         }
         $out=array();
         foreach($searchin as $table) {
             $obj = M_Office_Util::doForTable($table);
 
             if(method_exists($obj,'livesearch')) {
-                $obj->livesearch($this->searchtext);  
+                $obj->livesearch($this->searchtext);
                 $out[$table]=$obj;
             }
         }
         foreach($out as $table=>$obj) {
-            $ret.='<dl><dt>'.$table.'</dt>';
             $cnt=0;
             foreach($obj as $rec) {
-                $ret.='<dd><a href="'.M_Office_Util::doURL($rec, $table, array(),array('livesearch')).'">'.$rec->livesearchText().'</a></dd>';
-                $cnt++;
-                if($cnt>10){break;}
+              $ret[$table][] = array('url' => M_Office_Util::doURL($rec, $table, array(),array('livesearch', 'format')), 'text' => $rec->livesearchText());
+              $cnt++;
+              if($cnt>10){break;}
             }
             if($cnt==0) {
-              $ret.='<dd><em>'.__('No result').'</em></dd>';
+              $ret[$table] = array();
             }
-            $ret.='</dl>';
         }
-        $this->assign('output',$ret);
+
+        $this->assign('output',$this->format($ret, $_GET['format']));
+     }
+     public function format($ret , $format)
+     {
+       if($format == 'json') return json_encode($ret);
+       if($ret['message']) {
+         return '<p>'.$ret['message'].'</p>';
+       } else {
+
+         foreach($ret as $table => $results) {
+         $out.='<dl>';
+           $out.= '<dt>'.$table.'</dt>';
+           if(count($results) == 0) {
+             $out .= '<dd><em>No results</em></dd>';
+           } else {
+             foreach($results as $info) {
+               $out.= '<dd><a href="'.$info['url'].'">'.$info['text'].'</a></dd>';
+             }
+           }
+         $out.='</dl>';
+         }
+
+       }
+       return $out;
      }
  }
