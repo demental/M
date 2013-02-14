@@ -31,15 +31,11 @@ class WPTools {
 		if($_cachedData = $cache->get($cacheName)) {
       return unserialize($_cachedData);
     }
-    try {
-      $client = new Zend_XmlRpc_Client(self::$wp_root.'/xmlrpc.php');
-      $c = (object)$client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password,'get_page_by_path', array($pageID));
-      $c->post_content = $client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password, 'wpautop', array($c->post_content));
-      if($apply_shortcodes) {
-        $c->post_content = $client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password,'do_shortcode', array($c->post_content));
-      }
-    } catch(Exception $e) {
-      $c = new StdClass();
+    $client = new Zend_XmlRpc_Client(self::$wp_root.'/xmlrpc.php');
+    $c = (object)$client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password,'get_page_by_path', array($pageID));
+    $c->post_content = $client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password, 'wpautop', array($c->post_content));
+    if($apply_shortcodes) {
+      $c->post_content = $client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password,'do_shortcode', array($c->post_content));
     }
     $cache->save(serialize($c));
     return $c;

@@ -478,7 +478,7 @@ class Mtpl {
         if(!empty($out)) {
           $out= '
     <script type="text/javascript">
-    $(function() {
+    jQuery(function($) {
     '.$out.'
     });
     </script>';

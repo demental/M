@@ -21,7 +21,7 @@ class Command_Test extends Command {
   public function longHelp($params)
   {
     $this->line('Launches unit tests');
-    $this->line('Usage : test [testgroup]');
+    $this->line('Usage : test [testgroup] [testfile]');
     $this->line('Testgroup is one of the subfolders in the test folder. You may sort your tests by groups there');
     $this->line('use "all" for firing all unit tests');
     $this->line('DRAWBACK : you cannot have neither a fixtures nor a all nor an extensions group');
@@ -30,22 +30,26 @@ class Command_Test extends Command {
   {
     if(!defined('TESTS_FOLDER')) define('TESTS_FOLDER',APP_ROOT.PROJECT_NAME.'/tests/');
     if(!defined('SIMPLE_TEST')) define('SIMPLE_TEST', 'simpletest/');
-    
+
     $folder = $params[0];
     if($folder == 'all') {
       $folders = $this->getAllTestFolders();
     } else {
       $folders = array($folder);
     }
-    foreach($folders as $folder) {
-      $this->launchtests($folder);
+    if($params[1]) {
+      $this->launchtests($folder, $params[1]);
+    } else {
+      foreach($folders as $folder) {
+        $this->launchtests($folder);
+      }
     }
   }
-  public function launchtests($folder)
+  public function launchtests($folder, $file = null)
   {
     $options = &PEAR::getStaticProperty('DB_DataObject', 'options');
     $options['database'] = DB_URI_TEST;
-    
+
     require_once(SIMPLE_TEST . 'unit_tester.php');
     require_once(SIMPLE_TEST . 'reporter.php');
     $test = &new GroupTest('Tests of '.$folder);
@@ -53,10 +57,18 @@ class Command_Test extends Command {
     if(!$op = opendir($testfolder)) {
       return $this->error(TESTS_FOLDER.'/'.$folder.' folder does not exist');
     }
-    while (($file = readdir($op)) !== false) {
-
-      if(filetype($testfolder . $file)=='file' && eregi('\.php$',$file)){
+    if($file) {
+      $testfile = $testfolder . $file.'Test.php';
+      if(file_exists($testfile)) {
         $test->addTestFile($testfolder . $file);
+      } else {
+        return $this->error('file '.$testfile.' does not exist');
+      }
+    } else {
+      while (($file = readdir($op)) !== false) {
+        if(filetype($testfolder . $file)=='file' && eregi('\.php$',$file)){
+          $test->addTestFile($testfolder . $file);
+        }
       }
     }
     $test->run(new TextReporter());

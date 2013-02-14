@@ -25,7 +25,7 @@ class myFB extends DB_DataObject_FormBuilder
 	}
 
 	function &create(&$do, $options = false, $driver = 'MyQuickForm', $mainClass = 'MyFB',$driverPath='M/MyQuickForm.php')
-	{	  
+	{
 		if (!is_a($do, 'db_dataobject')) {
 			$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): Object does not extend DB_DataObject.',
 			DB_DATAOBJECT_FORMBUILDER_ERROR_NODATAOBJECT);
@@ -80,24 +80,23 @@ class myFB extends DB_DataObject_FormBuilder
 	$emptyLabel = false,
 	$maindo = null,
 	$preferHtml = false) {
-	  
+
 	  if($this->_cacheOptions) {
 
       $cacheName = $this->_cacheOptions['name'].'_'.$this->_do->tableName().'_'.$table.'_'.$field;
       $options = array(
-          'caching' =>true,
-          'cacheDir' => $this->_cacheOptions['cacheDir'],
-          'lifeTime' => 3600,
-          'fileNameProtection'=>false,
-  		);
+        'caching' =>true,
+        'cacheDir' => $this->_cacheOptions['cacheDir'],
+        'lifeTime' => 3600,
+        'fileNameProtection'=>false,
+      );
 
-  		$cache = new Cache_Lite($options);
+      $cache = new Cache_Lite($options);
   		if($_cachedData = $cache->get($cacheName)) {
         return $_cachedData;
       }
     }
-    
-	  
+
 		if(is_null($maindo)) {
 			$maindo = $this;
 		} else {
@@ -105,7 +104,7 @@ class myFB extends DB_DataObject_FormBuilder
 				$maindo->prepareLinkedDataObjectCallback = array($maindo,'prepareLinkedDataObject');
 			}
 		}
-	  
+
 		$opts = DB_DataObject::factory($table);
 		if (is_a($opts, 'db_dataobject')) {
 			if ($this->isCallableAndExists($maindo->prepareLinkedDataObjectCallback)) {
@@ -416,10 +415,10 @@ class myFB extends DB_DataObject_FormBuilder
 						list($linkedtable, $linkedfield) = explode(':', $crossLinkLinks[$crossLink['toField']]);
 						list($fromtable, $fromfield) = explode(':', $crossLinkLinks[$crossLink['fromField']]);
 						//if ($fromtable !== $this->_do->tableName()) error?
-            
-						  $all_options      = $this->_getSelectOptions($linkedtable, false, false, false, $linkedfield,false,$crossLinkDo,isset($crossLinkDo->fb_crossLinkExtraFields));              
 
-            
+						  $all_options      = $this->_getSelectOptions($linkedtable, false, false, false, $linkedfield,false,$crossLinkDo,isset($crossLinkDo->fb_crossLinkExtraFields));
+
+
 
 
 						$selected_options = array();
@@ -670,7 +669,7 @@ class myFB extends DB_DataObject_FormBuilder
 								$do->orderBy($orderStr);
 							}
 						}
-							
+
 						/*
 						 if (isset($this->linkElementTypes[$elName])
 						 && $this->linkElementTypes[$elName] == 'subForm') {
