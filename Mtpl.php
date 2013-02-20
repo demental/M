@@ -49,7 +49,7 @@ class Mtpl {
 	 **/
 	public function addPath($path,$pos='before')
 	{
-		switch($pos) {
+  	switch($pos) {
 			case 'before':
 				array_unshift($this->_config['tplfolders'],$path);
 				break;

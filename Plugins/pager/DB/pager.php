@@ -21,7 +21,7 @@
 
 class DB_DataObject_Plugin_Pager extends M_Plugin
 {
-    public $plugin_name='pager';	
+    public $plugin_name='pager';
     public $pager;
     public $hasPager=true;
     public $pagerOpts = array();
@@ -38,14 +38,14 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
     }
     public function setVars($sort,$direction) {
       $this->vars['sort']=$sort;
-      $this->vars['direction']=$direction;           
+      $this->vars['direction']=$direction;
     }
-    
+
     public function setValues($sort,$direction) {
       $this->pointer['sort']=$sort;
-      $this->pointer['direction']=$direction;      
+      $this->pointer['direction']=$direction;
     }
-    
+
     function find($autoFetch=false,&$obj) {
       if($autoFetch) {
         return;
@@ -58,7 +58,7 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
 
       if($this->hasPager) {
         require_once 'Pager.php';
-        $obj->_pager = Pager::factory($this->pagerOpts);  
+        $obj->_pager = Pager::factory($this->pagerOpts);
         $lim=$obj->_pager->getOffsetByPageId();
         $obj->limit(($lim[0]-1),($lim[1]+1-$lim[0]));
       }
@@ -66,7 +66,7 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
         if(strpos($this->pointer['sort'],'.')!==false) {
           $obj->orderBy($this->pointer['sort'].' '.$this->pointer['direction']);
         } else {
-          $obj->orderBy($obj->tableName().'.'.$this->pointer['sort'].' '.$this->pointer['direction']);          
+          $obj->orderBy($obj->tableName().'.'.$this->pointer['sort'].' '.$this->pointer['direction']);
         }
       } elseif($this->defaultSort) {
         $obj->orderBy($obj->tableName().'.'.implode(',',$this->defaultSort));
@@ -75,6 +75,7 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
     function setOptions($opt) {
 
       $this->pagerOpts = array_merge($opt,$this->pagerOpts);
+
     }
     function setOption($var,$val) {
       $this->pagerOpts[$var]=$val;
