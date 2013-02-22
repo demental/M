@@ -338,7 +338,7 @@ class M_Office_Util {
       }
   }
 
- 	public static function &getSearchForm(&$do){
+ 	public static function &getSearchForm($do, $module){
 
 
     $form = new MyQuickForm(  'formSearch',
@@ -364,7 +364,7 @@ class M_Office_Util {
     }
 
 
-    $cacheName = 'searchform_'.$do->tableName();
+    $cacheName = 'searchform_'.$module;
     $options = array(
       'caching' =>$cache,
       'cacheDir' => APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/',

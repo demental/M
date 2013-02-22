@@ -53,7 +53,7 @@ class M_Office_ShowTable extends M_Office_Controller {
       }
       // 2. Process search
       $doSearch = M_Office_Util::doForModule($this->module);
-      $searchForm = M_Office_Util::getSearchForm($doSearch);
+      $searchForm = M_Office_Util::getSearchForm($doSearch, $this->module);
       $this->assign('search',$searchForm);
       $searchValues = $searchForm->exportValues();
     } else {
