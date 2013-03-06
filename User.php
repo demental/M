@@ -224,9 +224,14 @@ class User{
 				throw new Exception('User login field was not set in the user ORM context property');
 			}
 		}
-
-		$dbdo->$lg=$login;
-		if(!$dbdo->find(TRUE)){
+		if(method_exists($dbdo, 'find_by_login')) {
+			$result = $dbdo->find_by_login($login);
+		} else {
+			$dbdo->$lg=$login;
+			$result = $dbdo->find(true);
+		}
+		
+		if(!$result){
 			$error=ERROR_NO_USER;
 		} else {
       
