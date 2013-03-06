@@ -47,6 +47,7 @@ function deleteCheckboxClicked(checkbox) {
     <?php foreach($dg->columns as $field=>$type):?>
       <th><a href="<?php echo $dg->do->getPlugin('pager')->getSortLink($field)?>"><?php echo $dg->fieldNames[$field]?></a></th>
     <?php endforeach?>
+    <?php $this->i('listview/dopaging/end_header', null, true)?>
   </tr>
   <?php $do = $dg->do?>
   <?php $pk = MyFB::_getPrimaryKey($do)?>
@@ -60,6 +61,7 @@ function deleteCheckboxClicked(checkbox) {
     <?php foreach($dg->columns as $field => $type):?>
       <?php $this->i(array('listview/dopaging/field_'.$field, 'listview/dopaging/type_'.$type, 'listview/dopaging/field'), array('do' => $do, 'field' => $field, 'type' => $type) , true)?>
     <?php endforeach?>
+    <?php $this->i('listview/dopaging/end_row', array('do' => $do, 'field' => $field, 'type' => $type) , true)?>
   </tr>
   <?php endforeach?>
 </table>
