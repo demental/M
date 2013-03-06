@@ -300,8 +300,6 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   }
 
   /**
-   * Prepares a select query, given a series of tags.
-   * @param $tags mixed. Can be a tag table recordset or an array of tag records
    * @param DB_DataObject $obj the recordset on which the select query will be executed
    */
 

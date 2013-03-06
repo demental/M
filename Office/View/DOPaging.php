@@ -69,10 +69,10 @@ class M_Office_View_DOPaging extends M_Office_View_List
 
 
     if ($pager){
-        $perPage = $this->getControllerOption('recordsPerPage', $module);
-        $perPage = $perPage === true ? 10 : $perPage;
+      $perPage = $this->getControllerOption('recordsPerPage', $module);
+      $perPage = $perPage === true ? 10 : $perPage;
     } else {
-            $perPage = 100000000000;
+      $perPage = 100000000000;
     }
     $do->getPlugin('pager')->setOption('perPage',$perPage);
 
@@ -80,8 +80,13 @@ class M_Office_View_DOPaging extends M_Office_View_List
     $AllFields=array_keys($do->table());
     $links = $do->links();
     $fields = $this->getControllerOption('fields', $module);
+    $columns = $this->getControllerOption('columns', $module);
+    if(!is_array($columns)) {
+      $columns = $fields;
+    }
+
     if (!is_array($fields)) {
-        $fields = array_diff($AllFields,array($pk));
+      $fields = array_diff($AllFields,array($pk));
     }
     $usedFields = array_intersect($fields,$AllFields);
 
@@ -98,11 +103,11 @@ class M_Office_View_DOPaging extends M_Office_View_List
       $fieldsToRender = array_merge($usedFields,$tmparr);
       unset($tmparr);
     } elseif(is_array($plugins['l10n'])) {
-          $tmparr = array_intersect($fields,$plugins['l10n']);
-          $i18nfields = implode(','.$do->tablename().'_l10n'.'.',$tmparr);
+      $tmparr = array_intersect($fields,$plugins['l10n']);
+      $i18nfields = implode(','.$do->tablename().'_l10n'.'.',$tmparr);
       $i18nfields = $do->tablename().'_l10n'.'.'.$i18nfields;
-          $fieldsToRender = array_merge($usedFields,$tmparr);
-            unset($tmparr);
+      $fieldsToRender = array_merge($usedFields,$tmparr);
+      unset($tmparr);
     } else {
       $i18nfields = null;
       $fieldsToRender = $usedFields;
@@ -125,19 +130,29 @@ class M_Office_View_DOPaging extends M_Office_View_List
     foreach($fieldsToRender as $aField) {
       switch(true) {
         case array_key_exists($aField,$links):
-        $fieldTypes[$aField] = 'link';
+          $fieldTypes[$aField] = 'link';
         break;
         case is_array($do->fb_enumFields) && in_array($aField,$do->fb_enumFields):
-        $fieldTypes[$aField] = 'enum';
+          $fieldTypes[$aField] = 'enum';
         break;
         case $eltTypes[$aField] & DB_DATAOBJECT_BOOL:
-        $fieldTypes[$aField] = 'bool';
+          $fieldTypes[$aField] = 'bool';
+        break;
+        case $eltTypes[$aField] & DB_DATAOBJECT_TIME:
+          $fieldTypes[$aField] = 'datetime';
+        break;
+        case $eltTypes[$aField] & DB_DATAOBJECT_DATE:
+          $fieldTypes[$aField] = 'date';
         break;
         default:
         $fieldTypes[$aField] = 'bypass';
       }
     }
-    if($this->getControllerOption('edit', $module) || $this->getControllerOption('view', $module)) {
+    foreach($columns as $field) {
+      $columnsTypes[$field] = $fieldTypes[$field];
+    }
+    $this->columns = $columnsTypes;
+    if(can('edit', $module) || can('view', $module)) {
         Mreg::get('tpl')->assign('edit',true);
     }
     if($this->_controller->hasActions) {
@@ -155,7 +170,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
 
     }
     Mreg::get('tpl')
-          ->concat('adminTitle',' '.'page '.($_REQUEST['pageID']?$_REQUEST['pageID']:1));
+      ->concat('adminTitle',' '.'page '.($_REQUEST['pageID']?$_REQUEST['pageID']:1));
 
     if (isset($_REQUEST['_ps'])) {
         $do->orderBy();

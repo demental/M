@@ -43,12 +43,8 @@ function deleteCheckboxClicked(checkbox) {
 </div>
 <table class="datagrid">
   <tr>
-    <?php if($selectable):?>
-      <th>
-      </th>
-    <?php endif?>
-    <?php $this->i('listview/dopaging/actionsheader',array('edit'=>$edit))?>
-    <?php foreach($dg->fields as $field=>$type):?>
+    <?php $this->i('listview/dopaging/actionsheader',array('edit'=>$edit, 'selectable' => $selectable))?>
+    <?php foreach($dg->columns as $field=>$type):?>
       <th><a href="<?php echo $dg->do->getPlugin('pager')->getSortLink($field)?>"><?php echo $dg->fieldNames[$field]?></a></th>
     <?php endforeach?>
   </tr>
@@ -61,8 +57,8 @@ function deleteCheckboxClicked(checkbox) {
       <?php $this->i('listview/dopaging/selector',array('do'=>$do))?>
     <?php endif?>
     <?php $this->i('listview/dopaging/actions',array('edit'=>$edit,'do'=>$do,'pk'=>$pk))?>
-    <?php foreach($dg->fields as $field=>$type):?>
-      <td><?php echo call_user_func(array('M_Office_Util','field_format_'.$type),$rec,$field)?></td>
+    <?php foreach($dg->columns as $field => $type):?>
+      <?php $this->i(array('listview/dopaging/field_'.$field, 'listview/dopaging/type_'.$type, 'listview/dopaging/field'), array('do' => $do, 'field' => $field, 'type' => $type) , true)?>
     <?php endforeach?>
   </tr>
   <?php endforeach?>
