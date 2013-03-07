@@ -56,8 +56,8 @@ class M_Office_Search {
 			case "currentmonth":  $clause = $sql_field . " like '" . date('Y-m',time())."-%'";break;
 			case "is":            $clause = $sql_field . " like '" . $date1 . "%'";break;
 			case "after":         $clause = $sql_field . " >= '". $date1 . "'";break;
-			case "before":        $clause = $sql_field . " <= '". $dt . "'";break;
-			case "between":       $clause = $sql_field . " >= '". $dt . "' AND ".$sql_field . " <= '" . $date2 . "'";break;
+			case "before":        $clause = $sql_field . " <= '". $date1 . "'";break;
+			case "between":       $clause = $sql_field . " >= '". $date1 . "' AND ".$sql_field . " <= '" . $date2 . "'";break;
     }
 		if(!empty($clause)) $this->do->whereAdd($clause);
 	}
