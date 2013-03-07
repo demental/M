@@ -348,8 +348,7 @@ class Mtpl {
 			$module = $componentId;
 		}
 		$c = new Component($module, $action,$params);
-
-		  $c->execute();
+		$c->execute();
     return $this->comment('Start component '.$module.'/'.$action.' routed to '.$c->getPage()->getCurrentModule().'/'.$c->getPage()->getCurrentAction())
       .$c->display()
       .$this->comment('End component '.$module.'/'.$action);

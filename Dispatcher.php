@@ -95,13 +95,11 @@ class Dispatcher extends Maman {
       	{
             Log::info('Trying action '.$this->action);
       		  $this->page->executeAction($this->action);
-            
       	}
-        catch (SecurityException $e) {        
+        catch (SecurityException $e) {
           $this->handleSecurity();
         }
         catch (Error404Exception $e) {
-
             $this->returnActionNotFound();
           }
       	catch (Exception $e)
@@ -116,7 +114,7 @@ class Dispatcher extends Maman {
 
         $this->returnModuleNotFound();
       }
-      catch (SecurityException $e) {        
+      catch (SecurityException $e) {
         $this->handleSecurity();
       }
       catch (Exception $e)

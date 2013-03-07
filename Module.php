@@ -632,8 +632,18 @@ class Module extends Maman {
 	 */
 	public function handleException($e)
 	{
-    $this->executeAction('index');
-	} 
+		if(MODE == 'production') {
+	    $this->executeAction('index');
+	  } else {
+	  	echo '<h3>Damn, an exception occured !</h3>';
+	  	echo '<p>'.$e->getMessage().'</p>';
+	  	echo '<pre>';
+	  	echo $this->stackTrace($e->getTrace());
+	  	echo '</pre>';
+
+	  	die();
+	  }
+	}
 	/**
 	 * wether the request has a value
 	 * @param $val key name
