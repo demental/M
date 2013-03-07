@@ -83,7 +83,7 @@ class Dispatcher extends Maman {
 	 * @return null
 	 */
     public function execute()
-    {      
+    {
       $path=$this->getPath();
 
       try

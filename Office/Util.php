@@ -340,7 +340,7 @@ class M_Office_Util {
 
  	public static function &getSearchForm($do, $module){
 
-
+    HTML_QuickForm::registerElementType('advandate','M/HTML/QuickForm/advandate.php','HTML_QuickForm_advandate');
     $form = new MyQuickForm(  'formSearch',
                               'GET',
                               self::getQueryParams(array(), array('page','_c_'), false));
@@ -370,51 +370,58 @@ class M_Office_Util {
       'cacheDir' => APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/',
       'lifeTime' => 3600,
       'fileNameProtection'=>false,
-  	 );
+  	);
 
-  		$cache = new Cache_Lite($options);
-  		if($_cachedData = $cache->get($cacheName)) {
-        Mreg::append('autoloadcallback',array(array('MyQuickForm','autoloadElements')));
-        $_cachedData = unserialize($_cachedData);
-        foreach($_cachedData as $element) {
-          $form->addElement($element);
+		$cache = new Cache_Lite($options);
+		if($_cachedData = $cache->get($cacheName)) {
+      Mreg::append('autoloadcallback',array(array('MyQuickForm','autoloadElements')));
+      $_cachedData = unserialize($_cachedData);
+      foreach($_cachedData as $element) {
+        $form->addElement($element);
 
+      }
+		} else {
+      $do->fb_selectAddEmpty = array();
+    	if(is_array($do->links())){
+        foreach ($do->links() as $field => $link) {
+          $do->fb_selectAddEmpty[] = $field;
         }
-  		} else {
-            $do->fb_selectAddEmpty = array();
-          	if(is_array($do->links())){
-              foreach ($do->links() as $field => $link) {
-                $do->fb_selectAddEmpty[] = $field;
-              }
-          	}
-        		if(is_array($do->fb_enumFields)){
-        			foreach ($do->fb_enumFields as $field){
-        	       $do->fb_selectAddEmpty[] = $field;
-        			}
-        		}
-            $do->fb_formHeaderText=__('Search');
-            $do->fb_submitText='>>';
-            $do->fb_linkNewValue = false;
-
-            $formBuilder =& MyFB::create($do);
-            $formBuilder->_cacheOptions = array('name'=>'office_searchform','cacheDir'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/');
-            $formBuilder->preGenerateFormCallback=array($do,'prepareSearchForm');
-            $do->prepareSearchForm($fb);
-            $do->fb_userEditableFields=$do->fb_fieldsToRender;
-
-            $formBuilder->postGenerateFormCallback=array($do,'postPrepareSearchForm');
-           	$formBuilder->useForm($form);
-
-
-            $formBuilder->getForm();
-  		  foreach($form->_elements as $elem) {
-  		    $cached[] = $elem;
-  		  }
-        if($cache) {
-          $cache->save(serialize($cached));
-        }
-
+    	}
+  		if(is_array($do->fb_enumFields)){
+  			foreach ($do->fb_enumFields as $field){
+  	       $do->fb_selectAddEmpty[] = $field;
+  			}
   		}
+      $do->fb_formHeaderText=__('Search');
+      $do->fb_submitText='>>';
+      $do->fb_linkNewValue = false;
+
+      $formBuilder =& MyFB::create($do);
+      $formBuilder->_cacheOptions = array('name'=>'office_searchform','cacheDir'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/');
+      $formBuilder->preGenerateFormCallback=array($do,'prepareSearchForm');
+      $do->prepareSearchForm($fb);
+      $do->fb_userEditableFields=$do->fb_fieldsToRender;
+      $table = $do->table();
+      foreach($do->fb_fieldsToRender as $field) {
+        if($table[$field] & DB_DATAOBJECT_DATE || $table[$field] & DB_DATAOBJECT_TIME ) {
+          $label = $do->fb_fieldLabels[$field] ? $do->fb_fieldLabels[$field] : $field;
+          $do->fb_preDefElements[$field] = HTML_QuickForm::createElement('advandate', $field, $label, array("language" => T::getLang()));
+        }
+      }
+
+      $formBuilder->postGenerateFormCallback=array($do,'postPrepareSearchForm');
+     	$formBuilder->useForm($form);
+
+
+      $formBuilder->getForm();
+		  foreach($form->_elements as $elem) {
+		    $cached[] = $elem;
+		  }
+      if($cache) {
+        $cache->save(serialize($cached));
+      }
+		}
+
     $form->_rules = array();
     $form->_formRules = array();
     $form->_required = array();

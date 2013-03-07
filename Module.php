@@ -445,9 +445,9 @@ class Module extends Maman {
 
     Log::info('env setup. launching preExecute');
 		$this->preExecuteAction($action);
-    Log::info('preExecute launched. Launching '.get_class($this).'::'.$meth);		
+    Log::info('preExecute launched. Launching '.get_class($this).'::'.$meth);
 		call_user_func(array($this,$meth));
-    Log::info('doExec launched');		
+    Log::info('doExec launched');
 		$this->postExecuteAction($action);
 	}
 
