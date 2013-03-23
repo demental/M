@@ -120,6 +120,7 @@ class Command_Db extends Command {
       $this->error('Backup filename not provided');
       return;
     }
+    $this->executeBackup(array('rollback_'.$filename, $params[1]));
     if(!file_exists(APP_ROOT.'backups/'.$filename)) {
       switch(true) {
         case file_exists(APP_ROOT.'backups/'.$filename.'.sql'):
