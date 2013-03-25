@@ -870,4 +870,20 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
         return false;
     }
 
+    /**
+     * @params array
+     * add a in(....) clause
+     */
+    public function sqlin($values)
+    {
+      $db = $this->getDatabaseConnection();
+      if (!is_array($values)) {
+        $values = explode(',',$values);
+        $values = array_map('trim', $values);
+      }
+      $values = array_map(array($db, 'quote'), $values);
+
+      return implode(',',$values);
+    }
+
 }
