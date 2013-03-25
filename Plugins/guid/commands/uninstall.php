@@ -3,7 +3,7 @@
  * This command will uninstall officepack from all tables that use this plugin :
  * - removes PRIMARY KEY attribute from the ID field
  * - adds a new field (n_id) and declares it as PRIMARY KEY AUTO_INCREMENT
- * - scans all tables and checks for links() for each of them. If the link uses officepack, 
+ * - scans all tables and checks for links() for each of them. If the link uses officepack,
  * changes the current foreign key value to the new value n_id
  * - removes the id field and renames the n_id field to 'id'
  * - regenerates models
@@ -12,7 +12,7 @@
  */
 require 'M/DB/DataObject/Advgenerator.php';
 class Guid_command_uninstall extends Command {
-  
+
   protected $toRegenerate = array();
   protected $toRemove = array();
   protected $toScan = array();
@@ -25,7 +25,7 @@ class Guid_command_uninstall extends Command {
     $this->line('DISCLAIMER:');
     $this->line('* This command cannot be reverted');
     $this->line('* The execution time can be very long, if your database contains several tables with dynamic/conditional links,');
-    $this->line('as well as for tables with no index on the foreign key(s) that will be updated');        
+    $this->line('as well as for tables with no index on the foreign key(s) that will be updated');
     $this->line('');
     $this->line('Usage:');
     $this->line('plugin guid uninstall [TABLE1] [TABLE2].....[TABLEN]');
@@ -78,8 +78,8 @@ class Guid_command_uninstall extends Command {
            $defs = $d->_getPluginsDef();
            if(key_exists('guid',$defs)) {
              $this->line($table.' has guid plugin. Uninstalling it....');
-             $this->_removeGuidFromTable($table);           
-           }   
+             $this->_removeGuidFromTable($table);
+           }
          }
        }
      }
@@ -112,11 +112,14 @@ class Guid_command_uninstall extends Command {
      $req = 'ALTER TABLE `'.$d->tableName().'` DROP PRIMARY KEY';
      $res = $db->query($req);
      if(PEAR::isError($res)) {
-       die($res->getMessage());
+
+      return $this->error($req."\n".$res->getMessage());
+
      }
-     $res = $db->query('ALTER TABLE `'.$d->tableName().'` ADD `n_id` '.$fieldSize.' UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST ;');
+     $query = 'ALTER TABLE `'.$d->tableName().'` ADD `n_id` '.$fieldSize.' UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST ;';
+     $res = $db->query($query);
      if(PEAR::isError($res)) {
-       die($res->getMessage());
+      return $this->error($query."\n".$res->getMessage());
      }
      foreach($d->reverseLinks() as $ftable=>$linkField) {
        $ftablearr = explode(':',$ftable);
@@ -126,16 +129,19 @@ class Guid_command_uninstall extends Command {
          $this->line($ftablearr[0].' has dynamic/conditional links... IGNORING');
          continue;
        }
-       $this->toRegenerate[] = $ftablearr[0];       
+       $this->toRegenerate[] = $ftablearr[0];
        $q = 'UPDATE %1$s t1,%2$s t2 SET t2.%3$s=t1.n_id where t2.%3$s=t1.%4$s';
        $qf = vsprintf($q,array($table,$ftablearr[0],$ftablearr[1],$linkField));
-       
-       $db->query($qf);
+
+       $res = $db->query($qf);
+       if(PEAR::isError($res)) {
+        return $this->error($qf."\n".$res->getMessage());
+       }
        // Check wether the foreign field is null, we must keep this when rewriting the field definition.
        $fobj = DB_DataObject::factory($ftablearr[0]);
        $fobj_tbl = $fobj->table();
        $fobj_fieldDef = $fobj_tbl[$ftablearr[1]];
-       if($fobj_fieldDef&DB_DATAOBJECT_NULL) {
+       if($fobj_fieldDef & DB_DATAOBJECT_NULL) {
          $is_null = '';
        } else {
          $is_null = ' NOT NULL';
@@ -144,7 +150,10 @@ class Guid_command_uninstall extends Command {
        $q2 = 'ALTER TABLE %s CHANGE `%s` `%s` %s UNSIGNED'.$is_null;
        $query2 = vsprintf($q2,array($ftablearr[0],$ftablearr[1],$ftablearr[1],$fieldSize));
        $this->line('Altering field '.$ftable.' to '.$fieldSize);
-       $db->query($query2);
+       $res = $db->query($query2);
+       if(PEAR::isError($res)) {
+        return $this->error($query2."\n".$res->getMessage());
+       }
      }
     foreach($this->toScan as $tableToScan) {
       $this->line('Scanning all records from '.$tableToScan);
@@ -169,14 +178,26 @@ class Guid_command_uninstall extends Command {
                     $db->quoteIdentifier($rec->pkName()),
                     $db->quote($rec->pk())
                     ));
-            $db->exec($fq);
+            $res = $db->exec($fq);
+            if(PEAR::isError($res)) {
+              return $this->error($fq."\n".$res->getMessage());
+            }
+
           }
         }
       }
     }
     // Third loop : we remove the old 'id' field and rename 'n_id' to 'id'
       $this->line('Dropping old guid pk.');
-      $db->query('ALTER TABLE `'.$d->tableName().'` DROP id');
-      $db->query('ALTER TABLE `'.$d->tableName().'` CHANGE `n_id` `id` '.$fieldSize.' UNSIGNED NOT NULL AUTO_INCREMENT');
+      $query = 'ALTER TABLE `'.$d->tableName().'` DROP id';
+      $res = $db->query($query);
+      if(PEAR::isError($res)) {
+        return $this->error($query."\n".$res->getMessage());
+      }
+      $query = 'ALTER TABLE `'.$d->tableName().'` CHANGE `n_id` `id` '.$fieldSize.' UNSIGNED NOT NULL AUTO_INCREMENT';
+      $res = $db->query($query);
+      if(PEAR::isError($res)) {
+        return $this->error($query."\n".$res->getMessage());
+      }
   }
 }
