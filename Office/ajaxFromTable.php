@@ -21,19 +21,19 @@ class M_Office_ajaxFromTable extends M_Office_Controller
   /**
    * This module creates an UI for n-n relationships.
    */
-   
+
     public $table;
     public $field;
     public $value;
     public $module;
     public $parentDo;
     public $parentModule;
-    
+
     public function __construct($parentDo, $parentModule, $linkTable, $linkField, $value) {
 
         parent::__construct();
         $this->parentDo = $parentDo;
-        $this->parentModule = $parentModule;        
+        $this->parentModule = $parentModule;
         $this->table = $linkTable;
         $this->module = $linkTable;
         $this->field = $linkField;
@@ -61,10 +61,10 @@ class M_Office_ajaxFromTable extends M_Office_Controller
         }
         $tpl->assign('table',$this->table);
         $tpl->assign('field',$this->field);
-        $tpl->assign('value',$this->value);        
+        $tpl->assign('value',$this->value);
         $tpl->assign('edit',$edit);
         $tpl->assign('delete',$delete);
-
+        $tpl->assign('parent', $this->parentDo);
         $do = M_Office_Util::doForTable($this->table);
         $do->{$this->field}=$this->value;
         if(is_array($do->fb_linkOrderFields)) {
@@ -91,7 +91,7 @@ class M_Office_ajaxFromTable extends M_Office_Controller
         $tpl->assign('do',$do);
         $tpl->assign('table',$this->table);
         $tpl->assign('field',$this->field);
-        $tpl->assign('value',$this->value);        
+        $tpl->assign('value',$this->value);
         $edit = $this->getGlobalOption('edit','showtable',$this->table);
         $delete = $this->getGlobalOption('delete','showtable',$this->table);
         $tpl->assign('edit',$edit);
@@ -109,7 +109,7 @@ class M_Office_ajaxFromTable extends M_Office_Controller
           header("HTTP/1.0 406 Not Allowed");
           echo 'Impossible de supprimer enregistrement '.$recordId.' de '.$this->table;
           exit;
-          
+
         };
     }
     function showError($message) {
@@ -144,7 +144,7 @@ class M_Office_ajaxFromTable extends M_Office_Controller
         }
         return $this->renderLine($this->fb->_do,false);
     }
-    
+
     function getAddForm($recordId = null) {
       $record = $this->getObject($recordId);
       return $this->outForm($this->getAddFormObject($record),$record);
@@ -167,7 +167,7 @@ class M_Office_ajaxFromTable extends M_Office_Controller
         if(is_null($record)) {
           $record = $this->getObject();
         }
-        if(!$record->isNew()) {            
+        if(!$record->isNew()) {
             $formaction = 'updateFromTableRecord';
             $formclass='updateFromTableForm';
             $formactionval = $record->pk();
@@ -197,7 +197,7 @@ class M_Office_ajaxFromTable extends M_Office_Controller
             $form->removeElement($this->field);
         }
         $form->addElement('submit','__submit__','+');
-        $form->addElement('hidden',$this->field,$this->value);        
+        $form->addElement('hidden',$this->field,$this->value);
 //        $form->addElement('static','st','','<pre>'.print_r($_REQUEST,true).'</pre>');
         return $form;
     }
@@ -218,6 +218,6 @@ class M_Office_ajaxFromTable extends M_Office_Controller
             case key_exists('deleteFromTableRecord',$_REQUEST):
                 $this->assign('output',$this->deleteRecord($_REQUEST['deleteFromTableRecord']));
             break;
-        }        
+        }
     }
 }
