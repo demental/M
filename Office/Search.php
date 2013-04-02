@@ -12,7 +12,6 @@
 * @package      M
 * @subpackage   M_Office
 * @author       Arnaud Sellenet <arnaud AT sellenet POINT fr>
-
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */

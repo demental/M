@@ -18,7 +18,7 @@
 * @version      0.1
 */
 
- 
+
  if(!defined('TMP_PATH')){
  	define('TMP_PATH',ini_get('upload_tmp_dir'));
  }
@@ -31,7 +31,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
   public function getEvents()
   {
     return array('pregenerateform','postgenerateform','postgeneratelogin','preprocessform','prepareforlogin','encrypt','clearpwd','generatepassword');
-  }  
+  }
 	public function preGenerateForm(&$fb,&$obj)
 	{
 	  $defs = $obj->_getPluginsDef();
@@ -41,7 +41,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
 	}
 	public function postGenerateForm(&$form,&$fb,&$obj) {
 	  $defs = $obj->_getPluginsDef();
-	  $defs = $defs['user'];	  
+	  $defs = $defs['user'];
         if($form->elementExists($fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix)) {
 
             $pwd = $form->getElement($fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix);
@@ -94,16 +94,16 @@ class DB_DataObject_Plugin_User extends M_Plugin
 	}
   function prepareForLogin($reminder=true,$register=true,&$obj)
   {
-    
+
     $defs = $obj->_getPluginsDef();
-    $defs = $defs['user'];    
+    $defs = $defs['user'];
       $this->_addregister = $register;
       $this->_addreminder = $reminder;
-      
+
       if($register) {
           $obj->fb_formHeaderText = __('Déjà inscrit ?');
       } else {
-          $obj->fb_formHeaderText = __('Identification');            
+          $obj->fb_formHeaderText = __('Identification');
       }
       $obj->fb_submitText = '>> '.__('Valider');
       $this->_usercontext = $defs['context'];
@@ -112,7 +112,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
       if(method_exists($obj,'postGenerateLogin')) {
         $obj->fb_postGenerateFormCallback=array($obj,'postGenerateLogin');
       } else {
-        $obj->fb_postGenerateFormCallback=array($this,'postGenerateLogin');        
+        $obj->fb_postGenerateFormCallback=array($this,'postGenerateLogin');
       }
   }
   function prepareForReminder(&$obj)
@@ -127,7 +127,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
   function postGenerateLogin(&$form,&$fb,$obj = null) {
       if($this->_addreminder) {
           $elt = HTML_QuickForm::createElement('static','remindertext','','<a href="'.$this->reminderUrl.'">'.__('Mot de passe perdu ?').'</a>');
-          $form->insertElementBefore($elt,'__submit__');        
+          $form->insertElementBefore($elt,'__submit__');
       }
       if($this->_addregister) {
           $form->addElement('header','newUser',__('Pas encore inscrit ?'));
@@ -143,8 +143,8 @@ class DB_DataObject_Plugin_User extends M_Plugin
     $defs = $this->_obj->_getPluginsDef();
     $defs = $defs['user'];
     $noaccountError = $defs['noaccountError']?$defs['noaccountError']:__('Ce compte n\'existe pas');
-    $passwordError = $defs['passwordError']?$defs['passwordError']:__('Mot de passe incorrect');      
-    $inactiveError = $defs['inactiveError']?$defs['inactiveError']:__('Ce compte n\'est pas actif');      
+    $passwordError = $defs['passwordError']?$defs['passwordError']:__('Mot de passe incorrect');
+    $inactiveError = $defs['inactiveError']?$defs['inactiveError']:__('Ce compte n\'est pas actif');
 
       if(User::getInstance($this->_usercontext)->login($values[$defs['login']],$values[$defs['pwd']])) {
           if(!empty($defs['valid']) && !User::getInstance($this->_usercontext)->getDBDO()->{$defs['valid']}) {
@@ -197,7 +197,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
    * @return string
    */
   function clearPwd($obj) {
-    $defs = $obj->_getPluginsDef(); 
+    $defs = $obj->_getPluginsDef();
     $field = $defs['user']['pwd'];
     return $this->returnStatus(M_Crypt::decrypt($obj->{$field},ENCSALT));
   }
@@ -207,13 +207,13 @@ class DB_DataObject_Plugin_User extends M_Plugin
    * @return string clear password
    */
   public function generatePassword($obj) {
-    $defs = $obj->_getPluginsDef(); 
+    $defs = $obj->_getPluginsDef();
     $field = $defs['user']['pwd'];
     require_once 'Text/Password.php';
     $pwd = Text_Password::create(8);
     $obj->{$field} = $this->encrypt($pwd,$obj)->return;
     return $pwd;
   }
-  
+
 
 }

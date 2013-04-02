@@ -67,7 +67,7 @@ array(
   'm_office_search'       =>'M/Office/Search.php',
   'authhelper'            =>'M/Office/AuthHelper.php',
   'marray'                =>'M/MArray.php',
-  'office_defaultmodule'   =>'M/Office/DefaultModule.php',
+  'office_defaultmodule'  =>'M/Office/DefaultModule.php',
   'office_usermodule'     =>'M/Office/UserModule.php',
   'office_dbmodule'       =>'M/Office/DbModule.php',
   'payment'               =>'M/Payment.php',
@@ -97,6 +97,17 @@ array(
   )
   );
 
+function m_autoload_db_dataobject($class)
+{
+  $classname = strtolower($class);
+  if(strpos($classname, 'dataobjects_') === 0) {
+    $tablename = str_replace('dataobjects_','',$classname);
+    require APP_ROOT.DB_FOLDER.ucfirst($tablename).'.php';
+  } else {
+    return false;
+  }
+}
+//Mreg::append('autoloadcallback','autoload_db_dataobject');
 /**
  *
  * Autoload
@@ -136,3 +147,4 @@ return false;
 
 
 spl_autoload_register('M_autoload');
+spl_autoload_register('m_autoload_db_dataobject');
