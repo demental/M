@@ -35,6 +35,11 @@ class Command_generate extends Command {
 
   public function generate_migration($name, $format = 'php')
   {
-
+    $file = APP_ROOT.'db/migrations/'.date('YmdHi').'_'.Strings::snake($name).'.'.$format;
+    $classname = Strings::camel($name);
+    $source = file_get_contents(dirname(__FILE__).'/generate/migration/'.$format.'.tpl');
+    $source = str_replace('[MIGRATION_NAME]', $classname, $source);
+    file_put_contents($file, $source);
+    $this->line($file.' created');
   }
 }
