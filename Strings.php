@@ -17,15 +17,8 @@
 class Strings {
 	public static function stripify($string,$varCompliant=false) {
 		$string = trim($string);
-		if($varCompliant) {
-
-			$string=strtr(utf8_decode($string),utf8_decode('-:+ëËÉÈÀÂÔÊÎÛàâéêèîôûùçò² ,!?&\'"./'),'___eeeeaaoeiuaaeeeiouuco2_________');
-			$sep='_';
-		} else {
-			$string=strtr(utf8_decode($string),utf8_decode('ëËÉÈÀÂÔÊÎÛàâéêèîôûùçò² ,!?&\'"./'),'eeeeaaoeiuaaeeeiouuco2---------');
-			$sep='_';
-		}
-
+		$string = self::sanitize($string, $varCompliant);
+		$sep = '_';
 		$string=ereg_replace('('.$sep.'+)',$sep,$string);
 		$string=ereg_replace(''.$sep.'$','',$string);
 		$string = str_replace('?','',$string);
@@ -37,6 +30,16 @@ class Strings {
 		$string=preg_replace('`\s+`','_',$string);
 
 		return strtolower($string);
+	}
+	public static function sanitize($string, $varCompliant = false)
+	{
+		if($varCompliant) {
+			$string = trim($string);
+			$string = strtr(utf8_decode($string),utf8_decode('-:+ëËÉÈÀÂÔÊÎÛàâéêèîôûùçò² ,!?&\'"./'),'___eeeeaaoeiuaaeeeiouuco2_________');
+		} else {
+			$string = strtr(utf8_decode($string),utf8_decode('ëËÉÈÀÂÔÊÎÛàâéêèîôûùçò² ,!?&\'"./'),'eeeeaaoeiuaaeeeiouuco2---------');
+		}
+		return $string;
 	}
 	public function unspacify($string)
 	{
@@ -52,7 +55,7 @@ class Strings {
 	public static function stripLines($text)
 	{
 		$text = str_replace(CHR(10),"",$text);
-		// et celle là aussi : 
+		// et celle là aussi :
 		$text = str_replace(CHR(13),"",$text);
 		return $text;
 	}
@@ -127,7 +130,7 @@ class Strings {
 	}
 	/*    public static function unaccent($str)
 	 {
-	 $str=strtr(utf8_decode(strtolower($str)),utf8_decode('ûùüàâéêèëîïöôç'),'uuuaaeeeeiiooc');      
+	 $str=strtr(utf8_decode(strtolower($str)),utf8_decode('ûùüàâéêèëîïöôç'),'uuuaaeeeeiiooc');
 	 return $str;
 	 }*/
 	public static function unaccent($str, $charset='utf-8',$removePunct=true)
@@ -156,6 +159,31 @@ class Strings {
 		$item = ucfirst(trim(strtolower($item)));
 	}
 
+	public static function pascal($string)
+	{
+		$string = self::sanitize($string, true);
+		$string = strtolower($string);
+		$string = str_replace('_', ' ', $string);
+		$string = ucwords($string);
+		$string = str_replace(' ', '', $string);
+		return $string;
+	}
+
+	public static function camel($string)
+	{
+		$string = self::pascal($string);
+		$string[0] = strtolower($string[0]);
+		return $string;
+	}
+
+	public static function snake($string)
+	{
+		$string = self::sanitize($string, true);
+		$string = preg_replace('/([A-Z])/', '_$1', $string);
+		$string = str_replace('__','_',$string);
+		$string = strtolower($string);
+		return trim($string, '_');
+	}
 
 }
 function create_guid_section($characters)
