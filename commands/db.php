@@ -24,6 +24,8 @@ class Command_Db extends Command {
     $this->line('Usage:');
     $this->line('db regen');
     $this->line("\t".'Regenerates DOclasses');
+    $this->line('db migrate [reset]');
+    $this->line("\t".'executes latest migrations. If reset, executes migrations even if no last migration date found(initial DB install)');
     $this->line('db backup [filename] [db uri constant]');
     $this->line("\t".'Creates a .sql.gz backup file for the current database. If filename is not provided, the resulting file will be named database_name_YYYY-mm-dd. file extension is automatically appendend and therefore not needed.');
     $this->line("\t".'Usage: db backup my_backup');
@@ -43,6 +45,58 @@ class Command_Db extends Command {
     if(method_exists($this,$method)) {
       call_user_func_array(array($this,$method),array($params));
     }
+  }
+  public function executeMigrate($params)
+  {
+    $migration_date = Config::getPref('migration_date');
+    if(empty($migration_date) && $params[0]!= 'reset') {
+      return $this->error('No migration date. If you want to reinstall all the migrations add reset to your command');
+    }
+    $new_migration_date = date('YmdHis');
+    foreach(self::_migrations() as $date => $info) {
+      if($date > $migration_date) {
+        self::_launch_migration($info,$info['type']);
+      }
+    }
+    Config::setPref('migration_date', $new_migration_date);
+  }
+
+  public function _launch_migration($info, $type)
+  {
+    if($type == 'php') {
+      self::_launch_php_migration($info);
+    } else {
+      self::_launch_sql_migration($info);
+    }
+  }
+  public function _launch_php_migration($info)
+  {
+    require_once $info['file'];
+    $migration = new $info['class'];
+    $this->line('# Migration :: '.$info['description']);
+    $migration->up();
+    $this->line('Done :: '.$info['description']);
+  }
+  public function _launch_sql_migration($info)
+  {
+    $this->line('# Migration :: '.$info['description']);
+    $this->line('Injecting SQL file : '.$info['file']);
+    self::executeSQLFile($info['file']);
+  }
+  protected static function _migrations()
+  {
+    $out = array();
+    foreach(FileUtils::getFiles(APP_ROOT.'db/migrations/') as $file) {
+      if(preg_match('`^(\d+)_(.+)\.(php|sql)$`', basename($file), $matches)) {
+        $out[$matches[1]] = array(
+          'file' => APP_ROOT.'db/migrations/'.$file,
+          'class' => 'Migration_'.Strings::camel($matches[2]),
+          'description' => str_replace('_',' ',$matches[2]),
+          'type' => $matches[3]
+        );
+      }
+    }
+    return $out;
   }
   public function executeRegen($params)
   {
@@ -112,6 +166,16 @@ class Command_Db extends Command {
     $this->line($com);
     passthru($com);
     $this->line('Backup done : '.$filename.'.sql.gz');
+  }
+
+  public static function executeSQLFile($file) {
+    $db = MDB2::singleton(M::getDatabaseDSN());
+    $h = $db->dsn['hostspec'];
+    $u = $db->dsn['username'];
+    $p = $db->dsn['password'];
+    $dbn = $db->database_name;
+    $com = "cat $file | /usr/bin/env mysql --host=$h --user=$u --password=$p $dbn";
+    system($com);
 
   }
   public function executeRestore($params = array()) {
@@ -142,14 +206,7 @@ class Command_Db extends Command {
       $file = $filename;
       $toremove=false;
     }
-    $opt = PEAR::getStaticProperty('DB_DataObject', 'options');
-    $db = MDB2::singleton($opt['database']);
-    $h = $db->dsn['hostspec'];
-    $u = $db->dsn['username'];
-    $p = $db->dsn['password'];
-    $dbn = $db->database_name;
-    $com = "cd ".APP_ROOT."backups;cat $file | /usr/bin/env mysql --host=$h --user=$u --password=$p $dbn";
-    system($com);
+    self::executeSQLFile(APP_ROOT."backups/".$file);
     if($toremove) {
       passthru('gzip '.APP_ROOT.'backups/'.$file);
     }
