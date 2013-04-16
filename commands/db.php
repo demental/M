@@ -52,12 +52,17 @@ class Command_Db extends Command {
     if(empty($migration_date) && $params[0]!= 'reset') {
       return $this->error('No migration date. If you want to reinstall all the migrations add reset to your command');
     }
-    $new_migration_date = date('YmdHis');
+    $this->line('migrating database changes since '.$migration_date);
+    $new_migration_date = date('YmdHi');
     foreach(self::_migrations() as $date => $info) {
+      $this->line('Check '.$date.' : '.$info['description']);
       if($date > $migration_date) {
         self::_launch_migration($info,$info['type']);
+      } else {
+        $this->line('DONE');
       }
     }
+
     Config::setPref('migration_date', $new_migration_date);
   }
 
