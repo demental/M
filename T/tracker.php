@@ -35,7 +35,7 @@ class T_tracker extends T {
       return $args?vsprintf($string,$args):$string;
     }
     $string = $this->strings[$string];
-    $this->addUsage[$string];
+    $this->addUsage($string);
     if(is_array($args)) {
 
       return vsprintf($string,$args);
