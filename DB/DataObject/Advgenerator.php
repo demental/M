@@ -33,7 +33,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
     // = @return string generated methods
     // ===============================================================
     public static function hasCustomLinksMethod($input) {
-      return empty($input) ? false : preg_match('`###END_AUTOCODE.+function links *\(.+`s',$input) ? false : true;
+      return empty($input) ? false : preg_match('`###END_AUTOCODE.+function links *\(.+`s',$input) ? true : false;
     }
     function derivedHookFunctions($input = "")
     {
