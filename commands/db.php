@@ -180,6 +180,7 @@ class Command_Db extends Command {
     $p = $db->dsn['password'];
     $dbn = $db->database_name;
     $com = "cat $file | /usr/bin/env mysql --host=$h --user=$u --password=$p $dbn";
+    self::line($com);
     system($com);
 
   }
