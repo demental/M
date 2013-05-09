@@ -119,7 +119,7 @@ class M_Office_ShowTable extends M_Office_Controller {
   public function filterFields(&$do)
   {
     if (isset($_REQUEST['filterField']) && isset($_REQUEST['filterValue'])) {
-      $do->{$_REQUEST['filterField']} = $filterValue;
+      $do->{$_REQUEST['filterField']} = $_REQUEST['filterValue'];
       $filterString = __('%s for %s',array($do->tableName(),$_REQUEST['filterField'])).' = ';
       $links = $do->links();
       if (isset($links[$_REQUEST['filterField']])) {
