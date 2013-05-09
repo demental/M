@@ -113,10 +113,8 @@ class M_Office_ShowTable extends M_Office_Controller {
   function getDo($module) {
     $do = M_Office_Util::doForModule($module);
     if (isset($_REQUEST['filterField']) && isset($_REQUEST['filterValue'])) {
-      $db = $do->getDatabaseConnection();
-      $res = $db->quote($_REQUEST['filterValue']);
 
-      $do->whereAdd($db->quoteIdentifier($do->tableName()).'.'.$db->quoteIdentifier($_REQUEST['filterField']).' = '.$res);
+      $do->{$_REQUEST['filterField']} = $filterValue;
       $filterString = __('%s for %s',array($do->tableName(),$_REQUEST['filterField'])).' = ';
       $links = $do->links();
       if (isset($links[$_REQUEST['filterField']])) {
