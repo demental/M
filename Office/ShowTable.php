@@ -96,6 +96,8 @@ class M_Office_ShowTable extends M_Office_Controller {
       $this->assign('__listview',$this->getOption('view',$this->module));
     }
     $tpl = Mreg::get('tpl');
+    $do_before_fetch = clone($do);
+    $tpl->assign('do_before_fetch', $do_before_fetch);
     $tpl->concat('adminTitle',$this->moduloptions['title'].' :: Listing');
     $tpl->assign('adminHeader', $this->moduloptions['title']);
     $pagination = $this->paginate===false?false:true;

@@ -6,7 +6,7 @@
     <li><a href="<?php echo $action['url']?>" <?php echo $action['attributes']?>><?php echo $action['title']?></a></li>
   <?php endforeach?>
 </ul>
-<?php $this->i('showtable_beforelistview', null, true)?>
+<?php $this->i('showtable_beforelistview', array('do' => $do_before_fetch), true)?>
 <br style="clear:left" />
 <br />
 <span style="float:right;display:block"><?php _e('Total records')?> : <b><?php echo $dg->totalItems;?></b></span>
