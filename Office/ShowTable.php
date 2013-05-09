@@ -112,18 +112,23 @@ class M_Office_ShowTable extends M_Office_Controller {
   }
   function getDo($module) {
     $do = M_Office_Util::doForModule($module);
-    if (isset($_REQUEST['filterField']) && isset($_REQUEST['filterValue'])) {
+    $this->filterFields($do);
+		return $do;
+  }
 
+  public function filterFields(&$do)
+  {
+    if (isset($_REQUEST['filterField']) && isset($_REQUEST['filterValue'])) {
       $do->{$_REQUEST['filterField']} = $filterValue;
       $filterString = __('%s for %s',array($do->tableName(),$_REQUEST['filterField'])).' = ';
       $links = $do->links();
       if (isset($links[$_REQUEST['filterField']])) {
         list($lTab, $lFld) = explode(':', $links[$_REQUEST['filterField']]);
-				if($lTab) {
-					$linkedDo = DB_DataObject::factory($lTab);
-					$linkedDo->get($lFld, $_REQUEST['filterValue']);
-					$filterString .= '<a href="'.M_Office_Util::doURL($linkedDo, $lTab,array(),array('filterValue','filterField')).'">'.MyFB::getDataObjectString($linkedDo).' ('.$_REQUEST['filterValue'].')</a>';
-				}
+        if($lTab) {
+          $linkedDo = DB_DataObject::factory($lTab);
+          $linkedDo->get($lFld, $_REQUEST['filterValue']);
+          $filterString .= '<a href="'.M_Office_Util::doURL($linkedDo, $lTab,array(),array('filterValue','filterField')).'">'.MyFB::getDataObjectString($linkedDo).' ('.$_REQUEST['filterValue'].')</a>';
+        }
       } else {
         $filterString .= $_REQUEST['filterValue'].'<br/>';
       }
@@ -146,7 +151,7 @@ class M_Office_ShowTable extends M_Office_Controller {
       $this->append('subActions',$filterString);
 
     }
-		return $do;
+
   }
   /**
    * Returns a DAO filtered with the search criterias specified by the searchForm
@@ -155,7 +160,8 @@ class M_Office_ShowTable extends M_Office_Controller {
    * @return DB_DataObject filtered dataObject
    */
   function getSearchDO($searchValues) {
-    $do = $this->getDO($this->module);
+    $do = M_Office_Util::doForModule($this->module);
+
     $this->paginate = !$searchValues['__dontpaginate'];
     if(!$this->paginate) ini_set('memory_limit','512M');
     // Cleaning unused form fields
@@ -196,6 +202,7 @@ class M_Office_ShowTable extends M_Office_Controller {
      }
    }
     $this->append('subActions','<a href="'.M_Office_Util::getQueryParams(array(), array_merge(array('searchSubmit', '__submit__'), array_keys($do->table()))).'">'.__('Reset search filter').'</a>');
+    $this->filterFields($do);
     return $do;
   }
   function getAndProcessActions(&$do,$table) {
