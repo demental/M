@@ -113,10 +113,10 @@ class Config
 
   public static function parsePref($pref)
   {
-    if ($prefs->type == 'hidden') {
-      self::$prefArr[$prefs->var] = unserialize($prefs->val);
-    } elseif ($prefs->type == 'array') {
-      $temp = explode("\n",$prefs->val);
+    if ($pref->type == 'hidden') {
+      self::$prefArr[$pref->var] = unserialize($pref->val);
+    } elseif ($pref->type == 'array') {
+      $temp = explode("\n",$pref->val);
       $temp3 = array();
       foreach($temp as $k=>$v)
       {
@@ -129,7 +129,7 @@ class Config
       }
       return $temp3;
     } else {
-      return $prefs->val;
+      return $pref->val;
     }
   }
 
