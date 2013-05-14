@@ -14,14 +14,14 @@
  * Store and retrieve configuration options accross application
  */
 
-class Config 
+class Config
 {
 
 	/**
-	 * associative array that stores application preferences 
+	 * associative array that stores application preferences
 	 * Application preferences are configurable in the application's database
 	 * This array is used as a basic caching system by Config::getPref()
-	 * 
+	 *
 	 * @var $preftab array
 	 * @access protected
 	 */
@@ -31,7 +31,7 @@ class Config
 	/**
 	 *
 	 * associative array that stores application configuration values
-	 * all the configuration values are stored in this array at runtime, 
+	 * all the configuration values are stored in this array at runtime,
 	 * using Config::load($arr) in M_Setup::setUpEnv()
 	 *
 	 * @var		array
@@ -106,31 +106,32 @@ class Config
     $prefs->find();
     while($prefs->fetch())
     {
-      if ($prefs->type == 'hidden')
-      {
-        self::$prefArr[$prefs->var] = unserialize($prefs->val);
-      } elseif ($prefs->type == 'array')
-      {
-				$temp = explode("\n",$prefs->val);
-        $temp3 = array();
-				foreach($temp as $k=>$v)
-				{
-					$temp2 = explode(':',$v);
-					if(empty($temp2[1])) {
-					  $temp3[] = trim($temp2[0]);
-					} else {
-					  $temp3[trim($temp2[0])] = trim($temp2[1]);
-          }
-				}
-				self::$prefArr[$prefs->var] = $temp3;
-      }
-      else
-      {
-				self::$prefArr[$prefs->var] = $prefs->val;
-      }
+      self::$prefArr[$prefs->var] = self::parsePref($prefs);
     }
     file_put_contents($file, serialize(self::$prefArr));
 	}
+
+  public static function parsePref($pref)
+  {
+    if ($prefs->type == 'hidden') {
+      self::$prefArr[$prefs->var] = unserialize($prefs->val);
+    } elseif ($prefs->type == 'array') {
+      $temp = explode("\n",$prefs->val);
+      $temp3 = array();
+      foreach($temp as $k=>$v)
+      {
+        $temp2 = explode(':',$v);
+        if(empty($temp2[1])) {
+          $temp3[] = trim($temp2[0]);
+        } else {
+          $temp3[trim($temp2[0])] = trim($temp2[1]);
+        }
+      }
+      return $temp3;
+    } else {
+      return $prefs->val;
+    }
+  }
 
 	/**
 	 *
@@ -140,7 +141,7 @@ class Config
 	 * @static
 	 *
 	 */
-	public static function getAlternateLangs() 
+	public static function getAlternateLangs()
 	{
 		$l=Config::getAllLangs();
 		$cur=array_search(self::get('defaultLang'),$l);
@@ -157,7 +158,7 @@ class Config
 	 * @static
 	 *
 	 */
-	public static function getAllLangs() 
+	public static function getAllLangs()
 	{
 		return Config::get('installedLangs');
 	}
@@ -171,7 +172,7 @@ class Config
 	 * @static
 	 *
 	 */
-	public static function getAllLocales() 
+	public static function getAllLocales()
 	{
 		$ret = Config::get('installedLocales');
 		if(!is_array($ret)) {
@@ -194,7 +195,7 @@ class Config
 	 * @static
 	 *
 	 */
-	public static function get($var) 
+	public static function get($var)
 	{
 		return self::$cfgArr[$var];
 	}
@@ -209,7 +210,7 @@ class Config
 	 * @static
 	 *
 	 */
-	public static function set($var,$val) 
+	public static function set($var,$val)
 	{
 		self::$cfgArr[$var]=$val;
 	}
@@ -218,42 +219,43 @@ class Config
 	 *
 	 * Get preferences value.
 	 * Preferences are values stored in the application's database,
-	 * in a table called 'preferences' 
+	 * in a table called 'preferences'
 	 * allowing administrators to modify them through a web interface
 	 *
 	 * @access	public
 	 * @param	string	$var	Variable to get
+   * @param bool default true use cache file is true, database otherwise
 	 * @return	string	Value
 	 * @static
 	 *
 	 */
-	 
 
-	public static function getPref($var) 
+
+	public static function getPref($var, $use_cache = true)
 	{
+    if(!$use_cache) {
+      return self::getPrefFromDatabase($var);
+    }
 		if(!key_exists($var,self::$prefArr))
 		{
 		  self::loadPrefFile();
 		}
-/*
-  		if(!key_exists($var,self::$prefArr)) {
-  			$res = & DB_DataObject::factory('preferences');
-  			$res->var=$var;
-  			$res->find(true);
-  			if($res->type=='array') {
-  				$temp = explode("\n",$res->val);
-  				foreach($temp as $k=>$v) {
-  					$temp2 = explode(':',$v);
-  					$temp3[trim($temp2[0])] = trim($temp2[1]);
-  				}
-  				$res->val = $temp3;
-  			}
-  			self::$prefArr[$var]=$res->val;
-  		}
-		}
-*/
 		return self::$prefArr[$var];
 	}
+
+  /**
+   * Get preferences value from database storage
+   * @access public
+   * @param string $var Variable to get
+   * @return mixed
+   * @static
+   */
+  public static function getPrefFromDatabase($var) {
+    $pref = DB_DataObject::factory('preferences');
+    $pref->var = $var;
+    $pref->find(true);
+    return self::parsePref($pref);
+  }
 
 	/**
 	 *

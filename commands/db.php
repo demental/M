@@ -48,7 +48,7 @@ class Command_Db extends Command {
   }
   public function executeMigrate($params)
   {
-    $migration_date = Config::getPref('migration_date');
+    $migration_date = Config::getPref('migration_date', false);
     if(empty($migration_date) && $params[0]!= 'reset') {
       return $this->error('No migration date. If you want to reinstall all the migrations add reset to your command');
     }
@@ -63,8 +63,6 @@ class Command_Db extends Command {
         $this->line('DONE');
       }
     }
-
-
   }
 
   public function _launch_migration($info, $type)
