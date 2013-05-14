@@ -58,12 +58,13 @@ class Command_Db extends Command {
       $this->line('Check '.$date.' : '.$info['description']);
       if($date > $migration_date) {
         self::_launch_migration($info,$info['type']);
+        Config::setPref('migration_date', $date);
       } else {
         $this->line('DONE');
       }
     }
 
-    Config::setPref('migration_date', $new_migration_date);
+
   }
 
   public function _launch_migration($info, $type)
