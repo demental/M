@@ -125,19 +125,8 @@ class M_Office extends M_Office_Controller implements iListener {
 			$this->output='';
 			unset($this->localOutput);
 		}
-		if (isset($_REQUEST['regenerate']) && $this->getOption('regenerate')) {
-			require 'M/Office/Generator.php';
-			DB_DataObject::debugLevel(1);
-			ini_set('display_errors',1);
-			M_Office_Generator::regenerateSchema();
-			try {
-				$a = Mreg::get('authHelper');
-				echo '<h1>'.__('Regenerating privileges matrix').'</h1>';
-				$a->regenerateModList();
-			} catch(Exception $e) {
-				echo 'no authhelper, assuming no auth capable application';
-			}
-		}	elseif (isset($_REQUEST['debug'])) {
+
+    if (isset($_REQUEST['debug'])) {
 			$debug=(int)$_REQUEST['debug']%3;
 			DB_DataObject::debugLevel($debug);
 			ini_set('display_errors',1);
@@ -147,7 +136,6 @@ class M_Office extends M_Office_Controller implements iListener {
 			require 'M/Office/livesearch.php';
 			$aj = new M_Office_livesearch($_REQUEST['searchtext'],$_REQUEST['expand']);
 			$this->output = $aj->processRequest();
-
 			return;
 		} elseif($_REQUEST['treesort']) {
 			require 'M/Office/treesort.php';
@@ -188,11 +176,12 @@ class M_Office extends M_Office_Controller implements iListener {
 					$subController = new M_Office_ShowTable($_REQUEST['module'],$filter);
 					break;
 				case 'dyn':
-				  /*@todo : use a dispatcher here*/
+          /*@todo : use a dispatcher here*/
 				  // home module = available for everyone
 					$subController = Module::factory($_REQUEST['module'],array(
-            APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR,APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'modules/',
+            APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR, APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'modules/',
             'M/Office/modules/'));
+
           $allowAccess = $_REQUEST['module'] == 'home' || M_Office_Util::getGlobalOption('view','showtable',$_REQUEST['module']);
 
           if(!$allowAccess) {

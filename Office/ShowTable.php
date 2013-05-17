@@ -149,7 +149,15 @@ class M_Office_ShowTable extends M_Office_Controller {
       }
       $filterString = __('%s linked to %s',array($do->tableName(),$targetTableArray[0])).' '.$targetName;
       $this->append('subActions',$filterString);
+    }
 
+    if(isset($_REQUEST['ids']) && is_array($_REQUEST['ids'])) {
+      $db = $do->getDatabaseConnection();
+      $ids = array();
+      foreach($_REQUEST['ids'] as $id) {
+        $ids []= $db->quote($id);
+      }
+      $do->whereAdd($do->tableName().'.id IN('.implode(',',$ids).')');
     }
 
   }
