@@ -21,6 +21,9 @@ Mtpl::addJSinline('$("#chooseTable input").livesearch({autosearch:true,url:"'.RO
 
 		<script type="text/javascript">
 		/*<![CDATA[*/
+    <?php if(User::getInstance('office')->isLoggedIn()):?>
+    window.userid = <?php echo User::getInstance('office')->getId()?>;
+    <?php endif?>
 		<?php
 		if(is_array($javascript)){
 				foreach($javascript as $inst) {
