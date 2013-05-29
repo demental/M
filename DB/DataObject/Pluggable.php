@@ -362,7 +362,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
    */
   public function get($k = null,$v = null) {
     if(is_array($k)) {
-        $k = implode(',',$k);
+        $k = $this->sqlin($k);
         $this->whereAdd('id IN('.$k.')');
         return $this->find();
     } else {
