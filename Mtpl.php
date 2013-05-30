@@ -265,7 +265,7 @@ class Mtpl {
 	{
 		return $this->i($file, $params,$autoglobal);
 	}
-	private function get_part($file, $params = array(),$autoglobal = false)
+	public function get_part($file, $params = array(),$autoglobal = false)
 	{
 		$tpl = new Mtpl($this->_config['tplfolders']);
 		if($autoglobal) {
