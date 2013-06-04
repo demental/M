@@ -70,11 +70,12 @@ class PluginRegistry
     return array(
       APP_ROOT.PROJECT_NAME.'/Plugins/'.$cleanName.'/'.$section.'/',
       dirname(__FILE__).'/Plugins/'.$cleanName.'/'.$section.'/'
-    ); 
+    );
   }
   public static function initPlugin($pluginName)
   {
-    $initpath = self::$plugins_dir.$pluginName.'/init.php';
-    @include $initpath;
+    foreach(self::getPaths($pluginName,'') as $folder) {
+      if(file_exists($folder.'init.php')) include $folder.'init.php';
+    }
   }
 }
