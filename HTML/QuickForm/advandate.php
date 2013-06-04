@@ -38,7 +38,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 	 * international values for the first select
 	 * @access array
 	 */
-	 
+
 	 var $_locale = array(
 	 						'en'=>array(	'firstselect'=>array(	'none'=>'',
 																	'is'=>'is',
@@ -57,8 +57,8 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 	 														'H'=>'hours',
 	 														'i'=>'minutes'
 	 														)
-	 										
-	 										
+
+
 	 										),
 	 						'fr'=>array(	'firstselect'=>array(	'none'=>'',
 																	'is'=>'est',
@@ -99,7 +99,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 
    /**
     * Class constructor
-    * 
+    *
     * @access   public
     * @param    string  Element's name
     * @param    mixed   Label(s) for an element
@@ -118,7 +118,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
             foreach ($options as $name => $value) {
                 if ('language' == $name) {
                     $this->_options['language'] = isset($this->_locale[$value])? $value: 'en';
-					
+
                 } elseif (isset($this->_options[$name])) {
                     if (is_array($value)) {
                         $this->_options[$name] = @array_merge($this->_options[$name], $value);
@@ -149,7 +149,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
    function toHtml()
     {
     	$this->_js = '';
-    	       
+
 		if (!defined('HTML_QUICKFORM_ADVANDATE_EXISTS')) {
 			$this->_js .="
 
@@ -177,37 +177,46 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 					} else {
 						if (value=='between'){
               $(firstD).show();
-              $(secD).show();              
+              $(secD).show();
 							separator.show();
 						} else {
 							if (value=='inthelast'){
                 $(nbunits).show();
                 $(unit).show();
-                
+
 							} else {
 								if (value=='lastmonth'){
 									// Nothing to show
 								}
 							}
 						}
-					}				
+					}
 				}";
-			
-			
+
+
 				define('HTML_QUICKFORM_ADVANDATE_EXISTS',TRUE);
 		}
         include_once('HTML/QuickForm/Renderer/Default.php');
         $renderer = new HTML_QuickForm_Renderer_Default();
         $renderer->setElementTemplate('{element}');
-        parent::accept($renderer);        
-        return "<script type=\"text/javascript\">\n//<![CDATA[\n" . (empty($this->_js)? '': $this->_js) . "\n\$(function(){advandate_Update('".$this->_escapeString($this->getName())."');
-        $('select[name=\"".$this->_escapeString($this->getName())."[firstselect]\"]').bind('change',function(){advandate_Update('".$this->_escapeString($this->getName())."')});
-        });//]]>\n</script>" . $renderer->toHtml();
-}               
+        parent::accept($renderer);
+        if(class_exists('Mtpl')) {
+            $script = (empty($this->_js)? '': $this->_js) . "\n\$(function(){advandate_Update('".$this->_escapeString($this->getName())."');
+            $('select[name=\"".$this->_escapeString($this->getName())."[firstselect]\"]').bind('change',function(){advandate_Update('".$this->_escapeString($this->getName())."')});
+            });";
+            Mtpl::addJSinline($script);
+            return $renderer->toHtml();
+        } else {
+            return "<script type=\"text/javascript\">\n//<![CDATA[\n" . (empty($this->_js)? '': $this->_js) . "\n\$(function(){advandate_Update('".$this->_escapeString($this->getName())."');
+            $('select[name=\"".$this->_escapeString($this->getName())."[firstselect]\"]').bind('change',function(){advandate_Update('".$this->_escapeString($this->getName())."')});
+            });//]]>\n</script>" . $renderer->toHtml();
+
+        }
+}
 
 
   /**
-    * Quotes the string so that it can be used in Javascript string constants   
+    * Quotes the string so that it can be used in Javascript string constants
     *
     * @access private
     * @param  string
@@ -255,7 +264,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
         } elseif(is_array($value) && key_exists('d',$value)) {
         	// $value is a date array. Move it to the firstdate array. This needs to get better handled (TODO)
         	$value=array('firstselect'=>'','firstdate'=>$value,'seconddate'=>$value);
-        }	 
+        }
 			switch($value['firstselect']){
 				case 'is':
 				case 'before':
@@ -278,7 +287,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 				$this->_style[1]=$this->_style[3]=$this->_style[4]=$this->_style[5]=array('style'=>'display:none');
 				$this->_style[2]='style="display:none"';
 				break;
-			}								
+			}
         parent::setValue($value);
     }
 
@@ -303,13 +312,13 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 					unset($value['seconddate']);
 					unset($value['unit']);
 					unset($value['nbunits']);
-					break;				
+					break;
 			case 'currentmonth':
 					$value['firstdate']=date("Y-m", mktime(0, 0, 0, date('m'), 1, date('Y')));
 					unset($value['seconddate']);
 					unset($value['unit']);
 					unset($value['nbunits']);
-					break;				
+					break;
 			case 'is':
 			case 'before':
 			case 'after':
@@ -340,7 +349,7 @@ class HTML_QuickForm_advandate extends HTML_QuickForm_group
 				unset($value['seconddate']);
 				unset($value['unit']);
 				unset($value['nbunits']);
-				
+
 		}
 		if($assoc) {
             $value = array($this->getName()=>$value);
