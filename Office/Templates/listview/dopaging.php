@@ -42,16 +42,16 @@ function deleteCheckboxClicked(checkbox) {
 <?php echo $this->getCapture('pager')?>
 </div>
 <table class="datagrid">
-  <tr>
-    <?php $this->i('listview/dopaging/actionsheader',array('edit'=>$edit, 'selectable' => $selectable))?>
-    <?php foreach($dg->columns as $field=>$type):?>
-      <th><a href="<?php echo $dg->do->getPlugin('pager')->getSortLink($field)?>"><?php echo $dg->fieldNames[$field]?></a></th>
-    <?php endforeach?>
-    <?php $this->i('listview/dopaging/end_header', null, true)?>
-  </tr>
-  <?php $do = $dg->do?>
+<thead>  <tr>
+      <?php $this->i('listview/dopaging/actionsheader',array('edit'=>$edit, 'selectable' => $selectable))?>
+      <?php foreach($dg->columns as $field=>$type):?>
+        <th><a href="<?php echo $dg->do->getPlugin('pager')->getSortLink($field)?>"><?php echo $dg->fieldNames[$field]?></a></th>
+      <?php endforeach?>
+      <?php $this->i('listview/dopaging/end_header', null, true)?>
+    </tr>
+  </thead>  <?php $do = $dg->do?>
   <?php $pk = MyFB::_getPrimaryKey($do)?>
-  <?php foreach($do as $rec):?>
+<tbody>  <?php foreach($do as $rec):?>
   <?php $col=$col=='odd'?'even':'odd'?>
   <tr class="<?php echo $col?>">
     <?php if($selectable):?>
@@ -64,7 +64,7 @@ function deleteCheckboxClicked(checkbox) {
     <?php $this->i('listview/dopaging/end_row', array('do' => $do, 'field' => $field, 'type' => $type) , true)?>
   </tr>
   <?php endforeach?>
-</table>
+</tbody></table>
 <div class="pager">
 <?php echo $this->getCapture('pager')?>
 </div>
