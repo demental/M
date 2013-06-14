@@ -2,7 +2,7 @@
 <?php echo $f['javascript']?>
 <?php $num=1?>
 <form<?php echo $f['attributes']?>><?php echo $f['hidden']?>
-	<table class="<?php echo $class?$class:'formtable'?>">              
+	<table class="<?php echo $class?$class:'formtable'?>">
 	<?php foreach($f['sections'] as $section):?>
   <?php $num++?>
 	<?php if(!$hideLegend && $section['header']): ?>
@@ -11,7 +11,7 @@
 	<?php foreach($section['elements'] as $k=>$element):?>
 		<?php if($endform==1):?>
 		<?php $endform=0 ?>
-		<table class="formtable" cellspacing="4">              
+		<table class="formtable" cellspacing="4">
         <?php endif?>
         <?php if ($element['style']):?>
          	<?php $this->i('formelements/'.$element['style'].'.php',array('element'=>$element))?>
@@ -65,7 +65,7 @@
 					<tr><td>
               			<?php echo $selt['html']?>
 						<?php if(!empty($selt['label_unit'])):?>
-                        <span class="unit">&nbsp;<?php echo $selt['label_unit']?></span> 
+                        <span class="unit">&nbsp;<?php echo $selt['label_unit']?></span>
 						<?php endif?>
 						<?php if(!empty($selt['label'])):?>
                      </td></tr>
@@ -108,9 +108,9 @@
 </table>
 </form>
 <?php if($hidesection):?>
-<script type="text/javascript">
-  $(function(){
-    $('.sectionheader').css({'border-bottom':'1px solid #fff'}).toggle(
+<?php $this->startCapture('js')?>
+
+      $('.sectionheader').css({'border-bottom':'1px solid #fff'}).toggle(
     function(){
       $(this).parent().parent().find('.'+$(this).attr('rel')).show('fast');
     },
@@ -119,6 +119,5 @@
     }
     );
     $('.sectionline').hide();
-  })
-</script>
-<?php endif?>  
+
+<?php $this->endCapture(); Mtpl::addJSinline($this->getCapture('js'))?><?php endif?>
