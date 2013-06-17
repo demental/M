@@ -1,5 +1,5 @@
+<?php Mtpl::addJS('jquery.autocomplete.min')?>
 <link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />
-<script type="text/javascript" src="/js/jquery.autocomplete.min.js"></script>
 <?php if($local):?>
 <?php else:?>
 <?php endif?>
@@ -7,9 +7,9 @@
 <?php $arr[]=$tag->strip?>
 <?php endforeach?>
 
-<script type="text/javascript">
-$(function(){
+<?php $this->startCapture('js')?>
+
   data = <?php echo json_encode($arr)?>;
   $('#<?php echo $field?>').autocomplete(data);
-})
-</script>
+
+<?php $this->endCapture(); Mtpl::addJSinline($this->getCapture('js'))?>
