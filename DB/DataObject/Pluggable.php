@@ -546,8 +546,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
         $this->raiseError("getLink: row not set $row", DB_DATAOBJECT_ERROR_NODATA);
         return false;
     }
-
-    if($obj = DB_DataObject_Pluggable::retreiveFromRegistry($table,$this->$row)) {
+    if($obj = DB_DataObject_Pluggable::retreiveFromRegistry($table,$this->{$row})) {
 
       return $obj;
     }

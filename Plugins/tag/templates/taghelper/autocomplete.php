@@ -1,4 +1,3 @@
-<?php Mtpl::addJS('jquery.autocomplete.min')?>
 <link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />
 <?php if($local):?>
 <?php else:?>
