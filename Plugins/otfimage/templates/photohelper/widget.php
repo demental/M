@@ -17,16 +17,15 @@
 </ul>
 <?php $this->endcapture()?>
 
-<a href="<?php echo M_Office::URL('otfimage:photohelper/widget',array('record'=>$record->pk(),'table'=>$record->tableName()))?>" id="showimagelist_<?php echo $record->tableName()?>_<?php echo $record->pk()?>"><?php _e('%s images',array($cnt))?></a> - 
+<a href="<?php echo M_Office::URL('otfimage:photohelper/widget',array('record'=>$record->pk(),'table'=>$record->tableName()))?>" id="showimagelist_<?php echo $record->tableName()?>_<?php echo $record->pk()?>"><?php _e('%s images',array($cnt))?></a> -
 <a id="addphotolink_<?php echo $record->tableName()?>_<?php echo $record->pk()?>" href="<?php echo M_Office::URL('otfimage:photohelper/add',array('record'=>$record->pk(),'table'=>$record->tableName()))?>"><?php _e('Add image')?></a>
 <?php echo $this->getCapture('imagelist')?>
 
-<script type="text/javascript">
-$(function(){
-  if(typeof(initpheditor)=='function') {
-    initpheditor('<?php echo $record->tableName()?>_<?php echo $record->pk()?>');                
-  }
-})
-</script>
+<?php $this->startCapture('js')?>
 
+    if(typeof(initpheditor)=='function') {
+    initpheditor('<?php echo $record->tableName()?>_<?php echo $record->pk()?>');
+  }
+
+<?php $this->endCapture(); Mtpl::addJSinline($this->getCapture('js'))?>
 </div>
