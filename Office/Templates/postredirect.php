@@ -1,12 +1,13 @@
-<script type="text/javascript">
-$(function(){
-  $('#next').hide();
+<?php $this->startCapture('js')?>
+
+    $('#next').hide();
   resend = function(){
     $('#redirectform').submit();
   }
     setTimeout(resend,0);
-});
-</script>
+
+<?php $this->endCapture(); Mtpl::addJSinline($this->getCapture('js'))?>
+
 <?php $f = $this->rf($redirectform,'static')?>
 <p>Vous allez être redirigé. Si la page ne se recharge pas cliquez sur "continuer".</p>
 <form <?php echo $f['attributes']?>>
