@@ -1,19 +1,19 @@
-<script type="text/javascript">
-$(function(){
-  $('#next').hide();
+<?php $this->startCapture('js')?>
+
+    $('#next').hide();
   resend = function(){
     $('#redirectform').submit();
   }
     setTimeout(resend,<?php echo $timeout?>);
-});
-</script>
+
+<?php $this->endCapture(); Mtpl::addJSinline($this->getCapture('js'))?>
 <?php $f = $this->rf($redirectform,'static')?>
 <h3><?php echo $actionName?> - traitement par lot</h3>
 <form <?php echo $f['attributes']?>>
   <?php echo $f['hidden']?>
 <div style="width:100%;border:1px solid #000;padding:2px">
   <div style="width:<?php echo $start*100/$total?>%;background:#449">&nbsp;</div>
-</div>  
+</div>
 <?php echo $start?> / <?php echo $total?>.
 </p><?php $remaining=($step>0)?($timeout+2)*(($total-$start)/$step):0; ?>Temps restant estimé : <?php echo round($remaining/60)?> m <?php echo $remaining%60?> s</p>
 <?php if($timeout):?>
