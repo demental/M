@@ -15,16 +15,16 @@
       <td><?php echo $tag->strip?></td>
       <td><?php echo $tag->nbtagged()?></td>
       <td><?php echo $tag->nbwasAdded()?> times</td>
-      <td><?php echo $tag->nbwasRemoved()?> times</td>      
+      <td><?php echo $tag->nbwasRemoved()?> times</td>
       <td><a class="del" href="<?php echo M_Office::URL('tag:admin/delete',array('id'=>$tag->id))?>"><img src="/images/icons/cross.png" /></a></td>
     </tr>
   <?php endforeach?>
   </tbody>
 </table>
-<script type="text/javascript">  
-$(function(){
-  $('.tagmanager a.del').click(function(){
+<?php $this->startCapture('js')?>
+
+    $('.tagmanager a.del').click(function(){
     return confirm('Are you sure ???? THIS CANNOT BE UNDONE !!');
   })
-})
-</script>
+
+<?php $this->endCapture(); Mtpl::addJSinline($this->getCapture('js'))?>

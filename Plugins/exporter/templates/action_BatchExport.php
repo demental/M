@@ -10,13 +10,13 @@
         <?php echo $f['store']['html']?><?php _e('Store this query as')?> <?php echo $f['storeas']['html']?><br />
         .. <?php _e('Or load stored query')?> <?php echo $f['stored']['html']?>
       <?php endif?>
-    </div>  
-  </fieldset>  
+    </div>
+  </fieldset>
   <h2 class="submit"><?php echo $f['__submit__']['html']?></h2>
 </form>
-<script type="text/javascript">
-$(function(){
-  $('#customcontainer').hide();
+<?php $this->startCapture('js')?>
+
+    $('#customcontainer').hide();
   $('#customshowhide').toggle(function(){$('#customcontainer').show()},function(){$('#customcontainer').hide()});
-})
-</script>
+
+<?php $this->endCapture(); Mtpl::addJSinline($this->getCapture('js'))?>

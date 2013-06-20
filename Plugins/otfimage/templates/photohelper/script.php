@@ -5,7 +5,6 @@
 <?php $this->startCapture('js')?>
 
   var initpheditor;
-$(function(){
   initpheditor = function(blockid) {
   $('#showimagelist_'+blockid).toggle(function(){$('#imagelist_'+blockid).hide()},function(){$('#imagelist_'+blockid).show()});
   $('.otf_deletephoto').click(function(){
@@ -38,7 +37,6 @@ $(function(){
                     }
                   });
   }
-})
 
 <?php $this->endCapture(); Mtpl::addJSinline($this->getCapture('js'))?><div id="waitmessage" style="display:none">
   <?php _e('Image loading')?>....

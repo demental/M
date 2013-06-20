@@ -13,13 +13,13 @@
     </tr>
   </table>
 </form>
-<script type="text/javascript">
-$(function(){
-  updateclone = function(){
+<?php $this->startCapture('js')?>
+
+    updateclone = function(){
     $('#tableclone').text($('select[name=table]').val());
   }
   $('select[name=table]').bind('change',updateclone);
   updateclone();
-})
-</script>
+
+<?php $this->endCapture(); Mtpl::addJSinline($this->getCapture('js'))?>
 <?php endif?>
