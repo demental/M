@@ -13,7 +13,7 @@ define ('ERROR_WRONG_PASSWORD','1');
 define ('ERROR_NO_USER','2');
 
 /**
- * 
+ *
  * Web user management
  *
  */
@@ -73,7 +73,7 @@ class User{
 			if(isset($_POST[$sn])) if(strlen($_POST[$sn])!=32) unset($_POST[$sn]);
 			if(isset($_COOKIE[$sn])) if(strlen($_COOKIE[$sn])!=32) unset($_COOKIE[$sn]);
 			if(isset($PHPSESSID)) if(strlen($PHPSESSID)!=32) unset($PHPSESSID);
-      
+
 			session_start();
 		}
 
@@ -87,7 +87,7 @@ class User{
 			self::$_instance[$context]->setLanguage($_SESSION[$context]['userLanguage']);
 			self::$_instance[$context]->setId($_SESSION[$context]['userId']);
 			self::$_instance[$context]->setProperties($_SESSION[$context]['userProperties']);
-			self::$_instance[$context]->setTarget($_SESSION[$context]['target']);			
+			self::$_instance[$context]->setTarget($_SESSION[$context]['target']);
 			self::$_instance[$context]->setLevel($data['defaults']['level']);
 			if(!empty($data['defaults']['preInitHook']) && function_exists($data['defaults']['preInitHook'])) {
 				call_user_func($data['defaults']['preInitHook'],self::$_instance[$context]);
@@ -101,7 +101,7 @@ class User{
 			throw new Exception('Users are not configured : '.print_r($settings,true));
 		}
 		$this->containers=$settings;
-		 
+
 	}
 	function setContext($context) {
 		$this->context=$context;
@@ -183,6 +183,7 @@ class User{
 			var_dump($op);
 		}
 		$this->currentContainer->get($id);
+    $this->currentContainer->onUp();
 		$this->getPrefs();
 	}
 	function getLastVisit(){
@@ -197,6 +198,7 @@ class User{
 	}
 
 	function logout(){
+    $this->currentContainer->onSignout();
 		$this->currentContainer=null;
 		$this->loggedIn=false;
 		$this->level=null;
@@ -206,6 +208,7 @@ class User{
 		if(key_exists(COOKIEVAL,$_COOKIE)){
 			unset($_COOKIE[COOKIEVAL]);
 		}
+
 	}
 	function login($login,$pwd,$persistent=FALSE){
 		$error="";
@@ -230,11 +233,11 @@ class User{
 			$dbdo->$lg=$login;
 			$result = $dbdo->find(true);
 		}
-		
+
 		if(!$result){
 			$error=ERROR_NO_USER;
 		} else {
-      
+
 			if($callback = $defs['passEncryption']) {
 				$pwd = call_user_func($callback,$pwd);
 			} else {
@@ -271,6 +274,7 @@ class User{
 			$this->currentContainer->{$fieldDefinition['last_cnx']}=date('Y-m-d H:i:s');
 			$this->currentContainer->update();
 		}
+    $this->currentContainer->onSignin();
 		$this->store();
 	}
 	/**
