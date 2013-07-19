@@ -33,9 +33,14 @@ class Command_generate extends Command {
     call_user_func_array(array($this,'generate_'.$generator), $params);
   }
 
-  public function generate_migration($name, $format = 'php')
+  public function generate_migration($name, $format = 'php', $pluginName = '')
   {
-    $file = APP_ROOT.'db/migrations/'.date('YmdHi').'_'.Strings::snake($name).'.'.$format;
+    if(!empty($pluginName)) {
+      $basepath = PluginRegistry::initPlugin($pluginName);
+    } else {
+      $basepath = APP_ROOT;
+    }
+    $file = $basepath.'db/migrations/'.date('YmdHi').'_'.Strings::snake($name).'.'.$format;
     $classname = Strings::camel($name);
     $source = file_get_contents(dirname(__FILE__).'/generate/migration/'.$format.'.tpl');
     $source = str_replace('[MIGRATION_NAME]', $classname, $source);

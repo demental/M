@@ -75,7 +75,9 @@ class PluginRegistry
   public static function initPlugin($pluginName)
   {
     foreach(self::getPaths($pluginName,'') as $folder) {
-      if(file_exists($folder.'init.php')) include $folder.'init.php';
+      if(file_exists($folder.'init.php')) include_once $folder.'init.php';
+      if(is_dir($folder)) return $folder;
     }
+    return false;
   }
 }
