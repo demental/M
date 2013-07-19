@@ -38,7 +38,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
     function derivedHookFunctions($input = "")
     {
       $addlinks = !self::hasCustomLinksMethod($input);
-      $addreverselinks = empty($input)?true:eregi('function reverseLinks *\(.+###END_AUTOCODE',$input)?true:false;
+      $addreverselinks = empty($input) ? true : preg_match('`function reverseLinks *\(.+###END_AUTOCODE`s',$input) ? true : false;
 
         if($addlinks) {
           $l = $this->_getIniLinks($this->table);
@@ -351,11 +351,6 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
       // and replace them with $x = clone($y);
       // due to the change in the PHP5 clone design.
 
-      if ( substr(phpversion(),0,1) < 5) {
-          $body .= "\n";
-          $body .= "    /* ZE2 compatibility trick*/\n";
-          $body .= "    function __clone() { return \$this;}\n";
-      }
 
       // simple creation tools ! (static stuff!)
       $body .= "\n";
@@ -536,4 +531,43 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
 
 
     }
+
+    /**
+    * Convert a table name into a file name -> override this if you want a different mapping
+    *
+    * @access  public
+    * @return  string file name;
+    */
+
+
+    function getFileNameFromTableName($table)
+    {
+      // Return path if class already generated (useful for plugins for example)
+      //
+      $object = DB_DataObject::factory($table);
+      if(!PEAR::isError($object)) {
+        $reflector = new ReflectionClass(get_class($object));
+        return $reflector->getFileName();
+      }
+        $options = &PEAR::getStaticProperty('DB_DataObject','options');
+        $base = explode(':', $options['class_location']);
+        $base = $base[0];
+        if (strpos($base,'%s') !== false) {
+            $base = dirname($base);
+        }
+        if (!file_exists($base)) {
+            require_once 'System.php';
+            System::mkdir(array('-p',$base));
+        }
+        if (strpos($options['class_location'],'%s') !== false) {
+            $outfilename   = sprintf($options['class_location'],
+                    preg_replace('/[^A-Z0-9]/i','_',ucfirst($this->table)));
+        } else {
+            $outfilename = "{$base}/".preg_replace('/[^A-Z0-9]/i','_',ucfirst($this->table)).".php";
+        }
+        return $outfilename;
+
+    }
+
+
 }
