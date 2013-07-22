@@ -46,6 +46,7 @@ class Command_Db extends Command {
       call_user_func_array(array($this,$method),array($params));
     }
   }
+
   public function executeMigrate($params)
   {
     $migration_date = Config::getPref('migration_date', false);
@@ -73,6 +74,7 @@ class Command_Db extends Command {
       self::_launch_sql_migration($info);
     }
   }
+
   public function _launch_php_migration($info)
   {
     require_once $info['file'];
@@ -81,27 +83,41 @@ class Command_Db extends Command {
     $migration->up();
     $this->line('Done :: '.$info['description']);
   }
+
   public function _launch_sql_migration($info)
   {
     $this->line('# Migration :: '.$info['description']);
     $this->line('Injecting SQL file : '.$info['file']);
     self::executeSQLFile($info['file']);
   }
+
   protected static function _migrations()
   {
     $out = array();
-    foreach(FileUtils::getFiles(APP_ROOT.'db/migrations/') as $file) {
+    $folders = array(APP_ROOT.'db/migrations/');
+    foreach(PluginRegistry::registeredPlugins() as $plugin) {
+      $folders[] = PluginRegistry::path($plugin).'db/migrations/';
+    }
+    foreach($folders as $folder) {
+      self::_migrations_in_folder($folder, $out);
+    }
+    ksort($out);
+    return $out;
+  }
+
+  protected static function _migrations_in_folder($folder, &$out) {
+    foreach(FileUtils::getFiles($folder) as $file) {
       if(preg_match('`^(\d+)_(.+)\.(php|sql)$`', basename($file), $matches)) {
         $out[$matches[1]] = array(
-          'file' => APP_ROOT.'db/migrations/'.$file,
+          'file' => $folder.$file,
           'class' => 'Migration_'.Strings::camel($matches[2]),
           'description' => str_replace('_',' ',$matches[2]),
           'type' => $matches[3]
         );
       }
     }
-    return $out;
   }
+
   public function executeRegen($params)
   {
     $this->line('Regenerating DOclasses');
@@ -111,6 +127,7 @@ class Command_Db extends Command {
     $this->line('DOclasses need to be reloaded so ...');
     $this->launch('reboot');
   }
+
   public function executeBackup($params = array())
   {
     $filename = $params[0];

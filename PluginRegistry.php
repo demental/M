@@ -15,6 +15,7 @@
 class PluginRegistry
 {
   private static $_instances;
+  private static $_names;
   public static $plugins_dir = 'M/Plugins/';
   public static final function getInstance($pluginName, $section = 'DB')
   {
@@ -74,10 +75,23 @@ class PluginRegistry
   }
   public static function initPlugin($pluginName)
   {
+    if(!$folder = self::path($pluginName)) return false;
+    self::$_names[]=$pluginName;
+    if(file_exists($folder.'init.php')) {
+      include_once $folder.'init.php';
+      return true;
+    }
+    return false;
+  }
+  public static function path($pluginName)
+  {
     foreach(self::getPaths($pluginName,'') as $folder) {
-      if(file_exists($folder.'init.php')) include_once $folder.'init.php';
       if(is_dir($folder)) return $folder;
     }
     return false;
+  }
+  public static function registeredPlugins()
+  {
+    return self::$_names;
   }
 }
