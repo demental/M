@@ -94,7 +94,9 @@ array(
   'imaildriver'    =>'M/Mail/iMailDriver.php',
   'payment_response_exception'=>'M/Payment2/Exception.php',
   'payment_request_exception'=>'M/Payment2/Exception.php',
-  'wptools'=>'M/WPTools.php'
+  'wptools'=>'M/WPTools.php',
+  'spyc'                  =>  'M/lib/spyc.php',
+
   )
   );
 
