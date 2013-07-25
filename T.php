@@ -20,9 +20,13 @@ class T {
 	public static $culture;
 	public static $instances=array();
 	public static $config = array('driver'=>'reader');
+  protected static $paths = array();
+
 	protected $locale;
-	protected $loaded=TRUE;
-	protected $strings=array();
+	protected $loaded = TRUE;
+	protected $strings = array();
+
+
 	public static function &getInstance( $lang=null )
 	{
 		if(is_null($lang)) {
@@ -65,27 +69,38 @@ class T {
 	{
 		T::$instances[$l]=$i;
 	}
+
 	public function getStrings() {
 		return $this->strings;
 	}
+
 	public static function setConfig ( $conf )
 	{
 		T::$config = $conf;
 	}
+
 	// TODO rename to getConfigValue
 	public static function getConfig ( $value )
 	{
 		return T::$config[$value];
 	}
+
+  public static function paths() {
+    if(!is_array(self::$paths)) {
+      self::$paths = array(APP_ROOT.PROJECT_NAME.'/lang/', APP_ROOT.PROJECT_NAME.'/'.APP_NAME.'/lang/');
+    }
+    return self::$paths;
+  }
+  public static function addPath($path)
+  {
+    if(!is_dir($path)) return;
+    self::paths();
+    self::$paths[] = $path;
+  }
 	public function init ( $lang ,$verbose = false)
 	{
 		$this->locale=substr($lang,0,2);
 
-		$xmlfile = T::getConfig('path').$this->locale.".xml";
-		$ymlfile = T::getConfig('path').$this->locale.".yml";
-		if($verbose) {
-			echo 'Source file : '.$file."\n";
-		}
 		if($this->cacheIsUpToDate($this->locale,$file)) {
 			$lng = $this->getStringsFromCache($this->locale,$verbose);
       $this->setStrings($lngtb);
@@ -94,17 +109,26 @@ class T {
 			}
 		} else {
       $lngtb = array();
-      if(file_exists($xmlfile)) {
-        $this->getStringsFromXML($xmlfile, $verbose, $lngtb);
-      }
-      if(file_exists($ymlfile)) {
-        $this->getStringsFromYML($ymlfile, $verbose, $lngtb);
+      foreach(T::paths() as $path) {
+        $xmlfile = $path.$this->locale.".xml";
+        $ymlfile = $path.$this->locale.".yml";
+    		if($verbose) {
+          echo 'Source file : '.$file."\n";
+        }
+
+        if(file_exists($xmlfile)) {
+          $this->getStringsFromXML($xmlfile, $verbose, $lngtb);
+        }
+
+        if(file_exists($ymlfile)) {
+          $this->getStringsFromYML($ymlfile, $verbose, $lngtb);
+        }
       }
       $this->setStrings($lngtb);
-			$this->rebuildCache();
+      $this->rebuildCache();
 			if($verbose) {
-				echo 'Cache was deprecated, retreiving from XML and rebuilding cache'."\n";
-			}
+        echo 'Cache was deprecated, retreiving from XML and rebuilding cache'."\n";
+      }
 
 		}
 	}
@@ -149,8 +173,8 @@ class T {
   {
     $yaml = Spyc::YAMLLoad($file);
     $result = MArray::flatten_keys($yaml[$this->locale]);
-    if(is_array($result)) {
 
+    if(is_array($result)) {
       $lngtb = array_merge($lngtb, $result);
     }
 
@@ -159,32 +183,19 @@ class T {
 	{
 		require_once 'XML/Unserializer.php';
 	  Log::info('T::retreiving strings from xml');
-		$xml=new XML_Unserializer();
 
-		if(!file_exists($file)) {
-			if($verbose) {
-				echo 'file '.$file.' not found. Filling with an empty array'."\n";
-			}
-			$this->setStrings(array());
-			return;
-			// TODO this causes problem in the application building process
-			// because whenever we launch a command that relies somewhat on __()
-			// it complains about lang.xml file not found
-			$this->loaded = false;
-			throw new Exception ('Translate file '.$file.' not found !');
-			return;
-		}
-		$xmlC=file_get_contents($file);
-		$xml->setOption('encoding',T::getConfig('encoding'));
-    $xml->setOption(XML_SERIALIZER_OPTION_ENTITIES, XML_SERIALIZER_ENTITIES_NONE);
-		$xml->unserialize($xmlC);
-		$lngtb = array_merge($xml->getUnserializedData(), $lngtb);
+		$serializer = new XML_Unserializer();
+		$xml_content = file_get_contents($file);
+		$serializer->setOption('encoding',T::getConfig('encoding'));
+    $serializer->setOption(XML_SERIALIZER_OPTION_ENTITIES, XML_SERIALIZER_ENTITIES_NONE);
+		$serializer->unserialize($xml_content);
 
 		if($verbose) {
 			echo 'Retrieving lang strings from XML file '.$file.' encoding '.T::getConfig('encoding')."\n";
 		}
-		$lngtb=T::linearize($lngtb);
-    return $lngtb;
+
+		$local_lngtb = T::linearize($xml->getUnserializedData());
+		$lngtb = array_merge($lngtb, $local_lngtb);
 	}
 
 	public function save($verbose = false, $destfile= '') {
