@@ -37,7 +37,7 @@ class M_Office_ChooseTable extends M_Office_Controller {
     foreach ($modules as $id => $module) {
 
       if(is_array($module)) {
-        $res = array( 'title' => $moduleconf[$id]['title'] ? $moduleconf[$id]['title'] : $id,
+        $res = array( 'title' => __("modules.$id.frontname"),
                       'icon'  => $moduleconf[$id]['icon']
                     );
 
@@ -46,7 +46,7 @@ class M_Office_ChooseTable extends M_Office_Controller {
           $res['expanded'] = true;
         }
       } else {
-        $res = array( 'title' => $moduleconf[$module]['title'],
+        $res = array( 'title' => __("modules.$module.frontname"),
                       'icon'  => $moduleconf[$module]['icon'],
                       'url'   => M_Office_Util::getQueryParams(array('module' => $module), $diff)
 
