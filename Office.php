@@ -227,7 +227,7 @@ class M_Office extends M_Office_Controller implements iListener {
         $tpl->assign('__action',array($action.'.bloc',$action));
       }
 		}
-		$tpl->assign('regenerate',$this->getOption('regenerate'));
+
 		$tables = $this->getGlobalOption('searchInTables','frontendhome');
 		$tpl->assign('messages',$_SESSION['flashmessages']);
 		if(count($tables)==0) {
