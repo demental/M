@@ -15,7 +15,7 @@
  *
  */
 class MArray {
-	
+
 	/**
 	 *
 	 * Merge array two arrays recursively
@@ -62,4 +62,25 @@ class MArray {
     }
     return $result;
   }
+
+  public static function flatten_keys($array, $prefix = '')
+  {
+      $result = array();
+
+      foreach ($array as $key => $value)
+      {
+          $new_key = $prefix . (empty($prefix) ? '' : '.') . $key;
+
+          if (is_array($value))
+          {
+              $result = array_merge($result, self::flatten_keys($value, $new_key));
+          }
+          else
+          {
+              $result[$new_key] = $value;
+          }
+      }
+
+      return $result;
+    }
 }

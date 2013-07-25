@@ -81,17 +81,26 @@ class T {
 	{
 		$this->locale=substr($lang,0,2);
 
-		$file = T::getConfig('path').$this->locale.".xml";
+		$xmlfile = T::getConfig('path').$this->locale.".xml";
+		$ymlfile = T::getConfig('path').$this->locale.".yml";
 		if($verbose) {
 			echo 'Source file : '.$file."\n";
 		}
 		if($this->cacheIsUpToDate($this->locale,$file)) {
-			$this->getStringsFromCache($this->locale,$verbose);
+			$lng = $this->getStringsFromCache($this->locale,$verbose);
+      $this->setStrings($lngtb);
 			if($verbose) {
 				echo 'Cache is up to date, retreiving from cache'."\n";
 			}
 		} else {
-			$lngtb = $this->getStringsFromXML($file,$verbose);
+      $lngtb = array();
+      if(file_exists($xmlfile)) {
+        $this->getStringsFromXML($xmlfile, $verbose, $lngtb);
+      }
+      if(file_exists($ymlfile)) {
+        $this->getStringsFromYML($ymlfile, $verbose, $lngtb);
+      }
+      $this->setStrings($lngtb);
 			$this->rebuildCache();
 			if($verbose) {
 				echo 'Cache was deprecated, retreiving from XML and rebuilding cache'."\n";
@@ -134,9 +143,19 @@ class T {
 		if($verbose) {
 			echo 'Retrieving lang strings from cache file '.$cachefile."\n";
 		}
-		$this->setStrings($data);
+    return $lngtb;
 	}
-	private function getStringsFromXML ( $file, $verbose = false )
+  private function getStringsFromYML( $file, $verbose = false, &$lngtb )
+  {
+    $yaml = Spyc::YAMLLoad($file);
+    $result = MArray::flatten_keys($yaml[$this->locale]);
+    if(is_array($result)) {
+
+      $lngtb = array_merge($lngtb, $result);
+    }
+
+  }
+	private function getStringsFromXML ( $file, $verbose = false, &$lngtb )
 	{
 		require_once 'XML/Unserializer.php';
 	  Log::info('T::retreiving strings from xml');
@@ -159,13 +178,13 @@ class T {
 		$xml->setOption('encoding',T::getConfig('encoding'));
     $xml->setOption(XML_SERIALIZER_OPTION_ENTITIES, XML_SERIALIZER_ENTITIES_NONE);
 		$xml->unserialize($xmlC);
-		$lngtb = $xml->getUnserializedData();
+		$lngtb = array_merge($xml->getUnserializedData(), $lngtb);
 
 		if($verbose) {
 			echo 'Retrieving lang strings from XML file '.$file.' encoding '.T::getConfig('encoding')."\n";
 		}
 		$lngtb=T::linearize($lngtb);
-		$this->setStrings($lngtb);
+    return $lngtb;
 	}
 
 	public function save($verbose = false, $destfile= '') {
@@ -289,6 +308,7 @@ Error while serializing data !
 		}
 		return $out;
 	}
+
 }
 
 
