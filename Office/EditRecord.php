@@ -223,7 +223,7 @@ class M_Office_EditRecord extends M_Office_Controller {
                           $removed=array('module','filternValue','filternField', 'record','__record_ref');
       $link = M_Office_Util::getQueryParams($parameters,$removed);
       $add = false;
-      $tableName = M_Office_Util::getFrontTableName($ntableArray[0].' <small>(n-n)</small>');
+      $tableName = __("modules.$ntableArray[0].frontname") .' <small>(n-n)</small>';
     } else {
       $linkDo->$linkField=$this->do->$field;
       $nbLinkedRecords=$linkDo->count();
@@ -242,7 +242,7 @@ class M_Office_EditRecord extends M_Office_Controller {
       } else {
         $link = M_Office_Util::getQueryParams($parameters,$removed);
       }
-      $tableName = M_Office_Util::getFrontTableName($linkTab);
+      $tableName = __("modules.$linkTab.frontname");
       $add = $this->getGlobalOption('add','showtable', $linkTab)?true:false;
     }
     return array( 'table'=>$linkTab,

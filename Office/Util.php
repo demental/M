@@ -131,19 +131,6 @@ class M_Office_Util {
     die;
   }
 
-  /**
-   * Returns the name displayed in the interface for a module
-   * @param  $module  string module name
-   * @return string   name of the module
-   */
-  public static function getFrontTableName($module) {
-      $op = PEAR::getStaticProperty('m_office', 'options');
-      $modlist = $op['modules'];
-      if(key_exists($module,$modlist)) {
-          return $modlist[$module]['title'];
-      }
-      return $module;
-  }
   public static function getAjaxQueryParams($params = array(), $remove = array(), $entities = false) {
       return self::getQueryParams(array_merge($params,array('ajax'=>1)),$remove,$entities);
   }
