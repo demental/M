@@ -20,7 +20,7 @@ class T {
 	public static $culture;
 	public static $instances=array();
 	public static $config = array('driver'=>'reader');
-  protected static $paths = array();
+  protected static $paths;
 
 	protected $locale;
 	protected $loaded = TRUE;
@@ -194,7 +194,7 @@ class T {
 			echo 'Retrieving lang strings from XML file '.$file.' encoding '.T::getConfig('encoding')."\n";
 		}
 
-		$local_lngtb = T::linearize($xml->getUnserializedData());
+		$local_lngtb = T::linearize($serializer->getUnserializedData());
 		$lngtb = array_merge($lngtb, $local_lngtb);
 	}
 
