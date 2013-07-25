@@ -101,8 +101,8 @@ class T {
 	{
 		$this->locale=substr($lang,0,2);
 
-		if($this->cacheIsUpToDate($this->locale,$file)) {
-			$lng = $this->getStringsFromCache($this->locale,$verbose);
+		if($this->cacheIsUpToDate($this->locale)) {
+			$lngtb = $this->getStringsFromCache($this->locale,$verbose);
       $this->setStrings($lngtb);
 			if($verbose) {
 				echo 'Cache is up to date, retreiving from cache'."\n";
@@ -132,18 +132,24 @@ class T {
 
 		}
 	}
-	private function cacheIsUpToDate ($lang,$file)
+	private function cacheIsUpToDate ($lang)
 	{
 	  if(T::getConfig('nocache')) return false;
 		$cachefile = T::getConfig('cacheDir').'/'.$lang.'.cache.php';
 		if(!file_exists($cachefile)) {
 			return false;
 		}
+
 		$timecache = filemtime($cachefile);
-		$timexml = filemtime($file);
-		if($timecache < $timexml) {
-			return false;
-		}
+    foreach(T::paths() as $path) {
+      $xmlfile = $path.$this->locale.".xml";
+      $ymlfile = $path.$this->locale.".yml";
+      $timexml = filemtime($xmlfile);
+      $timeyml = filemtime($ymlfile);
+  		if($timecache < $timexml || $timecache < $timeyml) {
+  			return false;
+      }
+    }
 		return true;
 	}
 	private function rebuildCache ()
@@ -167,7 +173,7 @@ class T {
 		if($verbose) {
 			echo 'Retrieving lang strings from cache file '.$cachefile."\n";
 		}
-    return $lngtb;
+    return $data;
 	}
   private function getStringsFromYML( $file, $verbose = false, &$lngtb )
   {
