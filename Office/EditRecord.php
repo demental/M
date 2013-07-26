@@ -173,7 +173,9 @@ class M_Office_EditRecord extends M_Office_Controller {
                     }
                     break;
                   case $linkFromTables===TRUE || (is_array($linkFromTables) && in_array($linkTab,$linkFromTables)):
-                    $linkFromTableArray[] = $this->getLinkFromTableItem($linkTab, $linkField, $field);
+                    if($linkInfo = $this->getLinkFromTableItem($linkTab, $linkField, $field)) {
+                      $linkFromTableArray[] = $linkInfo;
+                    }
                     break;
                 }
               }
@@ -207,6 +209,8 @@ class M_Office_EditRecord extends M_Office_Controller {
   public function getLinkFromTableItem($linkTab, $linkField, $field)
   {
     $linkDo=& DB_DataObject::factory($linkTab);
+    $info = M_Office_Util::getModuleInfo($linkTab);
+    if(!$info && !$linkDo->isNtable()) return;
     if($nfield = $linkDo->isNtable()) {
       $nFields = $linkDo->links();
       $ntableArray = explode(':',$nFields[$nfield]);
