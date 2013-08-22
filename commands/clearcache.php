@@ -30,7 +30,7 @@ class Command_clearcache extends Command
     $this->line('web: removes all caches FILES AND FOLDERS in documentRoot cache and cache dir');
     $this->line('all: removes html, config and assets cache');
   }
-  public function execute($params)
+  public function execute($params = array())
   {
     if(count($params)==0) {
       $this->clearAllCache();
