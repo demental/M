@@ -144,8 +144,8 @@ class T {
     foreach(T::paths() as $path) {
       $xmlfile = $path.$this->locale.".xml";
       $ymlfile = $path.$this->locale.".yml";
-      $timexml = filemtime($xmlfile);
-      $timeyml = filemtime($ymlfile);
+      $timexml = @filemtime($xmlfile);
+      $timeyml = @filemtime($ymlfile);
   		if($timecache < $timexml || $timecache < $timeyml) {
   			return false;
       }
