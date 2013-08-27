@@ -287,6 +287,9 @@ Error while serializing data !
 		if(!is_null($lang)) {
 			T::$lang = $lang;
       T::$culture = null;
+      if(array_key_exists('on_switch_lang',self::$config) && function_exists(self::$config['on_switch_lang'])) {
+        call_user_func_array(self::$config['on_switch_lang'], array($lang));
+      }
 		}
     Log::info('T::setLang - Switching to '.$lang);
 		return T::$lang;
