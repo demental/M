@@ -27,7 +27,7 @@ class WPTools {
 		);
 
 		$cache = new Cache_Lite($options);
-    $cacheName = 'wptool'.Config::get('wp_root').$pageID.'_'.$apply_shortcodes;
+    $cacheName = 'wptool'.self::$wp_root.$pageID.'_'.$apply_shortcodes;
 		if($_cachedData = $cache->get($cacheName)) {
       return unserialize($_cachedData);
     }
