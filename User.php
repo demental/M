@@ -183,8 +183,10 @@ class User{
 			var_dump($op);
 		}
 		$this->currentContainer->get($id);
-    $this->currentContainer->onUp();
-		$this->getPrefs();
+    if(method_exists($this->currentContainer, 'onUp')) {
+      $this->currentContainer->onUp();
+    }
+    $this->getPrefs();
 	}
 	function getLastVisit(){
 		return $this->getPref('lastVisit');
