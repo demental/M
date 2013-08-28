@@ -4,7 +4,7 @@
  *
  * @package      M
  * @subpackage   T
- * @author       Arnaud Sellenet <demental@sat2way.com>
+ * @author       Arnaud Sellenet <demental at github>
  * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
  * @version      0.1
  */
@@ -91,70 +91,76 @@ class T {
     }
     return self::$paths;
   }
+
   public static function addPath($path)
   {
     if(!is_dir($path)) return;
     self::paths();
     self::$paths[] = $path;
   }
-	public function init ( $lang ,$verbose = false)
+
+	public function init( $lang )
 	{
 		$this->locale=substr($lang,0,2);
 
-		if($this->cacheIsUpToDate($this->locale)) {
-			$lngtb = $this->getStringsFromCache($this->locale,$verbose);
+		if((!T::getConfig('autoexpire') && $this->cacheExists($this->locale)) || $this->cacheIsUpToDate($this->locale)) {
+			$lngtb = $this->getStringsFromCache($this->locale);
       $this->setStrings($lngtb);
-			if($verbose) {
-				echo 'Cache is up to date, retreiving from cache'."\n";
-			}
+      $this->log('Cache is up to date, retreiving from cache');
 		} else {
       $lngtb = array();
-      foreach(T::paths() as $path) {
-        $xmlfile = $path.$this->locale.".xml";
-        $ymlfile = $path.$this->locale.".yml";
-    		if($verbose) {
-          echo 'Source file : '.$file."\n";
-        }
-
-        if(file_exists($xmlfile)) {
-          $this->getStringsFromXML($xmlfile, $verbose, $lngtb);
-        }
-
-        if(file_exists($ymlfile)) {
-          $this->getStringsFromYML($ymlfile, $verbose, $lngtb);
-        }
+      foreach($this->files_to_load($lang) as $file) {
+        $this->getStringsFromFile($file, $lngtb);
       }
       $this->setStrings($lngtb);
       $this->rebuildCache();
-			if($verbose) {
-        echo 'Cache was deprecated, retreiving from XML and rebuilding cache'."\n";
-      }
-
+      $this->log('Cache was deprecated, retreiving from XML and rebuilding cache');
 		}
 	}
+
+  public function files_to_load($lang)
+  {
+    foreach(T::paths() as $path) {
+      foreach(FileUtils::getAllFiles($path) as $file) {
+        if(substr($file, -6, 3) == $lang.'.') {
+          $files_to_load[]= $file;
+        }
+      }
+    }
+    return $files_to_load;
+  }
+
 	private function cacheIsUpToDate ($lang)
 	{
-	  if(T::getConfig('nocache')) return false;
-		$cachefile = T::getConfig('cacheDir').'/'.$lang.'.cache.php';
+		$cachefile = $this->getCacheFile($lang);
 		if(!file_exists($cachefile)) {
 			return false;
 		}
 
 		$timecache = filemtime($cachefile);
-    foreach(T::paths() as $path) {
-      $xmlfile = $path.$this->locale.".xml";
-      $ymlfile = $path.$this->locale.".yml";
-      $timexml = @filemtime($xmlfile);
-      $timeyml = @filemtime($ymlfile);
-  		if($timecache < $timexml || $timecache < $timeyml) {
+    foreach($this->files_to_load($lang) as $file) {
+      $time = filemtime($file);
+  		if($timecache < $time) {
   			return false;
       }
     }
 		return true;
 	}
+
+  public function getCacheFile($lang)
+  {
+    return APP_ROOT.PROJECT_NAME.'/'.APP_NAME.'/cache/'.$lang.'.cache.php';
+  }
+  private function cacheExists($lang)
+  {
+		if(!file_exists($this->getCacheFile($lang))) {
+			return false;
+		}
+    return true;
+  }
 	private function rebuildCache ()
 	{
-		$cachefile = T::getConfig('cacheDir').'/'.$this->locale.'.cache.php';
+		$cachefile = $this->getCacheFile($this->locale);
 		if(!@$fp=fopen($cachefile,'w+')) {
 			return;
 			// @see TODO in this getStringsFromXML()
@@ -165,17 +171,27 @@ class T {
 		fclose($fp);
 		Log::info('lang cache file rebuilt as '.$cachefile);
 	}
-	private function getStringsFromCache ($lang,$verbose = false)
+
+	private function getStringsFromCache ($lang)
 	{
 	  Log::info('T::retreiving strings from cache');
-		$cachefile = T::getConfig('cacheDir').'/'.$lang.'.cache.php';
+		$cachefile = $this->getCacheFile($lang);
 		require_once $cachefile;
-		if($verbose) {
-			echo 'Retrieving lang strings from cache file '.$cachefile."\n";
-		}
+    $this->log('Retrieving lang strings from cache file '.$cachefile);
     return $data;
 	}
-  private function getStringsFromYML( $file, $verbose = false, &$lngtb )
+
+  private function getStringsFromfile( $file, &$lngtb ) {
+
+    $extension = FileUtils::getFileExtension($file);
+    $method = 'getStringsFrom'.$extension;
+    if(!method_exists($this, $method)) return;
+
+    $reflectionMethod = new ReflectionMethod('T', $method);
+    $reflectionMethod->invokeArgs($this, array($file, &$lngtb));
+  }
+
+  public function getStringsFromYML( $file, &$lngtb )
   {
     $yaml = Spyc::YAMLLoad($file);
     $result = MArray::flatten_keys($yaml[$this->locale]);
@@ -185,10 +201,10 @@ class T {
     }
 
   }
-	private function getStringsFromXML ( $file, $verbose = false, &$lngtb )
+  public function getStringsFromXML ( $file, &$lngtb )
 	{
 		require_once 'XML/Unserializer.php';
-	  Log::info('T::retreiving strings from xml');
+    $this->log('R etreiving strings from xml');
 
 		$serializer = new XML_Unserializer();
 		$xml_content = file_get_contents($file);
@@ -196,15 +212,14 @@ class T {
     $serializer->setOption(XML_SERIALIZER_OPTION_ENTITIES, XML_SERIALIZER_ENTITIES_NONE);
 		$serializer->unserialize($xml_content);
 
-		if($verbose) {
-			echo 'Retrieving lang strings from XML file '.$file.' encoding '.T::getConfig('encoding')."\n";
-		}
+    $this->log('Retrieving lang strings from XML file '.$file.' encoding '.T::getConfig('encoding'));
 
 		$local_lngtb = T::linearize($serializer->getUnserializedData());
+
 		$lngtb = array_merge($lngtb, $local_lngtb);
 	}
 
-	public function save($verbose = false, $destfile= '') {
+	public function save($destfile= '') {
 		require_once 'XML/Serializer.php';
 
     if(!empty($destfile)) {
@@ -212,17 +227,12 @@ class T {
     } else {
       $file = T::getConfig('path').$this->locale.".xml";
     }
-		if($verbose) {
-			echo '
-current language ('.$this->locale.') contains '.count($this->strings).' strings..
-saving to '.$file.'...
-          ';
-		}
+    $this->log('current language ('.$this->locale.') contains '.count($this->strings).' strings.. saving to '.$file.'...');
 		$serializer = new XML_Serializer();
     $serializer->setOption(XML_SERIALIZER_OPTION_ENTITIES, XML_SERIALIZER_ENTITIES_NONE);
 		// perform serialization
 
-		$lngtb=T::unlinearize($this->strings);
+		$lngtb = T::unlinearize($this->strings);
 		$serializer->setOption("addDecl",TRUE);
 		$serializer->setOption("encoding",T::getConfig('encoding'));
 		$result = $serializer->serialize($lngtb);
@@ -232,22 +242,14 @@ saving to '.$file.'...
 		if($result === true){
 			$res = $serializer->getSerializedData();
 			$nb = file_put_contents($file,$res);
-			if($verbose) {
-				if($nb) {
-					echo '
-saving DONE
-            ';
-				} else {
-					echo '
-              Could not save '.$file.'
-                          ';
-
-				}
+			if($nb) {
+				$this->log('saving DONE');
+			} else {
+				$this->log('Could not save '.$file);
 			}
-		} elseif($verbose) {
-			echo '
-Error while serializing data !
-          ';
+
+		} else {
+			$this->log('Error while serializing data !');
 			return false;
 		}
 		if($nb) {
@@ -287,9 +289,6 @@ Error while serializing data !
 		if(!is_null($lang)) {
 			T::$lang = $lang;
       T::$culture = null;
-      if(array_key_exists('on_switch_lang',self::$config) && function_exists(self::$config['on_switch_lang'])) {
-        call_user_func_array(self::$config['on_switch_lang'], array($lang));
-      }
 		}
     Log::info('T::setLang - Switching to '.$lang);
 		return T::$lang;
@@ -329,6 +328,10 @@ Error while serializing data !
 		return $out;
 	}
 
+  public function log($message)
+  {
+    # code...
+  }
 }
 
 
@@ -338,16 +341,12 @@ Error while serializing data !
  **/
 if(!function_exists('__')) {
   function __( $string, $args=null ) {
-  	//  try {
-  	$tr = T::getInstance();
-  	//  } catch (Exception $e) {
-  	//    die($e->getMessage());
-  	//  }
+    $tr = T::getInstance();
   	return $tr->translate($string,$args);
   }
 }
 if(!function_exists('_e')) {
   function _e($string,$args = null) {
-  	echo __($string,$args);
+    echo __($string,$args);
   }
 }
