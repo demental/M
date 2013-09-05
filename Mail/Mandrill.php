@@ -62,6 +62,10 @@ class Mail_mandrill extends Maman implements iMailDriver {
         $attachments_request[]= $arr;
       }
     }
+    if(!$html) {
+      $altbody = $body;
+      $body = null;
+    }
 
     $message = array(
       'html' => $body,
