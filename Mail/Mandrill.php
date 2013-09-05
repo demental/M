@@ -74,7 +74,6 @@ class Mail_mandrill extends Maman implements iMailDriver {
       'attachments' => $attachments_request
     );
 
-		$result = 	$mail->send();
     $request =array(
       'type' => 'messages',
       'call' => 'send',
