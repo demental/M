@@ -9,7 +9,7 @@
  * @version      0.1
  */
 
-require_once 'lib/Mandrill.php';
+require_once 'M/lib/Mandrill.php';
 
 /**
  * Mail driver that uses phpmailer.
