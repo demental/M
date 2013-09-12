@@ -350,3 +350,25 @@ if(!function_exists('_e')) {
     echo __($string,$args);
   }
 }
+
+if(!function_exists('_d')) {
+  function _d($date) {
+    return date(__('date.format_day'), strtotime($date));
+  }
+}
+if(!function_exists('_ed')) {
+  function _ed($date) {
+    echo _d($date);
+  }
+}
+
+if(!function_exists('_t')) {
+  function _t($time) {
+    return date(__('date.format_time'), strtotime($time));
+  }
+}
+if(!function_exists('_et')) {
+  function _et($date) {
+    echo _t($date);
+  }
+}
