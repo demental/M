@@ -1,0 +1,25 @@
+en:
+  user:
+    reminder:
+      text: Please enter your email address, you will be sent a message with instructions to create a new password
+    register:
+      error:
+        already_exists: This username already exists, please choose another
+        required_password: Please enter a password
+        unmatched_password: Please enter a password
+    login:
+      error:
+        noaccount: This account doesn't exist
+        wrongpassword: Invalid password
+        inactiveaccount: This account is not active
+      link:
+        reminder: Lost password ?
+        register: Register
+        submit: Submit
+      title:
+        main: Sign in
+        register: Not registered ?
+        already_signedin: Already registered ?
+    reminder:
+      title: Lost password
+      submit: Send

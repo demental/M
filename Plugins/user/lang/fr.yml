@@ -1,0 +1,25 @@
+fr:
+  user:
+    reminder:
+      text: Veuillez entrer votre adresse email, un message contenant les instructions pour créer un nouveau mot de passe vous sera envoyé
+    register:
+      error:
+        already_exists: Ce nom d'utilisateur existe déjà, veuillez en choisir un autre
+        required_password: Veuillez entrer votre mot de passe
+        unmatched_password: Vos deux mots de passe ne correspondent pas
+    login:
+      error:
+        noaccount: Ce compte n'existe pas
+        wrongpassword: Mot de passe incorrect
+        inactiveaccount: Ce compte n'est pas actif
+      link:
+        reminder: Mot de passe perdu ?
+        register: Inscrivez-vous
+        submit: Valider
+      title:
+        main: Identification
+        register: Pas encore inscrit ?
+        already_signedin: Déjà inscrit ?
+    reminder:
+      title: Mot de passe perdu
+      submit: Envoyer
