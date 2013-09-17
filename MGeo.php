@@ -17,33 +17,33 @@ define('PI',3.1415926536);
  * Also provides helper methods for satellite settings (azimut - elevation - polarity)
  *
  */
-class MGeo 
+class MGeo
 {
 	/**
-	 * 
+	 *
 	 * Address
 	 *
 	 * @var		string
 	 * @access	public
 	 */
 	public $address;
-	
+
 	/**
-	 * 
+	 *
 	 * Google maps key
 	 *
 	 * @var		string
 	 * @access	public
 	 */
 	public $key;
-	
+
 	/**
-	 * 
+	 *
 	 * Constructor
 	 *
 	 * @param $key	string	Google maps key
 	 */
-	public function __construct($key = null) 
+	public function __construct($key = null)
 	{
 		if(is_null($key)) {
 			$this->key = Config::getPref('gmap_key');
@@ -51,9 +51,9 @@ class MGeo
 			$this->key = $key;
 		}
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Address validation
 	 *
 	 * @param $address	string	Input address
@@ -67,9 +67,9 @@ class MGeo
 		}*/
 		$this->address = $address;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Set debug var
 	 *
 	 * @param $bool	boolean	Debug state
@@ -78,9 +78,9 @@ class MGeo
 	{
 		$this->_debug=$bool;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Display debug
 	 *
 	 * @param $str	string	Debug string
@@ -89,9 +89,9 @@ class MGeo
 	{
 		echo $str.'<br />';
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Set string to var
 	 *
 	 * @param $str	string	String to set
@@ -101,7 +101,7 @@ class MGeo
 		$this->q = $str;
 	}
 	/**
-	 * 
+	 *
 	 * Set Latitude & Longitude
 	 *
 	 * @param $lat	string	Latitude
@@ -113,7 +113,7 @@ class MGeo
 		$this->long = $long;
 	}
 	/**
-	 * 
+	 *
 	 * Get  Latitude & Longitude
 	 *
 	 * @return  array	Latitude & Longitude
@@ -126,28 +126,23 @@ class MGeo
 		if($this->_debug) {
 			$this->debug('fetching : '.$this->q);
 		}
-		$url = "http://maps.google.com/maps/geo?q=".urlencode($this->q)."&output=csv&key=".$this->key;
+		$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($this->q)."&sensor=false&key=".$this->key;
 		if($this->_debug) {
 			$this->debug('url : '.$url);
 		}
-		$coords = file_get_contents($url);
+		$coords = json_decode(file_get_contents($url));
 		if($this->_debug) {
 			$this->debug('result : '.$coords);
 		}
-		list($code,$accuracy,$lat,$long) = explode(',',$coords);
-		if($code==602) {
-			$this->q = $this->address['city'].', '.$this->address['zipcode'].', '.$this->address['country'];
-			$url = "http://maps.google.com/maps/geo?q=".urlencode($this->q)."&output=csv&key=".$this->key;
-			$coords = file_get_contents($url);
-			list($code,$accuracy,$lat,$long) = explode(',',$coords);
-		}
-		$this->lat = $lat;
-		$this->long = $long;
+    $result =  $coords[0]['geometry']['location'];
+
+		$this->lat = $result['lat'];
+		$this->long = $result['lng'];
 		return array($lat,$long);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Azimut Elevation Polarite
 	 *
 	 * @param $satlong	float	Sat degree
@@ -169,9 +164,9 @@ class MGeo
 		return array($this->azimut,$this->elevation,$this->polarite);
 
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Azimut calculation
 	 *
 	 * @param 	$satlong	string	Longitude Satellite
