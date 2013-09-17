@@ -136,8 +136,8 @@ class MGeo
 		}
     $result =  $coords->results[0]->geometry->location;
 
-		$this->lat = $result->lat;
-		$this->long = $result->lng;
+		$lat = $result->lat;
+		$long = $result->lng;
 		return array($lat,$long);
 	}
 
