@@ -126,7 +126,7 @@ class MGeo
 		if($this->_debug) {
 			$this->debug('fetching : '.$this->q);
 		}
-		$url = "https://maps.google.com/maps/api/geocode/json?address=".urlencode($this->q)."&sensor=false&key=".$this->key;
+		$url = "https://maps.google.com/maps/api/geocode/json?address=".urlencode($this->q)."&sensor=false";
 		if($this->_debug) {
 			$this->debug('url : '.$url);
 		}
