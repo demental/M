@@ -134,7 +134,7 @@ class MGeo
 		if($this->_debug) {
 			$this->debug('result : '.$coords);
 		}
-    $result =  $coords[0]['geometry']['location'];
+    $result =  $coords->results[0]->geometry->location;
 
 		$this->lat = $result['lat'];
 		$this->long = $result['lng'];
