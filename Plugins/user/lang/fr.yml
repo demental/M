@@ -1,7 +1,5 @@
 fr:
   user:
-    reminder:
-      text: Veuillez entrer votre adresse email, un message contenant les instructions pour créer un nouveau mot de passe vous sera envoyé
     register:
       error:
         already_exists: Ce nom d'utilisateur existe déjà, veuillez en choisir un autre
@@ -21,5 +19,6 @@ fr:
         register: Pas encore inscrit ?
         already_signedin: Déjà inscrit ?
     reminder:
+      text: Veuillez entrer votre adresse email, un message contenant les instructions pour créer un nouveau mot de passe vous sera envoyé
       title: Mot de passe perdu
       submit: Envoyer
