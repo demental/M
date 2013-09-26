@@ -21,6 +21,7 @@ require 'M/M.php';
 Mreg::append('autoload',
 array(
   'isetup'                =>  'M/iSetup.php',
+  'mhook'                =>  'M/MHook.php',
   'db_dataobject'         =>  'DB/DataObject.php',
   'cache_lite'            =>  'Cache/Lite.php',
   'command'               =>  'M/Command.php',

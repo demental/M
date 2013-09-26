@@ -31,10 +31,26 @@ class M {
   }
   public static function hook($className,$methodName,$params = array())
   {
-
-    if(method_exists($className.'_hook',$methodName)) {
-      return call_user_func_array(array($className.'_hook',$methodName),$params);
+    $hooks = Config::get(strtolower($className).'_hooks');
+    if(is_array($hooks) && key_exists($methodName, $hooks)) {
+      foreach($hooks[$methodName] as $hookClass) {
+        $hookObject = new $hookClass();
+        $hookObject->apply($params);
+      }
     }
+  }
+  public static function addHook($namespace, $methodToHook, $hookClass, $hookClassfile)
+  {
+    $hooks = Config::get($namespace.'_hooks');
+    if(!is_array($hooks[$methodToHook])) {
+      $hooks[$methodToHook] = array();
+    }
+
+    $hooks[$methodToHook][]= $hookClass;
+    Mreg::append('autoload', array(
+      strtolower($hookClass) => $hookClassfile
+    ));
+    Config::set($namespace.'_hooks', $hooks);
   }
   public static function tablesWithPlugin($pluginName)
   {
