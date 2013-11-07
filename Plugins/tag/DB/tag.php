@@ -18,7 +18,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
 
   public function getEvents()
   {
-    return array('addtagstoform','searchbytags','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','gettagrecord','delete','hastag','gettaglasthistory','gettags','postfetch','undelete',
+    return array('addtagstoform','searchbytags','gettaginfo','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','gettagrecord','delete','hastag','gettaglasthistory','gettags','postfetch','undelete',
       'frontendsearch',
     'postpreparesearchform',
     'getbatchmethods');
@@ -127,6 +127,19 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
         $obj->joinAdd(clone($t),array('joinType'=>'LEFT','joinAs'=>'extags_'.$tag,'useWhereAsOn'=>true));
       }
    }
+
+   public function getTagInfo($tag , DB_DataObject $obj)
+   {
+    if(!$existingtag = $this->_getTagFromTag($tag)) return null;
+     $dbo = DB_DataObject::factory('tag_record');
+     $dbo->tag_id = $tag->id;
+     $dbo->record_id = $obj->pk();
+     $dbo->tagged_table = $obj->tableName();
+     $dbo->find(true);
+     return $this->returnStatus($dbo);
+
+   }
+
   /**
    * adds a tag to a record
    * @param mixed : DataObject_Tag tag to add or string.

@@ -69,7 +69,8 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
           $obj->orderBy($obj->tableName().'.'.$this->pointer['sort'].' '.$this->pointer['direction']);
         }
       } elseif($this->defaultSort) {
-        $obj->orderBy($obj->tableName().'.'.implode(',',$this->defaultSort));
+        $ord = $obj->tableName().'.'.implode(',',$this->defaultSort);
+        $obj->orderBy($ord);
       }
     }
     function setOptions($opt) {

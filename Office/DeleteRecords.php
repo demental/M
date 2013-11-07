@@ -47,6 +47,6 @@ class M_Office_DeleteRecords extends M_Office_Controller {
 		unset($values['selected']);
 		unset($values['__submit__']);
 		unset($values['__actionscope']);
-		return $values;		
+		return $values;
 	}
 }

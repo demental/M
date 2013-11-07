@@ -221,7 +221,7 @@ class Command_Db extends Command {
       }
     }
     if(eregi('\.gz$',$filename)) {
-      system('gunzip '.APP_ROOT."backups/".$filename);
+      system('gunzip -f '.APP_ROOT."backups/".$filename);
       $file = eregi_replace('\.gz$','',$filename);
       $toremove=true;
     } else {
