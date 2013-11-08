@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Inspired by factory_girl
  */
@@ -36,17 +36,17 @@ class DAO {
 	 * use values that are defined in project/faketories/...
 	 * @param string table name
 	 * @param array (optional) array of key/values to override default faketory
-	 * @return DB_DataObject_Pluggable	
+	 * @return DB_DataObject_Pluggable
 	 */
 
 	public static function build($tablename,$overridefields = array())
 	{
 		$do = DB_DataObject::factory($tablename);
 		extract($overridefields);
-		require APP_ROOT.PROJECT_NAME.'/Faketories/'.ucfirst($tablename).'.php';
+		require APP_ROOT.PROJECT_NAME.'/tests/Faketories/'.ucfirst($tablename).'.php';
 
 		foreach($overridefields as $k=>$v) {
-			if($v instanceOf DB_DataObject_Pluggable) {				
+			if($v instanceOf DB_DataObject_Pluggable) {
 				$do->setLinkObj($v,$k);
 			} else {
 				$do->$k = $v;
