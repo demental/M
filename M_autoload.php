@@ -97,7 +97,7 @@ array(
   'payment_request_exception'=>'M/Payment2/Exception.php',
   'wptools'=>'M/WPTools.php',
   'spyc'                  =>  'M/lib/spyc.php',
-
+  'presenter'             => 'M/presenter.php'
   )
   );
 
