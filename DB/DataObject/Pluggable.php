@@ -378,6 +378,40 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
         return parent::get($k,$v);
     }
   }
+
+  /**
+   * Mimics ActiveRecord find : throws an exception if not found (or no criteria)
+   * @return void
+   * all these example work :
+   * $a->get_or_die(123);
+   * $a->get_or_die('id', 123);
+   * $a->get_or_die(null, 123);
+   * $a->get_or_die('ref', 'ART123');
+   */
+	public function get_or_die($id_or_field, $id = null) {
+    if(empty($id_or_field) && empty($id)) {
+      throw new NotFoundException(__('error.dataobject_fetch_without_an_id', array(__("modules.{$this->tableName()}.frontname"))));
+    }
+
+    if(empty($id_or_field)) {
+      $id_or_field = $id;
+      $id = null;
+    }
+
+    if(!$this->get($id_or_field, $id)) {
+      if($id) {
+        throw new NotFoundException(__('error.dataobject_notfound_byfield', array($id_or_field, $id, __("modules.{$this->tableName()}.frontname"))));
+      } else {
+        throw new NotFoundException(__('error.dataobject_notfound_byid', array($id_or_field, __("modules.{$this->tableName()}.frontname"))));
+      }
+    }
+  }
+
+  public function find_or_die($autoFetch = false)
+  {
+    if(!$this->find($autoFetch)) throw new NotFoundException(__('error.dataobject_notfound'));
+  }
+
   /**
    * Delete linked records
    * @param $param1,$param2,...,$paramN strings foreign table names
