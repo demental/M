@@ -142,7 +142,7 @@ class DB_DataObject_Plugin_User extends M_Plugin
 
     $defs = $this->_obj->_getPluginsDef();
     $defs = $defs['user'];
-    $noaccountError = $defs['noaccountError']?$defs['noaccountError']:__('user.login.error.noaccout');
+    $noaccountError = $defs['noaccountError']?$defs['noaccountError']:__('user.login.error.noaccount');
     $passwordError = $defs['passwordError']?$defs['passwordError']:__('user.login.error.wrongpassword');
     $inactiveError = $defs['inactiveError']?$defs['inactiveError']:__('user.login.error.inactiveaccount');
 
