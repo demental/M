@@ -202,7 +202,12 @@ class M_Office_EditRecord extends M_Office_Controller {
   function createActions() {
     $singleMethods = M_Office_Util::getActionsFor($this->do,$this->module);
     foreach($singleMethods as $k=>$v){
-      $this->append('relatedaction',array('url'=>M_Office_Util::doUrl($this->do, $this->module, array("doSingleAction"=>$k)),'title'=>$v['title']));
+      if($v['disabled']) {
+        $this->append('relatedaction',array('url' => '#','html' => 'class="disabled"'));
+      } else {
+        $this->append('relatedaction',array('url' => M_Office_Util::doUrl($this->do, $this->module, array("doSingleAction"=>$k)),'title'=>$v['title']));
+      }
+
     }
     return $singleMethods;
   }

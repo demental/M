@@ -6,7 +6,7 @@
     <?php endif?>
     <?php if($linkToTables):?>
     <?php $this->i('linktotables',array('data'=>$linkToTables,'do'=>$do))?>
-    <?php endif?>		
+    <?php endif?>
     <br style="clear:both" />
 		<?php if(is_array($ajaxFrom['before'])):?>
 		<?php foreach($ajaxFrom['before'] as $list):?>
@@ -21,7 +21,7 @@
 			<h4>Actions :</h4>
 			<ul>
 				<?php foreach ($relatedaction as $k): ?>
-				<li><a href="<?php echo $k['url']?>"><?php echo $k['title']?></a></li>
+				<li><a href="<?php echo $k['url']?>" <?php echo $k['html']?>><?php echo $k['title']?></a></li>
 				<?php endforeach ?>
 			</ul>
 	            <br style="clear:both" />
