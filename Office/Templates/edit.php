@@ -21,7 +21,14 @@
 			<h4>Actions :</h4>
 			<ul>
 				<?php foreach ($relatedaction as $k): ?>
-				<li><a href="<?php echo $k['url']?>" <?php echo $k['html']?>><?php echo $k['title']?></a></li>
+
+				<li>
+          <?php if($k['url']):?>
+            <a href="<?php echo $k['url']?>" <?php echo $k['html']?>><?php echo $k['title']?></a>
+          <?php else:?>
+            <span class="disabled"><?php echo $k['title']?></span>
+          <?php endif?>
+        </li>
 				<?php endforeach ?>
 			</ul>
 	            <br style="clear:both" />
