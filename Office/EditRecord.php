@@ -132,16 +132,18 @@ class M_Office_EditRecord extends M_Office_Controller {
         }
 
         if ($form->validate()) {
+
           if (PEAR::isError($ret = $form->process(array(&$formBuilder, 'processForm'), false))) {
             $this->append('errors',__('An error occured while updating record').' : '.$ret->getMessage());
             $this->assign('__action','error');
             return;
           } else {
+            $params_to_remove = array();
             $values=$form->exportValues();
-            if($values['__backtolist__']){$remove[]='record';}
+            if($values['__backtolist__']){ $params_to_remove[]='record'; }
             if(!key_exists('debug',$_REQUEST)){
               $this->say(__('Record saved !'));
-                M_Office_Util::refresh(M_Office_Util::doURL($this->do, $this->module, array(), $remove));
+                M_Office_Util::refresh(M_Office_Util::doURL($this->do, $this->module, array(), $params_to_remove));
             }
           }
         }
