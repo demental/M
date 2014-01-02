@@ -8,7 +8,7 @@ class Presenter {
       $reflector = new ReflectionClass($do);
       $dofile = $reflector->getFileName();
 
-      $file = dirname($dofile).'/../Presenters/'.ucfirst($do->tableName()).'.php';
+      $file = dirname($dofile).'/../presenters/'.ucfirst($do->tableName()).'.php';
       require_once $file;
     }
 
