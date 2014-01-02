@@ -65,7 +65,7 @@ class M_Office_Search {
 	  if(!$this->values[$form_field]) return;
     $clause = '';
     $sql_value = $this->db->quote('%'.$this->values[$form_field].'%');
-    array_map($search_in, array($this, 'sanitize_field'));
+    array_map(array($this, 'sanitize_field'), $search_in);
     foreach ($search_in as $field) {
       $clause .= "$aj$field like $sql_value";
       $aj = ' OR ';
