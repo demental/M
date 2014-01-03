@@ -1,0 +1,35 @@
+fr:
+  error:
+    module_not_found: Pas de module %s
+    template_not_found: "Le template demandé : <pre>%s</pre> n'a pas été trouvé ! <br />Accès : <pre>%s</pre>"
+    no_action_in_module: L'action %s n'est pas implémentée dans %s
+    action_disabled_in_module: L'action %s du module %s est désactivée
+    cannot_do_action_on_that: Vous ne disposez pas des droits pour lancer "<em>%s</em>" sur %s
+    dataobject_fetch_without_an_id: Impossible de trouver un enregistrement dans %s sans son ID
+    dataobject_notfound_byid: Enregistrement n° "<em>%s</em>" introuvable dans %s
+    dataobject_notfound_byfield: Enregistrement %s = "<em>%s</em>" introuvable dans %s
+    missing_param_in_request: Requête invalide : il manque le paramètre "<em>%s</em>" dans la requête
+    no_record_selected: Aucun enregistrement sélectionné !
+    form:
+      rule_violation: Ce champ n'est pas valide
+      required: Ce champ est obligatoire
+  title:
+    error: Erreur de l'application
+  button:
+    search: Rechercher
+    back_home: Retour accueil
+    back_one_page: Page précédente
+    submit: Valider
+    cancel: Annuler
+    execute: Exécuter
+    close: Fermer
+    check_all: Tout cocher
+    uncheck_all: Tout décocher
+    signin: Se connecter
+  format:
+    bool:
+      no: Non
+      yes: Oui
+  sort:
+    asc: Croissant
+    desc: Décroissant
