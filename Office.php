@@ -5,7 +5,7 @@
  *
  * @package      M
  * @subpackage   M_Office
- * @author       Arnaud Sellenet <demental@sat2way.com>
+ * @author       Arnaud Sellenet <demental at github>
  * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
  * @version      0.1
  */
@@ -33,6 +33,9 @@ if(!defined('OFFICE_TEMPLATES_FOLDER')) {
 
 $dispatchopt = &PEAR::getStaticProperty('Dispatcher', 'global');
 //$dispatchopt['all']['modulepath'][]='M/Office/modules/';
+
+
+T::addPath(dirname(__FILE__).'/Office/lang/');
 
 /**
  *
@@ -83,8 +86,16 @@ class M_Office extends M_Office_Controller implements iListener {
 		$tpl->assign('jsdir',SITE_URL.'js/');
 
 		Mreg::set('tpl',$tpl);
-
-
+    try {
+      $this->run();
+    } catch(Exception $e) {
+      M_Office::$dsp='__defaut/error';
+      Mreg::get('tpl')->assign('message', $e->getMessage());
+      Mreg::get('tpl')->assign('error', $e);
+    }
+  }
+  public function run()
+  {
 		$this->ajaxAuth=true;
 		if($this->getOption('auth')){
 			$this->ajaxAuth=false;
@@ -117,17 +128,18 @@ class M_Office extends M_Office_Controller implements iListener {
 		if(isset($_REQUEST['module'])) {
 			$info = M_Office_Util::getModuleInfo($_REQUEST['module']);
 			$module = $_REQUEST['module'];
+  		if(!$info) {
+  		  if(strpos($_REQUEST['module'],':')) {
+          $info = array('type'=>'dyn','title'=>'Plugin');
+          $module = $tab[1];
+        }elseif(preg_match('`^(.+)helper$`',$_REQUEST['module'],$tab)) {
+          $info = array('type'=>'dyn','title'=>'Assistant '.$tab[1]);
+          $module = $_REQUEST['module'];
+        } else { throw new NotFoundException('error.module_not_found'); }
+      }
+
 		}
 
-		if(!$info) {
-		  if(strpos($_REQUEST['module'],':')) {
-        $info = array('type'=>'dyn','title'=>'Plugin');
-        $module = $tab[1];
-      }elseif(preg_match('`^(.+)helper$`',$_REQUEST['module'],$tab)) {
-        $info = array('type'=>'dyn','title'=>'Assistant '.$tab[1]);
-        $module = $_REQUEST['module'];
-      }
-		}
 
 		if($this->isAjaxRequest() && $this->ajaxAuth && $info['type']!='dyn') {
 			$this->output='';
@@ -198,11 +210,11 @@ class M_Office extends M_Office_Controller implements iListener {
           } else {
             Log::info('User is allowed to access '.$_REQUEST['module']);
           }
-          try {
-					  $subController->executeAction($_REQUEST['action']?$_REQUEST['action']:'index');
-          } catch (Error404Exception $e) {
-            $subController->handleNotFound();
-          }
+
+
+          $subController->executeAction($_REQUEST['action']?$_REQUEST['action']:'index');
+
+
 					$this->assign('__action','dyn');
 					$layout = $subController->getConfig('layout',$_REQUEST['action']?$_REQUEST['action']:'index');
 					if($layout=='__self') {
@@ -210,6 +222,7 @@ class M_Office extends M_Office_Controller implements iListener {
 					} elseif($layout) {
 						M_Office::$dsp=$layout;
 					}
+
 					$this->assign('output',$subController->output(null,'__self'));
 					break;
 			}
@@ -220,31 +233,36 @@ class M_Office extends M_Office_Controller implements iListener {
 		}
 	}
 	public function display() {
-		echo $this->fetch();
-		return;
+    try {
+      echo $this->fetch();
+    } catch(Exception $e) {
+      M_Office::$dsp='__defaut/error';
+      $tpl->assign('message', $e->getMessage());
+      $tpl->assign('error', $e);
+      echo $this->fetch();
+    }
 	}
 	public function fetch()
 	{
-    $tpl = Mreg::get('tpl');
-    $tpl->concat('adminTitle',' :: '.$this->getOption('adminTitle'));
-		if(self::isAjaxRequest()) {
-			M_Office::$dsp='__defaut/ajaxindex';
-      $vars = $tpl->getVars();
-      $action = $vars['__action'];
-      if(!is_array($action)) {
-        $tpl->assign('__action',array($action.'.bloc',$action));
+      $tpl = Mreg::get('tpl');
+      $tpl->concat('adminTitle',' :: '.$this->getOption('adminTitle'));
+  		if(self::isAjaxRequest()) {
+  			M_Office::$dsp='__defaut/ajaxindex';
+        $vars = $tpl->getVars();
+        $action = $vars['__action'];
+        if(!is_array($action)) {
+          $tpl->assign('__action',array($action.'.bloc',$action));
+        }
       }
-		}
 
-		$tables = $this->getGlobalOption('searchInTables','frontendhome');
-		$tpl->assign('messages',$_SESSION['flashmessages']);
-		if(count($tables)==0) {
-			$tpl->assign('showlivesearch',false);
-		} else {
-			$tpl->assign('showlivesearch',true);
-		}
+      $tables = $this->getGlobalOption('searchInTables','frontendhome');
+      $tpl->assign('messages',$_SESSION['flashmessages']);
+  		if(count($tables)==0) {
+        $tpl->assign('showlivesearch',false);
+      } else {
+        $tpl->assign('showlivesearch',true);
+      }
 		return $tpl->fetch(M_Office::$dsp);
-
 	}
   public function getEvents() {
     return array('notification');
