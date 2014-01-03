@@ -95,6 +95,7 @@ array(
   'imaildriver'    =>'M/Mail/iMailDriver.php',
   'payment_response_exception'=>'M/Payment2/Exception.php',
   'payment_request_exception'=>'M/Payment2/Exception.php',
+  'notfoundexception'=>'M/Exception/NotFoundException.php',
   'wptools'=>'M/WPTools.php',
   'spyc'                  =>  'M/lib/spyc.php',
   'presenter'             => 'M/presenter.php'
