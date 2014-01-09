@@ -19,10 +19,7 @@ Mtpl::addJSinline('$("#chooseTable input").livesearch({autosearch:true,url:"'.RO
     <div id="bd">
       <div class="global_error">
         <h1><?php _e('title.error')?></h1>
-        <h2><i class="icon icon-warning-sign"></i> <?php echo $message ?></h2>
-        <?php if('development' == MODE):?>
-          <pre><?php echo $error->getTraceAsString()?></pre>
-        <?php endif?>
+        <?php $this->i('__defaut/error.bloc', null, true)?>
         <p><a class="btn btn-large" href="javascript:history.back()"><?php _e('button.back_one_page')?></a>
           <a class="btn btn-warning btn-large" href="<?php echo ROOT_ADMIN_URL?>"><?php _e('button.back_home')?></a></p>
       </div>

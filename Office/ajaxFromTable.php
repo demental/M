@@ -134,6 +134,7 @@ class M_Office_ajaxFromTable extends M_Office_Controller
         return $this->renderLine($this->fb->_do,true);
     }
     function updateRecord($recordId) {
+
         $form = $this->getAddFormObject($this->getObject($recordId));
         if($form->validate()) {
             $form->process(array($this->fb,'processForm'),false);

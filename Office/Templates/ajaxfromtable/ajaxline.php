@@ -1,6 +1,6 @@
 <?php if($layouted):?>
     <li class="linkRow" id="<?php echo $table.$do->pk()?>">
-    <?php endif?>  
+    <?php endif?>
   <span class="actions">
   <?php if($edit):?>
   <a href="<?php echo M_Office_Util::getQueryParams(array('module'=>$table,'filterField'=>$field,'filterValue'=>$value,'editFromTableRecord'=>$do->{$pk},'ajaxfromtable'=>1),array_keys($_GET),false)?>" class="editlinelink" rel="<?php echo $table.$do->{$pk}?>">

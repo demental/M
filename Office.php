@@ -90,6 +90,7 @@ class M_Office extends M_Office_Controller implements iListener {
       $this->run();
     } catch(Exception $e) {
       M_Office::$dsp='__defaut/error';
+      Mreg::get('tpl')->assign('__action','error');
       Mreg::get('tpl')->assign('message', $e->getMessage());
       Mreg::get('tpl')->assign('error', $e);
     }
@@ -135,17 +136,15 @@ class M_Office extends M_Office_Controller implements iListener {
         }elseif(preg_match('`^(.+)helper$`',$_REQUEST['module'],$tab)) {
           $info = array('type'=>'dyn','title'=>'Assistant '.$tab[1]);
           $module = $_REQUEST['module'];
-        } else { throw new NotFoundException('error.module_not_found'); }
-      }
-
+        } else {
+          throw new NotFoundException('error.module_not_found'); }
+        }
 		}
-
 
 		if($this->isAjaxRequest() && $this->ajaxAuth && $info['type']!='dyn') {
 			$this->output='';
 			unset($this->localOutput);
 		}
-
     if (isset($_REQUEST['debug'])) {
 			$debug=(int)$_REQUEST['debug']%3;
 			DB_DataObject::debugLevel($debug);
@@ -168,6 +167,7 @@ class M_Office extends M_Office_Controller implements iListener {
 			$this->output=$aj->processRequest();
 			return;
 		} elseif(key_exists('ajaxfromtable',$_REQUEST)) {
+
 			require 'M/Office/ajaxFromTable.php';
       $table = $_REQUEST['module'];
       $do = DB_DataObject::factory($table);
@@ -176,7 +176,6 @@ class M_Office extends M_Office_Controller implements iListener {
 			$this->output = $aj->processRequest();
 			return;
 		}
-
 
 
 
@@ -233,17 +232,11 @@ class M_Office extends M_Office_Controller implements iListener {
 		}
 	}
 	public function display() {
-    try {
-      echo $this->fetch();
-    } catch(Exception $e) {
-      M_Office::$dsp='__defaut/error';
-      $tpl->assign('message', $e->getMessage());
-      $tpl->assign('error', $e);
-      echo $this->fetch();
-    }
+    echo $this->fetch();
 	}
 	public function fetch()
 	{
+    try {
       $tpl = Mreg::get('tpl');
       $tpl->concat('adminTitle',' :: '.$this->getOption('adminTitle'));
   		if(self::isAjaxRequest()) {
@@ -254,7 +247,6 @@ class M_Office extends M_Office_Controller implements iListener {
           $tpl->assign('__action',array($action.'.bloc',$action));
         }
       }
-
       $tables = $this->getGlobalOption('searchInTables','frontendhome');
       $tpl->assign('messages',$_SESSION['flashmessages']);
   		if(count($tables)==0) {
@@ -263,6 +255,13 @@ class M_Office extends M_Office_Controller implements iListener {
         $tpl->assign('showlivesearch',true);
       }
 		return $tpl->fetch(M_Office::$dsp);
+  } catch(Exception $e) {
+    M_Office::$dsp='__defaut/error';
+    $tpl->assign('message', $e->getMessage());
+    $tpl->assign('error', $e);
+		return $tpl->fetch(M_Office::$dsp);
+  }
+
 	}
   public function getEvents() {
     return array('notification');
