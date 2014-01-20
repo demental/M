@@ -228,7 +228,7 @@ class M_Office_ShowTable extends M_Office_Controller {
     if($this->getOption('delete',$table)) {
       $batchActions['delete']=array('title'=>__('Delete'));
     }
-    if($this->getOption('add',$table)) {
+    if(can('add',$table) && $do->can_add_with_parameters($_REQUEST['filterField'], $_REQUEST['filterValue'])) {
       $this->append('globalActions',array('url'=>M_Office_Util::getQueryParams(array('addRecord'=>1)),'title'=>'<strong>+</strong>','attributes'=>'class="addlink"'));
     }
     $acts = $this->getOption('actions',$table);

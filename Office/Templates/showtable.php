@@ -1,11 +1,13 @@
 <?php if($search):?>
   <?php $this->i('form-discrete',array('form'=>$search))?>
 <?php endif?>
-<ul class="gactions">
+<div class="btn-group">
   <?php foreach($globalActions as $action):?>
-    <li><a href="<?php echo $action['url']?>" <?php echo $action['attributes']?>><?php echo $action['title']?></a></li>
+    <a class="btn btn-success" href="<?php echo $action['url']?>" <?php echo $action['attributes']?>><?php echo $action['title']?></a>
   <?php endforeach?>
-</ul>
+  <?php $this->i('showtable_extraglactions', array('do' => $do_before_fetch), true)?>
+
+</div>
 <?php $this->i('showtable_beforelistview', array('do' => $do_before_fetch), true)?>
 <br style="clear:left" />
 <br />
