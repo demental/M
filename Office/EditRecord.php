@@ -133,7 +133,8 @@ class M_Office_EditRecord extends M_Office_Controller {
 
         if ($form->validate()) {
 
-          if (PEAR::isError($ret = $form->process(array(&$formBuilder, 'processForm'), false))) {
+          $ret = $form->process(array($formBuilder, 'processForm'), false);
+          if(PEAR::isError($ret)) {
             $this->append('errors',__('An error occured while updating record').' : '.$ret->getMessage());
             $this->assign('__action','error');
             return;
@@ -215,7 +216,7 @@ class M_Office_EditRecord extends M_Office_Controller {
   }
   public function getLinkFromTableItem($linkTab, $linkField, $field)
   {
-    $linkDo=& DB_DataObject::factory($linkTab);
+    $linkDo = DB_DataObject::factory($linkTab);
     $info = M_Office_Util::getModuleInfo($linkTab);
     if(!$info && !$linkDo->isNtable()) return;
     if($nfield = $linkDo->isNtable()) {

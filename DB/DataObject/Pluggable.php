@@ -156,15 +156,16 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	}
 
 	/**
-	 * Reloads the content of the object from the database
-	 * @warning relies on setFrom() and toArray()
-	 */
+   * Reloads the content of the object from the database
+   * @warning relies on setFrom() and toArray()
+   */
 	public function reload()
 	{
 		$obj2 = DB_DataObject::factory($this->tableName());
 		$obj2->{$this->pkName()} = $this->pk();
 		$obj2->find(true);
 		$this->setFrom($obj2->toArray());
+    return $this;
 	}
 ################ Plugin management ################
 
@@ -586,7 +587,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     }
     $obj = parent::getLink($row,$table,$link);
     if(is_object($obj)) {
-      DB_DataObject_Pluggable::storeToRegistry(&$obj);
+      DB_DataObject_Pluggable::storeToRegistry($obj);
     }
     return $obj;
   }
@@ -604,7 +605,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		    break;
 		  default:
       if(parent::delete()!==false) {
-    		$this->trigger('postdelete');
+        $this->trigger('postdelete');
         return true;
       }
       return false;
