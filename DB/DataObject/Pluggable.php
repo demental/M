@@ -598,6 +598,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		$result = $this->trigger('delete');
 		switch($result) {
 		  case 'bypass':
+        $this->clearFromRegistry($this->tableName(), $this->pk());
 		    return true;
 		    break;
 		  case 'fail':
@@ -605,6 +606,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		    break;
 		  default:
       if(parent::delete()!==false) {
+        $this->clearFromRegistry($this->tableName(), $this->pk());
         $this->trigger('postdelete');
         return true;
       }
@@ -645,20 +647,20 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     // = Helper methods =
     // ==================
 
-  	/**
-  	 * Notifications
-  	 * Sends messages to Notifier instance
-  	 * @param 	string	Message content
-  	 * @param		int			Message type (NOTIFICATION_ERROR, NOTIFICATION_WARNING, NOTIFICATION_NOTICE, NOTIFICATION_SUCCESS)
-  	 **/
+    /**
+     * Notifications
+     * Sends messages to Notifier instance
+     * @param 	string	Message content
+     * @param		int			Message type (NOTIFICATION_ERROR, NOTIFICATION_WARNING, NOTIFICATION_NOTICE, NOTIFICATION_SUCCESS)
+     **/
 
-  	function say ($message, $type = NULL) {
-  		@require_once 'M/Notifier.php';
+    function say ($message, $type = NULL) {
+      @require_once 'M/Notifier.php';
   		if(class_exists('Notifier')){
-  			$not=Notifier::getInstance();
-  			$not->broadCastMessage($this,$message,$type);
-  		}
-  	}
+        $not=Notifier::getInstance();
+        $not->broadCastMessage($this,$message,$type);
+      }
+    }
     // =============================
     // = returns primary key value =
     // =============================
