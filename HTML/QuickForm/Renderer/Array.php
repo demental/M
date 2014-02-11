@@ -30,7 +30,7 @@ class M_HTML_QuickForm_Renderer_Array extends HTML_QuickForm_Renderer_Array
           if(is_a($element,'HTML_QuickForm_group')) {
             foreach($element->getElements() as $elem) {
               $class = $elem->getAttribute('class');
-              $elem->updateAttributes(array('class'=>($class?$class.' error':'error'),'title'=>$error));              
+              $elem->updateAttributes(array('class'=>($class?$class.' error':'error'),'title'=>$error));
             }
           } else {
             $class = $element->getAttribute('class');
@@ -43,5 +43,15 @@ class M_HTML_QuickForm_Renderer_Array extends HTML_QuickForm_Renderer_Array
         }
         $this->_storeArray($elAry);
     } // end func renderElement
+    function renderHeader(&$header)
+    {
+        $this->_ary['sections'][$this->_sectionCount] = array(
+            'header' => $header->toHtml(),
+            'name'   => $header->getName(),
+            'elements' => array()
+        );
+        $this->_currentSection = $this->_sectionCount++;
+    } // end func renderHeader
+
 }
 ?>
