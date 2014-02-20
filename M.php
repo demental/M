@@ -65,4 +65,25 @@ class M {
     }
     return $ret;
   }
+  public function addPath($role, $path)
+  {
+    switch($role) {
+      case 'lang':
+        T::addPath($path);
+        break;
+      case 'templates':
+        $moduloptions = & PEAR::getStaticProperty('Module','global');
+        $moduloptions['template_dir'][] = $path;
+      break;
+
+      case 'modules':
+        $dispatchopt = & PEAR::getStaticProperty('Dispatcher', 'global');
+        $dispatchopt['all']['modulepath'][] = $path;
+      break;
+      default:
+        throw new Exception("Don't know how to add a '$role' path");
+      break;
+    }
+  }
+
 }
