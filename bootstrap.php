@@ -42,14 +42,18 @@ $lang = $_REQUEST['lang'] ? $_REQUEST['lang'] : DEFAULT_LANG;
 T::addPath(dirname(__FILE__).'/lang/');
 T::setLang($lang);
 
-$opt = &PEAR::getStaticProperty('Module', 'global');
-$opt['template_dir'] = array(APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR,APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
+M::addPath('templates', APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
+M::addPath('templates', APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
+M::addPath('modules', 'modules');
+
+$opt = & PEAR::getStaticProperty('Module', 'global');
 $opt['caching'] = $caching;
 $opt['cacheDir'] = APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR;
 $opt['cacheTime'] = 7200;
 $dispatchopt = &PEAR::getStaticProperty('Dispatcher', 'global');
 $dispatchopt['all']['loginmodule']='user';
 $dispatchopt['all']['loginaction']='login';
+
 $dispatchopt['all']['modulepath']=array('modules');
 
 include APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'config.php';
