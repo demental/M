@@ -27,7 +27,7 @@ class Command_App extends Command {
       $this->line('app [COMMAND_NAME] [[COMMAND_PARAMETERS]]');
       $this->line('');
       $this->line('You can also get help from a subcommand if provided using:');
-      $this->line('help app [COMMAND_NAME]');      
+      $this->line('help app [COMMAND_NAME]');
       $this->line('============');
       $this->line('Here is a list of available app-specific commands:');
       $commandsPath = APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'commands'.DIRECTORY_SEPARATOR;
@@ -42,15 +42,15 @@ class Command_App extends Command {
       self::factory($commandName)->longHelp($params);
     }
   }
-  public static function factory($command) {
+  public static function factory($command,$path='M/commands/') {
       $path = APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'commands'.DIRECTORY_SEPARATOR;
     return parent::factory($command,$path);
   }
 
-  public function execute($params)
+  public function execute($params, $options)
   {
     $command = array_shift($params);
     $exec = self::factory($command);
-    $exec->execute($params);
+    $exec->execute($params, $options);
   }
 }

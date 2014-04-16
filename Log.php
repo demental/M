@@ -14,11 +14,11 @@
  * Very basic log class
  *
  */
-class Log 
+class Log
 {
   protected static $instances;
-  
-  public function getInstance($driver = 'nolog')
+
+  public static function getInstance($driver = 'nolog')
   {
     if(!self::$instances[$driver]) {
       $file = 'M/Log/'.strtolower($driver).'.php';
@@ -89,7 +89,7 @@ class Log
 	 * @access	public
 	 * @static
 	 */
-	public static function mail($message) 
+	public static function mail($message)
 	{
 		$m = Mail::factory('vide');
 		$m->setVars(array('subject'=>'Log report from '.SITE_URL,'body'=>$message.'<h3>Request :</h3><pre>'.print_r($_REQUEST,true).'</pre><h3>Session</h3><pre>'.print_r($_SESSION,true)));
