@@ -62,9 +62,10 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
           $obj->removeTag($data['remove']);
         }
       }
-    } finally {
-      self::enable_triggers();
+    } catch(Exception $e) {
+      //
     }
+    self::enable_triggers();
   }
   /**
    * Adds tag checkboxes to form passed as first parameter
