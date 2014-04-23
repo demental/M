@@ -270,7 +270,7 @@ class Config
 	 */
 	public static function setPref($var,$val)
 	{
-		$res = & DB_DataObject::factory('preferences');
+		$res = DB_DataObject::factory('preferences');
 		$res->var=$var;
 		if(!$res->find(true)) {
 			return false;
