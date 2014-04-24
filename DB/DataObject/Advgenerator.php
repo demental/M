@@ -34,7 +34,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
     public static function hasCustomLinksMethod($input) {
       return empty($input) ? false : preg_match('`###END_AUTOCODE.+function links *\(.+`s',$input) ? true : false;
     }
-    function derivedHookFunctions($input = "")
+    public function derivedHookFunctions($input = "")
     {
       $addlinks = !self::hasCustomLinksMethod($input);
       $addreverselinks = empty($input) ? true : preg_match('`function reverseLinks *\(.+###END_AUTOCODE`s',$input) ? true : false;
@@ -221,16 +221,16 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
           if (!$database) {
               continue;
           }
-          $output[] = $this->factory($database,$databasename,$db_driver);
+          $output[] = $this->generate($database,$databasename,$db_driver);
       }
       return $output;
     }
     /**
-    * factory()
+    * generate()
     * @access public
     * @return DB_DataObject_Advgenerator instance including tables list for $databasename
     **/
-    public function factory($database,$databasename,$db_driver)
+    public function generate($database,$databasename,$db_driver)
     {
       $this->debug("CREATING FOR $databasename\n");
       $class = get_class($this);
