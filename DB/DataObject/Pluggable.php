@@ -506,8 +506,9 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	function fetch(){
 		$this->trigger('prefetch');
 		if(parent::fetch()){
-  		$this->trigger('postfetch');
-			return true;
+      $this->_memoized = array();
+      $this->trigger('postfetch');
+      return true;
 		}
 		return false;
 	}
