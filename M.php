@@ -65,7 +65,7 @@ class M {
     }
     return $ret;
   }
-  public function addPath($role, $path)
+  public static function addPath($role, $path)
   {
     switch($role) {
       case 'lang':

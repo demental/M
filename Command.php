@@ -134,14 +134,14 @@ class Command {
    * display a text line (for information)
    * @param string text to be displayed
    */
-  public function line($message) {
+  public static function line($message) {
     if(self::getOption('silent')) return;
     echo $message."\n";
   }
   /**
    * Display an inline content
    */
-   public function inline($message)
+   public static function inline($message)
    {
      if(self::getOption('silent')) return;
      echo $message;
@@ -153,7 +153,7 @@ class Command {
    * @param string (default 'y') value displayed and expected for positive answer
    * @param string (default 'n') value displayed and expected for negative answer
    */
-  public function confirm($message,$default='n',$yes='y',$no='n')
+  public static function confirm($message,$default='n',$yes='y',$no='n')
   {
     switch($default) {
       case $yes:
@@ -180,7 +180,7 @@ class Command {
    * @param string default value if user just types 'enter'
    * @param array indexed array of the different possible choices
    */
-  public function choose($message,$default='',$values)
+  public static function choose($message,$default='',$values)
   {
     $message = $message.' ['.implode(' / ',$values).'] (default : '.$default.')';
     if(!self::getOption('noninteractive')){
@@ -202,7 +202,7 @@ class Command {
    * @param string prompt message
    * @param string default value id user just types 'enter'
    */
-  public function ask($message,$default='')
+  public static function ask($message,$default='')
   {
     $message = $message.(empty($default)?'':' ['.$default.']');
     if(!self::getOption('noninteractive')) {
@@ -211,17 +211,17 @@ class Command {
     if(empty($res)) return $default;
     return $res;
   }
-  public function error($message)
+  public static function error($message)
   {
     if(self::getOption('silent')) return;
     echo "\n".'***[ERROR]***'."\n".$message."\n";
   }
-  public function info($message)
+  public static function info($message)
   {
     if(self::getOption('silent')) return;
     echo '[INFO] '.$message."\n";
   }
-  public function header($message) {
+  public static function header($message) {
     if(self::getOption('silent')) return;
     echo "\n".str_repeat('*',80)."\n";
     $content = explode("\n",$message);
@@ -230,7 +230,7 @@ class Command {
     }
     echo str_repeat('*',80)."\n";
   }
-  public function prompt($message)
+  public static function prompt($message)
   {
     echo "\n".$message.' > ';
     $res = strtolower(trim(fgets(STDIN)));

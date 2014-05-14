@@ -22,9 +22,8 @@ class Command_exit extends Command {
   {
     $this->line('Exits the M console. No parameters are eligible for this command');
   }
-  public function execute($params)
+  public function execute($params, $options = array())
   {
     echo 'Bye.'."\n";exit;
-  }  
+  }
 }
- 

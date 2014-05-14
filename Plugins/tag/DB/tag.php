@@ -16,6 +16,16 @@
 
 class DB_DataObject_Plugin_Tag extends M_Plugin {
 
+  protected static $triggers_enabled = true;
+
+  public static function enable_triggers() {
+    self::$triggers_enabled = true;
+  }
+
+  public static function disable_triggers() {
+    self::$triggers_enabled = false;
+  }
+
   public function getEvents()
   {
     return array('addtagstoform','searchbytags','gettaginfo','addtag','removetag','addtagbyhuman','removetagbyhuman','removetags','getbytags','getwithouttags','gettagdate','gettagrecord','delete','hastag','gettaglasthistory','gettags','postfetch','undelete',
@@ -38,17 +48,24 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   {
     $form->addElement('text','add','Add...');
     $form->addElement('text','remove','And/or remove...');
+    $form->addElement('checkbox','trigger','Execute triggers if exist');
   }
-  public function batchAddTAg($obj,$data)
+  public function batchAddTag($obj,$data)
   {
-    while($obj->fetch()) {
-      if($data['add']) {
-        $obj->addTag($data['add']);
+    if(!$data['trigger']) self::disable_triggers();
+    try {
+      while($obj->fetch()) {
+        if($data['add']) {
+          $obj->addTag($data['add']);
+        }
+        if($data['remove']) {
+          $obj->removeTag($data['remove']);
+        }
       }
-      if($data['remove']) {
-        $obj->removeTag($data['remove']);
-      }
+    } catch(Exception $e) {
+      //
     }
+    self::enable_triggers();
   }
   /**
    * Adds tag checkboxes to form passed as first parameter
@@ -231,6 +248,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    */
   public function triggerTag($tag,$trigger,$obj)
   {
+    if(!self::$triggers_enabled) return;
     $strip = Strings::stripify($tag->strip,true);
     $classes = array(
       APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger_'.$strip.'_'.$obj->tableName()),

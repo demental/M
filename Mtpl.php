@@ -70,32 +70,32 @@ class Mtpl {
 	{
 	 return $this->_config['tplfolders'];
 	}
-	public function getCSS()
+	public static function getCSS()
 	{
 		return Mtpl::$_css;
 	}
-	public function getJS()
+	public static function getJS()
 	{
 		return Mtpl::$_js;
 	}
-	public function getJSgroups()
+	public static function getJSgroups()
 	{
 		return Mtpl::$_jsgroups;
 	}
-	public function getCSSgroups()
+	public static function getCSSgroups()
 	{
 		return Mtpl::$_cssgroups;
 	}
-	public function getJSinline($event='ready')
+	public static function getJSinline($event='ready')
 	{
 		return is_array(Mtpl::$_jsinline[$event])?Mtpl::$_jsinline[$event]:array();
 	}
-	public function addCSS($css,$media='screen,print',$conditional=null)
+	public static function addCSS($css,$media='screen,print',$conditional=null)
 	{
 	  $data = array('name'=>$css,'media'=>$media,'conditional'=>$conditional);
 		Mtpl::$_css[md5(serialize($data))] = $data;
 	}
-	public function addCSSgroup($group, $media='screen,print')
+	public static function addCSSgroup($group, $media='screen,print')
 	{
 		if(is_array($group)) {
 			Mtpl::$_cssgroups[$media] = array_merge(Mtpl::$_cssgroups[$media],$group);
@@ -105,7 +105,7 @@ class Mtpl {
 
 		Mtpl::$_cssgroups[$media] = array_unique(Mtpl::$_cssgroups[$media]);
 	}
-  public function addJSgroup($group)
+  public static function addJSgroup($group)
   {
 		if(is_array($group)) {
 			Mtpl::$_jsgroups = array_merge(Mtpl::$_jsgroups,$group);
@@ -114,7 +114,7 @@ class Mtpl {
 		}
 		Mtpl::$_jsgroups = array_unique(Mtpl::$_jsgroups);
 	}
-	public function addJS($js)
+	public static function addJS($js)
 	{
 
 		if(is_array($js)) {
@@ -124,15 +124,15 @@ class Mtpl {
 		}
 		Mtpl::$_js = array_unique(Mtpl::$_js);
 	}
-	public function addJSinline($js,$event='ready')
+	public static function addJSinline($js,$event='ready')
 	{
 		Mtpl::$_jsinline[$event][] = $js;
 	}
-	public function setMeta($name,$content)
+	public static function setMeta($name,$content)
 	{
 		Mtpl::$_meta[$name]=$content;
 	}
-	public function getMeta($name)
+	public static function getMeta($name)
 	{
 		return Mtpl::$_meta[$name];
 	}
