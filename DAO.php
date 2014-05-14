@@ -24,7 +24,7 @@ class DAO {
 	 * @param string table name
 	 * @param string key/value pairs for search criteria
 	 */
-	public function faketory_or_find($tablename,$overridefields)
+	public static function faketory_or_find($tablename,$overridefields)
 	{
 		$do = DB_DataObject::factory($tablename);
 		$do->setFrom($overridefields);

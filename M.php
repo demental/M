@@ -68,6 +68,10 @@ class M {
   public static function addPath($role, $path)
   {
     switch($role) {
+      case 'models':
+        $options = & PEAR::getStaticProperty('DB_DataObject', 'options');
+        $options['class_location'] .= ':'.$path;
+        break;
       case 'lang':
         T::addPath($path);
         break;
