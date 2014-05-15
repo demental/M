@@ -106,8 +106,7 @@ function m_autoload_db_dataobject($class)
 {
   $classname = strtolower($class);
   if(strpos($classname, 'dataobjects_') === 0) {
-    $tablename = str_replace('dataobjects_','',$classname);
-    require APP_ROOT.DB_FOLDER.ucfirst($tablename).'.php';
+    return DB_DataObject::_autoloadClass($classname);
   } else {
     return false;
   }
