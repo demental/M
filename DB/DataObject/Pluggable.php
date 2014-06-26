@@ -66,11 +66,13 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       $keystore = $tablename;
       $value = $pk;
     }
+
     if(key_exists($keystore,DB_DataObject_Pluggable::$objectRegistry)
     && key_exists($value,DB_DataObject_Pluggable::$objectRegistry[$keystore])) {
       $ret = DB_DataObject_Pluggable::$objectRegistry[$keystore][$value];
 
       if(is_object($inject)) {
+
         $inject->setFrom($ret->toArray());
         $inject->{$inject->pkName()} = $ret->{$ret->pkName()};
         return true;
@@ -496,7 +498,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		    break;
 		  default:
       if($this->_update($do)!==false) {
-    		$this->trigger('postupdate');
+        $this->trigger('postupdate');
         return true;
       }
       return false;
@@ -557,9 +559,9 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
             }
 
-            $this->raiseError(
-                "getLink: $row is not defined as a link (normally this is ok)",
-                DB_DATAOBJECT_ERROR_NODATA);
+            // $this->raiseError(
+            //     "getLink: $row is not defined as a link (normally this is ok)",
+            //     DB_DATAOBJECT_ERROR_NODATA);
 
             $r = false;
             return $r;// technically a possible error condition?
@@ -579,7 +581,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 
 
     if (!isset($this->$row)) {
-        $this->raiseError("getLink: row not set $row", DB_DATAOBJECT_ERROR_NODATA);
+        // $this->raiseError("getLink: row not set $row", DB_DATAOBJECT_ERROR_NODATA);
         return false;
     }
     if($obj = DB_DataObject_Pluggable::retreiveFromRegistry($table,$this->{$row})) {
@@ -923,4 +925,8 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       return implode(',',$values);
     }
 
+    // public function raiseError($message, $type = null, $behaviour = null)
+    // {
+    //   throw new Exception($type . ' ' . $message);
+    // }
 }
