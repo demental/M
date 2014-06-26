@@ -66,6 +66,13 @@ class Command_Db extends Command {
     }
   }
 
+  public function executeReplay($params)
+  {
+    $migr = self::_migrations();
+    if(!array_key_exists($params[0], $migr)) return $this->error('Migration not found');
+    $info = $migr[$params[0]];
+    self::_launch_migration($info,$info['type']);
+  }
   public function _launch_migration($info, $type)
   {
     if($type == 'php') {
