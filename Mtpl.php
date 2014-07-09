@@ -433,8 +433,12 @@ class Mtpl {
     }
     return $out;
 	}
-	public function getJSblock($root = '/js')
+	public function getJSblock($root = array())
 	{
+    if(!is_array($root)) {
+      $root = array($root);
+    }
+    $root[]= '/js';
     $out='';
     $groups = Mtpl::getJSgroups();
     if(count($groups)>0) {
@@ -448,17 +452,26 @@ class Mtpl {
 
     foreach (Mtpl::getJS() as $js) {
       if(preg_match('`^https*`',$js)) {
-
         $jsfile = $js;
       } else {
-        $jsfile = $root.'/'.$js.'.js';
+        $jsfile = self::first_in_assets($root, $js.'.js');
       }
+      if(!$jsfile) throw new Exception('non exist '.$js);
       $out.='
     <script type="text/javascript" src="'.$jsfile.'"></script>';
     }
 
     return $out;
 	}
+  public static function first_in_assets($roots, $filename)
+  {
+    foreach($roots as $dir) {
+      $file = APP_ROOT.WEB_FOLDER.'/'.$dir.'/'.$filename;
+      if(file_exists($file)) {
+        return $dir.'/'.$filename;
+      }
+    }
+  }
 	public static function printJS($root = '/js')
 	{
     echo self::getJSblock($root);
