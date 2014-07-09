@@ -433,7 +433,7 @@ class Mtpl {
     }
     return $out;
 	}
-	public function getJSblock()
+	public function getJSblock($root = '/js')
 	{
     $out='';
     $groups = Mtpl::getJSgroups();
@@ -451,7 +451,7 @@ class Mtpl {
 
         $jsfile = $js;
       } else {
-        $jsfile = '/js/'.$js.'.js';
+        $jsfile = $root.'/'.$js.'.js';
       }
       $out.='
     <script type="text/javascript" src="'.$jsfile.'"></script>';
@@ -459,9 +459,9 @@ class Mtpl {
 
     return $out;
 	}
-	public static function printJS()
+	public static function printJS($root = '/js')
 	{
-    echo self::getJSblock();
+    echo self::getJSblock($root);
 	}
 	public static function printCSS()
 	{
