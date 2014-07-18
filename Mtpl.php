@@ -14,6 +14,9 @@
  * Bare bones php-based template engine
  *
  */
+
+require_once 'Mtpl/functions.php';
+
 class Mtpl {
 
   protected $_addComments = true;
