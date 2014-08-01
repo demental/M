@@ -38,8 +38,8 @@ T::setConfig(array(
 );
 
 if(!defined('DEFAULT_LANG')) define('DEFAULT_LANG', 'en');
+M::addPath('lang', dirname(__FILE__).'/lang/');
 $lang = $_REQUEST['lang'] ? $_REQUEST['lang'] : DEFAULT_LANG;
-T::addPath(dirname(__FILE__).'/lang/');
 T::setLang($lang);
 
 M::addPath('templates', APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
@@ -56,9 +56,8 @@ $dispatchopt['all']['loginaction']='login';
 
 $dispatchopt['all']['modulepath']=array('modules');
 
-include APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'config.php';
-include APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'config.php';
-include APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'setup.php';
+require APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'setup.php';
+
 $setup = new M_setup();
 
 Mreg::set('setup',$setup);

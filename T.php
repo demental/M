@@ -195,11 +195,9 @@ class T {
   {
     $yaml = Spyc::YAMLLoad($file);
     $result = MArray::flatten_keys($yaml[$this->locale]);
-
     if(is_array($result)) {
       $lngtb = array_merge($lngtb, $result);
     }
-
   }
   public function getStringsFromXML ( $file, &$lngtb )
 	{
