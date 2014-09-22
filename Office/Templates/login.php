@@ -12,7 +12,7 @@
             echo '<script type="text/javascript" src="'.$jsdir.$js.'.js"></script>';
         }
     ?>
-    
+
 		<script type="text/javascript">
 		<?php
 		if(is_array($javascript)){
@@ -25,7 +25,7 @@
 // =====================================================
 ?>
     $(function() {
-            $("#loading").ajaxStart(function(){ 
+            $("#loading").ajaxStart(function(){
               $('indicator').show().css(
                   'left:'+mouse.x + 'px',
                   'top:'+mouse.y + 'px')
@@ -43,10 +43,10 @@ foreach(Mtpl::getJSinline('ready') as $inst){
 		<div id="doc3">
       <div id="hd">
 			  <h3><a href="<?php echo ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT?>"><?php echo $adminTitle?></a></h3>
-			</div>			
+			</div>
 			<div id="bd">
 			  <div class="yui-b">
-                <?php $this->i('form-discrete', array('form'=>$loginForm)) ?>
+          <?php $this->i('form-discrete', array('form'=>$loginForm)) ?>
         </div>
       </div>
 			<div id="ft">

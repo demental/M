@@ -230,7 +230,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
     * @access public
     * @return DB_DataObject_Advgenerator instance including tables list for $databasename
     **/
-    public function generate($database,$databasename,$db_driver)
+    public function generate($database = null,$databasename = null,$db_driver = null)
     {
       $this->debug("CREATING FOR $databasename\n");
       $class = get_class($this);

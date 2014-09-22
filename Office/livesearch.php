@@ -43,16 +43,19 @@ class M_Office_livesearch extends M_Office_Controller
         $out=array();
         foreach($searchin as $table) {
             $obj = M_Office_Util::doForTable($table);
-
             if(method_exists($obj,'livesearch')) {
-                $obj->livesearch($this->searchtext);
-                $out[$table]=$obj;
+              $obj->livesearch($this->searchtext);
+              $out[$table] = $obj;
             }
         }
         foreach($out as $table=>$obj) {
             $cnt=0;
             foreach($obj as $rec) {
-              $ret[$table][] = array('url' => M_Office_Util::doURL($rec, $table, array(),array('livesearch', 'format')), 'text' => $rec->livesearchText());
+              $result = $rec->liveSearchText();
+              if(!is_array($result)) {
+                $result = array('text' => $result);
+              }
+              $ret[$table][] = array_merge($result, array('url' => M_Office_Util::doURL($rec, $table, array(),array('livesearch', 'format'))));
               $cnt++;
               if($cnt>10){break;}
             }
@@ -61,29 +64,11 @@ class M_Office_livesearch extends M_Office_Controller
             }
         }
 
-        $this->assign('output',$this->format($ret, $_GET['format']));
+        $this->assign('output', $this->format($ret, $_GET['format']));
      }
      public function format($ret , $format)
      {
        if($format == 'json') return json_encode($ret);
-       if($ret['message']) {
-         return '<p>'.$ret['message'].'</p>';
-       } else {
-
-         foreach($ret as $table => $results) {
-         $out.='<dl>';
-           $out.= '<dt>'.$table.'</dt>';
-           if(count($results) == 0) {
-             $out .= '<dd><em>No results</em></dd>';
-           } else {
-             foreach($results as $info) {
-               $out.= '<dd><a href="'.$info['url'].'">'.$info['text'].'</a></dd>';
-             }
-           }
-         $out.='</dl>';
-         }
-
-       }
-       return $out;
+       return $ret;
      }
  }
