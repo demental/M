@@ -25,7 +25,7 @@ if(!defined('ROOTUSER')) {
 	define('ROOTUSER',2);
 }
 if(!defined('ROOT_ADMIN_SCRIPT')) {
-	define('ROOT_ADMIN_SCRIPT','index.php');
+	define('ROOT_ADMIN_SCRIPT','');
 }
 if(!defined('OFFICE_TEMPLATES_FOLDER')) {
 	define('OFFICE_TEMPLATES_FOLDER', realpath(dirname(__FILE__)).'/Office/Templates/');
