@@ -23,6 +23,7 @@ class M_Office_EditRecord extends M_Office_Controller {
 
       $opts = PEAR::getStaticProperty('m_office','options');
       $this->module = $module;
+      $this->assign('module', $module);
       $this->__record_id = $record;
       $this->moduloptions = $opts['modules'][$module];
       $table = $this->table = $this->moduloptions['table'];
