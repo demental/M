@@ -128,15 +128,17 @@ class Tag_Module_Admin extends Module {
  }
  public function doExecDelete()
  {
-   if(empty($_GET['id'])) $this->redirect(M_Office::URL('tag:admin/index'));
-   $t = DB_DataObject::factory('tag');
-   $t->id= $_GET['id'];
-   if($t->find(true)) {
+  if(empty($_GET['id'])) $this->redirect(M_Office::URL('tag:admin/index'));
+  $t = DB_DataObject::factory('tag');
+  $t->id= $_GET['id'];
+  if($t->find(true)) {
 
-     $th = DB_DataObject::factory('tag_record');
-     $th->tag_id = $t->id;
-     $th->delete();
-     $t->getDatabaseConnection()->query('DELETE FROM tag_history WHERE tag_id = '.$t->id);
+    $th = DB_DataObject::factory('tag_record');
+    $th->tag_id = $t->id;
+    $th->delete();
+    $t->getDatabaseConnection()
+      ->prepare('DELETE FROM tag_history WHERE tag_id = ?', 'integer')
+      ->execute($t->id);
 
      $t->delete();
    }
