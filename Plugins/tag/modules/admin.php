@@ -28,9 +28,13 @@ class Tag_Module_Admin extends Module {
       $db = $tags->getDatabaseConnection();
       $dest = $values['target'];
       foreach($values['source'] as $id=>$ok) {
-        $db->exec('UPDATE tag_record SET tag_id='.$db->quote($dest).' WHERE tag_id='.$db->quote($id));
-        $db->exec('UPDATE tag_history SET tag_id='.$db->quote($dest).' WHERE tag_id='.$db->quote($id));
-        $db->exec('DELETE FROM tag WHERE id='.$db->quote($id));
+        $db->prepare('UPDATE tag_record SET tag_id = :tag_id WHERE tag_id = :id', array('integer','integer'), MDB2_PREPARE_MANIP)
+          ->execute(array('tag_id' => $dest, 'id' => $id));
+        $db->prepare('UPDATE tag_history SET tag_id = :tag_id WHERE tag_id = :id', array('integer','integer'), MDB2_PREPARE_MANIP)
+          ->execute(array('tag_id' => $dest, 'id' => $id));
+
+        $db->prepare('DELETE FROM tag WHERE id = ?', array('integer'))
+          ->execute($id);
       }
       $this->redirect(M_Office::URL());
     }
