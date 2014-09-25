@@ -13,7 +13,6 @@
 * @package      M
 * @subpackage   DB_DataObject_Plugin_FalseDelete
 * @author       Arnaud Sellenet <demental@sat2way.com>
-
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
@@ -28,7 +27,8 @@ class DB_DataObject_Plugin_FalseDelete extends M_Plugin
   }
   function delete($obj) {
     $db = $obj->getDatabaseConnection();
-    $db->exec('UPDATE '.$db->quoteIdentifier($obj->tableName()).' SET '.$db->quoteIdentifier('deleted').' = 1 where id='.$db->quote($obj->id));
+    $db->prepare("UPDATE {$db->quoteIdentifier($obj->tableName())} SET deleted = 1 WHERE id = ?", array('text', 'text'), MDB2_PREPARE_MANIP)
+      ->execute($obj->id);
     return 'bypass';
   }
   function find($autoFetch,$obj) {
