@@ -38,7 +38,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   public function getBatchMethods($arr,$obj)
   {
     $arr['batchaddtag'] = array('title'=>'Add/remove tags','plugin'=>'tag');
-    return $this->returnStatus($arr);
+    return self::returnStatus($arr);
   }
   public function postFetch($obj)
   {
@@ -153,7 +153,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
      $dbo->record_id = $obj->pk();
      $dbo->tagged_table = $obj->tableName();
      $dbo->find(true);
-     return $this->returnStatus($dbo);
+     return self::returnStatus($dbo);
 
    }
 
@@ -173,7 +173,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
    }
   protected function _addTag($tag, $byhuman, DB_DataObject $obj)
   {
-    if(!$obj->pk()) return $this->returnStatus($obj);
+    if(!$obj->pk()) return self::returnStatus($obj);
     if($this->validateTriggerTag($tag,'add',$byhuman,$obj)) {
       // $tag will be replaced by its DO object if string passed as param
       if($this->__createTagRecord($tag,$obj)) {
@@ -182,7 +182,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       }
     }
 		$obj->_tagadded=1;
-    return $this->returnStatus($obj);
+    return self::returnStatus($obj);
   }
   protected function __createTagRecord(&$tag,$obj)
   {
@@ -285,8 +285,8 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   }
   protected function _removeTag($tag, $byhuman, DB_DataObject $obj)
   {
-    if(!$obj->pk()) return $this->returnStatus($obj);
-    if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus($obj);}
+    if(!$obj->pk()) return self::returnStatus($obj);
+    if(!$tag = $this->_getTagFromTag($tag)) {return self::returnStatus($obj);}
     if($this->validateTriggerTag($tag,'remove',$byhuman,$obj)) {
       $dbo = DB_DataObject::factory('tag_record');
       $dbo->setTag($tag);
@@ -298,7 +298,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
       }
 
     }
-    return $this->returnStatus($obj);
+    return self::returnStatus($obj);
   }
 
 
@@ -315,7 +315,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     while($dbo->fetch()) {
       $dbo->delete();
     }
-    return $this->returnStatus($obj);
+    return self::returnStatus($obj);
   }
 
   /**
@@ -327,7 +327,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     $tag = DB_DataObject::factory('tag');
     $tag->whereAdd('strip in ("'.implode('","',$this->getTagsArray($obj)).'")');
     $tag->find();
-    return $this->returnStatus($tag);
+    return self::returnStatus($tag);
   }
 
   /**
@@ -418,7 +418,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   }
   public function getTagged($tag)
   {
-    if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus(false);}
+    if(!$tag = $this->_getTagFromTag($tag)) {return self::returnStatus(false);}
     $dbo = DB_DataObject::factory('tag_record');
     $dbo->setTag($tag);
     $dbo->find();
@@ -427,41 +427,41 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
   public function hastag($tag,$obj)
   {
 
-    if(!$obj->pk()) return $this->returnStatus(false);
+    if(!$obj->pk()) return self::returnStatus(false);
 
-    if(!$tag = $this->_getTagFromTag($tag)) return $this->returnStatus(false);
-    if(in_array($tag->strip,$this->getTagsArray($obj))) return $this->returnStatus(true);
+    if(!$tag = $this->_getTagFromTag($tag)) return self::returnStatus(false);
+    if(in_array($tag->strip,$this->getTagsArray($obj))) return self::returnStatus(true);
 
-    return $this->returnStatus(false);
+    return self::returnStatus(false);
   }
   public function getTagDate($tag,$obj)
   {
-    if(!$tag = $this->_getTagFromTag($tag)) return $this->returnStatus(false);
-    if(!$obj->pk()) return $this->returnStatus(false);
+    if(!$tag = $this->_getTagFromTag($tag)) return self::returnStatus(false);
+    if(!$obj->pk()) return self::returnStatus(false);
     $dbo = DB_DataObject::factory('tag_record');
     $dbo->tag_id = $tag->id;
     $dbo->setRecord($obj);
     if($dbo->find(true)) {
-      return $this->returnStatus($dbo->tagged_at);
+      return self::returnStatus($dbo->tagged_at);
     }
-    return $this->returnStatus(false);
+    return self::returnStatus(false);
   }
   public function getTagRecord($tag,$obj)
   {
-    if(!$tag = $this->_getTagFromTag($tag)) return $this->returnStatus(false);
-    if(!$obj->pk()) return $this->returnStatus(false);
+    if(!$tag = $this->_getTagFromTag($tag)) return self::returnStatus(false);
+    if(!$obj->pk()) return self::returnStatus(false);
     $dbo = DB_DataObject::factory('tag_record');
     $dbo->tag_id = $tag->id;
     $dbo->setRecord($obj);
     if($dbo->find(true)) {
-      return $this->returnStatus($dbo);
+      return self::returnStatus($dbo);
     }
-    return $this->returnStatus(false);
+    return self::returnStatus(false);
   }
 
   public function getTagLastHistory($tag,$direction,DB_DataObject $obj)
   {
-    if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus(false);}
+    if(!$tag = $this->_getTagFromTag($tag)) {return self::returnStatus(false);}
     $h = DB_DataObject::factory('tag_history');
     $h->tag_id = $tag->id;
     $h->record_id = $obj->pk();
@@ -469,15 +469,15 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     $h->direction=$direction;
     $h->orderBy('date DESC');
     $h->find(true);
-    return $this->returnStatus($h);
+    return self::returnStatus($h);
   }
 
   public static function countTagged($tag)
   {
-        if(!$tag = $this->_getTagFromTag($tag)) {return $this->returnStatus(0);}
+    if(!$tag = self::_getTagFromTag($tag)) { return self::returnStatus(0); }
     $dbo = DB_DataObject::factory('tag_record');
     $dbo->setTag($tag);
-    return $this->returnStatus($dbo->count());
+    return self::returnStatus($dbo->count());
   }
 
 
@@ -486,6 +486,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     $this->getTagsArray($obj);
     $this->removeTags($obj);
   }
+
   public function undelete($obj)
   {
     if(!$obj->pk()) return;
@@ -495,7 +496,7 @@ class DB_DataObject_Plugin_Tag extends M_Plugin {
     }
 
   }
-  protected function _getTagFromTag($tag) {
+  protected static function _getTagFromTag($tag) {
     if(!is_a($tag,'DataObjects_Tag')) {
       $t = DB_DataObject_Pluggable::retreiveFromRegistry('tag','strip',$tag);
       if($t) {

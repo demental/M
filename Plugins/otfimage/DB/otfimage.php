@@ -24,7 +24,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
   }
   public function preGenerateForm(&$fb,&$obj)
 	{
-		$obj->fb_preDefElements['filename']=& HTML_QuickForm::createElement('file',$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel['filename']);            
+		$obj->fb_preDefElements['filename']=& HTML_QuickForm::createElement('file',$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel['filename']);
 	}
 	public function postProcessForm(&$v,&$fb,&$obj)
 	{
@@ -41,7 +41,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
     $obj->update();
     /**
      * Clearing cache for this image
-     **/ 
+     **/
      $filename = eregi_replace('(\.[^\.]+)$','',basename($obj->filename));
      $cachefolder = APP_ROOT.WEB_FOLDER.'/'.$defs['otfimage']['cache'].'/'.$filename.'/';
      foreach(FileUtils::getAllFiles($cachefolder) as $file) {
@@ -53,8 +53,8 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
 
       $main = $obj->getOwner();
       $mainImg = $main->getMainImage();
-      
-      
+
+
       if(!$obj->ismain && !$mainImg->pk()) {
         $obj->setAsMain();
       }
@@ -118,9 +118,9 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
         $this->_createResized($this->_getOriginalPath($obj),$cachefile,$params);
       }
     } else {
-      return $this->returnStatus(null);
+      return self::returnStatus(null);
     }
-    return $this->returnStatus($cacheurl);
+    return self::returnStatus($cacheurl);
   }
   public function paramstostring($params)
   {
@@ -133,11 +133,11 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
   }
   public function getOwner($obj)
   {
-    if(!$obj->record_table) return $this->returnStatus($obj);
+    if(!$obj->record_table) return self::returnStatus($obj);
     $return = DB_DataObject::factory($obj->record_table);
     $return->{$return->pkName()} = $obj->record_id;
     $return->find(true);
-    return $this->returnStatus($return);
+    return self::returnStatus($return);
   }
   public function attachTo(DB_DataObject $owner,$obj)
   {
@@ -145,7 +145,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
     $obj->record_id = $owner->pk();
     $obj->update();
   }
-  
+
   public function setAsMain($obj)
   {
     $obj->ismain=1;
@@ -174,7 +174,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
      $ext = FileUtils::getFileExtension($_FILES[$field]['name']);
 		 $name = $prefix.".".$ext;
      $destination = IMAGES_UPLOAD_FOLDER.$relativePathFromUploadFolder.'/'.$name;
-     
+
 			if (move_uploaded_file($_FILES[$field]["tmp_name"], $destination)
 				&&chmod($destination, 0644)){
 				return $name;
@@ -197,7 +197,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
     if(empty($obj->filename)) {
       $obj->filename = $default;
     }
-    return $this->returnStatus($obj);
+    return self::returnStatus($obj);
   }
   protected function _createResized($original,$destination,$params)
   {
@@ -205,7 +205,7 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
 	  if(!isset($params['x']) && !isset($params['y']) && !isset($params['maxx']) && !isset($params['maxy'])) {
 		  copy($original,$destination);
 	  } else {
-	    require_once 'M/traitephoto.php'; 
+	    require_once 'M/traitephoto.php';
   		$ph=new traitephoto;
   		$ph->photo=$original;
   		$ph->path=dirname($destination);
@@ -220,4 +220,4 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
     }
     return;
 	}
-}	
+}

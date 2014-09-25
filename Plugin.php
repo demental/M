@@ -43,21 +43,21 @@ abstract class M_Plugin implements iListener
     return $ret;
   }
   /**
-   * In case an event is fired and the expected behaviour for it is to return a value, 
+   * In case an event is fired and the expected behaviour for it is to return a value,
    * the plugin must use this method to return the result
    * @param mixed whatever must be returned and retreived by the event caller.
    */
-  public function returnStatus($returnedValue)
+  public static function returnStatus($returnedValue)
   {
     $c = new StdClass();
     $c->status = 'return';
     $c->return = $returnedValue;
     return $c;
   }
-  
+
   public function getFolderName()
   {
     return strtolower(preg_replace('`DB_DataObject_Plugin_`','',get_class($this)));
   }
-  
+
 }

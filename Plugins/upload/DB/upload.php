@@ -38,7 +38,7 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
 	  $uploadFields = $uploadFields['upload'];
 		$upFields=array_keys($uploadFields);
 		foreach($upFields as $k){
-			$obj->fb_preDefElements[$k]=& HTML_QuickForm::createElement('file',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel[$k]);            
+			$obj->fb_preDefElements[$k]=& HTML_QuickForm::createElement('file',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel[$k]);
 		}
 	}
 	function postGenerateForm(&$form,&$fb,&$obj)
@@ -64,13 +64,13 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
 	}
 	public function preProcessForm(&$values,$fb,$obj)
 	{
-	  
+
 	  $uploadFields = $obj->_getPluginsDef();
 	  $uploadFields = $uploadFields['upload'];
-	  
+
 		foreach($uploadFields as $k=>$v){
 			$obj->$k=$this->upFile($obj, $k, $obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix);
-		}	  
+		}
 		foreach($uploadFields as $k=>$v){
 			$field=$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix;
             if(key_exists('__upload_delete_'.$field,$_REQUEST)) {
@@ -142,8 +142,8 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
        $field = null;
      } else {
        $obj = $args[1];
-       $field = $args[0];       
-     }     
+       $field = $args[0];
+     }
      Log::info('calling filesize for '.$field);
      $info = $obj->_getPluginsDef();
      $info = $info['upload'];
@@ -155,8 +155,8 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
      } else {
        $info = $info[$field];
      }
-     return $this->returnStatus(FileUtils::getHumanFileSize(IMAGES_UPLOAD_FOLDER.'/'.$info['path'].'/'.$obj->{$field}));
-    
+     return self::returnStatus(FileUtils::getHumanFileSize(IMAGES_UPLOAD_FOLDER.'/'.$info['path'].'/'.$obj->{$field}));
+
    }
    public function getFileFormat()
    {
@@ -166,8 +166,8 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
        $field = null;
      } else {
        $obj = $args[1];
-       $field = $args[0];       
-     }     
+       $field = $args[0];
+     }
      $info = $obj->_getPluginsDef();
      $info = $info['upload'];
      if(is_null($field)) {
@@ -178,10 +178,10 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
      } else {
        $info = $info[$field];
      }
-     return $this->returnStatus(FileUtils::getFileExtension($obj->{$field}));
+     return self::returnStatus(FileUtils::getFileExtension($obj->{$field}));
    }
-   
-   
+
+
    public function serve($field,$name,$obj)
    {
  	  $uploadFields = $obj->_getPluginsDef();

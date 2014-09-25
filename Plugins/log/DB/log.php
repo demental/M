@@ -12,7 +12,7 @@
 /**
  * allows to log inserts and updates
  */
- 
+
 class DB_DataObject_Plugin_Log extends M_Plugin
 {
   protected static $username;
@@ -46,11 +46,11 @@ class DB_DataObject_Plugin_Log extends M_Plugin
       if(defined('LOG_DRIVER')) {
         self::$logger = Log::getInstance(LOG_DRIVER);
       } else {
-        self::$logger = Log::getInstance('nolog');        
+        self::$logger = Log::getInstance('nolog');
       }
     }
     if($obj instanceOf DB_DataObject) {
-      return $this->returnStatus(self::$logger);
+      return self::returnStatus(self::$logger);
     }
     return self::$logger;
   }

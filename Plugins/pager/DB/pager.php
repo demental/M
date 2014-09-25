@@ -90,7 +90,7 @@ class DB_DataObject_Plugin_Pager extends M_Plugin
         $this->preparePager($obj);
     }
     function getPager($obj) {
-      return $this->returnStatus($obj->_pager);
+      return self::returnStatus($obj->_pager);
     }
     function getSortLink($field) {
 

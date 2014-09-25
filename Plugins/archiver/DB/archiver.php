@@ -10,7 +10,7 @@
  */
 
 /**
- * Plugin that provides archiving features. Mostly used in office application 
+ * Plugin that provides archiving features. Mostly used in office application
  */
 
 
@@ -32,22 +32,22 @@ class DB_DataObject_Plugin_Archiver extends M_Plugin
         $obj->whereAdd($obj->tableName().'.archiver_archived=1');
       break;
       case 'B':
-      break;      
+      break;
       default:
         $obj->whereAdd($obj->tableName().'.archiver_archived!=1');
-      break;  
+      break;
     }
   }
   public function getbatchmethods($arr,$obj)
   {
     $arr['batch_archiverarchive']=array('title'=>__('Put into archive'),'plugin'=>'archiver');
-    return $this->returnStatus($arr);
+    return self::returnStatus($arr);
   }
   public function batch_archiverarchive($obj)
   {
     while($obj->fetch()) {
       $obj->archiver_archived=1;
-      $obj->update();      
+      $obj->update();
     }
   }
 }

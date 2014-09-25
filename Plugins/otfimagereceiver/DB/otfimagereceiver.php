@@ -24,7 +24,7 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
   {
     return array('getsecondaryimages','getmainimage','getimagenum','getallimages','newimage');
   }
-  
+
   /**
    * Returns a recordSet of images linked to $obj that are not set as main image
    * @return DB_DataObject
@@ -34,9 +34,9 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
     $tbl = $this->_newImage($obj);
     $tbl->ismain=0;
     $tbl->find();
-    return $this->returnStatus($tbl);
+    return self::returnStatus($tbl);
   }
-  
+
   /**
    * Returns the prefetched record linked to $obj and set as main image
    * @return DB_DataObject
@@ -46,7 +46,7 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
     $tbl = $this->_newImage($obj);
     $tbl->ismain=1;
     $tbl->find(true);
-    return $this->returnStatus($tbl);
+    return self::returnStatus($tbl);
   }
 	/**
 	 * Retrieve the nth image (currently sorted by the mysql insertion date)
@@ -58,7 +58,7 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
     $tbl->orderBy('ismain DESC');
     $tbl->limit($num-1,1);
     $tbl->find(true);
-    return $this->returnStatus($tbl);
+    return self::returnStatus($tbl);
   }
   /**
    * Returns a recordSet including all images linked to $obj
@@ -68,7 +68,7 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
   {
     $tbl = $this->_newImage($obj);
     $tbl->find();
-    return $this->returnStatus($tbl);
+    return self::returnStatus($tbl);
   }
   /**
    * base method for getting recordset of images
@@ -76,7 +76,7 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
    */
   public function newImage(DB_DataObject $obj)
   {
-    return $this->returnStatus($this->_newImage($obj));
+    return self::returnStatus($this->_newImage($obj));
   }
   protected function _newImage(DB_DataObject $obj) {
     $defs = $obj->_getPluginsDef();
@@ -85,4 +85,4 @@ class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
     $tbl->record_id = $obj->pk();
     return $tbl;
   }
-}  
+}
