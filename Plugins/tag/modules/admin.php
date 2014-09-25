@@ -137,7 +137,7 @@ class Tag_Module_Admin extends Module {
     $th->tag_id = $t->id;
     $th->delete();
     $t->getDatabaseConnection()
-      ->prepare('DELETE FROM tag_history WHERE tag_id = ?', 'integer')
+      ->prepare('DELETE FROM tag_history WHERE tag_id = ?', 'integer', MDB2_PREPARE_MANIP)
       ->execute($t->id);
 
      $t->delete();

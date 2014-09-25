@@ -12,7 +12,6 @@
 * @package      M
 * @subpackage   DB_DataObject_Plugin_Images
 * @author       Arnaud Sellenet <demental@sat2way.com>
-
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
@@ -218,7 +217,7 @@ class DB_DataObject_Plugin_Images extends M_Plugin
         $source = $v['path'].'/'.$name;
   			$infosSource = & Image_Transform::factory('GD');
         if(PEAR::isError($infosSource)) {
-            print_r($infosSource);
+            throw new Exception($infosSource->getMessage());
         }
   			$tmp=FileUtils::getFolderPath(TMP_PATH);
   			$infosSource->load($tmp.'overlaytemp.png');

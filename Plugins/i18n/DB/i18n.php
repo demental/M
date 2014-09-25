@@ -12,7 +12,6 @@
 * @package      M
 * @subpackage   DB_DataObject_Plugin_I18n
 * @author       Arnaud Sellenet <demental@sat2way.com>
-
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
@@ -404,7 +403,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     $db = $obj->getDatabaseConnection();
     $res = $db->loadModule('manager',null,true);
     if(PEAR::isError($res)) {
-      var_dump($res);
+      throw new Exception($res->getMessage());
     }
 
     $res = $db->manager->alterTable($iname,array(

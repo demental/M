@@ -175,12 +175,7 @@ class User{
 		}
 		$this->currentContainer = DB_DataObject::factory($this->containers[$this->context]['table']);
 		if(PEAR::isError($this->currentContainer)) {
-			ob_clean();
-			echo 'populating '.$this->context.' failed ';
-			print_r($this);
-			exit;
-			$op = PEAR::getStaticProperty('DB_DataObject','options');
-			var_dump($op);
+			throw new Exception($this->currentContainer->getMessage());
 		}
 		$this->currentContainer->get($id);
     if(method_exists($this->currentContainer, 'onUp')) {

@@ -4,56 +4,28 @@
 *
 * Wow this is my first PHP class (lol)
 * Is used in M/DB/DataObject/Plugins/Image.php
-* We should think about refactoring this file as it's only a useless proxy for PEAR_Image_Transform 
+* We should think about refactoring this file as it's only a useless proxy for PEAR_Image_Transform
 * I left the comments below as an historical purpose (not accurate anymore...)
 *
 * @package      M
 * @subpackage   traitephoto
 * @author       Arnaud Sellenet <demental@sat2way.com>
-
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
 
 require_once("Image/Transform.php");
-//// Classe de traitement photo.
-//// Historique :
-//// 10/2002 d�but du developpement
-//// 11/2002 Ajout des fonctions maxx et maxy
-//// 16/01/2003 Ajout de redimensionnement par surface ou perimetre seuil
-//// 23/01/2003 Ajout de nomsouhaite pour avoir le nom exact
-//// 29/01/2003 Ajout du support d'imagemagick pour le redim
-//// 05/04/2004 Commentaire + ajout de la v�rification du "/" � la fin de $path
-////////////////////////////
-////
-//// Exemple d'utilisation :
-//// $ph=new traitephoto;
-//// $ph->path="photos/";
-//// $ph->photo=$chemin_fichier_a_traiter;
-//// $ph->nomsouhaite="bla.jpg";
-//// $ph->width=100;
-//// $ph->height=100;
-//// $ph->redim();
-//// $ph->sauvegarde();
-////
-//////////////////////////////
-//// Limitations avec imagemagick :
-//// l'ex�cutable "convert" doit �tre plac� dans le dossier /bin et pas /sbin pour pouvoir �tre ex�cut� par php
-//// Il doit certainement �tre en 755 (� v�rifier)
-//// Pas de rotation
-//// Pas de redimensionnement en m�me temps que recadrage
-//// le support d'imagemagick n'est pas impl�ment� dans la m�thode "sortie()"
 //////////////////////////////
 
 
 
 class traitephoto
 {
-	var $photo;//// Chemin du fichier photo � traiter
-	var $nomimg;//// d�but du nom du fichier, si $nomsouhaite n'est pas renseign�
-	var $path;//// Chemin o� enregistrer le fichier trait�
+	var $photo;//// Chemin du fichier photo a traiter
+	var $nomimg;//// debut du nom du fichier, si $nomsouhaite n'est pas renseigne
+	var $path;//// Chemin ou enregistrer le fichier traite
 	var $qualite; //// qualite JPEG
-	var $nomsouhaite; //// si ce champ est renseign� le nom de l'export sera exactement celui-ci 
+	var $nomsouhaite; //// si ce champ est renseigne le nom de l'export sera exactement celui-ci
 
 /// ---- Redimensionnement ---- //
 //// si tous les champs sont renseign�s, seuls les plus "prioritaires" sont pris en compte
@@ -96,7 +68,7 @@ class traitephoto
 		$this -> gauche=0;
 		$this -> haut=0;
 		$this -> droit=0;
-		$this -> bas=0;						
+		$this -> bas=0;
 		$this -> angle=0;
 		$this -> surface=0;
 		$this -> qualite=60;
@@ -113,7 +85,7 @@ class traitephoto
       Log::info('Using Imagick3 as image driver');
     } else {
 
-		  $this->imgT= Image_Transform::factory("GD");		
+		  $this->imgT= Image_Transform::factory("GD");
       Log::info('Using GD as image driver');
     }
 
@@ -130,11 +102,11 @@ class traitephoto
 	function getSize(){
 		$this->imgsize=getimagesize($this->photo);
 		return $this->imgsize;
-	}		
+	}
 	function redim() {
 		$this->imgT->load($this->photo);
 		if(PEAR::isError($this->imgT)) {
-			print_r($this->imgT);
+      throw new Exception($this->imgT->getMessage());
 		}
 		$this->imgT->setOptions(array("quality"=>$this->qualite));
 		if($this->width){
@@ -168,15 +140,15 @@ class traitephoto
 			$im_out = ImageCreate($this -> docsize[0],$this -> docsize[1]);
 		} else {
 			$im_out = ImageCreate($this -> newimgsize[0],$this -> newimgsize[1]);
-		}					
+		}
 		if($this->newimgsize[0]==$this->imgsize[0] && $this->newimgsize[0]==$this->imgsize[0]){
-			ImageCopy($im_out, $im_in, 0, 0, $this->gauche, $this->haut, $this -> newimgsize[0],$this -> newimgsize[1]);				
+			ImageCopy($im_out, $im_in, 0, 0, $this->gauche, $this->haut, $this -> newimgsize[0],$this -> newimgsize[1]);
 		} else {
 			ImageCopyResampleBicubic($im_out, $im_in, 0, 0, $this->gauche, $this->haut, $this -> newimgsize[0],$this -> newimgsize[1],$this -> imgsize[0], $this -> imgsize[1]);
 		}
 		if($im_in) {ImageDestroy($im_in);}
 		return $im_out;
-	}		
+	}
 	function sortie(){
 		///// Permet d'appeler un fichier PHP en tant qu'image
 		///// Fonctionne uniquement avec GD
@@ -187,9 +159,9 @@ class traitephoto
 			ImageDestroy($im_out);
 
 	}
-	function sauvegarde($type=null){	
+	function sauvegarde($type=null){
 		/////////////////////// sauvegarde l'image finale et retourne son nom de fichier ////////////
-		
+
 		///// Petite v�rification : y-a-t'il un "/" � la fin de $this->path ?
 		if(!ereg("/$",$this->path)){$this->path.="/";}
 		if($type) {
@@ -207,19 +179,19 @@ class traitephoto
 		} else {
 			$badformat1 = "ok";
 		}
-		if($badformat1 == "ok") {return false;}	////// On arr�te le traitement si le type d'image est non g�r�. 
+		if($badformat1 == "ok") {return false;}	////// On arr�te le traitement si le type d'image est non g�r�.
 		if(empty($this->nomsouhaite)){
 			$this -> nomimg=$randnum.$ext;
 		} else {
 			$this -> nomimg=$this->nomsouhaite;
 		}
 		///////////////////////////////////////////////////
-		
+
 		////////////// Traitement avec GD //////////////////
 		if($this->gd){
 			$im_out=$this->processGD();
 			if($this -> imgsize[2]=="2") {ImageJpeg($im_out,$this->path.$this->nomimg,$this->qualite);}
-			if($this -> imgsize[2]=="1") {		
+			if($this -> imgsize[2]=="1") {
 				imagecolortransparent($im_out,$white);
 				ImageGif($im_out,$this->path.$this->nomimg);
 			}
@@ -229,12 +201,12 @@ class traitephoto
 			$commande="convert $this->photo";
 			if($this->recadre()){
 				$commande.=" -crop ".$this->docsize[0]."x".$this->docsize[1]."+".$this->gauche."+".$this->haut;
-			} else {	
+			} else {
 				$commande.=" -resize ".$this->newimgsize[0]."x".$this->newimgsize[1];
 			}
 			$commande.=" -quality ".$this->qualite." ".$this->path.$this->nomimg;
 			passthru($commande,$ok);
-		}	
+		}
 		return $this->nomimg;
 		*/
 	}

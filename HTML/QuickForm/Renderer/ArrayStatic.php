@@ -10,9 +10,8 @@
 * QuickForm renderer for static use in template engine
 *
 * @package      M
-* @subpackage   
+* @subpackage
 * @author       Arnaud Sellenet <demental@sat2way.com>
-
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
@@ -114,11 +113,11 @@ class HTML_QuickForm_Renderer_ArrayStatic extends M_HTML_QuickForm_Renderer_Arra
         }
         // create keys for elements grouped by native group or name
         if (strstr($ret['name'], '[') or $this->_currentGroup) {
-            // Fix for bug #8123: escape backslashes and quotes to prevent errors 
+            // Fix for bug #8123: escape backslashes and quotes to prevent errors
             // in eval(). The code below seems to handle the case where element
             // name has unbalanced square brackets. Dunno whether we really
             // need this after the fix for #8123, but I'm wary of making big
-            // changes to this code.  
+            // changes to this code.
             preg_match('/([^]]*)\\[([^]]*)\\]/', $ret['name'], $matches);
             if (isset($matches[1])) {
                 $sKeysSub = substr_replace($ret['name'], '', 0, strlen($matches[1]));
@@ -173,11 +172,10 @@ class HTML_QuickForm_Renderer_ArrayStatic extends M_HTML_QuickForm_Renderer_Arra
             unset($elAry['keys']);
             // where should we put this element...
             if (is_array($this->_currentGroup) && ('group' != $elAry['type'])) {
-                $toEval = '$this->_currentGroup' . $sKeys . ' = $elAry;';
+                $this->{'_currentGroup' . $sKeys} = $elAry;
             } else {
-                $toEval = '$this->_ary' . $sKeys . ' = $elAry;';
+                $this->{'_ary' . $sKeys} = $elAry;
             }
-            eval($toEval);
         }
         return;
     }
