@@ -405,7 +405,7 @@ class myFB extends DB_DataObject_FormBuilder
 						unset($crossLinkDo);
 						$crossLinkDo = DB_DataObject::factory($crossLink['table']);
 						if (PEAR::isError($crossLinkDo)) {
-							die($crossLinkDo->getMessage());
+							throw new Exception($crossLinkDo->getMessage());
 						}
 
 						if (!is_array($crossLinkLinks = $crossLinkDo->links())) {
@@ -533,7 +533,7 @@ class myFB extends DB_DataObject_FormBuilder
 						unset($tripleLinkDo);
 						$tripleLinkDo = DB_DataObject::factory($tripleLink['table']);
 						if (PEAR::isError($tripleLinkDo)) {
-							die($tripleLinkDo->getMessage());
+							throw new Exception($tripleLinkDo->getMessage());
 						}
 
 						if (!is_array($tripleLinkLinks = $tripleLinkDo->links())) {
@@ -884,7 +884,7 @@ class myFB extends DB_DataObject_FormBuilder
 			unset($do);
 			$do = DB_DataObject::factory($crossLink['table']);
 			if (PEAR::isError($do)) {
-				return PEAR::raiseError('Cannot load dataobject for table '.$crossLink['table'].' - '.$do->getMessage());
+				throw new Exception('Cannot load dataobject for table '.$crossLink['table'].' - '.$do->getMessage());
 			}
 
 			if (!is_array($links = $do->links())) {
@@ -947,7 +947,7 @@ class myFB extends DB_DataObject_FormBuilder
 			unset($do);
 			$do = DB_DataObject::factory($tripleLink['table']);
 			if (PEAR::isError($do)) {
-				die($do->getMessage());
+				throw new Exception($do->getMessage());
 			}
 			if (!is_array($links = $do->links())) {
 				$links = array();
@@ -1235,7 +1235,7 @@ class myFB extends DB_DataObject_FormBuilder
 							$ret = $this->_form->_linkNewValueForms[$elName]->process(array(&$this->_form->_linkNewValueFBs[$elName], 'processForm'), false);
 							if (PEAR::isError($ret)) {
 								$this->debug('Error processing linkNewValue for '.serialize($this->_form->_linkNewValueDOs[$elName]));
-								return PEAR::raiseError('Error processing linkNewValue - Error from processForm: '.$ret->getMessage(),
+								throw new Exception('Error processing linkNewValue - Error from processForm: '.$ret->getMessage(),
 								null,
 								null,
 								null,
@@ -1421,7 +1421,7 @@ class myFB extends DB_DataObject_FormBuilder
 									: $values);
 									if (PEAR::isError($ret)) {
 										$this->debug('Failed to process extraFields for crossLink '.serialize($do));
-										return PEAR::raiseError('Failed to process extraFields crossLink - Error from processForm: '
+										throw new Exception('Failed to process extraFields crossLink - Error from processForm: '
 										.$ret->getMessage()
 										, null, null, null, $do);
 									}
@@ -1437,7 +1437,7 @@ class myFB extends DB_DataObject_FormBuilder
 									$ret = $this->_extraFieldsFb[$crossLinkPrefix.$crossLinkPostfix]->processForm($insertValues);
 									if (PEAR::isError($ret)) {
 										$this->debug('Failed to process extraFields for crossLink '.serialize($do));
-										return PEAR::raiseError('Failed to process extraFields crossLink - Error from processForm: '
+										throw new Exception('Failed to process extraFields crossLink - Error from processForm: '
 										.$ret->getMessage()
 										, null, null, null, $do);
 									}
@@ -1470,7 +1470,7 @@ class myFB extends DB_DataObject_FormBuilder
 								$ret = $subform->process(array(&$reverseLink['FBs'][$sfkey], 'processForm'), false);
 								if (PEAR::isError($ret)) {
 									$this->debug('Failed to process subForm for reverseLink '.serialize($reverseLink['FBs'][$sfkey]->_do));
-									return PEAR::raiseError('Failed to process extraFields crossLink - Error from processForm: '
+									throw new Exception('Failed to process extraFields crossLink - Error from processForm: '
 									.$ret->getMessage()
 									, null, null, null, $reverseLink['FBs'][$sfkey]->_do);
 								}

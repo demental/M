@@ -925,8 +925,8 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       return implode(',',$values);
     }
 
-    // public function raiseError($message, $type = null, $behaviour = null)
-    // {
-    //   throw new Exception($type . ' ' . $message);
-    // }
+    public function raiseError($message, $type = null, $behaviour = null)
+    {
+      throw new Exception($type . ' ' . $message);
+    }
 }
