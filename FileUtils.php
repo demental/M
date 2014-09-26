@@ -63,7 +63,7 @@ class fileUtils
 	 *
 	 * @param	$pattern	string	Pattern to exclude
 	 */
-	public function addExcludePattern($pattern) 
+	public function addExcludePattern($pattern)
 	{
 		$this->_pattern .= '|'.$pattern;
 	}
@@ -105,7 +105,7 @@ class fileUtils
 	public function getFilesOlderThan($time,$absolute=false)
 	{
 		$t = time()-$time;
-			
+
 		foreach($this->getContents() as $file) {
 			if(filemtime($this->file.$file)<$t) {
 				$out[]=$absolute?$this->file.$file:$file;
@@ -152,7 +152,7 @@ class fileUtils
         return $fullpath;
       }
     }
- 
+
     return false;
   }
 	/**
@@ -323,7 +323,7 @@ class fileUtils
 	 *
 	 * @return Files list
 	 */
-	function getContents() 
+	function getContents()
 	{
 		$out=array();
 		if(!is_dir($this->file)) {
@@ -347,7 +347,7 @@ class fileUtils
 	 *
 	 * @return Total of directory
 	 */
-	function deleteContents() 
+	function deleteContents()
 	{
 
 		if ($dh = @opendir($this->file))
@@ -380,9 +380,9 @@ class fileUtils
 			case 'gif':
 				$ctype='image/gif';
 				break;
-					
+
 			case 'png':
-				$ctype='image/gif';
+				$ctype='image/png';
 				break;
 			default:
 				$ctype='application/force-download';
@@ -391,7 +391,7 @@ class fileUtils
 		}
 		header('Content-Type:'.$ctype);
 		readfile($file);
-		exit;
+		exit(0);
 	}
 	/**
 	 *
@@ -469,7 +469,7 @@ class fileUtils
     $result = basename($filename);
     return escapeshellcmd($result);
   }
-  
+
   public function getHumanFileSize($file)
   {
     $sizeArr = array('b','Kb','Mb','Gb','Tb');

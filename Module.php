@@ -732,7 +732,7 @@ class Module extends Maman {
 	public function redirect($modulaction,$vars = null,$lang=null,$secure=null,$status = '302') {
 		if(preg_match('`^(http|https)://`i',$modulaction)) {
 			header('location:'.$modulaction,true,$status);
-			exit;
+			exit(0);
 		}
 
     if($this->isComponent()) {
@@ -760,7 +760,7 @@ class Module extends Maman {
 			header('location:'.$url,true,$status);
 		}
 		flush();
-		exit;
+		exit(0);
 
 	}
 	public function redirect301($modulaction,$vars = null,$lang=null,$secure=null)

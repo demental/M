@@ -121,7 +121,7 @@ class Tag_Module_Admin extends Module {
       $t->update();
     }
     if($this->isAjaxRequest()) {
-      die('OK');
+      return $this->setOuput('OK');
     } else {
       $this->redirect(M_Office::URL('tag:admin/manager',array(),array_keys($_REQUEST)));
     }
@@ -143,7 +143,7 @@ class Tag_Module_Admin extends Module {
      $t->delete();
    }
    if($this->isAjaxRequest()) {
-     die('OK');
+     return $this->setOuput('OK');
    } else {
      $this->redirect(M_Office::URL('tag:admin/manager',array(),array_keys($_REQUEST)));
    }
