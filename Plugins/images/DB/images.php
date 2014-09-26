@@ -208,8 +208,8 @@ class DB_DataObject_Plugin_Images extends M_Plugin
   		} else {
   	    $type = $v['type']?$v['type']:null;
   		}
-  		$ph->redim();
-  		$name = $ph->sauvegarde($type);
+  		$ph->resize();
+  		$name = $ph->save($type);
 
   		if(isset($v['overlay']) && $firstRedim) {
   	    require_once 'Image/Canvas.php';
@@ -242,8 +242,8 @@ class DB_DataObject_Plugin_Images extends M_Plugin
   			$ph->path=IMAGES_UPLOAD_FOLDER.$v['path'];
   			$ph->nomsouhaite=$obj->$field;
   			$ph->qualite=$v['quality'];
-  			$ph->redim();
-  			$name = $ph->sauvegarde($v['type']?$v['type']:null);
+  			$ph->resize();
+  			$name = $ph->save($v['type']?$v['type']:null);
   			unset($ph);
   		}
     }

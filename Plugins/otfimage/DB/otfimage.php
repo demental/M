@@ -215,8 +215,8 @@ class DB_DataObject_Plugin_Otfimage extends M_Plugin
   		$ph->height=$params['y'];
   		$ph->maxx=$params['maxx'];
   		$ph->maxy=$params['maxy'];
-  		$ph->redim();
-  		$name = $ph->sauvegarde($params['format']);
+  		$ph->resize();
+  		$name = $ph->save($params['format']);
     }
     return;
 	}

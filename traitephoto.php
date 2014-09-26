@@ -21,41 +21,41 @@ require_once("Image/Transform.php");
 
 class traitephoto
 {
-	var $photo;//// Chemin du fichier photo a traiter
-	var $nomimg;//// debut du nom du fichier, si $nomsouhaite n'est pas renseigne
-	var $path;//// Chemin ou enregistrer le fichier traite
-	var $qualite; //// qualite JPEG
-	var $nomsouhaite; //// si ce champ est renseigne le nom de l'export sera exactement celui-ci
+	public $photo;//// Chemin du fichier photo a traiter
+	public $nomimg;//// debut du nom du fichier, si $nomsouhaite n'est pas renseigne
+	public $path;//// Chemin ou enregistrer le fichier traite
+	public $qualite; //// qualite JPEG
+	public $nomsouhaite; //// si ce champ est renseigne le nom de l'export sera exactement celui-ci
 
-/// ---- Redimensionnement ---- //
-//// si tous les champs sont renseign�s, seuls les plus "prioritaires" sont pris en compte
-//// $pourcent prend le pas sur $width et $height
-//// mais peut ensuite �tre trait� par les param�tres suivants
-//// $maxx et $maxy prennent le pas sur $perimetre qui prend le pas sur $surface
+  /// ---- Redimensionnement ---- //
+  //// si tous les champs sont renseign�s, seuls les plus "prioritaires" sont pris en compte
+  //// $pourcent prend le pas sur $width et $height
+  //// mais peut ensuite �tre trait� par les param�tres suivants
+  //// $maxx et $maxy prennent le pas sur $perimetre qui prend le pas sur $surface
 
-	var $width;//// Largeur souhait�e. Si la hauteur n'est pas sp�cifi�e, le redimensionnement sera proportionnel
-	var $height;//// Hauteur souhait�e. Si la largeur n'est pas sp�cifi�e, le redimensionnement sera proportionnel
-	var $pourcent;//// redimensionnement en pourcentage
-	var $maxx;//// redimensionnement seuil en largeur - toujours proportionnel
-	var $maxy;//// redimensionnement seuil en hauteur - toujours proportionnel
-	var $perimetre;//// redimensionnement en p�rim�tre - toujours proportionnel
-	var $surface;//// redimensionnement en surface - toujours proportionnel
-	var $imgsize=Array();//// variable 'priv�e', o� sont stock�es les informations de la photo originale (0=>x,1=>y,2=>format) - avec GD
+	public $width;//// Largeur souhait�e. Si la hauteur n'est pas sp�cifi�e, le redimensionnement sera proportionnel
+	public $height;//// Hauteur souhait�e. Si la largeur n'est pas sp�cifi�e, le redimensionnement sera proportionnel
+	public $pourcent;//// redimensionnement en pourcentage
+	public $maxx;//// redimensionnement seuil en largeur - toujours proportionnel
+	public $maxy;//// redimensionnement seuil en hauteur - toujours proportionnel
+	public $perimetre;//// redimensionnement en p�rim�tre - toujours proportionnel
+	public $surface;//// redimensionnement en surface - toujours proportionnel
+	public $imgsize = Array();//// variable 'priv�e', o� sont stock�es les informations de la photo originale (0=>x,1=>y,2=>format) - avec GD
 						//// on peut �ventuellement la r�cup�rer en dehors de l'objet
-	var $newimgsize=Array();///// tableau ou sont stock�s les informations de la nouvelle photo
+	public $newimgsize = Array();///// tableau ou sont stock�s les informations de la nouvelle photo
 /// ----- Recadrage ----- ///
-	var $gauche;
-	var $droit;
-	var $haut;
-	var $bas;
-	var $docsize=Array();/// Var priv�e, utilis�e pour le recadrage
+	public $gauche;
+	public $droit;
+	public $haut;
+	public $bas;
+	public $docsize = Array();/// Var priv�e, utilis�e pour le recadrage
 /// ----- Rotation ----- ///
 /// Uniquement par pas de 90� //
-	var $angle;///
-	var $imgT;// objet PEAR_Image_Transform
-	var $server; /////// chemin pour arriver au dossier depuis la racine serveur (si on utilise imagemagick)
-	var $gd; ////// 1 pour redim gd, 0 pour redim imagemagick
-	function traitephoto(){
+	public $angle;///
+	public $imgT;// objet PEAR_Image_Transform
+	public $server; /////// chemin pour arriver au dossier depuis la racine serveur (si on utilise imagemagick)
+	public $gd; ////// 1 pour redim gd, 0 pour redim imagemagick
+	public function __construct() {
 		$this -> photo="";
 		$this -> nomimg="";
 		$this -> width=0;
@@ -77,20 +77,17 @@ class traitephoto
 		$this->server="";
 
     if(extension_loaded('imagick') || (function_exists('dl') && @dl('imagick'))) {
-
 		  $this->imgT= Image_Transform::factory("Imagick3");
       if(PEAR::isError($this->imgT)) {
         Log::error($this->imgT->getMessage());
       }
       Log::info('Using Imagick3 as image driver');
     } else {
-
 		  $this->imgT= Image_Transform::factory("GD");
       Log::info('Using GD as image driver');
     }
-
 	}
-	function recadre(){
+	public function crop(){
 		if($this->droit-$this->gauche!=0){
 			$this->docsize[0]=$this->droit-$this->gauche;
 			$this->docsize[1]=$this->bas-$this->haut;
@@ -103,7 +100,8 @@ class traitephoto
 		$this->imgsize=getimagesize($this->photo);
 		return $this->imgsize;
 	}
-	function redim() {
+
+	function resize() {
 		$this->imgT->load($this->photo);
 		if(PEAR::isError($this->imgT)) {
       throw new Exception($this->imgT->getMessage());
@@ -127,16 +125,19 @@ class traitephoto
 				$this->imgT->scaleMaxLength($this->maxy);
 		}
 	}
-	function processGD(){
-		if($this -> imgsize[2]=="2") {$im_in = ImageCreateFromJpeg($this->photo);}
+
+	public function processGD(){
+		if($this -> imgsize[2]=="2") {
+      $im_in = ImageCreateFromJpeg($this->photo);
+    }
 		if($this -> imgsize[2]=="1") {
 			$im_in = ImageCreateFromGif($this->photo);
-			$white=imagecolortransparent($im_in);
+			$white = imagecolortransparent($im_in);
 		}
 		if(($this->angle % 360)!=0){
-			$im_in=rotation($im_in,$this->angle);
+			$im_in = self::rotation($im_in,$this->angle);
 		}
-				if($this->recadre()){
+    if($this->crop()){
 			$im_out = ImageCreate($this -> docsize[0],$this -> docsize[1]);
 		} else {
 			$im_out = ImageCreate($this -> newimgsize[0],$this -> newimgsize[1]);
@@ -144,166 +145,116 @@ class traitephoto
 		if($this->newimgsize[0]==$this->imgsize[0] && $this->newimgsize[0]==$this->imgsize[0]){
 			ImageCopy($im_out, $im_in, 0, 0, $this->gauche, $this->haut, $this -> newimgsize[0],$this -> newimgsize[1]);
 		} else {
-			ImageCopyResampleBicubic($im_out, $im_in, 0, 0, $this->gauche, $this->haut, $this -> newimgsize[0],$this -> newimgsize[1],$this -> imgsize[0], $this -> imgsize[1]);
+			self::ImageCopyResampleBicubic($im_out, $im_in, 0, 0, $this->gauche, $this->haut, $this -> newimgsize[0],$this -> newimgsize[1],$this -> imgsize[0], $this -> imgsize[1]);
 		}
 		if($im_in) {ImageDestroy($im_in);}
 		return $im_out;
 	}
-	function sortie(){
-		///// Permet d'appeler un fichier PHP en tant qu'image
-		///// Fonctionne uniquement avec GD
-		Header("Content-Type:image/gif");// TODO faire le header correct
+
+	public function output(){
+		header("Content-Type:image/gif");
 		$im_out=$this->processGD();
-		if($this -> imgsize[2]=="2") {imageJpeg($im_out,'',$this->qualite);}
-		if($this -> imgsize[2]=="1") {imageGif($im_out);}
-			ImageDestroy($im_out);
-
+		if($this -> imgsize[2]=="2") { imagejpeg($im_out,'',$this->qualite); }
+		if($this -> imgsize[2]=="1") { imagegif($im_out); }
+  	imagedestroy($im_out);
 	}
-	function sauvegarde($type=null){
-		/////////////////////// sauvegarde l'image finale et retourne son nom de fichier ////////////
 
-		///// Petite v�rification : y-a-t'il un "/" � la fin de $this->path ?
-		if(!ereg("/$",$this->path)){$this->path.="/";}
+  /**
+   * Saves processed image and returns file name
+   * @return string
+   */
+	public function save($type=null){
+    $this->path = FileUtils::ensure_trailing_slash($this->path);
 		if($type) {
 			$this->nomsouhaite = eregi_replace('[[:alnum:]]+$',$type,$this->nomsouhaite);
 		}
 		$this->imgT->save($this->path.$this->nomsouhaite,$type?$type:$this->imgT->getImageType());
 		return $this->nomsouhaite;
-/*
-		///// Cr�ation du nom du fichier destination //////
-		$randnum = md5(time());
-		if($this -> imgsize[2]=="1") {
-			$ext=".gif";
-		} elseif ($this -> imgsize[2]=="2") {
-			$ext=".jpg";
-		} else {
-			$badformat1 = "ok";
-		}
-		if($badformat1 == "ok") {return false;}	////// On arr�te le traitement si le type d'image est non g�r�.
-		if(empty($this->nomsouhaite)){
-			$this -> nomimg=$randnum.$ext;
-		} else {
-			$this -> nomimg=$this->nomsouhaite;
-		}
-		///////////////////////////////////////////////////
-
-		////////////// Traitement avec GD //////////////////
-		if($this->gd){
-			$im_out=$this->processGD();
-			if($this -> imgsize[2]=="2") {ImageJpeg($im_out,$this->path.$this->nomimg,$this->qualite);}
-			if($this -> imgsize[2]=="1") {
-				imagecolortransparent($im_out,$white);
-				ImageGif($im_out,$this->path.$this->nomimg);
-			}
-			ImageDestroy($im_out);
-		//////////// Traitement avec imagemagick
-		} else {
-			$commande="convert $this->photo";
-			if($this->recadre()){
-				$commande.=" -crop ".$this->docsize[0]."x".$this->docsize[1]."+".$this->gauche."+".$this->haut;
-			} else {
-				$commande.=" -resize ".$this->newimgsize[0]."x".$this->newimgsize[1];
-			}
-			$commande.=" -quality ".$this->qualite." ".$this->path.$this->nomimg;
-			passthru($commande,$ok);
-		}
-		return $this->nomimg;
-		*/
 	}
-}
-//////////// Fin de classe /////////////
 
-//////////////////////////////////////// N�cessaire pour la classe ci-dessus ////////////////////////////////////////////
-function ImageCopyResampleBicubic (&$dst_img, &$src_img, $dst_x,$dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h){
-/*
-port to PHP by John Jensen July 10 2001 (updated 4/21/02) -- original code
-(in C, for the PHP GD Module) by jernberg@fairytale.se
-I have added various optimization updates to my PHP bicubic function, along
-with a few fixes. Thanks to scott@pawprint.net for pointing out that
-src_x/y were being factored into the placement on the dst_img.
-*/
-
-        $palsize = ImageColorsTotal ($src_img); // retourne le nombre de couleur de la palette
-        for ($i = 0; $i < $palsize; $i++) {  // get palette.
-                $colors = ImageColorsForIndex ($src_img, $i);
-                ImageColorAllocate ($dst_img, $colors['red'], $colors['green'], $colors['blue']);  // retourne un identifiant de couleur, reprÈsentant la couleur composÈe avec les couleurs RGB
-        }
-
-        $scaleX = ($src_w - 1) / $dst_w;
-        $scaleY = ($src_h - 1) / $dst_h;
-
-        $scaleX2 = (int) ($scaleX / 2);
-        $scaleY2 = (int) ($scaleY / 2);
-
-        for ($j = $src_y; $j < $dst_h; $j++) {
-                $sY = (int) ($j * $scaleY);
-                $y13 = $sY + $scaleY2;
-
-                for ($i = $src_x; $i < $dst_w; $i++) {
-                        $sX = (int) ($i * $scaleX);
-                        $x34 = $sX + $scaleX2;
-
-                        $color1 = ImageColorsForIndex ($src_img, ImageColorAt ($src_img, $sX,$y13));    // imagecolorsforindex retourne un tableau associatif avec les couleurs rouge (red) , vert (green), bleu (blue) qui contiennent les valeurs de la couleur correspondante.
-
-                        $color2 = ImageColorsForIndex ($src_img, ImageColorAt ($src_img, $sX,$sY));    // imagecolorat retourne l'index de la couleur du pixel situÈ aux coordonnÈes (x, y),
-
-                        $color3 = ImageColorsForIndex ($src_img, ImageColorAt ($src_img, $x34,$y13));
-
-                        $color4 = ImageColorsForIndex ($src_img, ImageColorAt ($src_img, $x34,$sY));
-
-
-                        $red = ($color1['red'] + $color2['red'] + $color3['red'] +
-$color4['red']) / 4;
-                        $green = ($color1['green'] + $color2['green'] + $color3['green'] +
-$color4['green']) / 4;
-                        $blue = ($color1['blue'] + $color2['blue'] + $color3['blue'] +
-$color4['blue']) / 4;
-
-                        ImageSetPixel ($dst_img, $i + $dst_x - $src_x, $j + $dst_y - $src_y,    // dessine un pixel au point (x,y) (le coin supÈrieur gauche est l'origine (0,0)) dans l'image avec la couleur.
-ImageColorClosest ($dst_img, $red, $green, $blue)); // retourne l'index de la couleur de la palette qui est la plus proche de la valeur RGB passÈe.
-
-                }
-}
-
-}
-
- function rotation($pic, $angle) {
- /* ParamËtres :
-  * $pic : identifiant d'image obtenu par imagecreate()
-  * $angle : angle de rotation (90∞, 180∞, 270∞)
+  /*
+  port to PHP by John Jensen July 10 2001 (updated 4/21/02) -- original code
+  (in C, for the PHP GD Module) by jernberg@fairytale.se
+  I have added various optimization updates to my PHP bicubic function, along
+  with a few fixes. Thanks to scott@pawprint.net for pointing out that
+  src_x/y were being factored into the placement on the dst_img.
   */
+  public static function ImageCopyResampleBicubic(&$dst_img, &$src_img, $dst_x,$dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h) {
+    $palsize = ImageColorsTotal ($src_img); // retourne le nombre de couleur de la palette
+    for ($i = 0; $i < $palsize; $i++) {  // get palette.
+      $colors = ImageColorsForIndex ($src_img, $i);
+      ImageColorAllocate ($dst_img, $colors['red'], $colors['green'], $colors['blue']);
+    }
 
-  $width = imagesx($pic);
-  $height = imagesy($pic);
-  if ($angle==180)
-  $p = imagecreate($width, $height);
-  else
-  $p = imagecreate($height, $width);
-  if ($angle<0)
-  $angle = 360 + $angle % 360;
-  if ($angle>360)
-  $angle = $angle % 360;
+    $scaleX = ($src_w - 1) / $dst_w;
+    $scaleY = ($src_h - 1) / $dst_h;
 
-  if ($angle==180)  {
-     for($i=0;$i<$width;$i++)  {
+    $scaleX2 = (int) ($scaleX / 2);
+    $scaleY2 = (int) ($scaleY / 2);
+
+    for ($j = $src_y; $j < $dst_h; $j++) {
+      $sY = (int) ($j * $scaleY);
+      $y13 = $sY + $scaleY2;
+
+      for ($i = $src_x; $i < $dst_w; $i++) {
+        $sX = (int) ($i * $scaleX);
+        $x34 = $sX + $scaleX2;
+
+        $color1 = ImageColorsForIndex ($src_img, ImageColorAt ($src_img, $sX,$y13));
+
+        $color2 = ImageColorsForIndex ($src_img, ImageColorAt ($src_img, $sX,$sY));
+
+        $color3 = ImageColorsForIndex ($src_img, ImageColorAt ($src_img, $x34,$y13));
+
+        $color4 = ImageColorsForIndex ($src_img, ImageColorAt ($src_img, $x34,$sY));
+
+
+        $red = ($color1['red'] + $color2['red'] + $color3['red'] + $color4['red']) / 4;
+        $green = ($color1['green'] + $color2['green'] + $color3['green'] + $color4['green']) / 4;
+        $blue = ($color1['blue'] + $color2['blue'] + $color3['blue'] + $color4['blue']) / 4;
+        ImageSetPixel($dst_img, $i + $dst_x - $src_x, $j + $dst_y - $src_y,
+        ImageColorClosest($dst_img, $red, $green, $blue));
+      }
+    }
+  }
+
+  /* @params
+  * $pic : resource identifier returned by imagecreate()
+  * $angle : rotation angle, in degrees (90, 180, 270)
+  */
+  public static function rotation($pic, $angle) {
+    $width = imagesx($pic);
+    $height = imagesy($pic);
+    if ($angle==180)
+    $p = imagecreate($width, $height);
+    else
+    $p = imagecreate($height, $width);
+    if ($angle<0)
+    $angle = 360 + $angle % 360;
+    if ($angle>360)
+    $angle = $angle % 360;
+
+    if ($angle==180)  {
+      for($i=0;$i<$width;$i++)  {
         for($j=0;$j<$height;$j++) {
            imagecopy($p, $pic, $i, $j, $width-$i, $height-$j, 1, 1);
         }
-     }
-  }
-  if ($angle==90)  {
-     for($i=0;$i<$width;$i++) {
+      }
+    }
+    if ($angle==90)  {
+      for($i=0;$i<$width;$i++) {
         for($j=0;$j<$height;$j++){
            imagecopy($p, $pic, $j, $i, $width-$i, $j, 1, 1);
         }
-     }
-  }
-  if ($angle==270) {
-     for($i=0;$i<$width;$i++) {
+      }
+    }
+    if($angle==270) {
+      for($i=0;$i<$width;$i++) {
         for($j=0;$j<$height;$j++) {
-           imagecopy($p, $pic, $j, $i, $i, $height-$j, 1, 1);
+          imagecopy($p, $pic, $j, $i, $i, $height-$j, 1, 1);
         }
-     }
+      }
+    }
+    return $p;
   }
-return $p;
 }
