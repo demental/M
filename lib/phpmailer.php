@@ -709,7 +709,7 @@ class PHPMailer
                 $buf_o = $buf;
                 $buf .= ($e == 0) ? $word : (" " . $word);
 
-                if (strlen($buf) > $length and $buf_o != "")
+                if (strlen($buf) > $length && $buf_o != "")
                 {
                     $message .= $buf_o . $soft_break;
                     $buf = $word;

@@ -134,7 +134,7 @@ class HTML_QuickForm_Renderer_ArrayStatic extends M_HTML_QuickForm_Renderer_Arra
             if ($this->_currentGroup) {
                 // skip unnamed group items unless radios: no name -> no static access
                 // identification: have the same key string as the parent group
-                if ($this->_currentGroup['keys'] == $sKeys and 'radio' != $ret['type']) {
+                if ($this->_currentGroup['keys'] == $sKeys && 'radio' != $ret['type']) {
                     return false;
                 }
                 // reduce string of keys by remove leading group keys
@@ -150,7 +150,7 @@ class HTML_QuickForm_Renderer_ArrayStatic extends M_HTML_QuickForm_Renderer_Arra
             $sKeys = '[\'' . str_replace(array('\\', '\''), array('\\\\', '\\\''), $ret['name']) . '\']';
         }
         // for radios: add extra key from value
-        if ('radio' == $ret['type'] and substr($sKeys, -2) != '[]') {
+        if ('radio' == $ret['type'] && substr($sKeys, -2) != '[]') {
             $sKeys .= '[\'' . str_replace(array('\\', '\''), array('\\\\', '\\\''), $ret['value']) . '\']';
         }
         $this->_elementIdx++;

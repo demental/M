@@ -7,7 +7,7 @@ require_once 'Structures/DataGrid/DataSource.php';
 
 class Structures_DataGrid_DataSource_MyDataObj2
     extends Structures_DataGrid_DataSource
-{   
+{
     /**
      * Reference to the MyDataObj
      *
@@ -15,18 +15,18 @@ class Structures_DataGrid_DataSource_MyDataObj2
      * @access private
      */
     var $_dataobject;
-    
+
     /**
-     * Total number of rows 
-     * 
-     * This property caches the result of DataObject::count(), that 
+     * Total number of rows
+     *
+     * This property caches the result of DataObject::count(), that
      * can't be called after DataObject::fetch() (DataObject bug?).
      *
      * @var int
      * @access private
      */
-     var $_rowNum = null;    
-    
+     var $_rowNum = null;
+
     /**
      * Constructor
      *
@@ -43,16 +43,16 @@ class Structures_DataGrid_DataSource_MyDataObj2
                     'fields_property' => 'fb_fieldsToRender',
                     'sort_property' => 'fb_linkOrderFields',
                     ));
-       
+
         $this->_setFeatures(array('multiSort' => true));
     }
-  
+
     /**
      * Bind
      *
      * @param   object DB_DataObject    $dataobject     The DB_DataObject object
      *                                                  to bind
-     * @param   array                   $options        Associative array of 
+     * @param   array                   $options        Associative array of
      *                                                  options.
      * @access  public
      * @return  mixed   True on success, PEAR_Error on failure
@@ -60,7 +60,7 @@ class Structures_DataGrid_DataSource_MyDataObj2
     function bind(&$dataobject, $options=array())
     {
         if ($options) {
-            $this->setOptions($options); 
+            $this->setOptions($options);
         }
 
         if (is_subclass_of($dataobject, 'DB_DataObject')) {
@@ -70,8 +70,8 @@ class Structures_DataGrid_DataSource_MyDataObj2
             // Merging the fields and fields_property options
             if (!$this->_options['fields']) {
                 if ($fieldsVar = $this->_options['fields_property']
-                    and isset($this->_dataobject->$fieldsVar)) {
-                    
+                    && isset($this->_dataobject->$fieldsVar)) {
+
                     $mergeOptions['fields'] = $this->_dataobject->$fieldsVar;
                     if (isset($this->_dataobject->fb_preDefOrder)) {
                         $ordered = array();
@@ -89,7 +89,7 @@ class Structures_DataGrid_DataSource_MyDataObj2
                     }
                     foreach ($mergeOptions['fields'] as $num => $field) {
                         if (strstr($field, '__tripleLink_') ||
-                            strstr($field, '__crossLink_') || 
+                            strstr($field, '__crossLink_') ||
                             strstr($field, '__reverseLink_')) {
                             unset($mergeOptions['fields'][$num]);
                         }
@@ -98,10 +98,10 @@ class Structures_DataGrid_DataSource_MyDataObj2
             }
 
             // Merging the labels and labels_property options
-            if (!$this->_options['labels'] 
-                and $labelsVar = $this->_options['labels_property']
-                and isset($this->_dataobject->$labelsVar)) {
-                
+            if (!$this->_options['labels']
+                && $labelsVar = $this->_options['labels_property']
+                && isset($this->_dataobject->$labelsVar)) {
+
                 $mergeOptions['labels'] = $this->_dataobject->$labelsVar;
 
             }
@@ -128,7 +128,7 @@ class Structures_DataGrid_DataSource_MyDataObj2
               $ftable = & DB_DataObject::factory($finfo[0]);
 
               $this->_dataobject->joinAdd($ftable,'LEFT','table'.$i,$link);
-              $this->_dataobject->selectAs($ftable,$link.'__%s','table'.$i);              
+              $this->_dataobject->selectAs($ftable,$link.'__%s','table'.$i);
 
               $i++;
             }
@@ -145,7 +145,7 @@ class Structures_DataGrid_DataSource_MyDataObj2
      * @param   integer $len        Limit length
      * @access  public
      * @return  array   The 2D Array of the records
-     */    
+     */
     function &fetch($offset=0, $len=null)
     {
 				$eltTypes=$this->_dataobject->table();
@@ -160,7 +160,7 @@ class Structures_DataGrid_DataSource_MyDataObj2
             } else {
                 $this->_rowNum = $count;
             }
-                    
+
             // Sorting
             if (($sortProperty = $this->_options['sort_property'])
                       && isset($this->_dataobject->$sortProperty)) {
@@ -168,7 +168,7 @@ class Structures_DataGrid_DataSource_MyDataObj2
                     $this->sort($sort);
                 }
             }
-            
+
             // Limiting
             if ($offset) {
                 $this->_dataobject->limit($offset, $len);
@@ -178,7 +178,7 @@ class Structures_DataGrid_DataSource_MyDataObj2
             $result = $this->_dataobject->find();
             $joined = true;
         }
-        
+
         // Retrieving data
         $records = array();
         if ($this->_rowNum) {
@@ -214,23 +214,23 @@ foreach($finfo as $key=>$table) {
       //              if (method_exists($this->_dataobject, $getMethod)) {
     //                    //$rec[$fName] = $this->_dataobject->$getMethod(&$this);
   //                      $rec[$fName] = $this->_dataobject->$getMethod();
-//                    } elseif (isset($this->_dataobject->$fName)) {                        
+//                    } elseif (isset($this->_dataobject->$fName)) {
                         $rec[$fName] = $this->_dataobject->$fName;
           //          } else {
             //            $rec[$fName] = null;
               //      }
                 }
-                
+
                 // Get Linked FormBuilder Fields
 
                 foreach (array_keys($rec) as $field) {
                     if (isset($links[$field])){
                         if($cache[$field][$this->_dataobject->$field]) {
-                            $rec[$field]=$cache[$field][$this->_dataobject->$field];                            
+                            $rec[$field]=$cache[$field][$this->_dataobject->$field];
                         } elseif(isset($this->_dataobject->$field) && $joined) {
 
                             foreach($linkedDo[$field]->table() as $f=>$n) {
-    
+
                                 $f2=$field.'__'.$f;
                                 $linkedDo[$field]->$f=$this->_dataobject->$f2;
                             }
@@ -239,7 +239,7 @@ foreach($finfo as $key=>$table) {
                                     $rec[$field]=call_user_func($m,$linkedDo[$field]);
                                     break;
                                 }
-                            }            
+                            }
     					    if(empty($rec[$field])) {
                                 $rec[$field] = $this->_dataobject->$field.' (missing)';
                             }
@@ -263,7 +263,7 @@ foreach($finfo as $key=>$table) {
                 $records[] = $rec;//$this->_dataobject->toArray();
             }
         }
-       
+
         return $records;
     }
 
@@ -272,14 +272,14 @@ foreach($finfo as $key=>$table) {
      *
      * @access  public
      * @return  int         The number of records or a PEAR_Error
-     */    
+     */
     function count()
     {
         if (is_null($this->_rowNum)) {
             if ($this->_dataobject->N) {
                 $this->_rowNum = $this->_dataobject->N;
             } else {
-                
+
                 $this->_dataobjectC->setAlias('counter');
                 $test = $this->_dataobjectC->count();
                 if ($test === false) {
@@ -291,12 +291,12 @@ foreach($finfo as $key=>$table) {
 
         return $this->_rowNum;
     }
-    
+
     /**
      * Sorts the dataobject.  This MUST be called before fetch.
-     * 
+     *
      * @access  public
-     * @param   mixed   $sortSpec   A single field (string) to sort by, or a 
+     * @param   mixed   $sortSpec   A single field (string) to sort by, or a
      *                              sort specification array of the form:
      *                              array(field => direction, ...)
      * @param   string  $sortDir    Sort direction: 'ASC' or 'DESC'
@@ -316,7 +316,7 @@ foreach($finfo as $key=>$table) {
             }
         }
     }
-    
+
     // This function is temporary until DB_DO bug #1315 is fixed
     // This removeds and variables from the DataObject that begins with _ or fb_
     function _fieldsFilter($value)
@@ -330,7 +330,7 @@ foreach($finfo as $key=>$table) {
         } else {
             return true;
         }
-        
+
     }
 
 }
