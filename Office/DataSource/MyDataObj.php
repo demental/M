@@ -207,8 +207,8 @@ class Structures_DataGrid_DataSource_MyDataObj extends Structures_DataGrid_DataS
 
         foreach (array_keys($rec) as $field) {
           if (isset($links[$field])){
-            if($cache[$field][$this->_dataobject->$field]) {
-                $rec[$field]=$cache[$field][$this->_dataobject->$field];
+            if($this->_cache[$field][$this->_dataobject->$field]) {
+              $rec[$field] = $this->_cache[$field][$this->_dataobject->$field];
             } elseif(isset($this->_dataobject->$field) && $joined) {
 
               foreach($linkedDo[$field]->table() as $f=>$n) {
@@ -234,9 +234,9 @@ class Structures_DataGrid_DataSource_MyDataObj extends Structures_DataGrid_DataS
             $rec[$field] = $this->_dataobject->$field ? '<span style="display:block;background:#070;color:#fff;text-align:center;font-weight:bold">Yes</span>':'<span style="display:block;background:#700;color:#fff;text-align:center;font-weight:bold">No</span>';
           }
           if(is_array($this->_dataobject->$field)) {
-            $this->_dataobject->$field=print_r($this->_dataobject->$field,true);
+            $this->_dataobject->$field = print_r($this->_dataobject->$field,true);
           }
-          $cache[$field][$this->_dataobject->$field]=$rec[$field];
+          $this->_cache[$field][$this->_dataobject->$field] = $rec[$field];
         }
         $records[] = $rec;
       }
@@ -290,21 +290,6 @@ class Structures_DataGrid_DataSource_MyDataObj extends Structures_DataGrid_DataS
       } else {
         $this->_dataobject->orderBy("$sortSpec $sortDir");
       }
-    }
-  }
-
-  // This function is temporary until DB_DO bug #1315 is fixed
-  // This removeds and variables from the DataObject that begins with _ or fb_
-  protected function _fieldsFilter($value)
-  {
-    if (substr($value, 0, 1) == '_') {
-      return false;
-    } else if (substr($value, 0, 3) == 'fb_') {
-      return false;
-    } else if ($value == 'N') {
-      return false;
-    } else {
-      return true;
     }
   }
 }
