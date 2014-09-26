@@ -512,7 +512,7 @@ class DB_DataObject_Plugin_I18n extends M_Plugin {
     $db = $obj->getDatabaseConnection();
     $res = $db->loadModule('manager',null,true);
     if(PEAR::isError($res)) {
-      die($res->getMessage());
+      throw new Exception($res->getMessage());
     }
     $info = $obj->_getPluginsDef();
     $info = $info['i18n'];

@@ -532,7 +532,7 @@ class DB_DataObject_Plugin_L10n extends M_Plugin {
     $db = $obj->getDatabaseConnection();
     $res = $db->loadModule('manager',null,true);
     if(PEAR::isError($res)) {
-      die($res->getMessage());
+      throw new Exception($res->getMessage());
     }
     $toremove = array_flip($obj->l10nFields);
     foreach($toremove as $k=>$v) {

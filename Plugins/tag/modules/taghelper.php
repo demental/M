@@ -27,44 +27,36 @@ class Tag_Module_Taghelper extends Module {
     $focus = $this->getFocus();
     $this->assign('focus',$focus);
     $this->assign('module',$_REQUEST['module']);
-    if(!$this->_checkEditable($focus,$_REQUEST['module'])) {
+    if(!can('edit', $_REQUEST['module'], $focus)) {
       $this->setTemplate('taghelper/viewer');
     }
   }
-  public function _checkEditable($focus,$module)
-  {
 
-    if(!M_Office_Util::record_belongs_to_module($focus,$module)) {
-      return false;
-    }
-    $edit = M_Office_Util::getGlobalOption('edit','showtable',$module);
-
-    if(!$edit) return false;
-    return true;
-  }
   public function doExecRemove()
   {
     $focus = $this->getFocus();
-    if(!$this->_checkEditable($focus,$_REQUEST['focusmodule'])) die('not OK');
+    deny_unless_can('edit', $_REQUEST['focusmodule'], $focus);
+
     $tag = DB_DataObject::factory('tag');
     $tag->get($_REQUEST['tagid']);
     $focus->removeTagByHuman($tag);
     if(!$this->isAjaxRequest()) {
       $this->redirect($_REQUEST['target']);
     } else {
-      die('ok');
+      return $this->setOuput('ok');
     }
   }
+
   public function doExecAddByStrip()
   {
     $focus = $this->getFocus();
-    if(!$this->_checkEditable($focus,$_REQUEST['focusmodule'])) die('not OK');
+    deny_unless_can('edit', $_REQUEST['focusmodule'], $focus);
 
     $focus->addTagByHuman($_REQUEST['strip']);
     if(!$this->isAjaxRequest()) {
       $this->redirect($_REQUEST['target']);
     } else {
-      die('ok');
+      return $this->setOuput('ok');
     }
   }
   public function doExecAutocomplete()

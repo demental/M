@@ -122,7 +122,7 @@ class M_Office_EditRecord extends M_Office_Controller {
         }
         $form = $formBuilder->getForm();
         if (PEAR::isError($form)) {
-            die($form->getMessage().' '.print_r($form->getUserInfo(), true));
+            throw new Exception($form->getMessage().' '.print_r($form->getUserInfo(), true));
         }
         if($doFreeze) {
           $form->freeze();

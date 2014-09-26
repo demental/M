@@ -16,7 +16,7 @@ class Otfimage_Module_Photohelper extends Module {
     $fb->getForm();
     if($form->validate()) {
 //      trigger_error('form validate')
-      
+
       $form->process(array($fb,'processForm'),false);
       $this->assign('success',1);
     }
@@ -40,22 +40,16 @@ class Otfimage_Module_Photohelper extends Module {
   }
   public function doExecDelete()
   {
-    if(empty($_GET['record'])) die();
     $p = DB_DataObject::factory('photo');
-    $p->id = $_GET['record'];
-    if($p->find(true)) {
-      $p->delete();
-    }
-    die('ok');
+    $p->get_or_die($_GET['record']);
+    $p->delete();
+    return $this->setOuput('ok');
   }
   public function doExecSetasmain()
   {
-    if(empty($_GET['record'])) die();
     $p = DB_DataObject::factory('photo');
-    $p->id = $_GET['record'];
-    if($p->find(true)) {
-      $p->setAsMain();
-    }
-    die('ok');
+    $p->get_or_die($_GET['record']);
+    $p->setAsMain();
+    return $this->setOuput('ok');
   }
 }

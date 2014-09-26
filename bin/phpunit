@@ -2,7 +2,7 @@
 <?php
 define('MODE','test');
 $host=$_ENV['M_HOST'];
-if(empty($host)) die('You must set shell ENV variable M_HOST to desired host before launching tests');
+if(empty($host)) throw new Exception('You must set shell ENV variable M_HOST to desired host before launching tests');
 $app=$_ENV['M_APP'];
 if(empty($app)) {
 	echo '//////////////// WARNING ////////////////

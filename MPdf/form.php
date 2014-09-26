@@ -25,7 +25,7 @@ class MPdf_Form extends MPdf {
   protected $_datafile;
   //
   public $sourcefile;
-  
+
   public function __construct($sourcefile)
   {
     $this->sourcefile = $sourcefile;
@@ -62,9 +62,9 @@ class MPdf_Form extends MPdf {
          fwrite( $fp, $params );
          fclose( $fp );
        } else {
-         die('could not save '.$fdf_fn);
+         throw new Exception('could not save PDF Form '.$fdf_fn);
        }
-    
+
     $com = PDFTK_BIN_PATH.' "'.$this->sourcefile.'" fill_form '. $fdf_fn. ' output - flatten > '.$this->_rawdatafile ;
 
     exec($com);
@@ -76,7 +76,7 @@ class MPdf_Form extends MPdf {
     header( 'Content-type: application/pdf' );
     header( 'Content-disposition: attachment; filename='.basename($filename,'.pdf').'.pdf' );
     readfile($this->_rawdatafile);
-    die();
+    exit(0);
 	}
 	public function write($filename)
 	{
