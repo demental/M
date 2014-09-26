@@ -391,11 +391,11 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
    * $a->get_or_die(null, 123);
    * $a->get_or_die('ref', 'ART123');
    */
-	public function get_or_die($id_or_field, $id = null) {
-    if(empty($id_or_field) && empty($id)) {
+	public function get_or_die($id_or_field, $id = '...') {
+    if(empty($id)) {
       throw new NotFoundException(__('error.dataobject_fetch_without_an_id', array(__("modules.{$this->tableName()}.frontname"))));
     }
-
+    $id = $id == '...' ? null : $id;
     if(empty($id_or_field)) {
       $id_or_field = $id;
       $id = null;

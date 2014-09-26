@@ -20,43 +20,43 @@
  */
 class Module extends Maman {
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @var		unknown_type
 	 * @access	protected
 	 */
 	protected $view;
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @var		unknown_type
 	 * @access	protected
 	 */
 	public $currentAction;
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @var		unknown_type
 	 * @access	protected
 	 */
 	private $_lastOutput;
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @var		unknown_type
 	 * @access	protected
 	 */
 	protected $_cachedData = null;
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $modulename
@@ -67,9 +67,9 @@ class Module extends Maman {
 		$this->_modulename=$modulename;
 		$this->_lastOutput = $this;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @return unknown_type
@@ -78,9 +78,9 @@ class Module extends Maman {
 	{
 		return $this->view;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $modulename
@@ -146,7 +146,7 @@ class Module extends Maman {
 	 *
 	 **/
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @return unknown_type
@@ -161,7 +161,7 @@ class Module extends Maman {
         'fileNameProtection'=>false,
         'automaticSerialization'=>true
 		);
-		
+
     Log::info('preparing options');
 		$optcache = new Cache_Lite($options);
 		if (empty($group)) { $group = 'default'; }
@@ -170,7 +170,7 @@ class Module extends Maman {
 			foreach($this->_path as $path) {
 				if (@include $path.'/'.$this->_modulename.'.conf.php')
 				{
-					Log::info('loading module config file'); 
+					Log::info('loading module config file');
 					if(!is_array($config)) {$config=array();}
 					$moduleopt = MArray::array_merge_recursive_unique($opt, $config);
 					break;
@@ -189,9 +189,9 @@ class Module extends Maman {
     Log::info('options prepared');
 		return $moduleopt;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $params
@@ -204,9 +204,9 @@ class Module extends Maman {
 		}
 		$this->_params = $params;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * returns the parameter that was passed to $this using setParam() or setParams()
 	 * handy when you insert a component in a template file (@see Mtpl::c ) with parameters passed to it
 	 *
@@ -219,14 +219,14 @@ class Module extends Maman {
 	}
 
 	/**
-	 * 
+	 *
 	 * returns the parameter that was passed to $this using setParam() or setParams()
 	 * or, if it's not set, returns the request value
 	 * handy when you want to use an action both as a component and as a page (this is a common-use with UOJS)
 	 *
 	 * @param string name of the param
 	 * @return mixed
-	 */	
+	 */
 	public function getParamOrRequest($value)
 	{
     if(key_exists($value,$this->_params)) {
@@ -234,9 +234,9 @@ class Module extends Maman {
     }
     return $this->getRequestParam($value);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $var
@@ -247,9 +247,9 @@ class Module extends Maman {
 	{
 		$this->_params[$var] = $val;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @return unknown_type
@@ -262,9 +262,9 @@ class Module extends Maman {
 		}
 
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @return unknown_type
@@ -280,9 +280,9 @@ class Module extends Maman {
 	 public function getCurrentModule()
 	 {
 	   return $this->_modulename;
-	 }	
+	 }
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $action
@@ -292,9 +292,9 @@ class Module extends Maman {
 	{
 		$this->currentAction=$action;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $val
@@ -318,7 +318,7 @@ class Module extends Maman {
 	// Determines if an action can be executed
 	// If so, (forces) executes the action or throws an exception
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $action
@@ -333,7 +333,7 @@ class Module extends Maman {
 
 			throw new Error404Exception($action.' not implemented in Module : '.get_class($this));
 		}
-		 
+
 		$conf = $this->getConfig('security',$action);
 		$disabled = $this->getConfig('disabled',$action);
 		if($disabled) {
@@ -377,7 +377,7 @@ class Module extends Maman {
 
 	// These two abstract methods are called right before and after the action is executed
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $action
@@ -386,9 +386,9 @@ class Module extends Maman {
 	public function preExecuteAction($action)
 	{
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $action
@@ -397,13 +397,13 @@ class Module extends Maman {
 	public function postExecuteAction($action)
 	{
 	}
-	
+
 	// Dumbly executes an action and checks for caching
 	// Sets up environment if not cached
 	// @param string action name
 	// @return void
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $action
@@ -458,7 +458,7 @@ class Module extends Maman {
 	// @returns string or false if no caching
 	// ==============================================================
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $action
@@ -473,9 +473,9 @@ class Module extends Maman {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Forces the current action to use the $tpl template instead of its default one (templates/moduleName/actionName.php)
 	 *
 	 * @param $tpl string path to the desired template (module/action)
@@ -485,7 +485,7 @@ class Module extends Maman {
 		$this->_lastOutput->setConfigValue('template',$tpl);
 	}
 	/**
-	 * 
+	 *
 	 * Forces the current action to be decorated with the $tpl layout instead of the one defined by default (templates/index.php or the one defined in the modules/modulename.conf.php config file)
 	 *
 	 * @param $tpl string path to the desired layout
@@ -493,9 +493,18 @@ class Module extends Maman {
 	public function setLayout($tpl)
 	{
 		$this->_lastOutput->setConfigValue('layout',$tpl);
-	}	
+	}
+
 	/**
-	 * 
+	 * manually set output, which bypassed the view layer.
+	 */
+	public function setOuput($output)
+	{
+		$this->_output_processed = true;
+		$this->_processed_output = $output;
+	}
+	/**
+	 *
 	 * description
 	 *
 	 * @param $template
@@ -504,7 +513,9 @@ class Module extends Maman {
 	 */
 	public function output($template=null,$layout=null)
 	{
-
+		if($this->_output_processed) {
+			return $this->_processed_output;
+		}
 
 		if($this->_cachedData) {
 			return $this->_cachedData;
@@ -539,7 +550,7 @@ class Module extends Maman {
 		}
 		Log::info('Setting layout '.$layout.' for module '.get_class($this->_lastOutput));
 
-		// Si on veut afficher uniquement le template de l'action, sans aucun layout on utilise le mot clé __self dans le 
+		// Si on veut afficher uniquement le template de l'action, sans aucun layout on utilise le mot clé __self dans le
 		// fichier de configuration du module
 		if($this->isAjaxRequest()) {
 			$layout='__self';
@@ -566,7 +577,7 @@ class Module extends Maman {
 			$ret = $this->_lastOutput->view->fetch($template);
 
 		} else {
-			// Sinon c'est que le layout posséde une variable $__action qui est utilisé pour inclure le template de l'action 	
+			// Sinon c'est que le layout posséde une variable $__action qui est utilisé pour inclure le template de l'action
 			Log::info('Decorate module '.get_class($this->_lastOutput).' with '.$layout);
 
 			$this->_lastOutput->view->assign("__action", $template);
@@ -575,9 +586,11 @@ class Module extends Maman {
 
 		}
     if(MODE!='developpement' && is_a($this->cache,'Cache_Lite')) $this->cache->save($ret);
+    $this->_output_processed = true;
+    $this->_processed_output = $ret;
 		return $ret;
 	}
-	
+
 	public function isComponent($bool = null)
 	{
     if(!is_null($bool)) {
@@ -586,7 +599,7 @@ class Module extends Maman {
     return $this->__isComponent;
 
 	}
-	
+
 	/**
 	 * returns the original action name requested by the enduser
 	 * @return string
@@ -595,7 +608,7 @@ class Module extends Maman {
 	{
 		return ($_REQUEST['action']);
 	}
-	
+
 	/**
 	 * returns the request value for the $val key
 	 * @param string $val key name
@@ -625,7 +638,7 @@ class Module extends Maman {
 	{
 		return ($_POST[$val]);
 	}
-	
+
 
 	/**
 	 * handles exceptions that are not 404 or 403
@@ -635,13 +648,12 @@ class Module extends Maman {
 		if(MODE == 'production') {
 	    $this->executeAction('index');
 	  } else {
-	  	echo '<h3>Damn, an exception occured !</h3>';
-	  	echo '<p>'.$e->getMessage().'</p>';
-	  	echo '<pre>';
-	  	echo $this->stackTrace($e->getTrace());
-	  	echo '</pre>';
-
-	  	die();
+	  	$out = '<h3>Damn, an exception occured !</h3>';
+	  	$out .= '<p>'.$e->getMessage().'</p>';
+	  	$out .= '<pre>';
+	  	$out .= $this->stackTrace($e->getTrace());
+	  	$out .= '</pre>';
+	  	$this->setOuput($out);
 	  }
 	}
 	/**
@@ -658,7 +670,7 @@ class Module extends Maman {
 	 * Proxy methods for the view
 	 **/
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $var
@@ -668,9 +680,9 @@ class Module extends Maman {
 	public function assign($var, $val) {
 		$this->view->assign($var,$val);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $var
@@ -680,9 +692,9 @@ class Module extends Maman {
 	public function append($var, $val) {
 		$this->view->append($var,$val);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $var
@@ -692,9 +704,9 @@ class Module extends Maman {
 	public function assignRef($var, &$val) {
 		$this->view->assignRef($var,$val);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $module
@@ -706,9 +718,9 @@ class Module extends Maman {
 		$d->execute();
 		$this->_lastOutput = $d->getPage();
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $modulaction
@@ -751,13 +763,13 @@ class Module extends Maman {
 		exit;
 
 	}
-	public function redirect301($modulaction,$vars = null,$lang=null,$secure=null) 
+	public function redirect301($modulaction,$vars = null,$lang=null,$secure=null)
 	{
 	  $this->addHeader('301 Moved Permanently');
     $this->redirect($modulaction,$vars,$lang,$secure,'301');
 	}
 
-	public function redirect404($modulaction,$vars = null,$lang=null,$secure=null) 
+	public function redirect404($modulaction,$vars = null,$lang=null,$secure=null)
 	{
     header('Status: 404');
     header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
@@ -765,7 +777,6 @@ class Module extends Maman {
     $d = new Dispatcher($arr[0],$arr[1],$this->_params);
 		$d->execute();
 		echo $d->display();
-		die();
 
 	}
   public function addHeader($header)
@@ -778,7 +789,7 @@ class Module extends Maman {
     }
   }
 	/**
-	 * 
+	 *
 	 * description
 	 *
 	 * @param $formName
@@ -796,7 +807,7 @@ class Module extends Maman {
 		}
 		return new MyQuickForm($formName,$method,$action,$target,$attributes,$trackSubmit);
 	}
-	
+
 	/**
 	 * Returns true if the current request is a XmlHttpRequest
 	 *
@@ -818,7 +829,7 @@ class Module extends Maman {
    * @param string the message
    * @param string the message type (may be info, error, warning, success, @see http://twitter.github.com/bootstrap/ for alert types)
    * defaults to info
-   * 
+   *
    */
    public function flash($message,$type='info')
    {
@@ -827,7 +838,7 @@ class Module extends Maman {
    }
    public function popflash($type='info')
    {
-     if(!$_SESSION) session_start();     
+     if(!$_SESSION) session_start();
      if(!is_array($_SESSION['flash'][$type])) return false;
      return array_shift($_SESSION['flash'][$type]);
    }

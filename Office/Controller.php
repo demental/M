@@ -45,7 +45,7 @@ class M_Office_Controller {
   public function getOption($name, $table = null, $merge = false) {
       return $this->grabOption($name,$table,$merge,$this->options);
   }
-  public function grabOption($name, $table = null, $merge = false,$options) {    
+  public function grabOption($name, $table = null, $merge = false,$options) {
       if ($merge == true) {
           $merged = array();
       }

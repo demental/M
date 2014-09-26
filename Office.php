@@ -248,7 +248,9 @@ class M_Office extends M_Office_Controller implements iListener {
         }
       }
       $tables = $this->getGlobalOption('searchInTables','frontendhome');
-      $tpl->assign('messages',$_SESSION['flashmessages']);
+      if(array_key_exists('flashmessages', $_SESSION)) {
+        $tpl->assign('messages', $_SESSION['flashmessages']);
+      }
   		if(count($tables)==0) {
         $tpl->assign('showlivesearch',false);
       } else {
