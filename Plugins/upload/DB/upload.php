@@ -188,6 +188,6 @@ class DB_DataObject_Plugin_Upload extends M_Plugin
  	  $info = $uploadFields['upload'][$field];
  	  $filename = IMAGES_UPLOAD_FOLDER.$info['path'].$obj->$field;
      FileUtils::output($filename,$name);
-     die();
+     exit(0);
    }
 }

@@ -128,7 +128,7 @@ class M_Office_Util {
     Mreg::get('tpl')->assign('redirectform',$form);
     Mreg::get('tpl')->assign('__action',$template);
     echo Mreg::get('tpl')->fetch(M_Office::$dsp);
-    die;
+    exit(0);
   }
 
   public static function getAjaxQueryParams($params = array(), $remove = array(), $entities = false) {

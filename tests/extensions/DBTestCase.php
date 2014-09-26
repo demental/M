@@ -2,7 +2,7 @@
 
 class DBTestCase extends UnitTestCase {
   public function setUpDatabase($filename,$fixturehash)
-  { 
+  {
     $catbin='cat';
     $mysqlbin = 'mysql';
 
@@ -12,7 +12,7 @@ class DBTestCase extends UnitTestCase {
     $h = $db->dsn['hostspec'];
     $u = $db->dsn['username'];
     $p = $db->dsn['password'];
-    
+
     $dbn = $db->database_name;
     $file = TESTS_FOLDER.'fixtures/'.$filename;
 
@@ -23,7 +23,7 @@ class DBTestCase extends UnitTestCase {
     // We check that the fixture was correctly dumped...
     $fixturenumber = $db->queryOne('select val from preferences where var="fixture"');
     if($fixturenumber != $fixturehash) {
-      die('Could not dump fixture database '.$fixturehash.' (db value = '.$fixturenumber.')');
+      throw new Exception('Could not dump fixture database '.$fixturehash.' (db value = '.$fixturenumber.')');
     }
   }
 }
