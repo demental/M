@@ -44,8 +44,7 @@ class M_Office_View_DataGrid extends M_Office_View_List
         return $this->_view->renderer->setOptions($opts);
     }
     function &prepare(&$do, $frontend = true,$pager = true) {
-        require_once 'M/Office/DataSource/MyDataObj2.php';
-        Log::info('creation Datagrid');
+        require_once 'M/Office/DataSource/MyDataObj.php';
 
         $unitFormatters=array();
         if(is_array($do->fb_fieldLabels)){
@@ -102,8 +101,8 @@ class M_Office_View_DataGrid extends M_Office_View_List
                 }
                 $fb->populateOptions();
                 $specialElements = $fb->_getSpecialElementNames();
-                $dg =& new Structures_DataGrid($perPage);
-                $dts= new Structures_DataGrid_DataSource_MyDataObj2();
+                $dg  = new Structures_DataGrid($perPage);
+                $dts = new Structures_DataGrid_DataSource_MyDataObj();
                 $dts->bind($do, array('generate_columns' => false,
                 'fields'=>$usedFields,
                 ));

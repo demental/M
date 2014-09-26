@@ -129,7 +129,6 @@ class M_Office_View_tree extends M_Office_View_List
 
     function &prepare(&$do, $module, $pager = true) {
 
-        require_once 'M/Office/DataSource/MyDataObj2.php';
         $this->_do = & $do;
         $do->orderBy($do->treeFields['left'].' ASC');
         $unitFormatters=array();
