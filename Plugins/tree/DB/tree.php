@@ -16,7 +16,6 @@
 * @package      M
 * @subpackage   DB_DataObject_Plugin_tree
 * @author       Arnaud Sellenet <demental@sat2way.com>
-
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
@@ -44,7 +43,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
         }
          function update($originaldo=false,&$obj) {
              $defs = $obj->_getPluginsDef();
-             $defs = $defs['tree'];             
+             $defs = $defs['tree'];
             if(!$obj->{$defs['parent']}) {
                 $obj->{$defs['parent']} = 0;
             }
@@ -58,7 +57,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
              foreach($desc as $enfant) {
                  $enfant->delete();
              }*/
-             $this->rebuild($obj);             
+             $this->rebuild($obj);
          }
         /**
          * A utility function to return an array of the fields
@@ -73,7 +72,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
             return array('id', $defs['parent'], $defs['sort'],
                          $defs['left'], $defs['right'], $defs['level']);
         }
- 
+
         /**
          * Fetch the node data for the node identified by $id
          *
@@ -91,7 +90,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
             }
             return null;
         }
- 
+
         /**
          * Fetch the descendants of a node, or if no node is specified, fetch the
          * entire tree. Optionally, only return child data instead of all descendant
@@ -109,7 +108,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
         {
             $defs = $obj->_getPluginsDef();
             $defs = $defs['tree'];
- 
+
             $node = $this->getNode($obj, $id);
             if (is_null($node)) {
                 $nleft = 0;
@@ -121,7 +120,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                 $nright = $node->{$defs['right']};
                 $parent_id = $node->{$defs['parent']};
             }
- 
+
             if ($childrenOnly) {
                 if ($includeSelf) {
                     $query = sprintf('select %s from %s where %s = %d or %s = %d order by %s',
@@ -172,12 +171,12 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                                      );
                 }
             }
-            
+
             $res = DB_DataObject::factory($obj->tableName());
             $res->query($query);
             return $res;
         }
- 
+
         /**
          * Fetch the children of a node, or if no node is specified, fetch the
          * top level items.
@@ -233,12 +232,12 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                                  $obj->{$defs['right']},
                                  $defs['level']);
             }
- 
+
             $result = DB_DataObject::factory($obj->tableName());
             $result->query($query);
             return $result;
         }
-        
+
         /**
          * Check if one node descends from another node. If either node is not
          * found, then false is returned.
@@ -264,10 +263,10 @@ class DB_DataObject_Plugin_tree extends M_Plugin
             $node->{$defs['right']}
             ));
             return $result->count() > 0;
- 
+
             return false;
         }
- 
+
         /**
          * Check if one node is a child of another node. If either node is not
          * found, then false is returned.
@@ -357,14 +356,14 @@ class DB_DataObject_Plugin_tree extends M_Plugin
         }
 
         function getMaxLevel(&$obj) {
-            $defs = $obj->_getPluginsDef();
-            $defs = $defs['tree'];
-            $o = DB_DataOBject::factory($obj->tableName());
-            $o->query('SELECT max('.$defs['level'].') as '.$defs['level'].' from '.$obj->tableName().' WHERE gauche>'.$obj->{$defs['left']}.' AND droite<'.$obj->{$defs['right']});
-            $res = $o->getDatabaseResult();
-
-
-            return $res->fetchOne(0);
+          $query = sprintf('select max(%1$s) as %1$s from %2$s where %1$s > %3d and %4$s < %5$d',
+                     $db->quoteIdentifier($defs['left']),
+                     $obj->tableName(),
+                     $obj->{$defs['left']},
+                     $db->quoteIdentifier($defs['right']),
+                     $obj->{$defs['right']}
+                    );
+          return $obj->getDatabaseConnection()->queryOne($query);
         }
         /**
          * Find the number of children a node has
@@ -380,7 +379,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
             $result->{$defs['parent']} = $id;
             return (int)$result->count();
         }
- 
+
         /**
          * Fetch the tree data, nesting within each node references to the node's children
          *
@@ -399,25 +398,25 @@ class DB_DataObject_Plugin_tree extends M_Plugin
             $root = new stdClass;
             $root->$idField = 0;
             $root->children = array();
- 
+
             $arr = array($root);
- 
+
             // populate the array and create an empty children array
             while ($result->fetch()) {
                 $arr[$result->$idField] = clone($result);
                 $arr[$result->$idField]->children = array();
                 $arr[0]->children[$result->$idField]=$result->$idField;
             }
- 
+
             // now process the array and build the child data
             foreach ($arr as $id => $row) {
                 if (isset($row->$parentField))
                     $arr[$row->$parentField]->children[$id] = $id;
             }
- 
+
             return $arr;
         }
- 
+
         /**
          * Rebuilds the tree data and saves it to the database
          */
@@ -461,8 +460,8 @@ class DB_DataObject_Plugin_tree extends M_Plugin
            $do->limit(0,1);
            $do->find(true);
            return $do;
-           
-         }        
+
+         }
         /**
          * returns the dataobject with all the roots (multi-tree)
          **/
@@ -483,7 +482,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                 $obj = $this->getChildren($obj, 0);
                 $obj->fetch();
                 return $obj;
-            }     
+            }
          /**
          * Generate the tree data. A single call to this generates the n-values for
          * 1 node in the tree. This function assigns the passed in n value as the
@@ -513,7 +512,7 @@ class DB_DataObject_Plugin_tree extends M_Plugin
                 $arr[$children->id] = array('left'=>$chleft,'right'=>$n,'level'=>$level+1);
                 $n++;
             }
-            $arr[$parent] = array('left'=>$left,'right'=>$n,'level'=>$parentlevel);            
+            $arr[$parent] = array('left'=>$left,'right'=>$n,'level'=>$parentlevel);
         }
         function globalRebuild(&$obj) {
             $this->rebuild($obj);
