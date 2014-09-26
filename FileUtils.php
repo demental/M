@@ -42,7 +42,7 @@ class fileUtils
 		if(is_file($file)) {
 			$this->file = $file;
 		} else {
-			$this->file = $this->getFolderPath($file);
+			$this->file = self::ensure_trailing_slash($file);
 		}
 	}
 
@@ -224,9 +224,7 @@ class fileUtils
 		if(!is_array($extensionfilter)) {
 			$extensionfilter = array($extensionfilter);
 		}
-		if(!ereg('\/$',$folder)) {
-			$folder.='/';
-		}
+		$folder = self::ensure_trailing_slash($folder);
 		if(!is_dir($folder)) {
 			return array();
 		}
@@ -234,13 +232,13 @@ class fileUtils
 		if ($dh = @opendir($folder)) {
 			while (($file = readdir($dh)) !== false)
 			{
-				if(ereg('^\.',$file)) continue;
+				if(self::is_dot_file($file)) continue;
 				if(is_dir($folder.$file) && $recursive) {
 					$out = array_merge($out,self::getAllFiles($folder.$file,$extensionfilter));
 				} elseif(!is_file($folder.$file)) {
 					continue;
 				} else {
-					if(empty($extensionfilter[0]) || eregi('\.'.implode('|',$extensionfilter),$file)) {
+					if(empty($extensionfilter[0]) || preg_match('`\.'.implode('|',$extensionfilter).'`',$file)) {
 						$out[]=$folder.$file;
 					}
 				}
@@ -266,9 +264,7 @@ class fileUtils
 		if(!is_array($extensionfilter)) {
 			$extensionfilter = array($extensionfilter);
 		}
-		if(!ereg('\/$',$folder)) {
-			$folder.='/';
-		}
+		$folder = self::ensure_trailing_slash($folder);
 		if(!is_dir($folder)) {
 			return array();
 		}
@@ -276,13 +272,13 @@ class fileUtils
 		if ($dh = @opendir($folder)) {
 			while (($file = readdir($dh)) !== false)
 			{
-				if(ereg('^\.',$file)) continue;
+				if(self::is_dot_file($file)) continue;
 				if(is_dir($folder.$file)) {
 					$out = array_merge($out,self::getAllFiles($folder.$file,$extensionfilter),array($folder.$file));
 				} elseif(!is_file($folder.$file)) {
 					continue;
 				} else {
-					if(empty($extensionfilter[0]) || eregi('\.'.implode('|',$extensionfilter),$file)) {
+					if(empty($extensionfilter[0]) || preg_match('`\.'.implode('|',$extensionfilter).'`', $file)) {
 						$out[]=$folder.$file;
 					}
 				}
@@ -292,6 +288,16 @@ class fileUtils
 			return $out;
 
 		}
+	}
+
+	public static function ensure_trailing_slash($folder)
+	{
+		$folder .= (substr($folder, -1) == '/' ? '' : '/');
+		return $folder;
+	}
+
+	public static function is_dot_file($file) {
+		return preg_match('`^\.`', $file);
 	}
 
 	/**
@@ -429,18 +435,6 @@ class fileUtils
 				return '<a href="'.$file.'">'.__('View file').'</a>';
 				break;
 		}
-	}
-
-	/**
-	 *
-	 * description
-	 *
-	 * @param $path
-	 * @return unknown_type
-	 */
-	function getFolderPath($path)
-	{
-		return ereg('/$',$path)?$path:$path.'/';
 	}
 
 	/**
