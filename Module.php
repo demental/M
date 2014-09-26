@@ -777,7 +777,7 @@ class Module extends Maman {
     $d = new Dispatcher($arr[0],$arr[1],$this->_params);
 		$d->execute();
 		echo $d->display();
-
+		exit(0);
 	}
   public function addHeader($header)
   {
