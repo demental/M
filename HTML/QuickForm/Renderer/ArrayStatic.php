@@ -48,7 +48,7 @@ class HTML_QuickForm_Renderer_ArrayStatic extends M_HTML_QuickForm_Renderer_Arra
     var $_error = '';
 
 
-    function HTML_QuickForm_Renderer_ArraySmarty($staticLabels = false)
+    function __construct($staticLabels = false)
     {
         $this->HTML_QuickForm_Renderer_Array(true, $staticLabels);
     } // end constructor
@@ -171,11 +171,18 @@ class HTML_QuickForm_Renderer_ArrayStatic extends M_HTML_QuickForm_Renderer_Arra
             $sKeys = $elAry['keys'];
             unset($elAry['keys']);
             // where should we put this element...
+            // if (is_array($this->_currentGroup) && ('group' != $elAry['type'])) {
+            //     $this->{'_currentGroup' . $sKeys} = $elAry;
+            // } else {
+            //     $this->{'_ary' . $sKeys} = $elAry;
+            // }
             if (is_array($this->_currentGroup) && ('group' != $elAry['type'])) {
-                $this->{'_currentGroup' . $sKeys} = $elAry;
+               $toEval = '$this->_currentGroup' . $sKeys . ' = $elAry;';
             } else {
-                $this->{'_ary' . $sKeys} = $elAry;
+                $toEval = '$this->_ary' . $sKeys . ' = $elAry;';
             }
+            eval($toEval);
+
         }
         return;
     }
