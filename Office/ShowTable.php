@@ -21,6 +21,8 @@ class M_Office_ShowTable extends M_Office_Controller {
   public $hasActions=false;
   function __construct($module) {
     parent::__construct();
+    $this->assign('module', $module);
+    $this->module = $module;
     if ((isset($_REQUEST['record']) || isset($_REQUEST['__record_ref']))
     && ($this->getOption('edit', $module) || $this->getOption('view', $module))) {
       require 'M/Office/EditRecord.php';
@@ -38,7 +40,6 @@ class M_Office_ShowTable extends M_Office_Controller {
     }
 
     $opts = PEAR::getStaticProperty('m_office','options');
-    $this->module = $module;
     $this->moduloptions = $opts['modules'][$module];
     $this->table=$this->moduloptions['table'];
 
@@ -63,8 +64,11 @@ class M_Office_ShowTable extends M_Office_Controller {
 
     if (isset($_REQUEST['doaction']) && $this->getOption('actions',$module)) {
       require 'M/Office/Actions.php';
-      $do->orderBy();
-      $do->orderBy($_REQUEST['_ps'].' '.$_REQUEST['_pd']);
+      $order = trim($_REQUEST['_ps'].' '.$_REQUEST['_pd']);
+      if($order) {
+        $do->orderBy();
+        $do->orderBy($order);
+      }
       $subController = new M_Office_Actions($this->getOptions());
       $subController->run($do, $_REQUEST['doaction'],'batch');
       if($subController->has_output) {
@@ -95,6 +99,7 @@ class M_Office_ShowTable extends M_Office_Controller {
       $dg =  new $class($this);
       $this->assign('__listview',$this->getOption('view',$this->module));
     }
+
     $tpl = Mreg::get('tpl');
     $do_before_fetch = clone($do);
     $tpl->assign('do_before_fetch', $do_before_fetch);
@@ -107,6 +112,7 @@ class M_Office_ShowTable extends M_Office_Controller {
     $this->assign('pager',$dg->getPaging());
     $this->assign('fields',$dg->getFields());
     $this->assign('__action','showtable');
+
     $deleteForm = new HTML_QuickForm('showTableForm', 'post', M_Office_Util::getQueryParams(array(),array()), '_self', null, true);
     M_Office_Util::addHiddenFields($deleteForm, array(), true);
   }
