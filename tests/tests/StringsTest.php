@@ -11,7 +11,18 @@ class TestOfStrings extends PHPUnit_Framework_TestCase {
     $this->assertEquals('here_i_am',Strings::snake('Here-I am'));
     $this->assertEquals('here_i_am',Strings::snake('Here I am!'));
     $this->assertEquals('here_i_am',Strings::snake(',Here I am'));
+    $this->assertEquals('here_i_am',Strings::snake(',Here,   I am'));
     $this->assertEquals('me_voila',Strings::snake('Me voilà'));
+  }
+  public function testUnspacify()
+  {
+    $this->assertEquals('Here_I_am',Strings::unspacify('Here I am'));
+    $this->assertEquals('Here_I_am',Strings::unspacify('Here-I am'));
+    $this->assertEquals('Here_I_am!',Strings::unspacify('Here I am!'));
+    $this->assertEquals(',Here_I_am',Strings::unspacify(',Here I am'));
+    $this->assertEquals(',Here,_I_am',Strings::unspacify(',Here,   I am'));
+    $this->assertEquals('Me_voilà',Strings::unspacify('Me voilà'));
+
   }
   public function testPascal()
   {

@@ -109,7 +109,7 @@ class Payment {
   {
     $this->setOption('autoresponse_url',$url);
   }
-  
+
   /**
    * Adds fields to a HTML_QuickForm to configure this driver.
    * Additionnaly A prefix can be prepended to field names
@@ -128,7 +128,7 @@ class Payment {
    */
   public function processConfigForm($values) {
     foreach($values as $k=>$v) {
-      if(!eregi('^'.$this->_configprefix,$k)) continue;
+      if(strpos($k, $this->_configprefix) !== 0) continue;
       $this->_options[ereg_replace('^'.$this->_configprefix,'',$k)] = $v;
     }
   }
@@ -158,15 +158,15 @@ class Payment {
    * wether the payment gateway did not give its final response yet
    */
   public function isPending() {
-    return $this->getResponse()->statuscode=='pending';    
-  }  
+    return $this->getResponse()->statuscode=='pending';
+  }
 
   /**
    * Returns a unified status code (at least for accepted) :
    * 00 for payment accepted
    */
   public function getStatusCode() {
-    return $this->getResponse()->statuscode;    
+    return $this->getResponse()->statuscode;
   }
 
   /**
@@ -202,17 +202,17 @@ class Payment {
 
   /**
    * Gets the response raw data (if previously set in setRawResponse)
-   */  
+   */
   public final function getRawResponse() {
     return $this->_rawresponse;
   }
-  
+
   public final function getResponse()
   {
     if(!is_a($this->_response,'Payment_Response')) {
       return false;
     }
-    return $this->_response;    
+    return $this->_response;
   }
 
   public final function execute()
@@ -220,7 +220,7 @@ class Payment {
     if($this->isAccepted()) {
       $this->getTransaction()->success($this);
     } else {
-      $this->getTransaction()->error($this);      
+      $this->getTransaction()->error($this);
     }
   }
 
@@ -244,8 +244,8 @@ class Payment {
  }
  /**
   * Returns the unique identifier of the payment.
-  * It can be determined either by the payment gateway or by the local 
-  * workflow (e.g. database record id) 
+  * It can be determined either by the payment gateway or by the local
+  * workflow (e.g. database record id)
   */
  public function getId()
  {
@@ -297,7 +297,7 @@ class Payment {
     */
    public function getAnalysisUrl() {
      return;
-   }	
+   }
 	/**
 	 * Returns a text summary of the current analysis
 	 * @return string

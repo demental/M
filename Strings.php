@@ -16,18 +16,19 @@
  */
 class Strings {
 	public static function stripify($string,$varCompliant=false) {
-		$string = trim($string);
+		$sep 		= '_';
+		$string = trim($string, " \t\n\r\0\x0B".$sep);
 		$string = self::sanitize($string, $varCompliant);
-		$sep = '_';
-		$string=ereg_replace('('.$sep.'+)',$sep,$string);
-		$string=ereg_replace(''.$sep.'$','',$string);
+		$string = preg_replace('`('.$sep.'+)`',$sep,$string);
+		$string = preg_replace('`'.$sep.'$`','',$string);
+
 		$string = str_replace('?','',$string);
 		$string = str_replace('_-','_',$string);
 		$string = str_replace('-_','-',$string);
 
 		$string = str_replace('--','-',$string);
 		$string = str_replace('__','_',$string);
-		$string=preg_replace('`\s+`','_',$string);
+		$string = preg_replace('`\s+`','_',$string);
 
 		return strtolower($string);
 	}
@@ -44,12 +45,12 @@ class Strings {
 	public function unspacify($string)
 	{
 		$string = trim($string);
-		$string=preg_replace('`\s+`','_',$string);
+		$string = preg_replace('`\s+`u','_',$string);
 		$string = str_replace('_-','_',$string);
 		$string = str_replace('-_','-',$string);
-		$string = ereg_replace('--','-',$string);
-		$string=preg_replace('`(_|-)+`','_',$string);
-		$string=str_replace('&','and',$string);
+		$string = str_replace('--','-',$string);
+		$string = preg_replace('`(_|-)+`u','_',$string);
+		$string = str_replace('&','and',$string);
 		return $string;
 	}
 	public static function stripLines($text)
@@ -73,7 +74,7 @@ class Strings {
 	}
 	public static function number_unformat ( $string )
 	{
-		$string=preg_replace('`[^0-9]`i','',$string);
+		$string = preg_replace('`[^0-9]`i','',$string);
 		return $string;
 	}
 	public static function extractEmails ($string)
@@ -180,7 +181,7 @@ class Strings {
 	{
 		$string = self::sanitize($string, true);
 		$string = preg_replace('/([A-Z])/', '_$1', $string);
-		$string = str_replace('__','_',$string);
+		$string = preg_replace('`(_+)`','_',$string);
 		$string = strtolower($string);
 		return trim($string, '_');
 	}
