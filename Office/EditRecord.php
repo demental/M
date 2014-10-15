@@ -34,7 +34,6 @@ class M_Office_EditRecord extends M_Office_Controller {
 
     public function getRecord()
     {
-      if($record instanceOf DB_DataObject) return $record;
       $do = M_Office_Util::doForModule($this->module,false);
 
       if($this->__record_ref) {
@@ -48,18 +47,13 @@ class M_Office_EditRecord extends M_Office_Controller {
       } else {
         $do->{$do->pkName()} = $this->__record_id;
       }
-      if(!$do->find(true)) {
-        $this->assign('__action','error');
-        $this->append('errors',__('L\'enregistrement que vous avez tenté d\'atteindre est introuvable.'));
-        return false;
-
-      }
-
+      $do->find_or_die(true);
       return $do;
     }
     public function run()
     {
       $this->do = $this->getRecord();
+      deny_unless_can('read', $this->do);
       $this->assign('__action','edit');
       $this->append('subActions','<a href="'.M_Office_Util::getQueryParams(array(), array('record','doSingleAction','__record_ref')).'">'.__('&lt; Back to list').'</a>');
       $editopts = PEAR::getStaticProperty('m_office_editrecord','options');

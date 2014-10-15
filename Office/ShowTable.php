@@ -41,7 +41,7 @@ class M_Office_ShowTable extends M_Office_Controller {
 
     $opts = PEAR::getStaticProperty('m_office','options');
     $this->moduloptions = $opts['modules'][$module];
-    $this->table=$this->moduloptions['table'];
+    $this->table = $this->moduloptions['table'];
 
     if(!$this->getOption('view',$module)){
       M_Office_Util::refresh(ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT);
@@ -179,7 +179,7 @@ class M_Office_ShowTable extends M_Office_Controller {
    * @return DB_DataObject filtered dataObject
    */
   function getSearchDO($searchValues) {
-    $do = M_Office_Util::doForModule($this->module);
+    $do = $this->getDo($this->module);
 
     $this->paginate = !$searchValues['__dontpaginate'];
     if(!$this->paginate) ini_set('memory_limit','512M');
