@@ -160,11 +160,11 @@ class M_Office_View_DOPaging extends M_Office_View_List
         Mreg::get('tpl')->addJSinline(
         "
         $('a[rel=checkboxes]').click(function() {
-            \$('#showTableForm input:checkbox').each(function(){\$(this).attr('checked','checked');});
+            \$('#showTableForm input:checkbox').each(function(){\$(this).prop('checked',true);});
             return false;
         });
         $('a[rel=uncheckboxes]').click(function() {
-            $('#showTableForm input:checkbox').attr('checked','');
+            $('#showTableForm input:checkbox').prop('checked',false);
         });
         ",'ready');
 

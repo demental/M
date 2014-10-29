@@ -12,7 +12,6 @@
 * @package      M
 * @subpackage   M_Office
 * @author       Arnaud Sellenet <demental@sat2way.com>
-
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */
