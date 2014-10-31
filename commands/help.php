@@ -36,7 +36,7 @@ class Command_Help extends Command {
       $this->line('==========');
       $this->line('Here is the list of available root commands:');
       $dir = dirname(realpath(__FILE__));
-      foreach(FileUtils::getAllFiles($dir) as $afile) {
+      foreach(FileUtils::getAllFiles($dir, 'php') as $afile) {
         $subcname = basename($afile,'.php');
         $subc = Command::factory($subcname);
         $this->line('====== '.$subcname.' ======');

@@ -32,6 +32,6 @@ class Command_php extends Command {
   {
     $code = implode(' ',$params).';';
     eval($code);
-  }  
+  }
 }
- 
+
