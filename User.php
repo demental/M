@@ -261,7 +261,7 @@ class User{
 	 * @param array user fields definition
 	 * @param bool (optional) default true wether to store in database last connection date
 	 */
-	public function forceLogin(DB_DataObject $dataobject, $fieldDefinition, $storecnxdate=true)
+	public function forceLogin($dataobject, $fieldDefinition, $storecnxdate=true)
 	{
 	 	$this->setId($dataobject->pk());
 		$this->currentContainer = $dataobject;
