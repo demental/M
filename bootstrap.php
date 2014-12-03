@@ -9,9 +9,9 @@ require 'PEAR.php';
 require 'M/M_autoload.php';
 
 if(defined('E_DEPRECATED')) {
-  ini_set('error_reporting',E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+  ini_set('error_reporting',E_ALL & ~E_STRICT & ~E_NOTICE & ~E_DEPRECATED);
 } else {
-  ini_set('error_reporting',E_ALL & ~E_NOTICE);
+  ini_set('error_reporting',E_ALL & ~E_STRICT & ~E_NOTICE);
 }
 switch(MODE) {
   case 'development' :
@@ -57,7 +57,6 @@ $dispatchopt['all']['loginaction']='login';
 $dispatchopt['all']['modulepath']=array('modules');
 
 require APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'setup.php';
-
 $setup = new M_setup();
 
 Mreg::set('setup',$setup);
