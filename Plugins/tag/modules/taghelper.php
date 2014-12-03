@@ -31,6 +31,18 @@ class Tag_Module_Taghelper extends Module {
       $this->setTemplate('taghelper/viewer');
     }
   }
+  public function doExecHistory()
+  {
+    $focus = $this->getFocus();
+    $this->assign('focus',$focus);
+    $this->assign('module',$_REQUEST['module']);
+    $history = DB_DataObject::factory('tag_history');
+    $history->record_id = $focus->pk();
+    $history->tagged_table = $focus->tableName();
+    $history->orderBy('date DESC');
+    $history->find();
+    $this->assign('history', $history);
+  }
 
   public function doExecRemove()
   {

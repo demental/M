@@ -4,7 +4,7 @@
  */
 
 
-class DataObjects_Tag_history extends DB_DataObject_Pluggable 
+class DataObjects_Tag_history extends DB_DataObject_Pluggable
 {
     ###START_AUTOCODE
     /* the code below is auto generated do not remove the above tag */
@@ -42,14 +42,14 @@ class DataObjects_Tag_history extends DB_DataObject_Pluggable
          return array('id', true, false);
     }
 
-    function defaults() // column default values 
+    function defaults() // column default values
     {
          return array(
              '' => null,
          );
     }
 
-        
+
     function links() {
         // links generated from .links.ini file
         return array(
@@ -73,5 +73,9 @@ class DataObjects_Tag_history extends DB_DataObject_Pluggable
     {
       $this->date = date('Y-m-d H:i:s');
       return parent::insert();
+    }
+    public function tag()
+    {
+      return $this->getLink('tag_id');
     }
 }
