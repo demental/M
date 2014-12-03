@@ -595,6 +595,16 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     return $obj;
   }
 
+  public function memoized_link($link_field, $fallback = null )
+  {
+    if(!$this->_memoized[$link_field] instanceOf DB_DataObject) {
+      $this->_memoized[$link_field] = $this->getLink($link_field);
+      if(!$this->_memoized[$link_field] && $fallback instanceOf Closure) {
+        $this->_memoized[$link_field] = $fallback($this);
+      }
+    }
+    return $this->_memoized[$link_field];
+  }
 
 	public function delete()
 	{
