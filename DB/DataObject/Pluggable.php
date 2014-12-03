@@ -606,6 +606,23 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     return $this->_memoized[$link_field];
   }
 
+  public function memoized_reverse_link($model, $link_field, $reload = false)
+  {
+    $key = "{$model}:{$link_field}";
+    if($reload) $this->_memoized[$key] = null;
+    if(!$this->_memoized[$key] instanceOf DB_DataObject) {
+      $this->_memoized[$key] = DB_DataObject::factory($model);
+      $pk = $this->pk();
+      if($pk) {
+        $this->_memoized[$key]->$link_field = $pk;
+      } else {
+        $this->_memoized[$key]->whereAdd('1=2');
+      }
+      $this->_memoized[$key]->find();
+    }
+    return $this->_memoized[$key];
+  }
+
 	public function delete()
 	{
 		$result = $this->trigger('delete');
