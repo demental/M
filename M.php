@@ -65,29 +65,44 @@ class M {
     }
     return $ret;
   }
-  public static function addPath($role, $path)
+  public static function addPaths($role, $paths)
   {
     switch($role) {
       case 'models':
         $options = & PEAR::getStaticProperty('DB_DataObject', 'options');
-        $options['class_location'] .= ':'.$path;
+        $options['class_location'] .= ':'.implode(',',$paths);
         break;
       case 'lang':
-        T::addPath($path);
+        foreach($paths as $path) {
+          T::addPath($path);
+        }
         break;
       case 'templates':
         $moduloptions = & PEAR::getStaticProperty('Module','global');
-        $moduloptions['template_dir'][] = $path;
+        if(!is_array($moduloptions['template_dir'])) $moduloptions['template_dir'] = array();
+        $moduloptions['template_dir'] = array_merge($moduloptions['template_dir'], $paths);
       break;
 
       case 'modules':
         $dispatchopt = & PEAR::getStaticProperty('Dispatcher', 'global');
-        $dispatchopt['all']['modulepath'][] = $path;
+        if(!is_array($dispatchopt['all']['modulepath'])) $dispatchopt['all']['modulepath'] = array();
+        $dispatchopt['all']['modulepath'] = array_merge($dispatchopt['all']['modulepath'], $paths);
       break;
       default:
-        throw new Exception("Don't know how to add a '$role' path");
+        Mreg::append("{$role}_paths", array($path));
       break;
     }
   }
 
+  public static function addPath($role, $path)
+  {
+    self::addPaths($role, array($path));
+  }
+
+  public static function getPaths($role)
+  {
+    $paths = Mreg::get("{$role}_paths");
+    if(is_array($paths)) $paths = array();
+    return $paths;
+  }
 }
