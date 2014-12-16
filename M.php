@@ -15,6 +15,9 @@
  * find a way to guess these values or store them as environment specific path (i.e. the domain based config file)
  */
 
+class UnresolvedFileException extends Exception {}
+class UnresolvedClassException extends Exception {}
+
 class M {
   public static function getPearpath()
   {
@@ -50,7 +53,7 @@ class M {
     Mreg::append('autoload', array(
       strtolower($hookClass) => $hookClassfile
     ));
-    Config::set($namespace.'_hooks', $hooks);
+    Config::set("{$namespace}_hooks", $hooks);
   }
   public static function tablesWithPlugin($pluginName)
   {
@@ -89,7 +92,7 @@ class M {
         $dispatchopt['all']['modulepath'] = array_merge($dispatchopt['all']['modulepath'], $paths);
       break;
       default:
-        Mreg::append("{$role}_paths", array($path));
+        Mreg::append("{$role}_paths", $paths);
       break;
     }
   }
@@ -101,8 +104,35 @@ class M {
 
   public static function getPaths($role)
   {
-    $paths = Mreg::get("{$role}_paths");
-    if(is_array($paths)) $paths = array();
+    try {
+      $paths = Mreg::get("{$role}_paths");
+    } catch(Exception $e) {
+      $paths = array();
+    }
     return $paths;
+  }
+
+  public static function resolve_class($class, $role, $init_function = null)
+  {
+    if(class_exists($class)) return true;
+    $file = strtolower(str_replace('_','/',$class)) . '.php';
+    foreach(self::getPaths($role) as $path) {
+      $full_path = $path.DIRECTORY_SEPARATOR.$file_name;
+      if(FileUtils::file_exists_incpath($full_path)) {
+        require_once(self::resolve_file($file, $role));
+        if($init_function instanceOf Closure) $init_function();
+        return true;
+      }
+    }
+    throw new UnresolvedFileException("Could not load class {$class} in ".print_r(self::getPaths($role), true));
+  }
+
+  public static function resolve_file($file_name, $role)
+  {
+    foreach(self::getPaths($role) as $path) {
+      $full_path = $path.DIRECTORY_SEPARATOR.$file_name;
+      if(file_exists($full_path)) return realpath($full_path);
+    }
+    throw new UnresolvedFileException("Could not find {$file_name} in ".print_r(self::getPaths($role), true));
   }
 }
