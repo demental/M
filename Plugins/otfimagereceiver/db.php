@@ -18,7 +18,7 @@ if(!defined('TMP_PATH')){
  	define('TMP_PATH',ini_get('upload_tmp_dir'));
 }
 
-class DB_DataObject_Plugin_Otfimagereceiver extends M_Plugin
+class Plugins_Otfimagereceiver_db extends M_Plugin
 {
   public function getEvents()
   {

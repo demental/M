@@ -19,7 +19,7 @@
 */
 
 
-class DB_DataObject_Plugin_Guid extends M_Plugin
+class Plugins_Guid_Db extends M_Plugin
 {
     public $plugin_name='guid';
     public function getEvents()

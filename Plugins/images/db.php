@@ -20,7 +20,7 @@
  	define('TMP_PATH',ini_get('upload_tmp_dir'));
  }
 
-class DB_DataObject_Plugin_Images extends M_Plugin
+class Plugins_Image_db extends M_Plugin
 {
 
   public $plugin_name='images';

@@ -14,7 +14,7 @@
  * This plugin needs 3 tables (@see Plugins/tag/commandes/install.php)
  */
 
-class DB_DataObject_Plugin_Tag extends M_Plugin {
+class Plugins_Tag_DB extends M_Plugin {
 
   protected static $triggers_enabled = true;
 

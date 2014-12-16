@@ -18,7 +18,7 @@
 */
 
 
-class DB_DataObject_Plugin_FalseDelete extends M_Plugin
+class Plugins_Falsedelete_DB extends M_Plugin
 {
   public $plugin_name='falseDelete';
   public function getEvents()
