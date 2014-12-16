@@ -127,13 +127,6 @@ function M_autoload($class) {
   require $classes[$class];
   return true;
 }
-if(preg_match('`^(.+)_hook$`i',$class,$match)) {
-  @include 'lib/hooks/'.ucfirst($match[1]).'.php';
-  if(class_exists($class)) {
-    return true;
-  }
-  return false;
-}
 try {
   $callbacks = Mreg::get('autoloadcallback');
   if(is_array($callbacks)) {

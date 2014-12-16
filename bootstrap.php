@@ -42,13 +42,15 @@ M::addPath('lang', dirname(__FILE__).'/lang/');
 $lang = $_REQUEST['lang'] ? $_REQUEST['lang'] : DEFAULT_LANG;
 T::setLang($lang);
 
-M::addPath('templates', APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
-M::addPath('templates', APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
+M::addPath('templates', APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
+M::addPath('templates', APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
 M::addPath('modules', 'modules');
+M::addPath('plugins', realpath(dirname(__FILE__)));
+M::addPath('plugins', APP_ROOT.PROJECT_NAME);
 
 $opt = & PEAR::getStaticProperty('Module', 'global');
 $opt['caching'] = $caching;
-$opt['cacheDir'] = APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR;
+$opt['cacheDir'] = APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR;
 $opt['cacheTime'] = 7200;
 $dispatchopt = &PEAR::getStaticProperty('Dispatcher', 'global');
 $dispatchopt['all']['loginmodule']='user';
