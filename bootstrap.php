@@ -9,13 +9,13 @@ require 'PEAR.php';
 require 'M/M_autoload.php';
 
 if(defined('E_DEPRECATED')) {
-  ini_set('error_reporting',E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+  ini_set('error_reporting',E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
 } else {
   ini_set('error_reporting',E_ALL & ~E_NOTICE);
 }
 switch(MODE) {
   case 'development' :
-    ini_set('display_errors',1);
+    ini_set('display_errors',0);
     $caching=false;
     break;
   case 'test' :
