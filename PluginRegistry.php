@@ -16,7 +16,7 @@ class PluginRegistry
 {
   private static $_instances = array();
   private static $_names = array();
-  public static $plugins_dir = 'M/Plugins/';
+  public static $plugins_dir = 'M/plugins/';
   public static final function getInstance($pluginName, $section = 'DB')
   {
     if(!self::$_instances[$pluginName][$section]) {
@@ -55,8 +55,8 @@ class PluginRegistry
    */
   public static function getPaths($cleanName,$section) {
     return array(
-      APP_ROOT.PROJECT_NAME.'/Plugins/'.$cleanName.'/'.$section.'/',
-      dirname(__FILE__).'/Plugins/'.$cleanName.'/'.$section.'/'
+      APP_ROOT.PROJECT_NAME.'/plugins/'.$cleanName.'/'.$section.'/',
+      dirname(__FILE__).'/plugins/'.$cleanName.'/'.$section.'/'
     );
   }
   public static function initPlugin($pluginName)

@@ -214,7 +214,7 @@ class Mtpl {
 		  if(count($pluginfile) == 2) {
 		    PluginRegistry::initPlugin($pluginfile[0]);
 		    $file = $pluginfile[1];
-		    $this->_config['tplfolders'] = array('M/Plugins/'.$pluginfile[0].'/templates/',APP_ROOT.PROJECT_NAME.'/plugins/'.$pluginfile[0].'/templates/');
+		    $this->_config['tplfolders'] = array('M/plugins/'.$pluginfile[0].'/templates/', APP_ROOT.PROJECT_NAME.'/plugins/'.$pluginfile[0].'/templates/');
 		  }
 			$this->_tplfile=$file;
 			if($tpl = $this->getTemplatePath()) {

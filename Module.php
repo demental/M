@@ -105,10 +105,10 @@ class Module extends Maman {
     if($plugmod[1]) {
       Log::info('Calling plugin module '.$modulename);
       PluginRegistry::initPlugin($plugmod[0]);
-      $path = array(APP_ROOT.PROJECT_NAME.'/Plugins/'.$plugmod[0].'/modules/','M/Plugins/'.$plugmod[0].'/modules/');
+      $path = array(APP_ROOT.PROJECT_NAME.'/plugins/'.$plugmod[0].'/modules/','M/plugins/'.$plugmod[0].'/modules/');
 
-      $moduleOpt['template_dir'][] = 'M/Plugins/'.$plugmod[0].'/templates/';
-      $moduleOpt['template_dir'][] = APP_ROOT.PROJECT_NAME.'/Plugins/'.$plugmod[0].'/templates/';
+      $moduleOpt['template_dir'][] = 'M/plugins/'.$plugmod[0].'/templates/';
+      $moduleOpt['template_dir'][] = APP_ROOT.PROJECT_NAME.'/plugins/'.$plugmod[0].'/templates/';
       $modulename = $plugmod[1];
 		  $className = $plugmod[0].'_Module_'.$modulename;
     } else {

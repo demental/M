@@ -1,4 +1,4 @@
 <?php
 Log::info('Init tag plugin');
 Mreg::append('autoload',
-  array('tagtrigger'=>'M/Plugins/tag/lib/tagTrigger.php'));
+  array('tagtrigger'=>'M/plugins/tag/lib/tagTrigger.php'));
