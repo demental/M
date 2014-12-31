@@ -14,8 +14,8 @@
 
 class PluginRegistry
 {
-  private static $_instances;
-  private static $_names;
+  private static $_instances = array();
+  private static $_names = array();
   public static $plugins_dir = 'M/Plugins/';
   public static final function getInstance($pluginName, $section = 'DB')
   {
