@@ -1,0 +1,36 @@
+en:
+  error:
+    module_not_found: No %s module
+    template_not_found: "The requested template : <pre>%s</pre> was not found ! <br />paths : <pre>%s</pre>"
+    no_action_in_module: The %s action is not implemented in %s
+    action_disabled_in_module: The %s for module %s is disabled
+    cannot_do_action_on_that: You are note authorized to execute "<em>%s</em>" on %s
+    dataobject_fetch_without_an_id: Unable to find a record in %s without an ID
+    dataobject_notfound_byid: "Record # '<em>%s</em>'' not found in %s"
+    dataobject_notfound_byfield: Record %s = "<em>%s</em>" not found in %s
+    missing_param_in_request: Invalid request : The "<em>%s</em>" parameter is missing
+    no_record_selected: No record selected !
+    form:
+      rule_violation: Invalid value
+      required: This field is required
+  title:
+    error: Application error
+  button:
+    search: Search
+    back_home: Back home
+    back_one_page: Previous page
+    submit: Submit
+    cancel: Cancel
+    execute: Execute
+    close: Close
+    check_all: Check all
+    uncheck_all: Uncheck all
+    signin: Sign in
+    choose: Choose
+  format:
+    bool:
+      no: No
+      yes: Yes
+  sort:
+    asc: Ascending
+    desc: Descending

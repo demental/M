@@ -26,6 +26,7 @@ fr:
     check_all: Tout cocher
     uncheck_all: Tout décocher
     signin: Se connecter
+    choose: Choisir
   format:
     bool:
       no: Non
