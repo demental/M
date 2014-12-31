@@ -48,7 +48,7 @@ class PluginRegistry
   {
     $cleanName = FileUtils::sanitize($pluginName);
     $className = strtolower("Plugins_{$cleanName}_{$section}");
-    if (M::resolve_class($className, 'plugins', function() use ($cleanName) { self::initPlugin($cleanName); })) return $className;
+    if (M::resolve_class($className, 'plugins', function() use ($cleanName) { PluginRegistry::initPlugin($cleanName); })) return $className;
   }
   /**
    * Returns the paths potentially associated with a plugin
