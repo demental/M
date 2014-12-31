@@ -16,7 +16,7 @@
  */
 
 
-class DB_DataObject_Plugin_Otfimage extends M_Plugin
+class Plugins_Otfimage_DB extends M_Plugin
 {
   public function getEvents()
   {

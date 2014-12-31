@@ -19,7 +19,7 @@
 * @version      0.1
 */
 
-class DB_DataObject_Plugin_Pager extends M_Plugin
+class Plugins_Pager_DB extends M_Plugin
 {
     public $plugin_name='pager';
     public $pager;

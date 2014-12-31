@@ -13,7 +13,7 @@
  * allows to log inserts and updates
  */
 
-class DB_DataObject_Plugin_Log extends M_Plugin
+class Plugins_Log_DB extends M_Plugin
 {
   protected static $username;
   protected static $logger;

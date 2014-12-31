@@ -21,7 +21,7 @@
  	define('TMP_PATH',ini_get('upload_tmp_dir'));
  }
 
-class DB_DataObject_Plugin_Upload extends M_Plugin
+class Plugins_Upload_DB extends M_Plugin
 {
     public $plugin_name='upload';
   public function getEvents()

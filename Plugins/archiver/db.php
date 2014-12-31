@@ -14,7 +14,7 @@
  */
 
 
-class DB_DataObject_Plugin_Archiver extends M_Plugin
+class Plugins_Archiver_db extends M_Plugin
 {
   public function getEvents()
   {

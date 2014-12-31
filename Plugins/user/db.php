@@ -23,7 +23,7 @@
  	define('TMP_PATH',ini_get('upload_tmp_dir'));
  }
 
-class DB_DataObject_Plugin_User extends M_Plugin
+class Plugins_user_db extends M_Plugin
 {
   public $reminderUrl='user/login';
 //    var $registerUrl='user/register';

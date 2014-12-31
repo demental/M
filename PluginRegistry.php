@@ -14,8 +14,8 @@
 
 class PluginRegistry
 {
-  private static $_instances;
-  private static $_names;
+  private static $_instances = array();
+  private static $_names = array();
   public static $plugins_dir = 'M/Plugins/';
   public static final function getInstance($pluginName, $section = 'DB')
   {
@@ -46,23 +46,9 @@ class PluginRegistry
    */
   protected function _load($pluginName,$section)
   {
-    $cleanName = strtolower(FileUtils::sanitize($pluginName));
-    $className = 'DB_DataObject_Plugin_'.$cleanName;
-    if(class_exists($className,false)) {
-      return $className;
-    }
-    $classpaths = self::getPaths($cleanName,'DB');
-
-    foreach($classpaths as $pluginPath) {
-      $classpath = $pluginPath.$cleanName.'.php';
-      if(file_exists($classpath)) {
-        require_once $classpath;
-        self::initPlugin($cleanName);
-        return $className;
-      }
-    }
-
-    return false;
+    $cleanName = FileUtils::sanitize($pluginName);
+    $className = strtolower("Plugins_{$cleanName}_{$section}");
+    if (M::resolve_class($className, 'plugins', function() use ($cleanName) { self::initPlugin($cleanName); })) return $className;
   }
   /**
    * Returns the paths potentially associated with a plugin
@@ -75,13 +61,7 @@ class PluginRegistry
   }
   public static function initPlugin($pluginName)
   {
-    if(!$folder = self::path($pluginName)) return false;
-    self::$_names[]=$pluginName;
-    if(file_exists($folder.'init.php')) {
-      include_once $folder.'init.php';
-      return true;
-    }
-    return false;
+    require M::resolve_file("plugins/{$pluginName}/init.php",'plugins');
   }
   public static function path($pluginName)
   {
