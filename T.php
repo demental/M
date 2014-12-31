@@ -19,7 +19,7 @@ class T {
 	public static $lang;
 	public static $culture;
 	public static $instances=array();
-	public static $config = array('driver'=>'reader');
+	public static $config = array('driver'=>'reader', 'switch_callbacks' => array());
   protected static $paths;
 
 	protected $locale;
@@ -77,7 +77,8 @@ class T {
 	public static function setConfig ( $conf )
 	{
 		T::$config = $conf;
-	}
+	  if(!is_array(T::$config['switch_callbacks'])) T::$config['switch_callbacks'] = array();
+  }
 
 	// TODO rename to getConfigValue
 	public static function getConfig ( $value )
@@ -282,15 +283,20 @@ class T {
     }
     return T::$culture;
   }
+
 	public static function setLang ( $lang = null )
 	{
-		if(!is_null($lang)) {
-			T::$lang = $lang;
-      T::$culture = null;
-		}
+    if(is_null($lang) || $lang == T::$lang) return false;
+		T::$lang = $lang;
+    T::$culture = null;
+
+    foreach(T::$config['switch_callbacks'] as $callback) {
+      $callback($lang);
+    }
     Log::info('T::setLang - Switching to '.$lang);
 		return T::$lang;
 	}
+
 	public function setStrings( $arr )
 	{
 		if(!is_array($arr)) {

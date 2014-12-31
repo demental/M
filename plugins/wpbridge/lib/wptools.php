@@ -36,6 +36,16 @@ class WPTools {
     return $c;
   }
 
+  public static function on_switch_lang($new_lang) {
+    foreach(array('wp_root','wp_login','wp_password') as $varname) {
+      $constname = strtoupper($new_lang.'_'.$varname);
+      if(!defined($constname)) {
+        $constname = strtoupper('default_'.$varname);
+      }
+      WPTools::$$varname = constant($constname);
+    }
+  }
+
   protected static function _fetchPage($pageID, $apply_shortcodes = false)
   {
     try {
