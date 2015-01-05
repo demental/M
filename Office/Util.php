@@ -458,10 +458,18 @@ class M_Office_Util {
 
   	if($filters && $mod['filters']){
       foreach($mod['filters'] as $scope) {
-        call_user_func_array(array($do, $scope), array(User::getInstance('office')->getDBDO()));
+        call_user_func_array(array($do, $scope), array(self::current_user()));
       }
     }
     return $do;
+  }
+
+  public static function current_user() {
+    try {
+      return User::getInstance('office')->getDBDO();
+    } catch(Exception $e) {
+      return null;
+    }
   }
 	public static function isCached($id) {
 	    return false;
