@@ -713,8 +713,12 @@ class Module extends Maman {
 	 * @param $action
 	 * @return unknown_type
 	 */
-	public function forward($module,$action='index') {
-		$d = new Dispatcher($module,$action,$this->_params);
+	public function forward($module,$action='index', $params = false) {
+		if($this->isComponent()) {
+			$d = new Component($module,$action, $params ? $params  : $this->_params);
+		} else {
+			$d = new Dispatcher($module,$action, $params ? $params  : $this->_params);
+		}
 		$d->execute();
 		$this->_lastOutput = $d->getPage();
 	}

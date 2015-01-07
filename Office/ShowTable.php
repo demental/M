@@ -49,7 +49,7 @@ class M_Office_ShowTable extends M_Office_Controller {
 
     if($this->getOption('search',$module)){
       // 1. Url curation if needed
-      if(!key_exists('_c_',$_REQUEST)) {
+      if(!key_exists('_c_',$_REQUEST) && !M_Office::isAjaxRequest()) {
         M_Office_Util::refresh(M_Office::cleanURL(array('_c_'=>1),array('searchSubmit','__submit__')));
       }
       // 2. Process search

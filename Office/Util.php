@@ -24,7 +24,7 @@ class M_Office_Util {
   public static $mainOptions;
   public static $fieldCache = array();
   /**
-   * Redirects to another url (uses javascript is some headers were already sent)
+   * Redirects to another url (uses javascript is some headers were already sent, or javascript if current request was an ajax request)
    * @param url string url to redirect to
    */
   public static function refresh($url = false) {
@@ -38,16 +38,15 @@ class M_Office_Util {
                   $url;
           }
           if ((stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') && stristr($_SERVER['HTTP_USER_AGENT'], 'Mac')) || headers_sent()) {
-                echo '<script language="JavaScript1.1">
-  <!--
-  location.replace("'.$url.'");
-  //-->
-  </script>
+                echo '<script>location.replace("'.$url.'");</script>
   <noscript>
   <meta http-equiv="Refresh" content="0; URL='.$url.'"/>
   </noscript>
   Please <a href="'.$url.'">click here</a> to continue.
   ';
+          } elseif(M_Office::isAjaxRequest()) {
+            echo 'Please <a class="refresh_url_link" href="'.$url.'">click here</a> to continue.'.
+            '<script>$(".refresh_url_link").click().hide();</script>';
           } else {
               header('Location: '.$url);
           }

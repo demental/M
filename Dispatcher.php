@@ -11,67 +11,67 @@
 */
 
 /**
- * 
+ *
 * Dispatcher Class
 * The main and only goal of the dispatcher is to route the request to the correct Module
-* The constructor takes two parameters, 1 and 2 correspond to the module and action names. 
+* The constructor takes two parameters, 1 and 2 correspond to the module and action names.
 * The third one is optional parameters to pass to module. Mostly used when a module is used as a component
  *
  */
 class Dispatcher extends Maman {
 
 	/**
-	 * 
+	 *
 	 * Page
 	 *
 	 * @var		Module
 	 * @access	protected
 	 */
 	protected $page;
-    
+
 	/**
-	 * 
+	 *
 	 * Module name
 	 *
 	 * @var		string
 	 * @access	protected
 	 */
 	protected $module;
-    
+
     /**
-     * 
+     *
      * Action name
      *
      * @var		string
      * @access	protected
      */
 	protected $action;
-    
+
 	/**
-	 * 
+	 *
 	 * Optional params
 	 *
 	 * @var		string
 	 * @access	protected
 	 */
 	protected $params;
-    
+
   /**
-   * 
+   *
    * Constructor
    *
    * @param $module	name of the requested module
    * @param $action	name of the requested action
    * @param $params	Optional parameters
    */
-  function __construct($module = 'defaut', $action = 'index',$params = null) 
+  function __construct($module = 'defaut', $action = 'index',$params = null)
   {
     $this->module = $module?$module:'defaut';
     $this->action = $action?$action:'index';
     $this->params = $params;
     $this->setConfig(PEAR::getStaticProperty('Dispatcher','global'));
   }
-    
+
 	/**
 	 *
 	 * Execute the dispatching
@@ -102,12 +102,12 @@ class Dispatcher extends Maman {
         catch (Error404Exception $e) {
             $this->returnActionNotFound();
           }
-      	catch (Exception $e)
-      	{
+        catch (Exception $e)
+        {
             Log::info('Action '.$this->action.' rejected for module '.$this->module.', trying index instead ');
             Log::info('Reason : '.$e->getMessage());
-      		  $this->page->handleException($e);
-      	}
+            $this->page->handleException($e);
+        }
 
       }
       catch (Error404Exception $e) {
@@ -119,11 +119,11 @@ class Dispatcher extends Maman {
       }
       catch (Exception $e)
       {
-        
+
           Log::info('Error module '.$this->module.'. Revealing as 404');
       	  $this->page = $this->moduleInstance('error',$path);
           $this->page->executeAction('404');
-      }        
+      }
       Log::info($this->module.'/'.$this->action.' executed successfully');
     }
 
@@ -137,7 +137,7 @@ class Dispatcher extends Maman {
       try {
         User::getInstance()->setTarget($this->module.'/'.$this->action,$data);
       } catch(Exception $e) {
-        
+
       }
       $this->page = $this->moduleInstance($this->getConfig('loginmodule',$this->module),$path);
       $this->page->executeAction($this->getConfig('loginaction',$this->module));
@@ -166,7 +166,7 @@ class Dispatcher extends Maman {
 
         $this->page->handleNotFound($this->action);
       } else {
-        $this->page = $this->moduleInstance('error',$path); 
+        $this->page = $this->moduleInstance('error',$path);
         $this->page->executeAction('404');
         header('Status: 404');
         header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
@@ -181,7 +181,7 @@ class Dispatcher extends Maman {
 
       return $res;
     }
-    
+
   /**
 	 *
 	 * Get the module page
@@ -194,8 +194,8 @@ class Dispatcher extends Maman {
     public function getPage()
     {
         return $this->page;
-    }    
-    
+    }
+
   /**
 	 *
 	 * Get the module path
