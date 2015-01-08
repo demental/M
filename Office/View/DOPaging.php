@@ -92,7 +92,8 @@ class M_Office_View_DOPaging extends M_Office_View_List
 
     $do->fb_fieldsToRender=$fields;
     $fb =& MyFB::create($do);
-    if(empty($do->_query['data_select'])) {
+    if(empty($do->_query['data_select']) || $do->_query['data_select'] == '*') {
+
       $do->selectAdd();
       $plugins = $do->_getPluginsDef();
       if(is_array($plugins['i18n'])) {
