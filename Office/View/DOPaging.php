@@ -92,37 +92,39 @@ class M_Office_View_DOPaging extends M_Office_View_List
 
     $do->fb_fieldsToRender=$fields;
     $fb =& MyFB::create($do);
-    $do->selectAdd();
-    $plugins = $do->_getPluginsDef();
-    if(is_array($plugins['i18n'])) {
-      $tmparr = array_intersect($fields,$plugins['i18n']);
-      $i18nfields = implode(','.$do->tablename().'_i18n'.'.',$tmparr);
-      if(!empty($i18nfields)) {
-        $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;
+    if(empty($do->_query['data_select'])) {
+      $do->selectAdd();
+      $plugins = $do->_getPluginsDef();
+      if(is_array($plugins['i18n'])) {
+        $tmparr = array_intersect($fields,$plugins['i18n']);
+        $i18nfields = implode(','.$do->tablename().'_i18n'.'.',$tmparr);
+        if(!empty($i18nfields)) {
+          $i18nfields = $do->tablename().'_i18n'.'.'.$i18nfields;
+        }
+        $fieldsToRender = array_merge($usedFields,$tmparr);
+        unset($tmparr);
+      } elseif(is_array($plugins['l10n'])) {
+        $tmparr = array_intersect($fields,$plugins['l10n']);
+        $i18nfields = implode(','.$do->tablename().'_l10n'.'.',$tmparr);
+        $i18nfields = $do->tablename().'_l10n'.'.'.$i18nfields;
+        $fieldsToRender = array_merge($usedFields,$tmparr);
+        unset($tmparr);
+      } else {
+        $i18nfields = null;
+        $fieldsToRender = $usedFields;
       }
-      $fieldsToRender = array_merge($usedFields,$tmparr);
-      unset($tmparr);
-    } elseif(is_array($plugins['l10n'])) {
-      $tmparr = array_intersect($fields,$plugins['l10n']);
-      $i18nfields = implode(','.$do->tablename().'_l10n'.'.',$tmparr);
-      $i18nfields = $do->tablename().'_l10n'.'.'.$i18nfields;
-      $fieldsToRender = array_merge($usedFields,$tmparr);
-      unset($tmparr);
-    } else {
-      $i18nfields = null;
-      $fieldsToRender = $usedFields;
-    }
 
-    if($plugins['tag'] && in_array('tagplugin_cache',$AllFields)) {
-      $usedFields[]='tagplugin_cache';
-    }
-    if(!in_array($pk,$usedFields)) {
-      $selectAdd = $do->tablename().'.'.$pk.','.$do->tablename().'.'.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:'');
-    } else {
-      $selectAdd = $do->tablename().'.'.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:'');
-    }
+      if($plugins['tag'] && in_array('tagplugin_cache',$AllFields)) {
+        $usedFields[]='tagplugin_cache';
+      }
+      if(!in_array($pk,$usedFields)) {
+        $selectAdd = $do->tablename().'.'.$pk.','.$do->tablename().'.'.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:'');
+      } else {
+        $selectAdd = $do->tablename().'.'.implode(','.$do->tablename().'.',$usedFields).($i18nfields?','.$i18nfields:'');
+      }
 
-    $do->selectAdd('distinct '.$selectAdd);
+      $do->selectAdd('distinct '.$selectAdd);
+    }
     $fb->populateOptions();
     $specialElements = $fb->_getSpecialElementNames();
     $eltTypes=$do->table();
