@@ -846,4 +846,16 @@ class Module extends Maman {
      if(!is_array($_SESSION['flash'][$type])) return false;
      return array_shift($_SESSION['flash'][$type]);
    }
+
+   public function accept_methods()
+   {
+   	$args = func_get_args();
+   	$requested_method = strtolower($_SERVER['REQUEST_METHOD']);
+   	foreach($args as $allowed_method) {
+   		if($requested_method == strtolower($allowed_method)) {
+   			return true;
+   		}
+   	}
+   	throw new InvalidRequestException('Method '.$requested_method.' not allowed');
+  }
 }
