@@ -159,7 +159,6 @@ class M_Office_Util {
     unset($params['module']);
     unset($params['record']);
     unset($params['__record_ref']);
-    unset($params['regenerate']);
     unset($params['_c_']);
     if(count($params)>0) {
       $url.='?'.self::queryString($params,'','',true);
@@ -178,22 +177,16 @@ class M_Office_Util {
   public static function getQueryParams($params = array(), $remove = array(), $entities = false, $clean = false) {
       $ret = '';
       $arr = array();
-      if (!isset($params['regenerate'])) {
-          $remove[] = 'regenerate';
-      }
+      $remove = is_array($remove) ? $remove : array();
+
       $get=$_GET;
       $get=array_diff_key($get,array_flip($remove));
 
-      foreach (array_merge($get, $params) as $key => $val) {
-//            if (substr($key, 0, 5) != '_qf__' && $key!=) {
-
-          $arr[$key] = $val;
-//            }
-      }
+      $arr = array_merge($get, $params);
 
       $ret = self::queryString($arr,'','',$clean);
       if ($entities) {
-          $ret = htmlentities($ret, ENT_QUOTES);
+        $ret = htmlentities($ret, ENT_QUOTES);
       }
       $ret = $ret ? '?'.$ret : '';
       return ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT.$ret;

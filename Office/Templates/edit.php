@@ -37,3 +37,6 @@
 	<br style="clear:both" />
 </div>
 <?php $this->i('editform',array('form'=>$editForm,'do'=>$do,'ajaxFrom'=>$ajaxFrom,'editable'=>$editable))?>
+<script type="text/javascript">
+  window.currentFocus = { model: "<?php echo $do->tableName()?>", id: "<?php echo $do->pk()?>", to_s: "<?php echo $do->__toString()?>" }
+</script>
