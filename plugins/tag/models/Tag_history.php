@@ -9,12 +9,12 @@ class DataObjects_Tag_history extends DB_DataObject_Pluggable
     ###START_AUTOCODE
     /* the code below is auto generated do not remove the above tag */
 
-    public $__table = 'tag_history';                     // table name
+    public $__table = 'tag_history';         // table name
     public $id;                              // bigint(8)  primary_key not_null unsigned
     public $tag_id;                          // int(4)   not_null unsigned
-    public $record_id;                       // varchar(36)   not_null
+    public $record_id;                       // char(36)   not_null
     public $tagged_table;                    // varchar(50)   not_null
-    public $date;                            // datetime()   not_null default_0000-00-00%2000%3A00%3A00
+    public $date;                            // datetime   not_null default_0000-00-00%2000%3A00%3A00
     public $direction;                       // char(3)   not_null
 
     /* Static get */
@@ -51,16 +51,17 @@ class DataObjects_Tag_history extends DB_DataObject_Pluggable
 
 
     function links() {
-        // links generated from .links.ini file
-        return array(
+      // links generated from .links.ini file
+      return array(
+            'tag_id'=>'tag:id',
 
-        );
+      );
     }
     function reverseLinks() {
-        // reverseLinks generated from .links.ini file
-        return array(
+      // reverseLinks generated from .links.ini file
+      return array(
 
-        );
+      );
     }
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
@@ -78,4 +79,5 @@ class DataObjects_Tag_history extends DB_DataObject_Pluggable
     {
       return $this->getLink('tag_id');
     }
+
 }
