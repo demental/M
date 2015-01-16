@@ -67,6 +67,7 @@ array(
   'maman'                 =>'M/Maman.php',
   'm_office_util'         =>'M/Office/Util.php',
   'm_office_search'       =>'M/Office/Search.php',
+  'm_office_setup'       =>'M/Office/setup.php',
   'authhelper'            =>'M/Office/AuthHelper.php',
   'marray'                =>'M/MArray.php',
   'office_defaultmodule'  =>'M/Office/DefaultModule.php',
