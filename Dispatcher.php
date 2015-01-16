@@ -85,7 +85,6 @@ class Dispatcher extends Maman {
     public function execute()
     {
       $path=$this->getPath();
-
       try
       {
         Log::info('Trying module '.$this->module);
@@ -207,7 +206,7 @@ class Dispatcher extends Maman {
 	 */
     public function getPath()
     {
-      return $this->getConfig('modulepath','all',null);
+      return M::getPaths('module');
     }
 
   /**

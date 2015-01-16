@@ -256,7 +256,7 @@ class Module extends Maman {
 	 */
 	public function startView()
 	{
-		$this->view = new Mtpl($this->getConfig('template_dir'),$this);
+		$this->view = new Mtpl(M::getPaths('template'),$this);
 		if($vars = $this->getconfig('templateVars',$action)) {
 			$this->view->assignArray($vars);
 		}
@@ -523,8 +523,6 @@ class Module extends Maman {
 
 		$a=$this->_lastOutput->getCurrentAction();
 
-		// Le fichier de template de l'action est-il celui par défaut (nom_de_l_action.tpl) ou a-t-il été spécifié
-		// dans la configuration du module ?
 		if(is_null($template)) {
 			$template = $this->_lastOutput->getConfig('template',$a)?
 			$this->_lastOutput->getConfig('template',$a):
@@ -541,8 +539,6 @@ class Module extends Maman {
 			$template = array($template);
 		}
 
-		// Le fichier de template englobant est-il celui par défaut (index.tpl) ou a-t-il été spécifié
-		// dans la configuration du module ?
 		if(is_null($layout)) {
 			$layout = $this->_lastOutput->getConfig('layout',$a)?
 			$this->_lastOutput->getConfig('layout',$a):
@@ -550,8 +546,6 @@ class Module extends Maman {
 		}
 		Log::info('Setting layout '.$layout.' for module '.get_class($this->_lastOutput));
 
-		// Si on veut afficher uniquement le template de l'action, sans aucun layout on utilise le mot clé __self dans le
-		// fichier de configuration du module
 		if($this->isAjaxRequest()) {
 			$layout='__self';
 			$t2=$template;

@@ -52,40 +52,9 @@ class M_Office extends M_Office_Controller implements iListener {
 	public function __construct($layout = 'main') {
 
 		parent::__construct();
-		M_Office_Util::$mainOptions = PEAR::getStaticProperty('m_office', 'options');
+    $setup = new M_Office_Setup($this);
+    $setup->setup();
 
-		$modinfo = &PEAR::getStaticProperty('Module','global');
-		array_unshift($modinfo['template_dir'],APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
-		array_push($modinfo['template_dir'],OFFICE_TEMPLATES_FOLDER);
-
-    // adding Theme is available
-    if(Config::getPref('theme')) {
-      array_push($modinfo['template_dir'],APP_ROOT.WEB_FOLDER.'/themes/'.Config::getPref('theme').'/templates/');
-    }
-		// TODO Check if requested module is valid
-
-    $tplpaths = array(
-      OFFICE_TEMPLATES_FOLDER,
-      APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR,
-      APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR,
-      APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$_REQUEST['module'].DIRECTORY_SEPARATOR,
-    );
-
-    foreach(PluginRegistry::registeredPlugins() as $pluginName) {
-      $tplpaths []= 'M/plugins'.DIRECTORY_SEPARATOR.$pluginName.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR;
-      $tplpaths []= 'M/plugins'.DIRECTORY_SEPARATOR.$pluginName.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$_REQUEST['module'].DIRECTORY_SEPARATOR;
-      $tplpaths []= APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$pluginName.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR;
-      $tplpaths []= APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.$pluginName.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$_REQUEST['module'].DIRECTORY_SEPARATOR;
-    }
-
-    if(Config::getPref('theme')) {
-      $tplpaths[]= APP_ROOT.WEB_FOLDER.'/themes/'.Config::getPref('theme').'/templates/';
-    }
-
-		$tpl = new Mtpl($tplpaths);
-		$tpl->assign('jsdir',SITE_URL.'js/');
-
-		Mreg::set('tpl',$tpl);
     try {
       $this->run();
     } catch(Exception $e) {
@@ -95,6 +64,7 @@ class M_Office extends M_Office_Controller implements iListener {
       Mreg::get('tpl')->assign('error', $e);
     }
   }
+
   public function run()
   {
 		$this->ajaxAuth=true;
@@ -125,7 +95,7 @@ class M_Office extends M_Office_Controller implements iListener {
 			$this->say(__('Record was successfully updated'));
 			M_Office_Util::clearRequest(array('updateSuccess'=>1));
 		}
-		// TODO remove those old modules
+
 		if(isset($_REQUEST['module'])) {
 			$info = M_Office_Util::getModuleInfo($_REQUEST['module']);
 			$module = $_REQUEST['module'];
@@ -134,17 +104,19 @@ class M_Office extends M_Office_Controller implements iListener {
           $info = array('type'=>'dyn','title'=>'Plugin');
           $module = $tab[1];
         }elseif(preg_match('`^(.+)helper$`',$_REQUEST['module'],$tab)) {
-          $info = array('type'=>'dyn','title'=>'Assistant '.$tab[1]);
+          $info = array('type'=>'dyn','title'=> __("modules.{$tab[1]}helper.title"));
           $module = $_REQUEST['module'];
         } else {
-          throw new NotFoundException('error.module_not_found'); }
+          throw new NotFoundException('error.module_not_found');
         }
+      }
 		}
 
 		if($this->isAjaxRequest() && $this->ajaxAuth && $info['type']!='dyn') {
 			$this->output='';
 			unset($this->localOutput);
 		}
+
     if (isset($_REQUEST['debug'])) {
 			$debug=(int)$_REQUEST['debug']%3;
 			DB_DataObject::debugLevel($debug);
@@ -167,7 +139,6 @@ class M_Office extends M_Office_Controller implements iListener {
 			$this->output=$aj->processRequest();
 			return;
 		} elseif(key_exists('ajaxfromtable',$_REQUEST)) {
-
 			require 'M/Office/ajaxFromTable.php';
       $table = $_REQUEST['module'];
       $do = DB_DataObject::factory($table);
@@ -176,7 +147,6 @@ class M_Office extends M_Office_Controller implements iListener {
 			$this->output = $aj->processRequest();
 			return;
 		}
-
 
 
 		require 'M/Office/ChooseTable.php' ;
@@ -195,12 +165,7 @@ class M_Office extends M_Office_Controller implements iListener {
 					$subController = new M_Office_ShowTable($_REQUEST['module'],$filter);
 					break;
 				case 'dyn':
-          /*@todo : use a dispatcher here*/
 				  // home module = available for everyone
-					$subController = Module::factory($_REQUEST['module'],array(
-            APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR, APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'modules/',
-            'M/Office/modules/'));
-
           $allowAccess = $_REQUEST['module'] == 'home' || M_Office_Util::getGlobalOption('view','showtable',$_REQUEST['module']);
 
           if(!$allowAccess) {
@@ -209,6 +174,8 @@ class M_Office extends M_Office_Controller implements iListener {
           } else {
             Log::info('User is allowed to access '.$_REQUEST['module']);
           }
+
+          $subController = Module::factory($_REQUEST['module'], M::getPaths('module'));
 
 
           $subController->executeAction($_REQUEST['action']?$_REQUEST['action']:'index');
