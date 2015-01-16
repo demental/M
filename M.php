@@ -25,7 +25,7 @@ class M {
   }
   public static function getSQLbinpath()
   {
-    return '/Applications/xampp/xamppfiles/bin/mysql';
+    return '/usr/bin/env mysql';
   }
   public static function getDatabaseDSN()
   {
@@ -71,7 +71,7 @@ class M {
   public static function addPaths($role, $paths)
   {
     switch($role) {
-      case 'models':
+      case 'model':
         $options = & PEAR::getStaticProperty('DB_DataObject', 'options');
         $options['class_location'] .= ':'.implode(',',$paths);
         break;
