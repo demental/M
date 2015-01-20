@@ -35,6 +35,7 @@ array(
   'fileutils'             =>  'M/FileUtils.php',
   'securityexception'     =>  'M/Exception/SecurityException.php',
   'error404exception'     =>  'M/Exception/Error404Exception.php',
+  'nomethodexception'     =>  'M/Exception/NoMethodException.php',
   'module'                =>  'M/Module.php',
   'component'             =>  'M/Component.php',
   't'                     =>  'M/T.php',

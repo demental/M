@@ -157,6 +157,20 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 		$this->{$placeholder} = $obj;
 	}
 
+  /**
+   * instead of using this as an iterable object, you can call all()
+   * to get on array of all the records, allowing to call some array manipulations
+   * like sort() or count()
+   * @returns array
+   */
+  public function all()
+  {
+    $return = array();
+    while($this->fetch()) {
+      $return[]=clone($this);
+    }
+    return $return;
+  }
 	/**
    * Reloads the content of the object from the database
    * @warning relies on setFrom() and toArray()
@@ -302,7 +316,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     if(!$this->_pluginsLoaded) {
       $this->_loadplugins();
     }
-    $finalresult = null;
+    $finalresult = false;
 
     foreach($this->_listeners as $listener) {
       $result = $listener->handleEvent($this,$eventName,$params);
@@ -355,8 +369,8 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   public function __call($method,$args)
   {
     $res = $this->trigger($method,$args);
-    if($res->status=='return') return $res->return;
-    return parent::__call($method,$args);
+    if($res->status == 'return') return $res->return;
+    if($res === false) throw new NoMethodException('No method '.$method.' for '.get_class($this));
   }
 
 ###################### End plugin management #######################
@@ -715,6 +729,15 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       $p = $this->pk();
       return empty($p);
     }
+
+    /**
+     * returns prefered link field if this is a n-n table.
+     */
+    public function isNtable()
+    {
+      return false;
+    }
+
     // =====================================
     // = Transaction-related proxy methods =
     // =====================================
