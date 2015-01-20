@@ -27,6 +27,7 @@ fr:
     uncheck_all: Tout décocher
     signin: Se connecter
     choose: Choisir
+    add: Ajouter
   format:
     bool:
       no: Non

@@ -61,6 +61,7 @@ class PluginRegistry
   }
   public static function initPlugin($pluginName)
   {
+    self::$_names[]=$pluginName;
     require M::resolve_file("plugins/{$pluginName}/init.php",'plugins');
   }
   public static function path($pluginName)
