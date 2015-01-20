@@ -27,6 +27,9 @@ en:
     uncheck_all: Uncheck all
     signin: Sign in
     choose: Choose
+    add: Add
+    edit: Edit
+    delete: Delete
   format:
     bool:
       no: No

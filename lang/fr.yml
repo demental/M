@@ -28,6 +28,8 @@ fr:
     signin: Se connecter
     choose: Choisir
     add: Ajouter
+    edit: Modifier
+    delete: Supprimer
   format:
     bool:
       no: Non
