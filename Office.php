@@ -117,7 +117,7 @@ class M_Office extends M_Office_Controller implements iListener {
 			unset($this->localOutput);
 		}
 
-    if (isset($_REQUEST['debug'])) {
+    if (isset($_REQUEST['debug']) && MODE == 'development') {
 			$debug=(int)$_REQUEST['debug']%3;
 			DB_DataObject::debugLevel($debug);
 			ini_set('display_errors',1);

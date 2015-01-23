@@ -158,6 +158,20 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	}
 
   /**
+   * Office app specific methods
+   * @todo should be removed from DAO, added somewhere else closer to controller layer
+   */
+  public function prepareSearchForm($fb)
+  {
+    $this->trigger('prepareSearchForm', array($fb));
+  }
+
+
+  public function can_add_with_parameters($params)
+  {
+    return true;
+  }
+  /**
    * instead of using this as an iterable object, you can call all()
    * to get on array of all the records, allowing to call some array manipulations
    * like sort() or count()
@@ -316,14 +330,16 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     if(!$this->_pluginsLoaded) {
       $this->_loadplugins();
     }
-    $finalresult = false;
+    $finalresult = null;
 
     foreach($this->_listeners as $listener) {
       $result = $listener->handleEvent($this,$eventName,$params);
       if(!is_object($result)) {
-        switch($result) {
-          case 'fail':return 'fail';break;
-          case 'bypass':$finalresult='bypass';break;
+        switch(true) {
+          case $result === 'fail':return 'fail';break;
+          case $result === 'bypass': $finalresult='bypass';break;
+          case $result === 'not_handled': break;
+          default: $finalresult = true;break;
         }
       } else {
         return $result;break;
@@ -350,9 +366,9 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     foreach($this->_listeners as $listener) {
       $result = $listener->handleEvent($this,$eventName,$params);
       if(!is_object($result)) {
-        switch($result) {
-          case 'fail':return 'fail';break;
-          case 'bypass':$finalresult='bypass';break;
+        switch(true) {
+          case $result === 'fail':return 'fail';break;
+          case $result === 'bypass':$finalresult='bypass';break;
         }
       } else {
         $params = array($result->return);
@@ -503,14 +519,14 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	function update($do = false){
 
 		$result = $this->trigger('update',array($do));
-		switch($result) {
-		  case 'bypass':
-		    return true;
-		    break;
-		  case 'fail':
-		    return false;
-		    break;
-		  default:
+    switch(true) {
+      case $result === 'bypass':
+        return true;
+        break;
+      case $result === 'fail':
+        return false;
+        break;
+      default:
       if($this->_update($do)!==false) {
         $this->trigger('postupdate');
         return true;
@@ -539,7 +555,6 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
     return parent::_query($string);
   }
 	function find($autoFetch=false){
-
 		$this->trigger('find',array($autoFetch));
 		return parent::find($autoFetch);
 	}
@@ -640,12 +655,12 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	public function delete()
 	{
 		$result = $this->trigger('delete');
-		switch($result) {
-		  case 'bypass':
+		switch(true) {
+		  case $result === 'bypass':
         $this->clearFromRegistry($this->tableName(), $this->pk());
 		    return true;
 		    break;
-		  case 'fail':
+		  case $result === 'fail':
 		    return false;
 		    break;
 		  default:

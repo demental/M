@@ -33,14 +33,14 @@ abstract class M_Plugin implements iListener
   public function handleEvent($sender,$event,&$params = null)
   {
 
-    if(!in_array($event,$this->getEvents())) return;
+    if(!in_array($event,$this->getEvents())) return 'not_handled';
 
     if(!is_array($params)) {
       $params = array();
     }
     $ret = call_user_func_array(array($this,$event),array_merge($params,array(&$sender)));
 
-    return $ret;
+    return ($ret ? $ret : true);
   }
   /**
    * In case an event is fired and the expected behaviour for it is to return a value,
