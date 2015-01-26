@@ -386,7 +386,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   {
     $res = $this->trigger($method,$args);
     if($res->status == 'return') return $res->return;
-    if($res === false) throw new NoMethodException('No method '.$method.' for '.get_class($this));
+    if($res === false || is_null($res)) throw new NoMethodException('No method '.$method.' for '.get_class($this));
   }
 
 ###################### End plugin management #######################

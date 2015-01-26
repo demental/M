@@ -101,6 +101,7 @@ array(
   'invalidrequestexception'=>'M/Exception/InvalidRequestException.php',
   'wptools'=>'M/WPTools.php',
   'spyc'                  =>  'M/lib/spyc.php',
+  'format'                => 'M/format.php',
   'presenter'             => 'M/presenter.php'
   )
   );
