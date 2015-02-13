@@ -87,7 +87,7 @@ class Command_Db extends Command {
     require_once $info['file'];
     $migration = new $info['class'];
     $this->line('# Migration :: '.$info['description']);
-    $migration->up();
+    $migration->migrate('up');
     $this->line('Done :: '.$info['description']);
   }
 
