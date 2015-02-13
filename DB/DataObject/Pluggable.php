@@ -499,11 +499,12 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	function insert(){
 
 		$result = $this->trigger('insert');
-		switch($result) {
-		  case 'bypass':
-		    return true;
+
+		switch(true) {
+		  case $result === 'bypass':
+    		    return true;
 		    break;
-		  case 'fail':
+		  case $result === 'fail':
 		    return false;
 		    break;
 		  default:
