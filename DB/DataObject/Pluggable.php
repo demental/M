@@ -263,7 +263,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   {
     if(!$this->_pluginsLoaded) return;
     foreach($this->_getPluginsDef() as $pluginName=>$params) {
-      $this->addListener(PluginRegistry::getInstance($pluginName,'DB'));
+      $this->removeListener(PluginRegistry::getInstance($pluginName,'DB'));
     }
     $this->_pluginsLoaded = false;
     return $this;
