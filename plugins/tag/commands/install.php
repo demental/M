@@ -2,12 +2,6 @@
 /**
  * Installing necessary data for the tag plugin to work :
  *  - 3 tables
- *  - 3 DataObjects into the project's DB folder
- * @todo create a base class for plugin installers providing useful methods :
- *  - Retreiving database connection
- *  - Clearing config cache
- *  - Getting information about the project (mostly paths), while we use here the constant DB_FOLDER
- * it might be a better idea to have methods instead of constants ?
  */
 
 class Tag_Command_Install extends Command {

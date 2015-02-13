@@ -324,9 +324,7 @@ class Plugins_I18n_db extends M_Plugin {
 	}
   public function update($originalDo=false,$obj)
   {
-        $obj->whereAdd();
-        $obj->_query['condition'] = '';
-
+    $obj->_query['condition'] = '';
   }
 	public function postUpdate($obj)
 	{
