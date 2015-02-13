@@ -74,6 +74,7 @@ class Command {
       $exec->execute($params,$options);
     } catch(Exception $e) {
       self::error($e->getMessage());
+      self::error($e->getTraceAsString());
     }
   }
   /**
@@ -137,6 +138,13 @@ class Command {
   public static function line($message) {
     if(self::getOption('silent')) return;
     echo $message."\n";
+  }
+  /**
+   * renders each line of an iterable object
+   */
+  public static function dump($object)
+  {
+    self::line(print_r($object, true));
   }
   /**
    * Display an inline content
