@@ -24,7 +24,6 @@ class Tag_Command_Install extends Command {
   {
     $this->line('installs necessary data to use the tag plugin');
     $this->line('* adds three tables to the database : tag, tag_record, tag_history');
-    $this->line('* adds the three corresponding DOclasses to the current project');
   }
   public function execute($params)
   {
@@ -38,14 +37,9 @@ class Tag_Command_Install extends Command {
     $file = $this->baseFolder.'src/tag.sql';
     $sys = "$catbin $file | $mysqlbin --host=$h --user=$u --password=$p $dbn";
     system($sys,$return);
-    echo 'Creating tables :
-* tag
-* tag_record
-* tag_history
-';
-    foreach(array('Tag','Tag_record','Tag_history') as $table) {
-      echo 'Creating DOclass : '.$table."\n";
-      copy($this->baseFolder.'src/'.$table.'.php',APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'DOclasses'.DIRECTORY_SEPARATOR.$table.'.php');
-    }
+    $this->line('Creating tables :');
+    $this->line('* tag');
+    $this->line('* tag_record');
+    $this->line('* tag_history');
   }
 }
