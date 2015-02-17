@@ -1,0 +1,28 @@
+{
+  "name": "demental/m",
+  "type": "library",
+
+  "require": {
+    "pear/structures_graph": "dev-trunk",
+    "pear/pear": "dev-master",
+    "pear/db": "dev-trunk",
+    "pear/db_dataobject": "dev-master",
+    "pear/db_dataobject_formbuilder": "dev-master",
+    "pear-pear.php.net/MDB2": "*"
+  },
+
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/pear/DB_DataObject_FormBuilder"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/pear/DB_DataObject"
+    },
+    {
+      "type": "pear",
+      "url": "http://pear.php.net"
+    }
+  ]
+}
