@@ -22,5 +22,9 @@
       "type": "pear",
       "url": "http://pear.php.net"
     }
-  ]
+  ],
+
+  "autoload": {
+     "classmap": [""]
+  }
 }
