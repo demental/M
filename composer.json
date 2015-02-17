@@ -3,11 +3,8 @@
   "type": "library",
 
   "require": {
-    "pear/structures_graph": "dev-trunk",
-    "pear/pear": "dev-master",
-    "pear/db": "dev-trunk",
-    "pear/db_dataobject": "dev-master",
-    "pear/db_dataobject_formbuilder": "dev-master",
+    "pear-pear.php.net/db": "*",
+    "pear-pear.php.net/db_dataobject_formbuilder": "*",
     "pear-pear.php.net/MDB2": "*",
     "pear-pear.php.net/MDB2_Driver_mysql": "*"
   },
