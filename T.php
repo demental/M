@@ -115,7 +115,7 @@ class T {
       }
       $this->setStrings($lngtb);
       $this->rebuildCache();
-      $this->log('Cache was deprecated, retreiving from XML and rebuilding cache');
+      $this->log('Cache was deprecated, retreiving from source file and rebuilding cache');
 		}
 	}
 
@@ -163,8 +163,6 @@ class T {
 	{
 		$cachefile = $this->getCacheFile($this->locale);
 		if(!@$fp=fopen($cachefile,'w+')) {
-			return;
-			// @see TODO in this getStringsFromXML()
 			throw new Exception($cachefile.' is not writable. Please check permissions');
 		}
 		$data = '<?php $data = '.var_export($this->strings,true).';';
@@ -200,62 +198,10 @@ class T {
       $lngtb = array_merge($lngtb, $result);
     }
   }
-  public function getStringsFromXML ( $file, &$lngtb )
-	{
-		require_once 'XML/Unserializer.php';
-    $this->log('R etreiving strings from xml');
-
-		$serializer = new XML_Unserializer();
-		$xml_content = file_get_contents($file);
-		$serializer->setOption('encoding',T::getConfig('encoding'));
-    $serializer->setOption(XML_SERIALIZER_OPTION_ENTITIES, XML_SERIALIZER_ENTITIES_NONE);
-		$serializer->unserialize($xml_content);
-
-    $this->log('Retrieving lang strings from XML file '.$file.' encoding '.T::getConfig('encoding'));
-
-		$local_lngtb = T::linearize($serializer->getUnserializedData());
-
-		$lngtb = array_merge($lngtb, $local_lngtb);
-	}
 
 	public function save($destfile= '') {
-		require_once 'XML/Serializer.php';
 
-    if(!empty($destfile)) {
-      $file = $destfile;
-    } else {
-      $file = T::getConfig('path').$this->locale.".xml";
-    }
-    $this->log('current language ('.$this->locale.') contains '.count($this->strings).' strings.. saving to '.$file.'...');
-		$serializer = new XML_Serializer();
-    $serializer->setOption(XML_SERIALIZER_OPTION_ENTITIES, XML_SERIALIZER_ENTITIES_NONE);
-		// perform serialization
-
-		$lngtb = T::unlinearize($this->strings);
-		$serializer->setOption("addDecl",TRUE);
-		$serializer->setOption("encoding",T::getConfig('encoding'));
-		$result = $serializer->serialize($lngtb);
-
-		// check result code and save XML if success
-
-		if($result === true){
-			$res = $serializer->getSerializedData();
-			$nb = file_put_contents($file,$res);
-			if($nb) {
-				$this->log('saving DONE');
-			} else {
-				$this->log('Could not save '.$file);
-			}
-
-		} else {
-			$this->log('Error while serializing data !');
-			return false;
-		}
-		if($nb) {
-			return true;
-		} else {
-			return false;
-		}
+    throw new Exception('T::save() support was removed');
 	}
 	public function getString($key)
 	{
@@ -311,25 +257,6 @@ class T {
 		if(T::getConfig('saveresult')) {
 			$this->save();
 		}
-	}
-	public static function unlinearize ( $array )
-	{
-		$out=array();
-		foreach ($array as $k=>$v){
-			$out[]=array('cle'=>$k,'valeur'=>$v);
-		}
-		return $out;
-	}
-	public static function linearize ( $array )
-	{
-		$out=array();
-		if(!is_array($array) || count($array)==0){
-			return array();
-		}
-		foreach ($array['XML_Serializer_Tag'] as $k=>$v){
-			@$out[$v['cle']]=$v['valeur'];
-		}
-		return $out;
 	}
 
   public function log($message)
