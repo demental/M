@@ -18,6 +18,9 @@
 
 require_once 'M/Mreg.php';
 require 'M/M.php';
+
+require __DIR__.'vendor/autoload.php';
+
 Mreg::append('autoload',
 array(
   'isetup'                =>  'M/iSetup.php',
