@@ -8,7 +8,8 @@
     "pear-pear.php.net/MDB2": "*",
     "pear-pear.php.net/MDB2_Driver_mysql": "*",
     "pear-pear.php.net/Date_Calc": "*",
-    "pear-pear.php.net/Crypt_Blowfish": "*",
+    "pear-pear.php.net/Image_Transform": "*",
+    "pear-pear.php.net/Crypt_Blowfish": "*"
   },
 
   "repositories": [

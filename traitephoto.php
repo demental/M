@@ -14,9 +14,7 @@
 * @version      0.1
 */
 
-require_once("Image/Transform.php");
 //////////////////////////////
-
 
 
 class traitephoto

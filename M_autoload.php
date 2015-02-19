@@ -16,9 +16,6 @@
  * You can then add more project-specific classes in the registry at runtime
  */
 
-require_once 'M/Mreg.php';
-require 'M/M.php';
-
 require __DIR__.'vendor/autoload.php';
 
 Mreg::append('autoload',

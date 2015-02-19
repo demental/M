@@ -550,7 +550,6 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
             $base = dirname($base);
         }
         if (!file_exists($base)) {
-            require_once 'System.php';
             System::mkdir(array('-p',$base));
         }
         if (strpos($options['class_location'],'%s') !== false) {

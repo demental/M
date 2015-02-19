@@ -1510,7 +1510,6 @@ class myFB extends DB_DataObject_FormBuilder
 											//ERROR!!
 											$this->debug('Checkbox in reverseLinks unset when link field may not be null');
 										} else {
-											require_once('DB/DataObject/Cast.php');
 											$do->{$reverseLink['field']} = DB_DataObject_Cast::sql('NULL');
 											if (false === $do->update()) {
 												$this->debug('Failed to update reverseLink '.serialize($do));
