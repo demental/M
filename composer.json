@@ -6,7 +6,9 @@
     "pear-pear.php.net/db": "*",
     "pear-pear.php.net/db_dataobject_formbuilder": "*",
     "pear-pear.php.net/MDB2": "*",
-    "pear-pear.php.net/MDB2_Driver_mysql": "*"
+    "pear-pear.php.net/MDB2_Driver_mysql": "*",
+    "pear-pear.php.net/Date_Calc": "*",
+    "pear-pear.php.net/Crypt_Blowfish": "*",
   },
 
   "repositories": [
@@ -25,6 +27,7 @@
   ],
 
   "autoload": {
-     "classmap": [""]
+     "classmap": [""],
+     "files": ["Mtpl/functions.php"]
   }
 }

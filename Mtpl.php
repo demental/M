@@ -15,8 +15,6 @@
  *
  */
 
-require_once 'Mtpl/functions.php';
-
 class Mtpl {
 
   protected $_addComments = true;
