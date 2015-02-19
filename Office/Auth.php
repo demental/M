@@ -17,9 +17,6 @@
 * @version      0.1
 */
 
-require_once 'M/Office/Controller.php';
-require_once 'M/MyFB.php';
-
 class M_Office_Auth extends M_Office_Controller {
   public function __construct() {
     parent::__construct();

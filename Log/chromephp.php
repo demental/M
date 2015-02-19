@@ -1,5 +1,4 @@
 <?php
-require_once 'M/lib/chromephp/ChromePhp.php';
 
 ChromePhp::useFile(LOG_DRIVER_FILE, LOG_DRIVER_URL);
 

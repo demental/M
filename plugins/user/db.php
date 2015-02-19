@@ -211,7 +211,6 @@ class Plugins_user_db extends M_Plugin
   public function generatePassword($obj) {
     $defs = $obj->_getPluginsDef();
     $field = $defs['user']['pwd'];
-    require_once 'Text/Password.php';
     $pwd = Text_Password::create(8);
     $obj->{$field} = $this->encrypt($pwd,$obj)->return;
     return self::returnStatus($pwd);

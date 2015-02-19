@@ -57,7 +57,6 @@ class Plugins_Pager_DB extends M_Plugin
       $this->pagerOpts['totalItems'] = $this->totalItems = $c->count('distinct');
 
       if($this->hasPager) {
-        require_once 'Pager.php';
         $obj->_pager = Pager::factory($this->pagerOpts);
         $lim=$obj->_pager->getOffsetByPageId();
         $obj->limit(($lim[0]-1),($lim[1]+1-$lim[0]));
@@ -86,7 +85,6 @@ class Plugins_Pager_DB extends M_Plugin
       $this->defaultSort=$sort;
     }
     function query($q=false,&$obj) {
-        require_once 'Pager.php';
         $this->preparePager($obj);
     }
     function getPager($obj) {

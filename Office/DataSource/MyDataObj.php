@@ -3,7 +3,6 @@
 // = DB_DataObject Datasource for Structures_DataGrid that makes Auto-join foreign records
 // = Check if this is not deprecated as it's not been used for a while... (using DBDO Pager plugin now)
 // ============================
-require_once 'Structures/DataGrid/DataSource.php';
 
 class Structures_DataGrid_DataSource_MyDataObj extends Structures_DataGrid_DataSource
 {
@@ -175,7 +174,6 @@ class Structures_DataGrid_DataSource_MyDataObj extends Structures_DataGrid_DataS
     // Retrieving data
     $records = array();
     if ($this->_rowNum) {
-      require_once('DB/DataObject/FormBuilder.php');
       $links = $this->_dataobject->links();
       $finfo=$links;
       $linkedDo = array();

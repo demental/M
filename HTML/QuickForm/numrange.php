@@ -17,7 +17,6 @@
 * @version      0.1
 */
 
-require_once 'HTML/QuickForm/group.php';
 class HTML_QuickForm_numrange extends HTML_QuickForm_group
 {
     var $_options = array(

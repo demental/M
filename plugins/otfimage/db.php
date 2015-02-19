@@ -205,7 +205,6 @@ class Plugins_Otfimage_DB extends M_Plugin
 	  if(!isset($params['x']) && !isset($params['y']) && !isset($params['maxx']) && !isset($params['maxy'])) {
 		  copy($original,$destination);
 	  } else {
-	    require_once 'M/traitephoto.php';
   		$ph=new traitephoto;
   		$ph->photo=$original;
   		$ph->path=dirname($destination);

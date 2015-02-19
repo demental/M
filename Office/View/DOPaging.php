@@ -19,8 +19,6 @@
 * @version      0.1
 */
 
-require_once 'Structures/DataGrid.php';
-require_once 'M/Office/View/list.php';
 
 
 class M_Office_View_DOPaging extends M_Office_View_List

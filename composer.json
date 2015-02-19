@@ -8,9 +8,13 @@
     "pear-pear.php.net/db_dataobject_formbuilder": "*",
     "pear-pear.php.net/MDB2": "*",
     "pear-pear.php.net/MDB2_Driver_mysql": "*",
-    "pear-pear.php.net/Date_Calc": "*",
+    "pear-pear.php.net/Date": "*",
     "pear-pear.php.net/Image_Transform": "*",
-    "pear-pear.php.net/Crypt_Blowfish": "*"
+    "pear-pear.php.net/Image_Canvas": "*",
+    "pear-pear.php.net/Crypt_Blowfish": "*",
+    "pear-pear.php.net/Text_Password": "*",
+    "pear-pear.php.net/Cache_Lite": "*",
+    "pear-pear.php.net/Pager": "*"
   },
 
   "repositories": [

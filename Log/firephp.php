@@ -1,5 +1,4 @@
 <?php
-//require_once 'M/lib/firephp/FirePHP.class.php';
 
 class Log_firephp {
   public function message($message,$level)

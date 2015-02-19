@@ -77,7 +77,6 @@ class M_Office_Actions extends M_Office_Controller {
     $this->scope = $_REQUEST['__actionscope']=='all'?'all':'selected';
     if($actionName == 'delete') {
 			if($this->getOption('delete', $table)){
-	  			require_once('M/Office/DeleteRecords.php');
 	  			$subController = new M_Office_DeleteRecords($this->do, $this->getSelectedIds());
 			}
 		  return;
@@ -85,14 +84,12 @@ class M_Office_Actions extends M_Office_Controller {
 
     if(!$this->fillActionInfo($actionName,$type)) {
       $this->say(__('action %s not found !',array($actionName)));
-      require_once 'M/Office/Actionresult.php';
       $result = new M_Office_Actionresult($this);
       $result->status='error';
       $this->redirectTo($result);
     }
 
     if($_REQUEST['__submitnext__']) {
-      require_once 'M/Office/Actionresult.php';
       $result = new M_Office_Actionresult($this);
       if($_REQUEST['__nextaction'] || count($this->nextactions)>0) {
         $this->target = 'nextaction';
@@ -124,7 +121,6 @@ class M_Office_Actions extends M_Office_Controller {
    */
    public function applyActionWithParamsTo($actionName,$params,$focus)
    {
-     require_once 'M/Office/Actionresult.php';
      $applyto = $this->getCurrentPartial($focus);
      $result = new M_Office_Actionresult($this);
      $result->params = $params;

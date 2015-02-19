@@ -93,21 +93,17 @@ class Office_DbModule extends Module {
     }
     if (isset($_REQUEST['record'])
     && ($this->getOption('edit', $table) || $this->getOption('view', $table))) {
-      require 'M/Office/EditRecord.php';
       $subController = new M_Office_EditRecord($table, $_REQUEST['record']);
       $this->assign('__action','edit');
       return;
     }
 
     if($this->getOption('view',$do->tableName())===TRUE) {
-      require 'M/Office/View/DOPaging.php';
       $dg = &new M_Office_View_DOPaging($this);
       $this->assign('__listview','dopaging');
     } else {
-      $classfile = 'M/Office/View/'.$this->getOption('view',$do->tableName()).'.php';
       $class = 'M_Office_View_'.$this->getOption('view',$do->tableName());
-      require $classfile;
-      $dg = &new $class($this);
+      $dg = new $class($this);
       $this->assign('__listview',$this->getOption('view',$do->tableName()));
     }
     $dg->prepare($do,true,isset($searchWhere)?($paginate?true:false):true);

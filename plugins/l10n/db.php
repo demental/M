@@ -360,7 +360,6 @@ class Plugins_L10n_db extends M_Plugin {
 	// =========================================
 	public function generateTable($obj)
   {
-    require_once 'M/DB/DataObject/Plugin/International.php';
     $iname = $obj->tableName().'_l10n';
     $res = $this->migration_createL10nTable($obj,$iname);
     if(PEAR::isError($res)) {
@@ -546,7 +545,6 @@ class Plugins_L10n_db extends M_Plugin {
   }
   public function migration_rebuildObjects($obj,$iname)
   {
-    require_once('M/DB/DataObject/Advgenerator.php');
     $options = &PEAR::getStaticProperty('DB_DataObject', 'options');
     $options['generator_include_regex']= '`^('.$obj->tableName().'|'.$iname.')$`';
 	  $generator = new DB_DataObject_Advgenerator();

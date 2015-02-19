@@ -103,7 +103,6 @@ class M_Office_Controller {
       return true;
   }
 	public function say ($message, $type = NULL) {
-		@require_once 'M/Notifier.php';
 		if(class_exists('Notifier')){
 			$not=Notifier::getInstance();
 			$not->broadCastMessage($this,$message , $type);

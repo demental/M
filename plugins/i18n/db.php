@@ -527,7 +527,6 @@ class Plugins_I18n_db extends M_Plugin {
   }
   public function migration_rebuildObjects($obj,$iname)
   {
-    require_once('M/DB/DataObject/Advgenerator.php');
     $options = &PEAR::getStaticProperty('DB_DataObject', 'options');
     $options['generator_include_regex']= '`^('.$obj->tableName().'|'.$iname.')$`';
 	  $generator = new DB_DataObject_Advgenerator();

@@ -17,8 +17,6 @@
 * @version      0.1
 */
 
-require_once 'Structures/DataGrid.php';
-require_once 'M/Office/View/list.php';
 
 
 class M_Office_View_DataGrid extends M_Office_View_List
@@ -46,7 +44,6 @@ class M_Office_View_DataGrid extends M_Office_View_List
   }
 
   function &prepare(&$do, $frontend = true,$pager = true) {
-    require_once 'M/Office/DataSource/MyDataObj.php';
 
     $unitFormatters=array();
     if(is_array($do->fb_fieldLabels)){
@@ -142,8 +139,6 @@ class M_Office_View_DataGrid extends M_Office_View_List
     if (isset($_REQUEST['orderBy'])) {
       $dg->sortRecordSet($_REQUEST['orderBy'],$_REQUEST['direction']);
     }
-
-    require_once 'Structures/DataGrid/Renderer/HTMLTable.php';
 
     $renderer=&new Structures_DataGrid_Renderer_HTMLTable();
 

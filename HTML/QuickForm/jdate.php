@@ -17,7 +17,6 @@
 * @version      0.1
 */
 
-require_once 'HTML/QuickForm/date.php';
 class HTML_QuickForm_jdate extends HTML_QuickForm_date {
   function HTML_QuickForm_jdate($elementName = null, $elementLabel = null, $options = array(), $attributes = null)
   {
