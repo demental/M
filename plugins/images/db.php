@@ -32,7 +32,7 @@ class Plugins_Image_db extends M_Plugin
 	{
 	  $info = $obj->_getPluginsDef();
     $info = $info['images'];
-    HTML_QuickForm::registerElementType('imagefile','M/HTML/QuickForm/imagefile.php','HTML_QuickForm_imagefile');
+    HTML_QuickForm::registerElementType('imagefile','HTML/QuickForm/imagefile.php','HTML_QuickForm_imagefile');
 		foreach($info as $k=>$v){
 			$v=key_exists(0,$v)?$v[0]:$v;
       switch(true) {

@@ -319,7 +319,7 @@ class M_Office_Util {
 
  	public static function &getSearchForm($do, $module){
 
-    HTML_QuickForm::registerElementType('advandate','M/HTML/QuickForm/advandate.php','HTML_QuickForm_advandate');
+    HTML_QuickForm::registerElementType('advandate','HTML/QuickForm/advandate.php','HTML_QuickForm_advandate');
     $form = new MyQuickForm(  'formSearch',
                               'GET',
                               self::getQueryParams(array(), array('page','_c_'), false));
