@@ -4,14 +4,6 @@ class Presenter {
 
     $class = $do->tableName().'_Presenter';
 
-    if(!class_exists($class)) {
-      $reflector = new ReflectionClass($do);
-      $dofile = $reflector->getFileName();
-
-      $file = dirname($dofile).'/../presenters/'.ucfirst($do->tableName()).'.php';
-      require_once $file;
-    }
-
     return new $class($do);
   }
 

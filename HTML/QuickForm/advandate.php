@@ -17,9 +17,6 @@
 * @version      0.1
 */
 
-require_once 'HTML/QuickForm/group.php';
-require_once 'HTML/QuickForm/select.php';
-require_once 'HTML/QuickForm/date.php';
 
 class HTML_QuickForm_advandate extends HTML_QuickForm_group
 {

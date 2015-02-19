@@ -19,14 +19,12 @@
 */
 
 
-require_once 'DB/DataObject.php';
-
 if(!defined('PLUGIN_DIR')) {
 	define('PLUGIN_DIR','M/DB/DataObject/Plugin/');
 }
 
 if(!function_exists('__')){
-	require_once 'M/T.php';
+  T::getLang();
 }
 
 
@@ -37,7 +35,6 @@ function date2array($dt){
     }
     else
     {
-        require_once 'DB/DataObject/FormBuilder.php';
         return DB_DataObject_FormBuilder::_date2array($dt);
     }
 }
@@ -715,7 +712,6 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
      **/
 
     function say ($message, $type = NULL) {
-      @require_once 'M/Notifier.php';
   		if(class_exists('Notifier')){
         $not=Notifier::getInstance();
         $not->broadCastMessage($this,$message,$type);

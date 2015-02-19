@@ -298,7 +298,6 @@ class Mtpl {
     M::Hook(__CLASS__,__FUNCTION__,$args);
 
 		if($type=='dynamic') {
-			require_once 'M/HTML/QuickForm/Renderer/Array.php';
 			$r = new HTML_QuickForm_Renderer_Array(true,true);
 			if(!is_object($form)) {
 				throw new Exception('Object is not a form object');
@@ -309,7 +308,6 @@ class Mtpl {
 				$ret['sections'] = array(array('elements'=>$ret['elements']));
 			}
 		} else {
-			require_once 'M/HTML/QuickForm/Renderer/ArrayStatic.php';
 			$r = new HTML_QuickForm_Renderer_ArrayStatic(true,true);
 			$form->accept($r);
 			$ret = $r->toArray();

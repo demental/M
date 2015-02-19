@@ -18,8 +18,6 @@
 * @version      0.1
 */
 
-require_once 'M/HTML/MyQuickForm.php';
-require_once 'DB/DataObject/FormBuilder/QuickForm.php';
 class db_dataobject_formbuilder_myquickform extends db_dataobject_formbuilder_quickform
 {
   function _createFormObject($formName, $method, $action, $target)
@@ -47,7 +45,6 @@ class db_dataobject_formbuilder_myquickform extends db_dataobject_formbuilder_qu
                 $links = $this->_fb->_do->links();
                 if (isset($links[$fieldName])) {
                     list($table,) = explode(':', $links[$fieldName]);
-                    require_once('M/DB/DataObject/FormBuilder/QuickForm/SubFormFB.php');
                     $element->addOption($this->linkNewValueText, $this->linkNewValueText);
                     $element->updateAttributes(array('onchange' => 'db_do_fb_'.$this->_fb->getFieldName($fieldName).'__subForm_display(this)'));
                     $element->updateAttributes(array('id' => $element->getName()));

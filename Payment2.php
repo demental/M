@@ -24,15 +24,7 @@ class Payment {
 	  $success = false;
 		$className = 'Payment_Driver_'.ucfirst($driver);
 		$baseName = strtolower($driver).'.php';
-    foreach(self::$driverpaths as $path) {
-      $classFile = $path.$baseName;
-      if(FileUtils::file_exists_incpath($classFile)) {
-        $success = true;
-        break;
-      }
-    }
 		if($success) {
-		  require_once $classFile;
   		$res = new $className();
   		$res->__name = $driver;
   		return $res;

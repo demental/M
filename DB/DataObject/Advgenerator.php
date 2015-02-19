@@ -21,7 +21,6 @@
 * @version      0.1
 */
 
-require_once 'DB/DataObject/Generator.php';
 
 class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
     // ===============================================================
@@ -204,10 +203,8 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
 
       if (isset($options['database'])) {
           if ($db_driver == 'DB') {
-              require_once 'DB.php';
               $dsn = DB::parseDSN($options['database']);
           } else {
-              require_once 'MDB2.php';
               $dsn = MDB2::parseDSN($options['database']);
           }
 
@@ -240,10 +237,8 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
 
       $t->_database = $databasename;
       if ($db_driver == 'DB') {
-          require_once 'DB.php';
           $dsn = DB::parseDSN($database);
       } else {
-          require_once 'MDB2.php';
           $dsn = MDB2::parseDSN($database);
       }
 

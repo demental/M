@@ -302,7 +302,6 @@ class User{
 		}
 	}
 	function reloadContainer(){
-		require_once 'DB/DataObject.php';
 		if(class_exists('Mreg')) {
 			try {
 				Mreg::get('setup')->setUpEnv();

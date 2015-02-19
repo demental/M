@@ -15,8 +15,6 @@
  * @version  $Id: SubFormFB.php 225313 2006-12-19 19:13:11Z justinpatrin $
  */
 
-require_once('DB/DataObject/FormBuilder/QuickForm/SubForm.php');
-
 class HTML_QuickForm_SubFormFB extends HTML_QuickForm_SubForm {
 
   public function HTML_QuickForm_SubFormFB($name=null, $label=null, $form=null)

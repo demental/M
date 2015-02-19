@@ -10,11 +10,6 @@
  * @version      0.1
  */
 
-require 'M/Office/Controller.php';
-require 'M/Notifier.php';
-require 'M/Office/Icons.php';
-require 'M/Office/functions.php';
-
 if(!defined('NORMALUSER')) {
 	define('NORMALUSER',0);
 }
@@ -70,7 +65,6 @@ class M_Office extends M_Office_Controller implements iListener {
 		$this->ajaxAuth=true;
 		if($this->getOption('auth')){
 			$this->ajaxAuth=false;
-			require 'M/Office/Auth.php';
 			$subController = new M_Office_Auth($_REQUEST['database']);
 			if(!key_exists('adminPrivileges',$_SESSION) || key_exists('logout',$_REQUEST)){
 				$this->assign('username',User::getInstance('office')->getProperty('username'));
@@ -124,22 +118,18 @@ class M_Office extends M_Office_Controller implements iListener {
 		}
 
 		if($_REQUEST['livesearch']) {
-			require 'M/Office/livesearch.php';
 			$aj = new M_Office_livesearch($_REQUEST['searchtext'],$_REQUEST['expand']);
 			$this->output = $aj->processRequest();
 			return;
 		} elseif($_REQUEST['treesort']) {
-			require 'M/Office/treesort.php';
 			$aj = new M_Office_treesort();
 			$this->output=$aj->processRequest();
 			return;
 		} elseif($_REQUEST['liveedit']) {
-			require 'M/Office/liveedit.php';
 			$aj = new M_Office_liveedit($_REQUEST['liveedit']);
 			$this->output=$aj->processRequest();
 			return;
 		} elseif(key_exists('ajaxfromtable',$_REQUEST)) {
-			require 'M/Office/ajaxFromTable.php';
       $table = $_REQUEST['module'];
       $do = DB_DataObject::factory($table);
       $do->get($_REQUEST['filterField'],$_REQUEST['filterValue']);
@@ -149,7 +139,6 @@ class M_Office extends M_Office_Controller implements iListener {
 		}
 
 
-		require 'M/Office/ChooseTable.php' ;
 		$subController = new M_Office_ChooseTable();
 		if(isset($_REQUEST['module'])) {
 			if(!$info) {
@@ -157,7 +146,6 @@ class M_Office extends M_Office_Controller implements iListener {
 			}
 			switch($info['type']) {
 				case 'db':
-					require 'M/Office/ShowTable.php';
 					// TODO ajouter ce path en avant-dernier et non en dernier
 					Mreg::get('tpl')->addPath(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$info['table'].DIRECTORY_SEPARATOR,'after');
 					Mreg::get('tpl')->addPath(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$_REQUEST['module'].DIRECTORY_SEPARATOR,'after');
@@ -194,7 +182,6 @@ class M_Office extends M_Office_Controller implements iListener {
 			}
 			$this->assign('currentmodule',$_REQUEST['module']);
 		} else {
-			require_once 'M/Office/FrontEndHome.php' ;
 			$subController = new M_Office_FrontEndHome();
 		}
 	}
