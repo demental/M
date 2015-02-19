@@ -34,6 +34,6 @@
 
   "autoload": {
      "classmap": [""],
-     "files": ["Mtpl/functions.php"]
+     "files": ["Mtpl/functions.php", "Office/functions.php"]
   }
 }
