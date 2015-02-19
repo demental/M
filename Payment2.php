@@ -14,9 +14,9 @@
  * Credit card payment process abstraction - draft (currently includes a driver for ATOS SIPS)
  *
  */
-class Payment {
+class Payment2 {
 
-  protected static $driverpaths = array('M/Payment/Driver/');
+  protected static $driverpaths = array('M/Payment2/Driver/');
   protected $_analysisSummary;
   protected $__name;
 	public static final function &factory($driver)

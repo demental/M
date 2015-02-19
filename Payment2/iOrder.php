@@ -17,7 +17,7 @@
 * @version      0.1
 */
 
-interface iOrder {
+interface Payment2_iOrder {
   public function getId();
   public function retrieveById($value);
   public function success($transcript);

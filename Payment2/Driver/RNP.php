@@ -17,7 +17,7 @@
 * @version      0.1
 */
 
-class Payment_Driver_RNP extends Payment
+class Payment2_Driver_RNP extends Payment
 {
   
   function __construct($options)

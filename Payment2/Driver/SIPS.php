@@ -17,7 +17,7 @@
 * @version      0.1
 */
 
-class Payment_Driver_SIPS extends Payment
+class Payment2_Driver_SIPS extends Payment
 {
   public function fetch() {      
       $amount = $this->order->getAmount()*100;
