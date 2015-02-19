@@ -103,15 +103,4 @@ class MyQuickForm extends HTML_QuickForm {
 	{
     return $this->__request[$field];
 	}
-	function toFrozenHtml ($in_data = null)
-  {
-		$this->freeze();
-    if (!is_null($in_data)) {
-        $this->addElement('html', $in_data);
-    }
-		require_once 'classes/FrozenRenderer.php';
-    $renderer = new HTML_QuickForm_FrozenRenderer();
-    $this->accept($renderer);
-    return $renderer->toHtml();
-	} // end func toFrozenHtml
 }
