@@ -2,7 +2,7 @@
 class Presenter {
   public static function create(DB_DataObject $do) {
 
-    $class = $do->tableName().'_Presenter';
+    $class = 'Presenter_' . $do->tableName();
 
     return new $class($do);
   }
