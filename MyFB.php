@@ -23,7 +23,7 @@ class MyFB extends DB_DataObject_FormBuilder
 		DB_DataObject_FormBuilder::DB_DataObject_FormBuilder($do, $options = false);
 	}
 
-	function &create(&$do, $options = false, $driver = 'MyQuickForm', $mainClass = 'MyFB',$driverPath='M/MyQuickForm.php')
+	function &create(&$do, $options = false, $driver = 'MyQuickForm', $mainClass = 'MyFB')
 	{
 		if (!is_a($do, 'db_dataobject')) {
 			$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): Object does not extend DB_DataObject.',
@@ -37,24 +37,10 @@ class MyFB extends DB_DataObject_FormBuilder
 			return $err;
 		}
 		$fb = new $mainClass($do, $options);
-		$className = 'db_dataobject_formbuilder_'.strtolower($driver);
+		$className = 'DB_DataObject_FormBuilder_'.$driver;
 
 		if (!class_exists($className)) {
-			$fp = @fopen($driverPath, 'r', true);
-			if ($fp === false) {
-				$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): File "'.$fileName.
-                                       '" for driver class "'.$className.'" not found or not readable.',
-				DB_DATAOBJECT_FORMBUILDER_ERROR_UNKNOWNDRIVER);
-				return $err;
-			}
-			fclose($fp);
-			include_once($driverPath);
-			if (!class_exists($className)) {
-				$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): Driver class "'.$className.
-                                       '" not found after including "'.$fileName.'".',
-				DB_DATAOBJECT_FORMBUILDER_ERROR_UNKNOWNDRIVER);
-				return $err;
-			}
+			throw new Exception('DB_DataObject_FormBuilder::create(): driver class "'.$className.'" not found.');
 		}
 
 		$fb->_form = new $className($fb);
