@@ -1,5 +1,5 @@
 <?php
-require_once 'Zend/XmlRpc/Client.php';
+
 /**
  * Wordpress integration into the M framework
  * Requires that yuo install the extendedapi plugin into wordpress.
@@ -49,7 +49,7 @@ class WPTools {
   protected static function _fetchPage($pageID, $apply_shortcodes = false)
   {
     try {
-      $client = new Zend_XmlRpc_Client(self::$wp_root.'/xmlrpc.php');
+      $client = new Zend\XmlRpc\Client(self::$wp_root.'/xmlrpc.php');
       $c = (object)$client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password,'get_page_by_path', array($pageID));
       $c->post_content = $client->getProxy(self::$namespace)->callWpMethod(self::$wp_login, self::$wp_password, 'wpautop', array($c->post_content));
       if($apply_shortcodes) {

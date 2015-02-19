@@ -3,6 +3,7 @@
   "type": "library",
 
   "require": {
+    "zendframework/zend-xmlrpc": "*",
     "pear-pear.php.net/db": "*",
     "pear-pear.php.net/db_dataobject_formbuilder": "*",
     "pear-pear.php.net/MDB2": "*",
