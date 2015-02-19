@@ -15,7 +15,7 @@
  * PEAR_DB_DataObject_FormBuilder tweaks
  *
  */
-class myFB extends DB_DataObject_FormBuilder
+class MyFB extends DB_DataObject_FormBuilder
 {
 
 	function DB_DataObject_FormBuilder(&$do, $options = false)
@@ -40,14 +40,6 @@ class myFB extends DB_DataObject_FormBuilder
 		$className = 'db_dataobject_formbuilder_'.strtolower($driver);
 
 		if (!class_exists($className)) {
-			/*$exists = false;
-			 foreach (split(PATH_SEPARATOR, get_include_path()) as $path) {
-			 if (file_exists($path.'/'.$fileName)
-			 && is_readable($path.'/'.$fileName)) {
-			 $exists = true;
-			 break;
-			 }
-			 }*/
 			$fp = @fopen($driverPath, 'r', true);
 			if ($fp === false) {
 				$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): File "'.$fileName.

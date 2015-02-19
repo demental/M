@@ -18,7 +18,7 @@
 * @version      0.1
 */
 
-class db_dataobject_formbuilder_myquickform extends db_dataobject_formbuilder_quickform
+class DB_DataObject_FormBuilder_MyQuickForm extends DB_DataObject_FormBuilder_QuickForm
 {
   function _createFormObject($formName, $method, $action, $target)
   {
