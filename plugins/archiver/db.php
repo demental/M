@@ -22,7 +22,7 @@ class Plugins_Archiver_db extends M_Plugin
   }
   public function postPrepareSearchForm($form,$obj)
   {
-    $archiver_archived = HTML_QuickForm::createElement('select','archiver_archived',__('Archived'),array(''=>__('No'),'B'=>__('Both'),'O'=>__('Yes')));
+    $archiver_archived = MyQuickForm::createElement('select','archiver_archived',__('Archived'),array(''=>__('No'),'B'=>__('Both'),'O'=>__('Yes')));
     $form->insertElementBefore($archiver_archived,'__submit__');
   }
   public function frontendsearch($values,$obj)

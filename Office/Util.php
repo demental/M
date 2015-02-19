@@ -286,7 +286,7 @@ class M_Office_Util {
             $out.=self::hiddenField($key.'['.$name.']', $aval);
         }
     } else {
-      $h = HTML_QuickForm::createElement('hidden',$key,$val);
+      $h = MyQuickForm::createElement('hidden',$key,$val);
       return $h->toHtml();
     }
     return $out;
@@ -319,7 +319,7 @@ class M_Office_Util {
 
  	public static function &getSearchForm($do, $module){
 
-    HTML_QuickForm::registerElementType('advandate','HTML/QuickForm/advandate.php','HTML_QuickForm_advandate');
+    MyQuickForm::registerElementType('advandate','HTML/QuickForm/advandate.php','HTML_QuickForm_advandate');
     $form = new MyQuickForm(  'formSearch',
                               'GET',
                               self::getQueryParams(array(), array('page','_c_'), false));
@@ -384,7 +384,7 @@ class M_Office_Util {
       foreach($do->fb_fieldsToRender as $field) {
         if($table[$field] & DB_DATAOBJECT_DATE || $table[$field] & DB_DATAOBJECT_TIME ) {
           $label = $do->fb_fieldLabels[$field] ? $do->fb_fieldLabels[$field] : $field;
-          $do->fb_preDefElements[$field] = HTML_QuickForm::createElement('advandate', $field, $label, array("language" => T::getLang()));
+          $do->fb_preDefElements[$field] = MyQuickForm::createElement('advandate', $field, $label, array("language" => T::getLang()));
         }
       }
 

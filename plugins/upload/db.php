@@ -38,7 +38,7 @@ class Plugins_Upload_DB extends M_Plugin
 	  $uploadFields = $uploadFields['upload'];
 		$upFields=array_keys($uploadFields);
 		foreach($upFields as $k){
-			$obj->fb_preDefElements[$k]=& HTML_QuickForm::createElement('file',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel[$k]);
+			$obj->fb_preDefElements[$k]= MyQuickForm::createElement('file',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel[$k]);
 		}
 	}
 	function postGenerateForm(&$form,&$fb,&$obj)

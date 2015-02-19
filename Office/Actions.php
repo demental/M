@@ -355,7 +355,7 @@ class M_Office_Actions extends M_Office_Controller {
 
     $prepareMethod = 'prepare'.$this->actionName;
     if(method_exists($this->actiondo,$prepareMethod) || is_array($this->_actionInfo['chainable'])) {
-			$qfAction= new HTML_QuickForm('actionparamsForm','POST',M_Office_Util::getQueryParams(array(),array('selected','doaction','glaction','doSingleAction'), false), '_self', null, true);
+			$qfAction= new MyQuickForm('actionparamsForm','POST',M_Office_Util::getQueryParams(array(),array('selected','doaction','glaction','doSingleAction'), false), '_self', null, true);
       Mreg::get('tpl')->addJSinline('$("input[type=text],textarea","form[name=actionparamsForm]").eq(0).focus()','ready');
       Mreg::get('tpl')->assign('do',$do);
 			$qfAction->addElement('header','qfActionHeader',$this->getActionTitle());

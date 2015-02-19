@@ -46,11 +46,11 @@ class M_Office_Auth extends M_Office_Controller {
   }
 
   public function loginForm($table) {
-    $form = new HTML_QuickForm('loginform', 'POST', M_Office_Util::getQueryParams(array(), array(), false), '_self', null, true);
-    $authDO=& DB_DataObject::factory($table);
+    $form = new MyQuickForm('loginform', 'POST', M_Office_Util::getQueryParams(array(), array(), false), '_self', null, true);
+    $authDO = DB_DataObject::factory($table);
 
     $authDO->prepareForLogin(false,false);
-    $authFB=& MyFB::create($authDO);
+    $authFB = MyFB::create($authDO);
     $authFB->useForm($form);
     $authFB->getForm();
     if($form->validate()){

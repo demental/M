@@ -54,7 +54,7 @@ class Plugins_Image_db extends M_Plugin
         //TODO move this to postGenerateForm (like in upload plugin)
         $obj->fb_fieldLabels[$k]['unit']='<input type="checkbox" name="__image_delete_'.$k.'" value="1" />'.__('Delete current');
       }
-			$obj->fb_preDefElements[$k]=& HTML_QuickForm::createElement('imagefile',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldLabels[$k],array('showimage'=>$v['showimage']),SITE_URL.WWW_IMAGES_FOLDER.$info[$k][0]['path'].'/');
+			$obj->fb_preDefElements[$k]=& MyQuickForm::createElement('imagefile',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldLabels[$k],array('showimage'=>$v['showimage']),SITE_URL.WWW_IMAGES_FOLDER.$info[$k][0]['path'].'/');
 		}
 	}
 	function postGenerateForm(&$form,&$fb,&$obj)

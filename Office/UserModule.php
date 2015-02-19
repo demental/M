@@ -25,7 +25,7 @@ class Office_UserModule extends Module {
     $do = User::getInstance('office')->getDBDO();
     $do->getPlugin('user')->prepareForLogin($do,$do->userFields['register'],$do->userFields['reminder']);
     $fb = MyFB::create($do);
-    $form = new HTML_QuickForm('loginform','POST',URL::get('user/login'));
+    $form = new MyQuickForm('loginform','POST',URL::get('user/login'));
     $fb->useForm($form);
     $fb->getForm();
     $this->assignRef('form',$form);

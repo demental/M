@@ -24,7 +24,7 @@ class Plugins_Otfimage_DB extends M_Plugin
   }
   public function preGenerateForm(&$fb,&$obj)
 	{
-		$obj->fb_preDefElements['filename']=& HTML_QuickForm::createElement('file',$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel['filename']);
+		$obj->fb_preDefElements['filename']= MyQuickForm::createElement('file',$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel['filename']);
 	}
 	public function postProcessForm(&$v,&$fb,&$obj)
 	{

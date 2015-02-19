@@ -15,7 +15,7 @@ class Tag_Module_Admin extends Module {
     while($tags->fetch()) {
       $opts[$tags->id] = $tags->strip;
     }
-    $form = new HTML_QuickForm('mergeform','POST',M_Office::URL(),'',null,true);
+    $form = new MyQuickForm('mergeform','POST',M_Office::URL(),'',null,true);
     foreach($opts as $id=>$strip) {
       $form->addElement('checkbox','source['.$id.']',$strip);
     }
@@ -58,7 +58,7 @@ class Tag_Module_Admin extends Module {
   }
   public function doExecApplier()
   {
-    $form = new HTML_QuickForm('applyform','POST',M_Office::URL());
+    $form = new MyQuickForm('applyform','POST',M_Office::URL());
     $opts = M::tablesWithPlugin('tag');
     $opts = array_combine($opts, $opts);
     $form->addElement('select','table','Table',$opts);

@@ -148,7 +148,7 @@ class Plugins_I18n_db extends M_Plugin {
         if(!$form->elementExists('__submit__')) {
           $form->addElement('group', $completename.'_group',$label,$fields,'');
         } else {
-          $form->insertElementBefore(HTML_QuickForm::createElement('group', $completename.'_group',$label,$fields),'__submit__');
+          $form->insertElementBefore(MyQuickForm::createElement('group', $completename.'_group',$label,$fields),'__submit__');
         }
         if(in_array($field,$fb->fieldsRequired) || ($elements[$field] & DB_DATAOBJECT_NOTNULL)) {
             $form->addGroupRule($completename.'_group',$fb->requiredRuleMessage,'required',null,1);

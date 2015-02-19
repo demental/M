@@ -106,7 +106,7 @@ class M_Office_ShowTable extends M_Office_Controller {
     $this->assign('fields',$dg->getFields());
     $this->assign('__action','showtable');
 
-    $deleteForm = new HTML_QuickForm('showTableForm', 'post', M_Office_Util::getQueryParams(array(),array()), '_self', null, true);
+    $deleteForm = new MyQuickForm('showTableForm', 'post', M_Office_Util::getQueryParams(array(),array()), '_self', null, true);
     M_Office_Util::addHiddenFields($deleteForm, array(), true);
   }
   function getDo($module) {

@@ -87,6 +87,38 @@ class MyQuickForm extends HTML_QuickForm {
     }
 
   }
+  /**
+   * @access private
+   * overriding HTML_QuickForm::_loadElement, without requiring
+   */
+  function &_loadElement($event, $type, $args)
+  {
+    $type = strtolower($type);
+    if (!HTML_QuickForm::isTypeRegistered($type)) {
+        $error = PEAR::raiseError(null, QUICKFORM_UNREGISTERED_ELEMENT, null, E_USER_WARNING, "Element '$type' does not exist in HTML_QuickForm::_loadElement()", 'HTML_QuickForm_Error', true);
+        return $error;
+    }
+    $className = $GLOBALS['HTML_QUICKFORM_ELEMENT_TYPES'][$type][1];
+    $elementObject =& new $className();
+    for ($i = 0; $i < 5; $i++) {
+        if (!isset($args[$i])) {
+            $args[$i] = null;
+        }
+    }
+    $err = $elementObject->onQuickFormEvent($event, $args, $this);
+    if ($err !== true) {
+        return $err;
+    }
+    return $elementObject;
+  }
+
+  public function createElement($elementType)
+  {
+    $args    =  func_get_args();
+    $element =  self::_loadElement('createElement', $elementType, array_slice($args, 1));
+    return $element;
+  }
+
 	public function &get_Get()
 	{
 	 return $this->__get;
