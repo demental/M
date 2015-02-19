@@ -103,11 +103,11 @@ class Module extends Maman {
     $optionsGroup = PEAR::getStaticProperty('Options','group');
 
     if($plugmod[1]) {
+
       Log::info('Calling plugin module '.$modulename);
       PluginRegistry::initPlugin($plugmod[0]);
-      $path = array(APP_ROOT.PROJECT_NAME.'/plugins/'.$plugmod[0].'/modules/','M/plugins/'.$plugmod[0].'/modules/');
-
-      $moduleOpt['template_dir'][] = 'M/plugins/'.$plugmod[0].'/templates/';
+      $path = array(APP_ROOT.PROJECT_NAME.'/plugins/'.$plugmod[0].'/modules/','plugins/'.$plugmod[0].'/modules/');
+      $moduleOpt['template_dir'][] = 'plugins/'.$plugmod[0].'/templates/';
       $moduleOpt['template_dir'][] = APP_ROOT.PROJECT_NAME.'/plugins/'.$plugmod[0].'/templates/';
       $modulename = $plugmod[1];
 		  $className = $plugmod[0].'_Module_'.$modulename;
@@ -116,7 +116,6 @@ class Module extends Maman {
     }
 		$i=false;
 		foreach($path as $aPath) {
-
 			if (@include_once $aPath.'/'.$modulename.'.php') {
 				$i=true;
 				break;
