@@ -9,11 +9,13 @@
  * @version      0.1
  */
 
-require_once 'lib/dompdf/dompdf_config.inc.php';
-require_once 'lib/dompdf/lib/class.pdf.php';
+
+// disable DOMPDF's internal autoloader if you are using Composer
+define('DOMPDF_ENABLE_AUTOLOAD', false);
+require __DIR__.'/../../dompdf/dompdf/dompdf_config.inc.php';
 
 /**
- * 
+ *
  * PDF generation class using dompdf external library and Mtpl as the template engine
  *
  */
@@ -39,12 +41,10 @@ class MPdf extends Maman {
 	}
 	public static function merge($mpdfs,$filename,$outputmode = 'I')
 	{
-		// TODO Add options
-		require_once 'lib/fpdi/fpdi.php';
-		$p = new fpdi();
+		$p = new \fpdi\FPDI();
 		$n=0;
 		foreach($mpdfs AS $mpdf) {
-			if(is_a($mpdf,'MPdf')){
+			if($mpdf instanceOf MPdf){
 				$mpdf->write(TMP_PATH.'/temmpdf'.$n.'.pdf');
 				$file = TMP_PATH.'/temmpdf'.$n.'.pdf';
 			} else {

@@ -29,13 +29,13 @@ class DB_DataObject_FormBuilder_MyQuickForm extends DB_DataObject_FormBuilder_Qu
   function &_createSelectBox($fieldName, $options, $multiple = false)
   {
     if ($multiple) {
-      $element = self::createElement($this->_getQFType('multiselect'),
+      $element = MyQuickForm::createElement($this->_getQFType('multiselect'),
         $this->_fb->getFieldName($fieldName),
         $this->_fb->getFieldLabel($fieldName),
         $options,
         array('multiple' => 'multiple'));
     } else {
-      $element = self::createElement($this->_getQFType('select'),
+      $element = MyQuickForm::createElement($this->_getQFType('select'),
         $this->_fb->getFieldName($fieldName),
         $this->_fb->getFieldLabel($fieldName),
         $options);

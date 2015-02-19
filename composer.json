@@ -3,6 +3,9 @@
   "type": "library",
 
   "require": {
+    "itbz/fpdi": "*",
+    "dompdf/dompdf": "*",
+    "phpmailer/phpmailer": "*",
     "zendframework/zend-xmlrpc": "*",
     "pear-pear.php.net/db": "*",
     "pear-pear.php.net/db_dataobject_formbuilder": "*",
@@ -34,7 +37,6 @@
 
   "autoload": {
      "classmap": [""],
-     "files": ["Mtpl/functions.php", "Office/functions.php"],
-     "include_path": [""]
+     "files": ["Mtpl/functions.php", "Office/functions.php"]
   }
 }
