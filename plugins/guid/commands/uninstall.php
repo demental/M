@@ -10,7 +10,6 @@
  * - removes officepack plugin from all the DOs.
  * - if a 'deleted' field exists, adds falsedelete plugin.
  */
-require 'M/DB/DataObject/Advgenerator.php';
 class Guid_command_uninstall extends Command {
 
   protected $toRegenerate = array();

@@ -94,8 +94,6 @@ class Command_clearcache extends Command
   protected function _regenerateAssets()
   {
     $this->header('Regenerating assets');
-    require_once 'M/lib/jsmin/jsmin.php';
-    require_once 'M/lib/cssmin/cssmin.php';
     $assetsversion = (int)file_get_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION');
     $assetsversion++;
     file_put_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION',$assetsversion);

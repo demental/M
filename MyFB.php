@@ -9,14 +9,13 @@
  * @version      0.1
  */
 
-require_once 'DB/DataObject/FormBuilder.php';
 
 /**
  *
  * PEAR_DB_DataObject_FormBuilder tweaks
  *
  */
-class myFB extends DB_DataObject_FormBuilder
+class MyFB extends DB_DataObject_FormBuilder
 {
 
 	function DB_DataObject_FormBuilder(&$do, $options = false)
@@ -24,7 +23,7 @@ class myFB extends DB_DataObject_FormBuilder
 		DB_DataObject_FormBuilder::DB_DataObject_FormBuilder($do, $options = false);
 	}
 
-	function &create(&$do, $options = false, $driver = 'MyQuickForm', $mainClass = 'MyFB',$driverPath='M/MyQuickForm.php')
+	function &create(&$do, $options = false, $driver = 'MyQuickForm', $mainClass = 'MyFB')
 	{
 		if (!is_a($do, 'db_dataobject')) {
 			$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): Object does not extend DB_DataObject.',
@@ -38,32 +37,10 @@ class myFB extends DB_DataObject_FormBuilder
 			return $err;
 		}
 		$fb = new $mainClass($do, $options);
-		$className = 'db_dataobject_formbuilder_'.strtolower($driver);
+		$className = 'DB_DataObject_FormBuilder_'.$driver;
 
 		if (!class_exists($className)) {
-			/*$exists = false;
-			 foreach (split(PATH_SEPARATOR, get_include_path()) as $path) {
-			 if (file_exists($path.'/'.$fileName)
-			 && is_readable($path.'/'.$fileName)) {
-			 $exists = true;
-			 break;
-			 }
-			 }*/
-			$fp = @fopen($driverPath, 'r', true);
-			if ($fp === false) {
-				$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): File "'.$fileName.
-                                       '" for driver class "'.$className.'" not found or not readable.',
-				DB_DATAOBJECT_FORMBUILDER_ERROR_UNKNOWNDRIVER);
-				return $err;
-			}
-			fclose($fp);
-			include_once($driverPath);
-			if (!class_exists($className)) {
-				$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): Driver class "'.$className.
-                                       '" not found after including "'.$fileName.'".',
-				DB_DATAOBJECT_FORMBUILDER_ERROR_UNKNOWNDRIVER);
-				return $err;
-			}
+			throw new Exception('DB_DataObject_FormBuilder::create(): driver class "'.$className.'" not found.');
 		}
 
 		$fb->_form = new $className($fb);
@@ -1511,7 +1488,6 @@ class myFB extends DB_DataObject_FormBuilder
 											//ERROR!!
 											$this->debug('Checkbox in reverseLinks unset when link field may not be null');
 										} else {
-											require_once('DB/DataObject/Cast.php');
 											$do->{$reverseLink['field']} = DB_DataObject_Cast::sql('NULL');
 											if (false === $do->update()) {
 												$this->debug('Failed to update reverseLink '.serialize($do));

@@ -113,7 +113,6 @@ class Calc
 	 */
 	public static function monthlySchedule($startDate,$num,$inclstart = true)
 	{
-     require_once 'Date/Calc.php';
     $startTime = strtotime($startDate);
 
 	  $startDay = date('d',$startTime);

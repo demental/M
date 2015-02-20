@@ -14,7 +14,6 @@ class i18n_Command_Install extends Command {
         $this->_checkAndInstall($table);
       }
     } else {
-      require 'M/DB/DataObject/Advgenerator.php';
       $g = new DB_DataObject_Advgenerator();
       $generators = $g->getGenerators();
 

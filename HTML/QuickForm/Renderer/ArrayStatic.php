@@ -16,8 +16,6 @@
 * @version      0.1
 */
 
-require_once 'M/HTML/QuickForm/Renderer/Array.php';
-
 class HTML_QuickForm_Renderer_ArrayStatic extends M_HTML_QuickForm_Renderer_Array
 {
 

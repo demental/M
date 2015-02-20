@@ -21,8 +21,6 @@ class Log
   public static function getInstance($driver = 'nolog')
   {
     if(!self::$instances[$driver]) {
-      $file = 'M/Log/'.strtolower($driver).'.php';
-      include $file;
       $class = 'Log_'.$driver;
       self::$instances[$driver] = new $class;
       if(method_exists(self::$instances[$driver],'init')) {

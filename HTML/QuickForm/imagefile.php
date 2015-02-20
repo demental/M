@@ -17,7 +17,6 @@
 * @version      0.1
 */
 
-require_once("HTML/QuickForm/file.php");
 
 class HTML_QuickForm_imagefile extends HTML_QuickForm_file
 {

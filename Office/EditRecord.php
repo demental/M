@@ -70,7 +70,6 @@ class M_Office_EditRecord extends M_Office_Controller {
       *
       **/
       if (isset($_REQUEST['doSingleAction']) && $this->getGlobalOption('actions','showtable',$this->module)) {
-          require 'M/Office/Actions.php';
           $subController = new M_Office_Actions($this->getOptions());
           $subController->run($this->do, $_REQUEST['doSingleAction'],'single');
           if($subController->hasOutput()) {
@@ -160,7 +159,6 @@ class M_Office_EditRecord extends M_Office_Controller {
                     if($fromfield==$linkField || !$fromfield) {
                         $info = $ajaxFrom[$linkTab];
 
-                        require_once 'M/Office/ajaxFromTable.php';
                         $aja = new M_Office_ajaxFromTable($this->do, $this->module, $linkTab, $linkField, $this->do->$field);
                         if($info['position']=='before') {
                             $ajaxLinksBefore[]=$aja->getBlock();

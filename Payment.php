@@ -19,7 +19,6 @@ class Payment {
 	{
 	  $driver = strtoupper($driver);
 		$className = 'Payment_Driver_'.$driver;
-		require_once 'M/Payment/Driver/'.$driver.'.php';
 		$options = PEAR::getStaticProperty('Payment_process','options');
 		return new $className($options);
 	}

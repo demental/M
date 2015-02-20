@@ -25,7 +25,6 @@ class M_Office_ShowTable extends M_Office_Controller {
     $this->module = $module;
     if ((isset($_REQUEST['record']) || isset($_REQUEST['__record_ref']))
     && ($this->getOption('edit', $module) || $this->getOption('view', $module))) {
-      require 'M/Office/EditRecord.php';
       $subController = new M_Office_EditRecord($module, $_REQUEST['record'], $additionalFilter);
       $subController->__record_ref = $_REQUEST['__record_ref'];
       $subController->run();
@@ -33,7 +32,6 @@ class M_Office_ShowTable extends M_Office_Controller {
     }
 
     if(isset($_REQUEST['addRecord']) && $this->getOption('add', $module)) {
-      require 'M/Office/AddRecord.php';
       $subController = new M_Office_AddRecord($module);
       $subController->run();
       return;
@@ -63,7 +61,6 @@ class M_Office_ShowTable extends M_Office_Controller {
     $do = $this->getSearchDO($searchValues);
 
     if (isset($_REQUEST['doaction']) && $this->getOption('actions',$module)) {
-      require 'M/Office/Actions.php';
       $order = trim($_REQUEST['_ps'].' '.$_REQUEST['_pd']);
       if($order) {
         $do->orderBy();
@@ -75,7 +72,6 @@ class M_Office_ShowTable extends M_Office_Controller {
   	     return;
        }
     } elseif(isset($_REQUEST['glaction']) && $this->getOption('actions',$module)) {
-       require 'M/Office/Actions.php';
        $subController = new M_Office_Actions($this->getOptions());
        $subController->run($do, $_REQUEST['glaction'],'global');
        if($subController->has_output) {
@@ -89,13 +85,10 @@ class M_Office_ShowTable extends M_Office_Controller {
 
 
     if($this->getOption('view',$this->module)===TRUE) {
-      require 'M/Office/View/DOPaging.php';
       $dg =  new M_Office_View_DOPaging($this);
       $this->assign('__listview','dopaging');
     } else {
-      $classfile = 'M/Office/View/'.$this->getOption('view',$this->module).'.php';
       $class = 'M_Office_View_'.$this->getOption('view',$this->module);
-      require $classfile;
       $dg =  new $class($this);
       $this->assign('__listview',$this->getOption('view',$this->module));
     }
@@ -113,7 +106,7 @@ class M_Office_ShowTable extends M_Office_Controller {
     $this->assign('fields',$dg->getFields());
     $this->assign('__action','showtable');
 
-    $deleteForm = new HTML_QuickForm('showTableForm', 'post', M_Office_Util::getQueryParams(array(),array()), '_self', null, true);
+    $deleteForm = new MyQuickForm('showTableForm', 'post', M_Office_Util::getQueryParams(array(),array()), '_self', null, true);
     M_Office_Util::addHiddenFields($deleteForm, array(), true);
   }
   function getDo($module) {

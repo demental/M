@@ -17,7 +17,6 @@
 * @version      0.1
 */
 
-require_once 'HTML/QuickForm/group.php';
 class HTML_QuickForm_numrange extends HTML_QuickForm_group
 {
     var $_options = array(
@@ -117,10 +116,10 @@ class HTML_QuickForm_numrange extends HTML_QuickForm_group
         $this->_elements = array();
         $separator =  '';
         $locale    =& $this->_locale[$this->_options['language']];
-        $this->_elements[0] =& HTML_QuickForm::createElement('select','firstselect', null, $locale['firstselect'],array('onChange'=>'numrange_Update(this.form,\'' . $this->_escapeString($this->getName()) . '\')','id'=>'firstselect_'.$this->_escapeString($this->getName())));
-    		$this->_elements[1]=& HTML_QuickForm::createElement('text','firstval', null, $this->_options,$this->_style[1]);
-    		$this->_elements[2]=& HTML_QuickForm::createElement('static',null,null,'<span ' . $this->_style[2] .' id="'.$this->_escapeString($this->getName()).'_texts_separator">'.$locale['betweenseparator'].'</span>');
-    		$this->_elements[3]=& HTML_QuickForm::createElement('text','secondval', null, $this->_options,$this->_style[3]);
+        $this->_elements[0] =self::createElement('select','firstselect', null, $locale['firstselect'],array('onChange'=>'numrange_Update(this.form,\'' . $this->_escapeString($this->getName()) . '\')','id'=>'firstselect_'.$this->_escapeString($this->getName())));
+    		$this->_elements[1]= self::createElement('text','firstval', null, $this->_options,$this->_style[1]);
+    		$this->_elements[2]= self::createElement('static',null,null,'<span ' . $this->_style[2] .' id="'.$this->_escapeString($this->getName()).'_texts_separator">'.$locale['betweenseparator'].'</span>');
+    		$this->_elements[3]= self::createElement('text','secondval', null, $this->_options,$this->_style[3]);
     }
    function toHtml()
     {

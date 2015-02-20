@@ -120,7 +120,7 @@ class Command {
   /**
    * Factory to create command instances
    */
-  public static function factory($command,$path='M/commands/') {
+  public static function factory($command,$path='commands/') {
     $commandfile = $path.strtolower($command).'.php';
     $commandclass = 'Command_'.$command;
     if(!FileUtils::File_exists_incpath($commandfile)) {

@@ -14,9 +14,9 @@
  * Credit card payment process abstraction - draft (currently includes a driver for ATOS SIPS)
  *
  */
-class Payment {
+class Payment2 {
 
-  protected static $driverpaths = array('M/Payment/Driver/');
+  protected static $driverpaths = array('M/Payment2/Driver/');
   protected $_analysisSummary;
   protected $__name;
 	public static final function &factory($driver)
@@ -24,15 +24,7 @@ class Payment {
 	  $success = false;
 		$className = 'Payment_Driver_'.ucfirst($driver);
 		$baseName = strtolower($driver).'.php';
-    foreach(self::$driverpaths as $path) {
-      $classFile = $path.$baseName;
-      if(FileUtils::file_exists_incpath($classFile)) {
-        $success = true;
-        break;
-      }
-    }
 		if($success) {
-		  require_once $classFile;
   		$res = new $className();
   		$res->__name = $driver;
   		return $res;

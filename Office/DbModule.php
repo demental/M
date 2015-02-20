@@ -93,21 +93,17 @@ class Office_DbModule extends Module {
     }
     if (isset($_REQUEST['record'])
     && ($this->getOption('edit', $table) || $this->getOption('view', $table))) {
-      require 'M/Office/EditRecord.php';
       $subController = new M_Office_EditRecord($table, $_REQUEST['record']);
       $this->assign('__action','edit');
       return;
     }
 
     if($this->getOption('view',$do->tableName())===TRUE) {
-      require 'M/Office/View/DOPaging.php';
       $dg = &new M_Office_View_DOPaging($this);
       $this->assign('__listview','dopaging');
     } else {
-      $classfile = 'M/Office/View/'.$this->getOption('view',$do->tableName()).'.php';
       $class = 'M_Office_View_'.$this->getOption('view',$do->tableName());
-      require $classfile;
-      $dg = &new $class($this);
+      $dg = new $class($this);
       $this->assign('__listview',$this->getOption('view',$do->tableName()));
     }
     $dg->prepare($do,true,isset($searchWhere)?($paginate?true:false):true);
@@ -116,14 +112,14 @@ class Office_DbModule extends Module {
     $this->assign('pager',$dg->getPaging());
     $this->assign('fields',$dg->getFields());
     $this->assign('__action','showtable');
-    $deleteForm = new HTML_QuickForm('showTableForm', 'post', M_Office_Util::getQueryParams(array(),array(),false), '_self', null, true);
+    $deleteForm = new MyQuickForm('showTableForm', 'post', M_Office_Util::getQueryParams(array(),array(),false), '_self', null, true);
     M_Office_Util::addHiddenFields($deleteForm, array(), true);
   }
   public function doExecAddrecord()
   {
     $do = $this->getDO();
     $do->fb_fieldsToRender = $this->getConfig('fieldsindetail');
-    $form = new HTML_QuickForm('editform','POST',URL::get($this->_modulename.'/editrecord',$_GET));
+    $form = new MyQuickForm('editform','POST',URL::get($this->_modulename.'/editrecord',$_GET));
     $fb = MyFB::create($do);
     $fb->useForm($form);
     $fb->getForm();
@@ -136,7 +132,7 @@ class Office_DbModule extends Module {
     if(!$do->get($_GET['record'])) {
       $this->redirect('error/404');
     }
-    $form = new HTML_QuickForm('editform','POST',URL::get($this->_modulename.'/editrecord',$_GET));
+    $form = new MyQuickForm('editform','POST',URL::get($this->_modulename.'/editrecord',$_GET));
     $fb = MyFB::create($do);
     $fb->useForm($form);
     $fb->getForm();
@@ -164,7 +160,7 @@ class Office_DbModule extends Module {
 
     if($this->_searchform) { return $this->_searchform; }
     $do = $this->getDO();
-    $form = new HTML_QuickForm('searchform','GET',URL::get($this->_modulename.'/list'),'',null,true);
+    $form = new MyQuickForm('searchform','GET',URL::get($this->_modulename.'/list'),'',null,true);
 	  if(method_exists($do,'prepareSearchForm')){
       $do->prepareSearchForm();
     }

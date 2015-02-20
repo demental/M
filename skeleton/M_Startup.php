@@ -43,12 +43,6 @@ if(is_array($paths)) {
   ini_set('include_path', ini_get('include_path').':'.implode(':',$paths));
 }
 
-
-require 'PEAR.php';
-require 'M/M_autoload.php';
-
-
-
 /**
  * runtime mode 
  **/

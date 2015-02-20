@@ -89,7 +89,6 @@ class M_Setup implements iSetup {
                         'quote_identifiers'=>true,
                         'generator_no_ini'=>true,
                     );
-    require_once ("MDB2.php");
     $db_options = & PEAR::getStaticProperty('MDB2','options');
     $db_options['portability']=MDB2_PORTABILITY_ALL ^ MDB2_PORTABILITY_FIX_CASE;
     

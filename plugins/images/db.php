@@ -32,8 +32,7 @@ class Plugins_Image_db extends M_Plugin
 	{
 	  $info = $obj->_getPluginsDef();
     $info = $info['images'];
-	  require_once 'HTML/QuickForm.php';
-    HTML_QuickForm::registerElementType('imagefile','M/HTML/QuickForm/imagefile.php','HTML_QuickForm_imagefile');
+    HTML_QuickForm::registerElementType('imagefile','HTML/QuickForm/imagefile.php','HTML_QuickForm_imagefile');
 		foreach($info as $k=>$v){
 			$v=key_exists(0,$v)?$v[0]:$v;
       switch(true) {
@@ -55,7 +54,7 @@ class Plugins_Image_db extends M_Plugin
         //TODO move this to postGenerateForm (like in upload plugin)
         $obj->fb_fieldLabels[$k]['unit']='<input type="checkbox" name="__image_delete_'.$k.'" value="1" />'.__('Delete current');
       }
-			$obj->fb_preDefElements[$k]=& HTML_QuickForm::createElement('imagefile',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldLabels[$k],array('showimage'=>$v['showimage']),SITE_URL.WWW_IMAGES_FOLDER.$info[$k][0]['path'].'/');
+			$obj->fb_preDefElements[$k]=& MyQuickForm::createElement('imagefile',$obj->fb_elementNamePrefix.$k.$obj->fb_elementNamePostfix,$obj->fb_fieldLabels[$k],array('showimage'=>$v['showimage']),SITE_URL.WWW_IMAGES_FOLDER.$info[$k][0]['path'].'/');
 		}
 	}
 	function postGenerateForm(&$form,&$fb,&$obj)
@@ -157,7 +156,6 @@ class Plugins_Image_db extends M_Plugin
 	  $info = $obj->_getPluginsDef();
     $info = $info['images'];
 		$arr=key_exists(0,$info[$field])?$info[$field]:array($info[$field]);
-		require_once 'M/traitephoto.php';
 		if(!file_exists(FileUtils::getFolderPath(TMP_PATH).$obj->$field)){
 	    $original = $this->getBestImage($obj,$field);
 	    if($original['isoriginal']){
@@ -212,8 +210,6 @@ class Plugins_Image_db extends M_Plugin
   		$name = $ph->save($type);
 
   		if(isset($v['overlay']) && $firstRedim) {
-  	    require_once 'Image/Canvas.php';
-  	    require_once 'Image/Transform.php';
         $source = $v['path'].'/'.$name;
   			$infosSource = & Image_Transform::factory('GD');
         if(PEAR::isError($infosSource)) {

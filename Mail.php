@@ -92,7 +92,6 @@ class Mail extends Maman {
       $drivers = $opt['drivers'];
       foreach($drivers as $driver) {
         $driver = ucfirst(strtolower(trim($driver)));
-        require_once 'M/Mail/'.$driver.'.php';
         $driverClass = 'Mail_'.$driver;
         $opt = array('all'=>PEAR::getStaticProperty('Mail','global'));
         $driver = new $driverClass();

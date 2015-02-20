@@ -90,12 +90,12 @@ class Plugins_Tag_DB extends M_Plugin {
         $taglist[$tags->id] = $tags->strip;
       }
       foreach($taglist as $id=>$strip) {
-        $arr[] = HTML_QuickForm::createElement('checkbox',$fieldname.'['.$id.']','',$strip);
-        $arr2[] = HTML_QuickForm::createElement('checkbox','exc_'.$fieldname.'['.$id.']','',$strip);
+        $arr[]  = MyQuickForm::createElement('checkbox',$fieldname.'['.$id.']','',$strip);
+        $arr2[] = MyQuickForm::createElement('checkbox','exc_'.$fieldname.'['.$id.']','',$strip);
       }
 
-      $grp = HTML_QuickForm::createElement('group',$fieldname,__('Including Tags'),$arr,null,false);
-      $grp2 = HTML_QuickForm::createElement('group','exc_'.$fieldname,__('Excluding Tags'),$arr2,null,false);
+      $grp =  MyQuickForm::createElement('group',$fieldname,__('Including Tags'),$arr,null,false);
+      $grp2 = MyQuickForm::createElement('group','exc_'.$fieldname,__('Excluding Tags'),$arr2,null,false);
 
       if($form->elementExists('__submit__')) {
         $form->insertElementBefore($grp,'__submit__');

@@ -18,7 +18,7 @@
  * on a specific set of files.
  *
  */
-class fileUtils
+class FileUtils
 {
 
 	/**
@@ -398,43 +398,6 @@ class fileUtils
 		header('Content-Type:'.$ctype);
 		readfile($file);
 		exit(0);
-	}
-	/**
-	 *
-	 * Generate HTML Tag for specified file
-	 *
-	 * @param	$file	string	File URL
-	 * @return	HTML Output		string
-	 */
-	function toHtml($file)
-	{
-		switch(fileUtils::getFileExtension(IMAGES_UPLOAD_FOLDER.$file)){
-			case 'jpeg':
-			case 'jpg':
-			case 'gif':
-			case 'png':
-				return '<img src="'.WWW_IMAGES_FOLDER.$file.'" />';
-				break;
-			case 'swf':
-				require_once 'misc/lib-swf.inc.php';
-				$buff=file_get_contents(IMAGES_UPLOAD_FOLDER.$file);
-				$size=phpAds_SWFDimensions($buff);
-				$output='<!--[if IE]>
-				 <object type="application/x-shockwave-flash" data="'.WWW_IMAGES_FOLDER.$file.'" width="'.$size[0].'" height="'.$size[1].'" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
-				 <param name="movie" value="'.WWW_IMAGES_FOLDER.$file.'" />
-				 </object>
-				<![endif]-->
-				<!--[if !IE]> <-->
-				 <object type="application/x-shockwave-flash" data="'.WWW_IMAGES_FOLDER.$file.'" width="'.$size[0].'" height="'.$size[1].'">
-				 <param name="movie" value="'.WWW_IMAGES_FOLDER.$file.'" />
-					</dl> </object>
-				<!--> <![endif]-->';
-				return $output;
-				break;
-			default:
-				return '<a href="'.$file.'">'.__('View file').'</a>';
-				break;
-		}
 	}
 
 	/**

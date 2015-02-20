@@ -16,7 +16,6 @@
 * @version      0.1
 */
 
-require_once 'HTML/QuickForm/Renderer/Array.php';
 class M_HTML_QuickForm_Renderer_Array extends HTML_QuickForm_Renderer_Array
 {
     function M_HTML_QuickForm_Renderer_Array($collectHidden = false, $staticLabels = false)

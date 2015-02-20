@@ -7,7 +7,7 @@ class Otfimage_Module_Photohelper extends Module {
   }
   public function doExecAdd()
   {
-    $form = new HTML_QuickForm('addform','POST',M_Office::URL());
+    $form = new MyQuickForm('addform','POST',M_Office::URL());
     $p = DB_DataObject::factory('photo');
     $p->record_table=$_GET['table'];
     $p->record_id = $_GET['record'];

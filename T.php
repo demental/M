@@ -43,8 +43,6 @@ class T {
 				$driver = 'reader';
 			}
 			$className = 'T_'.$driver;
-			$classPath = 'M/T/'.strtolower($driver).'.php';
-			require_once $classPath;
 			$t = new $className;
 			$t->init($lang);
 			T::addInstance($t,$lang);

@@ -148,7 +148,7 @@ class Plugins_I18n_db extends M_Plugin {
         if(!$form->elementExists('__submit__')) {
           $form->addElement('group', $completename.'_group',$label,$fields,'');
         } else {
-          $form->insertElementBefore(HTML_QuickForm::createElement('group', $completename.'_group',$label,$fields),'__submit__');
+          $form->insertElementBefore(MyQuickForm::createElement('group', $completename.'_group',$label,$fields),'__submit__');
         }
         if(in_array($field,$fb->fieldsRequired) || ($elements[$field] & DB_DATAOBJECT_NOTNULL)) {
             $form->addGroupRule($completename.'_group',$fb->requiredRuleMessage,'required',null,1);
@@ -527,7 +527,6 @@ class Plugins_I18n_db extends M_Plugin {
   }
   public function migration_rebuildObjects($obj,$iname)
   {
-    require_once('M/DB/DataObject/Advgenerator.php');
     $options = &PEAR::getStaticProperty('DB_DataObject', 'options');
     $options['generator_include_regex']= '`^('.$obj->tableName().'|'.$iname.')$`';
 	  $generator = new DB_DataObject_Advgenerator();

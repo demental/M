@@ -196,7 +196,17 @@ class M {
 
     require APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'setup.php';
     $setup = new M_setup();
+    spl_autoload_register('M::m_autoload_db_dataobject');
 
     Mreg::set('setup',$setup);
+  }
+  public static function m_autoload_db_dataobject($class)
+  {
+    $classname = strtolower($class);
+    if(strpos($classname, 'dataobjects_') === 0) {
+      return DB_DataObject::_autoloadClass($classname);
+    } else {
+      return false;
+    }
   }
 }

@@ -24,7 +24,7 @@ class Plugins_Otfimage_DB extends M_Plugin
   }
   public function preGenerateForm(&$fb,&$obj)
 	{
-		$obj->fb_preDefElements['filename']=& HTML_QuickForm::createElement('file',$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel['filename']);
+		$obj->fb_preDefElements['filename']= MyQuickForm::createElement('file',$obj->fb_elementNamePrefix.'filename'.$obj->fb_elementNamePostfix,$obj->fb_fieldsLabel['filename']);
 	}
 	public function postProcessForm(&$v,&$fb,&$obj)
 	{
@@ -205,7 +205,6 @@ class Plugins_Otfimage_DB extends M_Plugin
 	  if(!isset($params['x']) && !isset($params['y']) && !isset($params['maxx']) && !isset($params['maxy'])) {
 		  copy($original,$destination);
 	  } else {
-	    require_once 'M/traitephoto.php';
   		$ph=new traitephoto;
   		$ph->photo=$original;
   		$ph->path=dirname($destination);

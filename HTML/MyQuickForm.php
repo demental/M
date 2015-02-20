@@ -18,7 +18,6 @@
 * @version      0.1
 */
 
-require_once 'HTML/QuickForm.php';
 class MyQuickForm extends HTML_QuickForm {
 
   function MyQuickForm($formName='', $method='post', $action='', $target='', $attributes=null, $trackSubmit = false)
@@ -88,6 +87,38 @@ class MyQuickForm extends HTML_QuickForm {
     }
 
   }
+  /**
+   * @access private
+   * overriding HTML_QuickForm::_loadElement, without requiring
+   */
+  function &_loadElement($event, $type, $args)
+  {
+    $type = strtolower($type);
+    if (!HTML_QuickForm::isTypeRegistered($type)) {
+        $error = PEAR::raiseError(null, QUICKFORM_UNREGISTERED_ELEMENT, null, E_USER_WARNING, "Element '$type' does not exist in HTML_QuickForm::_loadElement()", 'HTML_QuickForm_Error', true);
+        return $error;
+    }
+    $className = $GLOBALS['HTML_QUICKFORM_ELEMENT_TYPES'][$type][1];
+    $elementObject =& new $className();
+    for ($i = 0; $i < 5; $i++) {
+        if (!isset($args[$i])) {
+            $args[$i] = null;
+        }
+    }
+    $err = $elementObject->onQuickFormEvent($event, $args, $this);
+    if ($err !== true) {
+        return $err;
+    }
+    return $elementObject;
+  }
+
+  public function createElement($elementType)
+  {
+    $args    =  func_get_args();
+    $element =  self::_loadElement('createElement', $elementType, array_slice($args, 1));
+    return $element;
+  }
+
 	public function &get_Get()
 	{
 	 return $this->__get;
@@ -104,32 +135,4 @@ class MyQuickForm extends HTML_QuickForm {
 	{
     return $this->__request[$field];
 	}
-	function toFrozenHtml ($in_data = null)
-  {
-		$this->freeze();
-    if (!is_null($in_data)) {
-        $this->addElement('html', $in_data);
-    }
-		require_once 'classes/FrozenRenderer.php';
-    $renderer = new HTML_QuickForm_FrozenRenderer();
-    $this->accept($renderer);
-    return $renderer->toHtml();
-	} // end func toFrozenHtml
-    
-	public static function autoloadElements($className)
-	{
-	 if(preg_match('`HTML_QuickForm_(.+)`i',$className,$matches)) {
-     $match= $matches[1];
-	   switch($match) {
-	     case 'advandate':
-	      require_once 'M/HTML/QuickForm/advandate.php';
-	      return;
-	     default:
-	       require_once 'HTML/QuickForm/'.$match.'.php';
-	       return;
-	   }
-	 }
-	 return false;
-	}
-	
 }

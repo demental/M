@@ -36,7 +36,7 @@ class Plugins_user_db extends M_Plugin
 	{
 	  $defs = $obj->_getPluginsDef();
 	  $defs = $defs['user'];
-    $obj->fb_preDefElements[$defs['pwd']] = HTML_QuickForm::createElement('password',$defs['pwd'],$obj->fb_fieldLabels[$defs['pwd']]);
+    $obj->fb_preDefElements[$defs['pwd']] = MyQuickForm::createElement('password',$defs['pwd'],$obj->fb_fieldLabels[$defs['pwd']]);
 	  $obj->fb_excludeFromAutoRules[]=$defs['pwd'];
 	}
 	public function postGenerateForm(&$form,&$fb,&$obj) {
@@ -47,7 +47,7 @@ class Plugins_user_db extends M_Plugin
             $pwd = $form->getElement($fb->elementNamePrefix.$defs['pwd'].$fb->elementNamePostfix);
             $pwd->setLabel($obj->fb_fieldLabels[$defs['pwd']].__('(Vérification)'));
             $pwd->setValue('');
-    	      $pwd2 = HTML_QuickForm::createElement('password',$fb->elementNamePrefix.$defs['pwd'].'2'.$fb->elementNamePostfix,
+    	      $pwd2 = MyQuickForm::createElement('password',$fb->elementNamePrefix.$defs['pwd'].'2'.$fb->elementNamePostfix,
               $obj->fb_fieldLabels[$defs['pwd']]);
 
             if(empty($obj->id)) {
@@ -126,7 +126,7 @@ class Plugins_user_db extends M_Plugin
   }
   function postGenerateLogin(&$form,&$fb,$obj = null) {
       if($this->_addreminder) {
-          $elt = HTML_QuickForm::createElement('static','remindertext','','<a href="'.$this->reminderUrl.'">'.__('user.login.link.reminder').'</a>');
+          $elt = MyQuickForm::createElement('static','remindertext','','<a href="'.$this->reminderUrl.'">'.__('user.login.link.reminder').'</a>');
           $form->insertElementBefore($elt,'__submit__');
       }
       if($this->_addregister) {
@@ -180,7 +180,7 @@ class Plugins_user_db extends M_Plugin
       $do = $fb->_do;
       $defs = $do->_getPluginsDef();
       $defs = $defs['user'];
-      $elt = HTML_QuickForm::createElement('static','remindertext','',__('user.reminder.text'));
+      $elt = MyQuickForm::createElement('static','remindertext','',__('user.reminder.text'));
       $form->insertElementBefore($elt,$fb->elementNamePrefix.$defs['email'].$fb->elementNamePostfix);
   }
   /**
@@ -211,7 +211,6 @@ class Plugins_user_db extends M_Plugin
   public function generatePassword($obj) {
     $defs = $obj->_getPluginsDef();
     $field = $defs['user']['pwd'];
-    require_once 'Text/Password.php';
     $pwd = Text_Password::create(8);
     $obj->{$field} = $this->encrypt($pwd,$obj)->return;
     return self::returnStatus($pwd);
