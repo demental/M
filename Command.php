@@ -120,16 +120,24 @@ class Command {
   /**
    * Factory to create command instances
    */
-  public static function factory($command,$path='commands/') {
-    $commandfile = $path.strtolower($command).'.php';
+  public static function factory($command,$path = null) {
     $commandclass = 'Command_'.$command;
+    class_exists($commandclass) || self::_load_command($command, $path);
+    return new $commandclass;
+  }
+
+  /**
+   * Load a command file
+   * @access private
+   */
+  private static function _load_command($command, $path = null) {
+    if(is_null($path)) { $path = __DIR__ . '/commands/'; }
+    $commandfile = $path . strtolower($command).'.php';
     if(!FileUtils::File_exists_incpath($commandfile)) {
       throw new Exception('Command "'.$command.'" not found');
     }
     require_once $commandfile;
-    return new $commandclass;
   }
-
 
   /**
    * display a text line (for information)
