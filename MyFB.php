@@ -18,25 +18,33 @@
 class MyFB extends DB_DataObject_FormBuilder
 {
 
+	/**
+	 * If you don't want to clutter your models with formbuilder methods, set the builder path to create formbuilder objects
+	 * named after your model this way : Tablename_Formbuilder
+	 * A formbuilder can implement the following methods:
+	 * filter_linked_collection => eg. prepareLinkedDataObject
+	 * before_form => eg. PreGenerateForm
+   * after_form => eg. PostGenerateForm
+   * before_save => eg. PeProcessForm
+   * after_save => eg. PostProcessForm
+	 */
+
+	public $builder_path;
+
 	function DB_DataObject_FormBuilder(&$do, $options = false)
 	{
 		DB_DataObject_FormBuilder::DB_DataObject_FormBuilder($do, $options = false);
 	}
 
-	function &create(&$do, $options = false, $driver = 'MyQuickForm', $mainClass = 'MyFB')
+	public function create(DB_DataObject $do, $options = false, $driver = 'MyQuickForm', $mainClass = 'MyFB')
 	{
-		if (!is_a($do, 'db_dataobject')) {
-			$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): Object does not extend DB_DataObject.',
-			DB_DATAOBJECT_FORMBUILDER_ERROR_NODATAOBJECT);
-			return $err;
+		if (!class_exists($mainClass)) {
+			throw new Exception('DB_DataObject_FormBuilder::create(): Main class "'.$mainClass.'" not found');
 		}
 
-		if (!class_exists($mainClass)) {
-			$err =& PEAR::raiseError('DB_DataObject_FormBuilder::create(): Main class "'.$mainClass.'" not found',
-			DB_DATAOBJECT_FORMBUILDER_ERROR_UNKNOWNDRIVER);
-			return $err;
-		}
 		$fb = new $mainClass($do, $options);
+		$fb->builder_path = APP_ROOT.'app/formbuilders/';
+
 		$className = 'DB_DataObject_FormBuilder_'.$driver;
 
 		if (!class_exists($className)) {
@@ -47,9 +55,42 @@ class MyFB extends DB_DataObject_FormBuilder
 	  $fb->ruleViolationMessage = __('The value you have entered is not valid.');
     $fb->requiredRuleMessage = __('The following field is required.');
 
+    $fb->load_builder();
+
 		return $fb;
 	}
-	function _getSelectOptions($table,
+
+	public function load_builder($action = null) {
+		$builder_classes = array();
+		if(!is_null($action)) {
+			$path = $this->builder_path.$action.'/'.strtolower($this->_do->tableName()).'.php';
+			$builder_classes[$path] = ucfirst($action).'_'.ucfirst($this->_do->tableName()).'_Formbuilder';
+		}
+		$path = $this->builder_path.strtolower($this->_do->tableName()).'.php';
+		$builder_classes[$path] = ucfirst($this->_do->tableName()).'_Formbuilder';
+
+		foreach($builder_classes as $path => $class) {
+		  if(class_exists($class)) {
+		  	return $this->bind_builder(new $class);
+		  } else {
+				if(file_exists($path)) {
+					require $path;
+					return $this->bind_builder(new $class);
+				}
+			}
+		}
+	}
+
+	public function bind_builder($builder_object)
+	{
+		$this->prepareLinkedDataObjectCallback = array($builder_object,'filter_linked_collection');
+		$this->preGenerateFormCallback         = array($builder_object,'before_form');
+		$this->postGenerateFormCallback        = array($builder_object,'after_form');
+		$this->preProcessFormCallback          = array($builder_object,'before_save');
+		$this->postProcessFormCallback         = array($builder_object,'after_save');
+	}
+
+	public function _getSelectOptions($table,
 	$displayFields = false,
 	$selectAddEmpty = false,
 	$field = false,
@@ -1506,7 +1547,6 @@ class MyFB extends DB_DataObject_FormBuilder
 		if ($this->isCallableAndExists($this->postProcessFormCallback)) {
 			call_user_func_array($this->postProcessFormCallback, array(&$values, &$this));
 		}
-
 		return $dbOperations;
 	}
 }
