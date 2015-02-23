@@ -30,6 +30,7 @@ en:
     add: Add
     edit: Edit
     delete: Delete
+    download: Download
   format:
     bool:
       no: No

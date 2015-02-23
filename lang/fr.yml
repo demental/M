@@ -30,6 +30,7 @@ fr:
     add: Ajouter
     edit: Modifier
     delete: Supprimer
+    download: Télécharger
   format:
     bool:
       no: Non
