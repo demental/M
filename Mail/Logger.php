@@ -13,7 +13,7 @@
  * Mail driver that logs mails
  */
 
-class Mail_logger extends Maman implements iMailDriver {
+class Mail_Logger extends Maman implements iMailDriver {
 	public function sendmail($from,$to,$subject,$body,$altbody = null, $options = null, $attachments = null, $html = false) {
   	/**
   	 * Record to logfile
