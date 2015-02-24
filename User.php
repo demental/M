@@ -66,17 +66,18 @@ class User{
 	}
 	public static function getInstance($context='front')
 	{
-		$ssid=session_id();
-		if(empty($ssid)) {
-			$sn=session_name();
-			if(isset($_GET[$sn])) if(strlen($_GET[$sn])!=32) unset($_GET[$sn]);
-			if(isset($_POST[$sn])) if(strlen($_POST[$sn])!=32) unset($_POST[$sn]);
-			if(isset($_COOKIE[$sn])) if(strlen($_COOKIE[$sn])!=32) unset($_COOKIE[$sn]);
-			if(isset($PHPSESSID)) if(strlen($PHPSESSID)!=32) unset($PHPSESSID);
+		if (php_sapi_name() != "cli") {
+			$ssid=session_id();
+			if(empty($ssid)) {
+				$sn=session_name();
+				if(isset($_GET[$sn])) if(strlen($_GET[$sn])!=32) unset($_GET[$sn]);
+				if(isset($_POST[$sn])) if(strlen($_POST[$sn])!=32) unset($_POST[$sn]);
+				if(isset($_COOKIE[$sn])) if(strlen($_COOKIE[$sn])!=32) unset($_COOKIE[$sn]);
+				if(isset($PHPSESSID)) if(strlen($PHPSESSID)!=32) unset($PHPSESSID);
 
-			session_start();
+				session_start();
+			}
 		}
-
 		if (!isset(self::$_instance[$context]))
 		{
 			self::$_instance[$context] = new User();
