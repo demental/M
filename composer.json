@@ -17,7 +17,8 @@
     "pear-pear.php.net/Crypt_Blowfish": "*",
     "pear-pear.php.net/Text_Password": "*",
     "pear-pear.php.net/Cache_Lite": "*",
-    "pear-pear.php.net/Pager": "*"
+    "pear-pear.php.net/Pager": "*",
+    "pear-pear.php.net/HTML_QuickForm_ElementGrid": "*"
   },
 
   "repositories": [
