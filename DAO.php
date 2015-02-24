@@ -13,7 +13,7 @@ class DAO {
 	public static function faketory($tablename,$overridefields = array())
 	{
 		$do = self::build($tablename,$overridefields);
-		$do->insert();
+		$do->save();
 		return $do;
 	}
 	/**
