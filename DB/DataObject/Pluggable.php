@@ -493,6 +493,16 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
 	function postProcessForm(&$v,&$fb){
 		$this->trigger('postProcessForm',array(&$v,&$fb));
 	}
+
+  public function save()
+  {
+    $pk = $this->pk();
+    if(empty($pk) || $this->__new_with_id) {
+      $this->insert();
+    } else {
+      $this->update();
+    }
+  }
 	function insert(){
 
 		$result = $this->trigger('insert');
