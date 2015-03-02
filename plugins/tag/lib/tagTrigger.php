@@ -1,5 +1,5 @@
 <?php
-class tagTrigger {
+class TagTrigger {
   public function onAdd($tagged)
   {
 
@@ -8,4 +8,4 @@ class tagTrigger {
   {
 
   }
-} 
+}
