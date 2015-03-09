@@ -55,10 +55,6 @@ class M_Office_EditRecord extends M_Office_Controller {
       deny_unless_can('read', $this->do);
       $this->assign('__action','edit');
       $this->append('subActions','<a href="'.M_Office_Util::getQueryParams(array(), array('record','doSingleAction','__record_ref')).'">'.__('&lt; Back to list').'</a>');
-      $editopts = PEAR::getStaticProperty('m_office_editrecord','options');
-      if(!empty($editopts['tableOptions'][$this->module]['fields'])) {
-        $this->do->fb_fieldsToRender = $editopts['tableOptions'][$this->module]['fields'];
-      }
       $tpl = Mreg::get('tpl');
       $tpl->concat('adminTitle',$this->do->__toString().' :: '.$this->moduloptions['title']);
       $tpl->assign('adminHeader', $this->do->__toString());
@@ -78,40 +74,27 @@ class M_Office_EditRecord extends M_Office_Controller {
         }
         $this->createActions();
 
-        if(!$this->getOption('edit',$this->module)){
-            $this->do->fb_userEditableFields=array('__fakefield');
+
+        $formBuilder = MyFB::create($this->do);
+
+        if(!can('edit',$this->module)){
+            $formBuilder->userEditableFields=array('__fakefield');
+        }
+        $editopts = PEAR::getStaticProperty('m_office_editrecord','options');
+        if(!empty($editopts['tableOptions'][$this->module]['fields'])) {
+          $formBuilder->fieldsToRender = $editopts['tableOptions'][$this->module]['fields'];
         }
 
-        $formBuilder =& MyFB::create($this->do);
         $form = new MyQuickForm('editRecord', 'POST', M_Office_Util::doURL($this->do, $this->module, array()), '_self', null, true);
-        Mtpl::addJS('jquery.form');
-
-        Mtpl::addJsinline('
-        var mdForm="";
-        var formInSave="";
-        function verifFormModified(form) {
-            if(formInSave==true) return;
-            var verif = Form.serialize(form);
-            if(verif == mdForm) return;
-            return "Vous avez effectué des modifications sur le formulaire qui seront annulées.";
-        }
-        ','ready');
-
-        Mtpl::addJSinline("$('#editRecord').formSerialize();",'ready');
-        Mtpl::addJSinline("$('#editRecord').submit(function() {
-            formInSave=true;
-        })
-        ",'ready');
-        Mtpl::addJSinline("return verifFormModified('editRecord');",'beforeunload');
 
         $formBuilder->elementTypeAttributes = array('longtext' => array('cols' => 50, 'rows' => 10));
         $formBuilder->useForm($form);
         if($this->getOption('edit',$this->module)){
           $this->assign('editable',true);
-          $form->addElement(MyQuickForm::createElement('checkbox','__backtolist__','Retourner à la liste après les modifications',''));
         } else {
           $doFreeze = true;
         }
+
         $form = $formBuilder->getForm();
         if (PEAR::isError($form)) {
             throw new Exception($form->getMessage().' '.print_r($form->getUserInfo(), true));
@@ -125,7 +108,6 @@ class M_Office_EditRecord extends M_Office_Controller {
         }
 
         if ($form->validate()) {
-
           $ret = $form->process(array($formBuilder, 'processForm'), false);
           if(PEAR::isError($ret)) {
             $this->append('errors',__('An error occured while updating record').' : '.$ret->getMessage());
