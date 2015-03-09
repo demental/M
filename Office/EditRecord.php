@@ -209,6 +209,7 @@ class M_Office_EditRecord extends M_Office_Controller {
   public function getLinkFromTableItem($linkTab, $linkField, $field)
   {
     $linkDo = DB_DataObject::factory($linkTab);
+    if(PEAR::isError($linkDo)) throw new Exception($linkTab. ' is not defined');
     $info = M_Office_Util::getModuleInfo($linkTab);
     if(!$info && !$linkDo->isNtable()) return;
     if($nfield = $linkDo->isNtable()) {
