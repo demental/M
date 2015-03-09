@@ -83,11 +83,13 @@ class MyFB extends DB_DataObject_FormBuilder
 
 	public function bind_builder($builder_object)
 	{
+		$this->builder = $builder_object;
 		$this->prepareLinkedDataObjectCallback = array($builder_object,'filter_linked_collection');
 		$this->preGenerateFormCallback         = array($builder_object,'before_form');
 		$this->postGenerateFormCallback        = array($builder_object,'after_form');
 		$this->preProcessFormCallback          = array($builder_object,'before_save');
 		$this->postProcessFormCallback         = array($builder_object,'after_save');
+		return $builder_object;
 	}
 
 	public function _getSelectOptions($table,
