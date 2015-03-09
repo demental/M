@@ -644,8 +644,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
       }
 
       $ret = "\n" .
-             "  function defaults() // column default values\n" .
-             "  {\n" .
+             "  function defaults() {// column default values\n" .
              "    return array(\n";
       foreach($defaults as $k=>$v) {
           $ret .= '      \''.addslashes($k).'\' => ' . $v . ",\n";
