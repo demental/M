@@ -43,7 +43,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
           $links="\n";
           if(is_array($l)) {
             foreach($l as $from=>$to) {
-                $links.="\t\t\t'$from'=>'$to',\n";
+                $links.="      '$from'=>'$to',\n";
             }
             // This is for i18n plugin. Auto-generate link with the i18n table even if not present in the links.ini
             if(ereg('^(.+)_i18n$',$this->table,$tab)) {
@@ -66,17 +66,15 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
         }
         return '
 '.($addlinks?'
-    function links() {
-      // links generated from .links.ini file
-      return array('.$links.'
-      );
-    }':'').
+  function links() {
+    // links generated from .links.ini file
+    return array('.$links.');
+  }':'').
     ($addreverselinks?'
-    function reverseLinks() {
-      // reverseLinks generated from .links.ini file
-      return array('.$reverselinks.'
-      );
-    }':'');
+  function reverseLinks() {
+    // reverseLinks generated from .links.ini file
+    return array('.$reverselinks.');
+  }':'');
     }
     // =============================
     // = Creates reverseLinks array
@@ -261,16 +259,13 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
       $head .= " */\n";
       $head .= $this->derivedHookExtendsDocBlock();
 
-
-      // requires
-      $head .= "require_once '{$this->_extendsFile}';\n\n";
       // add dummy class header in...
       // class
       $head .= $this->derivedHookClassDocBlock();
       $head .= "class {$this->classname} extends {$this->_extends} \n{";
 
-      $body =  "\n    ###START_AUTOCODE\n";
-      $body .= "    /* the code below is auto generated do not remove the above tag */\n\n";
+      $body =  "\n  ###START_AUTOCODE\n";
+      $body .= "  /* the code below is auto generated do not remove the above tag */\n\n";
       // table
 
       $p = str_repeat(' ',max(2, (18 - strlen($this->table)))) ;
@@ -282,7 +277,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
       $var = !empty($options['generator_var_keyword']) ? $options['generator_var_keyword'] : $var;
 
 
-      $body .= "    {$var} \$__table = '{$this->table}';  {$p}// table name\n";
+      $body .= "  {$var} \$__table = '{$this->table}';  {$p}// table name\n";
 
 
       // if we are using the option database_{databasename} = dsn
@@ -297,7 +292,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
 
       if (isset($options["database_{$this->_database}"]) && empty($GLOBALS['_DB_DATAOBJECT']['CONFIG']['generator_omit_database_var'])) {
           $p = str_repeat(' ',   max(2, (16 - strlen($this->table))));
-          $body .= "    {$var} \$_database = '{$this->_database}';  {$p}// database name (used with database_{*} config)\n";
+          $body .= "  {$var} \$_database = '{$this->_database}';  {$p}// database name (used with database_{*} config)\n";
       }
 
 
@@ -329,7 +324,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
           $p = str_repeat(' ',max(2,  (30 - strlen($t->name))));
 
           $length = empty($t->len) ? '' : '('.$t->len.')';
-          $body .="    {$var} \${$t->name};  {$p}// {$t->type}$length".($t->flags?"  {$t->flags}":"")."\n";
+          $body .="  {$var} \${$t->name};  {$p}// {$t->type}$length".($t->flags?"  {$t->flags}":"")."\n";
 
           // can not do set as PEAR::DB table info doesnt support it.
           //if (substr($t->Type,0,3) == "set")
@@ -348,8 +343,8 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
 
       // simple creation tools ! (static stuff!)
       $body .= "\n";
-      $body .= "    /* Static get */\n";
-      $body .= "    function staticGet(\$k,\$v=NULL) { return DB_DataObject::staticGet('{$this->classname}',\$k,\$v); }\n";
+      $body .= "  /* Static get */\n";
+      $body .= "  function staticGet(\$k,\$v=NULL) { return DB_DataObject::staticGet('{$this->classname}',\$k,\$v); }\n";
 
       // generate getter and setter methods
       $body .= $this->_generateGetters($input);
@@ -381,8 +376,8 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
       }
       $body .= $this->derivedHookFunctions($input);
 
-      $body .= "\n    /* the code above is auto generated do not remove the tag below */";
-      $body .= "\n    ###END_AUTOCODE\n";
+      $body .= "\n  /* the code above is auto generated do not remove the tag below */";
+      $body .= "\n  ###END_AUTOCODE\n";
 
 
       // stubs..
@@ -397,7 +392,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
               if (preg_match('/\s+function\s+' . $validate_fname . '\s*\(/i', $input)) {
                   continue;
               }
-              $body .= "\n    function {$validate_fname}()\n    {\n        return false;\n    }\n";
+              $body .= "\n  function {$validate_fname}()\n  {\n    return false;\n  }\n";
           }
       }
 
@@ -513,14 +508,14 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
       }
 
       $ret = "\n" .
-             "    function defaults() // column default values\n" .
-             "    {\n" .
-             "         return array(\n";
+             "  function defaults() // column default values\n" .
+             "  {\n" .
+             "    return array(\n";
       foreach($defaults as $k=>$v) {
-          $ret .= '             \''.addslashes($k).'\' => ' . $v . ",\n";
+          $ret .= '      \''.addslashes($k).'\' => ' . $v . ",\n";
       }
-      return $ret . "         );\n" .
-                    "    }\n";
+      return $ret . "    );\n" .
+                    "  }\n";
 
 
 
