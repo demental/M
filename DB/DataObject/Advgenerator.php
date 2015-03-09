@@ -68,12 +68,12 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
 '.($addlinks?'
   function links() {
     // links generated from .links.ini file
-    return array('.$links.');
+    return array('.$links.'    );
   }':'').
     ($addreverselinks?'
   function reverseLinks() {
     // reverseLinks generated from .links.ini file
-    return array('.$reverselinks.');
+    return array('.$reverselinks.'    );
   }':'');
     }
     // =============================
@@ -445,6 +445,142 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
      }
 
       return $ret;
+  }
+  /**
+  * Generate table Function - used when generator_no_ini is set.
+  *
+  * @param    array  table array.
+  * @return   string
+  * @access   public
+  */
+  function _generateTableFunction($def)
+  {
+      $defines = explode(',','INT,STR,DATE,TIME,BOOL,TXT,BLOB,NOTNULL,MYSQLTIMESTAMP');
+
+      $ret = "\n" .
+             "  function table() {\n" .
+             "    return array(\n";
+
+      foreach($def as $k=>$v) {
+          $str = '0';
+          foreach($defines as $dn) {
+              if ($v & constant('DB_DATAOBJECT_' . $dn)) {
+                  $str .= ' + DB_DATAOBJECT_' . $dn;
+              }
+          }
+          if (strlen($str) > 1) {
+              $str = substr($str,3); // strip the 0 +
+          }
+          // hopefully addslashes is good enough here!!!
+          $ret .= '      \''.addslashes($k).'\' => ' . $str . ",\n";
+      }
+      return $ret . "    );\n" .
+                    "  }\n";
+
+
+
+  }
+  /**
+  * Generate keys Function - used generator_no_ini is set.
+  *
+  * @param    array  keys array.
+  * @return   string
+  * @access   public
+  */
+  function _generateKeysFunction($def)
+  {
+
+      $ret = "\n" .
+             "  function keys() {\n" .
+             "    return array(";
+
+      foreach($def as $k=>$type) {
+          // hopefully addslashes is good enough here!!!
+          $ret .= '\''.addslashes($k).'\', ';
+      }
+      $ret = preg_replace('#, $#', '', $ret);
+      return $ret . ");\n" .
+                    "  }\n";
+
+
+
+  }
+  /**
+  * Generate sequenceKey Function - used generator_no_ini is set.
+  *
+  * @param    array  table and key definition.
+  * @return   string
+  * @access   public
+  */
+  function _generateSequenceKeyFunction($def)
+  {
+
+      //print_r($def);
+      // DB_DataObject::debugLevel(5);
+      global $_DB_DATAOBJECT;
+      // print_r($def);
+
+
+      $dbtype     = $_DB_DATAOBJECT['CONNECTIONS'][$this->_database_dsn_md5]->dsn['phptype'];
+      $realkeys   = $def['keys'];
+      $keys       = array_keys($realkeys);
+      $usekey     = isset($keys[0]) ? $keys[0] : false;
+      $table      = $def['table'];
+
+
+      $seqname = false;
+
+
+
+
+      $ar = array(false,false,false);
+      if ($usekey !== false) {
+          if (!empty($_DB_DATAOBJECT['CONFIG']['sequence_'.$this->__table])) {
+              $usekey = $_DB_DATAOBJECT['CONFIG']['sequence_'.$this->__table];
+              if (strpos($usekey,':') !== false) {
+                  list($usekey,$seqname) = explode(':',$usekey);
+              }
+          }
+
+          if (in_array($dbtype , array( 'mysql', 'mysqli', 'mssql', 'ifx')) &&
+              ($table[$usekey] & DB_DATAOBJECT_INT) &&
+              isset($realkeys[$usekey]) && ($realkeys[$usekey] == 'N')
+              ) {
+              // use native sequence keys.
+              $ar =  array($usekey,true,$seqname);
+          } else {
+              // use generated sequence keys..
+              if ($table[$usekey] & DB_DATAOBJECT_INT) {
+                  $ar = array($usekey,false,$seqname);
+              }
+          }
+      }
+
+
+
+
+      $ret = "\n" .
+             "  function sequenceKey() {// keyname, use native, native name\n" .
+             "    return array(";
+      foreach($ar as $v) {
+          switch (gettype($v)) {
+              case 'boolean':
+                  $ret .= ($v ? 'true' : 'false') . ', ';
+                  break;
+
+              case 'string':
+                  $ret .= "'" . $v . "', ";
+                  break;
+
+              default:    // eak
+                  $ret .= "null, ";
+
+          }
+      }
+      $ret = preg_replace('#, $#', '', $ret);
+      return $ret . ");\n" .
+                    "  }\n";
+
   }
   /**
   * Generate defaults Function - used generator_add_defaults or generator_no_ini is set.
