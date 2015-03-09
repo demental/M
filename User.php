@@ -17,8 +17,7 @@ define ('ERROR_NO_USER','2');
  * Web user management
  *
  */
-class User{
-	public $level;
+class User {
 	public $loggedIn;
 	public $_error;
 	public $currentContainer;
@@ -33,10 +32,10 @@ class User{
 	private static $_instance;
 	private function __construct(){
 	}
-	function __destruct() {
+  public function __destruct() {
 		$this->store();
 	}
-	function store() {
+  public function store() {
 		if($this->isLoggedIn()) {
 			$_SESSION[$this->context]['userId'] = $this->getId();
 			$_SESSION[$this->context]['userLanguage']=$this->language;
@@ -49,16 +48,16 @@ class User{
 	{
 		return $this->getProperty($prop)?TRUE:FALSE;
 	}
-	function getproperties() {
+  public function getproperties() {
 		return $this->properties;
 	}
-	function setProperties($prop) {
+  public function setProperties($prop) {
 		$this->properties = $prop;
 	}
-	function setProperty($prop,$val) {
+  public function setProperty($prop,$val) {
 		$this->properties[$prop] = $val;
 	}
-	function getProperty($prop) {
+  public function getProperty($prop) {
 		return $this->properties[$prop];
 	}
 	public static function &getInstances() {
@@ -89,7 +88,6 @@ class User{
 			self::$_instance[$context]->setId($_SESSION[$context]['userId']);
 			self::$_instance[$context]->setProperties($_SESSION[$context]['userProperties']);
 			self::$_instance[$context]->setTarget($_SESSION[$context]['target']);
-			self::$_instance[$context]->setLevel($data['defaults']['level']);
 			if(!empty($data['defaults']['preInitHook']) && function_exists($data['defaults']['preInitHook'])) {
 				call_user_func($data['defaults']['preInitHook'],self::$_instance[$context]);
 			}
@@ -97,30 +95,30 @@ class User{
 		}
 		return self::$_instance[$context];
 	}//fin fonction GetInstance
-	function setSettings($settings) {
+  public function setSettings($settings) {
 		if(empty($settings) || !is_array($settings)) {
 			throw new Exception('Users are not configured : '.print_r($settings,true));
 		}
 		$this->containers=$settings;
 
 	}
-	function setContext($context) {
+  public function setContext($context) {
 		$this->context=$context;
 	}
-	function getLanguage(){
+  public function getLanguage(){
 		return empty($this->language)?false:$this->language;
 	}
-	function setLanguage($l){
+  public function setLanguage($l){
 		$this->language=$l;
 	}
-	function getEmail(){
+  public function getEmail(){
 		if(!$this->isLoggedIn()){
 			return false;
 		} else {
 			return $this->getField('email');
 		}
 	}
-	function getPrefs(){
+  public function getPrefs(){
 		$pr=$this->containers[$this->context]['prefs'];
 		if($pr) {
 			$this->prefs=unserialize($this->currentContainer->$pr);
@@ -129,14 +127,14 @@ class User{
 			}
 		}
 	}
-	function getPref($var){
+  public function getPref($var){
 		if(@key_exists($var,$_SESSION[$this->context]['userPref'])){
 			return $_SESSION[$this->context]['userPref'][$var];
 		} else {
 			return false;
 		}
 	}
-	function setPref($var,$val=NULL){
+  public function setPref($var,$val=NULL){
 		// TODO Stockage dans la base
 		if(NULL==$val){
 			unset($_SESSION[$this->context]['userPref'][$var]);
@@ -144,16 +142,16 @@ class User{
 			$_SESSION[$this->context]['userPref'][$var]=$val;
 		}
 	}
-	function getId(){
+  public function getId(){
 		return $this->id;
 	}
-	function setId($id){
+  public function setId($id){
 		$this->id=$id;
 		if(!empty($id)){
 			$this->populate($id);
 		}
 	}
-	function getCompleteName(){
+  public function getCompleteName(){
 		if(key_exists('name',$this->containers[$this->context])){
 			$name=$this->containers[$this->context]['name'];
 			if(!is_array($name)){
@@ -166,7 +164,7 @@ class User{
 		}
 		return $out;
 	}
-	function populate($id){
+  public function populate($id){
 		if(class_exists('Mreg')) {
 			try {
 				Mreg::get('setup')->setUpEnv();
@@ -184,31 +182,30 @@ class User{
     }
     $this->getPrefs();
 	}
-	function getLastVisit(){
+  public function getLastVisit(){
 		return $this->getPref('lastVisit');
 	}
 
-	function getError(){
+  public function getError(){
 		return $this->_error;
 	}
-	function isLoggedIn(){
+  public function isLoggedIn(){
 		return $this->id?TRUE:FALSE;
 	}
 
-	function logout(){
+  public function logout(){
     $this->currentContainer->onSignout();
 		$this->currentContainer=null;
 		$this->loggedIn=false;
-		$this->level=null;
 		$this->id=null;
 		unset($_SESSION[$this->context]);
 		$this->properties=null;
 		if(key_exists(COOKIEVAL,$_COOKIE)){
 			unset($_COOKIE[COOKIEVAL]);
 		}
-
 	}
-	function login($login,$pwd,$persistent=FALSE){
+
+  public function login($login,$pwd,$persistent=FALSE){
 		$error="";
 		$pass=FALSE;
 		$belong="";
@@ -278,23 +275,17 @@ class User{
 	/**
 	 * returns the web path user must be redirected to after loging in
 	 */
-	function getTarget(){
+  public function getTarget(){
 		return($_SESSION[$this->context]['target']);
 	}
-	function setTarget($url){
+  public function setTarget($url){
 		$this->target=$_SESSION[$this->context]['target']=$url;
 	}
-	function clearTarget() {
+  public function clearTarget() {
 		$this->target=$_SESSION[$this->context]['target']=false;
 	}
-	function getLevel(){
-		return $this->level;
-	}
-	function setLevel($level) {
-		$this->level = $level;
-	}
 
-	function setField($field,$value){
+  public function setField($field,$value){
 		if($this->isLoggedIn()){
 			$this->currentContainer->$field=$value;
 			$this->currentContainer->update();
@@ -302,7 +293,7 @@ class User{
 			return false;
 		}
 	}
-	function reloadContainer(){
+  public function reloadContainer(){
 		if(class_exists('Mreg')) {
 			try {
 				Mreg::get('setup')->setUpEnv();
@@ -314,14 +305,14 @@ class User{
 		$this->currentContainer=& DB_DataObject::factory($this->containers[$this->context]['table']);
 		$this->currentContainer->get($this->getId());
 	}
-	function &getDBDO() {
+  public function &getDBDO() {
 		$this->reloadContainer();
 		return $this->currentContainer;
 	}
-	function getNom() {
+  public function __toString() {
 		return $this->currentContainer->__toString();
 	}
-	function getField($field){
+  public function getField($field){
 		if($this->isLoggedIn()){
 			return $this->currentContainer->$field;
 		} else {

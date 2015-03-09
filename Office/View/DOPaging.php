@@ -48,13 +48,20 @@ class M_Office_View_DOPaging extends M_Office_View_List
   }
   public function prepare($do, $module, $pager = true) {
     $do->loadPlugin('pager');
+
+    $fb = MyFB::create($do);
+    $builder = $fb->builder;
+    if($builder) {
+      $builder->before_form($fb);
+    }
+    
     $f = array_keys($do->table());
     if($do->i18nFields) {
       $f = array_merge($f,$do->i18nFields);
     }
     $this->fieldNames=array_combine($f,$f);
-    if(is_array($do->fb_fieldLabels)){
-        foreach($do->fb_fieldLabels as $k=>&$v){
+    if(is_array($fb->fieldLabels)){
+        foreach($fb->fieldLabels as $k=>&$v){
             if(is_array($v)){
                 if(key_exists('unit',$v)){
                     $unitFormatters[$k]=$v['unit'];
@@ -62,7 +69,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
                 $v=$v[0];
             }
         }
-        $this->fieldNames=array_merge($this->fieldNames,$do->fb_fieldLabels);
+        $this->fieldNames=array_merge($this->fieldNames,$fb->fieldLabels);
     }
 
 
@@ -74,7 +81,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
     }
     $do->getPlugin('pager')->setOption('perPage',$perPage);
 
-    $pk = MyFB::_getPrimaryKey($do);
+    $pk = $do->pkName();
     $AllFields=array_keys($do->table());
     $links = $do->links();
     $fields = $this->getControllerOption('fields', $module);
@@ -88,8 +95,8 @@ class M_Office_View_DOPaging extends M_Office_View_List
     }
     $usedFields = array_intersect($fields,$AllFields);
 
-    $do->fb_fieldsToRender=$fields;
-    $fb =& MyFB::create($do);
+    $fb->fieldsToRender = $fields;
+
     $do->selectAdd();
     $plugins = $do->_getPluginsDef();
     if(is_array($plugins['i18n'])) {
@@ -130,7 +137,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
         case array_key_exists($aField,$links):
           $fieldTypes[$aField] = 'link';
         break;
-        case is_array($do->fb_enumFields) && in_array($aField,$do->fb_enumFields):
+        case is_array($fb->enumFields) && in_array($aField,$fb->enumFields):
           $fieldTypes[$aField] = 'enum';
         break;
         case $eltTypes[$aField] & DB_DATAOBJECT_BOOL:
@@ -177,8 +184,8 @@ class M_Office_View_DOPaging extends M_Office_View_List
     } elseif ($ord = $this->_controller->moduloptions['order']) {
         $do->orderBy();
         $do->getPlugin('pager')->setDefaultSort($ord);
-    } elseif (isset($do->fb_linkOrderFields) && is_array($do->fb_linkOrderFields)) {
-        $do->getPlugin('pager')->setDefaultSort($do->fb_linkOrderFields);
+    } elseif (isset($fb->linkOrderFields) && is_array($fb->linkOrderFields)) {
+        $do->getPlugin('pager')->setDefaultSort($fb->linkOrderFields);
     }
     $this->fields = $fieldTypes;
 

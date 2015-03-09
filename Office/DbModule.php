@@ -118,9 +118,9 @@ class Office_DbModule extends Module {
   public function doExecAddrecord()
   {
     $do = $this->getDO();
-    $do->fb_fieldsToRender = $this->getConfig('fieldsindetail');
     $form = new MyQuickForm('editform','POST',URL::get($this->_modulename.'/editrecord',$_GET));
     $fb = MyFB::create($do);
+    $fb->fieldsToRender = $this->getConfig('fieldsindetail');
     $fb->useForm($form);
     $fb->getForm();
     $this->assignRef('form',$form);
@@ -128,12 +128,12 @@ class Office_DbModule extends Module {
   public function doExecEditrecord()
   {
     $do = $this->getDO();
-    $do->fb_fieldsToRender = $this->getConfig('fieldsindetail');
     if(!$do->get($_GET['record'])) {
       $this->redirect('error/404');
     }
     $form = new MyQuickForm('editform','POST',URL::get($this->_modulename.'/editrecord',$_GET));
     $fb = MyFB::create($do);
+    $fb->fieldsToRender = $this->getConfig('fieldsindetail');
     $fb->useForm($form);
     $fb->getForm();
     $this->assignRef('form',$form);
@@ -164,30 +164,30 @@ class Office_DbModule extends Module {
 	  if(method_exists($do,'prepareSearchForm')){
       $do->prepareSearchForm();
     }
+    $formBuilder = MyFB::create($do);
 
-    $do->fb_selectAddEmpty = array();
+    $formBuilder->selectAddEmpty = array();
   	if(is_array($do->links())){
         foreach ($do->links() as $field => $link) {
-          $do->fb_selectAddEmpty[] = $field;
+          $formBuilder->selectAddEmpty[] = $field;
         }
   	}
-		if(is_array($do->fb_enumFields)){
-			foreach ($do->fb_enumFields as $field){
-         $do->fb_selectAddEmpty[] = $field;
+		if(is_array($formBuilder->enumFields)){
+			foreach ($formBuilder->enumFields as $field){
+        $formBuilder->selectAddEmpty[] = $field;
 			}
 		}
-    $do->fb_linkNewValue = false;
+    $formBuilder->linkNewValue = false;
       if($o=$do->getPlugin('ownership')) {
           if($o->userIsInAdminMode()) {
-              $do->fb_fieldsToRender[]=$do->ownerShipField;
-              $do->fb_fieldLabels[$do->ownerShipField]='géré par';
+            $formBuilder->fieldsToRender[]=$do->ownerShipField;
+            $formBuilder->fieldLabels[$do->ownerShipField]='géré par';
 
           }
       }
-      $do->fb_userEditableFields=$do->fb_fieldsToRender;
-      $do->fb_formHeaderText=__('Search');
-      $do->fb_submitText='>>';
-      $formBuilder =& MyFB::create($do);
+      $formBuilder->userEditableFields=$do->fb_fieldsToRender;
+      $formBuilder->formHeaderText=__('Search');
+      $formBuilder->submitText='>>';
       $formBuilder->preGenerateFormCallback='fake';
      	$formBuilder->useForm($form);
       $specialElements = array_keys($formBuilder->_getSpecialElementNames());
