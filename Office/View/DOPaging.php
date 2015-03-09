@@ -51,8 +51,10 @@ class M_Office_View_DOPaging extends M_Office_View_List
 
     $fb = MyFB::create($do);
     $builder = $fb->builder;
-    $builder->before_form($fb);
-
+    if($builder) {
+      $builder->before_form($fb);
+    }
+    
     $f = array_keys($do->table());
     if($do->i18nFields) {
       $f = array_merge($f,$do->i18nFields);
