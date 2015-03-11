@@ -49,6 +49,23 @@ class T {
 			return $t;
 		}
 	}
+
+	/**
+	 * @param string name of the list
+	 * @param indexed array list of possible states
+	 * @return associative array
+	 */
+	public static function humanize_list($list_name, $arr) {
+		$out = array();
+		foreach($arr as $item) {
+			if(empty($item)) {
+				$out[$item] = __('enums' . $list_name . '.__default__');
+			} else {
+				$out[$item] = __('enums' . $list_name . '.' . $item);
+			}
+		}
+		return $out;
+	}
   /**
    * Returns countrycode
    */
@@ -279,6 +296,7 @@ if(!function_exists('_e')) {
     echo __($string,$args);
   }
 }
+
 
 if(!function_exists('_d')) {
   function _d($date) {

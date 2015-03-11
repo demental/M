@@ -31,32 +31,18 @@ class MyFB extends DB_DataObject_FormBuilder
 
 	public $builder_path;
 
-	function DB_DataObject_FormBuilder(&$do, $options = false)
+	function __construct($do)
 	{
-		DB_DataObject_FormBuilder::DB_DataObject_FormBuilder($do, $options = false);
+		DB_DataObject_FormBuilder::DB_DataObject_FormBuilder($do, false);
 	}
 
-	public function create(DB_DataObject $do, $options = false, $driver = 'MyQuickForm', $mainClass = 'MyFB')
+	public function create(DB_DataObject $do, $builder_options = array())
 	{
-		if (!class_exists($mainClass)) {
-			throw new Exception('DB_DataObject_FormBuilder::create(): Main class "'.$mainClass.'" not found');
-		}
-
-		$fb = new $mainClass($do, $options);
-		$fb->builder_path = APP_ROOT.'app/formbuilders/';
-
-		$className = 'DB_DataObject_FormBuilder_'.$driver;
-
-		if (!class_exists($className)) {
-			throw new Exception('DB_DataObject_FormBuilder::create(): driver class "'.$className.'" not found.');
-		}
-
-		$fb->_form = new $className($fb);
+		$fb = new MyFB($do);
+		$fb->_form = new DB_DataObject_FormBuilder_MyQuickForm($fb);
 	  $fb->ruleViolationMessage = __('The value you have entered is not valid.');
     $fb->requiredRuleMessage = __('The following field is required.');
-
-    $fb->load_builder();
-
+    $fb->load_builder($builder_options);
 		return $fb;
 	}
 
