@@ -43,7 +43,7 @@ class DAO {
 	{
 		$do = DB_DataObject::factory($tablename);
 		extract($overridefields);
-		require APP_ROOT.PROJECT_NAME.'/tests/Faketories/'.ucfirst($tablename).'.php';
+		require APP_ROOT.'tests/Faketories/'.ucfirst($tablename).'.php';
 
 		foreach($overridefields as $k=>$v) {
 			if($v instanceOf DB_DataObject_Pluggable) {

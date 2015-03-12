@@ -27,14 +27,14 @@ class Command_module extends Command {
       $this->line('module [MODULE_NAME] [COMMAND_NAME] [[COMMAND_PARAMETERS]]');
       $this->line('');
       $this->line('You can get a description of the module and list the available subcommands using:');
-      $this->line('help module [MODULE_NAME]');      
+      $this->line('help module [MODULE_NAME]');
       $this->line('You can also get help from subcommands if provided using:');
-      $this->line('help module [MODULE_NAME] [COMMAND_NAME]');      
+      $this->line('help module [MODULE_NAME] [COMMAND_NAME]');
       $this->line('============');
-      
+
     } elseif(count($params)==1) {
       $module = $params[0];
-      $modulePath = APP_ROOT.PROJECT_NAME.'/'.APP_NAME.'/modules/'.$module.'/';
+      $modulePath = APP_ROOT.'app/'.APP_NAME.'/modules/'.$module.'/';
 
       if(!file_exists($modulePath.'commands/help.php')) {
         if(!file_exists($modulePath)) {
@@ -73,7 +73,7 @@ class Command_module extends Command {
       throw new Exception('You must type at least module name and command name.'."\n".'Type \'help module\' for more information');
     }
     $module = array_shift($params);
-    $command = array_shift($params);    
+    $command = array_shift($params);
 
     $com = $this->getModuleCommand($module,$command,$params);
     $result = $com->execute($params);
@@ -85,8 +85,8 @@ class Command_module extends Command {
   }
   protected function getModuleCommand($module,$command,$params = array())
   {
-    $modulePath = APP_ROOT.PROJECT_NAME.'/'.APP_NAME.'/modules/'.$module.'/';
-    
+    $modulePath = APP_ROOT.'app/'.APP_NAME.'/modules/'.$module.'/';
+
     if(!file_exists ($modulePath.'/commands/'.$command.'.php')) {
       if(file_exists ($modulePath)) {
         throw new Exception($module.' module does not exist');

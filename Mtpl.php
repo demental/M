@@ -212,7 +212,7 @@ class Mtpl {
 		  if(count($pluginfile) == 2) {
 		    PluginRegistry::initPlugin($pluginfile[0]);
 		    $file = $pluginfile[1];
-		    $this->_config['tplfolders'] = array('M/plugins/'.$pluginfile[0].'/templates/', APP_ROOT.PROJECT_NAME.'/plugins/'.$pluginfile[0].'/templates/');
+		    $this->_config['tplfolders'] = array('M/plugins/'.$pluginfile[0].'/templates/', APP_ROOT.'app/plugins/'.$pluginfile[0].'/templates/');
 		  }
 			$this->_tplfile=$file;
 			if($tpl = $this->getTemplatePath()) {
@@ -405,7 +405,7 @@ class Mtpl {
     if(count($groups)>0) {
       foreach($groups as $medias => $subgroups) {
         if(count($subgroups) > 0) {
-          $assetsversion = (int)file_get_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION');
+          $assetsversion = (int)file_get_contents(APP_ROOT.'app/ASSETSVERSION');
           foreach($subgroups as $group) {
             $cssfile = '/cache/'.$group.$assetsversion.'.css';
             $out .= '<link rel="stylesheet" type="text/css" href="'.$cssfile.'" media="'.$medias.'" />';
@@ -441,7 +441,7 @@ class Mtpl {
     $out='';
     $groups = Mtpl::getJSgroups();
     if(count($groups)>0) {
-      $assetsversion = (int)file_get_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION');
+      $assetsversion = (int)file_get_contents(APP_ROOT.'app/ASSETSVERSION');
       foreach(Mtpl::getJSgroups() as $group) {
         $jsfile = '/cache/'.$group.$assetsversion.'.js';
           $out.='

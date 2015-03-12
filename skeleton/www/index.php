@@ -20,7 +20,7 @@ define('APP_NAME','{$APP_NAME}');
 require '{$APP_RELATIVE_FILE_TO_ROOT}/M_Startup.php';
 
 
-require(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'routing.php');
+require(APP_ROOT.'app/'.APP_NAME.'/routing.php');
 $result = Net_URL_Mapper::getInstance()->match($_GET['route']);
 $getvalues = array_merge($result,$_GET);
 $requestvalues = array_merge($_POST,$get);

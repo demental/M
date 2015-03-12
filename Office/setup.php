@@ -6,14 +6,14 @@ class M_Office_Setup {
     M_Office_Util::$mainOptions = PEAR::getStaticProperty('m_office', 'options');
 
     M::addPaths('module', array(
-      APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR,
-      APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'modules/',
+      APP_ROOT.'app/_shared/modules/',
+      APP_ROOT.'app/'.APP_NAME.'/modules/',
       'M/Office/modules/'));
 
     M::addPaths('template', array(
       OFFICE_TEMPLATES_FOLDER,
-      APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR,
-      APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR
+      APP_ROOT.'app/_shared/templates/',
+      APP_ROOT.'app/'.APP_NAME.'/templates/'
     ));
 
     if(Config::getPref('theme')) {

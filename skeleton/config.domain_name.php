@@ -1,7 +1,5 @@
 <?php
 
-// Change {$PROJECT_NAME} with your project name - must be the name of the project root folder (folder project in the skeleton)
-define('PROJECT_NAME','{$PROJECT_NAME}');
 // Change {$SITE_URL} with your site URL - http path to project (eg: http://localhost/my_project_folder)
 define('SITE_URL','{$SITE_URL}');
 // Change {$DOC_ROOT} with your Web folder - relative to project (eg : www)

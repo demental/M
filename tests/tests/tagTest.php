@@ -6,13 +6,13 @@ class DOTagTest extends PHPUnit_Framework_TestCase
     // We destroy the connexion object, this is an ugly way to check connection is not used anymore
     // TODO: create a stub and replace the connection with it.
 
-    $_DB_DATAOBJECT['CONNECTIONS'][$obj->_database_dsn_md5] = 'fakeconnexion';    
-    
+    $_DB_DATAOBJECT['CONNECTIONS'][$obj->_database_dsn_md5] = 'fakeconnexion';
+
   }
   public function getTaggable()
   {
     $taggable = DAO::faketory('compte');
-    
+
     $taggable->addTag('tag1');
     $taggable->addTag('tag2');
     return $taggable;
@@ -21,8 +21,8 @@ class DOTagTest extends PHPUnit_Framework_TestCase
   public function testAddtag__triggersTagTrigger()
   {
       $taggable = $this->getTaggable();
-      require_once APP_ROOT.PROJECT_NAME.'/tests/lib/tagtrigger_tag_with_trigger.php';
-      TagTrigger_tag_with_trigger::$onAddCall = 0;      
+      require_once APP_ROOT.'tests/lib/tagtrigger_tag_with_trigger.php';
+      TagTrigger_tag_with_trigger::$onAddCall = 0;
       $taggable->addTag('tag_with_trigger');
       $this->assertEquals(1,TagTrigger_tag_with_trigger::$onAddCall);
   }
@@ -30,10 +30,10 @@ class DOTagTest extends PHPUnit_Framework_TestCase
   public function testAddtag__doesNotTriggerTagTriggerIfAlreadyExists()
   {
       $taggable = $this->getTaggable();
-      require_once APP_ROOT.PROJECT_NAME.'/tests/lib/tagtrigger_tag_with_trigger.php';
+      require_once APP_ROOT.'tests/lib/tagtrigger_tag_with_trigger.php';
       TagTrigger_tag_with_trigger::$onAddCall = 0;
       $taggable->addTag('tag_with_trigger');
-      $taggable->addTag('tag_with_trigger');      
+      $taggable->addTag('tag_with_trigger');
 
       $this->assertEquals(1,TagTrigger_tag_with_trigger::$onAddCall);
   }
@@ -47,7 +47,7 @@ class DOTagTest extends PHPUnit_Framework_TestCase
   public function testHastag__CacheCreated()
   {
     $taggable = $this->getTaggable();
-    
+
     $taggable->hasTag('tag1');
     $this->assertRegexp('`tag(1|2).+tag(1|2)`',$taggable->tagplugin_cache);
   }
@@ -55,7 +55,7 @@ class DOTagTest extends PHPUnit_Framework_TestCase
   public function testHastag__CacheCreatedAndPersisted()
   {
     $taggable = $this->getTaggable();
-    
+
     $taggable->hasTag('tag1');
     $taggable->reload();
     $this->assertRegexp('`tag(1|2).+tag(1|2)`',$taggable->tagplugin_cache);
@@ -99,7 +99,7 @@ class DOTagTest extends PHPUnit_Framework_TestCase
     $this->assertRegexp('`tag(1|2|3).+tag(1|2|3).+tag(1|2|3)`',$taggable->tagplugin_cache);
 
   }
-  
+
   public function testHastag__ReturnsTrueIfTagExistsAndCacheEmpty()
   {
     $taggable = $this->getTaggable();
@@ -129,26 +129,26 @@ class DOTagTest extends PHPUnit_Framework_TestCase
 
     $this->assertFalse($taggable->hasTag('tag5'));
   }
-  
+
   public function testHastag__UsesCacheWhenItsNotEmpty()
   {
     global $_DB_DATAOBJECT;
     $taggable = $this->getTaggable();
     $taggable->hasTag('tag1');
-    
+
     $this->destroy_connexion($taggable);
-    $this->assertTrue($taggable->hasTag('tag2')); 
-  } 
+    $this->assertTrue($taggable->hasTag('tag2'));
+  }
   public function testHastag__WorksWhenFetchingMultipleRecords()
   {
     $taggable = $this->getTaggable();
     $taggable2 = $this->getTaggable();
     $taggable2->addTag('tag3');
-    
+
     $taggable3 = DB_DataObject::factory($taggable->tableName());
     $taggable3->whereAdd('id in("'.$taggable->id.'","'.$taggable2->id.'")');
     $taggable3->find();
-    
+
     $taggable3->fetch();
     $this->assertEmpty($taggable3->tagplugin_cache);
 
@@ -157,7 +157,7 @@ class DOTagTest extends PHPUnit_Framework_TestCase
     $this->assertEmpty($taggable3->tagplugin_cache);
 
     $t2 = $taggable3->hasTag('tag3');
-    $this->assertFalse($t1==$t2);    
+    $this->assertFalse($t1==$t2);
   }
   public function testDelete__DeletesTagRecord()
   {
@@ -175,7 +175,7 @@ class DOTagTest extends PHPUnit_Framework_TestCase
   {
     $taggable = $this->getTaggable();
     $taggable->delete();
-    $this->assertRegexp('`tag(1|2).+tag(1|2)`',$taggable->tagplugin_cache);    
+    $this->assertRegexp('`tag(1|2).+tag(1|2)`',$taggable->tagplugin_cache);
   }
   public function testUndelete__recreatesTagsFromCache()
   {
@@ -190,7 +190,7 @@ class DOTagTest extends PHPUnit_Framework_TestCase
     $tr->record_id = $taggable->pk();
     $tr->tag_id = $tag1->id;
     $this->assertTrue((bool)$tr->find());
-    
+
   }
   public function testUndelete__doesNothingIfNoPkSet()
   {
@@ -200,7 +200,7 @@ class DOTagTest extends PHPUnit_Framework_TestCase
   }
   public function testUndelete__doesNotTriggerBackTagTriggers()
   {
-    require_once APP_ROOT.PROJECT_NAME.'/tests/lib/tagtrigger_tag_with_trigger.php';
+    require_once APP_ROOT.'tests/lib/tagtrigger_tag_with_trigger.php';
     TagTrigger_tag_with_trigger::$onAddCall = 0;
     $taggable = $this->getTaggable();
     // onAdd called once ....

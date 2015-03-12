@@ -55,7 +55,7 @@ class PluginRegistry
    */
   public static function getPaths($cleanName,$section) {
     return array(
-      APP_ROOT.PROJECT_NAME.'/plugins/'.$cleanName.'/'.$section.'/',
+      APP_ROOT.'app/plugins/'.$cleanName.'/'.$section.'/',
       dirname(__FILE__).'/plugins/'.$cleanName.'/'.$section.'/'
     );
   }

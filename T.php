@@ -103,7 +103,7 @@ class T {
 
   public static function paths() {
     if(!is_array(self::$paths)) {
-      self::$paths = array(APP_ROOT.PROJECT_NAME.'/lang/', APP_ROOT.PROJECT_NAME.'/'.APP_NAME.'/lang/');
+      self::$paths = array(APP_ROOT.'app/lang/', APP_ROOT.'app/'.APP_NAME.'/lang/');
     }
     return self::$paths;
   }
@@ -165,7 +165,7 @@ class T {
 
   public function getCacheFile($lang)
   {
-    return APP_ROOT.PROJECT_NAME.'/'.APP_NAME.'/cache/'.$lang.'.cache.php';
+    return APP_ROOT.'app/'.APP_NAME.'/cache/'.$lang.'.cache.php';
   }
   private function cacheExists($lang)
   {

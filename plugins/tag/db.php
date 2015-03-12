@@ -219,9 +219,9 @@ class Plugins_Tag_DB extends M_Plugin {
   {
     $strip = Strings::stripify($tag->strip,true);
     $classes = array(
-      APP_ROOT.PROJECT_NAME.'/tags/__tables/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger__'.$obj->tableName()),
-      APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger_'.$strip.'_'.$obj->tableName()),
-      APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'.php'=>strtolower('tagtrigger_'.$strip)
+      APP_ROOT.'app/tags/__tables/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger__'.$obj->tableName()),
+      APP_ROOT.'app/tags/'.strtolower($strip).'/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger_'.$strip.'_'.$obj->tableName()),
+      APP_ROOT.'app/tags/'.strtolower($strip).'.php'=>strtolower('tagtrigger_'.$strip)
       );
     foreach($classes as $file=>$class) {
       if(class_exists($class,false)) {    // avoid autoload
@@ -251,8 +251,8 @@ class Plugins_Tag_DB extends M_Plugin {
     if(!self::$triggers_enabled) return;
     $strip = Strings::stripify($tag->strip,true);
     $classes = array(
-      APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger_'.$strip.'_'.$obj->tableName()),
-      APP_ROOT.PROJECT_NAME.'/tags/'.strtolower($strip).'.php'=>strtolower('tagtrigger_'.$strip)
+      APP_ROOT.'app/tags/'.strtolower($strip).'/'.strtolower($obj->tableName()).'.php'=>strtolower('subtagtrigger_'.$strip.'_'.$obj->tableName()),
+      APP_ROOT.'app/tags/'.strtolower($strip).'.php'=>strtolower('tagtrigger_'.$strip)
       );
     foreach($classes as $file=>$class) {
       if(class_exists($class,false)) {    // avoid autoload

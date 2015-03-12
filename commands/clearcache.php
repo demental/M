@@ -60,14 +60,14 @@ class Command_clearcache extends Command
   }
   public function clearConfigCache()
   {
-    $root = APP_ROOT.PROJECT_NAME.'/';
+    $root = APP_ROOT.'app/';
     foreach(FileUtils::getFolders($root,'',false) as $folder) {
       $this->_emptyfolder($root.$folder.'/cache/config',false);
     }
   }
   public function clearHtmlcache()
   {
-    $root = APP_ROOT.PROJECT_NAME.'/';
+    $root = APP_ROOT.'app/';
     foreach(FileUtils::getFolders($root,'',false) as $folder) {
       $this->_emptyfolder($root.$folder.'/cache',false);
     }
@@ -94,9 +94,10 @@ class Command_clearcache extends Command
   protected function _regenerateAssets()
   {
     $this->header('Regenerating assets');
-    $assetsversion = (int)file_get_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION');
+    $version_file = APP_ROOT.'app/ASSETSVERSION';
+    $assetsversion = (int)file_get_contents($version_file);
     $assetsversion++;
-    file_put_contents(APP_ROOT.PROJECT_NAME.'/ASSETSVERSION',$assetsversion);
+    file_put_contents($version_file, $assetsversion);
     $assetsfolder = APP_ROOT.WEB_FOLDER.'/assets/';
     $jsfolder = $assetsfolder.'js/';
     foreach(FileUtils::getFolders($jsfolder) as $folder) {
