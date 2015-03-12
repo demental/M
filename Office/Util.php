@@ -346,7 +346,7 @@ class M_Office_Util {
     $cacheName = 'searchform_'.$module;
     $options = array(
       'caching' =>$cache,
-      'cacheDir' => APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/',
+      'cacheDir' => APP_ROOT.'app/'.APP_NAME.'/cache/forms/',
       'lifeTime' => 3600,
       'fileNameProtection'=>false,
   	);
@@ -376,7 +376,7 @@ class M_Office_Util {
       $do->fb_linkNewValue = false;
 
       $formBuilder =& MyFB::create($do);
-      $formBuilder->_cacheOptions = array('name'=>'office_searchform','cacheDir'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'forms/');
+      $formBuilder->_cacheOptions = array('name'=>'office_searchform','cacheDir'=>APP_ROOT.'app/'.APP_NAME.'/cache/forms/');
       $formBuilder->preGenerateFormCallback=array($do,'prepareSearchForm');
       $do->prepareSearchForm($fb);
       $do->fb_userEditableFields=$do->fb_fieldsToRender;

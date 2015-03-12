@@ -36,15 +36,15 @@ if(!defined('TMP_PATH')) {
 
 /**
  * add include_paths if provided in host config file
- **/ 
-$paths[]=APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR;
+ **/
+$paths[]=APP_ROOT.'app/'.APP_NAME.'/';
 if(is_array($paths)) {
 
   ini_set('include_path', ini_get('include_path').':'.implode(':',$paths));
 }
 
 /**
- * runtime mode 
+ * runtime mode
  **/
 switch(MODE) {
 	case 'development' :
@@ -52,7 +52,7 @@ switch(MODE) {
 		ini_set('display_errors',1);
     $caching=false;
 		break;
-	case 'test' :		
+	case 'test' :
 		ini_set('error_reporting',E_ALL ^ E_NOTICE);
 		ini_set('display_errors',1);
     $caching=false;
@@ -66,15 +66,15 @@ switch(MODE) {
 /**
  * Translation initialization (TODO move this out of the startup file, maybe setup)
  */
-T::setConfig(array('path'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'lang/','encoding'=>'utf-8','saveresult'=>false,'cacheDir'=>APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache/'));
+T::setConfig(array('path'=>APP_ROOT.'app/'.APP_NAME.'/lang/','encoding'=>'utf-8','saveresult'=>false,'cacheDir'=>APP_ROOT.'app/'.APP_NAME.'/cache/'));
 // TODO define a default lang, not french hardcoded
 
 
 
 $opt = &PEAR::getStaticProperty('Module', 'global');
-$opt['template_dir'] = array(APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
+$opt['template_dir'] = array(APP_ROOT.'app/'.APP_NAME.'/templates/');
 $opt['caching'] = $caching;
-$opt['cacheDir'] = APP_ROOT.DIRECTORY_SEPARATOR.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.$host.DIRECTORY_SEPARATOR;
+$opt['cacheDir'] = APP_ROOT.'app/'.APP_NAME.'/cache/'.$host.'/';
 $opt['cacheTime'] = 7200;
 $dispatchopt = &PEAR::getStaticProperty('Dispatcher', 'global');
 $dispatchopt['all']['loginmodule']='user';
@@ -83,10 +83,10 @@ $dispatchopt['all']['modulepath']=array('modules');
 
 /**
 * TODO config & setup : maybe we should rename them to pre-cache & post-cache config ?
-**/ 
-include APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'config.php';
-include APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'config.php';
-include APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'setup.php';
+**/
+include APP_ROOT.'app/config.php';
+include APP_ROOT.'app/'.APP_NAME.'/config.php';
+include APP_ROOT.'app/setup.php';
 
 $setup = new M_setup();
 Mreg::set('setup',$setup);

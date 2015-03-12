@@ -138,7 +138,7 @@ class FileUtils
    */
   public static function file_exists_incpath ($file)
   {
-    if(strpos($file,DIRECTORY_SEPARATOR) === 0) {
+    if(strpos($file,'/') === 0) {
       return file_exists($file);
     }
     $paths = explode(PATH_SEPARATOR, get_include_path());
@@ -146,7 +146,7 @@ class FileUtils
     foreach ($paths as $path) {
       // Formulate the absolute path
 
-      $fullpath = $path . DIRECTORY_SEPARATOR . $file;
+      $fullpath = $path . '/' . $file;
       // Check it
       if (file_exists($fullpath)) {
         return $fullpath;

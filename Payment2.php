@@ -37,8 +37,8 @@ class Payment2 {
 	}
   public static final function addDriverPath($path)
   {
-    if(substr($path,-1,1)!=DIRECTORY_SEPARATOR) {
-      $path.=DIRECTORY_SEPARATOR;
+    if(substr($path,-1,1)!='/') {
+      $path.='/';
     }
     array_unshift(self::$driverpaths,$path);
   }

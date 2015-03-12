@@ -87,16 +87,16 @@ class Guid_command_uninstall extends Command {
      $oldoption = $options['generator_include_regex'];
      $options['generator_include_regex'] = '`^('.explode('|',$this->toRegenerate).')$`';*/
      if(!$options['noregen']) {
-       $this->line('regenerating DOclasses');
+       $this->line('regenerating models');
    	   $generator = new DB_DataObject_Advgenerator();
    	   $generator->start();
   /*     $options['generator_include_regex'] = $oldoption;*/
        // Removing guid plugin to the DO file
        foreach($this->toRemove as $table) {
          $this->line('removing plugin guid for table '.$table);
-         $data = file_get_contents(APP_ROOT.PROJECT_NAME.'/DOclasses/'.ucfirst($table).'.php');
+         $data = file_get_contents(APP_ROOT.'models/'.ucfirst($table).'.php');
          $data = ereg_replace('(\'|")guid(\'|")[[:space:]]*=>[[:space:]]*(true|1),*','',$data);
-         file_put_contents(APP_ROOT.PROJECT_NAME.'/DOclasses/'.ucfirst($table).'.php',$data);
+         file_put_contents(APP_ROOT.'models/'.ucfirst($table).'.php',$data);
        }
      }
    }

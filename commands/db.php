@@ -23,7 +23,7 @@ class Command_Db extends Command {
     $this->line('Various utilities related to Data Access Objects and database');
     $this->line('Usage:');
     $this->line('db regen');
-    $this->line("\t".'Regenerates DOclasses');
+    $this->line("\t".'Regenerates models');
     $this->line('db migrate [reset]');
     $this->line("\t".'executes latest migrations. If reset, executes migrations even if no last migration date found(initial DB install)');
     $this->line('db backup [filename] [db uri constant]');
@@ -127,10 +127,10 @@ class Command_Db extends Command {
 
   public function executeRegen($params)
   {
-    $this->line('Regenerating DOclasses');
+    $this->line('Regenerating models');
     $generator = new DB_DataObject_Advgenerator();
     $generator->start();
-    $this->line('DOclasses need to be reloaded so ...');
+    $this->line('Models need to be reloaded so ...');
     $this->launch('reboot');
   }
 

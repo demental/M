@@ -3,7 +3,7 @@ class Log_file {
   public function init($options)
   {
     if(empty($options['file'])) {
-      $options['file'] = APP_ROOT.'logs'.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.date('Y-m-d').'.log';
+      $options['file'] = APP_ROOT.'logs/'.APP_NAME.'/'.date('Y-m-d').'.log';
     }
     if(!file_exists($options['file'])) {
       touch($options['file']);
@@ -18,7 +18,7 @@ class Log_file {
         foreach(get_object_vars($var) as $k=>$v) {
           $out.="\t".$k.' = '.$v."\n";
         }
-      break;  
+      break;
       case is_array($var):
       foreach($var as $k=>$v) {
 

@@ -55,33 +55,35 @@ class M_Setup implements iSetup {
     // = Mail configuration options =
     // ==============================
     $mailopt = &PEAR::getStaticProperty('Mail', 'global');
-    $mailopt['template_dir'] = array(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates/_mails/',APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates/_mails/');
+    $mailopt['template_dir'] = array(
+      APP_ROOT.'app/_shared/templates/_mails/',
+      APP_ROOT.'app/'.APP_NAME.'/templates/_mails/');
     $mailopt['sendmail']=false;
-    $mailopt['encoding']='utf-8';    
+    $mailopt['encoding']='utf-8';
     $mailopt['logmail']=true;
     $mailopt['log_folder']=APP_ROOT.'mail_logs/';
-    $mailopt['from']='noreply@mymaildomain.com';    
+    $mailopt['from']='noreply@mymaildomain.com';
     $mailopt['fromname']='Support';
-    
+
     // =============================
     // = Pdf configuration options =
     // =============================
     $pdfopt = &PEAR::getStaticProperty('MPdf', 'global');
-    $pdfopt['template_dir'] = APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'_pdf/';
+    $pdfopt['template_dir'] = APP_ROOT.'/_shared/templates/_pdf/';
   }
   public function setUpDatabase()
   {
      /**
      * DB_DataObject configuration
-     * 
+     *
      */
 
     $options = & PEAR :: getStaticProperty('DB_DataObject', 'options');
-    $options = array (  'database' => DB_URI, 
-                        'schema_location' => APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'DOclasses', 
-                        'class_location' => APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'DOclasses', 
-                        'require_prefix' => 'DataObjects/', 
-                        'class_prefix' => 'DataObjects_', 
+    $options = array (  'database' => DB_URI,
+                        'schema_location' => APP_ROOT.'app/models/',
+                        'class_location' => APP_ROOT.'app/models/',
+                        'require_prefix' => 'DataObjects/',
+                        'class_prefix' => 'DataObjects_',
                         'debug' => key_exists('debug',$_GET)?1:0,
                         'extends' =>'DB_DataObject_Pluggable',
                         'extends_location'=>'M/DB/DataObject/Pluggable.php',
@@ -91,6 +93,6 @@ class M_Setup implements iSetup {
                     );
     $db_options = & PEAR::getStaticProperty('MDB2','options');
     $db_options['portability']=MDB2_PORTABILITY_ALL ^ MDB2_PORTABILITY_FIX_CASE;
-    
+
   }
 }

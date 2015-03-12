@@ -57,7 +57,7 @@ class M {
   }
   public static function tablesWithPlugin($pluginName)
   {
-    foreach(FileUtils::getAllFiles(APP_ROOT.PROJECT_NAME.'/DOclasses/','php') as $file) {
+    foreach(FileUtils::getAllFiles(APP_ROOT.'app/models/','php') as $file) {
       $t = DB_DataObject::factory(strtolower(basename($file,'.php')));
 
       if(PEAR::isError($t)) continue;
@@ -117,7 +117,7 @@ class M {
     if(class_exists($class)) return true;
     $file = strtolower(str_replace('_','/',$class)) . '.php';
     foreach(self::getPaths($role) as $path) {
-      $full_path = $path.DIRECTORY_SEPARATOR.$file_name;
+      $full_path = $path.'/'.$file_name;
       if(FileUtils::file_exists_incpath($full_path)) {
         require_once(self::resolve_file($file, $role));
         if($init_function instanceOf Closure) $init_function();
@@ -130,7 +130,7 @@ class M {
   public static function resolve_file($file_name, $role)
   {
     foreach(self::getPaths($role) as $path) {
-      $full_path = $path.DIRECTORY_SEPARATOR.$file_name;
+      $full_path = $path.'/'.$file_name;
       if(file_exists($full_path)) return realpath($full_path);
     }
     throw new UnresolvedFileException("Could not find {$file_name} in ".print_r(self::getPaths($role), true));
@@ -138,9 +138,9 @@ class M {
 
   public static function bootstrap()
   {
-    $paths[]=APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR;
-    $paths[]=APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR;
-    $paths[]=APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR;
+    $paths[]=APP_ROOT.'app/_shared/';
+    $paths[]=APP_ROOT.'app/'.APP_NAME.'/';
+    $paths[]=APP_ROOT.'app/';
     set_include_path(get_include_path().':'.implode(':',$paths));
 
 
@@ -165,7 +165,7 @@ class M {
     }
 
     T::setConfig(array(
-      'path' => APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'lang/',
+      'path' => APP_ROOT.'app/'.APP_NAME.'/lang/',
       'encoding' => 'utf8',
       'saveresult' => false,
       'driver' => 'reader',
@@ -178,15 +178,15 @@ class M {
     $lang = $_REQUEST['lang'] ? $_REQUEST['lang'] : DEFAULT_LANG;
     T::setLang($lang);
 
-    M::addPath('templates', APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
-    M::addPath('templates', APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
+    M::addPath('templates', APP_ROOT.'app/_shared/templates/');
+    M::addPath('templates', APP_ROOT.'app/'.APP_NAME.'/templates/');
     M::addPath('modules', 'modules');
     M::addPath('plugins', realpath(dirname(__FILE__)));
-    M::addPath('plugins', APP_ROOT.PROJECT_NAME);
+    M::addPath('plugins', APP_ROOT.'app/');
 
     $opt = & PEAR::getStaticProperty('Module', 'global');
     $opt['caching'] = $caching;
-    $opt['cacheDir'] = APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR;
+    $opt['cacheDir'] = APP_ROOT.'app/'.APP_NAME.'/cache/';
     $opt['cacheTime'] = 7200;
     $dispatchopt = &PEAR::getStaticProperty('Dispatcher', 'global');
     $dispatchopt['all']['loginmodule']='user';
@@ -194,7 +194,7 @@ class M {
 
     $dispatchopt['all']['modulepath']=array('modules');
 
-    require APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'setup.php';
+    require APP_ROOT.'app/setup.php';
     $setup = new M_setup();
     spl_autoload_register('M::m_autoload_db_dataobject');
 

@@ -9,7 +9,7 @@ APP_ROOT/
     .htaccess	=> URL rewriting
     index.php	=> Application dispatcher
     v1/	=> contains merged and minified web assets
-      .htaccess	=> strong-caching directives according to Yahoo performance recommendations 
+      .htaccess	=> strong-caching directives according to Yahoo performance recommendations
 	@see http://developer.yahoo.com/performance/rules.html#expires
 	@see http://developer.yahoo.com/performance/rules.html#num_http
 	@see http://developer.yahoo.com/performance/rules.html#minify
@@ -18,7 +18,7 @@ APP_ROOT/
       css/
   project/
     config.php	=> project-wide configuration options that's fired at application startup
-    setup.php	=> project-wide configuration options encapsulated in a class that implements iSetup. is executed if cached data could not be retreived for the requested action. Tipically configures database connection, Mail settings ...		
+    setup.php	=> project-wide configuration options encapsulated in a class that implements iSetup. is executed if cached data could not be retreived for the requested action. Tipically configures database connection, Mail settings ...
     assetsversion.php=> see below for explanation
     assets/	=> web assets (JS, CSS ....). Grouped by subfolders. These assets are merged by folders, minified and copied to a vXXX/ folder in the documentRoot each time the project is released. XXX is an auto-incremented variable that's written in assetsversion.php
       js/
@@ -52,10 +52,9 @@ APP_ROOT/
       lib/	=> placeholder for external libraries specifically used by this application only
       tests/	=> placeholder for all this application's Module tests
     otherapp/	=> another project application (named "otherapp")
-    DOclasses/	=> placeholder for DataObjects classes definitions (model layer)
+    models/	=> placeholder for DataObjects classes definitions (model layer)
     tests/	=> placeholder for DataObjects tests
        fixtures/  => SQL files containing test-related dumps.
          empty.sql=> auto-generated SQL file containing the project database structure only, used as a base for crud testing
        mytablename_tests.crud.php => auto-generated crud testing (used as a working base, the developer may add its own crud-related tests in these files, as they are generated only once they won't be overwritten by the generator)
        mytablename_tests.custom.php => custom DataObjects_Methods testing (no test is included, this is an empty class where the developer can write its own DO-related tests)
-

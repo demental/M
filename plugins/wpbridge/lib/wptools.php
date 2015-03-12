@@ -21,7 +21,7 @@ class WPTools {
   {
     $options = array(
         'caching' =>true,
-        'cacheDir' => APP_ROOT.PROJECT_NAME.'/'.APP_NAME.'/cache/',
+        'cacheDir' => APP_ROOT.'app/'.APP_NAME.'/cache/',
         'lifeTime' => 3600,
         'fileNameProtection'=>true,
 		);

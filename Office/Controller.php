@@ -32,19 +32,22 @@ class M_Office_Controller {
     $out = Mreg::get('tpl')->instance();
     if($module) {
       $out->setPaths(array(OFFICE_TEMPLATES_FOLDER,
-                APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR,
-      APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR,
-                            ));
+        APP_ROOT.'app/_shared/templates/',
+        APP_ROOT.'app/'.APP_NAME.'/templates/'.$module.'/',
+      ));
     }
-   return $out;
+    return $out;
   }
+
   public function getGlobalOption($name,$module,$table = null, $merge = false) {
-      $options = PEAR::getStaticProperty('m_office_'.$module,'options');
-      return $this->grabOption($name,$table,$merge,$options);
+    $options = PEAR::getStaticProperty('m_office_'.$module,'options');
+    return $this->grabOption($name,$table,$merge,$options);
   }
+
   public function getOption($name, $table = null, $merge = false) {
       return $this->grabOption($name,$table,$merge,$this->options);
   }
+
   public function grabOption($name, $table = null, $merge = false,$options) {
       if ($merge == true) {
           $merged = array();

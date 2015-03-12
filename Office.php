@@ -147,8 +147,8 @@ class M_Office extends M_Office_Controller implements iListener {
 			switch($info['type']) {
 				case 'db':
 					// TODO ajouter ce path en avant-dernier et non en dernier
-					Mreg::get('tpl')->addPath(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$info['table'].DIRECTORY_SEPARATOR,'after');
-					Mreg::get('tpl')->addPath(APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$_REQUEST['module'].DIRECTORY_SEPARATOR,'after');
+					Mreg::get('tpl')->addPath(APP_ROOT.'app/'.APP_NAME.'/templates/'.$info['table'].'/','after');
+					Mreg::get('tpl')->addPath(APP_ROOT.'app/'.APP_NAME.'/templates/'.$_REQUEST['module'].'/','after');
 
 					$subController = new M_Office_ShowTable($_REQUEST['module'],$filter);
 					break;

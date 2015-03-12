@@ -78,7 +78,7 @@ class Config
 	 */
 	public static function loadPrefFile()
 	{
-    $file = APP_ROOT . PROJECT_NAME . '/cache/' . self::getPrefFile();
+    $file = APP_ROOT . 'app/cache/' . self::getPrefFile();
     if (!file_exists($file))
     {
       // If preference file doesn't exist we will generate it
@@ -97,7 +97,7 @@ class Config
 	 */
 	public static function savePrefFile()
 	{
-    $file = APP_ROOT . PROJECT_NAME . '/cache/' . self::getPrefFile();
+    $file = APP_ROOT . 'app/cache/' . self::getPrefFile();
     $setup = Mreg::get('setup');
     if(is_object($setup)) {
       $setup->setUpEnv();
