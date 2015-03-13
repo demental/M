@@ -11,7 +11,7 @@
 *
 * @package      M
 * @subpackage   M_HTML_QuickForm_Renderer_Array
-* @author       Arnaud Sellenet <demental@sat2way.com>
+* @author       Arnaud Sellenet <demental at github>
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1
 */

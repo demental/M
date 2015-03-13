@@ -4,7 +4,7 @@
  *
  * @package      M
  * @subpackage   Payment
- * @author       Arnaud Sellenet <demental@sat2way.com>
+ * @author       Arnaud Sellenet <demental at github>
  * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
  * @version      0.1
  */
@@ -61,7 +61,7 @@ class Payment {
 	function logError() {
 		$mail = Mail::factory('vide');
 		$mail->setVars(array('body'=>print_r($this,true),'subject'=>'debug CB'));
-		$mail->sendTo('demental@sat2way.com');
+		$mail->sendTo('demental at github');
 		return;
 	}
   public function getMode() {

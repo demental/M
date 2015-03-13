@@ -9,7 +9,7 @@
 * Controller main file for office app
 *
 * @package      M
-* @author       Arnaud Sellenet <demental@sat2way.com>
+* @author       Arnaud Sellenet <demental at github>
 
 * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
 * @version      0.1

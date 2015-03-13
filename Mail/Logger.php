@@ -4,7 +4,7 @@
  *
  * @package      M
  * @subpackage   Logger.php
- * @author       Arnaud Sellenet <demental@sat2way.com>
+ * @author       Arnaud Sellenet <demental at github>
  * @license      http://opensource.org/licenses/lgpl-license.php GNU Lesser General Public License
  * @version      0.1
  */
@@ -34,6 +34,6 @@ class Mail_Logger extends Maman implements iMailDriver {
   		if($this->getConfig('sendmail')){
   			fwrite($fp,"This message was sent by mail.\r\n----------------------------------------\r\n\r\n");
   		}
-  		fclose($fp);    
+  		fclose($fp);
   }
 }
