@@ -374,7 +374,7 @@ class Mtpl {
       return SITE_URL.$mainfolder.$filename;
     } else {
       foreach($subfolders as $afolder) {
-        if(file_exists(APP_ROOT.WEB_FOLDER.'/'.$mainfolder.$afolder.'/'.$filename)) {
+        if(file_exists(APP_ROOT.'public/'.$mainfolder.$afolder.'/'.$filename)) {
           return SITE_URL.$mainfolder.$afolder.'/'.$filename;
         }
       }
@@ -465,7 +465,7 @@ class Mtpl {
   public static function first_in_assets($roots, $filename)
   {
     foreach($roots as $dir) {
-      $file = APP_ROOT.WEB_FOLDER.'/'.$dir.'/'.$filename;
+      $file = APP_ROOT.'public/'.$dir.'/'.$filename;
       if(file_exists($file)) {
         return $dir.'/'.$filename;
       }

@@ -5,7 +5,7 @@ The goal of the skeleton is to be used as a base for automatic code generation.
 
 APP_ROOT/
   config.domain_name.php => domain-specific configuration options (database uri, documentRoot name, http uri, additional include paths....)
-  WEB_FOLDER/    => the apache documentRoot (name can be configured in the config.domain_name.php file)
+  public/    => the apache documentRoot
     .htaccess	=> URL rewriting
     index.php	=> Application dispatcher
     v1/	=> contains merged and minified web assets

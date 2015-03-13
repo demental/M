@@ -10,15 +10,6 @@
  * @version      0.1
  */
 
-if(!defined('NORMALUSER')) {
-	define('NORMALUSER',0);
-}
-if(!defined('ADMINUSER')) {
-	define('ADMINUSER',1);
-}
-if(!defined('ROOTUSER')) {
-	define('ROOTUSER',2);
-}
 if(!defined('ROOT_ADMIN_SCRIPT')) {
 	define('ROOT_ADMIN_SCRIPT','');
 }
@@ -27,8 +18,6 @@ if(!defined('OFFICE_TEMPLATES_FOLDER')) {
 }
 
 $dispatchopt = &PEAR::getStaticProperty('Dispatcher', 'global');
-//$dispatchopt['all']['modulepath'][]='M/Office/modules/';
-
 
 T::addPath(dirname(__FILE__).'/Office/lang/');
 

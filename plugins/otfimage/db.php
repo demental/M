@@ -43,7 +43,7 @@ class Plugins_Otfimage_DB extends M_Plugin
      * Clearing cache for this image
      **/
      $filename = eregi_replace('(\.[^\.]+)$','',basename($obj->filename));
-     $cachefolder = APP_ROOT.WEB_FOLDER.'/'.$defs['otfimage']['cache'].'/'.$filename.'/';
+     $cachefolder = APP_ROOT.'public/'.$defs['otfimage']['cache'].'/'.$filename.'/';
      foreach(FileUtils::getAllFiles($cachefolder) as $file) {
        @unlink($file);
      }
@@ -107,9 +107,9 @@ class Plugins_Otfimage_DB extends M_Plugin
 
     $params['format'] = $params['format']?$params['format']:FileUtils::getFileExtension($obj->filename);
     $cachefolder = $defs['otfimage']['cache'].'/'.$filename.'/';
-    @mkdir(APP_ROOT.WEB_FOLDER.'/'.$cachefolder);
+    @mkdir(APP_ROOT.'public/'.$cachefolder);
     $cachename = $cachefolder.$paramskey.'.'.($params['format']);
-    $cachefile = APP_ROOT.WEB_FOLDER.'/'
+    $cachefile = APP_ROOT.'public/'
                 .$cachename;
 
     $cacheurl = '/'.$cachename;
@@ -185,7 +185,7 @@ class Plugins_Otfimage_DB extends M_Plugin
   protected function _getOriginalPath($obj)
   {
     if(preg_match('`^\/`',$obj->filename)) {
-      return APP_ROOT.WEB_FOLDER.$obj->filename;
+      return APP_ROOT.'public'.$obj->filename;
     }
     $defs = $obj->_getPluginsDef();
     $res = IMAGES_UPLOAD_FOLDER.$defs['otfimage']['path'].'/'.$obj->filename;

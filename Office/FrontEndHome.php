@@ -23,7 +23,7 @@ class M_Office_FrontEndHome extends M_Office_Controller {
         $tpl = new Mtpl(array(
           'M/Office/Templates/',
           APP_ROOT.'app/'.APP_NAME.'/templates/',
-          APP_ROOT.WEB_FOLDER.'/themes/'.Config::getPref('theme').'/templates/')
+          APP_ROOT.'public/themes/'.Config::getPref('theme').'/templates/')
         );
         $this->assign('output',$tpl->fetch('home'));
         $this->assign('__action','dyn');

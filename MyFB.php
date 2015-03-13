@@ -46,8 +46,9 @@ class MyFB extends DB_DataObject_FormBuilder
 		return $fb;
 	}
 
-	public function load_builder($action = null) {
+	public function load_builder($options = array()) {
 		$builder_classes = array();
+		$action = $options['action'];
 		if(!is_null($action)) {
 			$path = $this->builder_path.$action.'/'.strtolower($this->_do->tableName()).'.php';
 			$builder_classes[$path] = ucfirst($action).'_'.ucfirst($this->_do->tableName()).'_Formbuilder';
