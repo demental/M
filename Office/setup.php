@@ -17,7 +17,7 @@ class M_Office_Setup {
     ));
 
     if(Config::getPref('theme')) {
-      M::addPaths('template', array(APP_ROOT.WEB_FOLDER.'/themes/'.Config::getPref('theme').'/templates/'));
+      M::addPaths('template', array(APP_ROOT.'public/themes/'.Config::getPref('theme').'/templates/'));
     }
 
     $tpl = new Mtpl(M::getPaths('template'));

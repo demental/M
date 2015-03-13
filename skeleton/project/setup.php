@@ -22,12 +22,12 @@ class M_Setup implements iSetup {
   public function setUpEnv()
   {
     $this->setUpDatabase();
-    define('WEBROOT_FOLDER', APP_ROOT.WEB_FOLDER);
+    define('WEBROOT_FOLDER', APP_ROOT.'public/');
 
     // ================================
     // = Absolute path to media files =
     // ================================
-    define('IMAGES_UPLOAD_FOLDER', APP_ROOT.WEB_FOLDER.'/media/');
+    define('IMAGES_UPLOAD_FOLDER', APP_ROOT.'public/media/');
 
     // ===============================
     // = relative uri to media files =

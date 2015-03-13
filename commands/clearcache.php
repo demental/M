@@ -50,12 +50,12 @@ class Command_clearcache extends Command
   }
   public function clearAssetsCache()
   {
-    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',false);
+    $this->_emptyfolder(APP_ROOT.'public/cache',false);
     $this->_regenerateAssets();
   }
   public function clearWebCache()
   {
-    $this->_emptyfolder(APP_ROOT.WEB_FOLDER.'/cache',true);
+    $this->_emptyfolder(APP_ROOT.'public/cache',true);
     $this->_regenerateAssets();
   }
   public function clearConfigCache()
@@ -98,7 +98,7 @@ class Command_clearcache extends Command
     $assetsversion = (int)file_get_contents($version_file);
     $assetsversion++;
     file_put_contents($version_file, $assetsversion);
-    $assetsfolder = APP_ROOT.WEB_FOLDER.'/assets/';
+    $assetsfolder = APP_ROOT.'public/assets/';
     $jsfolder = $assetsfolder.'js/';
     foreach(FileUtils::getFolders($jsfolder) as $folder) {
       if(preg_match('`^\.`',$folder)) continue;
@@ -111,7 +111,7 @@ class Command_clearcache extends Command
         $out = JSmin::minify($out);
       }
       $version = (self::getOption('assetsurlrewriting')) ? '' : $assetsversion;
-      file_put_contents(APP_ROOT.WEB_FOLDER.'/cache/'.$folder.$version.'.js',$out);
+      file_put_contents(APP_ROOT.'public/cache/'.$folder.$version.'.js',$out);
     }
     // css
 
@@ -127,7 +127,7 @@ class Command_clearcache extends Command
         $out = CSSmin::minify($out);
       }
       $version = (self::getOption('assetsurlrewriting')) ? '' : $assetsversion;
-      file_put_contents(APP_ROOT.WEB_FOLDER.'/cache/'.$folder.$version.'.css',$out);
+      file_put_contents(APP_ROOT.'public/cache/'.$folder.$version.'.css',$out);
     }
   }
 }

@@ -2,8 +2,6 @@
 
 // Change {$SITE_URL} with your site URL - http path to project (eg: http://localhost/my_project_folder)
 define('SITE_URL','{$SITE_URL}');
-// Change {$DOC_ROOT} with your Web folder - relative to project (eg : www)
-define('WEB_FOLDER','{$DOC_ROOT}');
 // Change {$MODE} with your mode -> eg: production or development or test
 define('MODE','{$MODE}');
 
