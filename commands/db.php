@@ -52,7 +52,7 @@ class Command_Db extends Command {
     $option = array_shift($params);
     if($option != 'reset') $migration_date = Config::getPref('migration_date', false);
 
-    if(empty($migration_date) && $params[0]!= 'reset') {
+    if(empty($migration_date) && $option != 'reset') {
       return $this->error('No migration date. If you want to reinstall all the migrations add reset to your command');
     }
     $this->line('migrating database changes since '.$migration_date);
