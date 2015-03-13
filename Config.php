@@ -264,7 +264,8 @@ class Config
 	 * @access	public
 	 * @param	string	$var	Variable to set
 	 * @param	string	$val	Value
-	 * @return	string Value or false if the target preference is not found in the SQL table
+	 * @return	string Value
+	 * Note : if it does not exist in database, the pref is created.
 	 * @static
 	 *
 	 */
@@ -273,7 +274,7 @@ class Config
 		$res = DB_DataObject::factory('preferences');
 		$res->var=$var;
 		if(!$res->find(true)) {
-			return false;
+			$res->insert();
 		}
 		$res->val = $val;
 		$res->update();
