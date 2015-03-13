@@ -64,7 +64,10 @@ class M_Office_ShowTable extends M_Office_Controller {
     if (isset($_REQUEST['doaction']) && $this->getOption('actions',$module)) {
       require 'M/Office/Actions.php';
       $do->orderBy();
-      $do->orderBy($_REQUEST['_ps'].' '.$_REQUEST['_pd']);
+      $order = trim($_REQUEST['_ps'].' '.$_REQUEST['_pd']);
+      if(!empty($order)) {
+        $do->orderBy($order);
+      }
       $subController = new M_Office_Actions($this->getOptions());
       $subController->run($do, $_REQUEST['doaction'],'batch');
       if($subController->has_output) {
