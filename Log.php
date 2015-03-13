@@ -18,8 +18,15 @@ class Log
 {
   protected static $instances;
 
-  public static function getInstance($driver = 'nolog')
+  public static function getInstance($driver = null)
   {
+    if(is_null($driver)) {
+      if(defined('LOG_DRIVER')) {
+        $driver = LOG_DRIVER;
+      } else {
+        $driver = 'nolog';
+      }
+    }
     if(!self::$instances[$driver]) {
       $class = 'Log_'.$driver;
       self::$instances[$driver] = new $class;
@@ -73,11 +80,7 @@ class Log
 	 */
 	public static function message($message,$level = 'info')
 	{
-    if(defined('LOG_DRIVER')) {
-	    $driver = LOG_DRIVER;
-    }
-	  if(!isset($driver)) $driver = 'nolog';
-    self::getInstance($driver)->message($message,$level);
+    self::getInstance()->message($message,$level);
 	}
 
 	/**

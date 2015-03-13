@@ -43,11 +43,7 @@ class Plugins_Log_DB extends M_Plugin
   public function getLogger($obj = null)
   {
     if(!self::$logger) {
-      if(defined('LOG_DRIVER')) {
-        self::$logger = Log::getInstance(LOG_DRIVER);
-      } else {
-        self::$logger = Log::getInstance('nolog');
-      }
+      self::$logger = Log::getInstance();
     }
     if($obj instanceOf DB_DataObject) {
       return self::returnStatus(self::$logger);
