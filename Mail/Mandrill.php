@@ -18,30 +18,6 @@ class Mail_mandrill extends Maman implements iMailDriver {
 		if(!is_array($from)){
 			$from=array($from,$from);
 		}
-    /*
-		$mail->From = $from[0];
-		$mail->FromName = $from[1];
-
-		if(key_exists('reply-to',$options)){
-			$mail->AddReplyTo($options['reply-to']);
-			unset($options['reply-to']);
-		}
-		if(key_exists('Sender',$options)) {
-			$mail->Sender = $options['Sender'];
-		}
-
-		if(null!=$attachments){
-			if(!is_array($attachments)){
-				$attachments = array($attachments);
-			}
-			foreach($attachments as $k=>$v){
-				if(!$mail->AddAttachment($v, basename($v))){
-					trigger_error("Attachment $v could not be added");
-				}
-			}
-		}
-		$mail->IsHTML($html);
-    */
 
     if(!is_array($to)) {
       $to = array('email' => $to, 'name' => $to );

@@ -58,9 +58,8 @@ class M_Setup implements iSetup {
     $mailopt['template_dir'] = array(
       APP_ROOT.'app/_shared/templates/_mails/',
       APP_ROOT.'app/'.APP_NAME.'/templates/_mails/');
-    $mailopt['sendmail']=false;
     $mailopt['encoding']='utf-8';
-    $mailopt['logmail']=true;
+    $mailopt['drivers'] = explode(',',CONFIG_MAILDRIVERS);    
     $mailopt['log_folder']=APP_ROOT.'mail_logs/';
     $mailopt['from']='noreply@mymaildomain.com';
     $mailopt['fromname']='Support';
