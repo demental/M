@@ -119,7 +119,7 @@ class T {
 	{
 		$this->locale=substr($lang,0,2);
 
-		if((!T::getConfig('autoexpire') && $this->cacheExists($this->locale)) || $this->cacheIsUpToDate($this->locale)) {
+		if($this->cache_valid()) {
 			$lngtb = $this->getStringsFromCache($this->locale);
       $this->setStrings($lngtb);
       $this->log('Cache is up to date, retreiving from cache');
@@ -129,11 +129,17 @@ class T {
         $this->getStringsFromFile($file, $lngtb);
       }
       $this->setStrings($lngtb);
-      $this->rebuildCache();
+			if(MODE != 'production') $this->rebuildCache();
       $this->log('Cache was deprecated, retreiving from source file and rebuilding cache');
 		}
 	}
 
+	public function cache_valid()
+	{
+		if(MODE != 'production') return false;
+		return (!T::getConfig('autoexpire') && $this->cacheExists($this->locale))
+		       || $this->cacheIsUpToDate($this->locale);
+	}
   public function files_to_load($lang)
   {
     foreach(T::paths() as $path) {
