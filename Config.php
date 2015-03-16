@@ -62,7 +62,7 @@ class Config
    protected static function getPrefFile()
    {
      if(!self::$prefFile) {
-       $name = preg_replace('`\W`','',SITE_URL);
+       $name = preg_replace('`\W`', '', APP_HOST);
        self::$prefFile = 'preferences'.$name.'.php';
      }
      return self::$prefFile;
