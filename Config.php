@@ -231,8 +231,9 @@ class Config
 	 */
 
 
-	public static function getPref($var, $use_cache = true)
+	public static function getPref($var, $use_cache = null)
 	{
+		if(is_null($use_cache)) { $use_cache = MODE == 'production'; }
     if(!$use_cache) {
       return self::getPrefFromDatabase($var);
     }
@@ -279,7 +280,7 @@ class Config
 		$res->val = $val;
 		$res->update();
 		self::$prefArr[$var]=$val;
-		self::savePrefFile();
+		if(MODE == 'production') self::savePrefFile();
 		return self::$prefArr[$var];
 	}
 }
