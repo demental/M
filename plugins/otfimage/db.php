@@ -143,7 +143,7 @@ class Plugins_Otfimage_DB extends M_Plugin
   {
     $obj->record_table = $owner->tableName();
     $obj->record_id = $owner->pk();
-    $obj->update();
+    $obj->save();
   }
 
   public function setAsMain($obj)
