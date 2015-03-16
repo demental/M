@@ -129,7 +129,7 @@ class T {
         $this->getStringsFromFile($file, $lngtb);
       }
       $this->setStrings($lngtb);
-			if(MODE != 'production') $this->rebuildCache();
+			if(MODE == 'production') $this->rebuildCache();
       $this->log('Cache was deprecated, retreiving from source file and rebuilding cache');
 		}
 	}
