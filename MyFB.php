@@ -42,6 +42,7 @@ class MyFB extends DB_DataObject_FormBuilder
 		$fb->_form = new DB_DataObject_FormBuilder_MyQuickForm($fb);
 		$fb->ruleViolationMessage = __('The value you have entered is not valid.');
 		$fb->requiredRuleMessage = __('The following field is required.');
+		$fb->builder_path = $builder_options['path'] ?: APP_ROOT.'app/formbuilders/';
 		$fb->load_builder($builder_options);
 		return $fb;
 	}
