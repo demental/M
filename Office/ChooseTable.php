@@ -21,23 +21,18 @@
 class M_Office_ChooseTable extends M_Office_Controller {
   function __construct() {
     parent::__construct();
-    $o = array();
-    $modules = $this->getOption('modulesToList');
-    if($modules) {
-      $o = $this->tree($modules);
-    }
-    $this->assign('choosetable',$o);
   }
-  public function tree($modules)
+
+  public function tree()
   {
     $officeConfig = PEAR::getStaticProperty('m_office','options');
     $moduleconf = $officeConfig['modules'];
     $diff = array_diff(array_keys($_GET),array('module'));
     $o = array();
-    foreach ($modules as $id => $module) {
+    foreach ($this->getOption('modulesToList') as $id => $module) {
 
       if(is_array($module)) {
-        $res = array( 'title' => __("modules.$id.frontname"),
+        $res = array( 'name' => $id,
                       'icon'  => $moduleconf[$id]['icon']
                     );
 
@@ -46,10 +41,9 @@ class M_Office_ChooseTable extends M_Office_Controller {
           $res['expanded'] = true;
         }
       } else {
-        $res = array( 'title' => __("modules.$module.frontname"),
-                      'icon'  => $moduleconf[$module]['icon'],
-                      'url'   => M_Office_Util::getQueryParams(array('module' => $module), $diff)
-
+        $res = array( 'name' => $module,
+                      'icon' => $moduleconf[$module]['icon'],
+                      'url'  => M_Office::URL($module, array(), $diff)
                     );
         if($_REQUEST['module'] == $module){
           $res['active'] = true;

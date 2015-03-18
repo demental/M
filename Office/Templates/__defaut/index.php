@@ -98,15 +98,15 @@ foreach(Mtpl::getJSinline('ready') as $inst){
 			<div id="chooseTable">
 			<?php $this->i('header')?>
 			  <h3><a href="<?php echo ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT?>"><?php echo $adminTitle?></a></h3>
-                			    <input type="search" size="40"/>
-                			    <br /><br /><br />
-                			    <?php if($username):?>
-                			      <div class="logout">
-                			        <?php $this->i('profile')?>
-                			      <a href="<?php echo ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT?>?logout=1"><?php echo __('Logout %s',array($username))?></a>
-                			      </div>
-                			    <?php endif?>
-                          <?php $this->i('choosetable',array('items' => $choosetable)) ?>
+			    <input type="search" size="40"/>
+			    <br /><br /><br />
+			    <?php if($username):?>
+			      <div class="logout">
+			        <?php $this->i('profile')?>
+			      <a href="<?php echo ROOT_ADMIN_URL.ROOT_ADMIN_SCRIPT?>?logout=1"><?php echo __('Logout %s',array($username))?></a>
+			      </div>
+			    <?php endif?>
+          <?php echo $this->c('home','choosetable') ?>
 
 			</div>
 
