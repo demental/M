@@ -23,13 +23,14 @@ class M_Office_ChooseTable extends M_Office_Controller {
     parent::__construct();
   }
 
-  public function tree()
+  public function tree( $modules = null)
   {
+    if(is_null($modules)) $modules = $this->getOption('modulesToList');
     $officeConfig = PEAR::getStaticProperty('m_office','options');
     $moduleconf = $officeConfig['modules'];
     $diff = array_diff(array_keys($_GET),array('module'));
     $o = array();
-    foreach ($this->getOption('modulesToList') as $id => $module) {
+    foreach ($modules as $id => $module) {
 
       if(is_array($module)) {
         $res = array( 'name' => $id,

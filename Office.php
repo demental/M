@@ -127,8 +127,6 @@ class M_Office extends M_Office_Controller implements iListener {
 			return;
 		}
 
-
-		$subController = new M_Office_ChooseTable();
 		if(isset($_REQUEST['module'])) {
 			if(!$info) {
 				$info = M_Office_Util::getModuleInfo($_REQUEST['module']);
