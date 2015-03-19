@@ -157,7 +157,7 @@ class M_Office_View_DOPaging extends M_Office_View_List
       $columnsTypes[$field] = $fieldTypes[$field];
     }
     $this->columns = $columnsTypes;
-    if(can('edit', $module) || can('view', $module)) {
+    if(can('update', $module) || can('read', $module)) {
         Mreg::get('tpl')->assign('edit',true);
     }
     if($this->_controller->hasActions) {

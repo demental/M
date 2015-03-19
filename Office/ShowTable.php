@@ -23,7 +23,7 @@ class M_Office_ShowTable extends M_Office_Controller {
     parent::__construct();
     $this->assign('module', $module);
     $this->module = $module;
-    deny_unless_can('view', $module);
+    deny_unless_can('read', $module);
 
     if ((isset($_REQUEST['record']) || isset($_REQUEST['__record_ref']))
     && ($this->getOption('edit', $module) || $this->getOption('view', $module))) {
@@ -34,7 +34,7 @@ class M_Office_ShowTable extends M_Office_Controller {
     }
 
     if(isset($_REQUEST['addRecord']) && $this->getOption('add', $module)) {
-      deny_unless_can('add', $module);
+      deny_unless_can('create', $module);
       $subController = new M_Office_AddRecord($module);
       $subController->run();
       return;

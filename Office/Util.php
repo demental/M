@@ -79,28 +79,22 @@ class M_Office_Util {
   /**
    * returns the array of single actions for $do (and optionally module)
    */
-  public static function getActionsFor($do,$moduleName=null,$includeExtra = false)
+  public static function getActionsFor($do,$moduleName=null)
   {
     if(is_null($moduleName)) $moduleName = $do->tableName();
 
+    if(!can('actions_whitelist', $moduleName) && !can('all_actions', $moduleName)) return array();
+
     $singleMethods=method_exists($do,'getSingleMethods')?$do->getSingleMethods():array();
-    if($includeExtra) {
-      $extraMethods=method_exists($do,'getExtraMethods')?$do->getExtraMethods():array();
-      $singleMethods = array_merge($singleMethods,$extraMethods);
-    }
 
-    $opt = self::getGlobalOption('actions','editrecord', $moduleName);
+    if(can('all_actions', $moduleName)) return $singleMethods;
 
-    if(is_array($opt)) {
-        foreach($opt as $k=>$v) {
-          if(key_exists($v,$singleMethods)) {
-            $thS[$v] = $singleMethods[$v];
-          }
-        }
-            $singleMethods = $thS;
-    } elseif(!$opt) {
-            $singleMethods = array();
+    $whitelist = User::getInstance('office')->getDBDO()->admintype()->get_array($moduleName, 'actions_whitelist');
+    foreach($singleMethods as $meth => $info) {
+      if(!in_array($meth, $whitelist)) unset($singleMethods[$meth]);
     }
+    var_dump($singleMethods);
+
     return $singleMethods;
 
   }

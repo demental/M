@@ -27,7 +27,7 @@ class Tag_Module_Taghelper extends Module {
     $focus = $this->getFocus();
     $this->assign('focus',$focus);
     $this->assign('module',$_REQUEST['module']);
-    if(!can('edit', $_REQUEST['module'], $focus)) {
+    if(!can('update', $_REQUEST['module'], $focus)) {
       $this->setTemplate('taghelper/viewer');
     }
   }
@@ -47,7 +47,7 @@ class Tag_Module_Taghelper extends Module {
   public function doExecRemove()
   {
     $focus = $this->getFocus();
-    deny_unless_can('edit', $_REQUEST['focusmodule'], $focus);
+    deny_unless_can('update', $_REQUEST['focusmodule'], $focus);
 
     $tag = DB_DataObject::factory('tag');
     $tag->get($_REQUEST['tagid']);
@@ -62,7 +62,7 @@ class Tag_Module_Taghelper extends Module {
   public function doExecAddByStrip()
   {
     $focus = $this->getFocus();
-    deny_unless_can('edit', $_REQUEST['focusmodule'], $focus);
+    deny_unless_can('update', $_REQUEST['focusmodule'], $focus);
 
     $focus->addTagByHuman($_REQUEST['strip']);
     if(!$this->isAjaxRequest()) {
