@@ -1,6 +1,6 @@
 <?php
 
-class Plugin_user_formbuilder {
+class PluginUserFormbuilder {
   public function before_form($fb)
   {
     $defs = $obj->_getPluginsDef();
