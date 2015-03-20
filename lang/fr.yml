@@ -1,6 +1,6 @@
 fr:
   error:
-    module_not_found: Pas de module demandé (<pre>%s</pre>) n'existe pas.
+    module_not_found: Le module demandé ('%s') n'existe pas.
     template_not_found: "Le template demandé : <pre>%s</pre> n'a pas été trouvé ! <br />Accès : <pre>%s</pre>"
     no_action_in_module: L'action %s n'est pas implémentée dans %s
     action_disabled_in_module: L'action %s du module %s est désactivée
