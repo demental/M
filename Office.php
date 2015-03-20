@@ -197,9 +197,6 @@ class M_Office extends M_Office_Controller implements iListener {
 				case 'dyn':
           /*@todo : use a dispatcher here*/
 				  // home module = available for everyone
-					$subController = Module::factory($_REQUEST['module'],array(
-            APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.'_shared'.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR, APP_ROOT.PROJECT_NAME.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'modules/',
-            'M/Office/modules/'));
 
           $allowAccess = $_REQUEST['module'] == 'home' || M_Office_Util::getGlobalOption('view','showtable',$_REQUEST['module']);
 
@@ -210,6 +207,7 @@ class M_Office extends M_Office_Controller implements iListener {
             Log::info('User is allowed to access '.$_REQUEST['module']);
           }
 
+          $subController = Module::factory($_REQUEST['module'], M::getPaths('modules'));
 
           $subController->executeAction($_REQUEST['action']?$_REQUEST['action']:'index');
 

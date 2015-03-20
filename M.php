@@ -89,5 +89,27 @@ class M {
       break;
     }
   }
+  public static function getPaths($role) {
+    switch($role) {
+      case 'models':
+        $options = PEAR::getStaticProperty('DB_DataObject', 'options');
+        return explode(':', $options['class_location']);
+        break;
+      case 'lang':
+        return T::getPaths();
+        break;
+      case 'templates':
+        $moduloptions = PEAR::getStaticProperty('Module','global');
+        return $moduloptions['template_dir'];
+      break;
 
+      case 'modules':
+        $dispatchopt = PEAR::getStaticProperty('Dispatcher', 'global');
+        return $dispatchopt['all']['modulepath'];
+      break;
+      default:
+        throw new Exception("Don't know how to add a '$role' path");
+      break;
+    }
+  }
 }
