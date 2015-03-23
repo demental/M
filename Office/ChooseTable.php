@@ -48,7 +48,7 @@ class M_Office_ChooseTable extends M_Office_Controller {
                       'icon' => $moduleconf[$module]['icon'],
                       'url'  => M_Office::URL($module, array(), $diff)
                     );
-        if($_REQUEST['module'] == $module){
+        if($_REQUEST['module'] == $module || $_REQUEST['module'] == $module . 'helper') {
           $res['active'] = true;
         }
       }
