@@ -18,11 +18,6 @@
 * @version      0.1
 */
 
-
- if(!defined('TMP_PATH')){
- 	define('TMP_PATH',ini_get('upload_tmp_dir'));
- }
-
 class Plugins_user_db extends M_Plugin
 {
   public $reminderUrl='user/login';

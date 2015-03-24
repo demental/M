@@ -30,7 +30,7 @@ class Plugins_I18n_db extends M_Plugin {
 
   public function getEvents()
   {
-    return array('pregenerateform','postgenerateform','preprocessform','postprocessform','find','update','postupdate','delete','postinsert');
+    return array('find','update','postupdate','delete','postinsert');
   }
   public function setGrouped($bool,$obj)
   {
@@ -39,17 +39,6 @@ class Plugins_I18n_db extends M_Plugin {
     } else {
       $this->_grouped = false;
     }
-  }
-  public function preGenerateForm($fb,$obj)
-  {
-
-    if(!$this->_autoActions) {
-      $langs = array(T::getLocale());
-    } else {
-      $langs = $this->getLocales($obj);
-    }
-
-    $obj->_i18ndos = $this->prepareTranslationRecords($obj,$langs);
   }
   public function getDefaultLang($obj)
   {
