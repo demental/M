@@ -655,6 +655,9 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
       } else {
         $this->_memoized[$key]->whereAdd('1=2');
       }
+      if($this->_memoized[$key]->default_order) {
+        $this->_memoized[$key]->orderBy($this->_memoized[$key]->default_order);
+      }
       $this->_memoized[$key]->find();
     }
     return $this->_memoized[$key];
