@@ -26,16 +26,15 @@ class M_Office_AddRecord extends M_Office_Controller {
         $tpl = Mreg::get('tpl');
         $tpl->concat('adminTitle',' :: '.$this->moduloptions['title'].' :: '.__('Add record'));
 
-    		$mopts = PEAR::getStaticProperty('m_office','options');
+		$mopts = PEAR::getStaticProperty('m_office','options');
         $mopt = $mopts['modules'][$module];
-    		$table = $mopt['table'];
+		$table = $mopt['table'];
         $do = M_Office_Util::doForModule($module);
 
         $this->append('subActions','<a href="'.M_Office_Util::getQueryParams(array(), array('record','doSingleAction')).'">'.__('Go to the %s list',array($mopt['title'])).'</a>');
         $formBuilder =& MyFB::create($do);
+        if(method_exists($formBuilder->builder, 'defaults')) $formBuilder->builder->defaults($do);
 
-//	linkNewValue creates an issue if some linked elements are put in predefgroups
-//        $formBuilder->linkNewValue = true;
         $form = new MyQuickForm('editRecord', 'POST', M_Office_Util::getQueryParams(array(), array(), false), '_self', null, true);
         $form->addElement('hidden', 'submittedNewRecord', 1);
         if (isset($_REQUEST['filterField'])) {
