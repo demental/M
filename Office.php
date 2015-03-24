@@ -90,7 +90,7 @@ class M_Office extends M_Office_Controller implements iListener {
           $info = array('type'=>'dyn','title'=> __("modules.{$tab[1]}helper.title"));
           $module = $_REQUEST['module'];
         } else {
-          throw new NotFoundException('error.module_not_found');
+          throw new NotFoundException(__('error.module_not_found', array($_REQUEST['module'])));
         }
       }
 		}
@@ -127,8 +127,6 @@ class M_Office extends M_Office_Controller implements iListener {
 			return;
 		}
 
-
-		$subController = new M_Office_ChooseTable();
 		if(isset($_REQUEST['module'])) {
 			if(!$info) {
 				$info = M_Office_Util::getModuleInfo($_REQUEST['module']);

@@ -23,6 +23,8 @@ class M_Office_ShowTable extends M_Office_Controller {
     parent::__construct();
     $this->assign('module', $module);
     $this->module = $module;
+    deny_unless_can('read', $module);
+
     if ((isset($_REQUEST['record']) || isset($_REQUEST['__record_ref']))
     && ($this->getOption('edit', $module) || $this->getOption('view', $module))) {
       $subController = new M_Office_EditRecord($module, $_REQUEST['record'], $additionalFilter);
@@ -32,6 +34,7 @@ class M_Office_ShowTable extends M_Office_Controller {
     }
 
     if(isset($_REQUEST['addRecord']) && $this->getOption('add', $module)) {
+      deny_unless_can('create', $module);
       $subController = new M_Office_AddRecord($module);
       $subController->run();
       return;
@@ -47,9 +50,9 @@ class M_Office_ShowTable extends M_Office_Controller {
 
     if($this->getOption('search',$module)){
       // 1. Url curation if needed
-      if(!key_exists('_c_',$_REQUEST) && !M_Office::isAjaxRequest()) {
-        M_Office_Util::refresh(M_Office::cleanURL(array('_c_'=>1),array('searchSubmit','__submit__')));
-      }
+      // if(!key_exists('_c_',$_REQUEST) && !M_Office::isAjaxRequest()) {
+      //   M_Office_Util::refresh(M_Office::cleanURL(array('_c_'=>1),array('searchSubmit','__submit__')));
+      // }
       // 2. Process search
       $doSearch = M_Office_Util::doForModule($this->module);
       $searchForm = M_Office_Util::getSearchForm($doSearch, $this->module);

@@ -77,7 +77,7 @@ class M_Office_EditRecord extends M_Office_Controller {
 
         $formBuilder = MyFB::create($this->do);
 
-        if(!can('edit',$this->module)){
+        if(!can('update',$this->module)){
             $formBuilder->userEditableFields=array('__fakefield');
         }
         $editopts = PEAR::getStaticProperty('m_office_editrecord','options');
