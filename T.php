@@ -59,9 +59,9 @@ class T {
 		$out = array();
 		foreach($arr as $item) {
 			if(empty($item)) {
-				$out[$item] = __('enums' . $list_name . '.__default__');
+				$out[$item] = __('enums.' . $list_name . '.__default__');
 			} else {
-				$out[$item] = __('enums' . $list_name . '.' . $item);
+				$out[$item] = __('enums.' . $list_name . '.' . $item);
 			}
 		}
 		return $out;

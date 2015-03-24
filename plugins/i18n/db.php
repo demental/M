@@ -40,10 +40,6 @@ class Plugins_I18n_db extends M_Plugin {
       $this->_grouped = false;
     }
   }
-  public function getDefaultLang($obj)
-  {
-    return T::getLocale();
-  }
 
   public function setLangs($obj,$langs)
   {
