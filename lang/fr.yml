@@ -1,5 +1,6 @@
 fr:
   error:
+    unauthorized_action: Action non autorisée
     module_not_found: Le module demandé ('%s') n'existe pas.
     template_not_found: "Le template demandé : <pre>%s</pre> n'a pas été trouvé ! <br />Accès : <pre>%s</pre>"
     no_action_in_module: L'action %s n'est pas implémentée dans %s

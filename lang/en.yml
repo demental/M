@@ -1,5 +1,6 @@
 en:
   error:
+    unauthorized_action: Unauthorized action
     module_not_found: No %s module
     template_not_found: "The requested template : <pre>%s</pre> was not found ! <br />paths : <pre>%s</pre>"
     no_action_in_module: The %s action is not implemented in %s
