@@ -88,15 +88,15 @@ class Mail extends Maman {
   public static function getDrivers()
   {
     if(is_null(self::$_drivers)) {
-		  $opt = PEAR::getStaticProperty('Mail','global');
+		  $opt = PEAR::getStaticProperty('Mail', 'global');
       $drivers = $opt['drivers'];
+      $driver_options = array('all' => $opt);
+
       foreach($drivers as $driver) {
-        $driver = ucfirst(strtolower(trim($driver)));
-        $driverClass = 'Mail_'.$driver;
-        $opt = array('all'=>PEAR::getStaticProperty('Mail','global'));
-        $driver = new $driverClass();
-        $driver->setConfig($opt);
-        self::$_drivers[] = $driver;
+        $driver_class = 'Mail' . ucfirst(strtolower(trim($driver)));
+        $driver_instance = new $driver_class();
+        $driver_instance->setConfig($driver_options);
+        self::$_drivers[] = $driver_instance;
       }
     }
     return self::$_drivers;

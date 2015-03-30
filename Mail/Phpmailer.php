@@ -13,7 +13,7 @@
  * Mail driver that uses phpmailer.
  */
 
-class Mail_phpmailer extends Maman implements iMailDriver {
+class MailPhpmailer extends Maman implements iMailDriver {
 	public function sendmail($from,$to,$subject,$body,$altbody = null, $options = null, $attachments = null, $html = false) {
 		if(!is_array($from)){
 			$from=array($from,$from);

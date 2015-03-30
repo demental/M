@@ -13,7 +13,7 @@
  * Mail driver that logs mails in memory
  */
 
-class Mail_Memlogger extends Maman implements iMailDriver {
+class MailMemlogger extends Maman implements iMailDriver {
 	public static $messages = array();
 	public function sendmail($from,$to,$subject,$body,$altbody = null, $options = null, $attachments = null, $html = false) {
 		$mess = "Message from : ".$from[1]."<".$from[0].">\r\n".
