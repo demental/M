@@ -67,12 +67,12 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
         }
         return '
 '.($addlinks?'
-  function links() {
+  public function links() {
     // links generated from .links.ini file
     return array('.$links.'    );
   }':'').
     ($addreverselinks?'
-  function reverseLinks() {
+  public function reverseLinks() {
     // reverseLinks generated from .links.ini file
     return array('.$reverselinks.'    );
   }':'');
@@ -346,7 +346,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
       // simple creation tools ! (static stuff!)
       $body .= "\n";
       $body .= "  /* Static get */\n";
-      $body .= "  function staticGet(\$k,\$v=NULL) { return DB_DataObject::staticGet('{$this->classname}',\$k,\$v); }\n";
+      $body .= "  public static function staticGet(\$k,\$v=NULL) { return DB_DataObject::staticGet('{$this->classname}',\$k,\$v); }\n";
 
       // generate getter and setter methods
       $body .= $this->_generateGetters($input);
@@ -394,7 +394,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
               if (preg_match('/\s+function\s+' . $validate_fname . '\s*\(/i', $input)) {
                   continue;
               }
-              $body .= "\n  function {$validate_fname}()\n  {\n    return false;\n  }\n";
+              $body .= "\n  public function {$validate_fname}()\n  {\n    return false;\n  }\n";
           }
       }
 
@@ -460,7 +460,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
       $defines = explode(',','INT,STR,DATE,TIME,BOOL,TXT,BLOB,NOTNULL,MYSQLTIMESTAMP');
 
       $ret = "\n" .
-             "  function table() {\n" .
+             "  public function table() {\n" .
              "    return array(\n";
 
       foreach($def as $k=>$v) {
@@ -493,7 +493,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
   {
 
       $ret = "\n" .
-             "  function keys() {\n" .
+             "  public function keys() {\n" .
              "    return array(";
 
       foreach($def as $k=>$type) {
@@ -562,7 +562,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
 
 
       $ret = "\n" .
-             "  function sequenceKey() {// keyname, use native, native name\n" .
+             "  public function sequenceKey() {// keyname, use native, native name\n" .
              "    return array(";
       foreach($ar as $v) {
           switch (gettype($v)) {
@@ -646,7 +646,7 @@ class DB_DataObject_Advgenerator extends DB_DataObject_Generator {
       }
 
       $ret = "\n" .
-             "  function defaults() {// column default values\n" .
+             "  public function defaults() {// column default values\n" .
              "    return array(\n";
       foreach($defaults as $k=>$v) {
           $ret .= '      \''.addslashes($k).'\' => ' . $v . ",\n";
