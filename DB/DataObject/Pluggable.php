@@ -54,7 +54,7 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   public $fb_dateFromDatabaseCallback='date2array';
   public $_pluginsLoaded = false;
 
-  public static function &staticGet($class, $k, $v = null)
+  public static function &static_get($class, $k, $v = null)
     {
         $lclass = strtolower($class);
         global $_DB_DATAOBJECT;
