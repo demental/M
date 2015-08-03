@@ -155,7 +155,7 @@ class Module extends Maman {
 	{
 		$opt = array('all'=>$opt);
 		$options = array(
-        'caching' =>(MODE=='developpement'?false:true),
+        'caching' =>(MODE=='development'?false:true),
         'cacheDir' => $opt['all']['cacheDir'].'/config/',
         'lifeTime' => 72000,//TODO make configurable...
         'fileNameProtection'=>false,
@@ -179,7 +179,7 @@ class Module extends Maman {
 				}
         Log::info('no cache for options, live generating');
 	 	  }
-	    if(MODE!='developpement')
+	    if(MODE!='development')
 	    {
 	     	$ret = $optcache->save($moduleopt);
 	     	Log::info('group = '.$group);
@@ -574,7 +574,7 @@ class Module extends Maman {
 			$ret = $this->_lastOutput->view->fetch($layout);
 
 		}
-    if(MODE!='developpement' && is_a($this->cache,'Cache_Lite')) $this->cache->save($ret);
+    if(MODE!='development' && is_a($this->cache,'Cache_Lite')) $this->cache->save($ret);
 		return $ret;
 	}
 	

@@ -48,7 +48,7 @@ class Office_DbModule extends Module {
 		$opt = array('all'=>PEAR::getStaticProperty('Module', 'global'));
 
     $options = array(
-        'caching' =>(MODE=='developpement'?false:true),
+        'caching' =>(MODE=='development'?false:true),
         'cacheDir' => $opt['all']['cacheDir'].'/config/'.($userOpt?User::getInstance('office')->getId().'/':''),
         'lifeTime' => null,
         'fileNameProtection'=>false,

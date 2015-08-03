@@ -35,7 +35,7 @@ class Office_Module extends Module {
     $userOpt = $AuthOptions['auth'];
 		$opt = array('all'=>PEAR::getStaticProperty('Module', 'global'));
     $options = array(
-      'caching' =>(MODE=='developpement'?false:true),
+      'caching' =>(MODE=='development'?false:true),
       'cacheDir' => $opt['all']['cacheDir'].'/config/',
       'lifeTime' => null,
       'fileNameProtection'=>false,

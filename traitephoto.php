@@ -16,33 +16,18 @@
 */
 
 require_once("Image/Transform.php");
-//// Classe de traitement photo.
-//// Historique :
-//// 10/2002 d�but du developpement
-//// 11/2002 Ajout des fonctions maxx et maxy
-//// 16/01/2003 Ajout de redimensionnement par surface ou perimetre seuil
-//// 23/01/2003 Ajout de nomsouhaite pour avoir le nom exact
-//// 29/01/2003 Ajout du support d'imagemagick pour le redim
-//// 05/04/2004 Commentaire + ajout de la v�rification du "/" � la fin de $path
 ////////////////////////////
 ////
-//// Exemple d'utilisation :
+//// Usage:
 //// $ph=new traitephoto;
 //// $ph->path="photos/";
-//// $ph->photo=$chemin_fichier_a_traiter;
+//// $ph->photo=$path_to_file;
 //// $ph->nomsouhaite="bla.jpg";
 //// $ph->width=100;
 //// $ph->height=100;
 //// $ph->redim();
 //// $ph->sauvegarde();
 ////
-//////////////////////////////
-//// Limitations avec imagemagick :
-//// l'ex�cutable "convert" doit �tre plac� dans le dossier /bin et pas /sbin pour pouvoir �tre ex�cut� par php
-//// Il doit certainement �tre en 755 (� v�rifier)
-//// Pas de rotation
-//// Pas de redimensionnement en m�me temps que recadrage
-//// le support d'imagemagick n'est pas impl�ment� dans la m�thode "sortie()"
 //////////////////////////////
 
 
