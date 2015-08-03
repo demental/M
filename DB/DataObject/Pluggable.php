@@ -54,6 +54,49 @@ class DB_DataObject_Pluggable extends DB_DataObject implements Iterator {
   public $fb_dateFromDatabaseCallback='date2array';
   public $_pluginsLoaded = false;
 
+  public static function &staticGet($class, $k, $v = null)
+    {
+        $lclass = strtolower($class);
+        global $_DB_DATAOBJECT;
+        if (empty($_DB_DATAOBJECT['CONFIG'])) {
+            DB_DataObject::_loadConfig();
+        }
+
+
+
+        $key = "$k:$v";
+        if ($v === null) {
+            $key = $k;
+        }
+        if (!empty($_DB_DATAOBJECT['CONFIG']['debug'])) {
+            DB_DataObject::debug("$class $key","STATIC GET - TRY CACHE");
+        }
+        if (!empty($_DB_DATAOBJECT['CACHE'][$lclass][$key])) {
+            return $_DB_DATAOBJECT['CACHE'][$lclass][$key];
+        }
+        if (!empty($_DB_DATAOBJECT['CONFIG']['debug'])) {
+            DB_DataObject::debug("$class $key","STATIC GET - NOT IN CACHE");
+        }
+
+        $obj = DB_DataObject::factory(substr($class,strlen($_DB_DATAOBJECT['CONFIG']['class_prefix'])));
+        if (PEAR::isError($obj)) {
+            DB_DataObject::raiseError("could not autoload $class", DB_DATAOBJECT_ERROR_NOCLASS);
+            $r = false;
+            return $r;
+        }
+
+        if (!isset($_DB_DATAOBJECT['CACHE'][$lclass])) {
+            $_DB_DATAOBJECT['CACHE'][$lclass] = array();
+        }
+        if (!$obj->get($k,$v)) {
+            DB_DataObject::raiseError("No Data return from get $k $v", DB_DATAOBJECT_ERROR_NODATA);
+
+            $r = false;
+            return $r;
+        }
+        $_DB_DATAOBJECT['CACHE'][$lclass][$key] = $obj;
+        return $_DB_DATAOBJECT['CACHE'][$lclass][$key];
+    }
   /**
    * retreive from registery and inject data if object is provided
    * avoid it would be better
